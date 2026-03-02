@@ -1,0 +1,14 @@
+.vscode
+
+build-linux
+build-windows
+temp
+
+*.so
+*.dll
+*.a
+
+*.o
+*.obj
+
+deps_windows.sh
