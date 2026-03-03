@@ -118,10 +118,17 @@
     CN_API void delete_vector3(Vector3 *v);
     
     CN_API OBJAttrib *create_object_attribute(const char *name, cn_type type, cnany value);
+    CN_API OBJAttrib *create_object_attribute_from_cnvalue(const char *name, const cn_value *value);
     CN_API void delete_object_attribute(OBJAttrib *attribute);
     
     CN_API Object *new_object(void);
     CN_API Object *share_object(Object *object);
+    CN_API void set_attr(Object *object, const char *name, const cn_value *value);
+    CN_API cn_value *get_attr(const Object *object, const char *name);
+    CN_API cnbool has_attr(const Object *object, const char *name);
+    CN_API void set_method(Object *object, const char *name, cnany func);
+    CN_API cnany get_method(const Object *object, const char *name);
+    CN_API cnbool has_method(const Object *object, const char *name);
     CN_API Object *release_object(Object *object);
     CN_API void delete_object(Object *object);
 
@@ -129,6 +136,11 @@
     void _delete_object_attribute_value(cn_value *val);
 
     void _init_object_attrs(struct attr_map_s *attribute_map);
+    uint64_t _get_attrs_hash(const char *str);
+    OBJAttrib *_find_object_attrs(const struct attr_map_s *attribute_map, uint64_t k);
+    void _remove_object_attrs(struct attr_map_s *attribute_map, uint64_t k);
+    void _insert_object_attrs(struct attr_map_s *attribute_map, uint64_t k, OBJAttrib *attr);
+    void _attr_map_resize(struct attr_map_s *map, size_t new_capacity);
     void _delete_object_attrs(struct attr_map_s *attribute_map);
 
 #endif

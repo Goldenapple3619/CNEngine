@@ -18,22 +18,6 @@ CN_API Object *new_object(void)
     return (obj);
 }
 
-CN_API Object *share_object(Object *object)
-{
-    if (!object)
-        return (NULL);
-    object->ref_count++;
-    return (object);
-}
-
-CN_API Object *release_object(Object *object)
-{
-    if (!object)
-        return (NULL);
-    object->ref_count--;
-    return (object);
-}
-
 CN_API void delete_object(Object *object)
 {
     if (!object)
@@ -47,120 +31,114 @@ CN_API void delete_object(Object *object)
     (void)free(object);
 }
 
-void _delete_object_attribute_value(cn_value *val)
+CN_API void set_attr(Object *object, const char *name, const cn_value *value)
 {
-    switch (val->type) {
-        case (CN_TYPE_INT):
-        case (CN_TYPE_FLOAT):
-        case (CN_TYPE_FUNCTION):
-        case (CN_TYPE_GENERIC_UNIQ_PTR):
-            break;
+    if (object || !name || !value)
+        return;
 
-        case (CN_TYPE_STRING):
-            if (val->as.str)
-                (void)free(val->as.str);
-            break;
+    uint64_t hash = _get_attrs_hash(name);
+    OBJAttrib *attr = create_object_attribute_from_cnvalue(name, value);
 
-        case (CN_TYPE_OBJECT):
-            if (val->as.ptr)
-                (void)delete_object(val->as.ptr);
-            break;
-    
-        default:
-            break;
-    }
+    if (!attr)
+        return;
+
+    (void)_insert_object_attrs(&object->attrs, hash, attr);
 }
 
-void _init_attribute_value(cn_value *dest, cnany value)
+CN_API cn_value *get_attr(const Object *object, const char *name)
 {
-    switch (dest->type) {
-        case (CN_TYPE_INT):
-            dest->as.i = value ? *(typeof(dest->as.i) *)value : 0;
-            break;
-        case (CN_TYPE_FLOAT):
-            dest->as.f = value ? *(typeof(dest->as.f) *)value : 0;
-            break;
-        case (CN_TYPE_FUNCTION):
-            dest->as.ptr = value;
-            break;
-        case (CN_TYPE_OBJECT):
-            dest->as.ptr = value;
-            break;
-        case (CN_TYPE_GENERIC_UNIQ_PTR):
-            dest->as.ptr = value;
-            break;
-        case (CN_TYPE_STRING):
-            dest->as.str = (char *)value;
-            break;
-        default:
-            break;
-    }
-}
-
-CN_API OBJAttrib *create_object_attribute(const char *name, cn_type type, cnany value)
-{
-    OBJAttrib *attribute = (OBJAttrib *)malloc(sizeof(OBJAttrib));
-
-    if (!attribute)
+    if (!object || !name)
         return (NULL);
     
-    #ifdef STRING_INDIVIDUAL_ALLOCATION
-        attribute->name = (char *)strdup(name);
+    uint64_t hash = _get_attrs_hash(name);
+    const Object *temp = object;
+    OBJAttrib *found;
 
-        if (!attribute->name) {
-            (void)free(attribute);
-            return (NULL);
-        }
-    #else
-        attribute->name = name;
-    #endif
+    while (temp) {
+        found = _find_object_attrs(&temp->attrs, hash);
 
-    attribute->value.type = type;
-    attribute->value.as.f = 0;
-    attribute->value.as.i = 0;
-    attribute->value.as.str = NULL;
-    attribute->value.as.ptr = NULL;
+        if (found)
+            return (&found->value);
 
-    (void)_init_attribute_value(&attribute->value, value);
+        temp = temp->base;
+    }
 
-    return (attribute);
+    return (NULL);
 }
 
-CN_API void delete_object_attribute(OBJAttrib *attribute)
+CN_API cnbool has_attr(const Object *object, const char *name)
 {
-    if (!attribute)
+    if (!object || !name)
+        return (false);
+    
+    uint64_t hash = _get_attrs_hash(name);
+    const Object *temp = object;
+
+    while (temp) {
+        if (_find_object_attrs(&temp->attrs, hash))
+            return (true);
+
+        temp = temp->base;
+    }
+
+    return (false);
+}
+
+CN_API void set_method(Object *object, const char *name, cnany func)
+{
+    if (object || !name || !func)
         return;
-    (void)_delete_object_attribute_value(&attribute->value);
-    #ifdef STRING_INDIVIDUAL_ALLOCATION
-        if (attribute->name)
-            (void)free((void *)attribute->name);
-        attribute->name = NULL;
-    #endif
-    (void)free((void *)attribute);
+
+    uint64_t hash = _get_attrs_hash(name);
+
+    cn_value temp;
+
+    temp.type = CN_TYPE_FUNCTION;
+    _init_attribute_value(&temp, func);
+
+    OBJAttrib *attr = create_object_attribute_from_cnvalue(name, &temp);
+
+    if (!attr)
+        return;
+
+    (void)_insert_object_attrs(&object->methods, hash, attr);
 }
 
-void _init_object_attrs(struct attr_map_s *attribute_map)
+CN_API cnany get_method(const Object *object, const char *name)
 {
-    attribute_map->attrs = NULL;
-    attribute_map->keys = NULL;
-    attribute_map->size = 0;
-    attribute_map->capacity = 0;
+    if (!object || !name)
+        return (NULL);
+    
+    uint64_t hash = _get_attrs_hash(name);
+    const Object *temp = object;
+    OBJAttrib *found;
+
+    while (temp) {
+        found = _find_object_attrs(&temp->methods, hash);
+
+        if (found)
+            return (&found->value.as.ptr);
+
+        temp = temp->base;
+    }
+
+    return (NULL);
 }
 
-void _delete_object_attrs(struct attr_map_s *attribute_map)
+CN_API cnbool has_method(const Object *object, const char *name)
 {
-    for (size_t i = 0; i < attribute_map->size; ++i) {
-        (void)delete_object_attribute(attribute_map->attrs[i]);
-        attribute_map->attrs[i] = NULL;
+    if (!object || !name)
+        return (false);
+    
+    uint64_t hash = _get_attrs_hash(name);
+    const Object *temp = object;
+
+    while (temp) {
+        if (_find_object_attrs(&temp->methods, hash))
+            return (true);
+
+        temp = temp->base;
     }
-    if (attribute_map->attrs) {
-        (void)free((void *)attribute_map->attrs);
-        attribute_map->attrs = NULL;
-    }
-    if (attribute_map->keys) {
-        (void)free((void *)attribute_map->keys);
-        attribute_map->keys = NULL;
-    }
-    attribute_map->size = 0;
-    attribute_map->capacity = 0;
+
+    return (false);
 }
