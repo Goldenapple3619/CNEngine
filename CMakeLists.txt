@@ -87,6 +87,7 @@ if(CN_BUILD_GAME)
             # cnaudio
             # cninput
             SDL2::SDL2
+            SDL2_image::SDL2_image
     )
 
     target_include_directories(cn_game

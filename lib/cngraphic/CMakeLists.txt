@@ -18,4 +18,5 @@ target_include_directories(cngraphic
 target_link_libraries(cngraphic
     PUBLIC
         SDL2::SDL2
+        SDL2_image::SDL2_image
 )

@@ -5,6 +5,7 @@ add_library(cncore SHARED
     src/vector2.c
     src/vector3.c
     src/clock.c
+    src/object.c
 )
 
 target_compile_options(cncore

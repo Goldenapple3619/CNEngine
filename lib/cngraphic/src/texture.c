@@ -87,10 +87,18 @@ CN_API void delete_texture(Texture *texture)
 
 CN_API void blit(Texture *__src, Texture *__dst, Rect *__src_rect, Rect *__dest_rect)
 {
+    (void)__src;
+    (void)__dst;
+    (void)__src_rect;
+    (void)__dest_rect;
 
 }
 
 CN_API void blit_ratio(Texture *__src, Texture *__dst, Rect *__src_rect, Vector2 *__dest_at, Vector2 *__ratios)
 {
-
+    (void)__src;
+    (void)__dst;
+    (void)__src_rect;
+    (void)__dest_at;
+    (void)__ratios;
 }
