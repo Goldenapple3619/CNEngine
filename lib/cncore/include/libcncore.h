@@ -46,6 +46,7 @@
     };
 
     typedef enum {
+        CN_TYPE_NULL,
         CN_TYPE_INT,
         CN_TYPE_FLOAT,
         CN_TYPE_STRING,
@@ -63,6 +64,11 @@
             void *ptr; // every possible value entries for our types, prevent over allocation
         } as;
     } cn_value;
+
+    struct object_s;
+
+    #define null_value (cn_value){0}
+    typedef cn_value (*cn_method)(struct object_s *self, void *args);
 
     struct object_attribute_s {
         #ifdef STRING_INDIVIDUAL_ALLOCATION
@@ -123,11 +129,14 @@
     
     CN_API Object *new_object(void);
     CN_API Object *share_object(Object *object);
-    CN_API void set_attr(Object *object, const char *name, const cn_value *value);
+    CN_API void set_attr(Object *object, const char *name, cn_type type, cnany value);
     CN_API cn_value *get_attr(const Object *object, const char *name);
     CN_API cnbool has_attr(const Object *object, const char *name);
-    CN_API void set_method(Object *object, const char *name, cnany func);
-    CN_API cnany get_method(const Object *object, const char *name);
+    CN_API void set_method(Object *object, const char *name, cn_method func);
+    CN_API cn_method get_method(const Object *object, const char *name);
+    CN_API cn_value call_method(Object *object, const char *name, void *args);
+    CN_API void print_object(const Object *object);
+    CN_API Object *create_default_object(void);
     CN_API cnbool has_method(const Object *object, const char *name);
     CN_API Object *release_object(Object *object);
     CN_API void delete_object(Object *object);

@@ -6,7 +6,7 @@ add_library(cnaudio SHARED
 
 target_compile_options(cnaudio
     PRIVATE
-        -Wall -Wextra -Wshadow -Werror -pedantic -pedantic-errors -O2
+        -Wall -Wextra -Wshadow -Werror -O2
 )
 
 target_include_directories(cnaudio

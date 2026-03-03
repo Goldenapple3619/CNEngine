@@ -59,6 +59,9 @@ CN_API OBJAttrib *create_object_attribute_from_cnvalue(const char *name, const c
     attribute->value.as.str = value->as.str;
     attribute->value.as.ptr = value->as.ptr;
 
+    if (value->type == CN_TYPE_OBJECT && value->as.ptr)
+        (void)share_object((Object *)value->as.ptr);
+
     return (attribute);
 }
 

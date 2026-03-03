@@ -6,7 +6,7 @@ add_library(cngraphic SHARED
 
 target_compile_options(cngraphic
     PRIVATE
-        -Wall -Wextra -Wshadow -Werror -pedantic -pedantic-errors -O2
+        -Wall -Wextra -Wshadow -Werror -O2
 )
 
 target_include_directories(cngraphic

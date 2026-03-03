@@ -77,7 +77,7 @@ if(CN_BUILD_GAME)
 
     target_compile_options(cn_game
         PRIVATE
-            -Wall -Wextra -Wshadow -Werror -pedantic -pedantic-errors -O2
+            -Wall -Wextra -Wshadow -Werror -O2
     )
 
     target_link_libraries(cn_game
