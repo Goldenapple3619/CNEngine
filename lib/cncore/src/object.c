@@ -159,11 +159,13 @@ CN_API void print_object(const Object *object)
 
     cn_value val = call_method((Object *)object, "_str", NULL);
 
-    if (val.type != CN_TYPE_STRING || !val.as.str)
+    if (val.type != CN_TYPE_STRING || !val.as.str) {
+        (void)_delete_object_attribute_value(&val);
         return;
+    }
 
     (void)printf("%s", val.as.str);
-    (void)free(val.as.str);
+    (void)_delete_object_attribute_value(&val);
 }
 
 static cn_value _init(Object *__this, void *args) { (void)args; (void)__this; return (null_value); }

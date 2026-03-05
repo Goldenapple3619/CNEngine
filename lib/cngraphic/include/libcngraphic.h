@@ -25,6 +25,21 @@
         cnflags flags;
     };
 
+    struct event_s {
+        cnnumber x;
+        cnnumber y;
+        uint32_t type;
+        uint64_t v;
+    };
+
+    struct event_map_entry_s {
+        struct event_s **events;
+        uint32_t type;
+
+        size_t size;
+        size_t capacity;
+    };
+
     struct window_s {
         char *title;
         struct texture_s *icon;
@@ -34,12 +49,15 @@
 
         SDL_Renderer *renderer;
         struct texture_s *texture;
+
+        struct event_map_entry_s **event_map; // null terminated
     };
 
     struct window_universe_s {
         struct window_s **windows;
 
         size_t size;
+        size_t capacity;
     };
 
     struct interface_s {
@@ -53,13 +71,45 @@
     };
 
     typedef struct texture_s Texture;
+    typedef struct window_s Window;
+    typedef struct window_universe_s WindowUniverse;
+    typedef struct videomode_s Videomode;
+    typedef uint32_t cncolor;
 
-    CN_API void blit(Texture *__src, Texture *__dst, Rect *__src_rect, Rect *__dest_rect);
-    CN_API void blit_ratio(Texture *__src, Texture *__dst, Rect *__src_rect, Vector2 *__dest_at, Vector2 *__ratios);
+    CN_API void blit(const Texture *__src, Texture *__dst, const Rect *__src_rect, const Vector2 *__dest_at);
+    CN_API void blit_ratio(const Texture *__src, Texture *__dst, const Rect *__src_rect, const Vector2 *__dest_at, const Vector2 *__ratios);
 
-    CN_API Texture *new_texture(Vector2 *size, cnbool alpha);
+    CN_API Texture *new_texture(const Vector2 *size, cnbool alpha);
+    CN_API Texture *copy_texture(Texture *texture);
     CN_API Texture *new_texture_from_file(const char *path);
     CN_API Texture *new_texture_from_surface(SDL_Surface *surface);
+    CN_API void clear_texture(Texture *texture, cncolor color);
+    CN_API void set_opacity_texture(Texture *texture, uint8_t opacity);
+    CN_API uint8_t get_opacity_texture(const Texture *texture);
+    CN_API void draw_rect(Texture *texture, const Rect *rect, cncolor color);
+    CN_API void draw_ellipse(Texture *texture, const Rect *rect, cncolor color);
     CN_API void delete_texture(Texture *texture);
+
+    CN_API Window *new_window(const char *name, const Texture *icon, const Videomode *video_mode);
+    CN_API void set_vsync_window(Window *window, cnbool value);
+    CN_API cnbool get_vsync_window(const Window *window);
+    CN_API void set_closable_window(Window *window, cnbool value);
+    CN_API cnbool get_closable_window(const Window *window);
+    CN_API void set_hidden_window(Window *window, cnbool value);
+    CN_API cnbool get_hidden_window(const Window *window);
+    CN_API cnbool update_window(Window *window);
+    CN_API cnbool has_event_window(const Window *window);
+    CN_API cnbool get_event_window(const Window *window);
+    CN_API void clear_window(Window *window, cncolor color);
+    CN_API void delete_window(Window *window);
+
+    CN_API WindowUniverse *new_window_universe(void);
+    CN_API cnbool are_all_window_closed(const WindowUniverse *universe);
+    CN_API cnbool is_window_closed(const WindowUniverse *universe, uint32_t window_id);
+    CN_API void clear_events_all_window(WindowUniverse *universe);
+    CN_API void fetch_events_all_window(WindowUniverse *universe);
+    CN_API void update_all_window(WindowUniverse *universe);
+    CN_API void draw_all_window(WindowUniverse *universe);
+    CN_API void delete_window_universe(WindowUniverse *universe);
 
 #endif

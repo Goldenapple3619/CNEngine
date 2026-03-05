@@ -1,7 +1,7 @@
 #include "libcngraphic.h"
 #include <SDL2/SDL_image.h>
 
-CN_API Texture *new_texture(Vector2 *size, cnbool alpha)
+CN_API Texture *new_texture(const Vector2 *size, cnbool alpha)
 {
     if (!size)
         return (NULL);
@@ -85,16 +85,16 @@ CN_API void delete_texture(Texture *texture)
     (void)free((void *)texture);
 }
 
-CN_API void blit(Texture *__src, Texture *__dst, Rect *__src_rect, Rect *__dest_rect)
+CN_API void blit(const Texture *__src, Texture *__dst, const Rect *__src_rect, const Vector2 *__dest_at)
 {
     (void)__src;
     (void)__dst;
     (void)__src_rect;
-    (void)__dest_rect;
+    (void)__dest_at;
 
 }
 
-CN_API void blit_ratio(Texture *__src, Texture *__dst, Rect *__src_rect, Vector2 *__dest_at, Vector2 *__ratios)
+CN_API void blit_ratio(const Texture *__src, Texture *__dst, const Rect *__src_rect, const Vector2 *__dest_at, const Vector2 *__ratios)
 {
     (void)__src;
     (void)__dst;
