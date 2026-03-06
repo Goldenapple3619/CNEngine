@@ -5,11 +5,33 @@
     #include "libcncore.h"
 
     enum VIDEOMODE_FLAGS {
-        VDM_RESIZABLE = (1 << 0),
-        VDM_VSYNC = (1 << 1),
-        VDM_CLOSABLE = (1 << 2),
-        VDM_ACCELERATION = (1 << 3),
-        VDM_HIDDEN = (1 << 4)
+        VDM_VSYNC = (1 << 0),
+        VDM_CLOSABLE = (1 << 1),
+        VDM_ACCELERATION = (1 << 2)
+    };
+
+    enum VIDEOMODE_NATIVE_FLAGS {
+        VDM_N_FSCRN = SDL_WINDOW_FULLSCREEN,
+        VDM_N_OPENGL = SDL_WINDOW_OPENGL,
+        VDM_N_SHWN = SDL_WINDOW_SHOWN,
+        VDM_N_HDN = SDL_WINDOW_HIDDEN,
+        VDM_N_BDLS = SDL_WINDOW_BORDERLESS,
+        VDM_N_RSZL = SDL_WINDOW_RESIZABLE,
+        VDM_N_MNZ = SDL_WINDOW_MINIMIZED,
+        VDM_N_MXZ = SDL_WINDOW_MAXIMIZED,
+        VDM_N_MSGBD = SDL_WINDOW_MOUSE_GRABBED,
+        VMD_N_INPFOC = SDL_WINDOW_INPUT_FOCUS,
+        VMD_N_MSFOC = SDL_WINDOW_MOUSE_FOCUS,
+        VDM_N_FSCRND = SDL_WINDOW_FULLSCREEN_DESKTOP,
+        VDM_N_MSCAPT = SDL_WINDOW_MOUSE_CAPTURE,
+        VDM_N_ALSONTOP = SDL_WINDOW_ALWAYS_ON_TOP,
+        VDM_N_SKPTB = SDL_WINDOW_SKIP_TASKBAR,
+        VDM_N_WUTIL = SDL_WINDOW_UTILITY,
+        VDM_N_WTLTP = SDL_WINDOW_TOOLTIP,
+        VDM_N_WPOPMEN = SDL_WINDOW_POPUP_MENU,
+        VDM_N_KBGD = SDL_WINDOW_KEYBOARD_GRABBED,
+        VDM_N_VULKAN = SDL_WINDOW_VULKAN,
+        VDM_N_METAL = SDL_WINDOW_METAL
     };
 
     struct texture_s {
@@ -23,6 +45,7 @@
         Vector2 position;
 
         cnflags flags;
+        cnflags native_flags;
     };
 
     struct event_s {
@@ -42,15 +65,15 @@
 
     struct window_s {
         char *title;
-        struct texture_s *icon;
-        struct videomode_s *video_mode;
+        struct videomode_s video_mode;
 
         uint32_t id;
 
+        SDL_Window *window;
         SDL_Renderer *renderer;
         struct texture_s *texture;
 
-        struct event_map_entry_s **event_map; // null terminated
+        const struct event_map_entry_s **event_map; // null terminated
     };
 
     struct window_universe_s {

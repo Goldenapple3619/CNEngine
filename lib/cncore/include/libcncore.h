@@ -61,7 +61,7 @@
             int64_t i;
             double f;
             char *str;
-            void *ptr; // every possible value entries for our types, prevent over allocation
+            void *ptr;
         } as;
     } cn_value;
 
