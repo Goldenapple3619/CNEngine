@@ -2,6 +2,7 @@
     #define _LIBCNGRAPGIC_H_
 
     #include <SDL2/SDL.h>
+    #include <SDL2/SDL_image.h>
     #include "libcncore.h"
 
     enum VIDEOMODE_FLAGS {
@@ -109,10 +110,10 @@
     CN_API Texture *new_texture_from_file(const char *path);
     CN_API Texture *new_texture_from_surface(SDL_Surface *surface);
     CN_API void clear_texture(Texture *texture, cncolor color);
-    CN_API void set_opacity_texture(Texture *texture, uint8_t opacity); // to implement
-    CN_API uint8_t get_opacity_texture(const Texture *texture); // to implement
-    CN_API void draw_rect(Texture *texture, const Rect *rect, cncolor color); // to implement
-    CN_API void draw_ellipse(Texture *texture, const Rect *rect, cncolor color); // to implement
+    CN_API void set_opacity_texture(Texture *texture, uint8_t opacity);
+    CN_API uint8_t get_opacity_texture(const Texture *texture);
+    CN_API void draw_rect(Texture *texture, const Rect *rect, cncolor color);
+    // CN_API void draw_ellipse(Texture *texture, const Rect *rect, cncolor color); // to implement
     CN_API void delete_texture(Texture *texture);
 
     CN_API Window *new_window(const char *name, const Texture *icon, const Videomode *video_mode);
@@ -134,10 +135,14 @@
     CN_API WindowUniverse *new_window_universe(void); // to implement
     CN_API cnbool are_all_window_closed(const WindowUniverse *universe); // to implement
     CN_API cnbool is_window_closed(const WindowUniverse *universe, uint32_t window_id); // to implement
+    CN_API cnbool is_window_closed_addr(const WindowUniverse *universe, void *p); // to implement
     CN_API void clear_events_all_window(WindowUniverse *universe); // to implement
     CN_API void fetch_events_all_window(WindowUniverse *universe); // to implement
     CN_API void update_all_window(WindowUniverse *universe); // to implement
     CN_API void draw_all_window(WindowUniverse *universe); // to implement
     CN_API void delete_window_universe(WindowUniverse *universe); // to implement
+
+    CN_API cnbool start_graphics(void);
+    CN_API void end_graphics(void);
 
 #endif

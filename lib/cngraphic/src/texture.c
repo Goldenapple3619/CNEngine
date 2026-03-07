@@ -11,7 +11,7 @@ CN_API Texture *new_texture(const Vector2 *size, cnbool alpha)
     if (!texture)
         return (NULL);
 
-    texture->surface = SDL_CreateRGBSurfaceWithFormat(SDL_SWSURFACE, (int)round(size->x), (int)round(size->y), alpha ? 32 : 24,  alpha ? SDL_PIXELFORMAT_RGBA32 : SDL_PIXELFORMAT_RGB24);
+    texture->surface = SDL_CreateRGBSurfaceWithFormat(SDL_SWSURFACE, (int)size->x, (int)size->y, alpha ? 32 : 24,  alpha ? SDL_PIXELFORMAT_RGBA32 : SDL_PIXELFORMAT_RGB24);
     
     if (!texture->surface) {
         (void)free((void *)texture);
@@ -21,6 +21,27 @@ CN_API Texture *new_texture(const Vector2 *size, cnbool alpha)
     texture->size.x = size->x;
     texture->size.y = size->y;
     return (texture);
+}
+
+CN_API Texture *copy_texture(Texture *texture)
+{
+    if (!texture)
+        return (NULL);
+
+    SDL_Surface *surface = SDL_ConvertSurface(texture->surface, texture->surface->format, SDL_SWSURFACE);
+    Texture *temp;
+
+    if (!surface)
+        return (NULL);
+
+    temp = new_texture_from_surface(surface);
+
+    if (!temp) {
+        (void)SDL_FreeSurface(surface);
+        return (NULL);
+    }
+
+    return (temp);
 }
 
 CN_API Texture *new_texture_from_file(const char *path)
@@ -44,9 +65,9 @@ CN_API Texture *new_texture_from_file(const char *path)
         }
         SDL_Rect rects[3] = {{0, 0, 100, 100}, {50, 0, 50, 50}, {0, 50, 50, 50}};
 
-        SDL_FillRect(texture->surface, &rects[0], SDL_MapRGB(texture->surface->format, 0, 0, 0));
-        SDL_FillRect(texture->surface, &rects[1], SDL_MapRGB(texture->surface->format, 106, 22, 171));
-        SDL_FillRect(texture->surface, &rects[2], SDL_MapRGB(texture->surface->format, 106, 22, 171));
+        (void)SDL_FillRect(texture->surface, &rects[0], SDL_MapRGB(texture->surface->format, 0, 0, 0));
+        (void)SDL_FillRect(texture->surface, &rects[1], SDL_MapRGB(texture->surface->format, 106, 22, 171));
+        (void)SDL_FillRect(texture->surface, &rects[2], SDL_MapRGB(texture->surface->format, 106, 22, 171));
     }
 
     texture->size.x = texture->surface->w;
@@ -89,17 +110,91 @@ CN_API void blit(const Texture *__src, Texture *__dst, const Rect *__src_rect, c
 {
     if (!__src || !__dst)
         return;
-    (void)__src_rect;
-    (void)__dest_at; // to implement
+    Rect r = {0, 0, 0, 0};
+    Vector2 dst_vec = {0, 0};
+
+    if (__src_rect) {
+        r.x = __src_rect->x;
+        r.y = __src_rect->y;
+        r.w = (__src_rect->w ? __src_rect->w : __src->size.x);
+        r.h = (__src_rect->h ? __src_rect->h : __src->size.y);
+    } else {
+        r.w = __src->size.x;
+        r.h = __src->size.y;
+    }
+
+    if (__dest_at)
+        (void)memcpy(&dst_vec, __dest_at, sizeof(Vector2));
+    (void)SDL_BlitSurface(__src->surface,
+        &(SDL_Rect){
+            (int)r.x, (int)r.y, (int)r.w, (int)r.h
+        }, __dst->surface,
+        &(SDL_Rect){
+            (int)dst_vec.x, (int)dst_vec.y, (int)r.w, (int)r.h
+    });
 }
 
 CN_API void blit_ratio(const Texture *__src, Texture *__dst, const Rect *__src_rect, const Vector2 *__dest_at, const Vector2 *__ratios)
 {
     if (!__src || !__dst)
         return;
-    (void)__src_rect;
-    (void)__dest_at;
-    (void)__ratios; // to implement
+    Rect r = {0, 0, 0, 0};
+    Vector2 dst_vec = {0, 0};
+    Vector2 ratio_vec = {1, 1};
+
+    if (__src_rect) {
+        r.x = __src_rect->x;
+        r.y = __src_rect->y;
+        r.w = (__src_rect->w ? __src_rect->w : __src->size.x);
+        r.h = (__src_rect->h ? __src_rect->h : __src->size.y);
+    } else {
+        r.w = __src->size.x;
+        r.h = __src->size.y;
+    }
+
+    if (__dest_at)
+        (void)memcpy(&dst_vec, __dest_at, sizeof(Vector2));
+    if (__ratios)
+        (void)memcpy(&ratio_vec, __ratios, sizeof(Vector2));
+
+    (void)SDL_BlitScaled(__src->surface,
+        &(SDL_Rect){
+            (int)r.x, (int)r.y, (int)r.w, (int)r.h
+        }, __dst->surface,
+        &(SDL_Rect){
+            (int)dst_vec.x, (int)dst_vec.y, (int)(__dst->size.x * ratio_vec.x), (int)(__dst->size.y * ratio_vec.y)
+    });
+}
+
+CN_API void set_opacity_texture(Texture *texture, uint8_t opacity)
+{
+    if (!texture)
+        return;
+    (void)SDL_SetSurfaceAlphaMod(texture->surface, (uint8_t)fmax(0, fmin(255, opacity)));
+}
+
+CN_API uint8_t get_opacity_texture(const Texture *texture)
+{
+    if (!texture)
+        return (0);
+
+    uint8_t a;
+
+    (void)SDL_GetSurfaceAlphaMod(texture->surface, &a);
+    return (a);
+}
+
+CN_API void draw_rect(Texture *texture, const Rect *rect, cncolor color)
+{
+    if (!texture)
+        return;
+    SDL_FillRect(texture->surface,
+        &(SDL_Rect){(int)rect->x, (int)rect->y, (int)rect->w, (int)rect->h},
+        SDL_MapRGBA(texture->surface->format,
+            (color & 0xff000000) >> 24,
+            (color & 0x00ff0000) >> 16,
+            (color & 0x0000ff00) >> 8,
+            (color & 0x000000ff)));
 }
 
 CN_API void clear_texture(Texture *texture, cncolor color)
