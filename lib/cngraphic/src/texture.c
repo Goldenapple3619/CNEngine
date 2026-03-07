@@ -87,18 +87,30 @@ CN_API void delete_texture(Texture *texture)
 
 CN_API void blit(const Texture *__src, Texture *__dst, const Rect *__src_rect, const Vector2 *__dest_at)
 {
-    (void)__src;
-    (void)__dst;
+    if (!__src || !__dst)
+        return;
     (void)__src_rect;
-    (void)__dest_at;
-
+    (void)__dest_at; // to implement
 }
 
 CN_API void blit_ratio(const Texture *__src, Texture *__dst, const Rect *__src_rect, const Vector2 *__dest_at, const Vector2 *__ratios)
 {
-    (void)__src;
-    (void)__dst;
+    if (!__src || !__dst)
+        return;
     (void)__src_rect;
     (void)__dest_at;
-    (void)__ratios;
+    (void)__ratios; // to implement
+}
+
+CN_API void clear_texture(Texture *texture, cncolor color)
+{
+    if (!texture)
+        return;
+    (void)SDL_FillRect(texture->surface,
+        NULL,
+        SDL_MapRGBA(texture->surface->format,
+            (color & 0xff000000) >> 24,
+            (color & 0x00ff0000) >> 16,
+            (color & 0x0000ff00) >> 8,
+            (color & 0x000000ff)));
 }

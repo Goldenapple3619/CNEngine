@@ -42,8 +42,8 @@ CN_API Window *new_window(const char *name, const Texture *icon, const Videomode
 
     if (!window->renderer) {
         (void)free(window->title);
-        (void)SDL_DestroyWindow(window->window);
         (void)SDL_DestroyWindowSurface(window->window);
+        (void)SDL_DestroyWindow(window->window);
         (void)free(window);
         return (NULL);
     }
@@ -61,56 +61,136 @@ CN_API Window *new_window(const char *name, const Texture *icon, const Videomode
 
 CN_API void set_vsync_window(Window *window, cnbool value)
 {
-    (void)window;
-    (void)value;
+    if (!window)
+        return;
+    if (value)
+        window->video_mode.flags |= VDM_VSYNC;
+    else
+        window->video_mode.flags ^= VDM_VSYNC;
 }
 
-// CN_API cnbool get_vsync_window(const Window *window)
-// {
+CN_API cnbool get_vsync_window(const Window *window)
+{
+    if (!window)
+        return (false);
+    return ((window->video_mode.flags & VDM_VSYNC) > 0);
+}
 
-// }
+CN_API void set_inactive_window(Window *window, cnbool value)
+{
+    if (!window)
+        return;
+    if (value)
+        window->video_mode.flags |= VDM_INACTIVE;
+    else
+        window->video_mode.flags ^= VDM_INACTIVE;
+}
+
+CN_API cnbool get_inactive_window(const Window *window)
+{
+    if (!window)
+        return (false);
+    return ((window->video_mode.flags & VDM_INACTIVE) > 0);
+}
 
 CN_API void set_closable_window(Window *window, cnbool value)
 {
-    (void)window;
-    (void)value;
+    if (!window)
+        return;
+    if (value)
+        window->video_mode.flags |= VDM_CLOSABLE;
+    else
+        window->video_mode.flags ^= VDM_CLOSABLE;
 }
 
-// CN_API cnbool get_closable_window(const Window *window)
-// {
-
-// }
+CN_API cnbool get_closable_window(const Window *window)
+{
+    if (!window)
+        return (false);
+    return ((window->video_mode.flags & VDM_CLOSABLE) > 0);
+}
 
 CN_API void set_hidden_window(Window *window, cnbool value)
 {
-    (void)window;
-    (void)value;
+    if (!window)
+        return;
+    if (value) {
+        (void)SDL_HideWindow(window->window);
+        window->video_mode.native_flags |= VDM_N_HDN;
+        window->video_mode.native_flags ^= VDM_N_SHWN;
+    } else {
+        (void)SDL_ShowWindow(window->window);
+        window->video_mode.native_flags ^= VDM_N_HDN;
+        window->video_mode.native_flags |= VDM_N_SHWN;
+    }
 }
 
-// CN_API cnbool get_hidden_window(const Window *window)
-// {
+CN_API cnbool get_hidden_window(const Window *window)
+{
+    if (!window)
+        return (false);
+    return ((window->video_mode.native_flags & VDM_N_HDN) > 0);
+}
 
-// }
+static void _update_window_quit(Window *window)
+{
+    if (!get_closable_window(window))
+        return;
 
-// CN_API cnbool update_window(Window *window)
-// {
+    if (!has_event_window(window, SDL_QUIT) && !has_event_window(window, SDL_WINDOWEVENT_CLOSE)) // to implement
+        return;
 
-// }
+    (void)set_hidden_window(window, true);
+    (void)set_inactive_window(window, true);
+}
 
-// CN_API cnbool has_event_window(const Window *window)
-// {
+static void _update_window_resize(Window *window)
+{
+    (void)window; // to implement
+}
 
-// }
+static void _update_window_move(Window *window)
+{
+    (void)window; // to implement
+}
 
-// CN_API cnbool get_event_window(const Window *window)
-// {
+CN_API void update_window(Window *window)
+{
+    if (!window)
+        return;
 
-// }
+    (void)_update_window_move(window);
+    (void)_update_window_resize(window);
+    (void)_update_window_quit(window);
+}
+
+CN_API void draw_window(Window *window)
+{
+    if (!window)
+        return;
+    (void)SDL_UpdateWindowSurface(window->window);
+}
+
+CN_API cnbool has_event_window(const Window *window, uint32_t type)
+{
+    if (!window)
+        return (false);
+    (void)type;
+    return (false); // to implement
+}
+
+const struct event_map_entry_s *get_event_window(const Window *window, uint32_t type) {
+    if (!window)
+        return (NULL);
+    (void)type;
+    return (NULL); // to implement
+}
 
 CN_API void clear_window(Window *window, cncolor color)
 {
-    (void)window;
-    (void)color;
+    if (!window)
+        return;
+    (void)clear_texture(window->texture, color);
 }
 
 CN_API void delete_window(Window *window)

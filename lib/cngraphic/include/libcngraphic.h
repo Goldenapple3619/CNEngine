@@ -7,7 +7,8 @@
     enum VIDEOMODE_FLAGS {
         VDM_VSYNC = (1 << 0),
         VDM_CLOSABLE = (1 << 1),
-        VDM_ACCELERATION = (1 << 2)
+        VDM_ACCELERATION = (1 << 2),
+        VDM_INACTIVE = (1 << 3)
     };
 
     enum VIDEOMODE_NATIVE_FLAGS {
@@ -97,6 +98,7 @@
     typedef struct window_s Window;
     typedef struct window_universe_s WindowUniverse;
     typedef struct videomode_s Videomode;
+    typedef struct event_s Event;
     typedef uint32_t cncolor;
 
     CN_API void blit(const Texture *__src, Texture *__dst, const Rect *__src_rect, const Vector2 *__dest_at);
@@ -107,10 +109,10 @@
     CN_API Texture *new_texture_from_file(const char *path);
     CN_API Texture *new_texture_from_surface(SDL_Surface *surface);
     CN_API void clear_texture(Texture *texture, cncolor color);
-    CN_API void set_opacity_texture(Texture *texture, uint8_t opacity);
-    CN_API uint8_t get_opacity_texture(const Texture *texture);
-    CN_API void draw_rect(Texture *texture, const Rect *rect, cncolor color);
-    CN_API void draw_ellipse(Texture *texture, const Rect *rect, cncolor color);
+    CN_API void set_opacity_texture(Texture *texture, uint8_t opacity); // to implement
+    CN_API uint8_t get_opacity_texture(const Texture *texture); // to implement
+    CN_API void draw_rect(Texture *texture, const Rect *rect, cncolor color); // to implement
+    CN_API void draw_ellipse(Texture *texture, const Rect *rect, cncolor color); // to implement
     CN_API void delete_texture(Texture *texture);
 
     CN_API Window *new_window(const char *name, const Texture *icon, const Videomode *video_mode);
@@ -120,19 +122,22 @@
     CN_API cnbool get_closable_window(const Window *window);
     CN_API void set_hidden_window(Window *window, cnbool value);
     CN_API cnbool get_hidden_window(const Window *window);
-    CN_API cnbool update_window(Window *window);
-    CN_API cnbool has_event_window(const Window *window);
-    CN_API cnbool get_event_window(const Window *window);
+    CN_API void set_inactive_window(Window *window, cnbool value);
+    CN_API cnbool get_inactive_window(const Window *window);
+    CN_API void update_window(Window *window);
+    CN_API void draw_window(Window *window);
+    CN_API cnbool has_event_window(const Window *window, uint32_t type);
+    CN_API const struct event_map_entry_s *get_event_window(const Window *window, uint32_t type);
     CN_API void clear_window(Window *window, cncolor color);
     CN_API void delete_window(Window *window);
 
-    CN_API WindowUniverse *new_window_universe(void);
-    CN_API cnbool are_all_window_closed(const WindowUniverse *universe);
-    CN_API cnbool is_window_closed(const WindowUniverse *universe, uint32_t window_id);
-    CN_API void clear_events_all_window(WindowUniverse *universe);
-    CN_API void fetch_events_all_window(WindowUniverse *universe);
-    CN_API void update_all_window(WindowUniverse *universe);
-    CN_API void draw_all_window(WindowUniverse *universe);
-    CN_API void delete_window_universe(WindowUniverse *universe);
+    CN_API WindowUniverse *new_window_universe(void); // to implement
+    CN_API cnbool are_all_window_closed(const WindowUniverse *universe); // to implement
+    CN_API cnbool is_window_closed(const WindowUniverse *universe, uint32_t window_id); // to implement
+    CN_API void clear_events_all_window(WindowUniverse *universe); // to implement
+    CN_API void fetch_events_all_window(WindowUniverse *universe); // to implement
+    CN_API void update_all_window(WindowUniverse *universe); // to implement
+    CN_API void draw_all_window(WindowUniverse *universe); // to implement
+    CN_API void delete_window_universe(WindowUniverse *universe); // to implement
 
 #endif
