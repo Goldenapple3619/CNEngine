@@ -14,6 +14,7 @@ void _delete_object_attribute_value(cn_value *val)
         case (CN_TYPE_STRING):
             if (val->as.str)
                 (void)free(val->as.str);
+            val->as.str = NULL;
             break;
 
         case (CN_TYPE_OBJECT):
@@ -23,6 +24,7 @@ void _delete_object_attribute_value(cn_value *val)
                 if (((Object *)val->as.ptr)->ref_count <= 0)
                     (void)delete_object(val->as.ptr);
             }
+            val->as.ptr = NULL;
             break;
     
         default:
@@ -36,10 +38,10 @@ void _init_attribute_value(cn_value *dest, cnany value)
         return;
     switch (dest->type) {
         case (CN_TYPE_INT):
-            dest->as.i = value ? *(typeof(dest->as.i) *)value : 0;
+            dest->as.i = value ? *((typeof(dest->as.i) *)value) : 0;
             break;
         case (CN_TYPE_FLOAT):
-            dest->as.f = value ? *(typeof(dest->as.f) *)value : 0;
+            dest->as.f = value ? *((typeof(dest->as.f) *)value) : 0;
             break;
         case (CN_TYPE_FUNCTION):
             dest->as.ptr = value;
@@ -51,7 +53,7 @@ void _init_attribute_value(cn_value *dest, cnany value)
             dest->as.ptr = value;
             break;
         case (CN_TYPE_STRING):
-            dest->as.str = (char *)value;
+            dest->as.str = value ? strdup((char *)value) : NULL;;
             break;
         default:
             break;

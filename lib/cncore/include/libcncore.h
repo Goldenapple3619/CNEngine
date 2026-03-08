@@ -141,6 +141,8 @@
     CN_API Object *release_object(Object *object);
     CN_API void delete_object(Object *object);
 
+    CN_API Object *new_ctx(cn_method callback_init, cn_method callback_run, cn_method callback_del);
+
     void _init_attribute_value(cn_value *dest, cnany value);
     void _delete_object_attribute_value(cn_value *val);
 

@@ -30,7 +30,8 @@ CN_API Clock *new_clock(void)
 
     if (!c)
         return (NULL);
-
+    c->last_dt = 0;
+    c->old_time = SDL_GetTicks64();
     return (c);
 }
 

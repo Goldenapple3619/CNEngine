@@ -154,7 +154,7 @@ CN_API cnbool has_method(const Object *object, const char *name)
 
 CN_API void print_object(const Object *object)
 {
-    if (!object || !has_attr(object, "_str"))
+    if (!object || !has_method(object, "_str"))
         return;
 
     cn_value val = call_method((Object *)object, "_str", NULL);
