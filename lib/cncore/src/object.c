@@ -31,18 +31,29 @@ CN_API void delete_object(Object *object)
     (void)free(object);
 }
 
-CN_API void set_attr(Object *object, const char *name, cn_type type, cnany value)
+CN_API cnbool set_attr(Object *object, const char *name, cn_type type, cnany value)
 {
     if (!object || !name || !value)
-        return;
+        return (false);
+
+    cn_value *temp_exist = get_attr(object, name);
+
+    if (temp_exist) {
+        (void)_delete_object_attribute_value(temp_exist);
+        temp_exist->type = type;
+        (void)_init_attribute_value(temp_exist, value);
+        return (true);
+    }
 
     uint64_t hash = _get_attrs_hash(name);
     OBJAttrib *attr = create_object_attribute(name, type, value);
 
     if (!attr)
-        return;
+        return (false);
 
-    (void)_insert_object_attrs(&object->attrs, hash, attr);
+    if (_insert_object_attrs(&object->attrs, hash, attr))
+        return (false);
+    return (true);
 }
 
 CN_API cn_value *get_attr(const Object *object, const char *name)
@@ -84,10 +95,19 @@ CN_API cnbool has_attr(const Object *object, const char *name)
     return (false);
 }
 
-CN_API void set_method(Object *object, const char *name, cn_method func)
+CN_API cnbool set_method(Object *object, const char *name, cn_method func)
 {
     if (!object || !name || !func)
-        return;
+        return (false);
+
+    cn_value *temp_exist = get_method_holder(object, name);
+
+    if (temp_exist) {
+        (void)_delete_object_attribute_value(temp_exist);
+        temp_exist->type = CN_TYPE_FUNCTION;
+        (void)_init_attribute_value(temp_exist, (cnany)func);
+        return (true);
+    }
 
     uint64_t hash = _get_attrs_hash(name);
 
@@ -99,9 +119,32 @@ CN_API void set_method(Object *object, const char *name, cn_method func)
     OBJAttrib *attr = create_object_attribute_from_cnvalue(name, &temp);
 
     if (!attr)
-        return;
+        return (false);
 
-    (void)_insert_object_attrs(&object->methods, hash, attr);
+    if (_insert_object_attrs(&object->methods, hash, attr))
+        return (false);
+    return (true);
+}
+
+CN_API cn_value *get_method_holder(const Object *object, const char *name)
+{
+    if (!object || !name)
+        return (NULL);
+    
+    uint64_t hash = _get_attrs_hash(name);
+    const Object *temp = object;
+    OBJAttrib *found;
+
+    while (temp) {
+        found = _find_object_attrs(&temp->methods, hash);
+
+        if (found)
+            return (&found->value);
+
+        temp = temp->base;
+    }
+
+    return (NULL);
 }
 
 CN_API cn_method get_method(const Object *object, const char *name)

@@ -1,0 +1,54 @@
+{
+   sdl2_dbus_leak1
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:malloc
+   ...
+   fun:SDL_DBus_*
+}
+
+{
+   sdl2_dbus_leak2
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:calloc
+   ...
+   fun:SDL_DBus_*
+}
+
+{
+   sdl2_dbus_leak3
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:realloc
+   ...
+   fun:SDL_DBus_*
+}
+
+
+{
+   sdl2_dbus_leak4
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:malloc
+   ...
+   fun:SDL_DBus_*
+}
+
+{
+   sdl2_dbus_leak5
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:calloc
+   ...
+   fun:SDL_DBus_*
+}
+
+{
+   sdl2_dbus_leak6
+   Memcheck:Leak
+   match-leak-kinds: indirect
+   fun:realloc
+   ...
+   fun:SDL_DBus_*
+}

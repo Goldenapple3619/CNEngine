@@ -68,6 +68,8 @@
     struct object_s;
 
     #define null_value (cn_value){0}
+    #define VALUE_ERR (cn_value){CN_TYPE_INT, {1}}
+    #define VALUE_OK (cn_value){CN_TYPE_INT, {0}}
     typedef cn_value (*cn_method)(struct object_s *self, void *args);
 
     struct object_attribute_s {
@@ -109,6 +111,7 @@
     typedef struct clock_s Clock;
     typedef struct object_s Object;
     typedef struct object_attribute_s OBJAttrib;
+    typedef struct object_vector_s ObjectVector;
 
     CN_API Clock *new_clock(void);
     CN_API cnnumber clock_tick(Clock *c, int32_t tps);
@@ -129,11 +132,12 @@
     
     CN_API Object *new_object(void);
     CN_API Object *share_object(Object *object);
-    CN_API void set_attr(Object *object, const char *name, cn_type type, cnany value);
+    CN_API cnbool set_attr(Object *object, const char *name, cn_type type, cnany value);
     CN_API cn_value *get_attr(const Object *object, const char *name);
     CN_API cnbool has_attr(const Object *object, const char *name);
-    CN_API void set_method(Object *object, const char *name, cn_method func);
+    CN_API cnbool set_method(Object *object, const char *name, cn_method func);
     CN_API cn_method get_method(const Object *object, const char *name);
+    CN_API cn_value *get_method_holder(const Object *object, const char *name);
     CN_API cn_value call_method(Object *object, const char *name, void *args);
     CN_API void print_object(const Object *object);
     CN_API Object *create_default_object(void);
@@ -141,7 +145,14 @@
     CN_API Object *release_object(Object *object);
     CN_API void delete_object(Object *object);
 
-    CN_API Object *new_ctx(cn_method callback_init, cn_method callback_run, cn_method callback_del);
+    CN_API ObjectVector *new_object_vector(void);
+    CN_API void delete_object_vector(ObjectVector *vec);
+    CN_API uint8_t resize_object_vector(ObjectVector *vec, size_t new_capacity);
+    CN_API uint8_t insert_object_vector(ObjectVector *vec, Object *obj);
+    void remove_object_vector(ObjectVector *vec, size_t i);
+
+    CN_API Object *new_ctx(void);
+    CN_API cnbool submodule_ctx(Object *ctx, Object *module);
 
     void _init_attribute_value(cn_value *dest, cnany value);
     void _delete_object_attribute_value(cn_value *val);
@@ -150,8 +161,8 @@
     uint64_t _get_attrs_hash(const char *str);
     OBJAttrib *_find_object_attrs(const struct attr_map_s *attribute_map, uint64_t k);
     void _remove_object_attrs(struct attr_map_s *attribute_map, uint64_t k);
-    void _insert_object_attrs(struct attr_map_s *attribute_map, uint64_t k, OBJAttrib *attr);
-    void _attr_map_resize(struct attr_map_s *map, size_t new_capacity);
+    uint8_t _insert_object_attrs(struct attr_map_s *attribute_map, uint64_t k, OBJAttrib *attr);
+    uint8_t _attr_map_resize(struct attr_map_s *map, size_t new_capacity);
     void _delete_object_attrs(struct attr_map_s *attribute_map);
 
 #endif

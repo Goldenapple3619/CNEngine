@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <signal.h>
 #include "libcncore.h"
+#include "libcngraphic.h"
 
 static Object *global_ctx = NULL;
 
@@ -19,17 +20,23 @@ int main(int argc, char *argv[])
     (void)argc;
     (void)argv;
 
-    Object *ctx = new_ctx(NULL, NULL, NULL);
+    Object *ctx = new_ctx();
 
     if (!ctx)
         return (1);
 
     global_ctx = ctx;
 
+    if (!submodule_ctx(ctx, new_graphic_submodule()))
+        return (1);
+
     cn_value val = call_method(ctx, "_init", NULL);
 
-    if (!val.type || val.as.i)
+    if (val.type == CN_TYPE_NULL || val.as.i == VALUE_ERR.as.i) {
+        call_method(ctx, "_del", NULL);
+        delete_object(ctx);
         return (1);
+    }
     signal(SIGINT, &sigint_handler);
 
     call_method(ctx, "_run", NULL);

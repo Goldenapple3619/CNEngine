@@ -26,34 +26,46 @@ void _delete_object_attrs(struct attr_map_s *attribute_map)
     attribute_map->capacity = 0;
 }
 
-void _attr_map_resize(struct attr_map_s *map, size_t new_capacity)
+uint8_t _attr_map_resize(struct attr_map_s *map, size_t new_capacity)
 {
+    if (!map)
+        return (1);
+
     map->attrs = realloc(map->attrs, new_capacity * sizeof(OBJAttrib *));
     map->keys  = realloc(map->keys,  new_capacity * sizeof(uint64_t));
+
+    if (!map->attrs || !map->keys) {
+        map->capacity = 0;
+        return (1);
+    }
+
     map->capacity = new_capacity;
+    return (0);
 }
 
-void _insert_object_attrs(struct attr_map_s *attribute_map, uint64_t k, OBJAttrib *attr)
+uint8_t _insert_object_attrs(struct attr_map_s *attribute_map, uint64_t k, OBJAttrib *attr)
 {
     if  (!attribute_map || !attr)
-        return;
+        return (1);
 
     for (size_t i = 0; i < attribute_map->size; ++i) {
         if (attribute_map->keys[i] == k) {
             (void)delete_object_attribute(attribute_map->attrs[i]);
             attribute_map->attrs[i] = attr;
-            return;
+            return (0);
         }
     }
 
     if (attribute_map->size >= attribute_map->capacity) {
         size_t new_capacity = attribute_map->capacity == 0 ? 8 : attribute_map->capacity * 2;
-        (void)_attr_map_resize(attribute_map, new_capacity);
+        if (_attr_map_resize(attribute_map, new_capacity))
+            return (1);
     }
 
     attribute_map->keys[attribute_map->size]  = k;
     attribute_map->attrs[attribute_map->size] = attr;
     attribute_map->size++;
+    return (0);
 }
 
 void _remove_object_attrs(struct attr_map_s *attribute_map, uint64_t k)

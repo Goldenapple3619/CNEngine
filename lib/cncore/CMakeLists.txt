@@ -6,6 +6,7 @@ add_library(cncore SHARED
     src/vector3.c
     src/clock.c
     src/object.c
+    src/object_vector.c
     src/object_value.c
     src/object_ownership.c
     src/object_attributes.c
