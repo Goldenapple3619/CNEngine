@@ -66,7 +66,7 @@ FetchContent_MakeAvailable(SDL2_mixer)
 # ========= Modules =========
 add_subdirectory(lib/cncore)
 add_subdirectory(lib/cngraphic)
-# add_subdirectory(lib/cnaudio)
+add_subdirectory(lib/cnaudio)
 # add_subdirectory(lib/cninput)
 
 # ========= Game executable =========
@@ -84,10 +84,11 @@ if(CN_BUILD_GAME)
         PRIVATE
             cncore
             cngraphic
-            # cnaudio
+            cnaudio
             # cninput
             SDL2::SDL2
             SDL2_image::SDL2_image
+            SDL2_mixer::SDL2_mixer
     )
 
     target_include_directories(cn_game
@@ -95,6 +96,6 @@ if(CN_BUILD_GAME)
             lib/cncore/include
             lib/cngraphic/include
             lib/cnaudio/include
-            lib/cninput/include
+            # lib/cninput/include
     )
 endif()
