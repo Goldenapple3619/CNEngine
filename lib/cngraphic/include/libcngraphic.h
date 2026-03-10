@@ -100,6 +100,7 @@
     typedef struct window_universe_s WindowUniverse;
     typedef struct videomode_s Videomode;
     typedef struct event_s Event;
+    typedef struct interface_s Interface;
     typedef uint32_t cncolor;
 
     CN_API void blit(const Texture *__src, Texture *__dst, const Rect *__src_rect, const Vector2 *__dest_at);
@@ -132,15 +133,19 @@
     CN_API void clear_window(Window *window, cncolor color);
     CN_API void delete_window(Window *window);
 
-    CN_API WindowUniverse *new_window_universe(void); // to implement
-    CN_API cnbool are_all_window_closed(const WindowUniverse *universe); // to implement
-    CN_API cnbool is_window_closed(const WindowUniverse *universe, uint32_t window_id); // to implement
-    CN_API cnbool is_window_closed_addr(const WindowUniverse *universe, void *p); // to implement
-    CN_API void clear_events_all_window(WindowUniverse *universe); // to implement
-    CN_API void fetch_events_all_window(WindowUniverse *universe); // to implement
-    CN_API void update_all_window(WindowUniverse *universe); // to implement
-    CN_API void draw_all_window(WindowUniverse *universe); // to implement
-    CN_API void delete_window_universe(WindowUniverse *universe); // to implement
+    CN_API WindowUniverse *new_window_universe(void);
+    CN_API cnbool are_all_window_closed(const WindowUniverse *universe);
+    CN_API cnbool is_window_closed(const WindowUniverse *universe, uint32_t window_id);
+    CN_API cnbool is_window_closed_addr(const WindowUniverse *universe, void *p);
+    CN_API Window *get_window_in_universe(const WindowUniverse *universe, uint32_t window_id);
+    CN_API void clear_events_all_window(WindowUniverse *universe);
+    CN_API void fetch_events_all_window(WindowUniverse *universe);
+    CN_API void update_all_window(WindowUniverse *universe);
+    CN_API void draw_all_window(WindowUniverse *universe);
+    CN_API uint8_t add_window_in_universe(WindowUniverse *universe, Window *window);
+    CN_API void remove_window_from_universe(WindowUniverse *universe, uint32_t id);
+    CN_API uint8_t resize_window_universe(WindowUniverse *universe, size_t new_capacity);
+    CN_API void delete_window_universe(WindowUniverse *universe);
 
     CN_API cnbool start_graphics(void);
     CN_API void end_graphics(void);

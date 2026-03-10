@@ -5,6 +5,7 @@ add_library(cngraphic SHARED
     src/window.c
     src/common.c
     src/graphic_submodule_ctx.c
+    src/window_universe.c
 )
 
 target_compile_options(cngraphic
