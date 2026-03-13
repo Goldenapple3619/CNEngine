@@ -5,6 +5,13 @@
     #include <SDL2/SDL_image.h>
     #include "libcncore.h"
 
+    typedef enum {
+        EV_NULL = 0x00,
+        EV_CLOSE = 0x01,
+        EV_RESIZE = 0x02,
+        EV_MOVE = 0x03
+    } cn_event;
+
     enum VIDEOMODE_FLAGS {
         VDM_VSYNC = (1 << 0),
         VDM_CLOSABLE = (1 << 1),
@@ -53,13 +60,13 @@
     struct event_s {
         cnnumber x;
         cnnumber y;
-        uint32_t type;
-        uint64_t v;
+        cn_event type;
+        int64_t v;
     };
 
     struct event_map_entry_s {
         struct event_s **events;
-        uint32_t type;
+        cn_event type;
 
         size_t size;
         size_t capacity;
@@ -75,7 +82,7 @@
         SDL_Renderer *renderer;
         struct texture_s *texture;
 
-        const struct event_map_entry_s **event_map; // null terminated
+        struct event_map_entry_s **event_map; // null terminated
     };
 
     struct window_universe_s {
@@ -128,9 +135,11 @@
     CN_API cnbool get_inactive_window(const Window *window);
     CN_API void update_window(Window *window);
     CN_API void draw_window(Window *window);
-    CN_API cnbool has_event_window(const Window *window, uint32_t type);
-    CN_API const struct event_map_entry_s *get_event_window(const Window *window, uint32_t type);
+    CN_API cnbool has_event_window(const Window *window, cn_event type);
+    CN_API const struct event_map_entry_s *get_event_window(const Window *window, cn_event type);
     CN_API void clear_window(Window *window, cncolor color);
+    CN_API uint8_t allow_event(Window *window, cn_event ev);
+    CN_API uint8_t push_event_window(Window *window, cn_event type, cnnumber x, cnnumber y, int64_t v);
     CN_API void delete_window(Window *window);
 
     CN_API WindowUniverse *new_window_universe(void);
@@ -146,6 +155,15 @@
     CN_API void remove_window_from_universe(WindowUniverse *universe, uint32_t id);
     CN_API uint8_t resize_window_universe(WindowUniverse *universe, size_t new_capacity);
     CN_API void delete_window_universe(WindowUniverse *universe);
+
+    CN_API Event *new_event(cn_event type, cnnumber x, cnnumber y, int64_t v);
+    CN_API void delete_event(Event *ev);
+
+    CN_API struct event_map_entry_s *new_event_map(cn_event type);
+    CN_API void clear_events_in_map(struct event_map_entry_s *event_map);
+    CN_API uint8_t resize_event_map(struct event_map_entry_s *event_map, size_t new_capacity);
+    CN_API uint8_t push_event_in_map(struct event_map_entry_s *event_map, cnnumber x, cnnumber y, int64_t v);
+    CN_API void delete_event_map(struct event_map_entry_s *event_map);
 
     CN_API cnbool start_graphics(void);
     CN_API void end_graphics(void);

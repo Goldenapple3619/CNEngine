@@ -59,6 +59,35 @@ CN_API Window *new_window(const char *name, const Texture *icon, const Videomode
     return (window);
 }
 
+CN_API uint8_t allow_event(Window *window, cn_event ev)
+{
+    size_t base_size;
+
+    if (!window)
+        return (1);
+    if (!window->event_map) {
+        base_size = 0;
+    } else {
+        for (base_size = 0; window->event_map[base_size]; ++base_size) {
+            if (window->event_map[base_size]->type == ev)
+                return (0);
+        }
+    }
+
+    window->event_map = realloc(window->event_map, base_size == 0 ? (2 * sizeof(struct event_map_entry_s *)) : ((base_size + 1) * sizeof(struct event_map_entry_s *)));
+    
+    if (!window->event_map)
+        return (1);
+
+    window->event_map[base_size] = new_event_map(ev);
+
+    if (!window->event_map[base_size])
+        return (1);
+    window->event_map[base_size + 1] = NULL;
+
+    return (0);
+}
+
 CN_API void set_vsync_window(Window *window, cnbool value)
 {
     if (!window)
@@ -137,7 +166,7 @@ static void _update_window_quit(Window *window)
     if (!get_closable_window(window))
         return;
 
-    if (!has_event_window(window, SDL_QUIT) && !has_event_window(window, SDL_WINDOWEVENT_CLOSE)) // to implement
+    if (!has_event_window(window, EV_CLOSE))
         return;
 
     (void)set_hidden_window(window, true);
@@ -164,6 +193,18 @@ CN_API void update_window(Window *window)
     (void)_update_window_quit(window);
 }
 
+CN_API uint8_t push_event_window(Window *window, cn_event type, cnnumber x, cnnumber y, int64_t v)
+{
+    if (!window || !window->event_map)
+        return (1);
+    for (size_t i = 0; window->event_map[i]; ++i) {
+        if (window->event_map[i]->type != type)
+            continue;
+        return (push_event_in_map(window->event_map[i], x, y, v));
+    }
+    return (1);
+}
+
 CN_API void draw_window(Window *window)
 {
     if (!window)
@@ -171,19 +212,29 @@ CN_API void draw_window(Window *window)
     (void)SDL_UpdateWindowSurface(window->window);
 }
 
-CN_API cnbool has_event_window(const Window *window, uint32_t type)
+CN_API cnbool has_event_window(const Window *window, cn_event type)
 {
-    if (!window)
+    if (!window || !window->event_map)
         return (false);
-    (void)type;
-    return (false); // to implement
+    for (size_t i = 0; window->event_map[i]; ++i) {
+        if (window->event_map[i]->type != type)
+            continue;
+        if (window->event_map[i]->size > 0)
+            return (true);
+    }
+    return (false);
 }
 
-const struct event_map_entry_s *get_event_window(const Window *window, uint32_t type) {
+const struct event_map_entry_s *get_event_window(const Window *window, cn_event type) {
     if (!window)
         return (NULL);
-    (void)type;
-    return (NULL); // to implement
+    for (size_t i = 0; window->event_map[i]; ++i) {
+        if (window->event_map[i]->type != type)
+            continue;
+        if (window->event_map[i]->size > 0)
+            return (window->event_map[i]);
+    }
+    return (NULL);
 }
 
 CN_API void clear_window(Window *window, cncolor color)
@@ -212,6 +263,11 @@ CN_API void delete_window(Window *window)
     if (window->window) {
         (void)SDL_DestroyWindow(window->window);
         window->window = NULL;
+    }
+    if (window->event_map) {
+        for (size_t i = 0; window->event_map[i]; ++i)
+            (void)delete_event_map(window->event_map[i]);
+        (void)free(window->event_map);
     }
     (void)free(window);
 }

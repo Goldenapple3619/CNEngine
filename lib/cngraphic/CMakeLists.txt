@@ -6,6 +6,8 @@ add_library(cngraphic SHARED
     src/common.c
     src/graphic_submodule_ctx.c
     src/window_universe.c
+    src/event.c
+    src/event_map.c
 )
 
 target_compile_options(cngraphic

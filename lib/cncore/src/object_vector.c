@@ -50,7 +50,7 @@ CN_API uint8_t resize_object_vector(ObjectVector *vec, size_t new_capacity)
 
 CN_API uint8_t insert_object_vector(ObjectVector *vec, Object *obj)
 {
-    if (!vec)
+    if (!vec || !obj)
         return (1);
 
     if (vec->size >= vec->capacity) {

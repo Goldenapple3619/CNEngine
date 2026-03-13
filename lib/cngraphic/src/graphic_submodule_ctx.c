@@ -35,6 +35,9 @@ static cn_value _init(Object *__this, void *args)
     if (!w)
         return (VALUE_ERR);
 
+    if (allow_event(w, EV_CLOSE))
+        return (VALUE_ERR);
+
     if (!set_attr(ctx, "w", CN_TYPE_GENERIC_UNIQ_PTR, w))
         return (VALUE_ERR);
 

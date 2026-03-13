@@ -57,10 +57,45 @@ CN_API cnbool is_window_closed_addr(const WindowUniverse *universe, void *p)
 
 CN_API void clear_events_all_window(WindowUniverse *universe)
 {
+    struct event_map_entry_s **evm;
+
     if (!universe)
         return;
 
-    // clear all the events in the window
+    for (size_t i = 0; i < universe->size; ++i) {
+        evm = universe->windows[i]->event_map;
+
+        if (!evm)
+            continue;
+
+        while (*evm) {
+            (void)clear_events_in_map(*evm);
+            evm++;
+        }
+    }
+}
+
+static void sdl_ev_to_cnev(const SDL_Event *ev, Event *cnev)
+{
+    if (!ev || !cnev)
+        return;
+    switch (ev->type) {
+        case SDL_QUIT:
+        case SDL_WINDOWEVENT_CLOSE:
+            *cnev = (Event){0, 0, EV_CLOSE, 0};
+            break;
+
+        case SDL_WINDOWEVENT_RESIZED:
+            *cnev = (Event){ev->window.data1, ev->window.data2, EV_RESIZE, 0};
+            break;
+
+        case SDL_WINDOWEVENT_MOVED:
+            *cnev = (Event){ev->window.data1, ev->window.data2, EV_MOVE, 0};
+            break;
+        
+        default:
+            *cnev = (Event){0, 0, EV_NULL, 0};
+    }
 }
 
 CN_API void fetch_events_all_window(WindowUniverse *universe)
@@ -69,17 +104,20 @@ CN_API void fetch_events_all_window(WindowUniverse *universe)
         return;
 
     SDL_Event ev;
+    Event cnev;
 
     while (SDL_PollEvent(&ev)) {
         Window *window = get_window_in_universe(universe, ev.window.windowID);
 
         if (window) {
-            // put the events in the window
+            (void)sdl_ev_to_cnev(&ev, &cnev);
+            push_event_window(window, cnev.type, cnev.x, cnev.y, cnev.v); // todo: handle failure
         } else {
             for (size_t i = 0; i < universe->size; ++i) {
                 window = universe->windows[i];
 
-                // put the events in the window
+                (void)sdl_ev_to_cnev(&ev, &cnev);
+                push_event_window(window, cnev.type, cnev.x, cnev.y, cnev.v); // todo: handle failure
             }
         }
     }
