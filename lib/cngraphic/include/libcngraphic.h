@@ -168,6 +168,8 @@
     CN_API cnbool start_graphics(void);
     CN_API void end_graphics(void);
 
+    CN_API Object *new_interface(void);
+
     CN_API Object *new_graphic_submodule(void);
 
 #endif

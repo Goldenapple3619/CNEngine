@@ -33,15 +33,12 @@ int main(int argc, char *argv[])
     cn_value val = call_method(ctx, "_init", NULL);
 
     if (val.type == CN_TYPE_NULL || val.as.i == VALUE_ERR.as.i) {
-        call_method(ctx, "_del", NULL);
         delete_object(ctx);
         return (1);
     }
     signal(SIGINT, &sigint_handler);
 
     call_method(ctx, "_run", NULL);
-    call_method(ctx, "_del", NULL);
-
     delete_object(ctx);
 
     // (void)SDL_SetMainReady();

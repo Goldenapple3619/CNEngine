@@ -14,6 +14,41 @@
 
     #define STRING_INDIVIDUAL_ALLOCATION 1 // are we duping every string ? or are they handled with an atlas
 
+    #define PREP_INIT() void *__temp_alloc;
+    #define INIT_CUSTOM_ALLOCATION(__this, expr_alloc, expr_free, name) \
+        __temp_alloc = (void *)expr_alloc; \
+        if (!__temp_alloc) \
+            return (VALUE_ERR); \
+        if (!set_attr(__this, name, CN_TYPE_GENERIC_UNIQ_PTR, (cnany)__temp_alloc)) { \
+            (void)expr_free(__temp_alloc); \
+            return (VALUE_ERR); \
+        }
+    #define PREP_DEL() cn_value *__temp_alloc;
+    #define DEL_CUSTOM_ALLOCAION(__this, expr_free, name) \
+        __temp_alloc = get_attr(__this, name); \
+        if (__temp_alloc && __temp_alloc->as.ptr) \
+            expr_free(__temp_alloc->as.ptr);
+    #define INIT_STRING(__this, string, name) \
+        if (!set_attr(__this, name, CN_TYPE_STRING, (cnany)string)) \
+            return (VALUE_ERR);
+    #define INIT_INT(__this, number, name) \
+        if (!set_attr(__this, name, CN_TYPE_INT, (cnany)((int64_t [1]){number}))) \
+            return (VALUE_ERR);
+    #define INIT_FLOAT(__this, number, name) \
+        if (!set_attr(__this, name, CN_TYPE_FLOAT, (cnany)((double [1]){number}))) \
+            return (VALUE_ERR);
+    #define CREATE_METHOD_CLASS_BUILD(__class, name, callback) \
+        if (!set_method(__class, name, callback)) { \
+            (void)delete_object(__class); \
+            return (NULL); \
+        }
+    #define SET_PARENT_CLASS_BUILD(__class, __parent) \
+        __class->base = __parent; \
+        if (!__class->base) { \
+            (void)delete_object(__class); \
+            return (NULL); \
+        }
+
     typedef float cnnumber; // less memory, more performance but less accuracy and capacity
     // typedef double cnnumber;
     
@@ -70,7 +105,7 @@
     #define null_value (cn_value){0}
     #define VALUE_ERR (cn_value){CN_TYPE_INT, {1}}
     #define VALUE_OK (cn_value){CN_TYPE_INT, {0}}
-    typedef cn_value (*cn_method)(struct object_s *self, void *args);
+    typedef cn_value (*cn_method)(struct object_s *self, void **args);
 
     struct object_attribute_s {
         #ifdef STRING_INDIVIDUAL_ALLOCATION
@@ -138,7 +173,7 @@
     CN_API cnbool set_method(Object *object, const char *name, cn_method func);
     CN_API cn_method get_method(const Object *object, const char *name);
     CN_API cn_value *get_method_holder(const Object *object, const char *name);
-    CN_API cn_value call_method(Object *object, const char *name, void *args);
+    CN_API cn_value call_method(Object *object, const char *name, void **args);
     CN_API void print_object(const Object *object);
     CN_API Object *create_default_object(void);
     CN_API cnbool has_method(const Object *object, const char *name);

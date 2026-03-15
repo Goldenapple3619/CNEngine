@@ -22,6 +22,8 @@ CN_API void delete_object(Object *object)
 {
     if (!object)
         return;
+    if (has_method(object, "_del"))
+        (void)call_method(object, "_del", NULL);
     if (object->base) {
         (void)delete_object(object->base);
         object->base = NULL;
@@ -168,7 +170,7 @@ CN_API cn_method get_method(const Object *object, const char *name)
     return (NULL);
 }
 
-CN_API cn_value call_method(Object *object, const char *name, void *args)
+CN_API cn_value call_method(Object *object, const char *name, void **args)
 {
     if (!object || !name)
         return (null_value);
@@ -211,9 +213,9 @@ CN_API void print_object(const Object *object)
     (void)_delete_object_attribute_value(&val);
 }
 
-static cn_value _init(Object *__this, void *args) { (void)args; (void)__this; return (null_value); }
-static cn_value _del(Object *__this, void *args) { (void)args; (void)__this; return (null_value); }
-static cn_value _str(Object *this, void *args) {
+static cn_value _init(Object *__this, void **args) { (void)args; (void)__this; return (null_value); }
+static cn_value _del(Object *__this, void **args) { (void)args; (void)__this; return (null_value); }
+static cn_value _str(Object *this, void **args) {
     (void)args;
 
     cn_value result;
@@ -245,11 +247,14 @@ CN_API Object *create_default_object(void)
 {
     Object *obj = new_object();
 
-    set_attr(obj, "name", CN_TYPE_STRING, "object");
+    if (!set_attr(obj, "name", CN_TYPE_STRING, "object")) {
+        (void)delete_object(obj);
+        return (NULL);
+    }
     
-    set_method(obj, "_str", _str);
-    set_method(obj, "_del", _del);
-    set_method(obj, "_init", _init);
+    CREATE_METHOD_CLASS_BUILD(obj, "_init", &_init);
+    CREATE_METHOD_CLASS_BUILD(obj, "_str", &_str);
+    CREATE_METHOD_CLASS_BUILD(obj, "_del", &_del);
 
     return (obj);
 }

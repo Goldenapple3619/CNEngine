@@ -8,6 +8,7 @@ add_library(cngraphic SHARED
     src/window_universe.c
     src/event.c
     src/event_map.c
+    src/interface.c
 )
 
 target_compile_options(cngraphic
