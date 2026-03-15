@@ -76,12 +76,12 @@ CN_API void clear_events_all_window(WindowUniverse *universe)
     }
 }
 
-static void sdl_ev_to_cnev(const SDL_Event *ev, Event *cnev)
+static void sdl_window_ev_to_cnev(const SDL_Event *ev, Event *cnev)
 {
     if (!ev || !cnev)
         return;
-    switch (ev->type) {
-        case SDL_QUIT:
+
+    switch (ev->window.event) {
         case SDL_WINDOWEVENT_CLOSE:
             *cnev = (Event){0, 0, EV_CLOSE, 0};
             break;
@@ -93,9 +93,29 @@ static void sdl_ev_to_cnev(const SDL_Event *ev, Event *cnev)
         case SDL_WINDOWEVENT_MOVED:
             *cnev = (Event){ev->window.data1, ev->window.data2, EV_MOVE, 0};
             break;
+
+        default:
+            *cnev = (Event){0, 0, EV_NULL, 0};
+            break;
+    }
+}
+
+static void sdl_ev_to_cnev(const SDL_Event *ev, Event *cnev)
+{
+    if (!ev || !cnev)
+        return;
+    switch (ev->type) {
+        case SDL_WINDOWEVENT:
+            (void)sdl_window_ev_to_cnev(ev, cnev);
+            break;
+
+        case SDL_QUIT:
+            *cnev = (Event){0, 0, EV_CLOSE, 0};
+            break;
         
         default:
             *cnev = (Event){0, 0, EV_NULL, 0};
+            break;
     }
 }
 

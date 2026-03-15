@@ -90,6 +90,15 @@ static cn_value _init(Object *__this, void **args)
     insert_object_vector(get_attr(ctx, "interfaces")->as.ptr, temp);
     add_window_in_universe(get_attr(ctx, "all_window")->as.ptr, get_attr(temp, "window")->as.ptr);
 
+    temp = new_interface();
+
+    if (!temp || call_method(temp, "_init", (cnany []){(cnany)"test", NULL, &v, NULL}).as.i == VALUE_ERR.as.i) {
+        (void)delete_object(temp);
+        return (VALUE_ERR);
+    }
+    insert_object_vector(get_attr(ctx, "interfaces")->as.ptr, temp);
+    add_window_in_universe(get_attr(ctx, "all_window")->as.ptr, get_attr(temp, "window")->as.ptr);
+
     if (!set_method(ctx, "draw", _draw))
         return (VALUE_ERR);
     if (!set_method(ctx, "update", _update))
