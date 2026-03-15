@@ -1,6 +1,0 @@
-<object name="grass" base="TileGrid">
-    <attr name="texture" as="str">test.png</attr>
-
-    <method name="draw">draw_grass</method>
-    <method name="update">update_grass</method>
-</object>
