@@ -6,9 +6,58 @@ static cn_value _draw(Object *__this, void **args)
     (void)args;
 
     ObjectVector *interfaces = get_attr(__this, "interfaces")->as.ptr;
+    WindowUniverse *wu = get_attr(__this, "all_window")->as.ptr;
+
+    (void)draw_all_window(wu);
 
     for (size_t i = 0; i < interfaces->size; ++i)
         (void)call_method(interfaces->objects[i], "_draw", NULL);
+
+    return (null_value);
+}
+
+static cn_value _update(Object *__this, void **args)
+{
+    (void)args;
+
+    ObjectVector *interfaces = get_attr(__this, "interfaces")->as.ptr;
+    WindowUniverse *wu = get_attr(__this, "all_window")->as.ptr;
+    Window *temp;
+
+    if (are_all_window_closed(wu)) {
+        (void)call_method(__this, "_stop", NULL);
+    }
+
+    (void)update_all_window(wu);
+
+
+    for (size_t i = 0; i < interfaces->size; ++i) {
+        temp = get_attr(interfaces->objects[i], "window")->as.ptr;
+
+        if (is_window_closed_addr(wu, temp)) {
+            (void)remove_object_vector(interfaces, i);
+            --i;
+            continue;
+        }
+
+        (void)call_method(interfaces->objects[i], "_update", args);
+    }
+
+    return (null_value);
+}
+
+static cn_value _events(Object *__this, void **args)
+{
+    (void)args;
+
+    ObjectVector *interfaces = get_attr(__this, "interfaces")->as.ptr;
+    WindowUniverse *wu = get_attr(__this, "all_window")->as.ptr;
+
+    (void)clear_events_all_window(wu);
+    (void)fetch_events_all_window(wu);
+
+    for (size_t i = 0; i < interfaces->size; ++i)
+        (void)call_method(interfaces->objects[i], "_events", NULL);
 
     return (null_value);
 }
@@ -30,7 +79,7 @@ static cn_value _init(Object *__this, void **args)
         return (VALUE_ERR);
 
     INIT_CUSTOM_ALLOCATION(ctx, new_object_vector(), delete_object_vector, "interfaces");
-
+    INIT_CUSTOM_ALLOCATION(ctx, new_window_universe(), delete_window_universe, "all_window");
 
     Object *temp = new_interface();
 
@@ -39,8 +88,13 @@ static cn_value _init(Object *__this, void **args)
         return (VALUE_ERR);
     }
     insert_object_vector(get_attr(ctx, "interfaces")->as.ptr, temp);
+    add_window_in_universe(get_attr(ctx, "all_window")->as.ptr, get_attr(temp, "window")->as.ptr);
 
     if (!set_method(ctx, "draw", _draw))
+        return (VALUE_ERR);
+    if (!set_method(ctx, "update", _update))
+        return (VALUE_ERR);
+    if (!set_method(ctx, "events", _events))
         return (VALUE_ERR);
     
     return (VALUE_OK);
@@ -58,6 +112,7 @@ static cn_value _del(Object *__this, void **args)
     Object *ctx = (Object *)(args[0]);
 
     DEL_CUSTOM_ALLOCAION(ctx, delete_object_vector, "interfaces");
+    DEL_CUSTOM_ALLOCAION(ctx, delete_window_universe, "all_window");
 
     end_graphics();
     

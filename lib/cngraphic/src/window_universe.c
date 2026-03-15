@@ -16,7 +16,7 @@ CN_API cnbool are_all_window_closed(const WindowUniverse *universe)
 {
     if (!universe)
         return (true);
-    return ((!universe->size) ? true : false);
+    return (universe->size ? false : true);
 }
 
 CN_API cnbool is_window_closed(const WindowUniverse *universe, uint32_t window_id)
@@ -40,6 +40,7 @@ CN_API Window *get_window_in_universe(const WindowUniverse *universe, uint32_t w
         if (universe->windows[i]->id == window_id)
             return (universe->windows[i]);
     }
+
     return (NULL);
 }
 
@@ -164,8 +165,10 @@ CN_API uint8_t add_window_in_universe(WindowUniverse *universe, Window *window)
 
     if (universe->size >= universe->capacity) {
         size_t new_capacity = universe->capacity == 0 ? 8 : universe->capacity * 2;
-        if (resize_window_universe(universe, new_capacity))
+        if (resize_window_universe(universe, new_capacity)) {
+            universe->size = 0;
             return (1);
+        }
     }
 
     universe->windows[universe->size] = window;

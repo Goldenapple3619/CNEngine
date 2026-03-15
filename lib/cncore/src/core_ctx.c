@@ -43,8 +43,8 @@ static cn_value _run(Object *__this, void **args)
     set_attr(__this, "is_running", CN_TYPE_INT, (cnany)((int64_t [1]){1}));
 
     while (ptr_is_running->as.i) {
-        if (has_method(__this, "event"))
-            call_method(__this, "event", NULL);
+        if (has_method(__this, "events"))
+            call_method(__this, "events", NULL);
 
         if (has_method(__this, "update"))
             call_method(__this, "update", NULL);
