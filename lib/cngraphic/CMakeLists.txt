@@ -9,6 +9,7 @@ add_library(cngraphic SHARED
     src/event.c
     src/event_map.c
     src/interface.c
+    src/texture_atlas.c
 )
 
 target_compile_options(cngraphic

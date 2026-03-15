@@ -102,12 +102,21 @@
         void (*event)(struct object_s *__this);
     };
 
+    struct texture_atlas_s {
+        struct texture_s **content;
+        uint64_t *keys; // keys[i] -> content[i]
+
+        size_t size;
+        size_t capacity;
+    };
+
     typedef struct texture_s Texture;
     typedef struct window_s Window;
     typedef struct window_universe_s WindowUniverse;
     typedef struct videomode_s Videomode;
     typedef struct event_s Event;
     typedef struct interface_s Interface;
+    typedef struct texture_atlas_s TextureAtlas;
     typedef uint32_t cncolor;
 
     CN_API void blit(const Texture *__src, Texture *__dst, const Rect *__src_rect, const Vector2 *__dest_at);
@@ -123,6 +132,9 @@
     CN_API void draw_rect(Texture *texture, const Rect *rect, cncolor color);
     // CN_API void draw_ellipse(Texture *texture, const Rect *rect, cncolor color); // to implement
     CN_API void delete_texture(Texture *texture);
+
+    CN_API TextureAtlas *new_texture_atlas(void);
+    CN_API void delete_texture_atlas(TextureAtlas *atlas);
 
     CN_API Window *new_window(const char *name, const Texture *icon, const Videomode *video_mode);
     CN_API void set_vsync_window(Window *window, cnbool value);
