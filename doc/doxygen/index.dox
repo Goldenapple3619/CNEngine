@@ -1,0 +1,18 @@
+/** \mainpage CNEngine
+CNEngine project developer documentation.
+
+Repository access:<br>
+<b>SSH</b>
+~~~~~{.sh}
+git@github.com:Goldenapple3619/CNEngine.git
+~~~~~
+
+<b>HTTP</b>
+~~~~~{.sh}
+https://github.com/Goldenapple3619/CNEngine.git
+~~~~~
+
+Repository Readme:<br>
+- \ref README.md
+
+*/

@@ -148,8 +148,33 @@
     typedef struct object_attribute_s OBJAttrib;
     typedef struct object_vector_s ObjectVector;
 
+    /******************************************************************************
+     * create a new clock
+     *
+     * this function is used to allocate a new clock
+     *
+     * @return a pointer to a new clock that you must free yourself
+     * @see delete_clock
+     ******************************************************************************/
     CN_API Clock *new_clock(void);
+    /******************************************************************************
+     * regulate ticking using a clock based on set TPS (tick per secondes)
+     *
+     * this function is used to regulate the tick time/frame rate for main loops
+     *
+     * @param c a pointer to a valid clock
+     * @param tps tick per second or frame per second
+     * @return time that passed between last tick and actual tick (aka: delta time) in ms
+     ******************************************************************************/
     CN_API cnnumber clock_tick(Clock *c, int32_t tps);
+    /******************************************************************************
+     * delete a clock
+     *
+     * this function is used to free an allocated clock created using new_clock
+     *
+     * @param c a pointer to a valid clock allocated with new_clock
+     * @see new_clock
+     ******************************************************************************/
     CN_API void delete_clock(Clock *c);
 
     CN_API Rect *new_rect(cnnumber x, cnnumber y, cnnumber w, cnnumber h);
