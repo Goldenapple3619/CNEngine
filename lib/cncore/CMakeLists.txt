@@ -23,6 +23,7 @@ target_compile_options(cncore
 target_include_directories(cncore
     PUBLIC
         include
+        ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
 target_link_libraries(cncore

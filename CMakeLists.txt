@@ -29,6 +29,7 @@ endif()
 # ========= Fetch SDL2 =========
 include(FetchContent)
 
+set(SDL2_DISABLE_SDL2MAIN ON CACHE BOOL "" FORCE)
 set(SDL_SHARED ON CACHE BOOL "" FORCE)
 set(SDL_STATIC OFF CACHE BOOL "" FORCE)
 
@@ -123,9 +124,6 @@ if(CN_BUILD_GAME)
             cngraphic
             cnaudio
             # cninput
-            SDL2::SDL2
-            SDL2_image::SDL2_image
-            SDL2_mixer::SDL2_mixer
     )
 
     target_include_directories(cn_engine

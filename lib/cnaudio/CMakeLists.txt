@@ -13,6 +13,7 @@ target_include_directories(cnaudio
     PUBLIC
         include
         ../cncore/include
+        ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
 target_link_libraries(cnaudio

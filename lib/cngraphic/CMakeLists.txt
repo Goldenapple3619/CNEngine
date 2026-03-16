@@ -21,6 +21,7 @@ target_include_directories(cngraphic
     PUBLIC
         include
         ../cncore/include
+        ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
 target_link_libraries(cngraphic
