@@ -20,6 +20,12 @@ jobs:
           restore-keys: |
             cmake-build-${{ runner.os }}-linux-i386-
 
+      - name: Install 32-bit build dependencies
+        run: |
+          sudo dpkg --add-architecture i386
+          sudo apt update
+          sudo apt install -y gcc-multilib g++-multilib libc6-dev-i386
+
       - name: Build linux-i386
         run: |
           scripts/build_linux-i386.sh
@@ -31,7 +37,7 @@ jobs:
           path: dist/linux-i386
 
   build-linux-amd64:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
@@ -58,7 +64,7 @@ jobs:
           path: dist/linux-amd64
 
   build-windows-i386:
-    runs-on: windows-2019
+    runs-on: windows-latest
 
     steps:
       - uses: actions/checkout@v2
@@ -85,7 +91,7 @@ jobs:
           path: dist/windows-i386
 
   build-windows-amd64:
-    runs-on: windows-2019
+    runs-on: windows-latest
 
     steps:
       - uses: actions/checkout@v2
