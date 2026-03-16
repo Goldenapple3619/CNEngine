@@ -8,12 +8,24 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+
+      - name: Cache CMake build
+        uses: actions/cache@v3
+        with:
+          path: |
+            build/linux-i386
+            ~/.cmake
+            ~/.cache/fetchcontent
+          key: cmake-build-${{ runner.os }}-linux-i386-${{ hashFiles('**/CMakeLists.txt') }}
+          restore-keys: |
+            cmake-build-${{ runner.os }}-linux-i386-
+
       - name: Build linux-i386
         run: |
           scripts/build_linux-i386.sh
 
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: dist-linux-i386
           path: dist/linux-i386
@@ -23,12 +35,24 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      
+      - name: Cache CMake build
+        uses: actions/cache@v3
+        with:
+          path: |
+            build/linux-amd64
+            ~/.cmake
+            ~/.cache/fetchcontent
+          key: cmake-build-${{ runner.os }}-linux-amd64-${{ hashFiles('**/CMakeLists.txt') }}
+          restore-keys: |
+            cmake-build-${{ runner.os }}-linux-amd64-
+
       - name: Build linux-amd64
         run: |
           scripts/build_linux-amd64.sh
 
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: dist-linux-amd64
           path: dist/linux-amd64
@@ -38,12 +62,24 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+
+      - name: Cache CMake build
+        uses: actions/cache@v3
+        with:
+          path: |
+            build/windows-i386
+            %USERPROFILE%\.cmake
+            %USERPROFILE%\.cache\fetchcontent
+          key: cmake-build-${{ runner.os }}-windows-i386-${{ hashFiles('**/CMakeLists.txt') }}
+          restore-keys: |
+            cmake-build-${{ runner.os }}-windows-i386-
+
       - name: Build windows-i386
         run: |
           scripts/build_windows-i386.sh
 
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: dist-windows-i386
           path: dist/windows-i386
@@ -53,12 +89,24 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+
+      - name: Cache CMake build
+        uses: actions/cache@v3
+        with:
+          path: |
+            build/windows-amd64
+            %USERPROFILE%\.cmake
+            %USERPROFILE%\.cache\fetchcontent
+          key: cmake-build-${{ runner.os }}-windows-amd64-${{ hashFiles('**/CMakeLists.txt') }}
+          restore-keys: |
+            cmake-build-${{ runner.os }}-windows-amd64-
+
       - name: Build windows-amd64
         run: |
           scripts/build_windows-amd64.sh
 
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: dist-windows-amd64
           path: dist/windows-amd64
@@ -68,12 +116,24 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+
+      - name: Cache CMake build
+        uses: actions/cache@v3
+        with:
+          path: |
+            build/macos-amd64
+            ~/.cmake
+            ~/.cache/fetchcontent
+          key: cmake-build-${{ runner.os }}-macos-amd64-${{ hashFiles('**/CMakeLists.txt') }}
+          restore-keys: |
+            cmake-build-${{ runner.os }}-macos-amd64-
+
       - name: Build macos-amd64
         run: |
           scripts/build_macos-amd64.sh
 
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: dist-macos-amd64
           path: dist/macos-amd64
