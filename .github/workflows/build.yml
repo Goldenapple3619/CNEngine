@@ -86,6 +86,9 @@ jobs:
           restore-keys: |
             cmake-build-${{ runner.os }}-windows-i386-
   
+      - name: Install Ubuntu 22.04 WSL distribution
+        run: wsl --install -d Ubuntu-22.04
+
       - name: Install mingw
         run: |
           wsl sudo apt update
@@ -117,6 +120,9 @@ jobs:
           key: cmake-build-${{ runner.os }}-windows-amd64-${{ hashFiles('**/CMakeLists.txt') }}
           restore-keys: |
             cmake-build-${{ runner.os }}-windows-amd64-
+
+      - name: Install Ubuntu 22.04 WSL distribution
+        run: wsl --install -d Ubuntu-22.04
 
       - name: Install mingw
         run: |
