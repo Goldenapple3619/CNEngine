@@ -12,20 +12,18 @@
       <tab type="namespacelist" visible="yes" title="" intro=""/>
       <tab type="namespacemembers" visible="yes" title="" intro=""/>
     </tab>
-    <tab type="globals" visible="yes" title="Functions">
-      <tab type="globalsf" visible="yes" title="Functions" intro=""/>
-      <tab type="globalsdef" visible="yes" title="Macros" intro=""/>
-    </tab>
     <tab type="classes" visible="yes" title="Structures">
       <tab type="classlist" visible="yes" title="" intro=""/>
       <tab type="classindex" visible="$ALPHABETICAL_INDEX" title=""/>
       <tab type="hierarchy" visible="yes" title="" intro=""/>
       <tab type="classmembers" visible="yes" title="" intro=""/>
     </tab>
-    <tab type="globals" visible="yes" title="Other">
+    <tab type="globals" visible="yes" title="Globals">
+      <tab type="globalsf" visible="yes" title="Functions" intro=""/>
       <tab type="globalst" visible="yes" title="Typedefs" intro=""/>
       <tab type="globalse" visible="yes" title="Enums" intro=""/>
       <tab type="globalsv" visible="yes" title="Variables" intro=""/>
+      <tab type="globalsdef" visible="yes" title="Macros" intro=""/>
     </tab>
     <tab type="files" visible="yes" title="">
       <tab type="filelist" visible="yes" title="" intro=""/>
