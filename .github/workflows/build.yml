@@ -27,7 +27,7 @@ jobs:
         run: |
           sudo dpkg --add-architecture i386
           sudo apt update
-          sudo apt install -y gcc-multilib g++-multilib libc6-dev-i386 lib32z1 lib32ncurses6 lib32gcc-s1
+          sudo apt install -y gcc-multilib g++-multilib libc6-dev-i386 ia32-libs lib32z1 lib32ncurses6 lib32gcc-s1
 
       - name: Build linux-i386
         run: |
@@ -96,7 +96,7 @@ jobs:
           C:\tools\msys64\usr\bin\bash.exe -lc "pacman -Syu --noconfirm"
           C:\tools\msys64\usr\bin\bash.exe -lc "pacman -S --noconfirm mingw-w64-i686-toolchain base-devel"
 
-          $env:Path = "C:\msys64\mingw32\bin;$env:Path"
+          $env:Path = "C:\msys64\mingw32\bin;C:\msys64\mingw64\bin;$env:Path"
 
       - name: Build windows-i386
         run: |
@@ -136,7 +136,7 @@ jobs:
           C:\tools\msys64\usr\bin\bash.exe -lc "pacman -Syu --noconfirm"
           C:\tools\msys64\usr\bin\bash.exe -lc "pacman -S --noconfirm mingw-w64-x86_64-toolchain base-devel"
 
-          $env:Path = "C:\msys64\mingw64\bin;$env:Path"
+          $env:Path = "C:\msys64\mingw32\bin;C:\msys64\mingw64\bin;$env:Path"
         shell: powershell
 
       - name: Build windows-amd64

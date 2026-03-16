@@ -1,0 +1,1658 @@
+Run scripts/build_linux-i386.sh
+-- The C compiler identification is GNU 13.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Found PkgConfig: /usr/bin/pkg-config (found version "1.8.1")
+-- Looking for __GLIBC__
+-- Looking for __GLIBC__ - found
+-- Performing Test CHECK_CPU_ARCHITECTURE_X86
+-- Performing Test CHECK_CPU_ARCHITECTURE_X86 - Success
+-- Performing Test CHECK_CPU_ARCHITECTURE_X64
+-- Performing Test CHECK_CPU_ARCHITECTURE_X64 - Failed
+-- Performing Test CHECK_CPU_ARCHITECTURE_ARM32
+-- Performing Test CHECK_CPU_ARCHITECTURE_ARM32 - Failed
+-- Performing Test CHECK_CPU_ARCHITECTURE_ARM64
+-- Performing Test CHECK_CPU_ARCHITECTURE_ARM64 - Failed
+-- Performing Test CHECK_CPU_ARCHITECTURE_ARM64EC
+-- Performing Test CHECK_CPU_ARCHITECTURE_ARM64EC - Failed
+-- Performing Test CHECK_CPU_ARCHITECTURE_LOONGARCH64
+-- Performing Test CHECK_CPU_ARCHITECTURE_LOONGARCH64 - Failed
+-- Performing Test HAVE_GCC_WALL
+-- Performing Test HAVE_GCC_WALL - Success
+-- Performing Test HAVE_GCC_WUNDEF
+-- Performing Test HAVE_GCC_WUNDEF - Success
+-- Performing Test HAVE_GCC_NO_STRICT_ALIASING
+-- Performing Test HAVE_GCC_NO_STRICT_ALIASING - Success
+-- Performing Test HAVE_GCC_WDOCUMENTATION
+-- Performing Test HAVE_GCC_WDOCUMENTATION - Failed
+-- Performing Test HAVE_GCC_WDOCUMENTATION_UNKNOWN_COMMAND
+-- Performing Test HAVE_GCC_WDOCUMENTATION_UNKNOWN_COMMAND - Failed
+-- Performing Test HAVE_GCC_COMMENT_BLOCK_COMMANDS
+-- Performing Test HAVE_GCC_COMMENT_BLOCK_COMMANDS - Failed
+-- Performing Test HAVE_CLANG_COMMENT_BLOCK_COMMANDS
+-- Performing Test HAVE_CLANG_COMMENT_BLOCK_COMMANDS - Failed
+-- Performing Test HAVE_GCC_WDECLARATION_AFTER_STATEMENT
+-- Performing Test HAVE_GCC_WDECLARATION_AFTER_STATEMENT - Success
+-- Performing Test HAVE_GCC_ATOMICS
+-- Performing Test HAVE_GCC_ATOMICS - Success
+-- Performing Test HAVE_GCC_FVISIBILITY
+-- Performing Test HAVE_GCC_FVISIBILITY - Success
+-- Performing Test HAVE_GCC_WSHADOW
+-- Performing Test HAVE_GCC_WSHADOW - Success
+-- Performing Test HAVE_GCC_WUNUSED_LOCAL_TYPEDEFS
+-- Performing Test HAVE_GCC_WUNUSED_LOCAL_TYPEDEFS - Success
+-- Performing Test HAVE_NO_UNDEFINED
+-- Performing Test HAVE_NO_UNDEFINED - Success
+-- Performing Test HAVE_MMX
+-- Performing Test HAVE_MMX - Success
+-- Performing Test HAVE_SSE
+-- Performing Test HAVE_SSE - Success
+-- Performing Test CPU_SUPPORTS_SSE2
+-- Performing Test CPU_SUPPORTS_SSE2 - Success
+-- Performing Test CPU_SUPPORTS_SSE3
+-- Performing Test CPU_SUPPORTS_SSE3 - Success
+-- Looking for immintrin.h
+CMake Warning (dev) at /usr/local/share/cmake-3.31/Modules/CheckIncludeFile.cmake:79 (message):
+  Policy CMP0075 is not set: Include file check macros honor
+  CMAKE_REQUIRED_LIBRARIES.  Run "cmake --help-policy CMP0075" for policy
+  details.  Use the cmake_policy command to set the policy and suppress this
+  warning.
+
+  CMAKE_REQUIRED_LIBRARIES is set to:
+
+    m
+
+  For compatibility with CMake 3.11 and below this check is ignoring it.
+Call Stack (most recent call first):
+  build/linux-i386/_deps/sdl2-src/CMakeLists.txt:901 (check_include_file)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Looking for immintrin.h - found
+-- Performing Test HAVE_ALTIVEC_H_HDR
+-- Performing Test HAVE_ALTIVEC_H_HDR - Failed
+-- Performing Test CPU_SUPPORTS_ALTIVEC
+-- Performing Test CPU_SUPPORTS_ALTIVEC - Failed
+-- Looking for ctype.h
+-- Looking for ctype.h - found
+-- Looking for float.h
+-- Looking for float.h - found
+-- Looking for iconv.h
+-- Looking for iconv.h - found
+-- Looking for inttypes.h
+-- Looking for inttypes.h - found
+-- Looking for limits.h
+-- Looking for limits.h - found
+-- Looking for malloc.h
+-- Looking for malloc.h - found
+-- Looking for math.h
+-- Looking for math.h - found
+-- Looking for memory.h
+-- Looking for memory.h - found
+-- Looking for signal.h
+-- Looking for signal.h - found
+-- Looking for stdarg.h
+-- Looking for stdarg.h - found
+-- Looking for stddef.h
+-- Looking for stddef.h - found
+-- Looking for stdint.h
+-- Looking for stdint.h - found
+-- Looking for stdio.h
+-- Looking for stdio.h - found
+-- Looking for stdlib.h
+-- Looking for stdlib.h - found
+-- Looking for string.h
+-- Looking for string.h - found
+-- Looking for strings.h
+-- Looking for strings.h - found
+-- Looking for sys/types.h
+-- Looking for sys/types.h - found
+-- Looking for wchar.h
+-- Looking for wchar.h - found
+-- Looking for 7 include files stddef.h, ..., float.h
+-- Looking for 7 include files stddef.h, ..., float.h - found
+-- Looking for M_PI
+-- Looking for M_PI - found
+-- Performing Test HAVE_MPROTECT
+-- Performing Test HAVE_MPROTECT - Success
+-- Looking for strtod
+-- Looking for strtod - found
+-- Looking for malloc
+-- Looking for malloc - found
+-- Looking for calloc
+-- Looking for calloc - found
+-- Looking for realloc
+-- Looking for realloc - found
+-- Looking for free
+-- Looking for free - found
+-- Looking for getenv
+-- Looking for getenv - found
+-- Looking for setenv
+-- Looking for setenv - found
+-- Looking for putenv
+-- Looking for putenv - found
+-- Looking for unsetenv
+-- Looking for unsetenv - found
+-- Looking for bsearch
+-- Looking for bsearch - found
+-- Looking for qsort
+-- Looking for qsort - found
+-- Looking for abs
+-- Looking for abs - found
+-- Looking for bcopy
+-- Looking for bcopy - found
+-- Looking for memset
+-- Looking for memset - found
+-- Looking for memcpy
+-- Looking for memcpy - found
+-- Looking for memmove
+-- Looking for memmove - found
+-- Looking for memcmp
+-- Looking for memcmp - found
+-- Looking for strlen
+-- Looking for strlen - found
+-- Looking for strlcpy
+-- Looking for strlcpy - found
+-- Looking for strlcat
+-- Looking for strlcat - found
+-- Looking for _strrev
+-- Looking for _strrev - not found
+-- Looking for _strupr
+-- Looking for _strupr - not found
+-- Looking for _strlwr
+-- Looking for _strlwr - not found
+-- Looking for index
+-- Looking for index - found
+-- Looking for rindex
+-- Looking for rindex - found
+-- Looking for strchr
+-- Looking for strchr - found
+-- Looking for strrchr
+-- Looking for strrchr - found
+-- Looking for strstr
+-- Looking for strstr - found
+-- Looking for strtok_r
+-- Looking for strtok_r - found
+-- Looking for itoa
+-- Looking for itoa - not found
+-- Looking for _ltoa
+-- Looking for _ltoa - not found
+-- Looking for _uitoa
+-- Looking for _uitoa - not found
+-- Looking for _ultoa
+-- Looking for _ultoa - not found
+-- Looking for strtol
+-- Looking for strtol - found
+-- Looking for strtoul
+-- Looking for strtoul - found
+-- Looking for _i64toa
+-- Looking for _i64toa - not found
+-- Looking for _ui64toa
+-- Looking for _ui64toa - not found
+-- Looking for strtoll
+-- Looking for strtoll - found
+-- Looking for strtoull
+-- Looking for strtoull - found
+-- Looking for atoi
+-- Looking for atoi - found
+-- Looking for atof
+-- Looking for atof - found
+-- Looking for strcmp
+-- Looking for strcmp - found
+-- Looking for strncmp
+-- Looking for strncmp - found
+-- Looking for _stricmp
+-- Looking for _stricmp - not found
+-- Looking for strcasecmp
+-- Looking for strcasecmp - found
+-- Looking for _strnicmp
+-- Looking for _strnicmp - not found
+-- Looking for strncasecmp
+-- Looking for strncasecmp - found
+-- Looking for strcasestr
+-- Looking for strcasestr - found
+-- Looking for wcscmp
+-- Looking for wcscmp - found
+-- Looking for _wcsdup
+-- Looking for _wcsdup - not found
+-- Looking for wcsdup
+-- Looking for wcsdup - found
+-- Looking for wcslcat
+-- Looking for wcslcat - found
+-- Looking for wcslcpy
+-- Looking for wcslcpy - found
+-- Looking for wcslen
+-- Looking for wcslen - found
+-- Looking for wcsncmp
+-- Looking for wcsncmp - found
+-- Looking for wcsstr
+-- Looking for wcsstr - found
+-- Looking for wcscasecmp
+-- Looking for wcscasecmp - found
+-- Looking for _wcsicmp
+-- Looking for _wcsicmp - not found
+-- Looking for wcsncasecmp
+-- Looking for wcsncasecmp - found
+-- Looking for _wcsnicmp
+-- Looking for _wcsnicmp - not found
+-- Looking for sscanf
+-- Looking for sscanf - found
+-- Looking for vsscanf
+-- Looking for vsscanf - found
+-- Looking for vsnprintf
+-- Looking for vsnprintf - found
+-- Looking for fopen64
+-- Looking for fopen64 - found
+-- Looking for fseeko
+-- Looking for fseeko - found
+-- Looking for fseeko64
+-- Looking for fseeko64 - found
+-- Looking for _Exit
+-- Looking for _Exit - found
+-- Looking for sigaction
+-- Looking for sigaction - found
+-- Looking for sigtimedwait
+-- Looking for sigtimedwait - found
+-- Looking for setjmp
+-- Looking for setjmp - found
+-- Looking for nanosleep
+-- Looking for nanosleep - found
+-- Looking for sysconf
+-- Looking for sysconf - found
+-- Looking for sysctlbyname
+-- Looking for sysctlbyname - not found
+-- Looking for getauxval
+-- Looking for getauxval - found
+-- Looking for elf_aux_info
+-- Looking for elf_aux_info - not found
+-- Looking for poll
+-- Looking for poll - found
+-- Looking for memfd_create
+-- Looking for memfd_create - found
+-- Looking for posix_fallocate
+-- Looking for posix_fallocate - found
+-- Looking for pow in m
+-- Looking for pow in m - found
+-- Looking for atan
+-- Looking for atan - found
+-- Looking for atan2
+-- Looking for atan2 - found
+-- Looking for atanf
+-- Looking for atanf - found
+-- Looking for atan2f
+-- Looking for atan2f - found
+-- Looking for ceil
+-- Looking for ceil - found
+-- Looking for ceilf
+-- Looking for ceilf - found
+-- Looking for copysign
+-- Looking for copysign - found
+-- Looking for copysignf
+-- Looking for copysignf - found
+-- Looking for cos
+-- Looking for cos - found
+-- Looking for cosf
+-- Looking for cosf - found
+-- Looking for exp
+-- Looking for exp - found
+-- Looking for expf
+-- Looking for expf - found
+-- Looking for fabs
+-- Looking for fabs - found
+-- Looking for fabsf
+-- Looking for fabsf - found
+-- Looking for floor
+-- Looking for floor - found
+-- Looking for floorf
+-- Looking for floorf - found
+-- Looking for fmod
+-- Looking for fmod - found
+-- Looking for fmodf
+-- Looking for fmodf - found
+-- Looking for log
+-- Looking for log - found
+-- Looking for logf
+-- Looking for logf - found
+-- Looking for log10
+-- Looking for log10 - found
+-- Looking for log10f
+-- Looking for log10f - found
+-- Looking for lround
+-- Looking for lround - found
+-- Looking for lroundf
+-- Looking for lroundf - found
+-- Looking for pow
+-- Looking for pow - found
+-- Looking for powf
+-- Looking for powf - found
+-- Looking for round
+-- Looking for round - found
+-- Looking for roundf
+-- Looking for roundf - found
+-- Looking for scalbn
+-- Looking for scalbn - found
+-- Looking for scalbnf
+-- Looking for scalbnf - found
+-- Looking for sin
+-- Looking for sin - found
+-- Looking for sinf
+-- Looking for sinf - found
+-- Looking for sqrt
+-- Looking for sqrt - found
+-- Looking for sqrtf
+-- Looking for sqrtf - found
+-- Looking for tan
+-- Looking for tan - found
+-- Looking for tanf
+-- Looking for tanf - found
+-- Looking for acos
+-- Looking for acos - found
+-- Looking for acosf
+-- Looking for acosf - found
+-- Looking for asin
+-- Looking for asin - found
+-- Looking for asinf
+-- Looking for asinf - found
+-- Looking for trunc
+-- Looking for trunc - found
+-- Looking for truncf
+-- Looking for truncf - found
+-- Performing Test ICONV_IN_LIBC
+-- Performing Test ICONV_IN_LIBC - Success
+-- Performing Test ICONV_IN_LIBICONV
+-- Performing Test ICONV_IN_LIBICONV - Failed
+-- Looking for alloca.h
+-- Looking for alloca.h - found
+-- Looking for alloca
+-- Looking for alloca - found
+-- Looking for alloca
+-- Looking for alloca - found
+-- Looking for alloca
+-- Looking for alloca - not found
+-- Performing Test HAVE_SA_SIGACTION
+-- Performing Test HAVE_SA_SIGACTION - Success
+-- Looking for dlopen
+-- Looking for dlopen - found
+-- Performing Test HAVE_O_CLOEXEC
+-- Performing Test HAVE_O_CLOEXEC - Success
+-- Performing Test HAVE_OSS_SYS_SOUNDCARD_H
+-- Performing Test HAVE_OSS_SYS_SOUNDCARD_H - Success
+-- Could NOT find ALSA (missing: ALSA_LIBRARY ALSA_INCLUDE_DIR) 
+CMake Warning at build/linux-i386/_deps/sdl2-src/cmake/sdlchecks.cmake:128 (message):
+  Unable to found the alsa development library
+Call Stack (most recent call first):
+  build/linux-i386/_deps/sdl2-src/CMakeLists.txt:1500 (CheckALSA)
+
+
+-- Checking for module 'jack'
+--   Package 'jack', required by 'virtual:world', not found
+-- Checking for module 'libpipewire-0.3>=0.3.20'
+--   Package 'libpipewire-0.3', required by 'virtual:world', not found
+-- Checking for module 'libpulse>=0.9.15'
+--   Package 'libpulse', required by 'virtual:world', not found
+-- Checking for module 'esound'
+--   Package 'esound', required by 'virtual:world', not found
+-- Looking for audio/audiolib.h
+-- Looking for audio/audiolib.h - not found
+-- Checking for module 'sndio'
+--   Package 'sndio', required by 'virtual:world', not found
+-- Checking for module 'bcm_host'
+--   Package 'bcm_host', required by 'virtual:world', not found
+-- Checking for module 'brcmegl'
+--   Package 'brcmegl', required by 'virtual:world', not found
+-- Performing Test HAVE_RPI
+-- Performing Test HAVE_RPI - Failed
+-- Checking for module 'egl'
+--   Package 'egl', required by 'virtual:world', not found
+-- Performing Test HAVE_OPENGL_EGL
+-- Performing Test HAVE_OPENGL_EGL - Success
+-- Checking for modules 'libdrm;gbm;egl'
+--   Package 'libdrm', required by 'virtual:world', not found
+--   Package 'gbm', required by 'virtual:world', not found
+--   Package 'egl', required by 'virtual:world', not found
+-- Performing Test HAVE_OPENGL_GLX
+-- Performing Test HAVE_OPENGL_GLX - Failed
+-- Performing Test HAVE_OPENGL
+-- Performing Test HAVE_OPENGL - Failed
+-- Performing Test HAVE_OPENGLES_V1
+-- Performing Test HAVE_OPENGLES_V1 - Failed
+-- Performing Test HAVE_OPENGLES_V2
+-- Performing Test HAVE_OPENGLES_V2 - Success
+-- Checking for modules 'wayland-client>=1.18;wayland-egl;wayland-cursor;egl;xkbcommon>=0.5.0'
+--   Package 'wayland-client', required by 'virtual:world', not found
+--   Package 'wayland-egl', required by 'virtual:world', not found
+--   Package 'wayland-cursor', required by 'virtual:world', not found
+--   Package 'egl', required by 'virtual:world', not found
+--   Package 'xkbcommon', required by 'virtual:world', not found
+-- Performing Test HAVE_VIVANTE_VDK
+-- Performing Test HAVE_VIVANTE_VDK - Failed
+-- Performing Test HAVE_VIVANTE_EGL_FB
+-- Performing Test HAVE_VIVANTE_EGL_FB - Failed
+-- Performing Test HAVE_LINUX_INPUT_H
+-- Performing Test HAVE_LINUX_INPUT_H - Success
+-- Performing Test HAVE_INPUT_KD
+-- Performing Test HAVE_INPUT_KD - Success
+-- Looking for libudev.h
+-- Looking for libudev.h - not found
+-- Looking for sys/inotify.h
+-- Looking for sys/inotify.h - found
+-- Looking for inotify_init
+-- Looking for inotify_init - found
+-- Looking for inotify_init1
+-- Looking for inotify_init1 - found
+-- Checking for one of the modules 'dbus-1;dbus'
+-- Checking for one of the modules 'ibus-1.0;ibus'
+-- Performing Test LIBC_HAS_WORKING_LIBUNWIND
+-- Performing Test LIBC_HAS_WORKING_LIBUNWIND - Failed
+-- Performing Test LIBUNWIND_HAS_WORKINGLIBUNWIND
+-- Performing Test LIBUNWIND_HAS_WORKINGLIBUNWIND - Failed
+-- Checking for modules 'libunwind;libunwind-generic'
+--   Package 'libunwind', required by 'virtual:world', not found
+--   Package 'libunwind-generic', required by 'virtual:world', not found
+-- Performing Test HAVE_PTHREADS
+-- Performing Test HAVE_PTHREADS - Success
+-- Performing Test HAVE_RECURSIVE_MUTEXES
+-- Performing Test HAVE_RECURSIVE_MUTEXES - Success
+-- Performing Test HAVE_PTHREADS_SEM
+-- Performing Test HAVE_PTHREADS_SEM - Success
+-- Performing Test HAVE_SEM_TIMEDWAIT
+-- Performing Test HAVE_SEM_TIMEDWAIT - Success
+-- Looking for include file pthread.h
+-- Looking for include file pthread.h - found
+-- Looking for include file pthread_np.h
+-- Looking for include file pthread_np.h - not found
+-- Performing Test HAVE_PTHREAD_SETNAME_NP
+-- Performing Test HAVE_PTHREAD_SETNAME_NP - Success
+-- Looking for clock_gettime in c
+-- Looking for clock_gettime in c - found
+-- Looking for linux/version.h
+-- Looking for linux/version.h - found
+-- Performing Test HAVE_ENABLE_NEW_DTAGS
+-- Performing Test HAVE_ENABLE_NEW_DTAGS - Success
+-- Looking for samplerate.h
+-- Looking for samplerate.h - not found
+-- Found Git: /usr/bin/git (found version "2.53.0")
+CMake Deprecation Warning at build/linux-i386/_deps/sdl2-src/CMakeLists.txt:3300 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+-- 
+-- SDL2 was configured with the following options:
+-- 
+-- Platform: Linux-6.14.0-1017-azure
+-- 64-bit:   FALSE
+-- Compiler: /usr/bin/cc
+-- Revision: SDL-release-2.32.10-0-g5d2495703
+-- 
+-- Subsystems:
+--   Atomic:	ON
+--   Audio:	ON
+--   Video:	ON
+--   Render:	ON
+--   Events:	ON
+--   Joystick:	ON
+--   Haptic:	ON
+--   Hidapi:	ON
+--   Power:	ON
+--   Threads:	ON
+--   Timers:	ON
+--   File:	ON
+--   Loadso:	ON
+--   CPUinfo:	ON
+--   Filesystem:	ON
+--   Sensor:	ON
+--   Locale:	ON
+--   Misc:	ON
+-- 
+-- Options:
+--   SDL2_DISABLE_INSTALL        (Wanted: ON): OFF
+--   SDL2_DISABLE_SDL2MAIN       (Wanted: ON): OFF
+--   SDL2_DISABLE_UNINSTALL      (Wanted: OFF): OFF
+--   SDL_3DNOW                   (Wanted: OFF): OFF
+--   SDL_ALSA                    (Wanted: ON): OFF
+--   SDL_ALSA_SHARED             (Wanted: ON): OFF
+--   SDL_ALTIVEC                 (Wanted: ON): OFF
+--   SDL_ARMNEON                 (Wanted: OFF): OFF
+--   SDL_ARMSIMD                 (Wanted: OFF): OFF
+--   SDL_ARTS                    (Wanted: ON): OFF
+--   SDL_ARTS_SHARED             (Wanted: ON): OFF
+--   SDL_ASAN                    (Wanted: OFF): OFF
+--   SDL_ASSEMBLY                (Wanted: ON): ON
+--   SDL_ASSERTIONS              (Wanted: auto): auto
+--   SDL_BACKGROUNDING_SIGNAL    (Wanted: OFF): OFF
+--   SDL_CCACHE                  (Wanted: ON): OFF
+--   SDL_CLOCK_GETTIME           (Wanted: ON): ON
+--   SDL_COCOA                   (Wanted: OFF): OFF
+--   SDL_DBUS                    (Wanted: ON): OFF
+--   SDL_DIRECTFB                (Wanted: OFF): OFF
+--   SDL_DIRECTFB_SHARED         (Wanted: OFF): OFF
+--   SDL_DIRECTX                 (Wanted: OFF): OFF
+--   SDL_DISKAUDIO               (Wanted: ON): ON
+--   SDL_DUMMYAUDIO              (Wanted: ON): ON
+--   SDL_DUMMYVIDEO              (Wanted: ON): ON
+--   SDL_ESD                     (Wanted: ON): OFF
+--   SDL_ESD_SHARED              (Wanted: ON): OFF
+--   SDL_FOREGROUNDING_SIGNAL    (Wanted: OFF): OFF
+--   SDL_FUSIONSOUND             (Wanted: OFF): OFF
+--   SDL_FUSIONSOUND_SHARED      (Wanted: OFF): OFF
+--   SDL_GCC_ATOMICS             (Wanted: ON): ON
+--   SDL_HIDAPI                  (Wanted: ON): ON
+--   SDL_HIDAPI_JOYSTICK         (Wanted: ON): ON
+--   SDL_HIDAPI_LIBUSB           (Wanted: OFF): OFF
+--   SDL_IBUS                    (Wanted: ON): OFF
+--   SDL_INSTALL_TESTS           (Wanted: OFF): OFF
+--   SDL_JACK                    (Wanted: ON): OFF
+--   SDL_JACK_SHARED             (Wanted: ON): OFF
+--   SDL_KMSDRM                  (Wanted: ON): OFF
+--   SDL_KMSDRM_SHARED           (Wanted: ON): OFF
+--   SDL_LASX                    (Wanted: OFF): OFF
+--   SDL_LIBC                    (Wanted: ON): ON
+--   SDL_LIBICONV                (Wanted: OFF): OFF
+--   SDL_LIBSAMPLERATE           (Wanted: ON): OFF
+--   SDL_LIBSAMPLERATE_SHARED    (Wanted: ON): OFF
+--   SDL_LIBUDEV                 (Wanted: ON): OFF
+--   SDL_LSX                     (Wanted: OFF): OFF
+--   SDL_METAL                   (Wanted: OFF): OFF
+--   SDL_MMX                     (Wanted: ON): ON
+--   SDL_NAS                     (Wanted: ON): OFF
+--   SDL_NAS_SHARED              (Wanted: ON): OFF
+--   SDL_OFFSCREEN               (Wanted: ON): ON
+--   SDL_OPENGL                  (Wanted: ON): OFF
+--   SDL_OPENGLES                (Wanted: ON): ON
+--   SDL_OSS                     (Wanted: ON): ON
+--   SDL_PIPEWIRE                (Wanted: ON): OFF
+--   SDL_PIPEWIRE_SHARED         (Wanted: ON): OFF
+--   SDL_PTHREADS                (Wanted: ON): ON
+--   SDL_PTHREADS_SEM            (Wanted: ON): ON
+--   SDL_PULSEAUDIO              (Wanted: ON): OFF
+--   SDL_PULSEAUDIO_SHARED       (Wanted: ON): OFF
+--   SDL_RENDER_D3D              (Wanted: OFF): OFF
+--   SDL_RENDER_METAL            (Wanted: OFF): OFF
+--   SDL_RPATH                   (Wanted: ON): ON
+--   SDL_RPI                     (Wanted: ON): OFF
+--   SDL_SNDIO                   (Wanted: ON): OFF
+--   SDL_SNDIO_SHARED            (Wanted: ON): OFF
+--   SDL_SSE                     (Wanted: ON): ON
+--   SDL_SSE2                    (Wanted: ON): ON
+--   SDL_SSE3                    (Wanted: ON): ON
+--   SDL_SSEMATH                 (Wanted: ON): ON
+--   SDL_STATIC_PIC              (Wanted: OFF): OFF
+--   SDL_SYSTEM_ICONV            (Wanted: ON): ON
+--   SDL_TESTS                   (Wanted: OFF): OFF
+--   SDL_VENDOR_INFO             (Wanted: ): OFF
+--   SDL_VIRTUAL_JOYSTICK        (Wanted: ON): ON
+--   SDL_VIVANTE                 (Wanted: ON): OFF
+--   SDL_VULKAN                  (Wanted: ON): ON
+--   SDL_WASAPI                  (Wanted: OFF): OFF
+--   SDL_WAYLAND                 (Wanted: ON): OFF
+--   SDL_WAYLAND_LIBDECOR        (Wanted: ON): OFF
+--   SDL_WAYLAND_LIBDECOR_SHARED (Wanted: ON): OFF
+--   SDL_WAYLAND_QT_TOUCH        (Wanted: ON): OFF
+--   SDL_WAYLAND_SHARED          (Wanted: ON): OFF
+--   SDL_X11                     (Wanted: ON): OFF
+--   SDL_X11_SHARED              (Wanted: ON): OFF
+--   SDL_X11_XCURSOR             (Wanted: ON): OFF
+--   SDL_X11_XDBE                (Wanted: ON): OFF
+--   SDL_X11_XFIXES              (Wanted: ON): OFF
+--   SDL_X11_XINPUT              (Wanted: ON): OFF
+--   SDL_X11_XRANDR              (Wanted: ON): OFF
+--   SDL_X11_XSCRNSAVER          (Wanted: ON): OFF
+--   SDL_X11_XSHAPE              (Wanted: ON): OFF
+--   SDL_XINPUT                  (Wanted: OFF): OFF
+-- 
+--  CFLAGS:        -m32 -idirafter "/home/runner/work/CNEngine/CNEngine/build/linux-i386/_deps/sdl2-src/src/video/khronos" -DHAVE_LINUX_VERSION_H
+--  EXTRA_CFLAGS:   -Wall -Wundef -fno-strict-aliasing -Wdeclaration-after-statement -fvisibility=hidden -Wshadow -Wno-unused-local-typedefs -fdiagnostics-color=always -mmmx -msse -msse2 -msse3 -DMESA_EGL_NO_X11_HEADERS -DEGL_NO_X11 -D_REENTRANT
+--  EXTRA_LDFLAGS: -pthread -Wl,--no-undefined
+--  EXTRA_LIBS:    m
+-- 
+--  Build Shared Library: ON
+--  Build Static Library: OFF
+-- 
+-- If something was not detected, although the libraries
+-- were installed, then make sure you have set the
+-- CFLAGS and LDFLAGS environment variables correctly.
+-- 
+-- Configuring SDL2_image 2.8.8
+-- Performing Test HAVE_WL_NO_UNDEFINED
+-- Performing Test HAVE_WL_NO_UNDEFINED - Success
+-- SDL2_image: Using vendored libtiff
+CMake Deprecation Warning at build/linux-i386/_deps/sdl2_image-src/external/libtiff/CMakeLists.txt:26 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+CMake Deprecation Warning at build/linux-i386/_deps/sdl2_image-src/external/libtiff/CMakeLists.txt:29 (cmake_policy):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+-- Building tiff version 4.2.0
+CMake Warning (dev) at build/linux-i386/_deps/sdl2_image-src/external/libtiff/CMakeLists.txt:67 (project):
+-- libtiff library version 5.6.0
+  Policy CMP0048 is not set: project() command manages VERSION variables.
+  Run "cmake --help-policy CMP0048" for policy details.  Use the cmake_policy
+  command to set the policy and suppress this warning.
+
+  The following variable(s) would be set to empty:
+
+    PROJECT_VERSION
+    PROJECT_VERSION_MAJOR
+    PROJECT_VERSION_MINOR
+    PROJECT_VERSION_PATCH
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Performing Test C_FLAG_Wall
+-- Performing Test C_FLAG_Wall - Success
+-- Performing Test C_FLAG_Winline
+-- Performing Test C_FLAG_Winline - Success
+-- Performing Test C_FLAG_W
+-- Performing Test C_FLAG_W - Success
+-- Performing Test C_FLAG_Wformat_security
+-- Performing Test C_FLAG_Wformat_security - Success
+-- Performing Test C_FLAG_Wpointer_arith
+-- Performing Test C_FLAG_Wpointer_arith - Success
+-- Performing Test C_FLAG_Wdisabled_optimization
+-- Performing Test C_FLAG_Wdisabled_optimization - Success
+-- Performing Test C_FLAG_Wno_unknown_pragmas
+-- Performing Test C_FLAG_Wno_unknown_pragmas - Success
+-- Performing Test C_FLAG_Wdeclaration_after_statement
+-- Performing Test C_FLAG_Wdeclaration_after_statement - Success
+-- Performing Test C_FLAG_fstrict_aliasing
+-- Performing Test C_FLAG_fstrict_aliasing - Success
+-- Performing Test HAVE_LD_VERSION_SCRIPT
+-- Performing Test HAVE_LD_VERSION_SCRIPT - Success
+-- Looking for assert.h
+CMake Warning (dev) at /usr/local/share/cmake-3.31/Modules/CheckIncludeFile.cmake:79 (message):
+  Policy CMP0075 is not set: Include file check macros honor
+  CMAKE_REQUIRED_LIBRARIES.  Run "cmake --help-policy CMP0075" for policy
+  details.  Use the cmake_policy command to set the policy and suppress this
+  warning.
+
+  CMAKE_REQUIRED_LIBRARIES is set to:
+
+    m
+
+  For compatibility with CMake 3.11 and below this check is ignoring it.
+Call Stack (most recent call first):
+  build/linux-i386/_deps/sdl2_image-src/external/libtiff/CMakeLists.txt:210 (check_include_file)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Looking for assert.h - found
+-- Looking for dlfcn.h
+-- Looking for dlfcn.h - found
+-- Looking for fcntl.h
+-- Looking for fcntl.h - found
+-- Looking for io.h
+-- Looking for io.h - not found
+-- Looking for search.h
+-- Looking for search.h - found
+-- Looking for sys/time.h
+-- Looking for sys/time.h - found
+-- Looking for unistd.h
+-- Looking for unistd.h - found
+-- Performing Test C_HAS_inline
+-- Performing Test C_HAS_inline - Success
+-- Performing Test TIME_WITH_SYS_TIME
+-- Performing Test TIME_WITH_SYS_TIME - Success
+-- Performing Test TM_IN_SYS_TIME
+-- Performing Test TM_IN_SYS_TIME - Success
+-- Check size of signed int
+-- Check size of signed int - done
+-- Check size of unsigned int
+-- Check size of unsigned int - done
+-- Check size of signed long
+-- Check size of signed long - done
+-- Check size of unsigned long
+-- Check size of unsigned long - done
+-- Check size of signed long long
+-- Check size of signed long long - done
+-- Check size of unsigned long long
+-- Check size of unsigned long long - done
+-- Check size of unsigned char *
+-- Check size of unsigned char * - done
+-- Check size of size_t
+-- Check size of size_t - done
+-- Check size of ptrdiff_t
+-- Check size of ptrdiff_t - done
+-- Looking for mmap
+-- Looking for mmap - found
+-- Looking for setmode
+-- Looking for setmode - not found
+-- Looking for snprintf
+-- Looking for snprintf - found
+-- Looking for getopt
+-- Looking for getopt - found
+-- Looking for lfind
+-- Looking for lfind - found
+-- CMAKE_HOST_SYSTEM_PROCESSOR set to x86_64
+-- HOST_FILLORDER set to FILLORDER_LSB2MSB
+-- HOST_BIG_ENDIAN set to 0
+-- HAVE_IEEEFP set to 1
+-- Looking for jbg_newlen
+-- Looking for jbg_newlen - not found
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Could NOT find OpenGL (missing: OPENGL_opengl_LIBRARY OPENGL_glx_LIBRARY OPENGL_INCLUDE_DIR) 
+-- Could NOT find GLUT (missing: GLUT_glut_LIBRARY GLUT_INCLUDE_DIR) 
+-- Looking for GL/gl.h
+-- Looking for GL/gl.h - not found
+-- Looking for GL/glu.h
+-- Looking for GL/glu.h - not found
+-- Looking for GL/glut.h
+-- Looking for GL/glut.h - not found
+-- Looking for GLUT/glut.h
+-- Looking for GLUT/glut.h - not found
+-- Looking for OpenGL/gl.h
+-- Looking for OpenGL/gl.h - not found
+-- Looking for OpenGL/glu.h
+-- Looking for OpenGL/glu.h - not found
+-- 
+-- Libtiff is now configured for 
+-- 
+--   Installation directory:             /usr/local
+--   Documentation directory:            /usr/local/share/doc/SDL2_image
+--   C compiler:                         /usr/bin/cc
+--   C++ compiler:                       /usr/bin/c++
+--   Build shared libraries:             ON
+--   Enable linker symbol versioning:    TRUE
+--   Support Microsoft Document Imaging: ON
+--   Use win32 IO:                       FALSE
+-- 
+--  Support for internal codecs:
+--   CCITT Group 3 & 4 algorithms:       ON
+--   Macintosh PackBits algorithm:       ON
+--   LZW algorithm:                      ON
+--   ThunderScan 4-bit RLE algorithm:    ON
+--   NeXT 2-bit RLE algorithm:           ON
+--   LogLuv high dynamic range encoding: ON
+-- 
+--  Support for external codecs:
+--   ZLIB support:                       OFF (requested)  (availability)
+--   libdeflate support:                 OFF (requested) FALSE (availability)
+--   Pixar log-format algorithm:         ON (requested) FALSE (availability)
+--   JPEG support:                       OFF (requested)  (availability)
+--   Old JPEG support:                   ON (requested)  (availability)
+--   JPEG 8/12 bit dual mode:            ON (requested) FALSE (availability)
+--   ISO JBIG support:                   ON (requested) FALSE (availability)
+--   LZMA2 support:                      OFF (requested)  (availability)
+--   ZSTD support:                       OFF (requested) OFF (availability)
+--   WEBP support:                       OFF (requested) FALSE (availability)
+-- 
+--   C++ support:                        ON (requested) TRUE (availability)
+-- 
+--   OpenGL support:                     FALSE
+-- 
+-- Dynamic libtiff: $<TARGET_SONAME_FILE_NAME:tiff>
+-- SDL2_image backends:
+-- - enabled:  stb bmp gif jpg lbm pcx png pnm qoi svg tga tif xcf xpm xv
+-- - disabled: imageio wic avif jxl webp
+-- Configuring SDL2_ttf 2.24.0
+-- SDL2_ttf: Using vendored harfbuzz library
+WARNHarfBuzz has a Meson port and tries to migrate all the other build systems to it, please consider using it as we might remove our cmake port soon.
+CMake Warning (dev) at build/linux-i386/_deps/sdl2_ttf-src/external/harfbuzz/CMakeLists.txt:78 (include):
+  Policy CMP0148 is not set: The FindPythonInterp and FindPythonLibs modules
+  are removed.  Run "cmake --help-policy CMP0148" for policy details.  Use
+  the cmake_policy command to set the policy and suppress this warning.
+
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Found PythonInterp: /usr/bin/python (found version "3.12.3")
+-- Looking for atexit
+-- Looking for atexit - found
+-- Looking for getpagesize
+-- Looking for getpagesize - found
+-- Looking for isatty
+-- Looking for isatty - found
+-- Looking for sys/mman.h
+-- Looking for sys/mman.h - found
+-- Looking for stdbool.h
+-- Looking for stdbool.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE
+-- Looking for FT_Get_Var_Blend_Coordinates
+-- Looking for FT_Get_Var_Blend_Coordinates - not found
+-- Looking for FT_Set_Var_Blend_Coordinates
+-- Looking for FT_Set_Var_Blend_Coordinates - not found
+-- Looking for FT_Done_MM_Var
+-- Looking for FT_Done_MM_Var - not found
+-- Performing Test CXX_SUPPORTS_FLAG_BSYMB_FUNCS
+-- Performing Test CXX_SUPPORTS_FLAG_BSYMB_FUNCS - Success
+-- Performing Test COMPILER_SUPPORTS_CXX11
+-- Performing Test COMPILER_SUPPORTS_CXX11 - Success
+-- SDL2_ttf: Using vendored freetype library
+CMake Deprecation Warning at build/linux-i386/_deps/sdl2_ttf-src/external/freetype/CMakeLists.txt:113 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+-- Configuring SDL2_mixer 2.8.1
+-- Looking for fork
+-- Looking for fork - found
+-- Using vendored libogg
+CMake Deprecation Warning at build/linux-i386/_deps/sdl2_mixer-src/external/ogg/CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+-- Configuring libogg 1.3.5
+CMake Warning (dev) at /usr/local/share/cmake-3.31/Modules/CheckIncludeFiles.cmake:118 (message):
+-- Looking for include file inttypes.h
+  Policy CMP0075 is not set: Include file check macros honor
+  CMAKE_REQUIRED_LIBRARIES.  Run "cmake --help-policy CMP0075" for policy
+  details.  Use the cmake_policy command to set the policy and suppress this
+  warning.
+
+  CMAKE_REQUIRED_LIBRARIES is set to:
+
+    m
+
+  For compatibility with CMake 3.11 and below this check is ignoring it.
+Call Stack (most recent call first):
+  build/linux-i386/_deps/sdl2_mixer-src/external/ogg/CMakeLists.txt:57 (check_include_files)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Looking for include file inttypes.h - found
+-- Looking for include file stdint.h
+-- Looking for include file stdint.h - found
+-- Looking for include file sys/types.h
+-- Looking for include file sys/types.h - found
+-- Check size of int16_t
+-- Check size of int16_t - done
+-- Check size of uint16_t
+-- Check size of uint16_t - done
+-- Check size of u_int16_t
+-- Check size of u_int16_t - done
+-- Check size of int32_t
+-- Check size of int32_t - done
+-- Check size of uint32_t
+-- Check size of uint32_t - done
+-- Check size of u_int32_t
+-- Check size of u_int32_t - done
+-- Check size of int64_t
+-- Check size of int64_t - done
+-- Check size of short
+-- Check size of short - done
+-- Check size of int
+-- Check size of int - done
+-- Check size of long
+-- Check size of long - done
+-- Check size of long long
+-- Check size of long long - done
+-- Using vendored opus
+CMake Deprecation Warning at build/linux-i386/_deps/sdl2_mixer-src/external/opus/CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+-- Opus package version from package_version file: 1.4
+-- Opus project version: 1.4
+-- CMAKE_C_FLAGS: -m32
+-- Performing Test VLA_SUPPORTED
+-- Performing Test VLA_SUPPORTED -- success
+-- Looking for alloca
+-- Looking for alloca - found
+-- Looking for lrintf
+-- Looking for lrintf - found
+-- Looking for lrint
+-- Looking for lrint - found
+-- Performing Test CPU_INFO_BY_ASM_SUPPORTED
+-- Performing Test CPU_INFO_BY_ASM_SUPPORTED -- success
+-- Looking for cpuid.h
+CMake Warning (dev) at /usr/local/share/cmake-3.31/Modules/CheckIncludeFile.cmake:79 (message):
+  Policy CMP0075 is not set: Include file check macros honor
+  CMAKE_REQUIRED_LIBRARIES.  Run "cmake --help-policy CMP0075" for policy
+  details.  Use the cmake_policy command to set the policy and suppress this
+  warning.
+
+  CMAKE_REQUIRED_LIBRARIES is set to:
+
+    m
+
+  For compatibility with CMake 3.11 and below this check is ignoring it.
+Call Stack (most recent call first):
+  build/linux-i386/_deps/sdl2_mixer-src/external/opus/cmake/OpusFunctions.cmake:157 (check_include_file)
+  build/linux-i386/_deps/sdl2_mixer-src/external/opus/cmake/OpusConfig.cmake:64 (opus_supports_cpu_detection)
+  build/linux-i386/_deps/sdl2_mixer-src/external/opus/CMakeLists.txt:11 (include)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Looking for cpuid.h - found
+-- Performing Test CPU_INFO_BY_C_SUPPORTED
+-- Performing Test CPU_INFO_BY_C_SUPPORTED -- success
+-- Check SIMD support by compiler
+-- Looking for xmmintrin.h
+CMake Warning (dev) at /usr/local/share/cmake-3.31/Modules/CheckIncludeFile.cmake:79 (message):
+  Policy CMP0075 is not set: Include file check macros honor
+  CMAKE_REQUIRED_LIBRARIES.  Run "cmake --help-policy CMP0075" for policy
+  details.  Use the cmake_policy command to set the policy and suppress this
+  warning.
+
+  CMAKE_REQUIRED_LIBRARIES is set to:
+
+    m
+
+  For compatibility with CMake 3.11 and below this check is ignoring it.
+Call Stack (most recent call first):
+  build/linux-i386/_deps/sdl2_mixer-src/external/opus/cmake/OpusFunctions.cmake:56 (check_include_file)
+  build/linux-i386/_deps/sdl2_mixer-src/external/opus/cmake/OpusConfig.cmake:68 (opus_detect_sse)
+  build/linux-i386/_deps/sdl2_mixer-src/external/opus/CMakeLists.txt:11 (include)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Looking for xmmintrin.h - found
+-- Performing Test SSE1_SUPPORTED
+-- Performing Test SSE1_SUPPORTED - Success
+-- Looking for emmintrin.h
+-- Looking for emmintrin.h - found
+-- Performing Test SSE2_SUPPORTED
+-- Performing Test SSE2_SUPPORTED - Success
+-- Looking for smmintrin.h
+-- Looking for smmintrin.h - found
+-- Performing Test SSE4_1_SUPPORTED
+-- Performing Test SSE4_1_SUPPORTED - Success
+-- Performing Test AVX_SUPPORTED
+-- Performing Test AVX_SUPPORTED - Success
+-- Performing Test FAST_MATH_SUPPORTED
+-- Performing Test FAST_MATH_SUPPORTED - Success
+-- Performing Test STACK_PROTECTOR_SUPPORTED
+-- Performing Test STACK_PROTECTOR_SUPPORTED - Success
+-- Performing Test HIDDEN_VISIBILITY_SUPPORTED
+-- Performing Test HIDDEN_VISIBILITY_SUPPORTED - Success
+-- Performing Test Wall_SUPPORTED
+-- Performing Test Wall_SUPPORTED - Success
+-- Performing Test W_SUPPORTED
+-- Performing Test W_SUPPORTED - Success
+-- Performing Test Wstrictprototypes_SUPPORTED
+-- Performing Test Wstrictprototypes_SUPPORTED - Success
+-- Performing Test Wextra_SUPPORTED
+-- Performing Test Wextra_SUPPORTED - Success
+-- Performing Test Wcastalign_SUPPORTED
+-- Performing Test Wcastalign_SUPPORTED - Success
+-- Performing Test Wnestedexterns_SUPPORTED
+-- Performing Test Wnestedexterns_SUPPORTED - Success
+-- Performing Test Wshadow_SUPPORTED
+-- Performing Test Wshadow_SUPPORTED - Success
+-- The following features have been enabled:
+
+ * OPUS_BUILD_SHARED_LIBRARY, build shared library.
+ * OPUS_ENABLE_FLOAT_API, compile with the floating point API (for machines with float library).
+ * OPUS_HARDENING, run-time checks that are cheap and safe for use in production.
+ * OPUS_INSTALL_PKG_CONFIG_MODULE, install pkg-config module.
+ * OPUS_INSTALL_CMAKE_CONFIG_MODULE, install CMake package config module.
+ * OPUS_VAR_ARRAYS, use variable length arrays for stack arrays.
+ * OPUS_STACK_PROTECTOR, use stack protection.
+ * OPUS_FORTIFY_SOURCE, add protection against buffer overflows.
+ * OPUS_X86_MAY_HAVE_SSE, does runtime check for SSE1 support.
+ * OPUS_X86_MAY_HAVE_SSE2, does runtime check for SSE2 support.
+ * OPUS_X86_MAY_HAVE_SSE4_1, does runtime check for SSE4.1 support.
+ * OPUS_X86_MAY_HAVE_AVX, does runtime check for AVX support.
+
+-- The following OPTIONAL packages have been found:
+
+ * Threads
+
+-- The following features have been disabled:
+
+ * OPUS_BUILD_TESTING, build tests.
+ * OPUS_CUSTOM_MODES, enable non-Opus modes, e.g. 44.1 kHz & 2^n frames.
+ * OPUS_BUILD_PROGRAMS, build programs.
+ * OPUS_DISABLE_INTRINSICS, disable all intrinsics optimizations.
+ * OPUS_FIXED_POINT, compile as fixed-point (for machines without a fast enough FPU).
+ * OPUS_FLOAT_APPROX, enable floating point approximations (Ensure your platform supports IEEE 754 before enabling).
+ * OPUS_ASSERTIONS, additional software error checking.
+ * OPUS_FUZZING, causes the encoder to make random decisions (do not use in production).
+ * OPUS_CHECK_ASM, enable bit-exactness checks between optimized and c implementations.
+ * OPUS_FIXED_POINT_DEBUG, debug fixed-point implementation.
+ * OPUS_USE_ALLOCA, use alloca for stack arrays (on non-C99 compilers).
+ * OPUS_NONTHREADSAFE_PSEUDOSTACK, use a non threadsafe pseudostack when neither variable length arrays or alloca is supported.
+ * OPUS_FAST_MATH, enable fast math (unsupported and discouraged use, as code is not well tested with this build option).
+ * OPUS_X86_PRESUME_SSE, assume target CPU has SSE1 support (override runtime check).
+ * OPUS_X86_PRESUME_SSE2, assume target CPU has SSE2 support (override runtime check).
+ * OPUS_X86_PRESUME_SSE4_1, assume target CPU has SSE4.1 support (override runtime check).
+ * OPUS_X86_PRESUME_AVX, assume target CPU has AVX support (override runtime check).
+
+-- The following OPTIONAL packages have not been found:
+
+ * ALSA
+ * OpenGL
+ * GLUT
+
+-- Using vendored opusfile
+-- Opus package version from git repo: 0.12-16-gd820a66
+-- Opus project version: 0.12
+-- Looking for lrintf in m
+-- Looking for lrintf in m - found
+-- Looking for lrintf
+-- Looking for lrintf - found
+-- Dynamic opus (opusfile): $<TARGET_SONAME_FILE_NAME:opusfile>
+-- Enabled ogg music: using stb_vorbis
+-- Using vendored libxmp
+-- Check for working linker: /usr/bin/ld
+-- Linker identification: GNU ld (GNU Binutils for Ubuntu) 2.42
+-- Performing Test HAVE_W_ALL
+-- Performing Test HAVE_W_ALL - Success
+-- Performing Test HAVE_W_WRITE_STRINGS
+-- Performing Test HAVE_W_WRITE_STRINGS - Success
+-- Performing Test HAVE_W_EXTRA
+-- Performing Test HAVE_W_EXTRA - Success
+-- Performing Test HAVE_W_WUNDEF
+-- Performing Test HAVE_W_WUNDEF - Success
+-- Performing Test HAVE_W_NO_UNKNOWN_WARNING
+-- Performing Test HAVE_W_NO_UNKNOWN_WARNING - Failed
+-- Performing Test HAVE_W_NO_UNUSED_PARAMETER
+-- Performing Test HAVE_W_NO_UNUSED_PARAMETER - Success
+-- Performing Test HAVE_W_NO_SIGN_COMPARE
+-- Performing Test HAVE_W_NO_SIGN_COMPARE - Success
+-- Looking for powf
+-- Looking for powf - found
+-- Looking for popen
+-- Looking for popen - found
+-- Looking for popen
+-- Looking for popen - found
+-- Looking for fnmatch
+-- Looking for fnmatch - found
+-- Looking for fnmatch
+-- Looking for fnmatch - found
+-- Looking for umask
+-- Looking for umask - found
+-- Looking for umask
+-- Looking for umask - found
+-- Looking for wait
+-- Looking for wait - found
+-- Looking for wait
+-- Looking for wait - found
+-- Looking for mkstemp
+-- Looking for mkstemp - found
+-- Looking for mkstemp
+-- Looking for mkstemp - found
+-- Looking for pipe
+-- Looking for pipe - found
+-- Looking for pipe
+-- Looking for pipe - found
+-- Looking for fork
+-- Looking for fork - found
+-- Looking for execvp
+-- Looking for execvp - found
+-- Looking for execvp
+-- Looking for execvp - found
+-- Looking for dup2
+-- Looking for dup2 - found
+-- Looking for dup2
+-- Looking for dup2 - found
+-- Looking for opendir
+-- Looking for opendir - found
+-- Looking for opendir
+-- Looking for opendir - found
+-- Looking for readdir
+-- Looking for readdir - found
+-- Performing Test HAVE_VISIBILITY
+-- Performing Test HAVE_VISIBILITY - Success
+-- Performing Test HAVE_EXTERNAL_VISIBILITY
+-- Performing Test HAVE_EXTERNAL_VISIBILITY - Success
+-- Performing Test HAVE_ATTRIBUTE_SYMVER
+-- Performing Test HAVE_ATTRIBUTE_SYMVER - Success
+-- Versioned symbols: ENABLED.
+-- Manpage generation disabled: rst2man not found
+-- HTML doc generation disabled: rst2html not found
+-- PDF doc generation disabled: rst2pdf not found
+-- Dynamic libxmp: $<TARGET_SONAME_FILE_NAME:xmp_shared>
+-- Configuring done (353.9s)
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    CMAKE_POLICY_VERSION_MINIMUM
+    SDL2_IMAGE
+    SDL2_MIXER
+    SDL2_TTF
+    TARGET_ARCH
+
+
+-- Generating done (0.2s)
+-- Build files have been written to: /home/runner/work/CNEngine/CNEngine/build/linux-i386
+[  0%] Building C object _deps/sdl2_mixer-build/external/ogg/CMakeFiles/ogg.dir/src/bitwise.c.o
+[  0%] Generating include/SDL2/SDL.h
+[  0%] Generating include/SDL2/SDL_assert.h
+[  0%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/virtual.c.o
+[  0%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/src/opus.c.o
+[  1%] Generating include/SDL2/SDL_atomic.h
+[  1%] Generating include/SDL2/SDL_audio.h
+[  1%] Generating include/SDL2/SDL_bits.h
+[  1%] Generating include/SDL2/SDL_blendmode.h
+[  1%] Generating include/SDL2/SDL_clipboard.h
+[  1%] Generating include/SDL2/SDL_copying.h
+[  1%] Generating include/SDL2/SDL_cpuinfo.h
+[  2%] Generating include/SDL2/SDL_egl.h
+[  2%] Generating include/SDL2/SDL_endian.h
+[  2%] Generating include/SDL2/SDL_error.h
+[  2%] Generating include/SDL2/SDL_events.h
+[  2%] Generating include/SDL2/SDL_filesystem.h
+[  2%] Generating include/SDL2/SDL_gamecontroller.h
+[  2%] Building C object _deps/sdl2_mixer-build/external/ogg/CMakeFiles/ogg.dir/src/framing.c.o
+[  2%] Generating include/SDL2/SDL_gesture.h
+[  3%] Generating include/SDL2/SDL_guid.h
+[  3%] Generating include/SDL2/SDL_haptic.h
+[  3%] Generating include/SDL2/SDL_hidapi.h
+[  3%] Generating include/SDL2/SDL_hints.h
+[  3%] Generating include/SDL2/SDL_joystick.h
+[  4%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/format.c.o
+[  5%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/src/opus_decoder.c.o
+[  5%] Generating include/SDL2/SDL_keyboard.h
+[  5%] Generating include/SDL2/SDL_keycode.h
+/home/runner/work/CNEngine/CNEngine/build/linux-i386/_deps/sdl2_mixer-src/external/opus/src/opus_decoder.c:37:10: note: ‘#pragma message: You appear to be compiling without optimization, if so opus will be very slow.’
+   37 | # pragma message "You appear to be compiling without optimization, if so opus will be very slow."
+      |          ^~~~~~~
+[  6%] Generating include/SDL2/SDL_loadso.h
+[  6%] Generating include/SDL2/SDL_locale.h
+[  6%] Generating include/SDL2/SDL_log.h
+[  6%] Generating include/SDL2/SDL_main.h
+[  6%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/period.c.o
+[  6%] Generating include/SDL2/SDL_messagebox.h
+[  6%] Generating include/SDL2/SDL_metal.h
+[  6%] Generating include/SDL2/SDL_misc.h
+[  7%] Generating include/SDL2/SDL_mouse.h
+[  7%] Generating include/SDL2/SDL_mutex.h
+[  7%] Generating include/SDL2/SDL_name.h
+[  7%] Generating include/SDL2/SDL_opengl.h
+[  7%] Generating include/SDL2/SDL_opengl_glext.h
+[  7%] Generating include/SDL2/SDL_opengles.h
+[  7%] Generating include/SDL2/SDL_opengles2.h
+[  7%] Linking C shared library libogg.so
+[  8%] Generating include/SDL2/SDL_opengles2_gl2.h
+[  8%] Generating include/SDL2/SDL_opengles2_gl2ext.h
+[  8%] Generating include/SDL2/SDL_opengles2_gl2platform.h
+[  8%] Generating include/SDL2/SDL_opengles2_khrplatform.h
+[  8%] Generating include/SDL2/SDL_pixels.h
+[  8%] Generating include/SDL2/SDL_platform.h
+[  8%] Generating include/SDL2/SDL_power.h
+[  9%] Generating include/SDL2/SDL_quit.h
+[  9%] Generating include/SDL2/SDL_rect.h
+[  9%] Generating include/SDL2/SDL_render.h
+[  9%] Generating include/SDL2/SDL_rwops.h
+[  9%] Generating include/SDL2/SDL_scancode.h
+[  9%] Generating include/SDL2/SDL_sensor.h
+[  9%] Built target ogg
+[  9%] Generating include/SDL2/SDL_shape.h
+[  9%] Generating include/SDL2/SDL_stdinc.h
+[ 10%] Generating include/SDL2/SDL_surface.h
+[ 10%] Generating include/SDL2/SDL_system.h
+[ 10%] Generating include/SDL2/SDL_syswm.h
+[ 10%] Generating include/SDL2/SDL_test.h
+[ 10%] Generating include/SDL2/SDL_test_assert.h
+[ 10%] Generating include/SDL2/SDL_test_common.h
+[ 10%] Generating include/SDL2/SDL_test_compare.h
+[ 11%] Generating include/SDL2/SDL_test_crc32.h
+[ 11%] Building C object _deps/sdl2_image-build/external/libtiff/libtiff/CMakeFiles/tiff.dir/tif_aux.c.o
+[ 11%] Generating include/SDL2/SDL_test_font.h
+[ 11%] Generating include/SDL2/SDL_test_fuzzer.h
+[ 11%] Generating include/SDL2/SDL_test_harness.h
+[ 11%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/src/opus_encoder.c.o
+[ 11%] Generating include/SDL2/SDL_test_images.h
+[ 11%] Generating include/SDL2/SDL_test_log.h
+[ 11%] Generating include/SDL2/SDL_test_md5.h
+[ 12%] Generating include/SDL2/SDL_test_memory.h
+[ 12%] Generating include/SDL2/SDL_test_random.h
+[ 12%] Generating include/SDL2/SDL_thread.h
+[ 12%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/player.c.o
+[ 12%] Generating include/SDL2/SDL_timer.h
+[ 12%] Generating include/SDL2/SDL_touch.h
+[ 12%] Generating include/SDL2/SDL_types.h
+[ 12%] Generating include/SDL2/SDL_version.h
+[ 13%] Generating include/SDL2/SDL_video.h
+[ 13%] Generating include/SDL2/SDL_vulkan.h
+[ 13%] Generating include/SDL2/begin_code.h
+[ 13%] Generating include/SDL2/close_code.h
+[ 13%] Built target sdl_headers_copy
+[ 13%] Building C object _deps/sdl2_ttf-build/external/freetype/CMakeFiles/freetype.dir/src/autofit/autofit.c.o
+[ 13%] Building C object _deps/sdl2_image-build/external/libtiff/libtiff/CMakeFiles/tiff.dir/tif_close.c.o
+[ 13%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/read_event.c.o
+[ 13%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/src/opus_multistream.c.o
+[ 13%] Building C object _deps/sdl2_image-build/external/libtiff/libtiff/CMakeFiles/tiff.dir/tif_codec.c.o
+[ 14%] Building C object _deps/sdl2_image-build/external/libtiff/libtiff/CMakeFiles/tiff.dir/tif_color.c.o
+[ 14%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/src/opus_multistream_encoder.c.o
+[ 14%] Building C object _deps/sdl2_image-build/external/libtiff/libtiff/CMakeFiles/tiff.dir/tif_compress.c.o
+[ 14%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/dataio.c.o
+[ 14%] Building C object _deps/sdl2_image-build/external/libtiff/libtiff/CMakeFiles/tiff.dir/tif_dir.c.o
+[ 14%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/src/opus_multistream_decoder.c.o
+[ 14%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/misc.c.o
+[ 14%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/mkstemp.c.o
+[ 15%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/md5.c.o
+[ 15%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/src/repacketizer.c.o
+[ 15%] Building C object _deps/sdl2_ttf-build/external/freetype/CMakeFiles/freetype.dir/src/base/ftbase.c.o
+[ 15%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/lfo.c.o
+[ 15%] Building C object _deps/sdl2_image-build/external/libtiff/libtiff/CMakeFiles/tiff.dir/tif_dirinfo.c.o
+[ 15%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/src/opus_projection_encoder.c.o
+[ 15%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/scan.c.o
+[ 16%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/src/opus_projection_decoder.c.o
+[ 16%] Building C object _deps/sdl2_image-build/external/libtiff/libtiff/CMakeFiles/tiff.dir/tif_dirread.c.o
+[ 16%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/control.c.o
+[ 16%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/src/mapping_matrix.c.o
+[ 16%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/far_extras.c.o
+[ 16%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/src/analysis.c.o
+[ 16%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/med_extras.c.o
+[ 16%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/filter.c.o
+[ 16%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/src/mlp.c.o
+[ 17%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/effects.c.o
+[ 17%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/src/mlp_data.c.o
+[ 17%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/CNG.c.o
+[ 17%] Building C object _deps/sdl2_ttf-build/external/freetype/CMakeFiles/freetype.dir/src/base/ftbbox.c.o
+[ 17%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/flow.c.o
+[ 17%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/mixer.c.o
+[ 17%] Building C object _deps/sdl2_ttf-build/external/freetype/CMakeFiles/freetype.dir/src/base/ftbdf.c.o
+[ 17%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/code_signs.c.o
+[ 18%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/init_decoder.c.o
+[ 18%] Building C object _deps/sdl2_ttf-build/external/freetype/CMakeFiles/freetype.dir/src/base/ftbitmap.c.o
+[ 18%] Building C object _deps/sdl2_image-build/external/libtiff/libtiff/CMakeFiles/tiff.dir/tif_dirwrite.c.o
+[ 18%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/decode_core.c.o
+[ 18%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/mix_all.c.o
+[ 18%] Building C object _deps/sdl2_ttf-build/external/freetype/CMakeFiles/freetype.dir/src/base/ftcid.c.o
+[ 18%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/decode_frame.c.o
+[ 19%] Building C object _deps/sdl2_ttf-build/external/freetype/CMakeFiles/freetype.dir/src/base/ftfstype.c.o
+[ 19%] Building C object _deps/sdl2_ttf-build/external/freetype/CMakeFiles/freetype.dir/src/base/ftgasp.c.o
+[ 19%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/decode_parameters.c.o
+[ 19%] Building C object _deps/sdl2_ttf-build/external/freetype/CMakeFiles/freetype.dir/src/base/ftglyph.c.o
+[ 19%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/decode_indices.c.o
+[ 19%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/decode_pulses.c.o
+[ 19%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/rng.c.o
+[ 19%] Building C object _deps/sdl2_ttf-build/external/freetype/CMakeFiles/freetype.dir/src/base/ftgxval.c.o
+[ 19%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/load_helpers.c.o
+[ 19%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/decoder_set_fs.c.o
+[ 19%] Building C object _deps/sdl2_ttf-build/external/freetype/CMakeFiles/freetype.dir/src/base/ftinit.c.o
+[ 19%] Building C object _deps/sdl2_image-build/external/libtiff/libtiff/CMakeFiles/tiff.dir/tif_dumpmode.c.o
+[ 19%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/load.c.o
+[ 20%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/dec_API.c.o
+[ 20%] Building C object _deps/sdl2_ttf-build/external/freetype/CMakeFiles/freetype.dir/src/base/ftmm.c.o
+[ 21%] Building C object _deps/sdl2_image-build/external/libtiff/libtiff/CMakeFiles/tiff.dir/tif_error.c.o
+[ 21%] Building C object _deps/sdl2_image-build/external/libtiff/libtiff/CMakeFiles/tiff.dir/tif_extension.c.o
+[ 22%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/hio.c.o
+[ 22%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/enc_API.c.o
+[ 22%] Building C object _deps/sdl2_ttf-build/external/freetype/CMakeFiles/freetype.dir/src/base/ftotval.c.o
+[ 22%] Building C object _deps/sdl2_image-build/external/libtiff/libtiff/CMakeFiles/tiff.dir/tif_fax3.c.o
+[ 23%] Building C object _deps/sdl2_ttf-build/external/freetype/CMakeFiles/freetype.dir/src/base/ftpatent.c.o
+[ 23%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/hmn_extras.c.o
+[ 23%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/encode_indices.c.o
+[ 23%] Building C object _deps/sdl2_ttf-build/external/freetype/CMakeFiles/freetype.dir/src/base/ftpfr.c.o
+[ 23%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/extras.c.o
+[ 23%] Building C object _deps/sdl2_ttf-build/external/freetype/CMakeFiles/freetype.dir/src/base/ftstroke.c.o
+[ 23%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/encode_pulses.c.o
+[ 23%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/smix.c.o
+[ 23%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/gain_quant.c.o
+[ 23%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/filetype.c.o
+[ 23%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/memio.c.o
+[ 23%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/interpolate.c.o
+[ 23%] Building C object _deps/sdl2_ttf-build/external/freetype/CMakeFiles/freetype.dir/src/base/ftsynth.c.o
+[ 23%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/tempfile.c.o
+[ 23%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/LP_variable_cutoff.c.o
+[ 24%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/mix_paula.c.o
+[ 24%] Building C object _deps/sdl2_image-build/external/libtiff/libtiff/CMakeFiles/tiff.dir/tif_fax3sm.c.o
+[ 24%] Building C object _deps/sdl2_ttf-build/external/freetype/CMakeFiles/freetype.dir/src/base/fttype1.c.o
+[ 25%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/NLSF_decode.c.o
+[ 25%] Building C object _deps/sdl2_ttf-build/external/freetype/CMakeFiles/freetype.dir/src/base/ftwinfnt.c.o
+[ 25%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/miniz_tinfl.c.o
+[ 25%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/NSQ.c.o
+[ 25%] Building C object _deps/sdl2_ttf-build/external/freetype/CMakeFiles/freetype.dir/src/bdf/bdf.c.o
+[ 25%] Building C object _deps/sdl2_image-build/external/libtiff/libtiff/CMakeFiles/tiff.dir/tif_flush.c.o
+[ 25%] Building C object _deps/sdl2_image-build/external/libtiff/libtiff/CMakeFiles/tiff.dir/tif_getimage.c.o
+[ 25%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/win32.c.o
+[ 25%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/common.c.o
+[ 25%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/NSQ_del_dec.c.o
+[ 25%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/iff.c.o
+[ 26%] Building C object _deps/sdl2_ttf-build/external/freetype/CMakeFiles/freetype.dir/src/bzip2/ftbzip2.c.o
+[ 26%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/itsex.c.o
+[ 26%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/PLC.c.o
+[ 26%] Building C object _deps/sdl2_ttf-build/external/freetype/CMakeFiles/freetype.dir/src/cache/ftcache.c.o
+[ 26%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/lzw.c.o
+[ 26%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/shell_coder.c.o
+[ 27%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/voltable.c.o
+[ 27%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/sample.c.o
+[ 27%] Building C object _deps/sdl2_image-build/external/libtiff/libtiff/CMakeFiles/tiff.dir/tif_jbig.c.o
+[ 27%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/tables_gain.c.o
+[ 27%] Building C object _deps/sdl2_ttf-build/external/freetype/CMakeFiles/freetype.dir/src/cff/cff.c.o
+[ 28%] Building C object _deps/sdl2_image-build/external/libtiff/libtiff/CMakeFiles/tiff.dir/tif_jpeg.c.o
+[ 28%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/vorbis.c.o
+[ 28%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/tables_LTP.c.o
+[ 28%] Building C object _deps/sdl2_image-build/external/libtiff/libtiff/CMakeFiles/tiff.dir/tif_jpeg_12.c.o
+[ 29%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/tables_NLSF_CB_NB_MB.c.o
+[ 29%] Building C object _deps/sdl2_image-build/external/libtiff/libtiff/CMakeFiles/tiff.dir/tif_luv.c.o
+[ 29%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/tables_NLSF_CB_WB.c.o
+/home/runner/work/CNEngine/CNEngine/build/linux-i386/_deps/sdl2_image-src/external/libtiff/libtiff/tif_luv.c:828:18: warning: argument 1 of type ‘float[3]’ with mismatched bound [-Warray-parameter=]
+  828 | XYZtoRGB24(float xyz[3], uint8 rgb[3])
+      |            ~~~~~~^~~~~~
+In file included from /home/runner/work/CNEngine/CNEngine/build/linux-i386/_deps/sdl2_image-src/external/libtiff/libtiff/tiffiop.h:64,
+                 from /home/runner/work/CNEngine/CNEngine/build/linux-i386/_deps/sdl2_image-src/external/libtiff/libtiff/tif_luv.c:25:
+/home/runner/work/CNEngine/CNEngine/build/linux-i386/_deps/sdl2_image-src/external/libtiff/libtiff/tiffio.h:511:24: note: previously declared as ‘float *’
+  511 | extern void XYZtoRGB24(float*, uint8*);
+      |                        ^~~~~~
+/home/runner/work/CNEngine/CNEngine/build/linux-i386/_deps/sdl2_image-src/external/libtiff/libtiff/tif_luv.c:828:32: warning: argument 2 of type ‘uint8[3]’ {aka ‘unsigned char[3]’} with mismatched bound [-Warray-parameter=]
+  828 | XYZtoRGB24(float xyz[3], uint8 rgb[3])
+      |                          ~~~~~~^~~~~~
+/home/runner/work/CNEngine/CNEngine/build/linux-i386/_deps/sdl2_image-src/external/libtiff/libtiff/tiffio.h:511:32: note: previously declared as ‘uint8 *’ {aka ‘unsigned char *’}
+  511 | extern void XYZtoRGB24(float*, uint8*);
+      |                                ^~~~~~
+/home/runner/work/CNEngine/CNEngine/build/linux-i386/_deps/sdl2_image-src/external/libtiff/libtiff/tif_luv.c:982:31: warning: argument 2 of type ‘float[3]’ with mismatched bound [-Warray-parameter=]
+  982 | LogLuv24toXYZ(uint32 p, float XYZ[3])
+      |                         ~~~~~~^~~~~~
+/home/runner/work/CNEngine/CNEngine/build/linux-i386/_deps/sdl2_image-src/external/libtiff/libtiff/tiffio.h:513:35: note: previously declared as ‘float *’
+  513 | extern void LogLuv24toXYZ(uint32, float*);
+      |                                   ^~~~~~
+/home/runner/work/CNEngine/CNEngine/build/linux-i386/_deps/sdl2_image-src/external/libtiff/libtiff/tif_luv.c:1010:23: warning: argument 1 of type ‘float[3]’ with mismatched bound [-Warray-parameter=]
+ 1010 | LogLuv24fromXYZ(float XYZ[3], int em)
+      |                 ~~~~~~^~~~~~
+/home/runner/work/CNEngine/CNEngine/build/linux-i386/_deps/sdl2_image-src/external/libtiff/libtiff/tiffio.h:525:31: note: previously declared as ‘float *’
+  525 | extern uint32 LogLuv24fromXYZ(float*, int);
+      |                               ^~~~~~
+/home/runner/work/CNEngine/CNEngine/build/linux-i386/_deps/sdl2_image-src/external/libtiff/libtiff/tif_luv.c:1123:31: warning: argument 2 of type ‘float[3]’ with mismatched bound [-Warray-parameter=]
+ 1123 | LogLuv32toXYZ(uint32 p, float XYZ[3])
+      |                         ~~~~~~^~~~~~
+/home/runner/work/CNEngine/CNEngine/build/linux-i386/_deps/sdl2_image-src/external/libtiff/libtiff/tiffio.h:514:35: note: previously declared as ‘float *’
+  514 | extern void LogLuv32toXYZ(uint32, float*);
+      |                                   ^~~~~~
+/home/runner/work/CNEngine/CNEngine/build/linux-i386/_deps/sdl2_image-src/external/libtiff/libtiff/tif_luv.c:1148:23: warning: argument 1 of type ‘float[3]’ with mismatched bound [-Warray-parameter=]
+ 1148 | LogLuv32fromXYZ(float XYZ[3], int em)
+      |                 ~~~~~~^~~~~~
+/home/runner/work/CNEngine/CNEngine/build/linux-i386/_deps/sdl2_image-src/external/libtiff/libtiff/tiffio.h:526:31: note: previously declared as ‘float *’
+  526 | extern uint32 LogLuv32fromXYZ(float*, int);
+      |                               ^~~~~~
+[ 29%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/tables_other.c.o
+[ 29%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/tables_pitch_lag.c.o
+[ 29%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/tables_pulses_per_block.c.o
+[ 29%] Building C object _deps/sdl2_image-build/external/libtiff/libtiff/CMakeFiles/tiff.dir/tif_lzma.c.o
+[ 29%] Building C object _deps/sdl2_image-build/external/libtiff/libtiff/CMakeFiles/tiff.dir/tif_lzw.c.o
+[ 29%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/VAD.c.o
+[ 29%] Building C object _deps/sdl2_ttf-build/external/freetype/CMakeFiles/freetype.dir/src/cid/type1cid.c.o
+[ 29%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/control_audio_bandwidth.c.o
+[ 29%] Building C object _deps/sdl2_image-build/external/libtiff/libtiff/CMakeFiles/tiff.dir/tif_next.c.o
+[ 29%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/quant_LTP_gains.c.o
+[ 29%] Building C object _deps/sdl2_image-build/external/libtiff/libtiff/CMakeFiles/tiff.dir/tif_ojpeg.c.o
+[ 30%] Building C object _deps/sdl2_image-build/external/libtiff/libtiff/CMakeFiles/tiff.dir/tif_open.c.o
+[ 30%] Building C object _deps/sdl2_ttf-build/external/freetype/CMakeFiles/freetype.dir/src/gzip/ftgzip.c.o
+[ 30%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/xm_load.c.o
+[ 31%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/VQ_WMat_EC.c.o
+[ 31%] Building C object _deps/sdl2_image-build/external/libtiff/libtiff/CMakeFiles/tiff.dir/tif_packbits.c.o
+[ 31%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/HP_variable_cutoff.c.o
+[ 31%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/mod_load.c.o
+[ 31%] Building C object _deps/sdl2_image-build/external/libtiff/libtiff/CMakeFiles/tiff.dir/tif_pixarlog.c.o
+[ 31%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/NLSF_encode.c.o
+[ 31%] Building C object _deps/sdl2_image-build/external/libtiff/libtiff/CMakeFiles/tiff.dir/tif_predict.c.o
+[ 31%] Building C object _deps/sdl2_ttf-build/external/freetype/CMakeFiles/freetype.dir/src/lzw/ftlzw.c.o
+[ 31%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/NLSF_VQ.c.o
+[ 31%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/s3m_load.c.o
+[ 31%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/NLSF_unpack.c.o
+[ 31%] Building C object _deps/sdl2_image-build/external/libtiff/libtiff/CMakeFiles/tiff.dir/tif_print.c.o
+[ 31%] Building C object _deps/sdl2_ttf-build/external/freetype/CMakeFiles/freetype.dir/src/pcf/pcf.c.o
+[ 31%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/stm_load.c.o
+[ 31%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/NLSF_del_dec_quant.c.o
+[ 31%] Building C object _deps/sdl2_image-build/external/libtiff/libtiff/CMakeFiles/tiff.dir/tif_read.c.o
+[ 31%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/669_load.c.o
+[ 31%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/process_NLSFs.c.o
+[ 32%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/far_load.c.o
+[ 33%] Building C object _deps/sdl2_ttf-build/external/freetype/CMakeFiles/freetype.dir/src/pfr/pfr.c.o
+[ 34%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/stereo_LR_to_MS.c.o
+[ 34%] Building C object _deps/sdl2_image-build/external/libtiff/libtiff/CMakeFiles/tiff.dir/tif_strip.c.o
+[ 34%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/mtm_load.c.o
+[ 34%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/stereo_MS_to_LR.c.o
+[ 34%] Building C object _deps/sdl2_image-build/external/libtiff/libtiff/CMakeFiles/tiff.dir/tif_swab.c.o
+[ 34%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/ptm_load.c.o
+[ 34%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/check_control_input.c.o
+[ 35%] Building C object _deps/sdl2_image-build/external/libtiff/libtiff/CMakeFiles/tiff.dir/tif_thunder.c.o
+[ 35%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/okt_load.c.o
+[ 35%] Building C object _deps/sdl2_ttf-build/external/freetype/CMakeFiles/freetype.dir/src/psaux/psaux.c.o
+[ 35%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/control_SNR.c.o
+[ 35%] Building C object _deps/sdl2_image-build/external/libtiff/libtiff/CMakeFiles/tiff.dir/tif_tile.c.o
+[ 35%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/ult_load.c.o
+[ 35%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/init_encoder.c.o
+[ 35%] Building C object _deps/sdl2_image-build/external/libtiff/libtiff/CMakeFiles/tiff.dir/tif_version.c.o
+[ 35%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/control_codec.c.o
+[ 35%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/mdl_load.c.o
+[ 35%] Building C object _deps/sdl2_image-build/external/libtiff/libtiff/CMakeFiles/tiff.dir/tif_warning.c.o
+[ 35%] Building C object _deps/sdl2_image-build/external/libtiff/libtiff/CMakeFiles/tiff.dir/tif_webp.c.o
+[ 35%] Building C object _deps/sdl2_image-build/external/libtiff/libtiff/CMakeFiles/tiff.dir/tif_write.c.o
+[ 35%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/A2NLSF.c.o
+[ 35%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/it_load.c.o
+[ 36%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/ana_filt_bank_1.c.o
+[ 36%] Building C object _deps/sdl2_image-build/external/libtiff/libtiff/CMakeFiles/tiff.dir/tif_zip.c.o
+[ 36%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/biquad_alt.c.o
+[ 37%] Building C object _deps/sdl2_image-build/external/libtiff/libtiff/CMakeFiles/tiff.dir/tif_zstd.c.o
+[ 37%] Building C object _deps/sdl2_image-build/external/libtiff/libtiff/CMakeFiles/tiff.dir/tif_unix.c.o
+[ 37%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/bwexpander_32.c.o
+[ 38%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/stx_load.c.o
+[ 38%] Building C object _deps/sdl2_image-build/external/libtiff/libtiff/CMakeFiles/tiff.dir/__/port/dummy.c.o
+[ 38%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/bwexpander.c.o
+[ 38%] Linking C shared library libtiff.so
+[ 38%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/debug.c.o
+[ 38%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/pt3_load.c.o
+[ 38%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/decode_pitch.c.o
+[ 38%] Building C object _deps/sdl2_ttf-build/external/freetype/CMakeFiles/freetype.dir/src/pshinter/pshinter.c.o
+[ 38%] Built target tiff
+[ 38%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/sfx_load.c.o
+[ 38%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/inner_prod_aligned.c.o
+[ 39%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/lin2log.c.o
+[ 39%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/flt_load.c.o
+[ 39%] Building C object _deps/sdl2_ttf-build/external/freetype/CMakeFiles/freetype.dir/src/psnames/psnames.c.o
+[ 39%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/log2lin.c.o
+[ 39%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/LPC_analysis_filter.c.o
+[ 39%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/st_load.c.o
+[ 39%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/LPC_inv_pred_gain.c.o
+[ 39%] Building C object _deps/sdl2-build/CMakeFiles/SDL2_test.dir/src/test/SDL_test_assert.c.o
+[ 39%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/emod_load.c.o
+[ 39%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/table_LSF_cos.c.o
+[ 39%] Building C object _deps/sdl2_ttf-build/external/freetype/CMakeFiles/freetype.dir/src/raster/raster.c.o
+[ 39%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/imf_load.c.o
+[ 39%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/NLSF2A.c.o
+[ 39%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/NLSF_stabilize.c.o
+[ 40%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/digi_load.c.o
+[ 40%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/fnk_load.c.o
+[ 40%] Building C object _deps/sdl2_ttf-build/external/freetype/CMakeFiles/freetype.dir/src/sdf/sdf.c.o
+[ 41%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/NLSF_VQ_weights_laroia.c.o
+[ 41%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/pitch_est_tables.c.o
+[ 41%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/ice_load.c.o
+[ 41%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/resampler.c.o
+[ 41%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/liq_load.c.o
+[ 41%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/resampler_down2_3.c.o
+[ 41%] Building C object _deps/sdl2_ttf-build/external/freetype/CMakeFiles/freetype.dir/src/sfnt/sfnt.c.o
+[ 41%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/ims_load.c.o
+[ 41%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/resampler_down2.c.o
+[ 41%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/resampler_private_AR2.c.o
+[ 41%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/masi_load.c.o
+[ 41%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/resampler_private_down_FIR.c.o
+[ 41%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/masi16_load.c.o
+[ 41%] Building C object _deps/sdl2-build/CMakeFiles/SDL2_test.dir/src/test/SDL_test_common.c.o
+[ 42%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/resampler_private_IIR_FIR.c.o
+[ 43%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/amf_load.c.o
+[ 43%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/resampler_private_up2_HQ.c.o
+[ 43%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/stim_load.c.o
+[ 43%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/resampler_rom.c.o
+[ 43%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/sigm_Q15.c.o
+[ 43%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/mmd_common.c.o
+[ 43%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/sort.c.o
+[ 43%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/mmd1_load.c.o
+[ 43%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/sum_sqr_shift.c.o
+[ 43%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/stereo_decode_pred.c.o
+[ 43%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/mmd3_load.c.o
+[ 44%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/stereo_encode_pred.c.o
+[ 44%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/rtm_load.c.o
+[ 44%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/stereo_find_predictor.c.o
+[ 44%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/dt_load.c.o
+[ 44%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/stereo_quant_pred.c.o
+[ 45%] Building C object _deps/sdl2_ttf-build/external/freetype/CMakeFiles/freetype.dir/src/smooth/smooth.c.o
+[ 45%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/LPC_fit.c.o
+[ 46%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/no_load.c.o
+[ 46%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/celt/bands.c.o
+[ 46%] Building C object _deps/sdl2_ttf-build/external/freetype/CMakeFiles/freetype.dir/src/svg/svg.c.o
+[ 46%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/arch_load.c.o
+[ 46%] Building C object _deps/sdl2_ttf-build/external/freetype/CMakeFiles/freetype.dir/src/truetype/truetype.c.o
+[ 47%] Building C object _deps/sdl2-build/CMakeFiles/SDL2_test.dir/src/test/SDL_test_compare.c.o
+[ 47%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/sym_load.c.o
+[ 47%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/med2_load.c.o
+[ 47%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/celt/celt.c.o
+[ 47%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/med3_load.c.o
+[ 47%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/celt/celt_encoder.c.o
+[ 47%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/med4_load.c.o
+[ 47%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/dbm_load.c.o
+[ 48%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/umx_load.c.o
+[ 48%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/gdm_load.c.o
+[ 50%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/celt/celt_decoder.c.o
+[ 50%] Building C object _deps/sdl2-build/CMakeFiles/SDL2_test.dir/src/test/SDL_test_crc32.c.o
+[ 50%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/pw_load.c.o
+[ 50%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/gal5_load.c.o
+[ 50%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/celt/cwrs.c.o
+[ 50%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/gal4_load.c.o
+[ 50%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/celt/entcode.c.o
+[ 50%] Building C object _deps/sdl2_ttf-build/external/freetype/CMakeFiles/freetype.dir/src/type1/type1.c.o
+[ 50%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/mfp_load.c.o
+[ 50%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/celt/entdec.c.o
+[ 50%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/asylum_load.c.o
+[ 50%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/celt/entenc.c.o
+[ 51%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/muse_load.c.o
+[ 51%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/celt/kiss_fft.c.o
+[ 51%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/hmn_load.c.o
+[ 51%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/mgt_load.c.o
+[ 51%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/celt/laplace.c.o
+[ 51%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/chip_load.c.o
+[ 51%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/celt/mathops.c.o
+[ 51%] Building C object _deps/sdl2_ttf-build/external/freetype/CMakeFiles/freetype.dir/src/type42/type42.c.o
+[ 51%] Building C object _deps/sdl2-build/CMakeFiles/SDL2_test.dir/src/test/SDL_test_font.c.o
+[ 51%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/abk_load.c.o
+[ 52%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/celt/mdct.c.o
+[ 52%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/celt/modes.c.o
+[ 52%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/coco_load.c.o
+[ 52%] Building C object _deps/sdl2_ttf-build/external/freetype/CMakeFiles/freetype.dir/src/winfonts/winfnt.c.o
+[ 52%] Building C object _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/src/loaders/xmf_load.c.o
+[ 52%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/celt/pitch.c.o
+[ 53%] Linking C shared library libxmp.so
+[ 53%] Building C object _deps/sdl2_ttf-build/external/freetype/CMakeFiles/freetype.dir/builds/unix/ftsystem.c.o
+[ 53%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/celt/celt_lpc.c.o
+/usr/bin/ld: CMakeFiles/xmp_shared.dir/src/period.c.o: in function `libxmp_round':
+period.c:(.text+0x40): undefined reference to `floor'
+/usr/bin/ld: period.c:(.text+0x61): undefined reference to `ceil'
+/usr/bin/ld: CMakeFiles/xmp_shared.dir/src/period.c.o: in function `libxmp_note_to_period':
+period.c:(.text+0x1a0): undefined reference to `pow'
+/usr/bin/ld: period.c:(.text+0x1e1): undefined reference to `pow'
+/usr/bin/ld: CMakeFiles/xmp_shared.dir/src/period.c.o: in function `libxmp_note_to_period_mix':
+period.c:(.text+0x258): undefined reference to `pow'
+/usr/bin/ld: CMakeFiles/xmp_shared.dir/src/period.c.o: in function `libxmp_period_to_note':
+period.c:(.text+0x2a1): undefined reference to `log'
+/usr/bin/ld: CMakeFiles/xmp_shared.dir/src/period.c.o: in function `libxmp_period_to_bend':
+period.c:(.text+0x3c8): undefined reference to `log'
+/usr/bin/ld: period.c:(.text+0x42f): undefined reference to `log'
+/usr/bin/ld: CMakeFiles/xmp_shared.dir/src/period.c.o: in function `libxmp_c2spd_to_note':
+period.c:(.text+0x4b2): undefined reference to `log'
+/usr/bin/ld: CMakeFiles/xmp_shared.dir/src/filter.c.o: in function `libxmp_filter_setup':
+filter.c:(.text+0x81): undefined reference to `powf'
+/usr/bin/ld: CMakeFiles/xmp_shared.dir/src/mixer.c.o: in function `libxmp_mixer_softmixer':
+mixer.c:(.text+0x133f): undefined reference to `ceil'
+/usr/bin/ld: mixer.c:(.text+0x13fd): undefined reference to `ceil'
+/usr/bin/ld: CMakeFiles/xmp_shared.dir/src/loaders/vorbis.c.o: in function `lookup1_values':
+vorbis.c:(.text+0xcba): undefined reference to `log'
+/usr/bin/ld: vorbis.c:(.text+0xcd7): undefined reference to `exp'
+/usr/bin/ld: vorbis.c:(.text+0xd18): undefined reference to `pow'
+/usr/bin/ld: vorbis.c:(.text+0xd2a): undefined reference to `floor'
+/usr/bin/ld: vorbis.c:(.text+0xd6f): undefined reference to `pow'
+/usr/bin/ld: vorbis.c:(.text+0xd9d): undefined reference to `pow'
+/usr/bin/ld: vorbis.c:(.text+0xdaf): undefined reference to `floor'
+/usr/bin/ld: CMakeFiles/xmp_shared.dir/src/loaders/vorbis.c.o: in function `compute_twiddle_factors':
+vorbis.c:(.text+0xe3e): undefined reference to `cos'
+/usr/bin/ld: vorbis.c:(.text+0xe80): undefined reference to `sin'
+/usr/bin/ld: vorbis.c:(.text+0xed5): undefined reference to `cos'
+/usr/bin/ld: vorbis.c:(.text+0xf27): undefined reference to `sin'
+/usr/bin/ld: vorbis.c:(.text+0xf9c): undefined reference to `cos'
+/usr/bin/ld: vorbis.c:(.text+0xfe0): undefined reference to `sin'
+/usr/bin/ld: CMakeFiles/xmp_shared.dir/src/loaders/vorbis.c.o: in function `compute_window':
+vorbis.c:(.text+0x1072): undefined reference to `sin'
+/usr/bin/ld: vorbis.c:(.text+0x109e): undefined reference to `sin'
+collect2: error: ld returned 1 exit status
+gmake[2]: *** [_deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/build.make:1573: _deps/sdl2_mixer-build/external/libxmp/libxmp.so.4.6.1] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:1040: _deps/sdl2_mixer-build/external/libxmp/CMakeFiles/xmp_shared.dir/all] Error 2
+gmake[1]: *** Waiting for unfinished jobs....
+[ 53%] Building C object _deps/sdl2-build/CMakeFiles/SDL2_test.dir/src/test/SDL_test_fuzzer.c.o
+[ 54%] Building C object _deps/sdl2_ttf-build/external/freetype/CMakeFiles/freetype.dir/src/base/ftdebug.c.o
+[ 54%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/celt/quant_bands.c.o
+[ 54%] Linking CXX static library libfreetype.a
+[ 54%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/celt/rate.c.o
+[ 54%] Building C object _deps/sdl2-build/CMakeFiles/SDL2_test.dir/src/test/SDL_test_harness.c.o
+[ 54%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/celt/vq.c.o
+[ 55%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/float/apply_sine_window_FLP.c.o
+[ 55%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/float/corrMatrix_FLP.c.o
+[ 55%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/float/encode_frame_FLP.c.o
+[ 55%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/float/find_LPC_FLP.c.o
+[ 55%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/float/find_LTP_FLP.c.o
+[ 55%] Building C object _deps/sdl2-build/CMakeFiles/SDL2_test.dir/src/test/SDL_test_imageBlit.c.o
+[ 55%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/float/find_pitch_lags_FLP.c.o
+[ 55%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/float/find_pred_coefs_FLP.c.o
+[ 56%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/float/LPC_analysis_filter_FLP.c.o
+[ 56%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/float/LTP_analysis_filter_FLP.c.o
+[ 56%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/float/LTP_scale_ctrl_FLP.c.o
+[ 56%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/float/noise_shape_analysis_FLP.c.o
+[ 56%] Building C object _deps/sdl2-build/CMakeFiles/SDL2_test.dir/src/test/SDL_test_imageBlitBlend.c.o
+[ 56%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/float/process_gains_FLP.c.o
+[ 56%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/float/regularize_correlations_FLP.c.o
+[ 56%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/float/residual_energy_FLP.c.o
+[ 57%] Building C object _deps/sdl2-build/CMakeFiles/SDL2_test.dir/src/test/SDL_test_imageFace.c.o
+[ 58%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/float/warped_autocorrelation_FLP.c.o
+[ 58%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/float/wrappers_FLP.c.o
+[ 58%] Building C object _deps/sdl2-build/CMakeFiles/SDL2_test.dir/src/test/SDL_test_imagePrimitives.c.o
+[ 58%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/float/autocorrelation_FLP.c.o
+[ 58%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/float/burg_modified_FLP.c.o
+[ 58%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/float/bwexpander_FLP.c.o
+[ 58%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/float/energy_FLP.c.o
+[ 58%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/float/inner_product_FLP.c.o
+[ 59%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/float/k2a_FLP.c.o
+[ 59%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/float/LPC_inv_pred_gain_FLP.c.o
+[ 59%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/float/pitch_analysis_core_FLP.c.o
+[ 59%] Building C object _deps/sdl2-build/CMakeFiles/SDL2_test.dir/src/test/SDL_test_imagePrimitivesBlend.c.o
+[ 59%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/float/scale_copy_vector_FLP.c.o
+[ 59%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/float/scale_vector_FLP.c.o
+[ 59%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/float/schur_FLP.c.o
+[ 59%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/float/sort_FLP.c.o
+[ 60%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/celt/x86/x86cpu.c.o
+[ 60%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/celt/x86/x86_celt_map.c.o
+[ 60%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/x86/x86_silk_map.c.o
+[ 60%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/celt/x86/pitch_sse.c.o
+[ 60%] Building C object _deps/sdl2-build/CMakeFiles/SDL2_test.dir/src/test/SDL_test_log.c.o
+[ 60%] Building C object _deps/sdl2-build/CMakeFiles/SDL2_test.dir/src/test/SDL_test_md5.c.o
+[ 60%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/celt/x86/pitch_sse2.c.o
+[ 60%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/celt/x86/vq_sse2.c.o
+[ 60%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/celt/x86/celt_lpc_sse4_1.c.o
+[ 60%] Building C object _deps/sdl2-build/CMakeFiles/SDL2_test.dir/src/test/SDL_test_memory.c.o
+[ 61%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/celt/x86/pitch_sse4_1.c.o
+[ 61%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/x86/NSQ_sse4_1.c.o
+[ 61%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/x86/NSQ_del_dec_sse4_1.c.o
+[ 61%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/x86/VAD_sse4_1.c.o
+[ 61%] Building C object _deps/sdl2-build/CMakeFiles/SDL2_test.dir/src/test/SDL_test_random.c.o
+[ 61%] Building C object _deps/sdl2_mixer-build/external/opus/CMakeFiles/opus.dir/silk/x86/VQ_WMat_EC_sse4_1.c.o
+[ 61%] Linking C shared library libopus.so
+[ 61%] Built target opus
+[ 62%] Linking C static library libSDL2_test.a
+[ 62%] Built target SDL2_test
+[ 62%] Built target freetype
+gmake: *** [Makefile:156: all] Error 2
+Error: Process completed with exit code 2.
