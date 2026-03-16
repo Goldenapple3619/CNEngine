@@ -2,8 +2,6 @@
 
 CN_API cnbool start_graphics(void)
 {
-    if (SDL_Init(SDL_INIT_TIMER) != 0)
-        return (false);
     if (SDL_Init(SDL_INIT_VIDEO) != 0)
         return (false);
     if (SDL_Init(SDL_INIT_EVENTS) != 0)
@@ -17,6 +15,7 @@ CN_API cnbool start_graphics(void)
 
 CN_API void end_graphics(void)
 {
-    IMG_Quit();
-    SDL_Quit();
+    (void)SDL_QuitSubSystem(SDL_INIT_EVENTS);
+    (void)SDL_QuitSubSystem(SDL_INIT_VIDEO);
+    (void)IMG_Quit();
 }

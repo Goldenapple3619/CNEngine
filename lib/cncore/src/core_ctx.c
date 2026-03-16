@@ -8,6 +8,9 @@ static cn_value _init(Object *__this, void **args)
     (void)args;
     PREP_INIT()
 
+    if (!start_core())
+        return (VALUE_ERR);
+
     INIT_STRING(__this, "ctx", "name");
     INIT_INT(__this, 0, "is_running");
     INIT_FLOAT(__this, 0.0, "dt");
@@ -76,6 +79,9 @@ static cn_value _del(Object *__this, void **args)
 
         delete_object_vector(vec);
     }
+
+    end_core();
+
     return (null_value);
 }
 

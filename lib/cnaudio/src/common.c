@@ -12,6 +12,6 @@ CN_API cnbool start_audio(void)
 
 CN_API void end_audio(void)
 {
-    Mix_CloseAudio();
-    SDL_Quit();
+    (void)Mix_CloseAudio();
+    (void)SDL_QuitSubSystem(SDL_INIT_AUDIO);
 };

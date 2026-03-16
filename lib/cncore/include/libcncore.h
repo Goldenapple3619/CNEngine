@@ -200,4 +200,7 @@
     uint8_t _attr_map_resize(struct attr_map_s *map, size_t new_capacity);
     void _delete_object_attrs(struct attr_map_s *attribute_map);
 
+    CN_API cnbool start_core(void);
+    CN_API void end_core(void);
+
 #endif

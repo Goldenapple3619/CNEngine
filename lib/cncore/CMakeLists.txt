@@ -12,6 +12,7 @@ add_library(cncore SHARED
     src/object_attributes.c
     src/object_map.c
     src/core_ctx.c
+    src/common.c
 )
 
 target_compile_options(cncore
