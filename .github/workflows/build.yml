@@ -27,7 +27,7 @@ jobs:
         run: |
           sudo dpkg --add-architecture i386
           sudo apt update
-          sudo apt install -y gcc-multilib g++-multilib libc6-dev-i386 lib32gcc-s1
+          sudo apt install -y gcc-multilib g++-multilib libc6-dev-i386 lib32z1 lib32ncurses6 lib32gcc-s1
 
       - name: Build linux-i386
         run: |
@@ -88,7 +88,8 @@ jobs:
 
       - name: Install mingw
         run: |
-          choco install mingw -y
+          choco install winlibs --x86
+          choco install mingw
           setx PATH "$env:PATH;C:\tools\mingw64\bin"
         shell: powershell
 
@@ -123,6 +124,7 @@ jobs:
       - name: Install mingw
         run: |
           choco install mingw -y
+          choco install mingw-w64 -y
           setx PATH "$env:PATH;C:\tools\mingw64\bin"
         shell: powershell
 

@@ -130,6 +130,8 @@ if(CN_BUILD_GAME)
             # cninput
     )
 
+    target_link_libraries(cn_engine PRIVATE m)
+
     target_include_directories(cn_engine
         PRIVATE
             lib/cncore/include
