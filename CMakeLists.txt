@@ -52,12 +52,12 @@ set(SDL2IMAGE_WEBP OFF CACHE BOOL "" FORCE)
 if(WIN32)
     if(TARGET_ARCH STREQUAL "i386")
         set(SDL2IMAGE_EXTERNAL_PROJECT_CMAKE_ARGS
-            -DCMAKE_TOOLCHAIN_FILE=${CMAKE_CURRENT_LIST_DIR}/mingw_toolchain-i386.cmake
+            -DCMAKE_TOOLCHAIN_FILE=${CMAKE_CURRENT_LIST_DIR}/toolchain/mingw_toolchain-i386.cmake
             -DCMAKE_BUILD_TYPE=Release
         )
     elseif(TARGET_ARCH STREQUAL "amd64")
         set(SDL2IMAGE_EXTERNAL_PROJECT_CMAKE_ARGS
-            -DCMAKE_TOOLCHAIN_FILE=${CMAKE_CURRENT_LIST_DIR}/mingw_toolchain-amd64.cmake
+            -DCMAKE_TOOLCHAIN_FILE=${CMAKE_CURRENT_LIST_DIR}/toolchain/mingw_toolchain-amd64.cmake
             -DCMAKE_BUILD_TYPE=Release
         )
     endif()
@@ -118,7 +118,7 @@ add_subdirectory(lib/cnaudio)
 # ========= Game executable =========
 if(CN_BUILD_GAME)
     add_executable(cn_engine
-        main.c
+        src/main.c
     )
 
     target_compile_options(cn_engine

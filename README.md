@@ -1,2 +1,2 @@
 # CNEngine
-[![GitHub Actions Status](https://github.com/Goldenapple3619/CNEngine/actions/workflows/build.yml/badge.svg)](https://github.com/Goldenapple3619/CNEngine/actions/workflows/build.yml) [![GitHub Actions Status](https://github.com/Goldenapple3619/CNEngine/actions/workflows/tests.yml/badge.svg)](https://github.com/Goldenapple3619/CNEngine/actions/workflows/tests.yml)
+[![GitHub Actions Status](https://github.com/Goldenapple3619/CNEngine/actions/workflows/build.yml/badge.svg)](https://github.com/Goldenapple3619/CNEngine/actions/workflows/build.yml) [![GitHub Actions Status](https://github.com/Goldenapple3619/CNEngine/actions/workflows/documentation.yml/badge.svg)](https://github.com/Goldenapple3619/CNEngine/actions/workflows/documentation.yml)

@@ -4,7 +4,7 @@ set -e
 mkdir -p build/windows-amd64
 cd build/windows-amd64
 
-cmake ../.. -DCMAKE_TOOLCHAIN_FILE=../../mingw_toolchain-amd64.cmake \
+cmake ../.. -DCMAKE_TOOLCHAIN_FILE=../../toolchain/mingw_toolchain-amd64.cmake \
     -DDIST_DIR=../../dist/windows-amd64 \
     -DSDL2_IMAGE=ON \
     -DSDL2_MIXER=ON \

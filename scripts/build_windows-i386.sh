@@ -5,7 +5,7 @@ mkdir -p build/windows-i386
 cd build/windows-i386
 
 cmake ../.. \
-    -DCMAKE_TOOLCHAIN_FILE=../../mingw_toolchain-i386.cmake \
+    -DCMAKE_TOOLCHAIN_FILE=../../toolchain/mingw_toolchain-i386.cmake \
     -DDIST_DIR=../../dist/windows-i386 \
     -DSDL2_IMAGE=ON \
     -DSDL2_MIXER=ON \
