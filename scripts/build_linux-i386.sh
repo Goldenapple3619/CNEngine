@@ -13,6 +13,6 @@ cmake ../.. \
     -DCMAKE_CXX_FLAGS="-m32" \
     -DTARGET_ARCH="i386" \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.20
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 
 cmake --build . -- -j$(nproc)
