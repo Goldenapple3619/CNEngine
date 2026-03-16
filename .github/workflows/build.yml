@@ -96,8 +96,11 @@ jobs:
           C:\tools\msys64\usr\bin\bash.exe -lc "pacman -Syu --noconfirm"
           C:\tools\msys64\usr\bin\bash.exe -lc "pacman -S --noconfirm mingw-w64-i686-toolchain base-devel"
 
-          dir C:\msys64\mingw32\bin
-          dir C:\msys64\mingw64\bin
+          Write-Host "=== mingw32/bin contents ==="
+          Get-ChildItem "C:\msys64\mingw32\bin" | ForEach-Object { Write-Host $_.FullName }
+
+          Write-Host "=== mingw64/bin contents ==="
+          Get-ChildItem "C:\msys64\mingw64\bin" | ForEach-Object { Write-Host $_.FullName }
 
           $env:Path = "C:\msys64\mingw32\bin;C:\msys64\mingw64\bin;$env:Path"
 
@@ -139,8 +142,11 @@ jobs:
           C:\tools\msys64\usr\bin\bash.exe -lc "pacman -Syu --noconfirm"
           C:\tools\msys64\usr\bin\bash.exe -lc "pacman -S --noconfirm mingw-w64-x86_64-toolchain base-devel"
 
-          dir C:\msys64\mingw32\bin
-          dir C:\msys64\mingw64\bin
+          Write-Host "=== mingw32/bin contents ==="
+          Get-ChildItem "C:\msys64\mingw32\bin" | ForEach-Object { Write-Host $_.FullName }
+
+          Write-Host "=== mingw64/bin contents ==="
+          Get-ChildItem "C:\msys64\mingw64\bin" | ForEach-Object { Write-Host $_.FullName }
 
           $env:Path = "C:\msys64\mingw32\bin;C:\msys64\mingw64\bin;$env:Path"
         shell: powershell
