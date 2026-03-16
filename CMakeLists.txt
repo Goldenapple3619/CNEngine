@@ -53,25 +53,16 @@ if(WIN32)
     if(TARGET_ARCH STREQUAL "i386")
         set(SDL2IMAGE_EXTERNAL_PROJECT_CMAKE_ARGS
             -DCMAKE_TOOLCHAIN_FILE=${CMAKE_CURRENT_LIST_DIR}/mingw_toolchain-i386.cmake
-            -DLIBAVIF_VENDORED=ON
-            -DDAV1D_VENDORED=ON
-            -DLIBAVIF_ENABLE_TOOLS=OFF
             -DCMAKE_BUILD_TYPE=Release
         )
     elseif(TARGET_ARCH STREQUAL "amd64")
         set(SDL2IMAGE_EXTERNAL_PROJECT_CMAKE_ARGS
             -DCMAKE_TOOLCHAIN_FILE=${CMAKE_CURRENT_LIST_DIR}/mingw_toolchain-amd64.cmake
-            -DLIBAVIF_VENDORED=ON
-            -DDAV1D_VENDORED=ON
-            -DLIBAVIF_ENABLE_TOOLS=OFF
             -DCMAKE_BUILD_TYPE=Release
         )
     endif()
 else()
     set(SDL2IMAGE_EXTERNAL_PROJECT_CMAKE_ARGS
-        -DLIBAVIF_VENDORED=ON
-        -DDAV1D_VENDORED=ON
-        -DLIBAVIF_ENABLE_TOOLS=OFF
         -DCMAKE_BUILD_TYPE=Release
     )
 endif()
