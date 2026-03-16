@@ -21,4 +21,5 @@ target_link_libraries(cnaudio
         cncore
         SDL2::SDL2
         SDL2_mixer::SDL2_mixer
+        m
 )

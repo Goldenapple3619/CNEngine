@@ -56,6 +56,7 @@ if(WIN32)
             -DLIBAVIF_VENDORED=ON
             -DDAV1D_VENDORED=ON
             -DLIBAVIF_ENABLE_TOOLS=OFF
+            -DCMAKE_BUILD_TYPE=Release
         )
     elseif(TARGET_ARCH STREQUAL "amd64")
         set(SDL2IMAGE_EXTERNAL_PROJECT_CMAKE_ARGS
@@ -63,6 +64,7 @@ if(WIN32)
             -DLIBAVIF_VENDORED=ON
             -DDAV1D_VENDORED=ON
             -DLIBAVIF_ENABLE_TOOLS=OFF
+            -DCMAKE_BUILD_TYPE=Release
         )
     endif()
 else()
@@ -70,6 +72,7 @@ else()
         -DLIBAVIF_VENDORED=ON
         -DDAV1D_VENDORED=ON
         -DLIBAVIF_ENABLE_TOOLS=OFF
+        -DCMAKE_BUILD_TYPE=Release
     )
 endif()
 
@@ -95,13 +98,13 @@ set(SDL2MIXER_VENDORED ON CACHE BOOL "" FORCE)
 
 if(TARGET_ARCH STREQUAL "i386")
     set(SDL2MIXER_EXTERNAL_PROJECT_CMAKE_ARGS
-        -DCMAKE_C_FLAGS="${CMAKE_C_FLAGS} -O2 -lm -m32"
-        -DCMAKE_CXX_FLAGS="${CMAKE_CXX_FLAGS} -O2 -lm -m32"
+        -DCMAKE_C_FLAGS="-m32"
+        -DCMAKE_CXX_FLAGS="-m32"
+        -DCMAKE_BUILD_TYPE=Release
     )
 else()
     set(SDL2MIXER_EXTERNAL_PROJECT_CMAKE_ARGS
-        -DCMAKE_C_FLAGS="${CMAKE_C_FLAGS} -O2 -lm"
-        -DCMAKE_CXX_FLAGS="${CMAKE_CXX_FLAGS} -O2 -lm"
+        -DCMAKE_BUILD_TYPE=Release
     )
 endif()
 
@@ -135,10 +138,9 @@ if(CN_BUILD_GAME)
             cncore
             cngraphic
             cnaudio
+            m
             # cninput
     )
-
-    target_link_libraries(cn_engine PRIVATE m)
 
     target_include_directories(cn_engine
         PRIVATE
