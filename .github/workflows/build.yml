@@ -85,10 +85,15 @@ jobs:
           key: cmake-build-${{ runner.os }}-windows-i386-${{ hashFiles('**/CMakeLists.txt') }}
           restore-keys: |
             cmake-build-${{ runner.os }}-windows-i386-
+  
+      - name: Install mingw
+        run: |
+          wsl sudo apt update
+          wsl sudo apt install -y gcc-mingw-w64-i686 g++-mingw-w64-i686 cmake make
 
       - name: Build windows-i386
         run: |
-          scripts/build_windows-i386.sh
+          wsl scripts/build_windows-i386.sh
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
@@ -113,9 +118,14 @@ jobs:
           restore-keys: |
             cmake-build-${{ runner.os }}-windows-amd64-
 
+      - name: Install mingw
+        run: |
+          wsl sudo apt update
+          wsl sudo apt install -y gcc-mingw-w64-x86-64 g++-mingw-w64-x86-64 cmake make
+
       - name: Build windows-amd64
         run: |
-          scripts/build_windows-amd64.sh
+          wsl scripts/build_windows-amd64.sh
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
