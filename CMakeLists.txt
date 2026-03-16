@@ -8,6 +8,8 @@ project(CNEngine
 set(CMAKE_C_STANDARD 23)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 
+set(CMAKE_REQUIRED_LIBRARIES m)
+
 # ========= Options =========
 option(CN_BUILD_GAME "Build game executable" ON)
 

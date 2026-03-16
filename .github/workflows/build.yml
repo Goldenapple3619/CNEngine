@@ -94,7 +94,7 @@ jobs:
 
       - name: Build windows-i386
         run: |
-          wsl scripts/build_windows-i386.sh
+          scripts/build_windows-i386.sh
         shell: powershell
 
       - name: Upload build artifacts
@@ -128,7 +128,7 @@ jobs:
 
       - name: Build windows-amd64
         run: |
-          wsl scripts/build_windows-amd64.sh
+          scripts/build_windows-amd64.sh
         shell: powershell
 
       - name: Upload build artifacts
