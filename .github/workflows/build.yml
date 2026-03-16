@@ -1,0 +1,79 @@
+name: build
+
+on: [push, pull_request]
+
+jobs:
+  build-linux-i386:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build linux-i386
+        run: |
+          scripts/build_linux-i386.sh
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist-linux-i386
+          path: dist/linux-i386
+
+  build-linux-amd64:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build linux-amd64
+        run: |
+          scripts/build_linux-amd64.sh
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist-linux-amd64
+          path: dist/linux-amd64
+
+  build-windows-i386:
+    runs-on: windows-2019
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build windows-i386
+        run: |
+          scripts/build_windows-i386.sh
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist-windows-i386
+          path: dist/windows-i386
+
+  build-windows-amd64:
+    runs-on: windows-2019
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build windows-amd64
+        run: |
+          scripts/build_windows-amd64.sh
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist-windows-amd64
+          path: dist/windows-amd64
+
+  build-macos-amd64:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build macos-amd64
+        run: |
+          scripts/build_macos-amd64.sh
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist-macos-amd64
+          path: dist/macos-amd64

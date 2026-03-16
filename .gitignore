@@ -1,7 +1,7 @@
 .vscode
 
-build-linux
-build-windows
+dist
+build
 temp
 
 *.so
@@ -10,5 +10,3 @@ temp
 
 *.o
 *.obj
-
-deps_windows.sh

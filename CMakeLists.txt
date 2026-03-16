@@ -8,9 +8,21 @@ project(CNEngine
 set(CMAKE_C_STANDARD 23)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 
-
 # ========= Options =========
 option(CN_BUILD_GAME "Build game executable" ON)
+
+if(NOT DEFINED DIST_DIR)
+    get_filename_component(CWD_NAME ${CMAKE_SOURCE_DIR} NAME)
+    set(DIST_DIR "${CMAKE_SOURCE_DIR}/dist/${CWD_NAME}")
+endif()
+
+if(NOT DEFINED TARGET_ARCH)
+    if(CMAKE_SIZEOF_VOID_P EQUAL 4)
+        set(TARGET_ARCH "i386")
+    elseif(CMAKE_SIZEOF_VOID_P EQUAL 8)
+        set(TARGET_ARCH "amd64")
+    endif()
+endif()
 
 # ========= Fetch SDL2 =========
 include(FetchContent)
@@ -29,9 +41,15 @@ set(SDL2IMAGE_VENDORED ON CACHE BOOL "" FORCE)
 set(SDL2IMAGE_WEBP OFF CACHE BOOL "" FORCE)
 
 if(WIN32)
-    set(SDL2IMAGE_EXTERNAL_PROJECT_CMAKE_ARGS
-        -DCMAKE_TOOLCHAIN_FILE=${CMAKE_CURRENT_LIST_DIR}/mingw_toolchain.cmake
-    )
+    if(TARGET_ARCH STREQUAL "i386")
+        set(SDL2IMAGE_EXTERNAL_PROJECT_CMAKE_ARGS
+            -DCMAKE_TOOLCHAIN_FILE=${CMAKE_CURRENT_LIST_DIR}/mingw_toolchain-i386.cmake
+        )
+    elseif(TARGET_ARCH STREQUAL "amd64")
+        set(SDL2IMAGE_EXTERNAL_PROJECT_CMAKE_ARGS
+            -DCMAKE_TOOLCHAIN_FILE=${CMAKE_CURRENT_LIST_DIR}/mingw_toolchain-amd64.cmake
+        )
+    endif()
 endif()
 
 FetchContent_Declare(
@@ -62,7 +80,6 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(SDL2_mixer)
 
-
 # ========= Modules =========
 add_subdirectory(lib/cncore)
 add_subdirectory(lib/cngraphic)
@@ -71,16 +88,16 @@ add_subdirectory(lib/cnaudio)
 
 # ========= Game executable =========
 if(CN_BUILD_GAME)
-    add_executable(cn_game
+    add_executable(cn_engine
         main.c
     )
 
-    target_compile_options(cn_game
+    target_compile_options(cn_engine
         PRIVATE
             -Wall -Wextra -Wshadow -Werror -O2
     )
 
-    target_link_libraries(cn_game
+    target_link_libraries(cn_engine
         PRIVATE
             cncore
             cngraphic
@@ -91,11 +108,47 @@ if(CN_BUILD_GAME)
             SDL2_mixer::SDL2_mixer
     )
 
-    target_include_directories(cn_game
+    target_include_directories(cn_engine
         PRIVATE
             lib/cncore/include
             lib/cngraphic/include
             lib/cnaudio/include
             # lib/cninput/include
     )
+
+    # main
+    add_custom_command(TARGET cn_engine POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/bin"
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            $<TARGET_FILE:cn_engine>
+            "${DIST_DIR}/bin/"
+    )
+
+    # SDL2
+    foreach(lib SDL2 SDL2_image SDL2_mixer SDL2_ttf)
+        add_custom_command(TARGET cn_engine POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/lib"
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                $<TARGET_FILE:${lib}>
+                "${DIST_DIR}/lib/"
+        )
+    endforeach()
+
+    # includes
+    foreach(lib cncore cngraphic cnaudio)
+        add_custom_command(TARGET cn_engine POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E copy_directory
+                "${CMAKE_SOURCE_DIR}/lib/${lib}/include"
+                "${DIST_DIR}/include/"
+        )
+    endforeach()
+
+    # modules libraries
+    foreach(lib cncore cngraphic cnaudio)
+        add_custom_command(TARGET cn_engine POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                $<TARGET_FILE:${lib}>
+                "${DIST_DIR}/lib/"
+        )
+    endforeach()
 endif()

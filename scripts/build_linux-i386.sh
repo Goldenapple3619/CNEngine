@@ -1,0 +1,17 @@
+#!/bin/bash
+set -e
+
+mkdir -p build/linux-i386
+cd build/linux-i386
+
+cmake ../.. \
+    -DDIST_DIR=../../dist/linux-i386 \
+    -DSDL2_IMAGE=ON \
+    -DSDL2_MIXER=ON \
+    -DSDL2_TTF=ON \
+    -DCMAKE_C_FLAGS="-m32" \
+    -DCMAKE_CXX_FLAGS="-m32" \
+    -DTARGET_ARCH="i386" \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.20
+
+cmake --build . -- -j$(nproc)
