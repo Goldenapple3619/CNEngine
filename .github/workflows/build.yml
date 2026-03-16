@@ -96,6 +96,11 @@ jobs:
           C:\tools\msys64\usr\bin\bash.exe -lc "pacman -Syu --noconfirm"
           C:\tools\msys64\usr\bin\bash.exe -lc "pacman -S --noconfirm mingw-w64-i686-toolchain base-devel"
 
+          copy C:\msys64\mingw64\bin\windres.exe C:\msys64\mingw64\bin\i686-w64-mingw32-windres.exe
+
+          dir C:\msys64\mingw32\bin
+          dir C:\msys64\mingw64\bin
+
           $env:Path = "C:\msys64\mingw32\bin;C:\msys64\mingw64\bin;$env:Path"
 
       - name: Build windows-i386
@@ -135,6 +140,11 @@ jobs:
 
           C:\tools\msys64\usr\bin\bash.exe -lc "pacman -Syu --noconfirm"
           C:\tools\msys64\usr\bin\bash.exe -lc "pacman -S --noconfirm mingw-w64-x86_64-toolchain base-devel"
+
+          copy C:\msys64\mingw64\bin\windres.exe C:\msys64\mingw64\bin\x86_64-w64-mingw32-windres.exe
+
+          dir C:\msys64\mingw32\bin
+          dir C:\msys64\mingw64\bin
 
           $env:Path = "C:\msys64\mingw32\bin;C:\msys64\mingw64\bin;$env:Path"
         shell: powershell
