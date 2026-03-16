@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['sdl_5fev_5fto_5fcnev_0',['sdl_ev_to_cnev',['../window__universe_8c.html#a41835e212a4a1b67ff1b783993f680ef',1,'window_universe.c']]],
+  ['sdl_5fmain_5fhandled_1',['SDL_MAIN_HANDLED',['../main_8c.html#a51f528deaaeb973f417b46a2ec36f850',1,'main.c']]],
+  ['sdl_5fwindow_5fev_5fto_5fcnev_2',['sdl_window_ev_to_cnev',['../window__universe_8c.html#a9d54459b4342906f5713050119d1e285',1,'window_universe.c']]],
+  ['sequence_3',['sequence',['../structaudio__s.html#ab35898d87b61b5d1e9c96079f98d9a8d',1,'audio_s']]],
+  ['sequence_5ftimer_4',['sequence_timer',['../structaudio__sequence__s.html#aad5f6a90c2540cddcb4dac778e5dc8c1',1,'audio_sequence_s']]],
+  ['set_5fattr_5',['set_attr',['../object_8c.html#a7c60a78ed845fb919a0d3dd18c275c78',1,'set_attr(Object *object, const char *name, cn_type type, cnany value):&#160;object.c'],['../libcncore_8h.html#a7c60a78ed845fb919a0d3dd18c275c78',1,'set_attr(Object *object, const char *name, cn_type type, cnany value):&#160;object.c']]],
+  ['set_5fclosable_5fwindow_6',['set_closable_window',['../window_8c.html#a88a2fa0ed5e2de66a1f9fd62a9ce89aa',1,'set_closable_window(Window *window, cnbool value):&#160;window.c'],['../libcngraphic_8h.html#a88a2fa0ed5e2de66a1f9fd62a9ce89aa',1,'set_closable_window(Window *window, cnbool value):&#160;window.c']]],
+  ['set_5fhidden_5fwindow_7',['set_hidden_window',['../window_8c.html#a1fe8eb1dc0fd505250204e44b5b4635b',1,'set_hidden_window(Window *window, cnbool value):&#160;window.c'],['../libcngraphic_8h.html#a1fe8eb1dc0fd505250204e44b5b4635b',1,'set_hidden_window(Window *window, cnbool value):&#160;window.c']]],
+  ['set_5finactive_5fwindow_8',['set_inactive_window',['../window_8c.html#a246bd6daa4ff5bdf9943e8382d99a4a9',1,'set_inactive_window(Window *window, cnbool value):&#160;window.c'],['../libcngraphic_8h.html#a246bd6daa4ff5bdf9943e8382d99a4a9',1,'set_inactive_window(Window *window, cnbool value):&#160;window.c']]],
+  ['set_5fmethod_9',['set_method',['../object_8c.html#ac48b954a6fef663744c0fc6a174c3923',1,'set_method(Object *object, const char *name, cn_method func):&#160;object.c'],['../libcncore_8h.html#ac48b954a6fef663744c0fc6a174c3923',1,'set_method(Object *object, const char *name, cn_method func):&#160;object.c']]],
+  ['set_5fopacity_5ftexture_10',['set_opacity_texture',['../texture_8c.html#ad03e6a4b756d210cfefdd55111ea3b13',1,'set_opacity_texture(Texture *texture, uint8_t opacity):&#160;texture.c'],['../libcngraphic_8h.html#ad03e6a4b756d210cfefdd55111ea3b13',1,'set_opacity_texture(Texture *texture, uint8_t opacity):&#160;texture.c']]],
+  ['set_5fparent_5fclass_5fbuild_11',['SET_PARENT_CLASS_BUILD',['../libcncore_8h.html#addc430d879e3170c2986a2b76404d9bd',1,'libcncore.h']]],
+  ['set_5fvsync_5fwindow_12',['set_vsync_window',['../window_8c.html#a807ad5bdf08113df2038b0913e90312b',1,'set_vsync_window(Window *window, cnbool value):&#160;window.c'],['../libcngraphic_8h.html#a807ad5bdf08113df2038b0913e90312b',1,'set_vsync_window(Window *window, cnbool value):&#160;window.c']]],
+  ['share_5fobject_13',['share_object',['../libcncore_8h.html#abf1e0781bdaffada02a010d01df05986',1,'share_object(Object *object):&#160;object_ownership.c'],['../object__ownership_8c.html#abf1e0781bdaffada02a010d01df05986',1,'share_object(Object *object):&#160;object_ownership.c']]],
+  ['sigint_5fhandler_14',['sigint_handler',['../main_8c.html#ab10c0c50c02a59ae9bd74c78c49b559d',1,'main.c']]],
+  ['size_15',['size',['../structattr__map__s.html#a404d96db44642eb02eb15de2457f5dc6',1,'attr_map_s::size'],['../structobject__vector__s.html#a58cd077f77c8a3aad0250d75be7d0b90',1,'object_vector_s::size'],['../structtexture__s.html#a2cfac756a0a2644944c4e383ab860a7f',1,'texture_s::size'],['../structvideomode__s.html#ad5183c63141813652459e86b4f63755d',1,'videomode_s::size'],['../structevent__map__entry__s.html#ab56c58de52ef43ee338a6357f091922e',1,'event_map_entry_s::size'],['../structwindow__universe__s.html#ab95ae3f9e0a529cc6389bb1e9bb50f04',1,'window_universe_s::size'],['../structtexture__atlas__s.html#aba7732f90284a3cf208c3022da931af7',1,'texture_atlas_s::size']]],
+  ['start_5faudio_16',['start_audio',['../cnaudio_2src_2common_8c.html#a0db0e5e973697392432477f786000285',1,'common.c']]],
+  ['start_5fcore_17',['start_core',['../libcncore_8h.html#ac60ba97137794eb7213e7707c9b7d1eb',1,'start_core(void):&#160;common.c'],['../cncore_2src_2common_8c.html#ac60ba97137794eb7213e7707c9b7d1eb',1,'start_core(void):&#160;common.c']]],
+  ['start_5fgraphics_18',['start_graphics',['../libcngraphic_8h.html#ae3a3ecacca9a31ab1f9cbce82aa6f344',1,'start_graphics(void):&#160;common.c'],['../cngraphic_2src_2common_8c.html#ae3a3ecacca9a31ab1f9cbce82aa6f344',1,'start_graphics(void):&#160;common.c']]],
+  ['start_5fin_19',['start_in',['../structaudio__event__s.html#a42e876813614367eff8bd9ade02dab67',1,'audio_event_s']]],
+  ['str_20',['str',['../structcn__value.html#a0f7d548adc8c6c78accf474221f37135',1,'cn_value']]],
+  ['string_5findividual_5fallocation_21',['STRING_INDIVIDUAL_ALLOCATION',['../libcncore_8h.html#ae2252f92419c9d33a95b6420394c138c',1,'libcncore.h']]],
+  ['submodule_5fctx_22',['submodule_ctx',['../libcncore_8h.html#a2b0919ae79de171bd47aee6ea252aebc',1,'submodule_ctx(Object *ctx, Object *module):&#160;core_ctx.c'],['../core__ctx_8c.html#a2b0919ae79de171bd47aee6ea252aebc',1,'submodule_ctx(Object *ctx, Object *module):&#160;core_ctx.c']]],
+  ['surface_23',['surface',['../structtexture__s.html#aae18cd81b667d434c2c308e54159d5e4',1,'texture_s']]]
+];

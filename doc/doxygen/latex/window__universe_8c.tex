@@ -1,0 +1,129 @@
+\doxysection{lib/cngraphic/src/window\+\_\+universe.c File Reference}
+\hypertarget{window__universe_8c}{}\label{window__universe_8c}\index{lib/cngraphic/src/window\_universe.c@{lib/cngraphic/src/window\_universe.c}}
+{\ttfamily \#include "{}libcngraphic.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} \mbox{\hyperlink{libcngraphic_8h_ac168ed2f37bffc15af0623a2b45c207f}{Window\+Universe}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{window__universe_8c_aae8bab092043fcf733a54826624b25e1}{new\+\_\+window\+\_\+universe}} (void)
+\item 
+\mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} \mbox{\hyperlink{window__universe_8c_a97402d9fe983d61ef1827a5f48adffe1}{are\+\_\+all\+\_\+window\+\_\+closed}} (const \mbox{\hyperlink{libcngraphic_8h_ac168ed2f37bffc15af0623a2b45c207f}{Window\+Universe}} \texorpdfstring{$\ast$}{*}universe)
+\item 
+\mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} \mbox{\hyperlink{window__universe_8c_aa890bc17ea184877acfe679e8d6e1787}{is\+\_\+window\+\_\+closed}} (const \mbox{\hyperlink{libcngraphic_8h_ac168ed2f37bffc15af0623a2b45c207f}{Window\+Universe}} \texorpdfstring{$\ast$}{*}universe, uint32\+\_\+t window\+\_\+id)
+\item 
+\mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} \mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{window__universe_8c_ac5cae30d0a8294854d6a044c8ff6ad76}{get\+\_\+window\+\_\+in\+\_\+universe}} (const \mbox{\hyperlink{libcngraphic_8h_ac168ed2f37bffc15af0623a2b45c207f}{Window\+Universe}} \texorpdfstring{$\ast$}{*}universe, uint32\+\_\+t window\+\_\+id)
+\item 
+\mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} \mbox{\hyperlink{window__universe_8c_a4f08f9fc42483a58c79eda51201337f7}{is\+\_\+window\+\_\+closed\+\_\+addr}} (const \mbox{\hyperlink{libcngraphic_8h_ac168ed2f37bffc15af0623a2b45c207f}{Window\+Universe}} \texorpdfstring{$\ast$}{*}universe, void \texorpdfstring{$\ast$}{*}p)
+\item 
+\mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} void \mbox{\hyperlink{window__universe_8c_ad06d9ce41d2a936becf1e51bcbe4c501}{clear\+\_\+events\+\_\+all\+\_\+window}} (\mbox{\hyperlink{libcngraphic_8h_ac168ed2f37bffc15af0623a2b45c207f}{Window\+Universe}} \texorpdfstring{$\ast$}{*}universe)
+\item 
+static void \mbox{\hyperlink{window__universe_8c_a9d54459b4342906f5713050119d1e285}{sdl\+\_\+window\+\_\+ev\+\_\+to\+\_\+cnev}} (const SDL\+\_\+\+Event \texorpdfstring{$\ast$}{*}ev, \mbox{\hyperlink{libcngraphic_8h_a60921eba80b4569fa79c67165460331e}{Event}} \texorpdfstring{$\ast$}{*}cnev)
+\item 
+static void \mbox{\hyperlink{window__universe_8c_a41835e212a4a1b67ff1b783993f680ef}{sdl\+\_\+ev\+\_\+to\+\_\+cnev}} (const SDL\+\_\+\+Event \texorpdfstring{$\ast$}{*}ev, \mbox{\hyperlink{libcngraphic_8h_a60921eba80b4569fa79c67165460331e}{Event}} \texorpdfstring{$\ast$}{*}cnev)
+\item 
+\mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} void \mbox{\hyperlink{window__universe_8c_a0272837b196f69d0948d1382c621e244}{fetch\+\_\+events\+\_\+all\+\_\+window}} (\mbox{\hyperlink{libcngraphic_8h_ac168ed2f37bffc15af0623a2b45c207f}{Window\+Universe}} \texorpdfstring{$\ast$}{*}universe)
+\item 
+\mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} uint8\+\_\+t \mbox{\hyperlink{window__universe_8c_adb56cc6672dd16b84d1cf74a64869544}{resize\+\_\+window\+\_\+universe}} (\mbox{\hyperlink{libcngraphic_8h_ac168ed2f37bffc15af0623a2b45c207f}{Window\+Universe}} \texorpdfstring{$\ast$}{*}universe, size\+\_\+t new\+\_\+capacity)
+\item 
+\mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} void \mbox{\hyperlink{window__universe_8c_af12b641ed47e34b24e9c56de990f8378}{remove\+\_\+window\+\_\+from\+\_\+universe}} (\mbox{\hyperlink{libcngraphic_8h_ac168ed2f37bffc15af0623a2b45c207f}{Window\+Universe}} \texorpdfstring{$\ast$}{*}universe, uint32\+\_\+t id)
+\item 
+\mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} uint8\+\_\+t \mbox{\hyperlink{window__universe_8c_ae9a9996b7705e38f1dc1c49e91c58674}{add\+\_\+window\+\_\+in\+\_\+universe}} (\mbox{\hyperlink{libcngraphic_8h_ac168ed2f37bffc15af0623a2b45c207f}{Window\+Universe}} \texorpdfstring{$\ast$}{*}universe, \mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*}window)
+\item 
+\mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} void \mbox{\hyperlink{window__universe_8c_a3b7674f69391137a5d4e3d9ef495926a}{update\+\_\+all\+\_\+window}} (\mbox{\hyperlink{libcngraphic_8h_ac168ed2f37bffc15af0623a2b45c207f}{Window\+Universe}} \texorpdfstring{$\ast$}{*}universe)
+\item 
+\mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} void \mbox{\hyperlink{window__universe_8c_ad682ff102d5d8e76e8e126374fe3cca5}{draw\+\_\+all\+\_\+window}} (\mbox{\hyperlink{libcngraphic_8h_ac168ed2f37bffc15af0623a2b45c207f}{Window\+Universe}} \texorpdfstring{$\ast$}{*}universe)
+\item 
+\mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} void \mbox{\hyperlink{window__universe_8c_aebf8ef12b941f126e3a6235ca445c49d}{delete\+\_\+window\+\_\+universe}} (\mbox{\hyperlink{libcngraphic_8h_ac168ed2f37bffc15af0623a2b45c207f}{Window\+Universe}} \texorpdfstring{$\ast$}{*}universe)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{window__universe_8c_ae9a9996b7705e38f1dc1c49e91c58674}\label{window__universe_8c_ae9a9996b7705e38f1dc1c49e91c58674} 
+\index{window\_universe.c@{window\_universe.c}!add\_window\_in\_universe@{add\_window\_in\_universe}}
+\index{add\_window\_in\_universe@{add\_window\_in\_universe}!window\_universe.c@{window\_universe.c}}
+\doxysubsubsection{\texorpdfstring{add\_window\_in\_universe()}{add\_window\_in\_universe()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} uint8\+\_\+t add\+\_\+window\+\_\+in\+\_\+universe (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcngraphic_8h_ac168ed2f37bffc15af0623a2b45c207f}{Window\+Universe}} \texorpdfstring{$\ast$}{*}}]{universe,  }\item[{\mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*}}]{window }\end{DoxyParamCaption})}
+
+\Hypertarget{window__universe_8c_a97402d9fe983d61ef1827a5f48adffe1}\label{window__universe_8c_a97402d9fe983d61ef1827a5f48adffe1} 
+\index{window\_universe.c@{window\_universe.c}!are\_all\_window\_closed@{are\_all\_window\_closed}}
+\index{are\_all\_window\_closed@{are\_all\_window\_closed}!window\_universe.c@{window\_universe.c}}
+\doxysubsubsection{\texorpdfstring{are\_all\_window\_closed()}{are\_all\_window\_closed()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} are\+\_\+all\+\_\+window\+\_\+closed (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{libcngraphic_8h_ac168ed2f37bffc15af0623a2b45c207f}{Window\+Universe}} \texorpdfstring{$\ast$}{*}}]{universe }\end{DoxyParamCaption})}
+
+\Hypertarget{window__universe_8c_ad06d9ce41d2a936becf1e51bcbe4c501}\label{window__universe_8c_ad06d9ce41d2a936becf1e51bcbe4c501} 
+\index{window\_universe.c@{window\_universe.c}!clear\_events\_all\_window@{clear\_events\_all\_window}}
+\index{clear\_events\_all\_window@{clear\_events\_all\_window}!window\_universe.c@{window\_universe.c}}
+\doxysubsubsection{\texorpdfstring{clear\_events\_all\_window()}{clear\_events\_all\_window()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} void clear\+\_\+events\+\_\+all\+\_\+window (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcngraphic_8h_ac168ed2f37bffc15af0623a2b45c207f}{Window\+Universe}} \texorpdfstring{$\ast$}{*}}]{universe }\end{DoxyParamCaption})}
+
+\Hypertarget{window__universe_8c_aebf8ef12b941f126e3a6235ca445c49d}\label{window__universe_8c_aebf8ef12b941f126e3a6235ca445c49d} 
+\index{window\_universe.c@{window\_universe.c}!delete\_window\_universe@{delete\_window\_universe}}
+\index{delete\_window\_universe@{delete\_window\_universe}!window\_universe.c@{window\_universe.c}}
+\doxysubsubsection{\texorpdfstring{delete\_window\_universe()}{delete\_window\_universe()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} void delete\+\_\+window\+\_\+universe (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcngraphic_8h_ac168ed2f37bffc15af0623a2b45c207f}{Window\+Universe}} \texorpdfstring{$\ast$}{*}}]{universe }\end{DoxyParamCaption})}
+
+\Hypertarget{window__universe_8c_ad682ff102d5d8e76e8e126374fe3cca5}\label{window__universe_8c_ad682ff102d5d8e76e8e126374fe3cca5} 
+\index{window\_universe.c@{window\_universe.c}!draw\_all\_window@{draw\_all\_window}}
+\index{draw\_all\_window@{draw\_all\_window}!window\_universe.c@{window\_universe.c}}
+\doxysubsubsection{\texorpdfstring{draw\_all\_window()}{draw\_all\_window()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} void draw\+\_\+all\+\_\+window (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcngraphic_8h_ac168ed2f37bffc15af0623a2b45c207f}{Window\+Universe}} \texorpdfstring{$\ast$}{*}}]{universe }\end{DoxyParamCaption})}
+
+\Hypertarget{window__universe_8c_a0272837b196f69d0948d1382c621e244}\label{window__universe_8c_a0272837b196f69d0948d1382c621e244} 
+\index{window\_universe.c@{window\_universe.c}!fetch\_events\_all\_window@{fetch\_events\_all\_window}}
+\index{fetch\_events\_all\_window@{fetch\_events\_all\_window}!window\_universe.c@{window\_universe.c}}
+\doxysubsubsection{\texorpdfstring{fetch\_events\_all\_window()}{fetch\_events\_all\_window()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} void fetch\+\_\+events\+\_\+all\+\_\+window (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcngraphic_8h_ac168ed2f37bffc15af0623a2b45c207f}{Window\+Universe}} \texorpdfstring{$\ast$}{*}}]{universe }\end{DoxyParamCaption})}
+
+\Hypertarget{window__universe_8c_ac5cae30d0a8294854d6a044c8ff6ad76}\label{window__universe_8c_ac5cae30d0a8294854d6a044c8ff6ad76} 
+\index{window\_universe.c@{window\_universe.c}!get\_window\_in\_universe@{get\_window\_in\_universe}}
+\index{get\_window\_in\_universe@{get\_window\_in\_universe}!window\_universe.c@{window\_universe.c}}
+\doxysubsubsection{\texorpdfstring{get\_window\_in\_universe()}{get\_window\_in\_universe()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} \mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*} get\+\_\+window\+\_\+in\+\_\+universe (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{libcngraphic_8h_ac168ed2f37bffc15af0623a2b45c207f}{Window\+Universe}} \texorpdfstring{$\ast$}{*}}]{universe,  }\item[{uint32\+\_\+t}]{window\+\_\+id }\end{DoxyParamCaption})}
+
+\Hypertarget{window__universe_8c_aa890bc17ea184877acfe679e8d6e1787}\label{window__universe_8c_aa890bc17ea184877acfe679e8d6e1787} 
+\index{window\_universe.c@{window\_universe.c}!is\_window\_closed@{is\_window\_closed}}
+\index{is\_window\_closed@{is\_window\_closed}!window\_universe.c@{window\_universe.c}}
+\doxysubsubsection{\texorpdfstring{is\_window\_closed()}{is\_window\_closed()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} is\+\_\+window\+\_\+closed (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{libcngraphic_8h_ac168ed2f37bffc15af0623a2b45c207f}{Window\+Universe}} \texorpdfstring{$\ast$}{*}}]{universe,  }\item[{uint32\+\_\+t}]{window\+\_\+id }\end{DoxyParamCaption})}
+
+\Hypertarget{window__universe_8c_a4f08f9fc42483a58c79eda51201337f7}\label{window__universe_8c_a4f08f9fc42483a58c79eda51201337f7} 
+\index{window\_universe.c@{window\_universe.c}!is\_window\_closed\_addr@{is\_window\_closed\_addr}}
+\index{is\_window\_closed\_addr@{is\_window\_closed\_addr}!window\_universe.c@{window\_universe.c}}
+\doxysubsubsection{\texorpdfstring{is\_window\_closed\_addr()}{is\_window\_closed\_addr()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} is\+\_\+window\+\_\+closed\+\_\+addr (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{libcngraphic_8h_ac168ed2f37bffc15af0623a2b45c207f}{Window\+Universe}} \texorpdfstring{$\ast$}{*}}]{universe,  }\item[{void \texorpdfstring{$\ast$}{*}}]{p }\end{DoxyParamCaption})}
+
+\Hypertarget{window__universe_8c_aae8bab092043fcf733a54826624b25e1}\label{window__universe_8c_aae8bab092043fcf733a54826624b25e1} 
+\index{window\_universe.c@{window\_universe.c}!new\_window\_universe@{new\_window\_universe}}
+\index{new\_window\_universe@{new\_window\_universe}!window\_universe.c@{window\_universe.c}}
+\doxysubsubsection{\texorpdfstring{new\_window\_universe()}{new\_window\_universe()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} \mbox{\hyperlink{libcngraphic_8h_ac168ed2f37bffc15af0623a2b45c207f}{Window\+Universe}} \texorpdfstring{$\ast$}{*} new\+\_\+window\+\_\+universe (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{window__universe_8c_af12b641ed47e34b24e9c56de990f8378}\label{window__universe_8c_af12b641ed47e34b24e9c56de990f8378} 
+\index{window\_universe.c@{window\_universe.c}!remove\_window\_from\_universe@{remove\_window\_from\_universe}}
+\index{remove\_window\_from\_universe@{remove\_window\_from\_universe}!window\_universe.c@{window\_universe.c}}
+\doxysubsubsection{\texorpdfstring{remove\_window\_from\_universe()}{remove\_window\_from\_universe()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} void remove\+\_\+window\+\_\+from\+\_\+universe (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcngraphic_8h_ac168ed2f37bffc15af0623a2b45c207f}{Window\+Universe}} \texorpdfstring{$\ast$}{*}}]{universe,  }\item[{uint32\+\_\+t}]{id }\end{DoxyParamCaption})}
+
+\Hypertarget{window__universe_8c_adb56cc6672dd16b84d1cf74a64869544}\label{window__universe_8c_adb56cc6672dd16b84d1cf74a64869544} 
+\index{window\_universe.c@{window\_universe.c}!resize\_window\_universe@{resize\_window\_universe}}
+\index{resize\_window\_universe@{resize\_window\_universe}!window\_universe.c@{window\_universe.c}}
+\doxysubsubsection{\texorpdfstring{resize\_window\_universe()}{resize\_window\_universe()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} uint8\+\_\+t resize\+\_\+window\+\_\+universe (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcngraphic_8h_ac168ed2f37bffc15af0623a2b45c207f}{Window\+Universe}} \texorpdfstring{$\ast$}{*}}]{universe,  }\item[{size\+\_\+t}]{new\+\_\+capacity }\end{DoxyParamCaption})}
+
+\Hypertarget{window__universe_8c_a41835e212a4a1b67ff1b783993f680ef}\label{window__universe_8c_a41835e212a4a1b67ff1b783993f680ef} 
+\index{window\_universe.c@{window\_universe.c}!sdl\_ev\_to\_cnev@{sdl\_ev\_to\_cnev}}
+\index{sdl\_ev\_to\_cnev@{sdl\_ev\_to\_cnev}!window\_universe.c@{window\_universe.c}}
+\doxysubsubsection{\texorpdfstring{sdl\_ev\_to\_cnev()}{sdl\_ev\_to\_cnev()}}
+{\footnotesize\ttfamily static void sdl\+\_\+ev\+\_\+to\+\_\+cnev (\begin{DoxyParamCaption}\item[{const SDL\+\_\+\+Event \texorpdfstring{$\ast$}{*}}]{ev,  }\item[{\mbox{\hyperlink{libcngraphic_8h_a60921eba80b4569fa79c67165460331e}{Event}} \texorpdfstring{$\ast$}{*}}]{cnev }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{window__universe_8c_a9d54459b4342906f5713050119d1e285}\label{window__universe_8c_a9d54459b4342906f5713050119d1e285} 
+\index{window\_universe.c@{window\_universe.c}!sdl\_window\_ev\_to\_cnev@{sdl\_window\_ev\_to\_cnev}}
+\index{sdl\_window\_ev\_to\_cnev@{sdl\_window\_ev\_to\_cnev}!window\_universe.c@{window\_universe.c}}
+\doxysubsubsection{\texorpdfstring{sdl\_window\_ev\_to\_cnev()}{sdl\_window\_ev\_to\_cnev()}}
+{\footnotesize\ttfamily static void sdl\+\_\+window\+\_\+ev\+\_\+to\+\_\+cnev (\begin{DoxyParamCaption}\item[{const SDL\+\_\+\+Event \texorpdfstring{$\ast$}{*}}]{ev,  }\item[{\mbox{\hyperlink{libcngraphic_8h_a60921eba80b4569fa79c67165460331e}{Event}} \texorpdfstring{$\ast$}{*}}]{cnev }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{window__universe_8c_a3b7674f69391137a5d4e3d9ef495926a}\label{window__universe_8c_a3b7674f69391137a5d4e3d9ef495926a} 
+\index{window\_universe.c@{window\_universe.c}!update\_all\_window@{update\_all\_window}}
+\index{update\_all\_window@{update\_all\_window}!window\_universe.c@{window\_universe.c}}
+\doxysubsubsection{\texorpdfstring{update\_all\_window()}{update\_all\_window()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} void update\+\_\+all\+\_\+window (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcngraphic_8h_ac168ed2f37bffc15af0623a2b45c207f}{Window\+Universe}} \texorpdfstring{$\ast$}{*}}]{universe }\end{DoxyParamCaption})}
+

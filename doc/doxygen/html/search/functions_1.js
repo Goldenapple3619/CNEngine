@@ -1,0 +1,7 @@
+var searchData=
+[
+  ['add_5ftexture_5fatlas_0',['add_texture_atlas',['../libcngraphic_8h.html#aee8a3e12de53a73d7bda3d9c14fedd70',1,'add_texture_atlas(TextureAtlas *atlas, Texture *texture, const char *key):&#160;texture_atlas.c'],['../texture__atlas_8c.html#aee8a3e12de53a73d7bda3d9c14fedd70',1,'add_texture_atlas(TextureAtlas *atlas, Texture *texture, const char *key):&#160;texture_atlas.c']]],
+  ['add_5fwindow_5fin_5funiverse_1',['add_window_in_universe',['../libcngraphic_8h.html#ae9a9996b7705e38f1dc1c49e91c58674',1,'add_window_in_universe(WindowUniverse *universe, Window *window):&#160;window_universe.c'],['../window__universe_8c.html#ae9a9996b7705e38f1dc1c49e91c58674',1,'add_window_in_universe(WindowUniverse *universe, Window *window):&#160;window_universe.c']]],
+  ['allow_5fevent_2',['allow_event',['../libcngraphic_8h.html#a045f989c433dfbb95d70e2159a26087e',1,'allow_event(Window *window, cn_event ev):&#160;window.c'],['../window_8c.html#a045f989c433dfbb95d70e2159a26087e',1,'allow_event(Window *window, cn_event ev):&#160;window.c']]],
+  ['are_5fall_5fwindow_5fclosed_3',['are_all_window_closed',['../libcngraphic_8h.html#a97402d9fe983d61ef1827a5f48adffe1',1,'are_all_window_closed(const WindowUniverse *universe):&#160;window_universe.c'],['../window__universe_8c.html#a97402d9fe983d61ef1827a5f48adffe1',1,'are_all_window_closed(const WindowUniverse *universe):&#160;window_universe.c']]]
+];

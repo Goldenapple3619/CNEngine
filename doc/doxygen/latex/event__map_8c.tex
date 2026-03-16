@@ -1,0 +1,49 @@
+\doxysection{lib/cngraphic/src/event\+\_\+map.c File Reference}
+\hypertarget{event__map_8c}{}\label{event__map_8c}\index{lib/cngraphic/src/event\_map.c@{lib/cngraphic/src/event\_map.c}}
+{\ttfamily \#include "{}libcngraphic.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} struct \mbox{\hyperlink{structevent__map__entry__s}{event\+\_\+map\+\_\+entry\+\_\+s}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{event__map_8c_a5796f0568d502af29c33be50e22d1fc6}{new\+\_\+event\+\_\+map}} (\mbox{\hyperlink{libcngraphic_8h_ad45875ce61fd859f5134e43571880a0b}{cn\+\_\+event}} type)
+\item 
+\mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} uint8\+\_\+t \mbox{\hyperlink{event__map_8c_a176530faa292f4a390e7670efc40a81d}{resize\+\_\+event\+\_\+map}} (struct \mbox{\hyperlink{structevent__map__entry__s}{event\+\_\+map\+\_\+entry\+\_\+s}} \texorpdfstring{$\ast$}{*}event\+\_\+map, size\+\_\+t new\+\_\+capacity)
+\item 
+\mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} uint8\+\_\+t \mbox{\hyperlink{event__map_8c_a6204c30284b8f3cfeff1b7e7a161246d}{push\+\_\+event\+\_\+in\+\_\+map}} (struct \mbox{\hyperlink{structevent__map__entry__s}{event\+\_\+map\+\_\+entry\+\_\+s}} \texorpdfstring{$\ast$}{*}event\+\_\+map, \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}} x, \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}} y, int64\+\_\+t v)
+\item 
+\mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} void \mbox{\hyperlink{event__map_8c_a9eebf6e23af6cf99120e88db2ab79913}{clear\+\_\+events\+\_\+in\+\_\+map}} (struct \mbox{\hyperlink{structevent__map__entry__s}{event\+\_\+map\+\_\+entry\+\_\+s}} \texorpdfstring{$\ast$}{*}event\+\_\+map)
+\item 
+\mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} void \mbox{\hyperlink{event__map_8c_a5c47e1b75f13b9ce33de26c1654819fb}{delete\+\_\+event\+\_\+map}} (struct \mbox{\hyperlink{structevent__map__entry__s}{event\+\_\+map\+\_\+entry\+\_\+s}} \texorpdfstring{$\ast$}{*}event\+\_\+map)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{event__map_8c_a9eebf6e23af6cf99120e88db2ab79913}\label{event__map_8c_a9eebf6e23af6cf99120e88db2ab79913} 
+\index{event\_map.c@{event\_map.c}!clear\_events\_in\_map@{clear\_events\_in\_map}}
+\index{clear\_events\_in\_map@{clear\_events\_in\_map}!event\_map.c@{event\_map.c}}
+\doxysubsubsection{\texorpdfstring{clear\_events\_in\_map()}{clear\_events\_in\_map()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} void clear\+\_\+events\+\_\+in\+\_\+map (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structevent__map__entry__s}{event\+\_\+map\+\_\+entry\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{event\+\_\+map }\end{DoxyParamCaption})}
+
+\Hypertarget{event__map_8c_a5c47e1b75f13b9ce33de26c1654819fb}\label{event__map_8c_a5c47e1b75f13b9ce33de26c1654819fb} 
+\index{event\_map.c@{event\_map.c}!delete\_event\_map@{delete\_event\_map}}
+\index{delete\_event\_map@{delete\_event\_map}!event\_map.c@{event\_map.c}}
+\doxysubsubsection{\texorpdfstring{delete\_event\_map()}{delete\_event\_map()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} void delete\+\_\+event\+\_\+map (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structevent__map__entry__s}{event\+\_\+map\+\_\+entry\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{event\+\_\+map }\end{DoxyParamCaption})}
+
+\Hypertarget{event__map_8c_a5796f0568d502af29c33be50e22d1fc6}\label{event__map_8c_a5796f0568d502af29c33be50e22d1fc6} 
+\index{event\_map.c@{event\_map.c}!new\_event\_map@{new\_event\_map}}
+\index{new\_event\_map@{new\_event\_map}!event\_map.c@{event\_map.c}}
+\doxysubsubsection{\texorpdfstring{new\_event\_map()}{new\_event\_map()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} struct \mbox{\hyperlink{structevent__map__entry__s}{event\+\_\+map\+\_\+entry\+\_\+s}} \texorpdfstring{$\ast$}{*} new\+\_\+event\+\_\+map (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcngraphic_8h_ad45875ce61fd859f5134e43571880a0b}{cn\+\_\+event}}}]{type }\end{DoxyParamCaption})}
+
+\Hypertarget{event__map_8c_a6204c30284b8f3cfeff1b7e7a161246d}\label{event__map_8c_a6204c30284b8f3cfeff1b7e7a161246d} 
+\index{event\_map.c@{event\_map.c}!push\_event\_in\_map@{push\_event\_in\_map}}
+\index{push\_event\_in\_map@{push\_event\_in\_map}!event\_map.c@{event\_map.c}}
+\doxysubsubsection{\texorpdfstring{push\_event\_in\_map()}{push\_event\_in\_map()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} uint8\+\_\+t push\+\_\+event\+\_\+in\+\_\+map (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structevent__map__entry__s}{event\+\_\+map\+\_\+entry\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{event\+\_\+map,  }\item[{\mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}}]{x,  }\item[{\mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}}]{y,  }\item[{int64\+\_\+t}]{v }\end{DoxyParamCaption})}
+
+\Hypertarget{event__map_8c_a176530faa292f4a390e7670efc40a81d}\label{event__map_8c_a176530faa292f4a390e7670efc40a81d} 
+\index{event\_map.c@{event\_map.c}!resize\_event\_map@{resize\_event\_map}}
+\index{resize\_event\_map@{resize\_event\_map}!event\_map.c@{event\_map.c}}
+\doxysubsubsection{\texorpdfstring{resize\_event\_map()}{resize\_event\_map()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} uint8\+\_\+t resize\+\_\+event\+\_\+map (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structevent__map__entry__s}{event\+\_\+map\+\_\+entry\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{event\+\_\+map,  }\item[{size\+\_\+t}]{new\+\_\+capacity }\end{DoxyParamCaption})}
+

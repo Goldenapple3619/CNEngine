@@ -1,0 +1,57 @@
+\doxysection{lib/cncore/src/object\+\_\+vector.c File Reference}
+\hypertarget{object__vector_8c}{}\label{object__vector_8c}\index{lib/cncore/src/object\_vector.c@{lib/cncore/src/object\_vector.c}}
+{\ttfamily \#include "{}libcncore.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} \mbox{\hyperlink{libcncore_8h_a9f0588bc582b7aa235a1d909d054e833}{Object\+Vector}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{object__vector_8c_a87116bddfa07e8f963a0706d0d4c7351}{new\+\_\+object\+\_\+vector}} (void)
+\item 
+\mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} void \mbox{\hyperlink{object__vector_8c_a02c7997a64b4c461914145b125ff1c3b}{delete\+\_\+object\+\_\+vector}} (\mbox{\hyperlink{libcncore_8h_a9f0588bc582b7aa235a1d909d054e833}{Object\+Vector}} \texorpdfstring{$\ast$}{*}vec)
+\item 
+\mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} uint8\+\_\+t \mbox{\hyperlink{object__vector_8c_a307ba860ed4e8c3e909206dd182a837a}{resize\+\_\+object\+\_\+vector}} (\mbox{\hyperlink{libcncore_8h_a9f0588bc582b7aa235a1d909d054e833}{Object\+Vector}} \texorpdfstring{$\ast$}{*}vec, size\+\_\+t new\+\_\+capacity)
+\item 
+\mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} uint8\+\_\+t \mbox{\hyperlink{object__vector_8c_a9602549815c498e47105022c5b089e13}{insert\+\_\+object\+\_\+vector}} (\mbox{\hyperlink{libcncore_8h_a9f0588bc582b7aa235a1d909d054e833}{Object\+Vector}} \texorpdfstring{$\ast$}{*}vec, \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}obj)
+\item 
+\mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} void \mbox{\hyperlink{object__vector_8c_a2f3672a19bbc1dd3fd2ecee4490ae0fa}{remove\+\_\+object\+\_\+vector}} (\mbox{\hyperlink{libcncore_8h_a9f0588bc582b7aa235a1d909d054e833}{Object\+Vector}} \texorpdfstring{$\ast$}{*}vec, size\+\_\+t i)
+\item 
+\mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} void \mbox{\hyperlink{object__vector_8c_a28beaaf7aed90364450183fadee72c06}{remove\+\_\+object\+\_\+ordered\+\_\+vector}} (\mbox{\hyperlink{libcncore_8h_a9f0588bc582b7aa235a1d909d054e833}{Object\+Vector}} \texorpdfstring{$\ast$}{*}vec, size\+\_\+t i)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{object__vector_8c_a02c7997a64b4c461914145b125ff1c3b}\label{object__vector_8c_a02c7997a64b4c461914145b125ff1c3b} 
+\index{object\_vector.c@{object\_vector.c}!delete\_object\_vector@{delete\_object\_vector}}
+\index{delete\_object\_vector@{delete\_object\_vector}!object\_vector.c@{object\_vector.c}}
+\doxysubsubsection{\texorpdfstring{delete\_object\_vector()}{delete\_object\_vector()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} void delete\+\_\+object\+\_\+vector (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_a9f0588bc582b7aa235a1d909d054e833}{Object\+Vector}} \texorpdfstring{$\ast$}{*}}]{vec }\end{DoxyParamCaption})}
+
+\Hypertarget{object__vector_8c_a9602549815c498e47105022c5b089e13}\label{object__vector_8c_a9602549815c498e47105022c5b089e13} 
+\index{object\_vector.c@{object\_vector.c}!insert\_object\_vector@{insert\_object\_vector}}
+\index{insert\_object\_vector@{insert\_object\_vector}!object\_vector.c@{object\_vector.c}}
+\doxysubsubsection{\texorpdfstring{insert\_object\_vector()}{insert\_object\_vector()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} uint8\+\_\+t insert\+\_\+object\+\_\+vector (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_a9f0588bc582b7aa235a1d909d054e833}{Object\+Vector}} \texorpdfstring{$\ast$}{*}}]{vec,  }\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{obj }\end{DoxyParamCaption})}
+
+\Hypertarget{object__vector_8c_a87116bddfa07e8f963a0706d0d4c7351}\label{object__vector_8c_a87116bddfa07e8f963a0706d0d4c7351} 
+\index{object\_vector.c@{object\_vector.c}!new\_object\_vector@{new\_object\_vector}}
+\index{new\_object\_vector@{new\_object\_vector}!object\_vector.c@{object\_vector.c}}
+\doxysubsubsection{\texorpdfstring{new\_object\_vector()}{new\_object\_vector()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} \mbox{\hyperlink{libcncore_8h_a9f0588bc582b7aa235a1d909d054e833}{Object\+Vector}} \texorpdfstring{$\ast$}{*} new\+\_\+object\+\_\+vector (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{object__vector_8c_a28beaaf7aed90364450183fadee72c06}\label{object__vector_8c_a28beaaf7aed90364450183fadee72c06} 
+\index{object\_vector.c@{object\_vector.c}!remove\_object\_ordered\_vector@{remove\_object\_ordered\_vector}}
+\index{remove\_object\_ordered\_vector@{remove\_object\_ordered\_vector}!object\_vector.c@{object\_vector.c}}
+\doxysubsubsection{\texorpdfstring{remove\_object\_ordered\_vector()}{remove\_object\_ordered\_vector()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} void remove\+\_\+object\+\_\+ordered\+\_\+vector (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_a9f0588bc582b7aa235a1d909d054e833}{Object\+Vector}} \texorpdfstring{$\ast$}{*}}]{vec,  }\item[{size\+\_\+t}]{i }\end{DoxyParamCaption})}
+
+\Hypertarget{object__vector_8c_a2f3672a19bbc1dd3fd2ecee4490ae0fa}\label{object__vector_8c_a2f3672a19bbc1dd3fd2ecee4490ae0fa} 
+\index{object\_vector.c@{object\_vector.c}!remove\_object\_vector@{remove\_object\_vector}}
+\index{remove\_object\_vector@{remove\_object\_vector}!object\_vector.c@{object\_vector.c}}
+\doxysubsubsection{\texorpdfstring{remove\_object\_vector()}{remove\_object\_vector()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} void remove\+\_\+object\+\_\+vector (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_a9f0588bc582b7aa235a1d909d054e833}{Object\+Vector}} \texorpdfstring{$\ast$}{*}}]{vec,  }\item[{size\+\_\+t}]{i }\end{DoxyParamCaption})}
+
+\Hypertarget{object__vector_8c_a307ba860ed4e8c3e909206dd182a837a}\label{object__vector_8c_a307ba860ed4e8c3e909206dd182a837a} 
+\index{object\_vector.c@{object\_vector.c}!resize\_object\_vector@{resize\_object\_vector}}
+\index{resize\_object\_vector@{resize\_object\_vector}!object\_vector.c@{object\_vector.c}}
+\doxysubsubsection{\texorpdfstring{resize\_object\_vector()}{resize\_object\_vector()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} uint8\+\_\+t resize\+\_\+object\+\_\+vector (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_a9f0588bc582b7aa235a1d909d054e833}{Object\+Vector}} \texorpdfstring{$\ast$}{*}}]{vec,  }\item[{size\+\_\+t}]{new\+\_\+capacity }\end{DoxyParamCaption})}
+
