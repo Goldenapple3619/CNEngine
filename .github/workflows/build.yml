@@ -88,19 +88,15 @@ jobs:
 
       - name: Install mingw
         run: |
-          $zipFile = "i686-4.8.3-release-posix-sjlj-rt_v3-rev0.7z"
-          $url = "https://downloads.sourceforge.net/mingw-w64/$zipFile"
-          $installDir = "C:\mingw-i686"
+          choco install msys2 -y
 
-          # Download
-          Invoke-WebRequest $url -OutFile "$env:TEMP\$zipFile"
+          $msys2Path = "${env:ProgramFiles}\msys2\usr\bin"
+          $env:Path = "$msys2Path;$env:Path"
 
-          # Extract with 7zip
-          & "C:\Program Files\7-Zip\7z.exe" x "$env:TEMP\$zipFile" -o$installDir
+          C:\tools\msys64\usr\bin\bash.exe -lc "pacman -Syu --noconfirm"
+          C:\tools\msys64\usr\bin\bash.exe -lc "pacman -S --noconfirm mingw-w64-i686-toolchain base-devel"
 
-          # Add to PATH
-          $env:Path = "$installDir\bin;$env:Path"
-        shell: powershell
+          $env:Path = "C:\msys64\mingw32\bin;$env:Path"
 
       - name: Build windows-i386
         run: |
@@ -132,18 +128,15 @@ jobs:
 
       - name: Install mingw
         run: |
-          $zipFile = "x86_64-4.8.3-release-posix-sjlj-rt_v3-rev0.7z"
-          $url = "https://downloads.sourceforge.net/mingw-w64/$zipFile"
-          $installDir = "C:\mingw-x64"
+          choco install msys2 -y
 
-          # Download
-          Invoke-WebRequest $url -OutFile "$env:TEMP\$zipFile"
+          $msys2Path = "${env:ProgramFiles}\msys2\usr\bin"
+          $env:Path = "$msys2Path;$env:Path"
 
-          # Extract with 7zip
-          & "C:\Program Files\7-Zip\7z.exe" x "$env:TEMP\$zipFile" -o$installDir
+          C:\tools\msys64\usr\bin\bash.exe -lc "pacman -Syu --noconfirm"
+          C:\tools\msys64\usr\bin\bash.exe -lc "pacman -S --noconfirm mingw-w64-x86_64-toolchain base-devel"
 
-          # Add to PATH
-          $env:Path = "$installDir\bin;$env:Path"
+          $env:Path = "C:\msys64\mingw64\bin;$env:Path"
         shell: powershell
 
       - name: Build windows-amd64
