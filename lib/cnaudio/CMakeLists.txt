@@ -18,6 +18,7 @@ target_include_directories(cnaudio
 
 target_link_libraries(cnaudio
     PUBLIC
+        cncore
         SDL2::SDL2
         SDL2_mixer::SDL2_mixer
 )
