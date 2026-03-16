@@ -4,20 +4,20 @@
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}} \mbox{\hyperlink{clock_8c_ab7bdeead5f5b434c1e78d28108e72898}{clock\+\_\+tick}} (\mbox{\hyperlink{libcncore_8h_a3afb309b9a0d51af55191cbbbfb17c4f}{Clock}} \texorpdfstring{$\ast$}{*}c, int32\+\_\+t tps)
+\mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}} \mbox{\hyperlink{clock_8c_a048df2a82edf474862350463e5328b5b}{clock\+\_\+tick}} (\mbox{\hyperlink{libcncore_8h_a3afb309b9a0d51af55191cbbbfb17c4f}{Clock}} \texorpdfstring{$\ast$}{*}c, int32\+\_\+t tps)
 \item 
-\mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} \mbox{\hyperlink{libcncore_8h_a3afb309b9a0d51af55191cbbbfb17c4f}{Clock}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{clock_8c_a6cfcea5b9f4f121b0bbe8aaaf8f03174}{new\+\_\+clock}} (void)
+\mbox{\hyperlink{libcncore_8h_a3afb309b9a0d51af55191cbbbfb17c4f}{Clock}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{clock_8c_ad2174767fae55bd52b02a7ada46523c3}{new\+\_\+clock}} (void)
 \item 
-\mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} void \mbox{\hyperlink{clock_8c_a3f4d47963b2b3c0e1a43fc64a13a072f}{delete\+\_\+clock}} (\mbox{\hyperlink{libcncore_8h_a3afb309b9a0d51af55191cbbbfb17c4f}{Clock}} \texorpdfstring{$\ast$}{*}c)
+void \mbox{\hyperlink{clock_8c_a7013e8a9e6c633e52ba2bda677656805}{delete\+\_\+clock}} (\mbox{\hyperlink{libcncore_8h_a3afb309b9a0d51af55191cbbbfb17c4f}{Clock}} \texorpdfstring{$\ast$}{*}c)
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{clock_8c_ab7bdeead5f5b434c1e78d28108e72898}\label{clock_8c_ab7bdeead5f5b434c1e78d28108e72898} 
+\Hypertarget{clock_8c_a048df2a82edf474862350463e5328b5b}\label{clock_8c_a048df2a82edf474862350463e5328b5b} 
 \index{clock.c@{clock.c}!clock\_tick@{clock\_tick}}
 \index{clock\_tick@{clock\_tick}!clock.c@{clock.c}}
 \doxysubsubsection{\texorpdfstring{clock\_tick()}{clock\_tick()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}} clock\+\_\+tick (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_a3afb309b9a0d51af55191cbbbfb17c4f}{Clock}} \texorpdfstring{$\ast$}{*}}]{c,  }\item[{int32\+\_\+t}]{tps }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}} clock\+\_\+tick (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_a3afb309b9a0d51af55191cbbbfb17c4f}{Clock}} \texorpdfstring{$\ast$}{*}}]{c,  }\item[{int32\+\_\+t}]{tps }\end{DoxyParamCaption})}
 
 regulate ticking using a clock based on set TPS (tick per secondes)
 
@@ -33,11 +33,11 @@ this function is used to regulate the tick time/frame rate for main loops
 \begin{DoxyReturn}{Returns}
 time that passed between last tick and actual tick (aka\+: delta time) in ms 
 \end{DoxyReturn}
-\Hypertarget{clock_8c_a3f4d47963b2b3c0e1a43fc64a13a072f}\label{clock_8c_a3f4d47963b2b3c0e1a43fc64a13a072f} 
+\Hypertarget{clock_8c_a7013e8a9e6c633e52ba2bda677656805}\label{clock_8c_a7013e8a9e6c633e52ba2bda677656805} 
 \index{clock.c@{clock.c}!delete\_clock@{delete\_clock}}
 \index{delete\_clock@{delete\_clock}!clock.c@{clock.c}}
 \doxysubsubsection{\texorpdfstring{delete\_clock()}{delete\_clock()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} void delete\+\_\+clock (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_a3afb309b9a0d51af55191cbbbfb17c4f}{Clock}} \texorpdfstring{$\ast$}{*}}]{c }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void delete\+\_\+clock (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_a3afb309b9a0d51af55191cbbbfb17c4f}{Clock}} \texorpdfstring{$\ast$}{*}}]{c }\end{DoxyParamCaption})}
 
 delete a clock
 
@@ -49,13 +49,13 @@ this function is used to free an allocated clock created using new\+\_\+clock
 \hline
 \end{DoxyParams}
 \begin{DoxySeeAlso}{See also}
-\doxylink{libcncore_8h_a6cfcea5b9f4f121b0bbe8aaaf8f03174}{new\+\_\+clock} 
+\doxylink{libcncore_8h_ad2174767fae55bd52b02a7ada46523c3}{new\+\_\+clock} 
 \end{DoxySeeAlso}
-\Hypertarget{clock_8c_a6cfcea5b9f4f121b0bbe8aaaf8f03174}\label{clock_8c_a6cfcea5b9f4f121b0bbe8aaaf8f03174} 
+\Hypertarget{clock_8c_ad2174767fae55bd52b02a7ada46523c3}\label{clock_8c_ad2174767fae55bd52b02a7ada46523c3} 
 \index{clock.c@{clock.c}!new\_clock@{new\_clock}}
 \index{new\_clock@{new\_clock}!clock.c@{clock.c}}
 \doxysubsubsection{\texorpdfstring{new\_clock()}{new\_clock()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\+\_\+\+API}} \mbox{\hyperlink{libcncore_8h_a3afb309b9a0d51af55191cbbbfb17c4f}{Clock}} \texorpdfstring{$\ast$}{*} new\+\_\+clock (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a3afb309b9a0d51af55191cbbbfb17c4f}{Clock}} \texorpdfstring{$\ast$}{*} new\+\_\+clock (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
 create a new clock
 
@@ -65,5 +65,5 @@ this function is used to allocate a new clock
 a pointer to a new clock that you must free yourself 
 \end{DoxyReturn}
 \begin{DoxySeeAlso}{See also}
-\doxylink{libcncore_8h_a3f4d47963b2b3c0e1a43fc64a13a072f}{delete\+\_\+clock} 
+\doxylink{libcncore_8h_a7013e8a9e6c633e52ba2bda677656805}{delete\+\_\+clock} 
 \end{DoxySeeAlso}

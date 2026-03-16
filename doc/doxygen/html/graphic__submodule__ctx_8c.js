@@ -5,5 +5,5 @@ var graphic__submodule__ctx_8c =
     [ "_events", "graphic__submodule__ctx_8c.html#a54784ff19994e720de4144344546ac8f", null ],
     [ "_init", "graphic__submodule__ctx_8c.html#a1a63a6f58510226876eb4212dbe5da70", null ],
     [ "_update", "graphic__submodule__ctx_8c.html#ad04b21d0b8952a7c15d18e29f996fac2", null ],
-    [ "new_graphic_submodule", "graphic__submodule__ctx_8c.html#aecb8d6790a0d847e7f8c4dc8b7c9cd27", null ]
+    [ "new_graphic_submodule", "graphic__submodule__ctx_8c.html#ad3e5b2029ba67b450f33ccca48adce7a", null ]
 ];

@@ -1,5 +1,5 @@
 var object__ownership_8c =
 [
-    [ "release_object", "object__ownership_8c.html#a9a832dcc9f46386542e7e738236cd6e7", null ],
-    [ "share_object", "object__ownership_8c.html#abf1e0781bdaffada02a010d01df05986", null ]
+    [ "release_object", "object__ownership_8c.html#ac611a10be70eebc6d8f696c409dce697", null ],
+    [ "share_object", "object__ownership_8c.html#aa657a671bc4f2e222a1174ebde0ae963", null ]
 ];

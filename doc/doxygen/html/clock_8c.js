@@ -1,6 +1,6 @@
 var clock_8c =
 [
-    [ "clock_tick", "clock_8c.html#ab7bdeead5f5b434c1e78d28108e72898", null ],
-    [ "delete_clock", "clock_8c.html#a3f4d47963b2b3c0e1a43fc64a13a072f", null ],
-    [ "new_clock", "clock_8c.html#a6cfcea5b9f4f121b0bbe8aaaf8f03174", null ]
+    [ "clock_tick", "clock_8c.html#a048df2a82edf474862350463e5328b5b", null ],
+    [ "delete_clock", "clock_8c.html#a7013e8a9e6c633e52ba2bda677656805", null ],
+    [ "new_clock", "clock_8c.html#ad2174767fae55bd52b02a7ada46523c3", null ]
 ];

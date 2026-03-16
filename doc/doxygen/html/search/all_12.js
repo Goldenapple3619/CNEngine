@@ -3,7 +3,7 @@ var searchData=
   ['texture_0',['texture',['../structwindow__s.html#a51a60c544448bfe06e633b4f30f98d8d',1,'window_s::texture'],['../libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99',1,'Texture:&#160;libcngraphic.h']]],
   ['texture_2ec_1',['texture.c',['../texture_8c.html',1,'']]],
   ['texture_5fatlas_2ec_2',['texture_atlas.c',['../texture__atlas_8c.html',1,'']]],
-  ['texture_5fatlas_5fresize_3',['texture_atlas_resize',['../libcngraphic_8h.html#a8cb921495f96b9fd8fa6f4e5a798ec8e',1,'texture_atlas_resize(TextureAtlas *atlas, size_t new_capacity):&#160;texture_atlas.c'],['../texture__atlas_8c.html#a8cb921495f96b9fd8fa6f4e5a798ec8e',1,'texture_atlas_resize(TextureAtlas *atlas, size_t new_capacity):&#160;texture_atlas.c']]],
+  ['texture_5fatlas_5fresize_3',['texture_atlas_resize',['../libcngraphic_8h.html#a9f3205a3e8afe3bdad1767a25aae3e76',1,'texture_atlas_resize(TextureAtlas *atlas, size_t new_capacity):&#160;texture_atlas.c'],['../texture__atlas_8c.html#a9f3205a3e8afe3bdad1767a25aae3e76',1,'texture_atlas_resize(TextureAtlas *atlas, size_t new_capacity):&#160;texture_atlas.c']]],
   ['texture_5fatlas_5fs_4',['texture_atlas_s',['../structtexture__atlas__s.html',1,'']]],
   ['texture_5fs_5',['texture_s',['../structtexture__s.html',1,'']]],
   ['textureatlas_6',['TextureAtlas',['../libcngraphic_8h.html#a23359974f04ef93017c6a11fec3741ac',1,'libcngraphic.h']]],

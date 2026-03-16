@@ -25,7 +25,16 @@
 var NAVTREE =
 [
   [ "CNEngine", "index.html", [
-    [ "Data Structures", "annotated.html", [
+    [ "Functions", "globals.html", [
+      [ "All", "globals.html", "globals_dup" ],
+      [ "Functions", "globals_func.html", "globals_func" ],
+      [ "Variables", "globals_vars.html", null ],
+      [ "Typedefs", "globals_type.html", null ],
+      [ "Enumerations", "globals_enum.html", null ],
+      [ "Enumerator", "globals_eval.html", null ],
+      [ "Macros", "globals_defs.html", null ]
+    ] ],
+    [ "Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
       [ "Data Structure Index", "classes.html", null ],
       [ "Data Fields", "functions.html", [
@@ -34,16 +43,7 @@ var NAVTREE =
       ] ]
     ] ],
     [ "Files", "files.html", [
-      [ "File List", "files.html", "files_dup" ],
-      [ "Globals", "globals.html", [
-        [ "All", "globals.html", "globals_dup" ],
-        [ "Functions", "globals_func.html", "globals_func" ],
-        [ "Variables", "globals_vars.html", null ],
-        [ "Typedefs", "globals_type.html", null ],
-        [ "Enumerations", "globals_enum.html", null ],
-        [ "Enumerator", "globals_eval.html", null ],
-        [ "Macros", "globals_defs.html", null ]
-      ] ]
+      [ "File List", "files.html", "files_dup" ]
     ] ]
   ] ]
 ];
@@ -51,8 +51,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"libcngraphic_8h.html#aad7f25e3a9ef262bf91e20087cd42bb9a40cfd56bc0af5a24fb501875077d2354",
-"window__universe_8c.html#a9d54459b4342906f5713050119d1e285"
+"libcngraphic_8h.html#a9f6ff2003b1a697490e1195bac48bd8c",
+"window__universe_8c.html#a75f72324ea7d3ccffa77dd8832b2271c"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

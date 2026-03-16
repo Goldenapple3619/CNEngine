@@ -1,8 +1,8 @@
 var event__map_8c =
 [
-    [ "clear_events_in_map", "event__map_8c.html#a9eebf6e23af6cf99120e88db2ab79913", null ],
-    [ "delete_event_map", "event__map_8c.html#a5c47e1b75f13b9ce33de26c1654819fb", null ],
-    [ "new_event_map", "event__map_8c.html#a5796f0568d502af29c33be50e22d1fc6", null ],
-    [ "push_event_in_map", "event__map_8c.html#a6204c30284b8f3cfeff1b7e7a161246d", null ],
-    [ "resize_event_map", "event__map_8c.html#a176530faa292f4a390e7670efc40a81d", null ]
+    [ "clear_events_in_map", "event__map_8c.html#a45902480c49beed417e88950f36a03ed", null ],
+    [ "delete_event_map", "event__map_8c.html#aeeeb8dfc34f66700cda8f0a19c988077", null ],
+    [ "new_event_map", "event__map_8c.html#aa6f72501bc23fe99f9925bea9219d721", null ],
+    [ "push_event_in_map", "event__map_8c.html#a13bbf947bd40f40ec24c1c64396a8ff2", null ],
+    [ "resize_event_map", "event__map_8c.html#a65a5c097797a161923b717a473a818ae", null ]
 ];

@@ -7,6 +7,6 @@ var core__ctx_8c =
     [ "_run", "core__ctx_8c.html#aba00302251de08bee118ad4fe1dd2f09", null ],
     [ "_stop", "core__ctx_8c.html#acd6ab0a603c2ac225da423ced88d5902", null ],
     [ "fill_methods", "core__ctx_8c.html#a4a40d09316ee4a9056061a0e2a8cad14", null ],
-    [ "new_ctx", "core__ctx_8c.html#a2e198ca2e0856d11679e13f4aaa990b8", null ],
-    [ "submodule_ctx", "core__ctx_8c.html#a2b0919ae79de171bd47aee6ea252aebc", null ]
+    [ "new_ctx", "core__ctx_8c.html#ae7166424db55324485e771cc0e3b7d38", null ],
+    [ "submodule_ctx", "core__ctx_8c.html#a379caad25b78a71ea0e20e15ec2b7dd8", null ]
 ];
