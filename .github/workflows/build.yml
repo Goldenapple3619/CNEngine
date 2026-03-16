@@ -140,6 +140,9 @@ jobs:
           restore-keys: |
             cmake-build-${{ runner.os }}-macos-amd64-
 
+      - name: Install NASM
+        run: brew install nasm
+
       - name: Build macos-amd64
         run: |
           scripts/build_macos-amd64.sh
