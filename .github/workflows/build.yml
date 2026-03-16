@@ -27,7 +27,7 @@ jobs:
         run: |
           sudo dpkg --add-architecture i386
           sudo apt update
-          sudo apt install -y gcc-multilib g++-multilib libc6-dev-i386 lib32z1 lib32ncurses6 lib32gcc-s1 libc6:i386 libm-dev:i386
+          sudo apt install -y gcc-multilib g++-multilib libc6-dev-i386 lib32z1 lib32ncurses6 lib32gcc-s1 libc6:i386
 
       - name: Build linux-i386
         run: |
