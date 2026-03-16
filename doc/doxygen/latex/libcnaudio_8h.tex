@@ -1,0 +1,96 @@
+\doxysection{lib/cnaudio/include/libcnaudio.h File Reference}
+\hypertarget{libcnaudio_8h}{}\label{libcnaudio_8h}\index{lib/cnaudio/include/libcnaudio.h@{lib/cnaudio/include/libcnaudio.h}}
+{\ttfamily \#include "{}libcncore.\+h"{}}\newline
+{\ttfamily \#include $<$SDL\+\_\+mixer.\+h$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structaudio__event__s}{audio\+\_\+event\+\_\+s}}
+\item 
+struct \mbox{\hyperlink{structaudio__sequence__s}{audio\+\_\+sequence\+\_\+s}}
+\item 
+struct \mbox{\hyperlink{structaudio__s}{audio\+\_\+s}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structaudio__event__s}{audio\+\_\+event\+\_\+s}} \mbox{\hyperlink{libcnaudio_8h_a347ec905c7fad000f823987f44363621}{Audio\+Event}}
+\item 
+typedef struct \mbox{\hyperlink{structaudio__sequence__s}{audio\+\_\+sequence\+\_\+s}} \mbox{\hyperlink{libcnaudio_8h_a1c69ee57b2d9f89ab4ee80867221b2ab}{Audio\+Sequence}}
+\item 
+typedef struct \mbox{\hyperlink{structaudio__s}{audio\+\_\+s}} \mbox{\hyperlink{libcnaudio_8h_a47d4b2ae444f11e00a3a595fc7b20fd6}{Audio}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549}{audio\+\_\+event}} \{ \newline
+\mbox{\hyperlink{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549a957a911fad07463a3ec739599bedf1b2}{CNAUDIO\+\_\+\+EVENT\+\_\+\+NOOP}} = 0x00
+, \mbox{\hyperlink{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549a68bd9c65e16a47e95e469878895b57b8}{CNAUDIO\+\_\+\+EVENT\+\_\+\+PLAY}} = 0x01
+, \mbox{\hyperlink{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549a4fa165380375e572a59fb06f53854e0a}{CNAUDIO\+\_\+\+EVENT\+\_\+\+PAUSE}} = 0x02
+, \mbox{\hyperlink{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549a85130b71bd5f733bb677c532e414bb96}{ECNAUDIO\+\_\+\+VENT\+\_\+\+RESTART}} = 0x03
+, \newline
+\mbox{\hyperlink{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549a9989ab0524cd415d4a47fff75deb00da}{CNAUDIO\+\_\+\+EVENT\+\_\+\+VOLUME}} = 0x04
+, \mbox{\hyperlink{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549abef2f5d27f011fd897483f57bbb4455b}{CNAUDIO\+\_\+\+EVENT\+\_\+\+SEQ\+\_\+\+END}} = 0x05
+, \mbox{\hyperlink{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549a37c7fee83dfef9e4edd61c17957727fe}{CNAUDIO\+\_\+\+EVENT\+\_\+\+PANNING}} = 0x06
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{libcnaudio_8h_a47d4b2ae444f11e00a3a595fc7b20fd6}\label{libcnaudio_8h_a47d4b2ae444f11e00a3a595fc7b20fd6} 
+\index{libcnaudio.h@{libcnaudio.h}!Audio@{Audio}}
+\index{Audio@{Audio}!libcnaudio.h@{libcnaudio.h}}
+\doxysubsubsection{\texorpdfstring{Audio}{Audio}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structaudio__s}{audio\+\_\+s}} \mbox{\hyperlink{libcnaudio_8h_a47d4b2ae444f11e00a3a595fc7b20fd6}{Audio}}}
+
+\Hypertarget{libcnaudio_8h_a347ec905c7fad000f823987f44363621}\label{libcnaudio_8h_a347ec905c7fad000f823987f44363621} 
+\index{libcnaudio.h@{libcnaudio.h}!AudioEvent@{AudioEvent}}
+\index{AudioEvent@{AudioEvent}!libcnaudio.h@{libcnaudio.h}}
+\doxysubsubsection{\texorpdfstring{AudioEvent}{AudioEvent}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structaudio__event__s}{audio\+\_\+event\+\_\+s}} \mbox{\hyperlink{libcnaudio_8h_a347ec905c7fad000f823987f44363621}{Audio\+Event}}}
+
+\Hypertarget{libcnaudio_8h_a1c69ee57b2d9f89ab4ee80867221b2ab}\label{libcnaudio_8h_a1c69ee57b2d9f89ab4ee80867221b2ab} 
+\index{libcnaudio.h@{libcnaudio.h}!AudioSequence@{AudioSequence}}
+\index{AudioSequence@{AudioSequence}!libcnaudio.h@{libcnaudio.h}}
+\doxysubsubsection{\texorpdfstring{AudioSequence}{AudioSequence}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structaudio__sequence__s}{audio\+\_\+sequence\+\_\+s}} \mbox{\hyperlink{libcnaudio_8h_a1c69ee57b2d9f89ab4ee80867221b2ab}{Audio\+Sequence}}}
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549}\label{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549} 
+\index{libcnaudio.h@{libcnaudio.h}!audio\_event@{audio\_event}}
+\index{audio\_event@{audio\_event}!libcnaudio.h@{libcnaudio.h}}
+\doxysubsubsection{\texorpdfstring{audio\_event}{audio\_event}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549}{audio\+\_\+event}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CNAUDIO\_EVENT\_NOOP@{CNAUDIO\_EVENT\_NOOP}!libcnaudio.h@{libcnaudio.h}}\index{libcnaudio.h@{libcnaudio.h}!CNAUDIO\_EVENT\_NOOP@{CNAUDIO\_EVENT\_NOOP}}}\Hypertarget{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549a957a911fad07463a3ec739599bedf1b2}\label{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549a957a911fad07463a3ec739599bedf1b2} 
+CNAUDIO\+\_\+\+EVENT\+\_\+\+NOOP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CNAUDIO\_EVENT\_PLAY@{CNAUDIO\_EVENT\_PLAY}!libcnaudio.h@{libcnaudio.h}}\index{libcnaudio.h@{libcnaudio.h}!CNAUDIO\_EVENT\_PLAY@{CNAUDIO\_EVENT\_PLAY}}}\Hypertarget{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549a68bd9c65e16a47e95e469878895b57b8}\label{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549a68bd9c65e16a47e95e469878895b57b8} 
+CNAUDIO\+\_\+\+EVENT\+\_\+\+PLAY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CNAUDIO\_EVENT\_PAUSE@{CNAUDIO\_EVENT\_PAUSE}!libcnaudio.h@{libcnaudio.h}}\index{libcnaudio.h@{libcnaudio.h}!CNAUDIO\_EVENT\_PAUSE@{CNAUDIO\_EVENT\_PAUSE}}}\Hypertarget{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549a4fa165380375e572a59fb06f53854e0a}\label{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549a4fa165380375e572a59fb06f53854e0a} 
+CNAUDIO\+\_\+\+EVENT\+\_\+\+PAUSE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ECNAUDIO\_VENT\_RESTART@{ECNAUDIO\_VENT\_RESTART}!libcnaudio.h@{libcnaudio.h}}\index{libcnaudio.h@{libcnaudio.h}!ECNAUDIO\_VENT\_RESTART@{ECNAUDIO\_VENT\_RESTART}}}\Hypertarget{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549a85130b71bd5f733bb677c532e414bb96}\label{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549a85130b71bd5f733bb677c532e414bb96} 
+ECNAUDIO\+\_\+\+VENT\+\_\+\+RESTART&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CNAUDIO\_EVENT\_VOLUME@{CNAUDIO\_EVENT\_VOLUME}!libcnaudio.h@{libcnaudio.h}}\index{libcnaudio.h@{libcnaudio.h}!CNAUDIO\_EVENT\_VOLUME@{CNAUDIO\_EVENT\_VOLUME}}}\Hypertarget{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549a9989ab0524cd415d4a47fff75deb00da}\label{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549a9989ab0524cd415d4a47fff75deb00da} 
+CNAUDIO\+\_\+\+EVENT\+\_\+\+VOLUME&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CNAUDIO\_EVENT\_SEQ\_END@{CNAUDIO\_EVENT\_SEQ\_END}!libcnaudio.h@{libcnaudio.h}}\index{libcnaudio.h@{libcnaudio.h}!CNAUDIO\_EVENT\_SEQ\_END@{CNAUDIO\_EVENT\_SEQ\_END}}}\Hypertarget{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549abef2f5d27f011fd897483f57bbb4455b}\label{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549abef2f5d27f011fd897483f57bbb4455b} 
+CNAUDIO\+\_\+\+EVENT\+\_\+\+SEQ\+\_\+\+END&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CNAUDIO\_EVENT\_PANNING@{CNAUDIO\_EVENT\_PANNING}!libcnaudio.h@{libcnaudio.h}}\index{libcnaudio.h@{libcnaudio.h}!CNAUDIO\_EVENT\_PANNING@{CNAUDIO\_EVENT\_PANNING}}}\Hypertarget{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549a37c7fee83dfef9e4edd61c17957727fe}\label{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549a37c7fee83dfef9e4edd61c17957727fe} 
+CNAUDIO\+\_\+\+EVENT\+\_\+\+PANNING&\\
+\hline
+
+\end{DoxyEnumFields}
