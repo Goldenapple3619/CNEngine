@@ -134,6 +134,10 @@
     CN_API void delete_texture(Texture *texture);
 
     CN_API TextureAtlas *new_texture_atlas(void);
+    CN_API const Texture *get_texture(TextureAtlas *atlas, const char *key, Texture *(*tex_from_key)(const char *));
+    CN_API void remove_texture_atlas(TextureAtlas *atlas, const char *key);
+    CN_API uint8_t add_texture_atlas(TextureAtlas *atlas, Texture *texture, const char *key);
+    CN_API uint8_t texture_atlas_resize(TextureAtlas *atlas, size_t new_capacity);
     CN_API void delete_texture_atlas(TextureAtlas *atlas);
 
     CN_API Window *new_window(const char *name, const Texture *icon, const Videomode *video_mode);

@@ -102,7 +102,7 @@ OBJAttrib *_find_object_attrs(const struct attr_map_s *attribute_map, uint64_t k
     return (NULL);
 }
 
-uint64_t _get_attrs_hash(const char *str)
+CN_API uint64_t _get_attrs_hash(const char *str)
 {
     if (!str)
         return 0;

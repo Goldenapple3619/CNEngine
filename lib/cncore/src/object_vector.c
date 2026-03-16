@@ -65,7 +65,7 @@ CN_API uint8_t insert_object_vector(ObjectVector *vec, Object *obj)
     return (0);
 }
 
-void remove_object_vector(ObjectVector *vec, size_t i)
+CN_API void remove_object_vector(ObjectVector *vec, size_t i)
 {
     if (!vec || vec->size == 0 || i >= vec->size)
         return;
@@ -78,5 +78,21 @@ void remove_object_vector(ObjectVector *vec, size_t i)
         (void)delete_object(vec->objects[i]);
 
     vec->objects[i]  = vec->objects[last];
+    vec->size--;
+}
+
+CN_API void remove_object_ordered_vector(ObjectVector *vec, size_t i)
+{
+    if (!vec || vec->size == 0 || i >= vec->size)
+        return;
+
+    (void)release_object(vec->objects[i]);
+
+    if (((Object *)vec->objects[i])->ref_count <= 0)
+        (void)delete_object(vec->objects[i]);
+
+    for (size_t j = i; j < vec->size - 1; ++j)
+        vec->objects[j] = vec->objects[j + 1];
+
     vec->size--;
 }

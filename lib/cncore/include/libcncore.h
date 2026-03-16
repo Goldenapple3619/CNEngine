@@ -193,7 +193,7 @@
     void _delete_object_attribute_value(cn_value *val);
 
     void _init_object_attrs(struct attr_map_s *attribute_map);
-    uint64_t _get_attrs_hash(const char *str);
+    CN_API uint64_t _get_attrs_hash(const char *str);
     OBJAttrib *_find_object_attrs(const struct attr_map_s *attribute_map, uint64_t k);
     void _remove_object_attrs(struct attr_map_s *attribute_map, uint64_t k);
     uint8_t _insert_object_attrs(struct attr_map_s *attribute_map, uint64_t k, OBJAttrib *attr);
