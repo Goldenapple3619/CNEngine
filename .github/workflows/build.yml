@@ -20,6 +20,9 @@ jobs:
           restore-keys: |
             cmake-build-${{ runner.os }}-linux-i386-
 
+      - name: Install NASM
+        run: sudo apt update && sudo apt install -y nasm
+
       - name: Install 32-bit build dependencies
         run: |
           sudo dpkg --add-architecture i386
@@ -52,6 +55,9 @@ jobs:
           key: cmake-build-${{ runner.os }}-linux-amd64-${{ hashFiles('**/CMakeLists.txt') }}
           restore-keys: |
             cmake-build-${{ runner.os }}-linux-amd64-
+
+      - name: Install NASM
+        run: sudo apt update && sudo apt install -y nasm
 
       - name: Build linux-amd64
         run: |
