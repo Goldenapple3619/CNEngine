@@ -88,9 +88,18 @@ jobs:
 
       - name: Install mingw
         run: |
-          choco install winlibs --x86
-          choco install mingw
-          setx PATH "$env:PATH;C:\tools\mingw64\bin"
+          $zipFile = "i686-4.8.3-release-posix-sjlj-rt_v3-rev0.7z"
+          $url = "https://downloads.sourceforge.net/mingw-w64/$zipFile"
+          $installDir = "C:\mingw-i686"
+
+          # Download
+          Invoke-WebRequest $url -OutFile "$env:TEMP\$zipFile"
+
+          # Extract with 7zip
+          & "C:\Program Files\7-Zip\7z.exe" x "$env:TEMP\$zipFile" -o$installDir
+
+          # Add to PATH
+          $env:Path = "$installDir\bin;$env:Path"
         shell: powershell
 
       - name: Build windows-i386
@@ -123,9 +132,18 @@ jobs:
 
       - name: Install mingw
         run: |
-          choco install mingw -y
-          choco install mingw-w64 -y
-          setx PATH "$env:PATH;C:\tools\mingw64\bin"
+          $zipFile = "x86_64-4.8.3-release-posix-sjlj-rt_v3-rev0.7z"
+          $url = "https://downloads.sourceforge.net/mingw-w64/$zipFile"
+          $installDir = "C:\mingw-x64"
+
+          # Download
+          Invoke-WebRequest $url -OutFile "$env:TEMP\$zipFile"
+
+          # Extract with 7zip
+          & "C:\Program Files\7-Zip\7z.exe" x "$env:TEMP\$zipFile" -o$installDir
+
+          # Add to PATH
+          $env:Path = "$installDir\bin;$env:Path"
         shell: powershell
 
       - name: Build windows-amd64
