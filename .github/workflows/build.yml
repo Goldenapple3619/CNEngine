@@ -100,7 +100,7 @@ jobs:
 
       - name: Build windows-i386
         run: |
-          set PATH=C:\tools\msys64\mingw32\bin;C:\tools\msys64\usr\bin;%PATH%
+          $env:Path = "C:\tools\msys64\mingw32\bin;$env:Path"
           cmd.exe /c scripts\build_windows-i386.bat
         shell: powershell
 
@@ -142,7 +142,7 @@ jobs:
 
       - name: Build windows-amd64
         run: |
-          set PATH=C:\tools\msys64\mingw64\bin;C:\tools\msys64\usr\bin;%PATH%
+          $env:Path = "C:\tools\msys64\mingw64\bin;$env:Path"
           cmd.exe /c scripts\build_windows-amd64.bat
         shell: powershell
 
