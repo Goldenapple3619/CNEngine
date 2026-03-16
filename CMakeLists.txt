@@ -91,6 +91,8 @@ if(TARGET_ARCH STREQUAL "i386")
     set(SDL2MIXER_EXTERNAL_PROJECT_CMAKE_ARGS
         -DCMAKE_C_FLAGS="-m32"
         -DCMAKE_CXX_FLAGS="-m32"
+        -DCMAKE_EXE_LINKER_FLAGS="-m32 -lm"
+        -DCMAKE_SHARED_LINKER_FLAGS="-m32 -lm"
         -DCMAKE_BUILD_TYPE=Release
     )
 else()
