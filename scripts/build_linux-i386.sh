@@ -6,6 +6,8 @@ cd build/linux-i386
 
 cmake ../.. \
     -DDIST_DIR=../../dist/linux-i386 \
+    -DCMAKE_C_STANDARD_LIBRARIES="-lm" \
+    -DCMAKE_CXX_STANDARD_LIBRARIES="-lm" \
     -DSDL2_IMAGE=ON \
     -DSDL2_MIXER=ON \
     -DSDL2_TTF=ON \
