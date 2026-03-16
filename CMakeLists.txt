@@ -93,6 +93,18 @@ FetchContent_MakeAvailable(SDL2_ttf)
 set(SDL2MIXER_WAVPACK OFF CACHE BOOL "" FORCE)
 set(SDL2MIXER_VENDORED ON CACHE BOOL "" FORCE)
 
+if(TARGET_ARCH STREQUAL "i386")
+    set(SDL2MIXER_EXTERNAL_PROJECT_CMAKE_ARGS
+        -DCMAKE_C_FLAGS="${CMAKE_C_FLAGS} -O2 -lm -m32"
+        -DCMAKE_CXX_FLAGS="${CMAKE_CXX_FLAGS} -O2 -lm -m32"
+    )
+else()
+    set(SDL2MIXER_EXTERNAL_PROJECT_CMAKE_ARGS
+        -DCMAKE_C_FLAGS="${CMAKE_C_FLAGS} -O2 -lm"
+        -DCMAKE_CXX_FLAGS="${CMAKE_CXX_FLAGS} -O2 -lm"
+    )
+endif()
+
 FetchContent_Declare(
     SDL2_mixer
     GIT_REPOSITORY https://github.com/libsdl-org/SDL_mixer.git
