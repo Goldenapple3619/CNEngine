@@ -2,7 +2,7 @@
     #define _LIBCNAUDIO_H_
 
     #include "libcncore.h"
-    #include <SDL2/SDL_mixer.h>
+    #include <SDL_mixer.h>
 
     typedef enum {
         CNAUDIO_EVENT_NOOP = 0x00,

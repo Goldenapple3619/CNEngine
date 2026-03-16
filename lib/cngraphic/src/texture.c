@@ -1,5 +1,5 @@
 #include "libcngraphic.h"
-#include <SDL2/SDL_image.h>
+#include <SDL_image.h>
 
 CN_API Texture *new_texture(const Vector2 *size, cnbool alpha)
 {
