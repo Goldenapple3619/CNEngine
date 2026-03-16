@@ -1,12 +1,15 @@
 name: tests
 
-on: [push, pull_request]
+on:
+  workflow_run:
+    workflows: ["build"]
+    types: [completed]
 
 jobs:
   test-linux-amd64:
     runs-on: ubuntu-latest
-    needs: build-linux-amd64
-  
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
     steps:
       - uses: actions/checkout@v2
       - name: Download build artifact
