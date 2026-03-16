@@ -89,7 +89,7 @@ jobs:
       - name: Install mingw
         run: |
           choco install mingw -y
-          echo "C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin" >> $env:GITHUB_PATH
+          setx PATH "$env:PATH;C:\tools\mingw64\bin"
         shell: powershell
 
       - name: Build windows-i386
@@ -123,7 +123,7 @@ jobs:
       - name: Install mingw
         run: |
           choco install mingw -y
-          echo "C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin" >> $env:GITHUB_PATH
+          setx PATH "$env:PATH;C:\tools\mingw64\bin"
         shell: powershell
 
       - name: Build windows-amd64

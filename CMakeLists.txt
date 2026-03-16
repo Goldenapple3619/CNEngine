@@ -99,6 +99,10 @@ FetchContent_Declare(
     GIT_TAG release-2.8.1
 )
 
+if(TARGET xmp_shared)
+    target_link_libraries(xmp_shared PRIVATE m)
+endif()
+
 FetchContent_MakeAvailable(SDL2_mixer)
 
 # ========= Modules =========
