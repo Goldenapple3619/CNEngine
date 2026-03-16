@@ -8,7 +8,7 @@ project(CNEngine
 set(CMAKE_C_STANDARD 23)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 
-set(CMAKE_REQUIRED_LIBRARIES m)
+set(CMAKE_REQUIRED_LIBRARIES m CACHE BOOL "" FORCE)
 
 # ========= Options =========
 option(CN_BUILD_GAME "Build game executable" ON)
@@ -98,10 +98,6 @@ FetchContent_Declare(
     GIT_REPOSITORY https://github.com/libsdl-org/SDL_mixer.git
     GIT_TAG release-2.8.1
 )
-
-if(TARGET xmp_shared)
-    target_link_libraries(xmp_shared PRIVATE m)
-endif()
 
 FetchContent_MakeAvailable(SDL2_mixer)
 
