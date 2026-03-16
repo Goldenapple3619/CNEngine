@@ -97,12 +97,12 @@ jobs:
           C:\tools\msys64\usr\bin\bash.exe -lc "pacman -S --noconfirm mingw-w64-i686-toolchain base-devel"
 
           Write-Host "=== mingw32/bin contents ==="
-          Get-ChildItem "C:\msys64\mingw32\bin" | ForEach-Object { Write-Host $_.FullName }
+          Get-ChildItem "C:\tools\msys64\mingw32\bin" | ForEach-Object { Write-Host $_.FullName }
 
           Write-Host "=== mingw64/bin contents ==="
-          Get-ChildItem "C:\msys64\mingw64\bin" | ForEach-Object { Write-Host $_.FullName }
+          Get-ChildItem "C:\tools\msys64\mingw64\bin" | ForEach-Object { Write-Host $_.FullName }
 
-          $env:Path = "C:\msys64\mingw32\bin;C:\msys64\mingw64\bin;$env:Path"
+          $env:Path = "C:\tools\msys64\mingw32\bin;C:\tools\msys64\mingw64\bin;$env:Path"
 
       - name: Build windows-i386
         run: |
@@ -143,12 +143,12 @@ jobs:
           C:\tools\msys64\usr\bin\bash.exe -lc "pacman -S --noconfirm mingw-w64-x86_64-toolchain base-devel"
 
           Write-Host "=== mingw32/bin contents ==="
-          Get-ChildItem "C:\msys64\mingw32\bin" | ForEach-Object { Write-Host $_.FullName }
+          Get-ChildItem "C:\tools\msys64\mingw32\bin" | ForEach-Object { Write-Host $_.FullName }
 
           Write-Host "=== mingw64/bin contents ==="
-          Get-ChildItem "C:\msys64\mingw64\bin" | ForEach-Object { Write-Host $_.FullName }
+          Get-ChildItem "C:\tools\msys64\mingw64\bin" | ForEach-Object { Write-Host $_.FullName }
 
-          $env:Path = "C:\msys64\mingw32\bin;C:\msys64\mingw64\bin;$env:Path"
+          $env:Path = "C:\tools\msys64\mingw32\bin;C:\tools\msys64\mingw64\bin;$env:Path"
         shell: powershell
 
       - name: Build windows-amd64
