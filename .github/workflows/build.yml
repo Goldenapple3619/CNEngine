@@ -85,18 +85,17 @@ jobs:
           key: cmake-build-${{ runner.os }}-windows-i386-${{ hashFiles('**/CMakeLists.txt') }}
           restore-keys: |
             cmake-build-${{ runner.os }}-windows-i386-
-  
-      - name: Install Ubuntu 22.04 WSL distribution
-        run: wsl --install -d Ubuntu-22.04
 
       - name: Install mingw
         run: |
-          wsl sudo apt update
-          wsl sudo apt install -y gcc-mingw-w64-i686 g++-mingw-w64-i686 cmake make
+          choco install mingw -y
+          echo "C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin" >> $env:GITHUB_PATH
+        shell: powershell
 
       - name: Build windows-i386
         run: |
           wsl scripts/build_windows-i386.sh
+        shell: powershell
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
@@ -121,17 +120,16 @@ jobs:
           restore-keys: |
             cmake-build-${{ runner.os }}-windows-amd64-
 
-      - name: Install Ubuntu 22.04 WSL distribution
-        run: wsl --install -d Ubuntu-22.04
-
       - name: Install mingw
         run: |
-          wsl sudo apt update
-          wsl sudo apt install -y gcc-mingw-w64-x86-64 g++-mingw-w64-x86-64 cmake make
+          choco install mingw -y
+          echo "C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64\bin" >> $env:GITHUB_PATH
+        shell: powershell
 
       - name: Build windows-amd64
         run: |
           wsl scripts/build_windows-amd64.sh
+        shell: powershell
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
