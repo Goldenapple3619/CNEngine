@@ -20,6 +20,7 @@ int main(int argc, char *argv[])
     (void)argc;
     (void)argv;
 
+    Videomode v = {.size.x = 800, .size.y = 600, .position.x = 0, .position.y = 0, .flags = VDM_CLOSABLE, .native_flags = VDM_N_SHWN};
     Object *ctx = new_ctx();
 
     if (!ctx)
@@ -36,8 +37,15 @@ int main(int argc, char *argv[])
         delete_object(ctx);
         return (1);
     }
-    signal(SIGINT, &sigint_handler);
+    
+    val = call_method(ctx, "spawn_interface", (void *[]){"test", NULL, &v});
 
+    if (val.type == CN_TYPE_NULL) {
+        delete_object(ctx);
+        return (1);
+    }
+
+    signal(SIGINT, &sigint_handler);
     call_method(ctx, "_run", NULL);
     delete_object(ctx);
     return (0);

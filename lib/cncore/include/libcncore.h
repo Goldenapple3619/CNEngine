@@ -15,6 +15,7 @@
     #define STRING_INDIVIDUAL_ALLOCATION 1 // are we duping every string ? or are they handled with an atlas
 
     #define PREP_INIT() void *__temp_alloc;
+    #define PREP_CLASS_BUILD() PREP_INIT()
     #define INIT_CUSTOM_ALLOCATION(__this, expr_alloc, expr_free, name) \
         __temp_alloc = (void *)expr_alloc; \
         if (!__temp_alloc) \
@@ -37,6 +38,9 @@
     #define INIT_FLOAT(__this, number, name) \
         if (!set_attr(__this, name, CN_TYPE_FLOAT, (cnany)((double [1]){number}))) \
             return (VALUE_ERR);
+    #define INIT_METHOD(__this, name, callback) \
+        if (!set_method(__this, name, callback)) \
+            return (VALUE_ERR);
     #define CREATE_METHOD_CLASS_BUILD(__class, name, callback) \
         if (!set_method(__class, name, callback)) { \
             (void)delete_object(__class); \
@@ -45,6 +49,17 @@
     #define SET_PARENT_CLASS_BUILD(__class, __parent) \
         __class->base = __parent; \
         if (!__class->base) { \
+            (void)delete_object(__class); \
+            return (NULL); \
+        }
+    #define CREATE_CUSTOM_ALLOCATION_CLASS_BUILD(__class, expr_alloc, expr_free, name) \
+        __temp_alloc = expr_alloc; \
+        if (!__temp_alloc) { \
+            (void)delete_object(__class); \
+            return (NULL); \
+        } \
+        if (!set_attr(__class, name, CN_TYPE_GENERIC_UNIQ_PTR, (cnany)__temp_alloc)) { \
+            (void)expr_free(__temp_alloc); \
             (void)delete_object(__class); \
             return (NULL); \
         }
@@ -191,6 +206,7 @@
     CN_API void delete_object_attribute(OBJAttrib *attribute);
     
     CN_API Object *new_object(void);
+    CN_API Object *build_object(Object *obj, void **args);
     CN_API Object *share_object(Object *object);
     CN_API cnbool set_attr(Object *object, const char *name, cn_type type, cnany value);
     CN_API cn_value *get_attr(const Object *object, const char *name);
@@ -209,6 +225,7 @@
     CN_API void delete_object_vector(ObjectVector *vec);
     CN_API uint8_t resize_object_vector(ObjectVector *vec, size_t new_capacity);
     CN_API uint8_t insert_object_vector(ObjectVector *vec, Object *obj);
+    CN_API void remove_object_ordered_vector(ObjectVector *vec, size_t i);
     void remove_object_vector(ObjectVector *vec, size_t i);
 
     CN_API Object *new_ctx(void);
@@ -224,6 +241,8 @@
     uint8_t _insert_object_attrs(struct attr_map_s *attribute_map, uint64_t k, OBJAttrib *attr);
     uint8_t _attr_map_resize(struct attr_map_s *map, size_t new_capacity);
     void _delete_object_attrs(struct attr_map_s *attribute_map);
+
+    CN_API Object *new_list(void);
 
     CN_API cnbool start_core(void);
     CN_API void end_core(void);

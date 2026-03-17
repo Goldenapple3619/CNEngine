@@ -62,13 +62,35 @@ static cn_value _events(Object *__this, void **args)
     return (null_value);
 }
 
+static cn_value _spawn_interface(Object *__this, void **args)
+{
+    if (!args)
+        return (null_value);
+
+    Object *interface = build_object(new_interface(), (void *[]){args[0], args[1], args[2], NULL});
+    ObjectVector *vec = get_attr(__this, "interfaces")->as.ptr;
+
+    if (!interface)
+        return (null_value);
+
+    if (insert_object_vector(vec, interface)) {
+        (void)delete_object(interface);
+        return (null_value);
+    }
+
+    if (add_window_in_universe(get_attr(__this, "all_window")->as.ptr, get_attr(interface, "window")->as.ptr)) {
+        (void)remove_object_vector(vec, vec->size);
+        return (null_value);
+    }
+
+    return ((cn_value){.type=CN_TYPE_OBJECT, .as.ptr=interface});
+}
+
 static cn_value _init(Object *__this, void **args)
 {
     (void)__this;
 
     PREP_INIT()
-
-    Videomode v = {.size.x = 800, .size.y = 600, .position.x = 0, .position.y = 0, .flags = VDM_CLOSABLE, .native_flags = VDM_N_SHWN};
 
     if (!args || !(args[0]))
         return (VALUE_ERR);
@@ -82,30 +104,10 @@ static cn_value _init(Object *__this, void **args)
     INIT_CUSTOM_ALLOCATION(ctx, new_window_universe(), delete_window_universe, "all_window");
     INIT_CUSTOM_ALLOCATION(ctx, new_texture_atlas(), delete_texture_atlas, "texture_atlas");
 
-    Object *temp = new_interface();
-
-    if (!temp || call_method(temp, "_init", (cnany []){(cnany)"test", NULL, &v, NULL}).as.i == VALUE_ERR.as.i) {
-        (void)delete_object(temp);
-        return (VALUE_ERR);
-    }
-    insert_object_vector(get_attr(ctx, "interfaces")->as.ptr, temp);
-    add_window_in_universe(get_attr(ctx, "all_window")->as.ptr, get_attr(temp, "window")->as.ptr);
-
-    temp = new_interface();
-
-    if (!temp || call_method(temp, "_init", (cnany []){(cnany)"test", NULL, &v, NULL}).as.i == VALUE_ERR.as.i) {
-        (void)delete_object(temp);
-        return (VALUE_ERR);
-    }
-    insert_object_vector(get_attr(ctx, "interfaces")->as.ptr, temp);
-    add_window_in_universe(get_attr(ctx, "all_window")->as.ptr, get_attr(temp, "window")->as.ptr);
-
-    if (!set_method(ctx, "draw", _draw))
-        return (VALUE_ERR);
-    if (!set_method(ctx, "update", _update))
-        return (VALUE_ERR);
-    if (!set_method(ctx, "events", _events))
-        return (VALUE_ERR);
+    INIT_METHOD(ctx, "draw", _draw)
+    INIT_METHOD(ctx, "update", _update)
+    INIT_METHOD(ctx, "events", _events)
+    INIT_METHOD(ctx, "spawn_interface", _spawn_interface)
     
     return (VALUE_OK);
 }

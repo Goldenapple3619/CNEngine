@@ -213,6 +213,22 @@ CN_API void print_object(const Object *object)
     (void)_delete_object_attribute_value(&val);
 }
 
+CN_API Object *build_object(Object *obj, void **args)
+{
+    if (!obj)
+        return (NULL);
+    cn_value val = call_method(obj, "_init", args);
+
+    if (val.type == CN_TYPE_NULL) {
+        (void)delete_object(obj);
+        return (NULL);
+    }
+    if (val.as.i == VALUE_OK.as.i)
+        return (obj);
+    (void)delete_object(obj);
+    return (NULL);
+};
+
 static cn_value _init(Object *__this, void **args) { (void)args; (void)__this; return (null_value); }
 static cn_value _del(Object *__this, void **args) { (void)args; (void)__this; return (null_value); }
 static cn_value _str(Object *this, void **args) {

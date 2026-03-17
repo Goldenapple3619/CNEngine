@@ -114,36 +114,22 @@ CN_API cnbool submodule_ctx(Object *ctx, Object *module)
     return (true);
 }
 
-static Object *fill_methods(Object *obj)
+CN_API Object *new_ctx()
 {
+    PREP_CLASS_BUILD()
+
+    Object *obj = new_object();
+
+    if (!obj)
+        return (NULL);
+
+    SET_PARENT_CLASS_BUILD(obj, create_default_object());
+    CREATE_CUSTOM_ALLOCATION_CLASS_BUILD(obj, new_object_vector(), delete_object_vector, "submodules");
+
     CREATE_METHOD_CLASS_BUILD(obj, "_init", &_init);
     CREATE_METHOD_CLASS_BUILD(obj, "_run", &_run);
     CREATE_METHOD_CLASS_BUILD(obj, "_stop", &_stop);
     CREATE_METHOD_CLASS_BUILD(obj, "_del", &_del);
 
     return (obj);
-}
-
-CN_API Object *new_ctx()
-{
-    Object *obj = new_object();
-    ObjectVector *temp_vec;
-
-    if (!obj)
-        return (NULL);
-
-    SET_PARENT_CLASS_BUILD(obj, create_default_object());
-
-    temp_vec = new_object_vector();
-    if (!temp_vec) {
-        (void)delete_object(obj);
-        return (NULL);
-    }
-    if (!set_attr(obj, "submodules", CN_TYPE_GENERIC_UNIQ_PTR, (cnany)temp_vec)) {
-        (void)delete_object_vector(temp_vec);
-        (void)delete_object(obj);
-        return (NULL);
-    }
-
-    return (fill_methods(obj));
 }
