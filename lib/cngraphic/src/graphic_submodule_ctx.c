@@ -40,7 +40,7 @@ static cn_value _update(Object *__this, void **args)
             continue;
         }
 
-        (void)call_method(interfaces->objects[i], "_update", args);
+        (void)call_method(interfaces->objects[i], "_update", (cnany []){&get_attr(__this, "dt")->as.f, NULL});
     }
 
     return (null_value);
@@ -79,7 +79,7 @@ static cn_value _spawn_interface(Object *__this, void **args)
     }
 
     if (add_window_in_universe(get_attr(__this, "all_window")->as.ptr, get_attr(interface, "window")->as.ptr)) {
-        (void)remove_object_vector(vec, vec->size);
+        (void)remove_object_vector(vec, vec->size - 1);
         return (null_value);
     }
 
@@ -104,9 +104,13 @@ static cn_value _init(Object *__this, void **args)
     INIT_CUSTOM_ALLOCATION(ctx, new_window_universe(), delete_window_universe, "all_window");
     INIT_CUSTOM_ALLOCATION(ctx, new_texture_atlas(), delete_texture_atlas, "texture_atlas");
 
-    INIT_METHOD(ctx, "draw", _draw)
-    INIT_METHOD(ctx, "update", _update)
-    INIT_METHOD(ctx, "events", _events)
+    if (call_method(ctx, "register_draw", (cnany []){_draw, NULL}).as.i == VALUE_ERR.as.i)
+        return (VALUE_ERR);
+    if (call_method(ctx, "register_update", (cnany []){_update, NULL}).as.i == VALUE_ERR.as.i)
+        return (VALUE_ERR);
+    if (call_method(ctx, "register_event", (cnany []){_events, NULL}).as.i == VALUE_ERR.as.i)
+        return (VALUE_ERR);
+
     INIT_METHOD(ctx, "spawn_interface", _spawn_interface)
     
     return (VALUE_OK);

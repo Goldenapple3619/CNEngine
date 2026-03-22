@@ -8,6 +8,7 @@ add_library(cncore SHARED
     src/object.c
     src/object_vector.c
     src/object_value.c
+    src/object_value_vector.c
     src/object_ownership.c
     src/object_attributes.c
     src/object_map.c

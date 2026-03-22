@@ -59,3 +59,32 @@ void _init_attribute_value(cn_value *dest, cnany value)
             break;
     }
 }
+
+void *_attribute_value_extract(const cn_value *src)
+{
+    if (!src)
+        return (NULL);
+    switch (src->type) {
+        case (CN_TYPE_INT):
+            return (void *)&src->as.i;
+            break;
+        case (CN_TYPE_FLOAT):
+            return (void *)&src->as.f;
+            break;
+        case (CN_TYPE_FUNCTION):
+            return src->as.ptr;
+            break;
+        case (CN_TYPE_OBJECT):
+            return src->as.ptr;
+            break;
+        case (CN_TYPE_GENERIC_UNIQ_PTR):
+            return src->as.ptr;
+            break;
+        case (CN_TYPE_STRING):
+            return src->as.str;
+            break;
+        default:
+            break;
+    }
+    return (NULL);
+}

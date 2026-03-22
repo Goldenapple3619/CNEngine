@@ -155,6 +155,13 @@
         size_t capacity;
     };
 
+    struct cn_value_vector_s {
+        cn_value **values;
+
+        size_t size;
+        size_t capacity;
+    };
+
     typedef struct vector2_s Vector2;
     typedef struct vector3_s Vector3;
     typedef struct rect_s Rect;
@@ -233,6 +240,7 @@
 
     void _init_attribute_value(cn_value *dest, cnany value);
     void _delete_object_attribute_value(cn_value *val);
+    void *_attribute_value_extract(const cn_value *src);
 
     void _init_object_attrs(struct attr_map_s *attribute_map);
     CN_API uint64_t _get_attrs_hash(const char *str);
@@ -241,6 +249,13 @@
     uint8_t _insert_object_attrs(struct attr_map_s *attribute_map, uint64_t k, OBJAttrib *attr);
     uint8_t _attr_map_resize(struct attr_map_s *map, size_t new_capacity);
     void _delete_object_attrs(struct attr_map_s *attribute_map);
+
+    CN_API struct cn_value_vector_s *new_value_vector(void);
+    CN_API uint8_t resize_value_vector(struct cn_value_vector_s *vec, size_t new_capacity);
+    CN_API uint8_t insert_value_vector(struct cn_value_vector_s *vec, cn_value value);
+    CN_API void remove_value_vector(struct cn_value_vector_s *vec, size_t i);
+    CN_API void remove_value_ordered_vector(struct cn_value_vector_s *vec, size_t i);
+    CN_API void delete_value_vector(struct cn_value_vector_s *vec);
 
     CN_API Object *new_list(void);
 

@@ -12,6 +12,18 @@ static cn_value _init(Object *__this, void **args)
     return (VALUE_OK);
 }
 
+static cn_value _add_element(Object *__this, void **args)
+{
+    if (!args || !args[0])
+        return (VALUE_ERR);
+
+    ObjectVector *vec = get_attr(__this, "elements")->as.ptr;
+
+    if (insert_object_vector(vec, args[0]))
+        return (VALUE_ERR);
+    return (VALUE_OK);
+}
+
 static cn_value _events(Object *__this, void **args)
 {
     (void)args;
@@ -76,6 +88,7 @@ CN_API Object *new_interface(void)
     CREATE_METHOD_CLASS_BUILD(obj, "_draw", &_draw);
     CREATE_METHOD_CLASS_BUILD(obj, "_update", &_update);
     CREATE_METHOD_CLASS_BUILD(obj, "_events", &_events);
+    CREATE_METHOD_CLASS_BUILD(obj, "add_element", &_add_element);
     CREATE_METHOD_CLASS_BUILD(obj, "_del", &_del);
 
     return (obj);
