@@ -3,6 +3,7 @@ var object_8c =
     [ "_del", "object_8c.html#a97a1051659d95d0248dbe386029c17f3", null ],
     [ "_init", "object_8c.html#a1a63a6f58510226876eb4212dbe5da70", null ],
     [ "_str", "object_8c.html#a8732979a596871c560a493e4e6d425f8", null ],
+    [ "build_object", "object_8c.html#aa8a195b1765489f8e4a9a7f184d5b27b", null ],
     [ "call_method", "object_8c.html#a303f13c5e7b6e2d6a1e3215c57113925", null ],
     [ "create_default_object", "object_8c.html#ab6cdf8e13a027f8512ccec402a3bbdc6", null ],
     [ "delete_object", "object_8c.html#a3c17e388301ab678d57d1e4c0f1d3214", null ],
