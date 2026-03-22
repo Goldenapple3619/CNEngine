@@ -9,6 +9,7 @@ var dir_b182329bb7f479432d5e3f8fb156c79c =
     [ "object_map.c", "object__map_8c.html", "object__map_8c" ],
     [ "object_ownership.c", "object__ownership_8c.html", "object__ownership_8c" ],
     [ "object_value.c", "object__value_8c.html", "object__value_8c" ],
+    [ "object_value_vector.c", "object__value__vector_8c.html", "object__value__vector_8c" ],
     [ "object_vector.c", "object__vector_8c.html", "object__vector_8c" ],
     [ "rect.c", "rect_8c.html", "rect_8c" ],
     [ "vector2.c", "vector2_8c.html", "vector2_8c" ],

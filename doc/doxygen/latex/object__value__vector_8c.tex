@@ -1,0 +1,57 @@
+\doxysection{lib/cncore/src/object\+\_\+value\+\_\+vector.c File Reference}
+\hypertarget{object__value__vector_8c}{}\label{object__value__vector_8c}\index{lib/cncore/src/object\_value\_vector.c@{lib/cncore/src/object\_value\_vector.c}}
+{\ttfamily \#include "{}libcncore.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structcn__value__vector__s}{cn\+\_\+value\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{object__value__vector_8c_a6c7eb24b355f7f5e37ede66c67710dcd}{new\+\_\+value\+\_\+vector}} (void)
+\item 
+void \mbox{\hyperlink{object__value__vector_8c_a864790e53dc247c7b3b636cce456b347}{delete\+\_\+value\+\_\+vector}} (struct \mbox{\hyperlink{structcn__value__vector__s}{cn\+\_\+value\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}vec)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{object__value__vector_8c_af539339b9926324b283c89d3954dde34}{resize\+\_\+value\+\_\+vector}} (struct \mbox{\hyperlink{structcn__value__vector__s}{cn\+\_\+value\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}vec, size\+\_\+t new\+\_\+capacity)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{object__value__vector_8c_a5c29ebff01efd987f6fd634d06410bce}{insert\+\_\+value\+\_\+vector}} (struct \mbox{\hyperlink{structcn__value__vector__s}{cn\+\_\+value\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}vec, \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} value)
+\item 
+void \mbox{\hyperlink{object__value__vector_8c_a5d70925f3be81cf6b238412aeb2cee24}{remove\+\_\+value\+\_\+vector}} (struct \mbox{\hyperlink{structcn__value__vector__s}{cn\+\_\+value\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}vec, size\+\_\+t i)
+\item 
+void \mbox{\hyperlink{object__value__vector_8c_a10b0bf1a98dc32c4ae93c42bc818956c}{remove\+\_\+value\+\_\+ordered\+\_\+vector}} (struct \mbox{\hyperlink{structcn__value__vector__s}{cn\+\_\+value\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}vec, size\+\_\+t i)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{object__value__vector_8c_a864790e53dc247c7b3b636cce456b347}\label{object__value__vector_8c_a864790e53dc247c7b3b636cce456b347} 
+\index{object\_value\_vector.c@{object\_value\_vector.c}!delete\_value\_vector@{delete\_value\_vector}}
+\index{delete\_value\_vector@{delete\_value\_vector}!object\_value\_vector.c@{object\_value\_vector.c}}
+\doxysubsubsection{\texorpdfstring{delete\_value\_vector()}{delete\_value\_vector()}}
+{\footnotesize\ttfamily void delete\+\_\+value\+\_\+vector (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structcn__value__vector__s}{cn\+\_\+value\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{vec }\end{DoxyParamCaption})}
+
+\Hypertarget{object__value__vector_8c_a5c29ebff01efd987f6fd634d06410bce}\label{object__value__vector_8c_a5c29ebff01efd987f6fd634d06410bce} 
+\index{object\_value\_vector.c@{object\_value\_vector.c}!insert\_value\_vector@{insert\_value\_vector}}
+\index{insert\_value\_vector@{insert\_value\_vector}!object\_value\_vector.c@{object\_value\_vector.c}}
+\doxysubsubsection{\texorpdfstring{insert\_value\_vector()}{insert\_value\_vector()}}
+{\footnotesize\ttfamily uint8\+\_\+t insert\+\_\+value\+\_\+vector (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structcn__value__vector__s}{cn\+\_\+value\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{vec,  }\item[{\mbox{\hyperlink{structcn__value}{cn\+\_\+value}}}]{value }\end{DoxyParamCaption})}
+
+\Hypertarget{object__value__vector_8c_a6c7eb24b355f7f5e37ede66c67710dcd}\label{object__value__vector_8c_a6c7eb24b355f7f5e37ede66c67710dcd} 
+\index{object\_value\_vector.c@{object\_value\_vector.c}!new\_value\_vector@{new\_value\_vector}}
+\index{new\_value\_vector@{new\_value\_vector}!object\_value\_vector.c@{object\_value\_vector.c}}
+\doxysubsubsection{\texorpdfstring{new\_value\_vector()}{new\_value\_vector()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structcn__value__vector__s}{cn\+\_\+value\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*} new\+\_\+value\+\_\+vector (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{object__value__vector_8c_a10b0bf1a98dc32c4ae93c42bc818956c}\label{object__value__vector_8c_a10b0bf1a98dc32c4ae93c42bc818956c} 
+\index{object\_value\_vector.c@{object\_value\_vector.c}!remove\_value\_ordered\_vector@{remove\_value\_ordered\_vector}}
+\index{remove\_value\_ordered\_vector@{remove\_value\_ordered\_vector}!object\_value\_vector.c@{object\_value\_vector.c}}
+\doxysubsubsection{\texorpdfstring{remove\_value\_ordered\_vector()}{remove\_value\_ordered\_vector()}}
+{\footnotesize\ttfamily void remove\+\_\+value\+\_\+ordered\+\_\+vector (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structcn__value__vector__s}{cn\+\_\+value\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{vec,  }\item[{size\+\_\+t}]{i }\end{DoxyParamCaption})}
+
+\Hypertarget{object__value__vector_8c_a5d70925f3be81cf6b238412aeb2cee24}\label{object__value__vector_8c_a5d70925f3be81cf6b238412aeb2cee24} 
+\index{object\_value\_vector.c@{object\_value\_vector.c}!remove\_value\_vector@{remove\_value\_vector}}
+\index{remove\_value\_vector@{remove\_value\_vector}!object\_value\_vector.c@{object\_value\_vector.c}}
+\doxysubsubsection{\texorpdfstring{remove\_value\_vector()}{remove\_value\_vector()}}
+{\footnotesize\ttfamily void remove\+\_\+value\+\_\+vector (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structcn__value__vector__s}{cn\+\_\+value\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{vec,  }\item[{size\+\_\+t}]{i }\end{DoxyParamCaption})}
+
+\Hypertarget{object__value__vector_8c_af539339b9926324b283c89d3954dde34}\label{object__value__vector_8c_af539339b9926324b283c89d3954dde34} 
+\index{object\_value\_vector.c@{object\_value\_vector.c}!resize\_value\_vector@{resize\_value\_vector}}
+\index{resize\_value\_vector@{resize\_value\_vector}!object\_value\_vector.c@{object\_value\_vector.c}}
+\doxysubsubsection{\texorpdfstring{resize\_value\_vector()}{resize\_value\_vector()}}
+{\footnotesize\ttfamily uint8\+\_\+t resize\+\_\+value\+\_\+vector (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structcn__value__vector__s}{cn\+\_\+value\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{vec,  }\item[{size\+\_\+t}]{new\+\_\+capacity }\end{DoxyParamCaption})}
+

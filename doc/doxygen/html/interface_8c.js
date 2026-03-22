@@ -1,5 +1,6 @@
 var interface_8c =
 [
+    [ "_add_element", "interface_8c.html#a67c4a28f0f0ac152d946ac6a91bbf3fe", null ],
     [ "_del", "interface_8c.html#a97a1051659d95d0248dbe386029c17f3", null ],
     [ "_draw", "interface_8c.html#a073035db0895ef52d81de1aa76eba487", null ],
     [ "_events", "interface_8c.html#a54784ff19994e720de4144344546ac8f", null ],

@@ -6,6 +6,7 @@ var annotated_dup =
     [ "audio_sequence_s", "structaudio__sequence__s.html", "structaudio__sequence__s" ],
     [ "clock_s", "structclock__s.html", "structclock__s" ],
     [ "cn_value", "structcn__value.html", "structcn__value" ],
+    [ "cn_value_vector_s", "structcn__value__vector__s.html", "structcn__value__vector__s" ],
     [ "event_map_entry_s", "structevent__map__entry__s.html", "structevent__map__entry__s" ],
     [ "event_s", "structevent__s.html", "structevent__s" ],
     [ "interface_s", "structinterface__s.html", "structinterface__s" ],
