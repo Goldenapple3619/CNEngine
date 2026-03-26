@@ -137,7 +137,7 @@ enum \mbox{\hyperlink{libcncore_8h_a117c2852f064791ed3526c3f97f908a9}{scene\+\_\
 \item 
 \mbox{\hyperlink{libcncore_8h_a3afb309b9a0d51af55191cbbbfb17c4f}{Clock}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcncore_8h_ad2174767fae55bd52b02a7ada46523c3}{new\+\_\+clock}} (void)
 \item 
-\mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}} \mbox{\hyperlink{libcncore_8h_a048df2a82edf474862350463e5328b5b}{clock\+\_\+tick}} (\mbox{\hyperlink{libcncore_8h_a3afb309b9a0d51af55191cbbbfb17c4f}{Clock}} \texorpdfstring{$\ast$}{*}c, int32\+\_\+t tps)
+double \mbox{\hyperlink{libcncore_8h_a459d9191fd5e12fb59ac96b98527cb71}{clock\+\_\+tick}} (\mbox{\hyperlink{libcncore_8h_a3afb309b9a0d51af55191cbbbfb17c4f}{Clock}} \texorpdfstring{$\ast$}{*}c, int32\+\_\+t tps)
 \item 
 void \mbox{\hyperlink{libcncore_8h_a7013e8a9e6c633e52ba2bda677656805}{delete\+\_\+clock}} (\mbox{\hyperlink{libcncore_8h_a3afb309b9a0d51af55191cbbbfb17c4f}{Clock}} \texorpdfstring{$\ast$}{*}c)
 \item 
@@ -748,11 +748,11 @@ CN\+\_\+\+OBJ\+\_\+\+REPLICATE&\\
 \doxysubsubsection{\texorpdfstring{call\_method()}{call\_method()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} call\+\_\+method (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{object,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{args }\end{DoxyParamCaption})}
 
-\Hypertarget{libcncore_8h_a048df2a82edf474862350463e5328b5b}\label{libcncore_8h_a048df2a82edf474862350463e5328b5b} 
+\Hypertarget{libcncore_8h_a459d9191fd5e12fb59ac96b98527cb71}\label{libcncore_8h_a459d9191fd5e12fb59ac96b98527cb71} 
 \index{libcncore.h@{libcncore.h}!clock\_tick@{clock\_tick}}
 \index{clock\_tick@{clock\_tick}!libcncore.h@{libcncore.h}}
 \doxysubsubsection{\texorpdfstring{clock\_tick()}{clock\_tick()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}} clock\+\_\+tick (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_a3afb309b9a0d51af55191cbbbfb17c4f}{Clock}} \texorpdfstring{$\ast$}{*}}]{c,  }\item[{int32\+\_\+t}]{tps }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily double clock\+\_\+tick (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_a3afb309b9a0d51af55191cbbbfb17c4f}{Clock}} \texorpdfstring{$\ast$}{*}}]{c,  }\item[{int32\+\_\+t}]{tps }\end{DoxyParamCaption})}
 
 regulate ticking using a clock based on set TPS (tick per secondes)
 

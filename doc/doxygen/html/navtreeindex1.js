@@ -241,7 +241,7 @@ var NAVTREEINDEX1 =
 "structaudio__sequence__s.html#abbcc7c4829a5c9f81ddff75df57fec46":[0,0,3,3],
 "structclock__s.html":[0,0,4],
 "structclock__s.html#a1fff5347ebbaa031a53aff8d2ba95cdd":[0,0,4,1],
-"structclock__s.html#ae8880cbd32f30bcb56749d871e69dbbd":[0,0,4,0],
+"structclock__s.html#a37e5caed2ac9ce0bee05f0797baa98d8":[0,0,4,0],
 "structcn__value.html":[0,0,5],
 "structcn__value.html#a0f7d548adc8c6c78accf474221f37135":[0,0,5,6],
 "structcn__value.html#a3489c7eba8ca23110ee4c3bced9c892d":[0,0,5,1],

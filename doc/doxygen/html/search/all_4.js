@@ -9,7 +9,7 @@ var searchData=
   ['clock_6',['Clock',['../libcncore_8h.html#a3afb309b9a0d51af55191cbbbfb17c4f',1,'libcncore.h']]],
   ['clock_2ec_7',['clock.c',['../clock_8c.html',1,'']]],
   ['clock_5fs_8',['clock_s',['../structclock__s.html',1,'']]],
-  ['clock_5ftick_9',['clock_tick',['../clock_8c.html#a048df2a82edf474862350463e5328b5b',1,'clock_tick(Clock *c, int32_t tps):&#160;clock.c'],['../libcncore_8h.html#a048df2a82edf474862350463e5328b5b',1,'clock_tick(Clock *c, int32_t tps):&#160;clock.c']]],
+  ['clock_5ftick_9',['clock_tick',['../clock_8c.html#a459d9191fd5e12fb59ac96b98527cb71',1,'clock_tick(Clock *c, int32_t tps):&#160;clock.c'],['../libcncore_8h.html#a459d9191fd5e12fb59ac96b98527cb71',1,'clock_tick(Clock *c, int32_t tps):&#160;clock.c']]],
   ['cn_5fapi_10',['CN_API',['../libcncore_8h.html#ac236fa37d6f1907a12cdd07d9b11b1f7',1,'libcncore.h']]],
   ['cn_5fevent_11',['cn_event',['../libcngraphic_8h.html#ad45875ce61fd859f5134e43571880a0b',1,'libcngraphic.h']]],
   ['cn_5fmethod_12',['cn_method',['../libcncore_8h.html#a45176b455e70053cf81874c72e0aa5fe',1,'libcncore.h']]],

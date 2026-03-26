@@ -79,7 +79,7 @@ var libcncore_8h =
     [ "_remove_object_attrs", "libcncore_8h.html#abaf231dc94e3e34372c62c1d717cb714", null ],
     [ "build_object", "libcncore_8h.html#aa8a195b1765489f8e4a9a7f184d5b27b", null ],
     [ "call_method", "libcncore_8h.html#a303f13c5e7b6e2d6a1e3215c57113925", null ],
-    [ "clock_tick", "libcncore_8h.html#a048df2a82edf474862350463e5328b5b", null ],
+    [ "clock_tick", "libcncore_8h.html#a459d9191fd5e12fb59ac96b98527cb71", null ],
     [ "create_default_object", "libcncore_8h.html#ab6cdf8e13a027f8512ccec402a3bbdc6", null ],
     [ "create_object_attribute", "libcncore_8h.html#af3c9e213358cc6cc574390e77a75a441", null ],
     [ "create_object_attribute_from_cnvalue", "libcncore_8h.html#a8b5e870b60fa2bb8907248d3d6075c34", null ],
