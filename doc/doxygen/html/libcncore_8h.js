@@ -65,7 +65,8 @@ var libcncore_8h =
     [ "scene_object_flags", "libcncore_8h.html#a117c2852f064791ed3526c3f97f908a9", [
       [ "CN_OBJ_NULL", "libcncore_8h.html#a117c2852f064791ed3526c3f97f908a9a5b51e0f3dee93e0a501c5287b92e9685", null ],
       [ "CN_OBJ_DRAWABLE", "libcncore_8h.html#a117c2852f064791ed3526c3f97f908a9afa810ccca97440068e1c8a3031a957ee", null ],
-      [ "CN_OBJ_REPLICATE", "libcncore_8h.html#a117c2852f064791ed3526c3f97f908a9a87ae069167b6054f24b11dfc5a1fe57b", null ]
+      [ "CN_OBJ_REPLICATE", "libcncore_8h.html#a117c2852f064791ed3526c3f97f908a9a87ae069167b6054f24b11dfc5a1fe57b", null ],
+      [ "CN_OBJ_HOST", "libcncore_8h.html#a117c2852f064791ed3526c3f97f908a9a2d38bd3cff76ac3d1f36fafc51ffa475", null ]
     ] ],
     [ "_attr_map_resize", "libcncore_8h.html#a645f50848e158ef1a726eb40f81b8eb8", null ],
     [ "_attribute_value_extract", "libcncore_8h.html#ae003a34e28585e7d405dde28fae4663c", null ],

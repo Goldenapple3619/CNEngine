@@ -242,9 +242,10 @@ Enumerations</h2></td></tr>
 <br />
  }</td></tr>
 <tr class="separator:a0e8eaf1430f3893d155ad709d2d84f25"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a117c2852f064791ed3526c3f97f908a9" id="r_a117c2852f064791ed3526c3f97f908a9"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a117c2852f064791ed3526c3f97f908a9">scene_object_flags</a> { <a class="el" href="libcncore_8h.html#a117c2852f064791ed3526c3f97f908a9a5b51e0f3dee93e0a501c5287b92e9685">CN_OBJ_NULL</a>
-, <a class="el" href="libcncore_8h.html#a117c2852f064791ed3526c3f97f908a9afa810ccca97440068e1c8a3031a957ee">CN_OBJ_DRAWABLE</a>
-, <a class="el" href="libcncore_8h.html#a117c2852f064791ed3526c3f97f908a9a87ae069167b6054f24b11dfc5a1fe57b">CN_OBJ_REPLICATE</a>
+<tr class="memitem:a117c2852f064791ed3526c3f97f908a9" id="r_a117c2852f064791ed3526c3f97f908a9"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a117c2852f064791ed3526c3f97f908a9">scene_object_flags</a> { <a class="el" href="libcncore_8h.html#a117c2852f064791ed3526c3f97f908a9a5b51e0f3dee93e0a501c5287b92e9685">CN_OBJ_NULL</a> = 0x00
+, <a class="el" href="libcncore_8h.html#a117c2852f064791ed3526c3f97f908a9afa810ccca97440068e1c8a3031a957ee">CN_OBJ_DRAWABLE</a> = (1 &lt;&lt; 0)
+, <a class="el" href="libcncore_8h.html#a117c2852f064791ed3526c3f97f908a9a87ae069167b6054f24b11dfc5a1fe57b">CN_OBJ_REPLICATE</a> = (1 &lt;&lt; 1)
+, <a class="el" href="libcncore_8h.html#a117c2852f064791ed3526c3f97f908a9a2d38bd3cff76ac3d1f36fafc51ffa475">CN_OBJ_HOST</a> = (1 &lt;&lt; 2)
  }</td></tr>
 <tr class="separator:a117c2852f064791ed3526c3f97f908a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -567,7 +568,7 @@ Functions</h2></td></tr>
 <div class="line">            (void)expr_free(__temp_alloc); \</div>
 <div class="line">            return (<a class="code hl_define" href="libcncore_8h.html#a203549510b067f93099b5ec716053c2d">VALUE_ERR</a>); \</div>
 <div class="line">        }</div>
-<div class="ttc" id="alibcncore_8h_html_a203549510b067f93099b5ec716053c2d"><div class="ttname"><a href="libcncore_8h.html#a203549510b067f93099b5ec716053c2d">VALUE_ERR</a></div><div class="ttdeci">#define VALUE_ERR</div><div class="ttdef"><b>Definition</b> libcncore.h:163</div></div>
+<div class="ttc" id="alibcncore_8h_html_a203549510b067f93099b5ec716053c2d"><div class="ttname"><a href="libcncore_8h.html#a203549510b067f93099b5ec716053c2d">VALUE_ERR</a></div><div class="ttdeci">#define VALUE_ERR</div><div class="ttdef"><b>Definition</b> libcncore.h:164</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1338,6 +1339,7 @@ Functions</h2></td></tr>
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a117c2852f064791ed3526c3f97f908a9a5b51e0f3dee93e0a501c5287b92e9685" name="a117c2852f064791ed3526c3f97f908a9a5b51e0f3dee93e0a501c5287b92e9685"></a>CN_OBJ_NULL&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a117c2852f064791ed3526c3f97f908a9afa810ccca97440068e1c8a3031a957ee" name="a117c2852f064791ed3526c3f97f908a9afa810ccca97440068e1c8a3031a957ee"></a>CN_OBJ_DRAWABLE&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a117c2852f064791ed3526c3f97f908a9a87ae069167b6054f24b11dfc5a1fe57b" name="a117c2852f064791ed3526c3f97f908a9a87ae069167b6054f24b11dfc5a1fe57b"></a>CN_OBJ_REPLICATE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a117c2852f064791ed3526c3f97f908a9a2d38bd3cff76ac3d1f36fafc51ffa475" name="a117c2852f064791ed3526c3f97f908a9a2d38bd3cff76ac3d1f36fafc51ffa475"></a>CN_OBJ_HOST&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>

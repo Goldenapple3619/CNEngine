@@ -1,15 +1,10 @@
 \doxysection{lib/cncore/src/core\+\_\+ctx.c File Reference}
 \hypertarget{core__ctx_8c}{}\label{core__ctx_8c}\index{lib/cncore/src/core\_ctx.c@{lib/cncore/src/core\_ctx.c}}
 {\ttfamily \#include "{}libcncore.\+h"{}}\newline
-\doxysubsubsection*{Macros}
-\begin{DoxyCompactItemize}
-\item 
-\#define \mbox{\hyperlink{core__ctx_8c_ac2d860ab8e459f877463e25ae28c3d6a}{VALUE\+\_\+\+FALSE}}~(\mbox{\hyperlink{structcn__value}{cn\+\_\+value}})\{\mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a28029ab23dc72127e9c580863863b730}{CN\+\_\+\+TYPE\+\_\+\+INT}}, \{\mbox{\hyperlink{libcncore_8h_a65e9886d74aaee76545e83dd09011727}{false}}\}\}
-\item 
-\#define \mbox{\hyperlink{core__ctx_8c_a8226080d1e5e6aa0c60c2af1e5241279}{VALUE\+\_\+\+TRUE}}~(\mbox{\hyperlink{structcn__value}{cn\+\_\+value}})\{\mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a28029ab23dc72127e9c580863863b730}{CN\+\_\+\+TYPE\+\_\+\+INT}}, \{\mbox{\hyperlink{libcncore_8h_a41f9c5fb8b08eb5dc3edce4dcb37fee7}{true}}\}\}
-\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{core__ctx_8c_afeae0f24c470ccb30e494bd8fc7e4f3f}{\+\_\+update\+\_\+scene}} (\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+this, void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}args)
 \item 
 static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{core__ctx_8c_a1a63a6f58510226876eb4212dbe5da70}{\+\_\+init}} (\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+this, void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}args)
 \item 
@@ -29,21 +24,6 @@ static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{core__
 \item 
 \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{core__ctx_8c_ae7166424db55324485e771cc0e3b7d38}{new\+\_\+ctx}} ()
 \end{DoxyCompactItemize}
-
-
-\doxysubsection{Macro Definition Documentation}
-\Hypertarget{core__ctx_8c_ac2d860ab8e459f877463e25ae28c3d6a}\label{core__ctx_8c_ac2d860ab8e459f877463e25ae28c3d6a} 
-\index{core\_ctx.c@{core\_ctx.c}!VALUE\_FALSE@{VALUE\_FALSE}}
-\index{VALUE\_FALSE@{VALUE\_FALSE}!core\_ctx.c@{core\_ctx.c}}
-\doxysubsubsection{\texorpdfstring{VALUE\_FALSE}{VALUE\_FALSE}}
-{\footnotesize\ttfamily \#define VALUE\+\_\+\+FALSE~(\mbox{\hyperlink{structcn__value}{cn\+\_\+value}})\{\mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a28029ab23dc72127e9c580863863b730}{CN\+\_\+\+TYPE\+\_\+\+INT}}, \{\mbox{\hyperlink{libcncore_8h_a65e9886d74aaee76545e83dd09011727}{false}}\}\}}
-
-\Hypertarget{core__ctx_8c_a8226080d1e5e6aa0c60c2af1e5241279}\label{core__ctx_8c_a8226080d1e5e6aa0c60c2af1e5241279} 
-\index{core\_ctx.c@{core\_ctx.c}!VALUE\_TRUE@{VALUE\_TRUE}}
-\index{VALUE\_TRUE@{VALUE\_TRUE}!core\_ctx.c@{core\_ctx.c}}
-\doxysubsubsection{\texorpdfstring{VALUE\_TRUE}{VALUE\_TRUE}}
-{\footnotesize\ttfamily \#define VALUE\+\_\+\+TRUE~(\mbox{\hyperlink{structcn__value}{cn\+\_\+value}})\{\mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a28029ab23dc72127e9c580863863b730}{CN\+\_\+\+TYPE\+\_\+\+INT}}, \{\mbox{\hyperlink{libcncore_8h_a41f9c5fb8b08eb5dc3edce4dcb37fee7}{true}}\}\}}
-
 
 
 \doxysubsection{Function Documentation}
@@ -88,6 +68,12 @@ static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{core__
 \index{\_stop@{\_stop}!core\_ctx.c@{core\_ctx.c}}
 \doxysubsubsection{\texorpdfstring{\_stop()}{\_stop()}}
 {\footnotesize\ttfamily static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \+\_\+stop (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+this,  }\item[{void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{core__ctx_8c_afeae0f24c470ccb30e494bd8fc7e4f3f}\label{core__ctx_8c_afeae0f24c470ccb30e494bd8fc7e4f3f} 
+\index{core\_ctx.c@{core\_ctx.c}!\_update\_scene@{\_update\_scene}}
+\index{\_update\_scene@{\_update\_scene}!core\_ctx.c@{core\_ctx.c}}
+\doxysubsubsection{\texorpdfstring{\_update\_scene()}{\_update\_scene()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \+\_\+update\+\_\+scene (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+this,  }\item[{void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 \Hypertarget{core__ctx_8c_ae7166424db55324485e771cc0e3b7d38}\label{core__ctx_8c_ae7166424db55324485e771cc0e3b7d38} 
 \index{core\_ctx.c@{core\_ctx.c}!new\_ctx@{new\_ctx}}
