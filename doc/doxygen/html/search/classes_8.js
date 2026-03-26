@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['window_5fs_0',['window_s',['../structwindow__s.html',1,'']]],
-  ['window_5funiverse_5fs_1',['window_universe_s',['../structwindow__universe__s.html',1,'']]]
+  ['vector2_5fs_0',['vector2_s',['../structvector2__s.html',1,'']]],
+  ['vector3_5fs_1',['vector3_s',['../structvector3__s.html',1,'']]],
+  ['videomode_5fs_2',['videomode_s',['../structvideomode__s.html',1,'']]]
 ];

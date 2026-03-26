@@ -49,6 +49,14 @@ struct \mbox{\hyperlink{structcn__value__vector__s}{cn\+\_\+value\+\_\+vector\+\
 \item 
 \#define \mbox{\hyperlink{libcncore_8h_a9efd130e574e9b2e2c4957cae634ff39}{INIT\+\_\+\+INT}}(\+\_\+\+\_\+this,  number,  name)
 \item 
+\#define \mbox{\hyperlink{libcncore_8h_a4b2913192dec10cc4c15ddde54ae36b2}{INIT\+\_\+\+NUMBER}}(\+\_\+\+\_\+this,  number,  name)
+\item 
+\#define \mbox{\hyperlink{libcncore_8h_a289ffea777a2091b6459f54663cb0fe9}{INIT\+\_\+\+VEC2}}(\+\_\+\+\_\+this,  vec2,  name)
+\item 
+\#define \mbox{\hyperlink{libcncore_8h_a6207841033d3bc9a45941ea8b237a0db}{INIT\+\_\+\+VEC3}}(\+\_\+\+\_\+this,  vec3,  name)
+\item 
+\#define \mbox{\hyperlink{libcncore_8h_ace95a54cc5c0c551244a2140b381442e}{INIT\+\_\+\+RECT}}(\+\_\+\+\_\+this,  rect,  name)
+\item 
 \#define \mbox{\hyperlink{libcncore_8h_a90d2f940e6954e7587a83d7ae29ab73c}{INIT\+\_\+\+FLOAT}}(\+\_\+\+\_\+this,  number,  name)
 \item 
 \#define \mbox{\hyperlink{libcncore_8h_a6ad5c20a38ef876c91a859e929fb8ed8}{INIT\+\_\+\+METHOD}}(\+\_\+\+\_\+this,  name,  callback)
@@ -101,6 +109,11 @@ enum \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25}{cn\+\_\+ty
 \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a348012976d3b30d7cb389beab11d7630}{CN\+\_\+\+TYPE\+\_\+\+NULL}}
 , \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a28029ab23dc72127e9c580863863b730}{CN\+\_\+\+TYPE\+\_\+\+INT}}
 , \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a6f7d564090f644eb968f592e01cb9253}{CN\+\_\+\+TYPE\+\_\+\+FLOAT}}
+, \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25ae53787cc0f9de9334d6d0cef0d76092c}{CN\+\_\+\+TYPE\+\_\+\+NUMBER}}
+, \newline
+\mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a7dd8ff986f28d6df8a92f8d5ce441045}{CN\+\_\+\+TYPE\+\_\+\+VEC2}}
+, \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a4407833afbec27023b6c38ade807deee}{CN\+\_\+\+TYPE\+\_\+\+VEC3}}
+, \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a52ec225b27d289b0d05128e3d7ef5992}{CN\+\_\+\+TYPE\+\_\+\+RECT}}
 , \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a384355a765126d78f4e9bbef9173c7a0}{CN\+\_\+\+TYPE\+\_\+\+STRING}}
 , \newline
 \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25ab1815f2281072060aeee9fa21c33c879}{CN\+\_\+\+TYPE\+\_\+\+OBJECT}}
@@ -334,6 +347,30 @@ void \mbox{\hyperlink{libcncore_8h_a0ca1b4902be942746aa3c76f41333d81}{end\+\_\+c
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ (\mbox{\hyperlink{libcncore_8h_a203549510b067f93099b5ec716053c2d}{VALUE\_ERR}});}
 
 \end{DoxyCode}
+\Hypertarget{libcncore_8h_a4b2913192dec10cc4c15ddde54ae36b2}\label{libcncore_8h_a4b2913192dec10cc4c15ddde54ae36b2} 
+\index{libcncore.h@{libcncore.h}!INIT\_NUMBER@{INIT\_NUMBER}}
+\index{INIT\_NUMBER@{INIT\_NUMBER}!libcncore.h@{libcncore.h}}
+\doxysubsubsection{\texorpdfstring{INIT\_NUMBER}{INIT\_NUMBER}}
+{\footnotesize\ttfamily \#define INIT\+\_\+\+NUMBER(\begin{DoxyParamCaption}\item[{}]{\+\_\+\+\_\+this,  }\item[{}]{number,  }\item[{}]{name }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{libcncore_8h_a0d1200d7a9ee39c24a7cfde96306eec6}{set\_attr}}(\_\_this,\ name,\ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25ae53787cc0f9de9334d6d0cef0d76092c}{CN\_TYPE\_NUMBER}},\ (\mbox{\hyperlink{libcncore_8h_aa0b4eca710d6fee505d18a41355e1edb}{cnany}})((\mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}\ [1])\{number\})))\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ (\mbox{\hyperlink{libcncore_8h_a203549510b067f93099b5ec716053c2d}{VALUE\_ERR}});}
+
+\end{DoxyCode}
+\Hypertarget{libcncore_8h_ace95a54cc5c0c551244a2140b381442e}\label{libcncore_8h_ace95a54cc5c0c551244a2140b381442e} 
+\index{libcncore.h@{libcncore.h}!INIT\_RECT@{INIT\_RECT}}
+\index{INIT\_RECT@{INIT\_RECT}!libcncore.h@{libcncore.h}}
+\doxysubsubsection{\texorpdfstring{INIT\_RECT}{INIT\_RECT}}
+{\footnotesize\ttfamily \#define INIT\+\_\+\+RECT(\begin{DoxyParamCaption}\item[{}]{\+\_\+\+\_\+this,  }\item[{}]{rect,  }\item[{}]{name }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{libcncore_8h_a0d1200d7a9ee39c24a7cfde96306eec6}{set\_attr}}(\_\_this,\ name,\ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a52ec225b27d289b0d05128e3d7ef5992}{CN\_TYPE\_RECT}},\ (\mbox{\hyperlink{libcncore_8h_aa0b4eca710d6fee505d18a41355e1edb}{cnany}})((\textcolor{keyword}{struct}\ \mbox{\hyperlink{structrect__s}{rect\_s}}\ [1])\{rect\})))\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ (\mbox{\hyperlink{libcncore_8h_a203549510b067f93099b5ec716053c2d}{VALUE\_ERR}});}
+
+\end{DoxyCode}
 \Hypertarget{libcncore_8h_ab86609dae54c0d984f951bf311d9ec14}\label{libcncore_8h_ab86609dae54c0d984f951bf311d9ec14} 
 \index{libcncore.h@{libcncore.h}!INIT\_STRING@{INIT\_STRING}}
 \index{INIT\_STRING@{INIT\_STRING}!libcncore.h@{libcncore.h}}
@@ -343,6 +380,30 @@ void \mbox{\hyperlink{libcncore_8h_a0ca1b4902be942746aa3c76f41333d81}{end\+\_\+c
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{libcncore_8h_a0d1200d7a9ee39c24a7cfde96306eec6}{set\_attr}}(\_\_this,\ name,\ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a384355a765126d78f4e9bbef9173c7a0}{CN\_TYPE\_STRING}},\ (\mbox{\hyperlink{libcncore_8h_aa0b4eca710d6fee505d18a41355e1edb}{cnany}})\textcolor{keywordtype}{string}))\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ (\mbox{\hyperlink{libcncore_8h_a203549510b067f93099b5ec716053c2d}{VALUE\_ERR}});}
+
+\end{DoxyCode}
+\Hypertarget{libcncore_8h_a289ffea777a2091b6459f54663cb0fe9}\label{libcncore_8h_a289ffea777a2091b6459f54663cb0fe9} 
+\index{libcncore.h@{libcncore.h}!INIT\_VEC2@{INIT\_VEC2}}
+\index{INIT\_VEC2@{INIT\_VEC2}!libcncore.h@{libcncore.h}}
+\doxysubsubsection{\texorpdfstring{INIT\_VEC2}{INIT\_VEC2}}
+{\footnotesize\ttfamily \#define INIT\+\_\+\+VEC2(\begin{DoxyParamCaption}\item[{}]{\+\_\+\+\_\+this,  }\item[{}]{vec2,  }\item[{}]{name }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{libcncore_8h_a0d1200d7a9ee39c24a7cfde96306eec6}{set\_attr}}(\_\_this,\ name,\ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a7dd8ff986f28d6df8a92f8d5ce441045}{CN\_TYPE\_VEC2}},\ (\mbox{\hyperlink{libcncore_8h_aa0b4eca710d6fee505d18a41355e1edb}{cnany}})((\textcolor{keyword}{struct}\ \mbox{\hyperlink{structvector2__s}{vector2\_s}}\ [1])\{vec2\})))\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ (\mbox{\hyperlink{libcncore_8h_a203549510b067f93099b5ec716053c2d}{VALUE\_ERR}});}
+
+\end{DoxyCode}
+\Hypertarget{libcncore_8h_a6207841033d3bc9a45941ea8b237a0db}\label{libcncore_8h_a6207841033d3bc9a45941ea8b237a0db} 
+\index{libcncore.h@{libcncore.h}!INIT\_VEC3@{INIT\_VEC3}}
+\index{INIT\_VEC3@{INIT\_VEC3}!libcncore.h@{libcncore.h}}
+\doxysubsubsection{\texorpdfstring{INIT\_VEC3}{INIT\_VEC3}}
+{\footnotesize\ttfamily \#define INIT\+\_\+\+VEC3(\begin{DoxyParamCaption}\item[{}]{\+\_\+\+\_\+this,  }\item[{}]{vec3,  }\item[{}]{name }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{libcncore_8h_a0d1200d7a9ee39c24a7cfde96306eec6}{set\_attr}}(\_\_this,\ name,\ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a4407833afbec27023b6c38ade807deee}{CN\_TYPE\_VEC3}},\ (\mbox{\hyperlink{libcncore_8h_aa0b4eca710d6fee505d18a41355e1edb}{cnany}})((\textcolor{keyword}{struct}\ \mbox{\hyperlink{structvector3__s}{vector3\_s}}\ [1])\{vec3\})))\ \(\backslash\)}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ (\mbox{\hyperlink{libcncore_8h_a203549510b067f93099b5ec716053c2d}{VALUE\_ERR}});}
 
 \end{DoxyCode}
@@ -510,6 +571,22 @@ CN\+\_\+\+TYPE\+\_\+\+INT&\\
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{CN\_TYPE\_FLOAT@{CN\_TYPE\_FLOAT}!libcncore.h@{libcncore.h}}\index{libcncore.h@{libcncore.h}!CN\_TYPE\_FLOAT@{CN\_TYPE\_FLOAT}}}\Hypertarget{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a6f7d564090f644eb968f592e01cb9253}\label{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a6f7d564090f644eb968f592e01cb9253} 
 CN\+\_\+\+TYPE\+\_\+\+FLOAT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CN\_TYPE\_NUMBER@{CN\_TYPE\_NUMBER}!libcncore.h@{libcncore.h}}\index{libcncore.h@{libcncore.h}!CN\_TYPE\_NUMBER@{CN\_TYPE\_NUMBER}}}\Hypertarget{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25ae53787cc0f9de9334d6d0cef0d76092c}\label{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25ae53787cc0f9de9334d6d0cef0d76092c} 
+CN\+\_\+\+TYPE\+\_\+\+NUMBER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CN\_TYPE\_VEC2@{CN\_TYPE\_VEC2}!libcncore.h@{libcncore.h}}\index{libcncore.h@{libcncore.h}!CN\_TYPE\_VEC2@{CN\_TYPE\_VEC2}}}\Hypertarget{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a7dd8ff986f28d6df8a92f8d5ce441045}\label{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a7dd8ff986f28d6df8a92f8d5ce441045} 
+CN\+\_\+\+TYPE\+\_\+\+VEC2&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CN\_TYPE\_VEC3@{CN\_TYPE\_VEC3}!libcncore.h@{libcncore.h}}\index{libcncore.h@{libcncore.h}!CN\_TYPE\_VEC3@{CN\_TYPE\_VEC3}}}\Hypertarget{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a4407833afbec27023b6c38ade807deee}\label{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a4407833afbec27023b6c38ade807deee} 
+CN\+\_\+\+TYPE\+\_\+\+VEC3&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CN\_TYPE\_RECT@{CN\_TYPE\_RECT}!libcncore.h@{libcncore.h}}\index{libcncore.h@{libcncore.h}!CN\_TYPE\_RECT@{CN\_TYPE\_RECT}}}\Hypertarget{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a52ec225b27d289b0d05128e3d7ef5992}\label{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a52ec225b27d289b0d05128e3d7ef5992} 
+CN\+\_\+\+TYPE\+\_\+\+RECT&\\
 \hline
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{CN\_TYPE\_STRING@{CN\_TYPE\_STRING}!libcncore.h@{libcncore.h}}\index{libcncore.h@{libcncore.h}!CN\_TYPE\_STRING@{CN\_TYPE\_STRING}}}\Hypertarget{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a384355a765126d78f4e9bbef9173c7a0}\label{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a384355a765126d78f4e9bbef9173c7a0} 

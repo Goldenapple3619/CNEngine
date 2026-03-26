@@ -22,31 +22,41 @@
 \DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549}{audio\_event}}\ \mbox{\hyperlink{structaudio__event__s_a1ad96f4840dc2719bd0eb0c3759ec81b}{type}};}
 \DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structcn__value}{cn\_value}}\ \mbox{\hyperlink{structaudio__event__s_a3bdad2be34f55ac507ce4a88d9518cbb}{value}};}
 \DoxyCodeLine{00020\ }
-\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ad8ed72626025da9fbaff30ec74a71d40}{cntime}}\ \mbox{\hyperlink{structaudio__event__s_a42e876813614367eff8bd9ade02dab67}{start\_in}};}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ad8ed72626025da9fbaff30ec74a71d40}{cntime}}\ \mbox{\hyperlink{structaudio__event__s_a42e876813614367eff8bd9ade02dab67}{start\_in}};\ \textcolor{comment}{//\ ms}}
 \DoxyCodeLine{00022\ \ \ \ \ \};}
 \DoxyCodeLine{00023\ }
 \DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaudio__sequence__s}{audio\_sequence\_s}}\ \{}
 \DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549}{audio\_event}}\ *\mbox{\hyperlink{structaudio__sequence__s_aa9d6cbaa660a9b48bc7227ee3d658680}{event\_list}};}
-\DoxyCodeLine{00026\ }
-\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ad8ed72626025da9fbaff30ec74a71d40}{cntime}}\ \mbox{\hyperlink{structaudio__sequence__s_aad5f6a90c2540cddcb4dac778e5dc8c1}{sequence\_timer}};}
-\DoxyCodeLine{00028\ \ \ \ \ \};}
-\DoxyCodeLine{00029\ }
-\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaudio__s}{audio\_s}}\ \{}
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Mix\_Chunk\ *\mbox{\hyperlink{structaudio__s_a467931bb9119b0dab85ff6d4748bcf6b}{audio\_ptr}};}
-\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaudio__sequence__s}{audio\_sequence\_s}}\ \mbox{\hyperlink{structaudio__s_ab35898d87b61b5d1e9c96079f98d9a8d}{sequence}};}
-\DoxyCodeLine{00033\ }
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ int32\_t\ \mbox{\hyperlink{structaudio__s_a8d750ff1016312bf4223a0a835fb621b}{paying\_on}};}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structaudio__sequence__s_abbcc7c4829a5c9f81ddff75df57fec46}{size}};}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structaudio__sequence__s_a5a163ad4241aa61eda9301cf02a49e75}{capacity}};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ad8ed72626025da9fbaff30ec74a71d40}{cntime}}\ \mbox{\hyperlink{structaudio__sequence__s_aad5f6a90c2540cddcb4dac778e5dc8c1}{sequence\_timer}};}
+\DoxyCodeLine{00030\ \ \ \ \ \};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaudio__s}{audio\_s}}\ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Mix\_Chunk\ *\mbox{\hyperlink{structaudio__s_a467931bb9119b0dab85ff6d4748bcf6b}{audio\_ptr}};}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaudio__sequence__s}{audio\_sequence\_s}}\ \mbox{\hyperlink{structaudio__s_ab35898d87b61b5d1e9c96079f98d9a8d}{sequence}};}
 \DoxyCodeLine{00035\ }
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{structaudio__s_acb99d3fc179186ba4ddb2640f28debb8}{is\_playing}};}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{structaudio__s_ae587f58130fc9fed43cb46d0dfa11b7c}{is\_ended}};}
-\DoxyCodeLine{00038\ }
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{structaudio__s_a988f0e345a382cae0cf19c89fb7956ca}{on\_end}};}
-\DoxyCodeLine{00040\ \ \ \ \ \};}
-\DoxyCodeLine{00041\ }
-\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaudio__event__s}{audio\_event\_s}}\ \mbox{\hyperlink{structaudio__event__s}{AudioEvent}};}
-\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaudio__sequence__s}{audio\_sequence\_s}}\ \mbox{\hyperlink{structaudio__sequence__s}{AudioSequence}};}
-\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaudio__s}{audio\_s}}\ \mbox{\hyperlink{structaudio__s}{Audio}};}
-\DoxyCodeLine{00045\ }
-\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ int32\_t\ \mbox{\hyperlink{structaudio__s_a5c4e7f5052a0a02cc8be4520b0e7ae64}{playing\_on}};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{structaudio__s_acb99d3fc179186ba4ddb2640f28debb8}{is\_playing}};}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{structaudio__s_ae587f58130fc9fed43cb46d0dfa11b7c}{is\_ended}};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{structaudio__s_a988f0e345a382cae0cf19c89fb7956ca}{on\_end}};}
+\DoxyCodeLine{00042\ \ \ \ \ \};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaudio__event__s}{audio\_event\_s}}\ \mbox{\hyperlink{structaudio__event__s}{AudioEvent}};}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaudio__sequence__s}{audio\_sequence\_s}}\ \mbox{\hyperlink{structaudio__sequence__s}{AudioSequence}};}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaudio__s}{audio\_s}}\ \mbox{\hyperlink{structaudio__s}{Audio}};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structaudio__s}{Audio}}\ *\mbox{\hyperlink{libcnaudio_8h_aaf6d8080e4f801eeda8da5cdf5fee0f6}{new\_audio}}(\textcolor{keyword}{const}\ Mix\_Chunk\ *audio\_chunk\_ptr,\ \mbox{\hyperlink{libcncore_8h_a45176b455e70053cf81874c72e0aa5fe}{cn\_method}}\ on\_audio\_end);}
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcnaudio_8h_a72ad581b595e60a7408d97c43391836e}{audio\_run\_sequence}}(\mbox{\hyperlink{structaudio__s}{Audio}}\ *audio,\ int32\_t\ delta\_time,\ int32\_t\ *free\_channels,\ \textcolor{keywordtype}{size\_t}\ number\_of\_free\_channel);}
+\DoxyCodeLine{00050\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcnaudio_8h_a59f93501670dbb80b5890fba6b594f85}{play\_audio}}(\mbox{\hyperlink{structaudio__s}{Audio}}\ *audio,\ int32\_t\ channel);}
+\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcnaudio_8h_aa1b1c553ab130ffad8539301bdff2f12}{set\_volume\_audio}}(\mbox{\hyperlink{structaudio__s}{Audio}}\ *audio,\ int32\_t\ volume);}
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcnaudio_8h_a7649ea5f5a91dce7d2090140851f32b1}{set\_panning\_audio}}(\mbox{\hyperlink{structaudio__s}{Audio}}\ *audio,\ uint8\_t\ left,\ uint8\_t\ right);}
+\DoxyCodeLine{00053\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcnaudio_8h_a245b0a63e0bc546fcab1e6a78edb1f8c}{stop\_audio}}(\mbox{\hyperlink{structaudio__s}{Audio}}\ *audio);}
+\DoxyCodeLine{00054\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcnaudio_8h_aa7623c8a59ca473a5d47993b28d8cee9}{delete\_audio}}(\mbox{\hyperlink{structaudio__s}{Audio}}\ *audio);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}
