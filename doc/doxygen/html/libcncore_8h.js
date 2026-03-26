@@ -10,6 +10,7 @@ var libcncore_8h =
     [ "object_s", "structobject__s.html", "structobject__s" ],
     [ "object_vector_s", "structobject__vector__s.html", "structobject__vector__s" ],
     [ "cn_value_vector_s", "structcn__value__vector__s.html", "structcn__value__vector__s" ],
+    [ "scene_object_mode_s", "structscene__object__mode__s.html", "structscene__object__mode__s" ],
     [ "CN_API", "libcncore_8h.html#ac236fa37d6f1907a12cdd07d9b11b1f7", null ],
     [ "CREATE_CUSTOM_ALLOCATION_CLASS_BUILD", "libcncore_8h.html#a973268c391d1288baa8e4f649964b55b", null ],
     [ "CREATE_METHOD_CLASS_BUILD", "libcncore_8h.html#a51f550014e5e0380ac151979be125e50", null ],
@@ -20,6 +21,8 @@ var libcncore_8h =
     [ "INIT_INT", "libcncore_8h.html#a9efd130e574e9b2e2c4957cae634ff39", null ],
     [ "INIT_METHOD", "libcncore_8h.html#a6ad5c20a38ef876c91a859e929fb8ed8", null ],
     [ "INIT_NUMBER", "libcncore_8h.html#a4b2913192dec10cc4c15ddde54ae36b2", null ],
+    [ "INIT_OBJECT_SHR", "libcncore_8h.html#aa40060ed5b079000135bad4c3ba3e8e3", null ],
+    [ "INIT_OBJECT_STATIC", "libcncore_8h.html#aa4e88729d3c7d2cc9317906d022f09db", null ],
     [ "INIT_RECT", "libcncore_8h.html#ace95a54cc5c0c551244a2140b381442e", null ],
     [ "INIT_STRING", "libcncore_8h.html#ab86609dae54c0d984f951bf311d9ec14", null ],
     [ "INIT_VEC2", "libcncore_8h.html#a289ffea777a2091b6459f54663cb0fe9", null ],
@@ -59,6 +62,11 @@ var libcncore_8h =
       [ "CN_TYPE_FUNCTION", "libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a6c2fa05d1159dc3a4ab3e011ab48d442", null ],
       [ "CN_TYPE_GENERIC_UNIQ_PTR", "libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a1e435bbdb30939823b6e4682ec24da6b", null ]
     ] ],
+    [ "scene_object_flags", "libcncore_8h.html#a117c2852f064791ed3526c3f97f908a9", [
+      [ "CN_OBJ_NULL", "libcncore_8h.html#a117c2852f064791ed3526c3f97f908a9a5b51e0f3dee93e0a501c5287b92e9685", null ],
+      [ "CN_OBJ_DRAWABLE", "libcncore_8h.html#a117c2852f064791ed3526c3f97f908a9afa810ccca97440068e1c8a3031a957ee", null ],
+      [ "CN_OBJ_REPLICATE", "libcncore_8h.html#a117c2852f064791ed3526c3f97f908a9a87ae069167b6054f24b11dfc5a1fe57b", null ]
+    ] ],
     [ "_attr_map_resize", "libcncore_8h.html#a645f50848e158ef1a726eb40f81b8eb8", null ],
     [ "_attribute_value_extract", "libcncore_8h.html#ae003a34e28585e7d405dde28fae4663c", null ],
     [ "_delete_object_attribute_value", "libcncore_8h.html#adc26a9d76e90b34c82d75043d6f11606", null ],
@@ -97,6 +105,8 @@ var libcncore_8h =
     [ "new_object", "libcncore_8h.html#acd4e13f593de029b541fbd1cdeae553b", null ],
     [ "new_object_vector", "libcncore_8h.html#ae8bc2462d4dbe2458f10ca7eb1b35316", null ],
     [ "new_rect", "libcncore_8h.html#ab1eec78e601bc44f0c0f30cd76cf2fb1", null ],
+    [ "new_scene", "libcncore_8h.html#a962231de1a8ee27e393ec402ac39fbcf", null ],
+    [ "new_scene_object", "libcncore_8h.html#ad2f96aa2b8efb3db2d643beac3fdda2a", null ],
     [ "new_value_vector", "libcncore_8h.html#a6c7eb24b355f7f5e37ede66c67710dcd", null ],
     [ "new_vector2", "libcncore_8h.html#abb8ceba32dfa3fd3616b2401ec24cc41", null ],
     [ "new_vector3", "libcncore_8h.html#ac96e989a6c7642d49ed00a3dad5fee09", null ],

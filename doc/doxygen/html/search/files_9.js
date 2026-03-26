@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['text_2ec_0',['text.c',['../text_8c.html',1,'']]],
-  ['texture_2ec_1',['texture.c',['../texture_8c.html',1,'']]],
-  ['texture_5fatlas_2ec_2',['texture_atlas.c',['../texture__atlas_8c.html',1,'']]]
+  ['readme_2emd_0',['README.md',['../README_8md.html',1,'']]],
+  ['rect_2ec_1',['rect.c',['../rect_8c.html',1,'']]]
 ];

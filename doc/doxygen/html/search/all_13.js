@@ -1,7 +1,17 @@
 var searchData=
 [
-  ['update_0',['update',['../structinterface__s.html#a0ef6c49f8d29fa4f76dd87b86913b9d9',1,'interface_s']]],
-  ['update_5fall_5fwindow_1',['update_all_window',['../libcngraphic_8h.html#ae69fa8b6f6568d08c13a619a13950fbc',1,'update_all_window(WindowUniverse *universe):&#160;window_universe.c'],['../window__universe_8c.html#ae69fa8b6f6568d08c13a619a13950fbc',1,'update_all_window(WindowUniverse *universe):&#160;window_universe.c']]],
-  ['update_5fwindow_2',['update_window',['../libcngraphic_8h.html#afa2335ad8474674a041e606a759b122c',1,'update_window(Window *window):&#160;window.c'],['../window_8c.html#afa2335ad8474674a041e606a759b122c',1,'update_window(Window *window):&#160;window.c']]],
-  ['upscale_3',['upscale',['../structgui__board__mode__s.html#abf428ec383eff58b394e69deff9abdb7',1,'gui_board_mode_s']]]
+  ['text_0',['text',['../structtext__mode__s.html#afe24c21256c5484d8b1ab2b5faa31ec2',1,'text_mode_s']]],
+  ['text_2ec_1',['text.c',['../text_8c.html',1,'']]],
+  ['text_5fmode_5fs_2',['text_mode_s',['../structtext__mode__s.html',1,'']]],
+  ['texture_3',['texture',['../structwindow__s.html#a51a60c544448bfe06e633b4f30f98d8d',1,'window_s::texture'],['../libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99',1,'Texture:&#160;libcngraphic.h']]],
+  ['texture_2ec_4',['texture.c',['../texture_8c.html',1,'']]],
+  ['texture_5fatlas_2ec_5',['texture_atlas.c',['../texture__atlas_8c.html',1,'']]],
+  ['texture_5fatlas_5fresize_6',['texture_atlas_resize',['../texture__atlas_8c.html#a9f3205a3e8afe3bdad1767a25aae3e76',1,'texture_atlas_resize(TextureAtlas *atlas, size_t new_capacity):&#160;texture_atlas.c'],['../libcngraphic_8h.html#a9f3205a3e8afe3bdad1767a25aae3e76',1,'texture_atlas_resize(TextureAtlas *atlas, size_t new_capacity):&#160;texture_atlas.c']]],
+  ['texture_5fatlas_5fs_7',['texture_atlas_s',['../structtexture__atlas__s.html',1,'']]],
+  ['texture_5fs_8',['texture_s',['../structtexture__s.html',1,'']]],
+  ['textureatlas_9',['TextureAtlas',['../libcngraphic_8h.html#a23359974f04ef93017c6a11fec3741ac',1,'libcngraphic.h']]],
+  ['title_10',['title',['../structwindow__s.html#aa504286ec5c791115e2d1c1cccf0c7bb',1,'window_s']]],
+  ['true_11',['true',['../libcncore_8h.html#a41f9c5fb8b08eb5dc3edce4dcb37fee7',1,'libcncore.h']]],
+  ['twod_5fboard_5fmode_5fs_12',['twod_board_mode_s',['../structtwod__board__mode__s.html',1,'']]],
+  ['type_13',['type',['../structevent__map__entry__s.html#a1156d48ad6f4ba9c27b3716d4b1e3caf',1,'event_map_entry_s::type'],['../structevent__s.html#afd07887ec8f1941d95f80dc5680a6320',1,'event_s::type'],['../structcn__value.html#ab5b23a39af00ef185b077fd98dae0b04',1,'cn_value::type'],['../structaudio__event__s.html#a1ad96f4840dc2719bd0eb0c3759ec81b',1,'audio_event_s::type']]]
 ];
