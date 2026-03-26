@@ -162,7 +162,7 @@ CN_API void blit_ratio(const Texture *__src, Texture *__dst, const Rect *__src_r
             (int)r.x, (int)r.y, (int)r.w, (int)r.h
         }, __dst->surface,
         &(SDL_Rect){
-            (int)dst_vec.x, (int)dst_vec.y, (int)(__dst->size.x * ratio_vec.x), (int)(__dst->size.y * ratio_vec.y)
+            (int)dst_vec.x, (int)dst_vec.y, (int)(__src->size.x * ratio_vec.x), (int)(__src->size.y * ratio_vec.y)
     });
 }
 

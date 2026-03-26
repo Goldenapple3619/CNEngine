@@ -1,7 +1,14 @@
 #include "libcncore.h"
 
-#define VALUE_FALSE (cn_value){CN_TYPE_INT, {false}}
-#define VALUE_TRUE (cn_value){CN_TYPE_INT, {true}}
+static cn_value _update_scene(Object *__this, void **args)
+{
+    (void)args;
+
+    Object *scene = get_attr(__this, "scene")->as.ptr;
+
+    (void)call_method(scene, "_update", (cnany []){&get_attr(__this, "dt")->as.f , NULL});
+    return (null_value);
+}
 
 static cn_value _init(Object *__this, void **args)
 {
@@ -21,6 +28,10 @@ static cn_value _init(Object *__this, void **args)
     INIT_CUSTOM_ALLOCATION(__this, new_value_vector(), delete_value_vector, "update_pool");
     INIT_CUSTOM_ALLOCATION(__this, new_value_vector(), delete_value_vector, "draw_pool");
     INIT_OBJECT_STATIC(__this, new_scene(), NULL, "scene");
+
+    if (call_method(__this, "register_update", (cnany []){&_update_scene, NULL}).as.i == VALUE_ERR.as.i) {
+        return (VALUE_ERR);
+    }
 
     cn_value *temp_vec_attr = get_attr(__this, "submodules");
 
@@ -83,7 +94,7 @@ static cn_value _register_draw(Object *__this, void **args)
 
     if (insert_value_vector(get_attr(__this, "draw_pool")->as.ptr, (cn_value){.type = CN_TYPE_FUNCTION, .as.ptr = args[0]}))
         return (VALUE_ERR);
-    return (VALUE_TRUE);
+    return (VALUE_OK);
 }
 
 static cn_value _register_update(Object *__this, void **args)
@@ -93,7 +104,7 @@ static cn_value _register_update(Object *__this, void **args)
 
     if (insert_value_vector(get_attr(__this, "update_pool")->as.ptr, (cn_value){.type = CN_TYPE_FUNCTION, .as.ptr = args[0]}))
         return (VALUE_ERR);
-    return (VALUE_TRUE);
+    return (VALUE_OK);
 }
 
 static cn_value _register_event(Object *__this, void **args)
@@ -103,7 +114,7 @@ static cn_value _register_event(Object *__this, void **args)
 
     if (insert_value_vector(get_attr(__this, "event_pool")->as.ptr, (cn_value){.type = CN_TYPE_FUNCTION, .as.ptr = args[0]}))
         return (VALUE_ERR);
-    return (VALUE_TRUE);
+    return (VALUE_OK);
 }
 
 static cn_value _del(Object *__this, void **args)

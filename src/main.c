@@ -63,6 +63,20 @@ int main(int argc, char *argv[])
         return (1);
     }
 
+    if (call_method(get_attr(ctx, "scene")->as.ptr, "add_element",
+            (cnany []){
+                build_object(new_tile(), (cnany[]){&(struct scene_object_mode_s){
+                    .coords = (Vector3){.x = 16, .y = 16, .z = 0},
+                    .flags = CN_OBJ_DRAWABLE | CN_OBJ_HOST,
+                    .rotation = (Rect){.x = 0, .y = 0, .w = 0, .h = 0},
+                    .scale = (Vector3){.x = 1, .y = 1, .z = 1}
+                }, NULL}),
+                NULL
+            }).as.i == VALUE_ERR.as.i) {
+        delete_object(ctx);
+        return (1);
+    }
+
     Object *twod_board = build_object(new_2dboard(), (cnany []){
         &(struct twod_board_mode_s){
             .position = (Vector2){.x = 0, .y = 0},

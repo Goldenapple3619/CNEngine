@@ -12,6 +12,8 @@ static cn_value _init(Object *__this, void **args)
     INIT_RECT(__this, mode->rotation, "rotation");
     INIT_VEC3(__this, mode->scale, "scale");
 
+    INIT_INT(__this, mode->flags, "_flags");
+
     return (VALUE_OK);
 }
 

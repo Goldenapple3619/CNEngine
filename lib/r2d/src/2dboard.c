@@ -30,10 +30,58 @@ static cn_value _draw(Object *__this, void **args)
     (void)args;
 
     Texture *texture = get_attr(__this, "texture")->as.ptr;
+    Window *window = args[0];
 
     clear_texture(texture, 0x000000ff);
 
-    // to implement
+    Object *scene = get_attr(__this, "scene")->as.ptr;
+    Object *elements = get_attr(scene, "objects")->as.ptr;
+    size_t len = call_method(elements, "len", NULL).as.i;
+    cn_value val;
+    Object *temp;
+    int64_t flags;
+    Texture *temp_texture;
+    Vector3 *temp_position;
+    Vector3 *temp_scale;
+    Rect *temp_rotation;
+    Rect *temp_texture_bounding;
+
+    for (size_t i = 0; i < len; ++i) {
+        val = call_method(elements, "at", (cnany []){(size_t []){i}, NULL});
+
+        if (val.type == CN_TYPE_NULL)
+            continue;
+        
+        temp = val.as.ptr;
+        flags = get_attr(temp, "_flags")->as.i;
+        
+        if (!((flags & CN_OBJ_DRAWABLE) > 0))
+            continue;
+
+        temp_position = &get_attr(temp, "position")->as.vec3;
+        temp_scale = &get_attr(temp, "scale")->as.vec3;
+        temp_rotation = &get_attr(temp, "rotation")->as.rect;
+        temp_texture_bounding = has_attr(temp, "texture_bounding") ? &get_attr(temp, "texture_bounding")->as.rect : NULL;
+
+        (void)temp_rotation;
+
+        if (has_attr(temp, "texture")) {
+            temp_texture = get_attr(temp, "texture")->as.ptr;
+
+            if ((temp_scale->x == 1.0) && (temp_scale->y == 1.0))
+                blit(temp_texture, texture, temp_texture_bounding, &(Vector2){.x = temp_position->x, .y = temp_position->y});
+            else
+                blit_ratio(temp_texture, texture, temp_texture_bounding, &(Vector2){.x = temp_position->x, .y = temp_position->y}, &(Vector2){.x = temp_scale->x, .y = temp_scale->y});
+        }
+
+        if (has_method(temp, "_draw"))
+            (void)call_method(temp, "_draw", (cnany []){__this, NULL});
+    }
+
+    Vector2 upscale = get_attr(__this, "upscale")->as.vec2;
+    Vector2 resolution = get_attr(__this, "resolution")->as.vec2;
+
+    blit_ratio(texture, window->texture, NULL, &(get_attr(__this, "position")->as.vec2), &(Vector2){upscale.x / resolution.x, upscale.y / resolution.y});
 
     return (null_value);
 }

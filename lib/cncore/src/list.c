@@ -16,7 +16,7 @@ static cn_value _push(Object *__this, void **args)
 {
     if (!args)
         return (VALUE_ERR);
-    
+
     ObjectVector *vec = get_attr(__this, "_vec")->as.ptr;
 
     for (size_t i = 0; args[i]; ++i) {

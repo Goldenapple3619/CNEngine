@@ -136,9 +136,10 @@
     } cn_type;
 
     typedef enum {
-        CN_OBJ_NULL,
-        CN_OBJ_DRAWABLE,
-        CN_OBJ_REPLICATE
+        CN_OBJ_NULL = 0x00,
+        CN_OBJ_DRAWABLE = (1 << 0),
+        CN_OBJ_REPLICATE = (1 << 1),
+        CN_OBJ_HOST = (1 << 2)
     } scene_object_flags;
 
     typedef struct {

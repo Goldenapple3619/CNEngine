@@ -13,5 +13,6 @@
     };
 
     CN_API Object *new_2dboard(void);
+    CN_API Object *new_tile(void);
 
 #endif
