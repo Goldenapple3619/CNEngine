@@ -14,6 +14,8 @@ add_library(cncore SHARED
     src/object_map.c
     src/list.c
     src/core_ctx.c
+    src/scene.c
+    src/scene_object.c
     src/common.c
 )
 

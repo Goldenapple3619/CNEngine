@@ -19,7 +19,7 @@ static cn_value _init(Object *__this, void **args)
     INIT_VEC2(__this, upscale, "upscale");
 
     INIT_CUSTOM_ALLOCATION(__this, new_texture(&mode->resolution, true), delete_texture, "texture");
-    INIT_CUSTOM_ALLOCATION(__this, build_object(new_list(), NULL), delete_object, "elements");
+    INIT_OBJECT_STATIC(__this, new_list(), NULL, "elements");
 
     return (VALUE_OK);
 }
@@ -119,7 +119,6 @@ static cn_value _del(Object *__this, void **args)
     PREP_DEL();
 
     DEL_CUSTOM_ALLOCAION(__this, delete_texture, "texture");
-    DEL_CUSTOM_ALLOCAION(__this, delete_object, "elements");
 
     return (null_value);
 }

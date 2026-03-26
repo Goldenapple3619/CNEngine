@@ -18,6 +18,7 @@ static cn_value _init(Object *__this, void **args)
     INIT_CUSTOM_ALLOCATION(__this, new_value_vector(), delete_value_vector, "event_pool");
     INIT_CUSTOM_ALLOCATION(__this, new_value_vector(), delete_value_vector, "update_pool");
     INIT_CUSTOM_ALLOCATION(__this, new_value_vector(), delete_value_vector, "draw_pool");
+    INIT_OBJECT_STATIC(__this, new_scene(), NULL, "scene");
 
     cn_value *temp_vec_attr = get_attr(__this, "submodules");
 

@@ -5,6 +5,7 @@
 #include "libcncore.h"
 #include "libcngraphic.h"
 #include "librgui.h"
+#include "libr2d.h"
 
 static Object *global_ctx = NULL;
 
@@ -58,6 +59,28 @@ int main(int argc, char *argv[])
     val = call_method(ctx, "spawn_interface", (cnany []){"test", NULL, &v});
 
     if (val.type == CN_TYPE_NULL) {
+        delete_object(ctx);
+        return (1);
+    }
+
+    Object *twod_board = build_object(new_2dboard(), (cnany []){
+        &(struct twod_board_mode_s){
+            .position = (Vector2){.x = 0, .y = 0},
+            .resolution = v.size,
+            .upscale = (Vector2){.x = -1, .y = -1},
+
+            .scene = get_attr(ctx, "scene")->as.ptr
+        },
+        NULL
+    });
+
+    if (!twod_board) {
+        delete_object(ctx);
+        return (1);
+    }
+
+    if (call_method(val.as.ptr, "add_element", (cnany []){twod_board, NULL}).as.i == VALUE_ERR.as.i) {
+        delete_object(twod_board);
         delete_object(ctx);
         return (1);
     }

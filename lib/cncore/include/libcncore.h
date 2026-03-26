@@ -24,6 +24,20 @@
             (void)expr_free(__temp_alloc); \
             return (VALUE_ERR); \
         }
+    #define INIT_OBJECT_STATIC(__this, expr_alloc, args, name) \
+        __temp_alloc = (void *)build_object(expr_alloc, args); \
+        if (!__temp_alloc) \
+            return (VALUE_ERR); \
+        if (!set_attr(__this, name, CN_TYPE_OBJECT, (cnany)__temp_alloc)) { \
+            (void)delete_object(__temp_alloc); \
+            return (VALUE_ERR); \
+        }
+    #define INIT_OBJECT_SHR(__this, obj, name) \
+        if (!obj) \
+            return (VALUE_ERR); \
+        if (!set_attr(__this, name, CN_TYPE_OBJECT, (cnany)obj)) { \
+            return (VALUE_ERR); \
+        }
     #define PREP_DEL() cn_value *__temp_alloc;
     #define DEL_CUSTOM_ALLOCAION(__this, expr_free, name) \
         __temp_alloc = get_attr(__this, name); \
@@ -121,6 +135,12 @@
         CN_TYPE_GENERIC_UNIQ_PTR // custom things that may be handled by user in the dtor
     } cn_type;
 
+    typedef enum {
+        CN_OBJ_NULL,
+        CN_OBJ_DRAWABLE,
+        CN_OBJ_REPLICATE
+    } scene_object_flags;
+
     typedef struct {
         cn_type type;
         union {
@@ -182,6 +202,13 @@
 
         size_t size;
         size_t capacity;
+    };
+
+    struct scene_object_mode_s {
+        struct vector3_s coords;
+        struct vector3_s scale;
+        struct rect_s rotation;
+        scene_object_flags flags;
     };
 
     typedef struct vector2_s Vector2;
@@ -280,6 +307,8 @@
     CN_API void delete_value_vector(struct cn_value_vector_s *vec);
 
     CN_API Object *new_list(void);
+    CN_API Object *new_scene(void);
+    CN_API Object *new_scene_object(void);
 
     CN_API cnbool start_core(void);
     CN_API void end_core(void);
