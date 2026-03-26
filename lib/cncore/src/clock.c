@@ -1,12 +1,12 @@
 #include "libcncore.h"
 
-CN_API cnnumber clock_tick(Clock *c, int32_t tps)
+CN_API double clock_tick(Clock *c, int32_t tps)
 {
     if (!c)
         return (0.0);
-    cnnumber execution_time = 1000.0 / (cnnumber)tps;
+    double execution_time = 1000.0 / (double)tps;
     cntime now = SDL_GetTicks64();
-    cnnumber delta = (cnnumber)(now - c->old_time);
+    double delta = (double)(now - c->old_time);
 
     if (tps == -1) {
         c->old_time = now;
@@ -14,7 +14,7 @@ CN_API cnnumber clock_tick(Clock *c, int32_t tps)
         return (c->last_dt);
     }
 
-    cnnumber sleep_time = execution_time - delta;
+    double sleep_time = execution_time - delta;
 
     if (sleep_time >= 1.0)
         (void)SDL_Delay((uint32_t)round(sleep_time));

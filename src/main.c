@@ -17,7 +17,7 @@ cn_value fps_update(Object *__this, void **args)
     char temp[20];
 
     (void)memset(temp, 0, sizeof(temp) / sizeof(char));
-    (void)snprintf(temp, (sizeof(temp) / sizeof(char)) - sizeof(char), "%.2f", 1000.0 / *(cnnumber *)args[0]); 
+    (void)snprintf(temp, (sizeof(temp) / sizeof(char)) - sizeof(char), "%.2f", 1000.0 / *(double *)args[0]); 
     (void)call_method(__this, "set_text", (cnany []){temp, NULL});
 
     return (null_value);

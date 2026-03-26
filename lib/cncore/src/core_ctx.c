@@ -13,7 +13,9 @@ static cn_value _init(Object *__this, void **args)
 
     INIT_STRING(__this, "ctx", "name");
     INIT_INT(__this, 0, "is_running");
-    INIT_NUMBER(__this, 0.0, "dt");
+    INIT_INT(__this, 60, "tps");
+    INIT_FLOAT(__this, 0.0, "dt");
+    INIT_NUMBER(__this, 1.0, "time_scale");
     INIT_CUSTOM_ALLOCATION(__this, new_clock(), delete_clock, "clock");
     INIT_CUSTOM_ALLOCATION(__this, new_value_vector(), delete_value_vector, "event_pool");
     INIT_CUSTOM_ALLOCATION(__this, new_value_vector(), delete_value_vector, "update_pool");
@@ -42,9 +44,11 @@ static cn_value _run(Object *__this, void **args)
 {
     (void)args;
 
-    cnnumber dt;
+    double dt;
 
     cn_value *ptr_is_running = get_attr(__this, "is_running");
+    cn_value *ptr_tps = get_attr(__this, "tps");
+    cn_value *ptr_time_scale = get_attr(__this, "time_scale");
     Clock *c = (Clock *)get_attr(__this, "clock")->as.ptr;
     struct cn_value_vector_s *methods_pools[3] = {
         get_attr(__this, "event_pool")->as.ptr,
@@ -65,8 +69,8 @@ static cn_value _run(Object *__this, void **args)
             }
         }
 
-        dt = clock_tick(c, 60);
-        set_attr(__this, "dt", CN_TYPE_NUMBER, (cnany)&dt);
+        dt = clock_tick(c, ptr_tps->as.i) * (double)ptr_time_scale->as.num;
+        set_attr(__this, "dt", CN_TYPE_FLOAT, (cnany)&dt);
     };
 
     return (null_value);

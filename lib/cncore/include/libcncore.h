@@ -118,7 +118,7 @@
 
     struct clock_s {
         cntime old_time; // sdl_gettick64()
-        cnnumber last_dt;
+        double last_dt;
     };
 
     typedef enum {
@@ -237,7 +237,7 @@
      * @param tps tick per second or frame per second
      * @return time that passed between last tick and actual tick (aka: delta time) in ms
      ******************************************************************************/
-    CN_API cnnumber clock_tick(Clock *c, int32_t tps);
+    CN_API double clock_tick(Clock *c, int32_t tps);
     /******************************************************************************
      * delete a clock
      *
