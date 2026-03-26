@@ -30,11 +30,29 @@ static cn_value _update(Object *__this, void **args)
 
     (void)update_all_window(wu);
 
-
     for (size_t i = 0; i < interfaces->size; ++i) {
         temp = get_attr(interfaces->objects[i], "window")->as.ptr;
 
         if (is_window_closed_addr(wu, temp)) {
+            Object *scene = get_attr(__this, "scene")->as.ptr;
+            Object *elements = get_attr(scene, "objects")->as.ptr;
+            size_t len = call_method(elements, "len", NULL).as.i;
+            cn_value val;
+
+            for (size_t j = 0; j < len; ++j) {
+                val = call_method(elements, "at", (cnany []){(size_t []){j}, NULL});
+
+                if (val.type == CN_TYPE_NULL)
+                    continue;
+
+                if (!has_attr(val.as.ptr, "texture"))
+                    continue;
+                
+                if (((Texture *)get_attr(val.as.ptr, "texture")->as.ptr)->renderer == ((Window *)(get_attr(interfaces->objects[i], "window")->as.ptr))->renderer) {
+                    INVALIDATE_GPU((Texture *)(get_attr(val.as.ptr, "texture")->as.ptr));
+                }
+            }
+
             (void)remove_object_vector(interfaces, i);
             --i;
             continue;
@@ -78,7 +96,7 @@ static cn_value _spawn_interface(Object *__this, void **args)
         return (null_value);
     }
 
-    if (add_window_in_universe(get_attr(__this, "all_window")->as.ptr, get_attr(interface, "window")->as.ptr)) {
+    if (add_window_in_universe(get_attr(__this, "all_window")->as.ptr, get_attr(interface, "window")->as.ptr)) {        
         (void)remove_object_vector(vec, vec->size - 1);
         return (null_value);
     }
@@ -126,6 +144,23 @@ static cn_value _del(Object *__this, void **args)
         return (VALUE_ERR);
     
     Object *ctx = (Object *)(args[0]);
+
+    Object *scene = get_attr(ctx, "scene")->as.ptr;
+    Object *elements = get_attr(scene, "objects")->as.ptr;
+    size_t len = call_method(elements, "len", NULL).as.i;
+    cn_value val;
+
+    for (size_t i = 0; i < len; ++i) {
+        val = call_method(elements, "at", (cnany []){(size_t []){i}, NULL});
+
+        if (val.type == CN_TYPE_NULL)
+            continue;
+
+        if (!has_attr(val.as.ptr, "texture"))
+            continue;
+
+        INVALIDATE_GPU((Texture *)(get_attr(val.as.ptr, "texture")->as.ptr));
+    }
 
     DEL_CUSTOM_ALLOCAION(ctx, delete_object_vector, "interfaces");
     DEL_CUSTOM_ALLOCAION(ctx, delete_window_universe, "all_window");

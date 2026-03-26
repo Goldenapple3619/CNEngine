@@ -1,7 +1,7 @@
 project(cninput C)
 
 add_library(cninput SHARED
-
+    src/common.c
 )
 
 target_compile_options(cninput
@@ -16,5 +16,6 @@ target_include_directories(cninput
 
 target_link_libraries(cninput
     PUBLIC
+        cncore
         SDL2::SDL2
 )

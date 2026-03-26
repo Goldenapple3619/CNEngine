@@ -59,6 +59,7 @@ set(DAV1D_VENDORED ON CACHE BOOL "" FORCE)
 
 set(SDL2IMAGE_AVIF OFF CACHE BOOL "" FORCE)
 set(SDL2IMAGE_WEBP OFF CACHE BOOL "" FORCE)
+
 set(SDL2IMAGE_PNG ON CACHE BOOL "" FORCE)
 set(SDL2IMAGE_JPG ON CACHE BOOL "" FORCE)
 
@@ -126,9 +127,10 @@ FetchContent_MakeAvailable(SDL2_mixer)
 add_subdirectory(lib/cncore)
 add_subdirectory(lib/cngraphic)
 add_subdirectory(lib/cnaudio)
+add_subdirectory(lib/cninput)
 add_subdirectory(lib/rgui)
 add_subdirectory(lib/r2d)
-# add_subdirectory(lib/cninput)
+add_subdirectory(lib/r3d)
 
 # ========= Game executable =========
 if(CN_BUILD_GAME)
@@ -146,12 +148,13 @@ if(CN_BUILD_GAME)
             cncore
             cngraphic
             cnaudio
+            cninput
 
             rgui
             r2d
+            r3d
 
             m
-            # cninput
     )
 
     target_include_directories(cn_engine
@@ -159,10 +162,11 @@ if(CN_BUILD_GAME)
             lib/cncore/include
             lib/cngraphic/include
             lib/cnaudio/include
-            # lib/cninput/include
+            lib/cninput/include
 
             lib/rgui/include
             lib/r2d/include
+            lib/r3d/include
     )
 
     # main
@@ -184,7 +188,7 @@ if(CN_BUILD_GAME)
     endforeach()
 
     # includes
-    foreach(lib cncore cngraphic cnaudio rgui r2d)
+    foreach(lib cncore cngraphic cnaudio cninput rgui r2d r3d)
         add_custom_command(TARGET cn_engine POST_BUILD
             COMMAND ${CMAKE_COMMAND} -E copy_directory
                 "${CMAKE_SOURCE_DIR}/lib/${lib}/include"
@@ -193,7 +197,7 @@ if(CN_BUILD_GAME)
     endforeach()
 
     # modules libraries
-    foreach(lib cncore cngraphic cnaudio rgui r2d)
+    foreach(lib cncore cngraphic cnaudio cninput rgui r2d r3d)
         add_custom_command(TARGET cn_engine POST_BUILD
             COMMAND ${CMAKE_COMMAND} -E copy_if_different
                 $<TARGET_FILE:${lib}>

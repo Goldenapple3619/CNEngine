@@ -5,6 +5,9 @@
     #include <SDL_image.h>
     #include "libcncore.h"
 
+    #define INVALIDATE_GPU(t) \
+        if ((t) && (t)->gpu_texture) { SDL_DestroyTexture((t)->gpu_texture); (t)->gpu_texture = NULL; }
+
     typedef enum {
         EV_NULL = 0x00,
         EV_CLOSE = 0x01,
@@ -16,7 +19,8 @@
         VDM_VSYNC = (1 << 0),
         VDM_CLOSABLE = (1 << 1),
         VDM_ACCELERATION = (1 << 2),
-        VDM_INACTIVE = (1 << 3)
+        VDM_INACTIVE = (1 << 3),
+        VDM_GPU = (1 << 4)
     };
 
     enum VIDEOMODE_NATIVE_FLAGS {
@@ -47,6 +51,8 @@
         Vector2 size;
 
         SDL_Surface *surface;
+        SDL_Texture *gpu_texture;
+        const SDL_Renderer *renderer;
     };
 
     struct videomode_s {
@@ -121,6 +127,7 @@
 
     CN_API void blit(const Texture *__src, Texture *__dst, const Rect *__src_rect, const Vector2 *__dest_at);
     CN_API void blit_ratio(const Texture *__src, Texture *__dst, const Rect *__src_rect, const Vector2 *__dest_at, const Vector2 *__ratios);
+    CN_API void draw_texture(Texture *__src_texture, SDL_Renderer *__dest_renderer, const Rect *__src_rect, const Vector2 *__dest_at, const Vector2 *__ratios, double __angle);
 
     CN_API Texture *new_texture(const Vector2 *size, cnbool alpha);
     CN_API Texture *copy_texture(Texture *texture);

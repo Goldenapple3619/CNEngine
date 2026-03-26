@@ -53,13 +53,18 @@ static cn_value _set_text(Object *__this, void **args)
 
 static cn_value _draw(Object *__this, void **args)
 {
-    if (!args || !args[0])
+    if (!args || !args[0] || !args[1])
         return (null_value);
+
+    Window *window = args[1];
 
     if (!has_attr(args[0], "texture"))
         return (null_value);
     
-    blit(get_attr(__this, "texture")->as.ptr, get_attr(args[0], "texture")->as.ptr, NULL, &get_attr(__this, "position")->as.vec2);
+    if (!get_attr(args[0], "gpu"))
+        blit(get_attr(__this, "texture")->as.ptr, get_attr(args[0], "texture")->as.ptr, NULL, &get_attr(__this, "position")->as.vec2);
+    else
+        draw_texture(get_attr(__this, "texture")->as.ptr, window->renderer, NULL, &get_attr(__this, "position")->as.vec2, NULL, 0);
     return (null_value);
 }
 

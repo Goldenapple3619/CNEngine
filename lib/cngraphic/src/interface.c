@@ -70,8 +70,9 @@ static cn_value _del(Object *__this, void **args)
     (void)args;
 
     PREP_DEL()
-    DEL_CUSTOM_ALLOCAION(__this, delete_window, "window");
+
     DEL_CUSTOM_ALLOCAION(__this, delete_object_vector, "elements");
+    DEL_CUSTOM_ALLOCAION(__this, delete_window, "window");
 
     return (null_value);
 }

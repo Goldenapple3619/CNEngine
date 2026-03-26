@@ -17,6 +17,7 @@ static cn_value _init(Object *__this, void **args)
     INIT_VEC2(__this, mode->position, "position");
     INIT_VEC2(__this, mode->resolution, "resolution");
     INIT_VEC2(__this, upscale, "upscale");
+    INIT_INT(__this, mode->gpu_mode, "gpu");
 
     INIT_CUSTOM_ALLOCATION(__this, new_texture(&mode->resolution, true), delete_texture, "texture");
     INIT_OBJECT_STATIC(__this, new_list(), NULL, "elements");
@@ -80,7 +81,8 @@ static cn_value _draw(Object *__this, void **args)
     cn_value val;
     Object *temp;
 
-    clear_texture(texture, 0x00000000);
+    if (!get_attr(__this, "gpu"))
+        clear_texture(texture, 0x00000000);
 
     for (size_t i = 0; i < len; ++i) {
         val = call_method(elements, "at", (cnany []){(size_t []){i}, NULL});
@@ -91,13 +93,16 @@ static cn_value _draw(Object *__this, void **args)
         temp = val.as.ptr;
         
         if (has_method(temp, "_draw"))
-            (void)call_method(temp, "_draw", (cnany []){__this, NULL});
+            (void)call_method(temp, "_draw", (cnany []){__this, window, NULL});
     }
 
     Vector2 upscale = get_attr(__this, "upscale")->as.vec2;
     Vector2 resolution = get_attr(__this, "resolution")->as.vec2;
 
-    blit_ratio(texture, window->texture, NULL, &(get_attr(__this, "position")->as.vec2), &(Vector2){upscale.x / resolution.x, upscale.y / resolution.y});
+    if (!get_attr(__this, "gpu"))
+        blit_ratio(texture, window->texture, NULL, &(get_attr(__this, "position")->as.vec2), &(Vector2){upscale.x / resolution.x, upscale.y / resolution.y});
+    // else
+    //     draw_texture(texture, window->renderer, NULL, &(get_attr(__this, "position")->as.vec2), &(Vector2){upscale.x / resolution.x, upscale.y / resolution.y}, 0);
 
     return (null_value);
 }

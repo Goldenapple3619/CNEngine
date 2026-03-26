@@ -209,7 +209,10 @@ CN_API void draw_window(Window *window)
 {
     if (!window)
         return;
-    (void)SDL_UpdateWindowSurface(window->window);
+    if ((window->video_mode.flags & VDM_GPU) > 0)
+        (void)SDL_RenderPresent(window->renderer);
+    else
+        (void)SDL_UpdateWindowSurface(window->window);
 }
 
 CN_API cnbool has_event_window(const Window *window, cn_event type)
@@ -241,7 +244,14 @@ CN_API void clear_window(Window *window, cncolor color)
 {
     if (!window)
         return;
-    (void)clear_texture(window->texture, color);
+    if ((window->video_mode.flags & VDM_GPU) > 0) {
+        (void)SDL_SetRenderDrawColor(window->renderer, (color & 0xff000000) >> 24,
+            (color & 0x00ff0000) >> 16,
+            (color & 0x0000ff00) >> 8,
+            (color & 0x000000ff));
+        (void)SDL_RenderClear(window->renderer);
+    } else
+        (void)clear_texture(window->texture, color);
 }
 
 CN_API void delete_window(Window *window)

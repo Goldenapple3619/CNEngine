@@ -122,11 +122,6 @@ static cn_value _del(Object *__this, void **args)
     (void)args;
     PREP_DEL()
 
-    DEL_CUSTOM_ALLOCAION(__this, delete_clock, "clock");
-    DEL_CUSTOM_ALLOCAION(__this, delete_value_vector, "event_pool");
-    DEL_CUSTOM_ALLOCAION(__this, delete_value_vector, "update_pool");
-    DEL_CUSTOM_ALLOCAION(__this, delete_value_vector, "draw_pool");
-
     cn_value *s = get_attr(__this, "submodules");
     
     if (s) {
@@ -138,6 +133,11 @@ static cn_value _del(Object *__this, void **args)
 
         delete_object_vector(vec);
     }
+
+    DEL_CUSTOM_ALLOCAION(__this, delete_clock, "clock");
+    DEL_CUSTOM_ALLOCAION(__this, delete_value_vector, "event_pool");
+    DEL_CUSTOM_ALLOCAION(__this, delete_value_vector, "update_pool");
+    DEL_CUSTOM_ALLOCAION(__this, delete_value_vector, "draw_pool");
 
     end_core();
 

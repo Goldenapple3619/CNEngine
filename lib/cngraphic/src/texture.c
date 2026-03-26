@@ -20,7 +20,49 @@ CN_API Texture *new_texture(const Vector2 *size, cnbool alpha)
     
     texture->size.x = size->x;
     texture->size.y = size->y;
+    texture->gpu_texture = NULL;
+    texture->renderer = NULL;
     return (texture);
+}
+
+CN_API void draw_texture(Texture *__src_texture, SDL_Renderer *__dest_renderer, const Rect *__src_rect, const Vector2 *__dest_at, const Vector2 *__ratios, double __angle)
+{
+    if (!__src_texture || !__dest_renderer)
+        return;
+
+    if (!__src_texture->gpu_texture || __src_texture->renderer != __dest_renderer) {
+        __src_texture->renderer = __dest_renderer;
+        __src_texture->gpu_texture = SDL_CreateTextureFromSurface(__dest_renderer, __src_texture->surface);
+        if (!__src_texture->gpu_texture)
+            return;
+    }
+
+    Rect r = {0, 0, 0, 0};
+    Vector2 dst_vec = {0, 0};
+    Vector2 ratio_vec = {1, 1};
+
+    if (__src_rect) {
+        r.x = __src_rect->x;
+        r.y = __src_rect->y;
+        r.w = (__src_rect->w ? __src_rect->w : __src_texture->size.x);
+        r.h = (__src_rect->h ? __src_rect->h : __src_texture->size.y);
+    } else {
+        r.w = __src_texture->size.x;
+        r.h = __src_texture->size.y;
+    }
+
+    if (__dest_at)
+        (void)memcpy(&dst_vec, __dest_at, sizeof(Vector2));
+    if (__ratios)
+        (void)memcpy(&ratio_vec, __ratios, sizeof(Vector2));
+
+    (void)SDL_RenderCopyEx(__dest_renderer, __src_texture->gpu_texture,
+        &(SDL_Rect){(int)r.x, (int)r.y, (int)r.w, (int)r.h},
+        &(SDL_Rect){
+            (int)dst_vec.x, (int)dst_vec.y,
+            (int)(__src_texture->size.x * ratio_vec.x),
+            (int)(__src_texture->size.y * ratio_vec.y)
+        }, __angle, NULL, SDL_FLIP_NONE);
 }
 
 CN_API Texture *copy_texture(Texture *texture)
@@ -72,6 +114,8 @@ CN_API Texture *new_texture_from_file(const char *path)
 
     texture->size.x = texture->surface->w;
     texture->size.y = texture->surface->h;
+    texture->renderer = NULL;
+    texture->gpu_texture = NULL;
 
     return (texture);
 }
@@ -91,6 +135,8 @@ CN_API Texture *new_texture_from_surface(SDL_Surface *surface)
     texture->surface = surface;
     texture->size.x = texture->surface->w;
     texture->size.y = texture->surface->h;
+    texture->renderer = NULL;
+    texture->gpu_texture = NULL;
     return (texture);
 }
 
@@ -98,11 +144,15 @@ CN_API void delete_texture(Texture *texture)
 {
     if (!texture)
         return;
+    if (texture->gpu_texture)
+        (void)SDL_DestroyTexture(texture->gpu_texture);
     if (texture->surface)
         (void)SDL_FreeSurface(texture->surface);
     texture->size.x = 0;
     texture->size.y = 0;
     texture->surface = NULL;
+    texture->renderer = NULL;
+    texture->gpu_texture = NULL;
     (void)free((void *)texture);
 }
 
@@ -132,6 +182,7 @@ CN_API void blit(const Texture *__src, Texture *__dst, const Rect *__src_rect, c
         &(SDL_Rect){
             (int)dst_vec.x, (int)dst_vec.y, (int)r.w, (int)r.h
     });
+    INVALIDATE_GPU(__dst);
 }
 
 CN_API void blit_ratio(const Texture *__src, Texture *__dst, const Rect *__src_rect, const Vector2 *__dest_at, const Vector2 *__ratios)
@@ -164,6 +215,7 @@ CN_API void blit_ratio(const Texture *__src, Texture *__dst, const Rect *__src_r
         &(SDL_Rect){
             (int)dst_vec.x, (int)dst_vec.y, (int)(__src->size.x * ratio_vec.x), (int)(__src->size.y * ratio_vec.y)
     });
+    INVALIDATE_GPU(__dst);
 }
 
 CN_API void set_opacity_texture(Texture *texture, uint8_t opacity)
@@ -171,6 +223,7 @@ CN_API void set_opacity_texture(Texture *texture, uint8_t opacity)
     if (!texture)
         return;
     (void)SDL_SetSurfaceAlphaMod(texture->surface, (uint8_t)fmax(0, fmin(255, opacity)));
+    INVALIDATE_GPU(texture);
 }
 
 CN_API uint8_t get_opacity_texture(const Texture *texture)
@@ -195,6 +248,7 @@ CN_API void draw_rect(Texture *texture, const Rect *rect, cncolor color)
             (color & 0x00ff0000) >> 16,
             (color & 0x0000ff00) >> 8,
             (color & 0x000000ff)));
+    INVALIDATE_GPU(texture);
 }
 
 CN_API void clear_texture(Texture *texture, cncolor color)
@@ -208,4 +262,5 @@ CN_API void clear_texture(Texture *texture, cncolor color)
             (color & 0x00ff0000) >> 16,
             (color & 0x0000ff00) >> 8,
             (color & 0x000000ff)));
+    INVALIDATE_GPU(texture);
 }

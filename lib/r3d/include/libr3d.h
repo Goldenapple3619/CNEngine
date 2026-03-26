@@ -1,19 +1,17 @@
-#ifndef _LIBR2D_H_
-    #define _LIBR2D_H_
+#ifndef _LIBR3D_H_
+    #define _LIBR3D_H_
 
     #include "libcncore.h"
     #include "libcngraphic.h"
 
-    struct twod_board_mode_s {
+    struct threed_board_mode_s {
         Vector2 position;
         Vector2 resolution;
         Vector2 upscale;
 
         Object *scene;
-        cnbool gpu_mode;
     };
 
-    CN_API Object *new_2dboard(void);
-    CN_API Object *new_tile(void);
+    CN_API Object *new_3dboard(void);
 
 #endif

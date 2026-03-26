@@ -17,6 +17,8 @@
         Vector2 position;
         Vector2 resolution;
         Vector2 upscale;
+
+        cnbool gpu_mode;
     };
 
     CN_API cnbool start_gui(void);

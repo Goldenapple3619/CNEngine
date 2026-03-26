@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
     (void)argc;
     (void)argv;
 
-    Videomode v = {.size.x = 800, .size.y = 600, .position.x = 0, .position.y = 0, .flags = VDM_CLOSABLE, .native_flags = VDM_N_SHWN};
+    Videomode v = {.size.x = 800, .size.y = 600, .position.x = 0, .position.y = 0, .flags = VDM_CLOSABLE | VDM_GPU, .native_flags = VDM_N_SHWN};
     Object *ctx = new_ctx();
 
     if (!ctx)
@@ -83,7 +83,8 @@ int main(int argc, char *argv[])
             .resolution = v.size,
             .upscale = (Vector2){.x = -1, .y = -1},
 
-            .scene = get_attr(ctx, "scene")->as.ptr
+            .scene = get_attr(ctx, "scene")->as.ptr,
+            .gpu_mode = true
         },
         NULL
     });
@@ -103,7 +104,8 @@ int main(int argc, char *argv[])
         &(struct gui_board_mode_s){
             .position = (Vector2){.x = 0, .y = 0},
             .resolution = v.size,
-            .upscale = (Vector2){.x = -1, .y = -1}
+            .upscale = (Vector2){.x = -1, .y = -1},
+            .gpu_mode = true
         },
         NULL
     });
