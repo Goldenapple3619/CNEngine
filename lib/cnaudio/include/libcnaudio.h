@@ -18,11 +18,13 @@
         audio_event type;
         cn_value value;
 
-        cntime start_in;
+        cntime start_in; // ms
     };
 
     struct audio_sequence_s {
         audio_event *event_list;
+        size_t size;
+        size_t capacity;
 
         cntime sequence_timer;
     };
@@ -31,7 +33,7 @@
         const Mix_Chunk *audio_ptr;
         struct audio_sequence_s sequence;
 
-        int32_t paying_on;
+        int32_t playing_on;
 
         cnbool is_playing;
         cnbool is_ended;
@@ -42,5 +44,13 @@
     typedef struct audio_event_s AudioEvent;
     typedef struct audio_sequence_s AudioSequence;
     typedef struct audio_s Audio;
+
+    CN_API Audio *new_audio(const Mix_Chunk *audio_chunk_ptr, cn_method on_audio_end);
+    CN_API void audio_run_sequence(Audio *audio, int32_t delta_time, int32_t *free_channels, size_t number_of_free_channel);
+    CN_API void play_audio(Audio *audio, int32_t channel);
+    CN_API void set_volume_audio(Audio *audio, int32_t volume);
+    CN_API void set_panning_audio(Audio *audio, uint8_t left, uint8_t right);
+    CN_API void stop_audio(Audio *audio);
+    CN_API void delete_audio(Audio *audio);
 
 #endif

@@ -12,6 +12,7 @@ add_library(cncore SHARED
     src/object_ownership.c
     src/object_attributes.c
     src/object_map.c
+    src/list.c
     src/core_ctx.c
     src/common.c
 )

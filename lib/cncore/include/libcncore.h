@@ -35,6 +35,18 @@
     #define INIT_INT(__this, number, name) \
         if (!set_attr(__this, name, CN_TYPE_INT, (cnany)((int64_t [1]){number}))) \
             return (VALUE_ERR);
+    #define INIT_NUMBER(__this, number, name) \
+        if (!set_attr(__this, name, CN_TYPE_NUMBER, (cnany)((cnnumber [1]){number}))) \
+            return (VALUE_ERR);
+    #define INIT_VEC2(__this, vec2, name) \
+        if (!set_attr(__this, name, CN_TYPE_VEC2, (cnany)((struct vector2_s [1]){vec2}))) \
+            return (VALUE_ERR);
+    #define INIT_VEC3(__this, vec3, name) \
+        if (!set_attr(__this, name, CN_TYPE_VEC3, (cnany)((struct vector3_s [1]){vec3}))) \
+            return (VALUE_ERR);
+    #define INIT_RECT(__this, rect, name) \
+        if (!set_attr(__this, name, CN_TYPE_RECT, (cnany)((struct rect_s [1]){rect}))) \
+            return (VALUE_ERR);
     #define INIT_FLOAT(__this, number, name) \
         if (!set_attr(__this, name, CN_TYPE_FLOAT, (cnany)((double [1]){number}))) \
             return (VALUE_ERR);
@@ -92,13 +104,17 @@
 
     struct clock_s {
         cntime old_time; // sdl_gettick64()
-        cntime last_dt;
+        cnnumber last_dt;
     };
 
     typedef enum {
         CN_TYPE_NULL,
         CN_TYPE_INT,
         CN_TYPE_FLOAT,
+        CN_TYPE_NUMBER,
+        CN_TYPE_VEC2,
+        CN_TYPE_VEC3,
+        CN_TYPE_RECT,
         CN_TYPE_STRING,
         CN_TYPE_OBJECT,
         CN_TYPE_FUNCTION,
@@ -110,8 +126,14 @@
         union {
             int64_t i;
             double f;
+            cnnumber num;
+
             char *str;
             void *ptr;
+
+            struct vector2_s vec2;
+            struct vector3_s vec3;
+            struct rect_s rect;
         } as;
     } cn_value;
 

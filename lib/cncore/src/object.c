@@ -35,12 +35,14 @@ CN_API void delete_object(Object *object)
 
 CN_API cnbool set_attr(Object *object, const char *name, cn_type type, cnany value)
 {
-    if (!object || !name || !value)
+    if (!object || !name)
         return (false);
 
     cn_value *temp_exist = get_attr(object, name);
 
     if (temp_exist) {
+        if (temp_exist->type == CN_TYPE_OBJECT && temp_exist->as.ptr == value)
+            return (true);
         (void)_delete_object_attribute_value(temp_exist);
         temp_exist->type = type;
         (void)_init_attribute_value(temp_exist, value);
@@ -134,17 +136,12 @@ CN_API cn_value *get_method_holder(const Object *object, const char *name)
         return (NULL);
     
     uint64_t hash = _get_attrs_hash(name);
-    const Object *temp = object;
     OBJAttrib *found;
 
-    while (temp) {
-        found = _find_object_attrs(&temp->methods, hash);
+    found = _find_object_attrs(&object->methods, hash);
 
-        if (found)
-            return (&found->value);
-
-        temp = temp->base;
-    }
+    if (found)
+        return (&found->value);
 
     return (NULL);
 }

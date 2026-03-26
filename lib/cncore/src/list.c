@@ -12,7 +12,7 @@ static cn_value _init(Object *__this, void **args)
     return (VALUE_OK);
 }
 
-static cn_value push(Object *__this, void **args)
+static cn_value _push(Object *__this, void **args)
 {
     if (!args)
         return (VALUE_ERR);
@@ -26,7 +26,21 @@ static cn_value push(Object *__this, void **args)
     return (VALUE_OK);
 }
 
-static cn_value len(Object *__this, void **args)
+static cn_value _at(Object *__this, void **args)
+{
+    if (!args || !args[0])
+        return (null_value);
+    
+    ObjectVector *vec = get_attr(__this, "_vec")->as.ptr;
+    size_t index = *(size_t *)args[0];
+
+    if (vec->size <= index)
+        return (null_value);
+
+    return ((cn_value){.type=CN_TYPE_OBJECT, .as.ptr=vec->objects[index]});
+}
+
+static cn_value _len(Object *__this, void **args)
 {
     (void)args;
 
@@ -35,7 +49,7 @@ static cn_value len(Object *__this, void **args)
     return ((cn_value){.type=CN_TYPE_INT, .as.i=vec->size});
 }
 
-static cn_value remove(Object *__this, void **args)
+static cn_value _remove(Object *__this, void **args)
 {
     if (!args || !(args[0]))
         return (VALUE_ERR);
@@ -66,9 +80,10 @@ CN_API Object *new_list()
 
     SET_PARENT_CLASS_BUILD(obj, create_default_object());
     CREATE_METHOD_CLASS_BUILD(obj, "_init", &_init);
-    CREATE_METHOD_CLASS_BUILD(obj, "push", &push);
-    CREATE_METHOD_CLASS_BUILD(obj, "len", &len);
-    CREATE_METHOD_CLASS_BUILD(obj, "remove", &remove);
+    CREATE_METHOD_CLASS_BUILD(obj, "push", &_push);
+    CREATE_METHOD_CLASS_BUILD(obj, "len", &_len);
+    CREATE_METHOD_CLASS_BUILD(obj, "remove", &_remove);
+    CREATE_METHOD_CLASS_BUILD(obj, "at", &_at);
     CREATE_METHOD_CLASS_BUILD(obj, "_del", &_del);
 
     return (obj);

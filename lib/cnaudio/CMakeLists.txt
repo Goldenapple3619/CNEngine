@@ -2,6 +2,7 @@ project(cnaudio C)
 
 add_library(cnaudio SHARED
     src/common.c
+    src/audio.c
 )
 
 target_compile_options(cnaudio

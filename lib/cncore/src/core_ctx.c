@@ -13,7 +13,7 @@ static cn_value _init(Object *__this, void **args)
 
     INIT_STRING(__this, "ctx", "name");
     INIT_INT(__this, 0, "is_running");
-    INIT_FLOAT(__this, 0.0, "dt");
+    INIT_NUMBER(__this, 0.0, "dt");
     INIT_CUSTOM_ALLOCATION(__this, new_clock(), delete_clock, "clock");
     INIT_CUSTOM_ALLOCATION(__this, new_value_vector(), delete_value_vector, "event_pool");
     INIT_CUSTOM_ALLOCATION(__this, new_value_vector(), delete_value_vector, "update_pool");
@@ -65,7 +65,7 @@ static cn_value _run(Object *__this, void **args)
         }
 
         dt = clock_tick(c, 60);
-        set_attr(__this, "dt", CN_TYPE_FLOAT, (cnany)&dt);
+        set_attr(__this, "dt", CN_TYPE_NUMBER, (cnany)&dt);
     };
 
     return (null_value);

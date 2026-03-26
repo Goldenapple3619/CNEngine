@@ -32,7 +32,7 @@ static cn_value _events(Object *__this, void **args)
     ObjectVector *elements = get_attr(__this, "elements")->as.ptr;
 
     for (size_t i = 0; i < elements->size; ++i)
-        (void)call_method(elements->objects[i], "event", ((cnany []){(cnany)w, NULL}));
+        (void)call_method(elements->objects[i], "_events", ((cnany []){(cnany)w, NULL}));
 
     return (null_value);
 }
@@ -45,7 +45,7 @@ static cn_value _update(Object *__this, void **args)
     ObjectVector *elements = get_attr(__this, "elements")->as.ptr;
 
     for (size_t i = 0; i < elements->size; ++i)
-        (void)call_method(elements->objects[i], "update", ((cnany []){(cnany)args[0], NULL}));
+        (void)call_method(elements->objects[i], "_update", args);
 
     return (null_value);
 }
@@ -57,10 +57,10 @@ static cn_value _draw(Object *__this, void **args)
     Window *w = get_attr(__this, "window")->as.ptr;
     ObjectVector *elements = get_attr(__this, "elements")->as.ptr;
 
-    (void)clear_window(w, 0x0000ffff);
+    (void)clear_window(w, 0x000000ff);
 
     for (size_t i = 0; i < elements->size; ++i)
-        (void)call_method(elements->objects[i], "draw", ((cnany []){(cnany)w, NULL}));
+        (void)call_method(elements->objects[i], "_draw", ((cnany []){(cnany)w, NULL}));
 
     return (null_value);
 }

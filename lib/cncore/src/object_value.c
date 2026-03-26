@@ -6,6 +6,11 @@ void _delete_object_attribute_value(cn_value *val)
         return;
     switch (val->type) {
         case (CN_TYPE_INT):
+        case (CN_TYPE_NUMBER):
+        case (CN_TYPE_NULL):
+        case (CN_TYPE_VEC2):
+        case (CN_TYPE_VEC3):
+        case (CN_TYPE_RECT):
         case (CN_TYPE_FLOAT):
         case (CN_TYPE_FUNCTION):
         case (CN_TYPE_GENERIC_UNIQ_PTR):
@@ -37,11 +42,26 @@ void _init_attribute_value(cn_value *dest, cnany value)
     if (!dest)
         return;
     switch (dest->type) {
+        case (CN_TYPE_NULL):
+            dest->as.i = 0;
+            break;
         case (CN_TYPE_INT):
             dest->as.i = value ? *((typeof(dest->as.i) *)value) : 0;
             break;
         case (CN_TYPE_FLOAT):
             dest->as.f = value ? *((typeof(dest->as.f) *)value) : 0;
+            break;
+        case (CN_TYPE_NUMBER):
+            dest->as.num = value ? *((typeof(dest->as.num) *)value) : 0;
+            break;
+        case (CN_TYPE_VEC2):
+            dest->as.vec2 = value ? *((typeof(dest->as.vec2) *)value) : (Vector2){.x = 0, .y = 0};
+            break;
+        case (CN_TYPE_VEC3):
+            dest->as.vec3 = value ? *((typeof(dest->as.vec3) *)value) : (Vector3){.x = 0, .y = 0, .z = 0};
+            break;
+        case (CN_TYPE_RECT):
+            dest->as.rect = value ? *((typeof(dest->as.rect) *)value) : (Rect){.x = 0, .y = 0, .w = 0, .h = 0};
             break;
         case (CN_TYPE_FUNCTION):
             dest->as.ptr = value;

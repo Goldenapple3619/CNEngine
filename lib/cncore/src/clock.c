@@ -4,7 +4,7 @@ CN_API cnnumber clock_tick(Clock *c, int32_t tps)
 {
     if (!c)
         return (0.0);
-    cnnumber execution_time = 1000.0 / tps;
+    cnnumber execution_time = 1000.0 / (cnnumber)tps;
     cntime now = SDL_GetTicks64();
     cnnumber delta = (cnnumber)(now - c->old_time);
 

@@ -124,6 +124,7 @@ FetchContent_MakeAvailable(SDL2_mixer)
 add_subdirectory(lib/cncore)
 add_subdirectory(lib/cngraphic)
 add_subdirectory(lib/cnaudio)
+add_subdirectory(lib/rgui)
 # add_subdirectory(lib/cninput)
 
 # ========= Game executable =========
@@ -142,6 +143,9 @@ if(CN_BUILD_GAME)
             cncore
             cngraphic
             cnaudio
+
+            rgui
+
             m
             # cninput
     )
@@ -152,6 +156,8 @@ if(CN_BUILD_GAME)
             lib/cngraphic/include
             lib/cnaudio/include
             # lib/cninput/include
+
+            lib/rgui/include
     )
 
     # main
@@ -173,7 +179,7 @@ if(CN_BUILD_GAME)
     endforeach()
 
     # includes
-    foreach(lib cncore cngraphic cnaudio)
+    foreach(lib cncore cngraphic cnaudio rgui)
         add_custom_command(TARGET cn_engine POST_BUILD
             COMMAND ${CMAKE_COMMAND} -E copy_directory
                 "${CMAKE_SOURCE_DIR}/lib/${lib}/include"
@@ -182,7 +188,7 @@ if(CN_BUILD_GAME)
     endforeach()
 
     # modules libraries
-    foreach(lib cncore cngraphic cnaudio)
+    foreach(lib cncore cngraphic cnaudio rgui)
         add_custom_command(TARGET cn_engine POST_BUILD
             COMMAND ${CMAKE_COMMAND} -E copy_if_different
                 $<TARGET_FILE:${lib}>
