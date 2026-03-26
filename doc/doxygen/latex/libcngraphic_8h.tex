@@ -22,6 +22,11 @@ struct \mbox{\hyperlink{structinterface__s}{interface\+\_\+s}}
 \item 
 struct \mbox{\hyperlink{structtexture__atlas__s}{texture\+\_\+atlas\+\_\+s}}
 \end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{libcngraphic_8h_aca512f8d300fd34e355be5e23ce8680b}{INVALIDATE\+\_\+\+GPU}}(t)~        if ((t) \&\& (t)-\/$>$gpu\+\_\+texture) \{ SDL\+\_\+\+Destroy\+Texture((t)-\/$>$gpu\+\_\+texture); (t)-\/$>$gpu\+\_\+texture = NULL; \}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
@@ -50,10 +55,13 @@ enum \mbox{\hyperlink{libcngraphic_8h_ad45875ce61fd859f5134e43571880a0b}{cn\+\_\
 , \mbox{\hyperlink{libcngraphic_8h_ad45875ce61fd859f5134e43571880a0babef88426a8bfc77e6f150d85f08aace3}{EV\+\_\+\+MOVE}} = 0x03
  \}
 \item 
-enum \mbox{\hyperlink{libcngraphic_8h_aad7f25e3a9ef262bf91e20087cd42bb9}{VIDEOMODE\+\_\+\+FLAGS}} \{ \mbox{\hyperlink{libcngraphic_8h_aad7f25e3a9ef262bf91e20087cd42bb9a40cfd56bc0af5a24fb501875077d2354}{VDM\+\_\+\+VSYNC}} = (1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 0)
+enum \mbox{\hyperlink{libcngraphic_8h_aad7f25e3a9ef262bf91e20087cd42bb9}{VIDEOMODE\+\_\+\+FLAGS}} \{ \newline
+\mbox{\hyperlink{libcngraphic_8h_aad7f25e3a9ef262bf91e20087cd42bb9a40cfd56bc0af5a24fb501875077d2354}{VDM\+\_\+\+VSYNC}} = (1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 0)
 , \mbox{\hyperlink{libcngraphic_8h_aad7f25e3a9ef262bf91e20087cd42bb9a46d365269e951dcfbd13cbcccf99dcc4}{VDM\+\_\+\+CLOSABLE}} = (1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 1)
 , \mbox{\hyperlink{libcngraphic_8h_aad7f25e3a9ef262bf91e20087cd42bb9af6d6a276fa9abae75eef561f88813e52}{VDM\+\_\+\+ACCELERATION}} = (1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 2)
 , \mbox{\hyperlink{libcngraphic_8h_aad7f25e3a9ef262bf91e20087cd42bb9a569b287825b4345fd1dc6c727c170c35}{VDM\+\_\+\+INACTIVE}} = (1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 3)
+, \newline
+\mbox{\hyperlink{libcngraphic_8h_aad7f25e3a9ef262bf91e20087cd42bb9aaff10aedece1315ec141f857218a65ea}{VDM\+\_\+\+GPU}} = (1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 4)
  \}
 \item 
 enum \mbox{\hyperlink{libcngraphic_8h_ada22b2de90eaaac1a7d37ab53211e3dd}{VIDEOMODE\+\_\+\+NATIVE\+\_\+\+FLAGS}} \{ \newline
@@ -91,6 +99,8 @@ enum \mbox{\hyperlink{libcngraphic_8h_ada22b2de90eaaac1a7d37ab53211e3dd}{VIDEOMO
 void \mbox{\hyperlink{libcngraphic_8h_af3db1a5ab35de7f088e3dc35bb424f63}{blit}} (const \mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+src, \mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+dst, const \mbox{\hyperlink{libcncore_8h_a44e2d24ab2a21b90d03880cab9cc6d16}{Rect}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+src\+\_\+rect, const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+dest\+\_\+at)
 \item 
 void \mbox{\hyperlink{libcngraphic_8h_a6568a6d06f3f71f65a3457306c0959e5}{blit\+\_\+ratio}} (const \mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+src, \mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+dst, const \mbox{\hyperlink{libcncore_8h_a44e2d24ab2a21b90d03880cab9cc6d16}{Rect}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+src\+\_\+rect, const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+dest\+\_\+at, const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+ratios)
+\item 
+void \mbox{\hyperlink{libcngraphic_8h_a2da153b5b29828b70e502633bf450375}{draw\+\_\+texture}} (\mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+src\+\_\+texture, SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+dest\+\_\+renderer, const \mbox{\hyperlink{libcncore_8h_a44e2d24ab2a21b90d03880cab9cc6d16}{Rect}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+src\+\_\+rect, const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+dest\+\_\+at, const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+ratios, double \+\_\+\+\_\+angle)
 \item 
 \mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcngraphic_8h_a6afa86ecf7185b47b663f8717177ce70}{new\+\_\+texture}} (const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}size, \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} alpha)
 \item 
@@ -206,6 +216,15 @@ void \mbox{\hyperlink{libcngraphic_8h_a6007f27bf9e3331e5916bd61b865e727}{end\+\_
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{libcngraphic_8h_aca512f8d300fd34e355be5e23ce8680b}\label{libcngraphic_8h_aca512f8d300fd34e355be5e23ce8680b} 
+\index{libcngraphic.h@{libcngraphic.h}!INVALIDATE\_GPU@{INVALIDATE\_GPU}}
+\index{INVALIDATE\_GPU@{INVALIDATE\_GPU}!libcngraphic.h@{libcngraphic.h}}
+\doxysubsubsection{\texorpdfstring{INVALIDATE\_GPU}{INVALIDATE\_GPU}}
+{\footnotesize\ttfamily \#define INVALIDATE\+\_\+\+GPU(\begin{DoxyParamCaption}\item[{}]{t }\end{DoxyParamCaption})~        if ((t) \&\& (t)-\/$>$gpu\+\_\+texture) \{ SDL\+\_\+\+Destroy\+Texture((t)-\/$>$gpu\+\_\+texture); (t)-\/$>$gpu\+\_\+texture = NULL; \}}
+
+
+
 \doxysubsection{Typedef Documentation}
 \Hypertarget{libcngraphic_8h_a0b2773fdce5fa81de32a2e7a552ff37d}\label{libcngraphic_8h_a0b2773fdce5fa81de32a2e7a552ff37d} 
 \index{libcngraphic.h@{libcngraphic.h}!cncolor@{cncolor}}
@@ -303,6 +322,10 @@ VDM\+\_\+\+ACCELERATION&\\
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{VDM\_INACTIVE@{VDM\_INACTIVE}!libcngraphic.h@{libcngraphic.h}}\index{libcngraphic.h@{libcngraphic.h}!VDM\_INACTIVE@{VDM\_INACTIVE}}}\Hypertarget{libcngraphic_8h_aad7f25e3a9ef262bf91e20087cd42bb9a569b287825b4345fd1dc6c727c170c35}\label{libcngraphic_8h_aad7f25e3a9ef262bf91e20087cd42bb9a569b287825b4345fd1dc6c727c170c35} 
 VDM\+\_\+\+INACTIVE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VDM\_GPU@{VDM\_GPU}!libcngraphic.h@{libcngraphic.h}}\index{libcngraphic.h@{libcngraphic.h}!VDM\_GPU@{VDM\_GPU}}}\Hypertarget{libcngraphic_8h_aad7f25e3a9ef262bf91e20087cd42bb9aaff10aedece1315ec141f857218a65ea}\label{libcngraphic_8h_aad7f25e3a9ef262bf91e20087cd42bb9aaff10aedece1315ec141f857218a65ea} 
+VDM\+\_\+\+GPU&\\
 \hline
 
 \end{DoxyEnumFields}
@@ -514,6 +537,12 @@ VDM\+\_\+\+N\+\_\+\+METAL&\\
 \index{draw\_rect@{draw\_rect}!libcngraphic.h@{libcngraphic.h}}
 \doxysubsubsection{\texorpdfstring{draw\_rect()}{draw\_rect()}}
 {\footnotesize\ttfamily void draw\+\_\+rect (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}}]{texture,  }\item[{const \mbox{\hyperlink{libcncore_8h_a44e2d24ab2a21b90d03880cab9cc6d16}{Rect}} \texorpdfstring{$\ast$}{*}}]{rect,  }\item[{\mbox{\hyperlink{libcngraphic_8h_a0b2773fdce5fa81de32a2e7a552ff37d}{cncolor}}}]{color }\end{DoxyParamCaption})}
+
+\Hypertarget{libcngraphic_8h_a2da153b5b29828b70e502633bf450375}\label{libcngraphic_8h_a2da153b5b29828b70e502633bf450375} 
+\index{libcngraphic.h@{libcngraphic.h}!draw\_texture@{draw\_texture}}
+\index{draw\_texture@{draw\_texture}!libcngraphic.h@{libcngraphic.h}}
+\doxysubsubsection{\texorpdfstring{draw\_texture()}{draw\_texture()}}
+{\footnotesize\ttfamily void draw\+\_\+texture (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+src\+\_\+texture,  }\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+dest\+\_\+renderer,  }\item[{const \mbox{\hyperlink{libcncore_8h_a44e2d24ab2a21b90d03880cab9cc6d16}{Rect}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+src\+\_\+rect,  }\item[{const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+dest\+\_\+at,  }\item[{const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+ratios,  }\item[{double}]{\+\_\+\+\_\+angle }\end{DoxyParamCaption})}
 
 \Hypertarget{libcngraphic_8h_a2d34be1667f34d2473a832b4f8a9eca0}\label{libcngraphic_8h_a2d34be1667f34d2473a832b4f8a9eca0} 
 \index{libcngraphic.h@{libcngraphic.h}!draw\_window@{draw\_window}}

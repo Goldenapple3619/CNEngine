@@ -1,13 +1,19 @@
 var searchData=
 [
-  ['play_5faudio_0',['play_audio',['../libcnaudio_8h.html#a59f93501670dbb80b5890fba6b594f85',1,'play_audio(Audio *audio, int32_t channel):&#160;audio.c'],['../audio_8c.html#a59f93501670dbb80b5890fba6b594f85',1,'play_audio(Audio *audio, int32_t channel):&#160;audio.c']]],
-  ['playing_5fon_1',['playing_on',['../structaudio__s.html#a5c4e7f5052a0a02cc8be4520b0e7ae64',1,'audio_s']]],
-  ['position_2',['position',['../structvideomode__s.html#a07bd3022d9e1fc5d8d605341d011cae7',1,'videomode_s::position'],['../structtwod__board__mode__s.html#afd092727d6d8315e6f728ea3883a83e1',1,'twod_board_mode_s::position'],['../structtext__mode__s.html#a9473e2934151fefddb56a4d250c2afcb',1,'text_mode_s::position'],['../structgui__board__mode__s.html#a01014a4e124f01002d246f7b925045f8',1,'gui_board_mode_s::position']]],
-  ['prep_5fclass_5fbuild_3',['PREP_CLASS_BUILD',['../libcncore_8h.html#ac4cc27a6e3a42081a5357a2fa4c9b31e',1,'libcncore.h']]],
-  ['prep_5fdel_4',['PREP_DEL',['../libcncore_8h.html#ade7746924c46a4a3371f0ab2f0ca38bd',1,'libcncore.h']]],
-  ['prep_5finit_5',['PREP_INIT',['../libcncore_8h.html#a6f9e7c0ce0f85faf1d86c47c6c8970b1',1,'libcncore.h']]],
-  ['print_5fobject_6',['print_object',['../libcncore_8h.html#af37f3d6b332840c4b7f60353de54657e',1,'print_object(const Object *object):&#160;object.c'],['../object_8c.html#af37f3d6b332840c4b7f60353de54657e',1,'print_object(const Object *object):&#160;object.c']]],
-  ['ptr_7',['ptr',['../structcn__value.html#a4c75cd5394a9dcb406456b70075db433',1,'cn_value']]],
-  ['push_5fevent_5fin_5fmap_8',['push_event_in_map',['../libcngraphic_8h.html#a13bbf947bd40f40ec24c1c64396a8ff2',1,'push_event_in_map(struct event_map_entry_s *event_map, cnnumber x, cnnumber y, int64_t v):&#160;event_map.c'],['../event__map_8c.html#a13bbf947bd40f40ec24c1c64396a8ff2',1,'push_event_in_map(struct event_map_entry_s *event_map, cnnumber x, cnnumber y, int64_t v):&#160;event_map.c']]],
-  ['push_5fevent_5fwindow_9',['push_event_window',['../libcngraphic_8h.html#a4a33f8310470c7da3c74e43e485308ae',1,'push_event_window(Window *window, cn_event type, cnnumber x, cnnumber y, int64_t v):&#160;window.c'],['../window_8c.html#a4a33f8310470c7da3c74e43e485308ae',1,'push_event_window(Window *window, cn_event type, cnnumber x, cnnumber y, int64_t v):&#160;window.c']]]
+  ['objattrib_0',['OBJAttrib',['../libcncore_8h.html#ad722eab6934bb74865a45785b0004439',1,'libcncore.h']]],
+  ['object_1',['Object',['../libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f',1,'libcncore.h']]],
+  ['object_2ec_2',['object.c',['../object_8c.html',1,'']]],
+  ['object_5fattribute_5fs_3',['object_attribute_s',['../structobject__attribute__s.html',1,'']]],
+  ['object_5fattributes_2ec_4',['object_attributes.c',['../object__attributes_8c.html',1,'']]],
+  ['object_5fmap_2ec_5',['object_map.c',['../object__map_8c.html',1,'']]],
+  ['object_5fownership_2ec_6',['object_ownership.c',['../object__ownership_8c.html',1,'']]],
+  ['object_5fs_7',['object_s',['../structobject__s.html',1,'']]],
+  ['object_5fvalue_2ec_8',['object_value.c',['../object__value_8c.html',1,'']]],
+  ['object_5fvalue_5fvector_2ec_9',['object_value_vector.c',['../object__value__vector_8c.html',1,'']]],
+  ['object_5fvector_2ec_10',['object_vector.c',['../object__vector_8c.html',1,'']]],
+  ['object_5fvector_5fs_11',['object_vector_s',['../structobject__vector__s.html',1,'']]],
+  ['objects_12',['objects',['../structobject__vector__s.html#a3c7d0680d641d853e3d6d68472536c89',1,'object_vector_s']]],
+  ['objectvector_13',['ObjectVector',['../libcncore_8h.html#a9f0588bc582b7aa235a1d909d054e833',1,'libcncore.h']]],
+  ['old_5ftime_14',['old_time',['../structclock__s.html#a1fff5347ebbaa031a53aff8d2ba95cdd',1,'clock_s']]],
+  ['on_5fend_15',['on_end',['../structaudio__s.html#a988f0e345a382cae0cf19c89fb7956ca',1,'audio_s']]]
 ];

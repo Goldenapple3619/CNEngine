@@ -19,6 +19,7 @@ var annotated_dup =
     [ "text_mode_s", "structtext__mode__s.html", "structtext__mode__s" ],
     [ "texture_atlas_s", "structtexture__atlas__s.html", "structtexture__atlas__s" ],
     [ "texture_s", "structtexture__s.html", "structtexture__s" ],
+    [ "threed_board_mode_s", "structthreed__board__mode__s.html", "structthreed__board__mode__s" ],
     [ "twod_board_mode_s", "structtwod__board__mode__s.html", "structtwod__board__mode__s" ],
     [ "vector2_s", "structvector2__s.html", "structvector2__s" ],
     [ "vector3_s", "structvector3__s.html", "structvector3__s" ],

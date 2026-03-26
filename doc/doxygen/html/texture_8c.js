@@ -6,6 +6,7 @@ var texture_8c =
     [ "copy_texture", "texture_8c.html#a1367e6cdfbb28d89f995ed1c1c304474", null ],
     [ "delete_texture", "texture_8c.html#a03d48464911484eff9ffa228302a51ec", null ],
     [ "draw_rect", "texture_8c.html#a53831b3ef6b9fc27160b293cacc35b8b", null ],
+    [ "draw_texture", "texture_8c.html#a2da153b5b29828b70e502633bf450375", null ],
     [ "get_opacity_texture", "texture_8c.html#a4e84f8e66e3368fded26a67b371ce9b9", null ],
     [ "new_texture", "texture_8c.html#a6afa86ecf7185b47b663f8717177ce70", null ],
     [ "new_texture_from_file", "texture_8c.html#a79c99d0204a1a105d607a732727df67c", null ],

@@ -10,5 +10,6 @@ var searchData=
   ['init_5frect_7',['INIT_RECT',['../libcncore_8h.html#ace95a54cc5c0c551244a2140b381442e',1,'libcncore.h']]],
   ['init_5fstring_8',['INIT_STRING',['../libcncore_8h.html#ab86609dae54c0d984f951bf311d9ec14',1,'libcncore.h']]],
   ['init_5fvec2_9',['INIT_VEC2',['../libcncore_8h.html#a289ffea777a2091b6459f54663cb0fe9',1,'libcncore.h']]],
-  ['init_5fvec3_10',['INIT_VEC3',['../libcncore_8h.html#a6207841033d3bc9a45941ea8b237a0db',1,'libcncore.h']]]
+  ['init_5fvec3_10',['INIT_VEC3',['../libcncore_8h.html#a6207841033d3bc9a45941ea8b237a0db',1,'libcncore.h']]],
+  ['invalidate_5fgpu_11',['INVALIDATE_GPU',['../libcngraphic_8h.html#aca512f8d300fd34e355be5e23ce8680b',1,'libcngraphic.h']]]
 ];

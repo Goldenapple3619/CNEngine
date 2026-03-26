@@ -105,6 +105,7 @@ $(document).ready(function(){initNavTree('libcngraphic_8h.html',''); initResizab
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
+<a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
@@ -136,6 +137,11 @@ Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtexture__atlas__s.html">texture_atlas_s</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:aca512f8d300fd34e355be5e23ce8680b" id="r_aca512f8d300fd34e355be5e23ce8680b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#aca512f8d300fd34e355be5e23ce8680b">INVALIDATE_GPU</a>(t)&#160;&#160;&#160;        if ((t) &amp;&amp; (t)-&gt;gpu_texture) { SDL_DestroyTexture((t)-&gt;gpu_texture); (t)-&gt;gpu_texture = NULL; }</td></tr>
+<tr class="separator:aca512f8d300fd34e355be5e23ce8680b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a19da3cd71374013c1d81d51ae71cba99" id="r_a19da3cd71374013c1d81d51ae71cba99"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structtexture__s.html">texture_s</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a></td></tr>
@@ -163,10 +169,14 @@ Enumerations</h2></td></tr>
 , <a class="el" href="libcngraphic_8h.html#ad45875ce61fd859f5134e43571880a0babef88426a8bfc77e6f150d85f08aace3">EV_MOVE</a> = 0x03
  }</td></tr>
 <tr class="separator:ad45875ce61fd859f5134e43571880a0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aad7f25e3a9ef262bf91e20087cd42bb9" id="r_aad7f25e3a9ef262bf91e20087cd42bb9"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#aad7f25e3a9ef262bf91e20087cd42bb9">VIDEOMODE_FLAGS</a> { <a class="el" href="libcngraphic_8h.html#aad7f25e3a9ef262bf91e20087cd42bb9a40cfd56bc0af5a24fb501875077d2354">VDM_VSYNC</a> = (1 &lt;&lt; 0)
+<tr class="memitem:aad7f25e3a9ef262bf91e20087cd42bb9" id="r_aad7f25e3a9ef262bf91e20087cd42bb9"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#aad7f25e3a9ef262bf91e20087cd42bb9">VIDEOMODE_FLAGS</a> { <br />
+&#160;&#160;<a class="el" href="libcngraphic_8h.html#aad7f25e3a9ef262bf91e20087cd42bb9a40cfd56bc0af5a24fb501875077d2354">VDM_VSYNC</a> = (1 &lt;&lt; 0)
 , <a class="el" href="libcngraphic_8h.html#aad7f25e3a9ef262bf91e20087cd42bb9a46d365269e951dcfbd13cbcccf99dcc4">VDM_CLOSABLE</a> = (1 &lt;&lt; 1)
 , <a class="el" href="libcngraphic_8h.html#aad7f25e3a9ef262bf91e20087cd42bb9af6d6a276fa9abae75eef561f88813e52">VDM_ACCELERATION</a> = (1 &lt;&lt; 2)
 , <a class="el" href="libcngraphic_8h.html#aad7f25e3a9ef262bf91e20087cd42bb9a569b287825b4345fd1dc6c727c170c35">VDM_INACTIVE</a> = (1 &lt;&lt; 3)
+, <br />
+&#160;&#160;<a class="el" href="libcngraphic_8h.html#aad7f25e3a9ef262bf91e20087cd42bb9aaff10aedece1315ec141f857218a65ea">VDM_GPU</a> = (1 &lt;&lt; 4)
+<br />
  }</td></tr>
 <tr class="separator:aad7f25e3a9ef262bf91e20087cd42bb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ada22b2de90eaaac1a7d37ab53211e3dd" id="r_ada22b2de90eaaac1a7d37ab53211e3dd"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#ada22b2de90eaaac1a7d37ab53211e3dd">VIDEOMODE_NATIVE_FLAGS</a> { <br />
@@ -206,6 +216,8 @@ Functions</h2></td></tr>
 <tr class="separator:af3db1a5ab35de7f088e3dc35bb424f63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6568a6d06f3f71f65a3457306c0959e5" id="r_a6568a6d06f3f71f65a3457306c0959e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a6568a6d06f3f71f65a3457306c0959e5">blit_ratio</a> (const <a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> *__src, <a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> *__dst, const <a class="el" href="libcncore_8h.html#a44e2d24ab2a21b90d03880cab9cc6d16">Rect</a> *__src_rect, const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *__dest_at, const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *__ratios)</td></tr>
 <tr class="separator:a6568a6d06f3f71f65a3457306c0959e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2da153b5b29828b70e502633bf450375" id="r_a2da153b5b29828b70e502633bf450375"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a2da153b5b29828b70e502633bf450375">draw_texture</a> (<a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> *__src_texture, SDL_Renderer *__dest_renderer, const <a class="el" href="libcncore_8h.html#a44e2d24ab2a21b90d03880cab9cc6d16">Rect</a> *__src_rect, const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *__dest_at, const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *__ratios, double __angle)</td></tr>
+<tr class="separator:a2da153b5b29828b70e502633bf450375"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6afa86ecf7185b47b663f8717177ce70" id="r_a6afa86ecf7185b47b663f8717177ce70"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a6afa86ecf7185b47b663f8717177ce70">new_texture</a> (const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *size, <a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> alpha)</td></tr>
 <tr class="separator:a6afa86ecf7185b47b663f8717177ce70"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1367e6cdfbb28d89f995ed1c1c304474" id="r_a1367e6cdfbb28d89f995ed1c1c304474"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a1367e6cdfbb28d89f995ed1c1c304474">copy_texture</a> (<a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> *texture)</td></tr>
@@ -319,6 +331,25 @@ Functions</h2></td></tr>
 <tr class="memitem:ad3e5b2029ba67b450f33ccca48adce7a" id="r_ad3e5b2029ba67b450f33ccca48adce7a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#ad3e5b2029ba67b450f33ccca48adce7a">new_graphic_submodule</a> (void)</td></tr>
 <tr class="separator:ad3e5b2029ba67b450f33ccca48adce7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="aca512f8d300fd34e355be5e23ce8680b" name="aca512f8d300fd34e355be5e23ce8680b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca512f8d300fd34e355be5e23ce8680b">&#9670;&#160;</a></span>INVALIDATE_GPU</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define INVALIDATE_GPU</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">t</td><td>)</td>
+          <td>&#160;&#160;&#160;        if ((t) &amp;&amp; (t)-&gt;gpu_texture) { SDL_DestroyTexture((t)-&gt;gpu_texture); (t)-&gt;gpu_texture = NULL; }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="a0b2773fdce5fa81de32a2e7a552ff37d" name="a0b2773fdce5fa81de32a2e7a552ff37d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0b2773fdce5fa81de32a2e7a552ff37d">&#9670;&#160;</a></span>cncolor</h2>
@@ -469,6 +500,7 @@ Functions</h2></td></tr>
 <tr><td class="fieldname"><a id="aad7f25e3a9ef262bf91e20087cd42bb9a46d365269e951dcfbd13cbcccf99dcc4" name="aad7f25e3a9ef262bf91e20087cd42bb9a46d365269e951dcfbd13cbcccf99dcc4"></a>VDM_CLOSABLE&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="aad7f25e3a9ef262bf91e20087cd42bb9af6d6a276fa9abae75eef561f88813e52" name="aad7f25e3a9ef262bf91e20087cd42bb9af6d6a276fa9abae75eef561f88813e52"></a>VDM_ACCELERATION&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="aad7f25e3a9ef262bf91e20087cd42bb9a569b287825b4345fd1dc6c727c170c35" name="aad7f25e3a9ef262bf91e20087cd42bb9a569b287825b4345fd1dc6c727c170c35"></a>VDM_INACTIVE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="aad7f25e3a9ef262bf91e20087cd42bb9aaff10aedece1315ec141f857218a65ea" name="aad7f25e3a9ef262bf91e20087cd42bb9aaff10aedece1315ec141f857218a65ea"></a>VDM_GPU&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
@@ -964,6 +996,58 @@ Functions</h2></td></tr>
           <td></td>
           <td class="paramtype"><a class="el" href="libcngraphic_8h.html#a0b2773fdce5fa81de32a2e7a552ff37d">cncolor</a>&#160;</td>
           <td class="paramname"><em>color</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2da153b5b29828b70e502633bf450375" name="a2da153b5b29828b70e502633bf450375"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2da153b5b29828b70e502633bf450375">&#9670;&#160;</a></span>draw_texture()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void draw_texture </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> *&#160;</td>
+          <td class="paramname"><em>__src_texture</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>__dest_renderer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="libcncore_8h.html#a44e2d24ab2a21b90d03880cab9cc6d16">Rect</a> *&#160;</td>
+          <td class="paramname"><em>__src_rect</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *&#160;</td>
+          <td class="paramname"><em>__dest_at</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *&#160;</td>
+          <td class="paramname"><em>__ratios</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>__angle</em>&#160;</td>
         </tr>
         <tr>
           <td></td>

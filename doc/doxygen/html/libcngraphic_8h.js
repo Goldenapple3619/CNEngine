@@ -8,6 +8,7 @@ var libcngraphic_8h =
     [ "window_universe_s", "structwindow__universe__s.html", "structwindow__universe__s" ],
     [ "interface_s", "structinterface__s.html", "structinterface__s" ],
     [ "texture_atlas_s", "structtexture__atlas__s.html", "structtexture__atlas__s" ],
+    [ "INVALIDATE_GPU", "libcngraphic_8h.html#aca512f8d300fd34e355be5e23ce8680b", null ],
     [ "cncolor", "libcngraphic_8h.html#a0b2773fdce5fa81de32a2e7a552ff37d", null ],
     [ "Event", "libcngraphic_8h.html#a60921eba80b4569fa79c67165460331e", null ],
     [ "Interface", "libcngraphic_8h.html#a0a6eca39ec9ca9c0b98ec41651bf2ecd", null ],
@@ -26,7 +27,8 @@ var libcngraphic_8h =
       [ "VDM_VSYNC", "libcngraphic_8h.html#aad7f25e3a9ef262bf91e20087cd42bb9a40cfd56bc0af5a24fb501875077d2354", null ],
       [ "VDM_CLOSABLE", "libcngraphic_8h.html#aad7f25e3a9ef262bf91e20087cd42bb9a46d365269e951dcfbd13cbcccf99dcc4", null ],
       [ "VDM_ACCELERATION", "libcngraphic_8h.html#aad7f25e3a9ef262bf91e20087cd42bb9af6d6a276fa9abae75eef561f88813e52", null ],
-      [ "VDM_INACTIVE", "libcngraphic_8h.html#aad7f25e3a9ef262bf91e20087cd42bb9a569b287825b4345fd1dc6c727c170c35", null ]
+      [ "VDM_INACTIVE", "libcngraphic_8h.html#aad7f25e3a9ef262bf91e20087cd42bb9a569b287825b4345fd1dc6c727c170c35", null ],
+      [ "VDM_GPU", "libcngraphic_8h.html#aad7f25e3a9ef262bf91e20087cd42bb9aaff10aedece1315ec141f857218a65ea", null ]
     ] ],
     [ "VIDEOMODE_NATIVE_FLAGS", "libcngraphic_8h.html#ada22b2de90eaaac1a7d37ab53211e3dd", [
       [ "VDM_N_FSCRN", "libcngraphic_8h.html#ada22b2de90eaaac1a7d37ab53211e3dda8ec56a28a2d47a4a5407a54359b85cca", null ],
@@ -70,6 +72,7 @@ var libcngraphic_8h =
     [ "delete_window_universe", "libcngraphic_8h.html#a728961b8e1864aa2b7a8b0fd3f4c3fce", null ],
     [ "draw_all_window", "libcngraphic_8h.html#aad039fdc031a8ac2d1f9297631050145", null ],
     [ "draw_rect", "libcngraphic_8h.html#a53831b3ef6b9fc27160b293cacc35b8b", null ],
+    [ "draw_texture", "libcngraphic_8h.html#a2da153b5b29828b70e502633bf450375", null ],
     [ "draw_window", "libcngraphic_8h.html#a2d34be1667f34d2473a832b4f8a9eca0", null ],
     [ "end_graphics", "libcngraphic_8h.html#a6007f27bf9e3331e5916bd61b865e727", null ],
     [ "fetch_events_all_window", "libcngraphic_8h.html#a88847233881018592c5900641b4b05ef", null ],

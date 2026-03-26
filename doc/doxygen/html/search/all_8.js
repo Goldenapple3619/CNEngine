@@ -1,19 +1,9 @@
 var searchData=
 [
-  ['get_5fattr_0',['get_attr',['../libcncore_8h.html#a84f46592467e4fd19376a17178476562',1,'get_attr(const Object *object, const char *name):&#160;object.c'],['../object_8c.html#a84f46592467e4fd19376a17178476562',1,'get_attr(const Object *object, const char *name):&#160;object.c']]],
-  ['get_5fclosable_5fwindow_1',['get_closable_window',['../libcngraphic_8h.html#aecbe7910db312f9643e34e685fce8773',1,'get_closable_window(const Window *window):&#160;window.c'],['../window_8c.html#aecbe7910db312f9643e34e685fce8773',1,'get_closable_window(const Window *window):&#160;window.c']]],
-  ['get_5fevent_5fwindow_2',['get_event_window',['../libcngraphic_8h.html#afaccdfdd39ad5fa2ad8ecd9615cc1700',1,'get_event_window(const Window *window, cn_event type):&#160;window.c'],['../window_8c.html#afaccdfdd39ad5fa2ad8ecd9615cc1700',1,'get_event_window(const Window *window, cn_event type):&#160;window.c']]],
-  ['get_5fhidden_5fwindow_3',['get_hidden_window',['../libcngraphic_8h.html#a3dbee739da56559fb218e865c97365e7',1,'get_hidden_window(const Window *window):&#160;window.c'],['../window_8c.html#a3dbee739da56559fb218e865c97365e7',1,'get_hidden_window(const Window *window):&#160;window.c']]],
-  ['get_5finactive_5fwindow_4',['get_inactive_window',['../libcngraphic_8h.html#ab29e829e15c9cdfba5e8152315732868',1,'get_inactive_window(const Window *window):&#160;window.c'],['../window_8c.html#ab29e829e15c9cdfba5e8152315732868',1,'get_inactive_window(const Window *window):&#160;window.c']]],
-  ['get_5fmethod_5',['get_method',['../object_8c.html#a00ce8e7d1aef17fe9165e345f9af77ef',1,'get_method(const Object *object, const char *name):&#160;object.c'],['../libcncore_8h.html#a00ce8e7d1aef17fe9165e345f9af77ef',1,'get_method(const Object *object, const char *name):&#160;object.c']]],
-  ['get_5fmethod_5fholder_6',['get_method_holder',['../object_8c.html#a50101f8d72316da5b77075b8f271d48b',1,'get_method_holder(const Object *object, const char *name):&#160;object.c'],['../libcncore_8h.html#a50101f8d72316da5b77075b8f271d48b',1,'get_method_holder(const Object *object, const char *name):&#160;object.c']]],
-  ['get_5fopacity_5ftexture_7',['get_opacity_texture',['../libcngraphic_8h.html#a4e84f8e66e3368fded26a67b371ce9b9',1,'get_opacity_texture(const Texture *texture):&#160;texture.c'],['../texture_8c.html#a4e84f8e66e3368fded26a67b371ce9b9',1,'get_opacity_texture(const Texture *texture):&#160;texture.c']]],
-  ['get_5ftexture_8',['get_texture',['../libcngraphic_8h.html#a2b8d7f4921f5410c3d60a2aca0231867',1,'get_texture(TextureAtlas *atlas, const char *key, Texture *(*tex_from_key)(const char *)):&#160;texture_atlas.c'],['../texture__atlas_8c.html#a2b8d7f4921f5410c3d60a2aca0231867',1,'get_texture(TextureAtlas *atlas, const char *key, Texture *(*tex_from_key)(const char *)):&#160;texture_atlas.c']]],
-  ['get_5fvsync_5fwindow_9',['get_vsync_window',['../libcngraphic_8h.html#a3a698eff2866de9c9bb2c2e756b09c45',1,'get_vsync_window(const Window *window):&#160;window.c'],['../window_8c.html#a3a698eff2866de9c9bb2c2e756b09c45',1,'get_vsync_window(const Window *window):&#160;window.c']]],
-  ['get_5fwindow_5fin_5funiverse_10',['get_window_in_universe',['../libcngraphic_8h.html#aa2ac8d6c033498608d615384e1565f9b',1,'get_window_in_universe(const WindowUniverse *universe, uint32_t window_id):&#160;window_universe.c'],['../window__universe_8c.html#aa2ac8d6c033498608d615384e1565f9b',1,'get_window_in_universe(const WindowUniverse *universe, uint32_t window_id):&#160;window_universe.c']]],
-  ['global_5fctx_11',['global_ctx',['../main_8c.html#a62dd93a8c79fccf98a73494c39e8fcba',1,'main.c']]],
-  ['graphic_5fsubmodule_5fctx_2ec_12',['graphic_submodule_ctx.c',['../graphic__submodule__ctx_8c.html',1,'']]],
-  ['gui_5fboard_5fmode_5fs_13',['gui_board_mode_s',['../structgui__board__mode__s.html',1,'']]],
-  ['gui_5fobject_2ec_14',['gui_object.c',['../gui__object_8c.html',1,'']]],
-  ['guiboard_2ec_15',['guiboard.c',['../guiboard_8c.html',1,'']]]
+  ['f_0',['f',['../structcn__value.html#a3489c7eba8ca23110ee4c3bced9c892d',1,'cn_value']]],
+  ['false_1',['false',['../libcncore_8h.html#a65e9886d74aaee76545e83dd09011727',1,'libcncore.h']]],
+  ['fetch_5fevents_5fall_5fwindow_2',['fetch_events_all_window',['../libcngraphic_8h.html#a88847233881018592c5900641b4b05ef',1,'fetch_events_all_window(WindowUniverse *universe):&#160;window_universe.c'],['../window__universe_8c.html#a88847233881018592c5900641b4b05ef',1,'fetch_events_all_window(WindowUniverse *universe):&#160;window_universe.c']]],
+  ['flags_3',['flags',['../structscene__object__mode__s.html#adacb0e2fdf90e25a568d6298a57786e6',1,'scene_object_mode_s::flags'],['../structvideomode__s.html#aa0cb41e23bcbc80701715de520a9fd9b',1,'videomode_s::flags']]],
+  ['font_5flocation_4',['font_location',['../structtext__mode__s.html#a66c787e93fa85c0772f4bfb3e669ef65',1,'text_mode_s']]],
+  ['fps_5fupdate_5',['fps_update',['../main_8c.html#a1b8390a16d3473060c421e01957e5de4',1,'main.c']]]
 ];
