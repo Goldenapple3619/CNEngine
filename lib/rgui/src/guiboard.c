@@ -74,6 +74,9 @@ static cn_value _draw(Object *__this, void **args)
     if (!args || !args[0])
         return (null_value);
 
+    Vector2 *upscale = &get_attr(__this, "upscale")->as.vec2;
+    Vector2 *resolution = &get_attr(__this, "resolution")->as.vec2;
+    Vector2 *position = &get_attr(__this, "position")->as.vec2;
     Object *elements = get_attr(__this, "elements")->as.ptr;
     Texture *texture = get_attr(__this, "texture")->as.ptr;
     size_t len = call_method(elements, "len", NULL).as.i;
@@ -81,8 +84,11 @@ static cn_value _draw(Object *__this, void **args)
     cn_value val;
     Object *temp;
 
-    if (!get_attr(__this, "gpu"))
+    if (!get_attr(__this, "gpu")->as.i)
         clear_texture(texture, 0x00000000);
+
+    Vector2 temp_position;
+    Vector2 computed_upscale = (Vector2){upscale->x / resolution->x, upscale->y / resolution->y};
 
     for (size_t i = 0; i < len; ++i) {
         val = call_method(elements, "at", (cnany []){(size_t []){i}, NULL});
@@ -91,18 +97,22 @@ static cn_value _draw(Object *__this, void **args)
             continue;
         
         temp = val.as.ptr;
+
+        if (has_attr(temp, "texture")) {
+            temp_position = get_attr(temp, "position")->as.vec2;
         
+            if (!get_attr(__this, "gpu")->as.i)
+                blit(get_attr(temp, "texture")->as.ptr, texture, NULL, &temp_position);
+            else
+                draw_texture(get_attr(temp, "texture")->as.ptr, window->renderer, NULL, &(Vector2){.x = position->x + temp_position.x * computed_upscale.x, .y = position->y + temp_position.y * computed_upscale.y}, &computed_upscale, 0);
+        }
+
         if (has_method(temp, "_draw"))
             (void)call_method(temp, "_draw", (cnany []){__this, window, NULL});
     }
 
-    Vector2 upscale = get_attr(__this, "upscale")->as.vec2;
-    Vector2 resolution = get_attr(__this, "resolution")->as.vec2;
-
-    if (!get_attr(__this, "gpu"))
-        blit_ratio(texture, window->texture, NULL, &(get_attr(__this, "position")->as.vec2), &(Vector2){upscale.x / resolution.x, upscale.y / resolution.y});
-    // else
-    //     draw_texture(texture, window->renderer, NULL, &(get_attr(__this, "position")->as.vec2), &(Vector2){upscale.x / resolution.x, upscale.y / resolution.y}, 0);
+    if (!get_attr(__this, "gpu")->as.i)
+        blit_ratio(texture, window->texture, NULL, position, &computed_upscale);
 
     return (null_value);
 }

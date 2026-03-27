@@ -40,9 +40,13 @@ static cn_value _draw(Object *__this, void **args)
     if (!get_attr(__this, "gpu")->as.i)
         clear_texture(texture, 0x000000ff);
 
+    Vector2 *upscale = &get_attr(__this, "upscale")->as.vec2;
+    Vector2 *resolution = &get_attr(__this, "resolution")->as.vec2;
+    Vector2 *position = &get_attr(__this, "position")->as.vec2;
     Object *scene = get_attr(__this, "scene")->as.ptr;
     Object *elements = get_attr(scene, "objects")->as.ptr;
     size_t len = call_method(elements, "len", NULL).as.i;
+    Vector2 computed_upscale = (Vector2){upscale->x / resolution->x, upscale->y / resolution->y};
     cn_value val;
     Object *temp;
     int64_t flags;
@@ -80,18 +84,15 @@ static cn_value _draw(Object *__this, void **args)
                 else
                     blit_ratio(temp_texture, texture, temp_texture_bounding, &(Vector2){.x = temp_position->x, .y = temp_position->y}, &(Vector2){.x = temp_scale->x, .y = temp_scale->y});
             else
-                draw_texture(temp_texture, window->renderer, temp_texture_bounding, &(Vector2){.x = temp_position->x, .y = temp_position->y}, &(Vector2){.x = temp_scale->x, .y = temp_scale->y},  2.0 * atan2((double)temp_rotation->w, (double)temp_rotation->h) * (180.0 / M_PI));
+                draw_texture(temp_texture, window->renderer, temp_texture_bounding, &(Vector2){.x = position->x + temp_position->x * computed_upscale.x, .y = position->y + temp_position->y * computed_upscale.y}, &(Vector2){.x = temp_scale->x * computed_upscale.x, .y = temp_scale->y * computed_upscale.y}, 2.0 * atan2((double)temp_rotation->w, (double)temp_rotation->h) * (180.0 / M_PI));
         }
 
         if (has_method(temp, "_draw"))
             (void)call_method(temp, "_draw", (cnany []){__this, window, NULL});
     }
 
-    Vector2 upscale = get_attr(__this, "upscale")->as.vec2;
-    Vector2 resolution = get_attr(__this, "resolution")->as.vec2;
-
     if (!get_attr(__this, "gpu")->as.i)
-        blit_ratio(texture, window->texture, NULL, &(get_attr(__this, "position")->as.vec2), &(Vector2){upscale.x / resolution.x, upscale.y / resolution.y});
+        blit_ratio(texture, window->texture, NULL, position, &computed_upscale);
 
     return (null_value);
 }

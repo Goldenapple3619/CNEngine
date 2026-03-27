@@ -79,9 +79,9 @@ int main(int argc, char *argv[])
 
     Object *twod_board = build_object(new_2dboard(), (cnany []){
         &(struct twod_board_mode_s){
-            .position = (Vector2){.x = 0, .y = 0},
-            .resolution = v.size,
-            .upscale = (Vector2){.x = -1, .y = -1},
+            .position = (Vector2){.x = 100, .y = 100},
+            .resolution = (Vector2){.x = 50, .y = 50},
+            .upscale = (Vector2){.x = 300, .y = 300},
 
             .scene = get_attr(ctx, "scene")->as.ptr,
             .gpu_mode = true
@@ -102,9 +102,9 @@ int main(int argc, char *argv[])
 
     Object *gui_board = build_object(new_guiboard(), (cnany []){
         &(struct gui_board_mode_s){
-            .position = (Vector2){.x = 0, .y = 0},
-            .resolution = v.size,
-            .upscale = (Vector2){.x = -1, .y = -1},
+            .position = (Vector2){.x = 50, .y = 50},
+            .resolution = (Vector2){.x = 50, .y = 50},
+            .upscale = (Vector2){.x = 300, .y = 300},
             .gpu_mode = true
         },
         NULL

@@ -16,7 +16,6 @@ static cn_value _del(Object *__this, void **args)
     (void)args;
     (void)__this;
 
-
     return (null_value);
 }
 

@@ -32,6 +32,8 @@ static cn_value _set_text(Object *__this, void **args)
 {
     if (!args || !args[0])
         return (VALUE_ERR);
+    if (!strcmp(args[0], get_attr(__this, "text")->as.ptr))
+        return (VALUE_OK);
 
     cncolor color = get_attr(__this, "color")->as.i;
 
@@ -49,23 +51,6 @@ static cn_value _set_text(Object *__this, void **args)
                 .a = (color & 0x000000ff)}
         )));
     return (VALUE_OK);
-}
-
-static cn_value _draw(Object *__this, void **args)
-{
-    if (!args || !args[0] || !args[1])
-        return (null_value);
-
-    Window *window = args[1];
-
-    if (!has_attr(args[0], "texture"))
-        return (null_value);
-    
-    if (!get_attr(args[0], "gpu"))
-        blit(get_attr(__this, "texture")->as.ptr, get_attr(args[0], "texture")->as.ptr, NULL, &get_attr(__this, "position")->as.vec2);
-    else
-        draw_texture(get_attr(__this, "texture")->as.ptr, window->renderer, NULL, &get_attr(__this, "position")->as.vec2, NULL, 0);
-    return (null_value);
 }
 
 static cn_value _del(Object *__this, void **args)
@@ -90,7 +75,6 @@ CN_API Object *new_text(void)
 
     SET_PARENT_CLASS_BUILD(obj, new_guiobject());
     CREATE_METHOD_CLASS_BUILD(obj, "_init", &_init);
-    CREATE_METHOD_CLASS_BUILD(obj, "_draw", &_draw);
     CREATE_METHOD_CLASS_BUILD(obj, "set_text", &_set_text);
     CREATE_METHOD_CLASS_BUILD(obj, "_del", &_del);
     return (obj);
