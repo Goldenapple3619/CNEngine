@@ -163,10 +163,20 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:ad45875ce61fd859f5134e43571880a0b" id="r_ad45875ce61fd859f5134e43571880a0b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#ad45875ce61fd859f5134e43571880a0b">cn_event</a> { <a class="el" href="libcngraphic_8h.html#ad45875ce61fd859f5134e43571880a0ba6b1d4362ab62aa68b90be60648daaba7">EV_NULL</a> = 0x00
+<tr class="memitem:ad45875ce61fd859f5134e43571880a0b" id="r_ad45875ce61fd859f5134e43571880a0b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#ad45875ce61fd859f5134e43571880a0b">cn_event</a> { <br />
+&#160;&#160;<a class="el" href="libcngraphic_8h.html#ad45875ce61fd859f5134e43571880a0ba6b1d4362ab62aa68b90be60648daaba7">EV_NULL</a> = 0x00
 , <a class="el" href="libcngraphic_8h.html#ad45875ce61fd859f5134e43571880a0bab22bab3bac857b15f1ae46b869e955a8">EV_CLOSE</a> = 0x01
 , <a class="el" href="libcngraphic_8h.html#ad45875ce61fd859f5134e43571880a0bacb8a7b419355ca09fc7aa2e9b644c8ed">EV_RESIZE</a> = 0x02
 , <a class="el" href="libcngraphic_8h.html#ad45875ce61fd859f5134e43571880a0babef88426a8bfc77e6f150d85f08aace3">EV_MOVE</a> = 0x03
+, <br />
+&#160;&#160;<a class="el" href="libcngraphic_8h.html#ad45875ce61fd859f5134e43571880a0bace5bc58e652256701d981b500ecca68e">EV_KEYDOWN</a> = 0x04
+, <a class="el" href="libcngraphic_8h.html#ad45875ce61fd859f5134e43571880a0babd4ef2c3a2390e8566d6fc532758d8ee">EV_KEYUP</a> = 0x05
+, <a class="el" href="libcngraphic_8h.html#ad45875ce61fd859f5134e43571880a0ba586325b58b95107db06b5cdfde29f95b">EV_MOUSEMOVE</a> = 0x06
+, <a class="el" href="libcngraphic_8h.html#ad45875ce61fd859f5134e43571880a0baf139cf48a45247cc5e9c085d2a3fb3e1">EV_MOUSEDOWN</a> = 0x07
+, <br />
+&#160;&#160;<a class="el" href="libcngraphic_8h.html#ad45875ce61fd859f5134e43571880a0ba8e13ca0dbb8084ca50392bff2f62ae9a">EV_MOUSEUP</a> = 0x08
+, <a class="el" href="libcngraphic_8h.html#ad45875ce61fd859f5134e43571880a0baac173336f03154766b610e8ca850a821">EV_MOUSEWHEEL</a> = 0x09
+<br />
  }</td></tr>
 <tr class="separator:ad45875ce61fd859f5134e43571880a0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad7f25e3a9ef262bf91e20087cd42bb9" id="r_aad7f25e3a9ef262bf91e20087cd42bb9"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#aad7f25e3a9ef262bf91e20087cd42bb9">VIDEOMODE_FLAGS</a> { <br />
@@ -220,6 +230,8 @@ Functions</h2></td></tr>
 <tr class="separator:a2da153b5b29828b70e502633bf450375"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6afa86ecf7185b47b663f8717177ce70" id="r_a6afa86ecf7185b47b663f8717177ce70"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a6afa86ecf7185b47b663f8717177ce70">new_texture</a> (const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *size, <a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> alpha)</td></tr>
 <tr class="separator:a6afa86ecf7185b47b663f8717177ce70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8f66e67da6d5dabf0e20c8404a9e359" id="r_ac8f66e67da6d5dabf0e20c8404a9e359"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#ac8f66e67da6d5dabf0e20c8404a9e359">resize_texture</a> (<a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> *texture, const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *new_size)</td></tr>
+<tr class="separator:ac8f66e67da6d5dabf0e20c8404a9e359"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1367e6cdfbb28d89f995ed1c1c304474" id="r_a1367e6cdfbb28d89f995ed1c1c304474"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a1367e6cdfbb28d89f995ed1c1c304474">copy_texture</a> (<a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> *texture)</td></tr>
 <tr class="separator:a1367e6cdfbb28d89f995ed1c1c304474"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a79c99d0204a1a105d607a732727df67c" id="r_a79c99d0204a1a105d607a732727df67c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a79c99d0204a1a105d607a732727df67c">new_texture_from_file</a> (const char *path)</td></tr>
@@ -480,6 +492,12 @@ Functions</h2></td></tr>
 <tr><td class="fieldname"><a id="ad45875ce61fd859f5134e43571880a0bab22bab3bac857b15f1ae46b869e955a8" name="ad45875ce61fd859f5134e43571880a0bab22bab3bac857b15f1ae46b869e955a8"></a>EV_CLOSE&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ad45875ce61fd859f5134e43571880a0bacb8a7b419355ca09fc7aa2e9b644c8ed" name="ad45875ce61fd859f5134e43571880a0bacb8a7b419355ca09fc7aa2e9b644c8ed"></a>EV_RESIZE&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ad45875ce61fd859f5134e43571880a0babef88426a8bfc77e6f150d85f08aace3" name="ad45875ce61fd859f5134e43571880a0babef88426a8bfc77e6f150d85f08aace3"></a>EV_MOVE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad45875ce61fd859f5134e43571880a0bace5bc58e652256701d981b500ecca68e" name="ad45875ce61fd859f5134e43571880a0bace5bc58e652256701d981b500ecca68e"></a>EV_KEYDOWN&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad45875ce61fd859f5134e43571880a0babd4ef2c3a2390e8566d6fc532758d8ee" name="ad45875ce61fd859f5134e43571880a0babd4ef2c3a2390e8566d6fc532758d8ee"></a>EV_KEYUP&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad45875ce61fd859f5134e43571880a0ba586325b58b95107db06b5cdfde29f95b" name="ad45875ce61fd859f5134e43571880a0ba586325b58b95107db06b5cdfde29f95b"></a>EV_MOUSEMOVE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad45875ce61fd859f5134e43571880a0baf139cf48a45247cc5e9c085d2a3fb3e1" name="ad45875ce61fd859f5134e43571880a0baf139cf48a45247cc5e9c085d2a3fb3e1"></a>EV_MOUSEDOWN&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad45875ce61fd859f5134e43571880a0ba8e13ca0dbb8084ca50392bff2f62ae9a" name="ad45875ce61fd859f5134e43571880a0ba8e13ca0dbb8084ca50392bff2f62ae9a"></a>EV_MOUSEUP&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="ad45875ce61fd859f5134e43571880a0baac173336f03154766b610e8ca850a821" name="ad45875ce61fd859f5134e43571880a0baac173336f03154766b610e8ca850a821"></a>EV_MOUSEWHEEL&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>
@@ -1764,6 +1782,34 @@ Functions</h2></td></tr>
           <td></td>
           <td class="paramtype">size_t&#160;</td>
           <td class="paramname"><em>new_capacity</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac8f66e67da6d5dabf0e20c8404a9e359" name="ac8f66e67da6d5dabf0e20c8404a9e359"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8f66e67da6d5dabf0e20c8404a9e359">&#9670;&#160;</a></span>resize_texture()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t resize_texture </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> *&#160;</td>
+          <td class="paramname"><em>texture</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *&#160;</td>
+          <td class="paramname"><em>new_size</em>&#160;</td>
         </tr>
         <tr>
           <td></td>

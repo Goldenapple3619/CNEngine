@@ -49,10 +49,19 @@ typedef uint32\+\_\+t \mbox{\hyperlink{libcngraphic_8h_a0b2773fdce5fa81de32a2e7a
 \doxysubsubsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
-enum \mbox{\hyperlink{libcngraphic_8h_ad45875ce61fd859f5134e43571880a0b}{cn\+\_\+event}} \{ \mbox{\hyperlink{libcngraphic_8h_ad45875ce61fd859f5134e43571880a0ba6b1d4362ab62aa68b90be60648daaba7}{EV\+\_\+\+NULL}} = 0x00
+enum \mbox{\hyperlink{libcngraphic_8h_ad45875ce61fd859f5134e43571880a0b}{cn\+\_\+event}} \{ \newline
+\mbox{\hyperlink{libcngraphic_8h_ad45875ce61fd859f5134e43571880a0ba6b1d4362ab62aa68b90be60648daaba7}{EV\+\_\+\+NULL}} = 0x00
 , \mbox{\hyperlink{libcngraphic_8h_ad45875ce61fd859f5134e43571880a0bab22bab3bac857b15f1ae46b869e955a8}{EV\+\_\+\+CLOSE}} = 0x01
 , \mbox{\hyperlink{libcngraphic_8h_ad45875ce61fd859f5134e43571880a0bacb8a7b419355ca09fc7aa2e9b644c8ed}{EV\+\_\+\+RESIZE}} = 0x02
 , \mbox{\hyperlink{libcngraphic_8h_ad45875ce61fd859f5134e43571880a0babef88426a8bfc77e6f150d85f08aace3}{EV\+\_\+\+MOVE}} = 0x03
+, \newline
+\mbox{\hyperlink{libcngraphic_8h_ad45875ce61fd859f5134e43571880a0bace5bc58e652256701d981b500ecca68e}{EV\+\_\+\+KEYDOWN}} = 0x04
+, \mbox{\hyperlink{libcngraphic_8h_ad45875ce61fd859f5134e43571880a0babd4ef2c3a2390e8566d6fc532758d8ee}{EV\+\_\+\+KEYUP}} = 0x05
+, \mbox{\hyperlink{libcngraphic_8h_ad45875ce61fd859f5134e43571880a0ba586325b58b95107db06b5cdfde29f95b}{EV\+\_\+\+MOUSEMOVE}} = 0x06
+, \mbox{\hyperlink{libcngraphic_8h_ad45875ce61fd859f5134e43571880a0baf139cf48a45247cc5e9c085d2a3fb3e1}{EV\+\_\+\+MOUSEDOWN}} = 0x07
+, \newline
+\mbox{\hyperlink{libcngraphic_8h_ad45875ce61fd859f5134e43571880a0ba8e13ca0dbb8084ca50392bff2f62ae9a}{EV\+\_\+\+MOUSEUP}} = 0x08
+, \mbox{\hyperlink{libcngraphic_8h_ad45875ce61fd859f5134e43571880a0baac173336f03154766b610e8ca850a821}{EV\+\_\+\+MOUSEWHEEL}} = 0x09
  \}
 \item 
 enum \mbox{\hyperlink{libcngraphic_8h_aad7f25e3a9ef262bf91e20087cd42bb9}{VIDEOMODE\+\_\+\+FLAGS}} \{ \newline
@@ -103,6 +112,8 @@ void \mbox{\hyperlink{libcngraphic_8h_a6568a6d06f3f71f65a3457306c0959e5}{blit\+\
 void \mbox{\hyperlink{libcngraphic_8h_a2da153b5b29828b70e502633bf450375}{draw\+\_\+texture}} (\mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+src\+\_\+texture, SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+dest\+\_\+renderer, const \mbox{\hyperlink{libcncore_8h_a44e2d24ab2a21b90d03880cab9cc6d16}{Rect}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+src\+\_\+rect, const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+dest\+\_\+at, const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+ratios, double \+\_\+\+\_\+angle)
 \item 
 \mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcngraphic_8h_a6afa86ecf7185b47b663f8717177ce70}{new\+\_\+texture}} (const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}size, \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} alpha)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{libcngraphic_8h_ac8f66e67da6d5dabf0e20c8404a9e359}{resize\+\_\+texture}} (\mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}texture, const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}new\+\_\+size)
 \item 
 \mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcngraphic_8h_a1367e6cdfbb28d89f995ed1c1c304474}{copy\+\_\+texture}} (\mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}texture)
 \item 
@@ -298,6 +309,30 @@ EV\+\_\+\+RESIZE&\\
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{EV\_MOVE@{EV\_MOVE}!libcngraphic.h@{libcngraphic.h}}\index{libcngraphic.h@{libcngraphic.h}!EV\_MOVE@{EV\_MOVE}}}\Hypertarget{libcngraphic_8h_ad45875ce61fd859f5134e43571880a0babef88426a8bfc77e6f150d85f08aace3}\label{libcngraphic_8h_ad45875ce61fd859f5134e43571880a0babef88426a8bfc77e6f150d85f08aace3} 
 EV\+\_\+\+MOVE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EV\_KEYDOWN@{EV\_KEYDOWN}!libcngraphic.h@{libcngraphic.h}}\index{libcngraphic.h@{libcngraphic.h}!EV\_KEYDOWN@{EV\_KEYDOWN}}}\Hypertarget{libcngraphic_8h_ad45875ce61fd859f5134e43571880a0bace5bc58e652256701d981b500ecca68e}\label{libcngraphic_8h_ad45875ce61fd859f5134e43571880a0bace5bc58e652256701d981b500ecca68e} 
+EV\+\_\+\+KEYDOWN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EV\_KEYUP@{EV\_KEYUP}!libcngraphic.h@{libcngraphic.h}}\index{libcngraphic.h@{libcngraphic.h}!EV\_KEYUP@{EV\_KEYUP}}}\Hypertarget{libcngraphic_8h_ad45875ce61fd859f5134e43571880a0babd4ef2c3a2390e8566d6fc532758d8ee}\label{libcngraphic_8h_ad45875ce61fd859f5134e43571880a0babd4ef2c3a2390e8566d6fc532758d8ee} 
+EV\+\_\+\+KEYUP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EV\_MOUSEMOVE@{EV\_MOUSEMOVE}!libcngraphic.h@{libcngraphic.h}}\index{libcngraphic.h@{libcngraphic.h}!EV\_MOUSEMOVE@{EV\_MOUSEMOVE}}}\Hypertarget{libcngraphic_8h_ad45875ce61fd859f5134e43571880a0ba586325b58b95107db06b5cdfde29f95b}\label{libcngraphic_8h_ad45875ce61fd859f5134e43571880a0ba586325b58b95107db06b5cdfde29f95b} 
+EV\+\_\+\+MOUSEMOVE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EV\_MOUSEDOWN@{EV\_MOUSEDOWN}!libcngraphic.h@{libcngraphic.h}}\index{libcngraphic.h@{libcngraphic.h}!EV\_MOUSEDOWN@{EV\_MOUSEDOWN}}}\Hypertarget{libcngraphic_8h_ad45875ce61fd859f5134e43571880a0baf139cf48a45247cc5e9c085d2a3fb3e1}\label{libcngraphic_8h_ad45875ce61fd859f5134e43571880a0baf139cf48a45247cc5e9c085d2a3fb3e1} 
+EV\+\_\+\+MOUSEDOWN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EV\_MOUSEUP@{EV\_MOUSEUP}!libcngraphic.h@{libcngraphic.h}}\index{libcngraphic.h@{libcngraphic.h}!EV\_MOUSEUP@{EV\_MOUSEUP}}}\Hypertarget{libcngraphic_8h_ad45875ce61fd859f5134e43571880a0ba8e13ca0dbb8084ca50392bff2f62ae9a}\label{libcngraphic_8h_ad45875ce61fd859f5134e43571880a0ba8e13ca0dbb8084ca50392bff2f62ae9a} 
+EV\+\_\+\+MOUSEUP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{EV\_MOUSEWHEEL@{EV\_MOUSEWHEEL}!libcngraphic.h@{libcngraphic.h}}\index{libcngraphic.h@{libcngraphic.h}!EV\_MOUSEWHEEL@{EV\_MOUSEWHEEL}}}\Hypertarget{libcngraphic_8h_ad45875ce61fd859f5134e43571880a0baac173336f03154766b610e8ca850a821}\label{libcngraphic_8h_ad45875ce61fd859f5134e43571880a0baac173336f03154766b610e8ca850a821} 
+EV\+\_\+\+MOUSEWHEEL&\\
 \hline
 
 \end{DoxyEnumFields}
@@ -717,6 +752,12 @@ VDM\+\_\+\+N\+\_\+\+METAL&\\
 \index{resize\_event\_map@{resize\_event\_map}!libcngraphic.h@{libcngraphic.h}}
 \doxysubsubsection{\texorpdfstring{resize\_event\_map()}{resize\_event\_map()}}
 {\footnotesize\ttfamily uint8\+\_\+t resize\+\_\+event\+\_\+map (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structevent__map__entry__s}{event\+\_\+map\+\_\+entry\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{event\+\_\+map,  }\item[{size\+\_\+t}]{new\+\_\+capacity }\end{DoxyParamCaption})}
+
+\Hypertarget{libcngraphic_8h_ac8f66e67da6d5dabf0e20c8404a9e359}\label{libcngraphic_8h_ac8f66e67da6d5dabf0e20c8404a9e359} 
+\index{libcngraphic.h@{libcngraphic.h}!resize\_texture@{resize\_texture}}
+\index{resize\_texture@{resize\_texture}!libcngraphic.h@{libcngraphic.h}}
+\doxysubsubsection{\texorpdfstring{resize\_texture()}{resize\_texture()}}
+{\footnotesize\ttfamily uint8\+\_\+t resize\+\_\+texture (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}}]{texture,  }\item[{const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}}]{new\+\_\+size }\end{DoxyParamCaption})}
 
 \Hypertarget{libcngraphic_8h_a8e517c7cdeabfa13ee9620713402e362}\label{libcngraphic_8h_a8e517c7cdeabfa13ee9620713402e362} 
 \index{libcngraphic.h@{libcngraphic.h}!resize\_window\_universe@{resize\_window\_universe}}

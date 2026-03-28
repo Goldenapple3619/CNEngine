@@ -6,6 +6,7 @@ var window__universe_8c =
     [ "delete_window_universe", "window__universe_8c.html#a728961b8e1864aa2b7a8b0fd3f4c3fce", null ],
     [ "draw_all_window", "window__universe_8c.html#aad039fdc031a8ac2d1f9297631050145", null ],
     [ "fetch_events_all_window", "window__universe_8c.html#a88847233881018592c5900641b4b05ef", null ],
+    [ "get_video_id_from_event", "window__universe_8c.html#acd2c3781955e028d7b3ec12137c7e854", null ],
     [ "get_window_in_universe", "window__universe_8c.html#aa2ac8d6c033498608d615384e1565f9b", null ],
     [ "is_window_closed", "window__universe_8c.html#a3ad73b86968872fb9168b4f117d4b2a9", null ],
     [ "is_window_closed_addr", "window__universe_8c.html#a9eb1863a4e5ae2747e9d334a62cce175", null ],

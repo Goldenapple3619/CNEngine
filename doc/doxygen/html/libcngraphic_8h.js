@@ -21,7 +21,13 @@ var libcngraphic_8h =
       [ "EV_NULL", "libcngraphic_8h.html#ad45875ce61fd859f5134e43571880a0ba6b1d4362ab62aa68b90be60648daaba7", null ],
       [ "EV_CLOSE", "libcngraphic_8h.html#ad45875ce61fd859f5134e43571880a0bab22bab3bac857b15f1ae46b869e955a8", null ],
       [ "EV_RESIZE", "libcngraphic_8h.html#ad45875ce61fd859f5134e43571880a0bacb8a7b419355ca09fc7aa2e9b644c8ed", null ],
-      [ "EV_MOVE", "libcngraphic_8h.html#ad45875ce61fd859f5134e43571880a0babef88426a8bfc77e6f150d85f08aace3", null ]
+      [ "EV_MOVE", "libcngraphic_8h.html#ad45875ce61fd859f5134e43571880a0babef88426a8bfc77e6f150d85f08aace3", null ],
+      [ "EV_KEYDOWN", "libcngraphic_8h.html#ad45875ce61fd859f5134e43571880a0bace5bc58e652256701d981b500ecca68e", null ],
+      [ "EV_KEYUP", "libcngraphic_8h.html#ad45875ce61fd859f5134e43571880a0babd4ef2c3a2390e8566d6fc532758d8ee", null ],
+      [ "EV_MOUSEMOVE", "libcngraphic_8h.html#ad45875ce61fd859f5134e43571880a0ba586325b58b95107db06b5cdfde29f95b", null ],
+      [ "EV_MOUSEDOWN", "libcngraphic_8h.html#ad45875ce61fd859f5134e43571880a0baf139cf48a45247cc5e9c085d2a3fb3e1", null ],
+      [ "EV_MOUSEUP", "libcngraphic_8h.html#ad45875ce61fd859f5134e43571880a0ba8e13ca0dbb8084ca50392bff2f62ae9a", null ],
+      [ "EV_MOUSEWHEEL", "libcngraphic_8h.html#ad45875ce61fd859f5134e43571880a0baac173336f03154766b610e8ca850a821", null ]
     ] ],
     [ "VIDEOMODE_FLAGS", "libcngraphic_8h.html#aad7f25e3a9ef262bf91e20087cd42bb9", [
       [ "VDM_VSYNC", "libcngraphic_8h.html#aad7f25e3a9ef262bf91e20087cd42bb9a40cfd56bc0af5a24fb501875077d2354", null ],
@@ -102,6 +108,7 @@ var libcngraphic_8h =
     [ "remove_texture_atlas", "libcngraphic_8h.html#a84fcb992c9536df0e5b45a3ca72ab699", null ],
     [ "remove_window_from_universe", "libcngraphic_8h.html#ab5916a9b4082a40acc0d51548f46db92", null ],
     [ "resize_event_map", "libcngraphic_8h.html#a65a5c097797a161923b717a473a818ae", null ],
+    [ "resize_texture", "libcngraphic_8h.html#ac8f66e67da6d5dabf0e20c8404a9e359", null ],
     [ "resize_window_universe", "libcngraphic_8h.html#a8e517c7cdeabfa13ee9620713402e362", null ],
     [ "set_closable_window", "libcngraphic_8h.html#af446d8e75bc41851934c504641a718f0", null ],
     [ "set_hidden_window", "libcngraphic_8h.html#a8ab0b7f54ad6a967feacf99b191bbffa", null ],
