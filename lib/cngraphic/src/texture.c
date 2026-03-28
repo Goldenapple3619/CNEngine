@@ -3,7 +3,7 @@
 
 CN_API Texture *new_texture(const Vector2 *size, cnbool alpha)
 {
-    if (!size)
+    if (!size || size->x <= 0 || size->y <= 0)
         return (NULL);
 
     Texture *texture = (Texture *)malloc(sizeof(Texture));
@@ -23,6 +23,33 @@ CN_API Texture *new_texture(const Vector2 *size, cnbool alpha)
     texture->gpu_texture = NULL;
     texture->renderer = NULL;
     return (texture);
+}
+
+CN_API uint8_t resize_texture(Texture *texture, const Vector2 *new_size)
+{
+    if (!texture || !new_size || new_size->x <= 0 || new_size->y <= 0)
+        return (1);
+
+    cnbool alpha = texture->surface->format->BytesPerPixel == 4;
+
+    SDL_Surface *new_surface = SDL_CreateRGBSurfaceWithFormat(
+        SDL_SWSURFACE,
+        (int)new_size->x, (int)new_size->y,
+        alpha ? 32 : 24,
+        alpha ? SDL_PIXELFORMAT_RGBA32 : SDL_PIXELFORMAT_RGB24);
+
+    if (!new_surface)
+        return (1);
+
+    if (texture->gpu_texture) {
+        INVALIDATE_GPU(texture);
+    }
+
+    (void)SDL_FreeSurface(texture->surface);
+    texture->surface = new_surface;
+    texture->size.x  = new_size->x;
+    texture->size.y  = new_size->y;
+    return (0);
 }
 
 CN_API void draw_texture(Texture *__src_texture, SDL_Renderer *__dest_renderer, const Rect *__src_rect, const Vector2 *__dest_at, const Vector2 *__ratios, double __angle)

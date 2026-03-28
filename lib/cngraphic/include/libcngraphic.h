@@ -12,7 +12,13 @@
         EV_NULL = 0x00,
         EV_CLOSE = 0x01,
         EV_RESIZE = 0x02,
-        EV_MOVE = 0x03
+        EV_MOVE = 0x03,
+        EV_KEYDOWN = 0x04,
+        EV_KEYUP = 0x05,
+        EV_MOUSEMOVE = 0x06,
+        EV_MOUSEDOWN = 0x07,
+        EV_MOUSEUP = 0x08,
+        EV_MOUSEWHEEL = 0x09
     } cn_event;
 
     enum VIDEOMODE_FLAGS {
@@ -130,6 +136,7 @@
     CN_API void draw_texture(Texture *__src_texture, SDL_Renderer *__dest_renderer, const Rect *__src_rect, const Vector2 *__dest_at, const Vector2 *__ratios, double __angle);
 
     CN_API Texture *new_texture(const Vector2 *size, cnbool alpha);
+    CN_API uint8_t resize_texture(Texture *texture, const Vector2 *new_size);
     CN_API Texture *copy_texture(Texture *texture);
     CN_API Texture *new_texture_from_file(const char *path);
     CN_API Texture *new_texture_from_surface(SDL_Surface *surface);

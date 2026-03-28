@@ -86,7 +86,7 @@ static void sdl_window_ev_to_cnev(const SDL_Event *ev, Event *cnev)
             *cnev = (Event){0, 0, EV_CLOSE, 0};
             break;
 
-        case SDL_WINDOWEVENT_RESIZED:
+        case SDL_WINDOWEVENT_SIZE_CHANGED:
             *cnev = (Event){ev->window.data1, ev->window.data2, EV_RESIZE, 0};
             break;
 
@@ -109,6 +109,24 @@ static void sdl_ev_to_cnev(const SDL_Event *ev, Event *cnev)
             (void)sdl_window_ev_to_cnev(ev, cnev);
             break;
 
+        case SDL_KEYDOWN:
+        case SDL_KEYUP:
+            *cnev = (Event){0, 0, ev->key.type == SDL_KEYUP ? EV_MOUSEUP : EV_MOUSEDOWN, ev->key.keysym.scancode};
+            break;
+
+        case SDL_MOUSEMOTION:
+            *cnev = (Event){ev->motion.x, ev->motion.y, EV_MOUSEMOVE, 0};
+            break;
+
+        case SDL_MOUSEBUTTONDOWN:
+        case SDL_MOUSEBUTTONUP:
+            *cnev = (Event){ev->button.x, ev->button.y, ev->button.type == SDL_MOUSEBUTTONUP ? EV_MOUSEUP : EV_MOUSEDOWN, ev->button.button};
+            break;
+
+        case SDL_MOUSEWHEEL:
+            *cnev = (Event){ev->wheel.x, ev->wheel.y, EV_MOUSEWHEEL, ev->wheel.direction};
+            break;
+
         case SDL_QUIT:
             *cnev = (Event){0, 0, EV_CLOSE, 0};
             break;
@@ -116,6 +134,28 @@ static void sdl_ev_to_cnev(const SDL_Event *ev, Event *cnev)
         default:
             *cnev = (Event){0, 0, EV_NULL, 0};
             break;
+    }
+}
+
+static uint32_t get_video_id_from_event(const SDL_Event *ev)
+{
+    switch (ev->type) {
+        case SDL_WINDOWEVENT:
+            return (ev->window.windowID);
+        case SDL_KEYDOWN:
+        case SDL_KEYUP:
+            return (ev->key.windowID);
+        case SDL_MOUSEMOTION:
+            return (ev->motion.windowID);
+        case SDL_MOUSEBUTTONDOWN:
+        case SDL_MOUSEBUTTONUP:
+            return (ev->button.windowID);
+        case SDL_MOUSEWHEEL:
+            return (ev->wheel.windowID);
+        case SDL_TEXTINPUT:
+            return (ev->text.windowID);
+        default:
+            return (0);
     }
 }
 
@@ -128,7 +168,7 @@ CN_API void fetch_events_all_window(WindowUniverse *universe)
     Event cnev;
 
     while (SDL_PollEvent(&ev)) {
-        Window *window = get_window_in_universe(universe, ev.window.windowID);
+        Window *window = get_window_in_universe(universe, get_video_id_from_event(&ev));
 
         if (window) {
             (void)sdl_ev_to_cnev(&ev, &cnev);

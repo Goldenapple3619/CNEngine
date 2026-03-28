@@ -74,7 +74,7 @@ CN_API uint8_t allow_event(Window *window, cn_event ev)
         }
     }
 
-    window->event_map = realloc(window->event_map, base_size == 0 ? (2 * sizeof(struct event_map_entry_s *)) : ((base_size + 1) * sizeof(struct event_map_entry_s *)));
+    window->event_map = realloc(window->event_map, base_size == 0 ? (2 * sizeof(struct event_map_entry_s *)) : ((base_size + 2) * sizeof(struct event_map_entry_s *)));
     
     if (!window->event_map)
         return (1);
@@ -175,12 +175,29 @@ static void _update_window_quit(Window *window)
 
 static void _update_window_resize(Window *window)
 {
-    (void)window; // to implement
+    if (!has_event_window(window, EV_RESIZE))
+        return;
+
+    const struct event_map_entry_s *events = get_event_window(window, EV_RESIZE);
+
+    window->video_mode.size.x = events->events[events->size - 1]->x;
+    window->video_mode.size.y = events->events[events->size - 1]->y;
+
+    SDL_UpdateWindowSurface(window->window);
+
+    window->texture->surface = SDL_GetWindowSurface(window->window);
+    window->texture->size.x = window->texture->surface->w;
+    window->texture->size.y = window->texture->surface->h;
 }
 
 static void _update_window_move(Window *window)
 {
-    (void)window; // to implement
+    if (!has_event_window(window, EV_MOVE))
+        return;
+    const struct event_map_entry_s *events = get_event_window(window, EV_MOVE);
+
+    window->video_mode.position.x = events->events[events->size - 1]->x;
+    window->video_mode.position.y = events->events[events->size - 1]->y;
 }
 
 CN_API void update_window(Window *window)
@@ -258,6 +275,7 @@ CN_API void delete_window(Window *window)
 {
     if (!window)
         return;
+
     if (window->title) {
         (void)free(window->title);
         window->title = NULL;
@@ -278,6 +296,7 @@ CN_API void delete_window(Window *window)
         for (size_t i = 0; window->event_map[i]; ++i)
             (void)delete_event_map(window->event_map[i]);
         (void)free(window->event_map);
+        window->event_map = NULL;
     }
     (void)free(window);
 }

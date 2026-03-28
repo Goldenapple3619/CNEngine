@@ -1,0 +1,30 @@
+<project cnversion="1">
+    <name>test_project</name>
+    <version>1.0.0</version>
+
+    <builds>
+        <binary type="client" os="win" arch="x86_64">
+            <dependencies>
+                <module>core</module>
+                <module>graphic</module>
+                <module>audio</module>
+                <module>network</module>
+            </dependencies>
+            <name>${project_name}-client-windows-64bits.exe</name>
+        </binary>
+        <binary type="server" os="win" arch="x86_64">
+            <dependencies>
+                <module>core</module>
+                <module>graphic-headless</module>
+                <module>audio</module>
+                <module>network</module>
+            </dependencies>
+            <name>${project_name}-server-windows-64bits.exe</name>
+        </binary>
+    </builds>
+
+    <ressources>
+        <path type="objects">${project_root}/objects</path>
+        <path type="scenes">${project_root}/scenes</path>
+    </ressources>
+</project>

@@ -18,6 +18,7 @@ static cn_value _init(Object *__this, void **args)
     INIT_VEC2(__this, mode->resolution, "resolution");
     INIT_VEC2(__this, upscale, "upscale");
     INIT_INT(__this, mode->gpu_mode, "gpu");
+    INIT_INT(__this, mode->flags, "_flags");
 
     INIT_CUSTOM_ALLOCATION(__this, new_texture(&mode->resolution, true), delete_texture, "texture");
     INIT_OBJECT_STATIC(__this, new_list(), NULL, "elements");
@@ -53,6 +54,20 @@ static cn_value _events(Object *__this, void **args)
     size_t len = call_method(elements, "len", NULL).as.i;
     cn_value val;
     Object *temp;
+
+    if (!args || !args[0])
+        return (null_value);
+
+    Window *window = args[0];
+    
+    if (((get_attr(__this, "_flags")->as.i & FLAG_RGUI_DYNAMIC_RESOLUTION) > 0) && has_event_window(window, EV_RESIZE)) {
+        const struct event_map_entry_s *events = get_event_window(window, EV_RESIZE);
+        Vector2 new_size = (Vector2){events->events[events->size - 1]->x, events->events[events->size - 1]->y};
+
+        set_attr(__this, "resolution", CN_TYPE_VEC2, &new_size);
+        set_attr(__this, "upscale", CN_TYPE_VEC2, &new_size);
+        resize_texture(get_attr(__this, "texture")->as.ptr, &new_size);
+    }
 
     for (size_t i = 0; i < len; ++i) {
         val = call_method(elements, "at", (cnany []){(size_t []){i}, NULL});

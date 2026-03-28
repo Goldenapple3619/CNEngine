@@ -5,6 +5,7 @@ add_library(rgui SHARED
     src/gui_object.c
     src/text.c
     src/common.c
+    src/gui_submodule_ctx.c
 )
 
 target_compile_options(rgui
