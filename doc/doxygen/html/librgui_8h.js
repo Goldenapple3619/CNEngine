@@ -2,6 +2,11 @@ var librgui_8h =
 [
     [ "text_mode_s", "structtext__mode__s.html", "structtext__mode__s" ],
     [ "gui_board_mode_s", "structgui__board__mode__s.html", "structgui__board__mode__s" ],
+    [ "cnrgui_alignement", "librgui_8h.html#af5248c59aaa117d11d85f0dcb78a3951", [
+      [ "GUI_ALIGN_LEFT", "librgui_8h.html#af5248c59aaa117d11d85f0dcb78a3951aca09c0c31fe93b5d74f062308f985018", null ],
+      [ "GUI_ALIGN_MIDDLE", "librgui_8h.html#af5248c59aaa117d11d85f0dcb78a3951a48700954a7f96ae96c9761408991bb67", null ],
+      [ "GUI_ALIGN_RIGHT", "librgui_8h.html#af5248c59aaa117d11d85f0dcb78a3951a468bf718dab62222fa7c7c135e1a63b6", null ]
+    ] ],
     [ "cnrgui_flags", "librgui_8h.html#ab685ffe290d85089a981203d90e3eb59", [
       [ "FLAG_RGUI_NONE", "librgui_8h.html#ab685ffe290d85089a981203d90e3eb59a6f383de3a87d296d24903acdfa4e8116", null ],
       [ "FLAG_RGUI_DYNAMIC_RESOLUTION", "librgui_8h.html#ab685ffe290d85089a981203d90e3eb59a2f9e32cadf7abcfbed6243dafabccf74", null ]

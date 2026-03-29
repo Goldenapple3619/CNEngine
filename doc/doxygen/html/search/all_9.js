@@ -2,12 +2,12 @@ var searchData=
 [
   ['get_5fattr_0',['get_attr',['../libcncore_8h.html#a84f46592467e4fd19376a17178476562',1,'get_attr(const Object *object, const char *name):&#160;object.c'],['../object_8c.html#a84f46592467e4fd19376a17178476562',1,'get_attr(const Object *object, const char *name):&#160;object.c']]],
   ['get_5fclosable_5fwindow_1',['get_closable_window',['../libcngraphic_8h.html#aecbe7910db312f9643e34e685fce8773',1,'get_closable_window(const Window *window):&#160;window.c'],['../window_8c.html#aecbe7910db312f9643e34e685fce8773',1,'get_closable_window(const Window *window):&#160;window.c']]],
-  ['get_5fevent_5fwindow_2',['get_event_window',['../libcngraphic_8h.html#afaccdfdd39ad5fa2ad8ecd9615cc1700',1,'get_event_window(const Window *window, cn_event type):&#160;window.c'],['../window_8c.html#afaccdfdd39ad5fa2ad8ecd9615cc1700',1,'get_event_window(const Window *window, cn_event type):&#160;window.c']]],
-  ['get_5fhidden_5fwindow_3',['get_hidden_window',['../libcngraphic_8h.html#a3dbee739da56559fb218e865c97365e7',1,'get_hidden_window(const Window *window):&#160;window.c'],['../window_8c.html#a3dbee739da56559fb218e865c97365e7',1,'get_hidden_window(const Window *window):&#160;window.c']]],
+  ['get_5fevent_5fwindow_2',['get_event_window',['../window_8c.html#afaccdfdd39ad5fa2ad8ecd9615cc1700',1,'get_event_window(const Window *window, cn_event type):&#160;window.c'],['../libcngraphic_8h.html#afaccdfdd39ad5fa2ad8ecd9615cc1700',1,'get_event_window(const Window *window, cn_event type):&#160;window.c']]],
+  ['get_5fhidden_5fwindow_3',['get_hidden_window',['../window_8c.html#a3dbee739da56559fb218e865c97365e7',1,'get_hidden_window(const Window *window):&#160;window.c'],['../libcngraphic_8h.html#a3dbee739da56559fb218e865c97365e7',1,'get_hidden_window(const Window *window):&#160;window.c']]],
   ['get_5finactive_5fwindow_4',['get_inactive_window',['../window_8c.html#ab29e829e15c9cdfba5e8152315732868',1,'get_inactive_window(const Window *window):&#160;window.c'],['../libcngraphic_8h.html#ab29e829e15c9cdfba5e8152315732868',1,'get_inactive_window(const Window *window):&#160;window.c']]],
   ['get_5fmethod_5',['get_method',['../object_8c.html#a00ce8e7d1aef17fe9165e345f9af77ef',1,'get_method(const Object *object, const char *name):&#160;object.c'],['../libcncore_8h.html#a00ce8e7d1aef17fe9165e345f9af77ef',1,'get_method(const Object *object, const char *name):&#160;object.c']]],
-  ['get_5fmethod_5fholder_6',['get_method_holder',['../object_8c.html#a50101f8d72316da5b77075b8f271d48b',1,'get_method_holder(const Object *object, const char *name):&#160;object.c'],['../libcncore_8h.html#a50101f8d72316da5b77075b8f271d48b',1,'get_method_holder(const Object *object, const char *name):&#160;object.c']]],
-  ['get_5fopacity_5ftexture_7',['get_opacity_texture',['../texture_8c.html#a4e84f8e66e3368fded26a67b371ce9b9',1,'get_opacity_texture(const Texture *texture):&#160;texture.c'],['../libcngraphic_8h.html#a4e84f8e66e3368fded26a67b371ce9b9',1,'get_opacity_texture(const Texture *texture):&#160;texture.c']]],
+  ['get_5fmethod_5fholder_6',['get_method_holder',['../libcncore_8h.html#a50101f8d72316da5b77075b8f271d48b',1,'get_method_holder(const Object *object, const char *name):&#160;object.c'],['../object_8c.html#a50101f8d72316da5b77075b8f271d48b',1,'get_method_holder(const Object *object, const char *name):&#160;object.c']]],
+  ['get_5fopacity_5ftexture_7',['get_opacity_texture',['../libcngraphic_8h.html#a4e84f8e66e3368fded26a67b371ce9b9',1,'get_opacity_texture(const Texture *texture):&#160;texture.c'],['../texture_8c.html#a4e84f8e66e3368fded26a67b371ce9b9',1,'get_opacity_texture(const Texture *texture):&#160;texture.c']]],
   ['get_5ftexture_8',['get_texture',['../libcngraphic_8h.html#a2b8d7f4921f5410c3d60a2aca0231867',1,'get_texture(TextureAtlas *atlas, const char *key, Texture *(*tex_from_key)(const char *)):&#160;texture_atlas.c'],['../texture__atlas_8c.html#a2b8d7f4921f5410c3d60a2aca0231867',1,'get_texture(TextureAtlas *atlas, const char *key, Texture *(*tex_from_key)(const char *)):&#160;texture_atlas.c']]],
   ['get_5fvideo_5fid_5ffrom_5fevent_9',['get_video_id_from_event',['../window__universe_8c.html#acd2c3781955e028d7b3ec12137c7e854',1,'window_universe.c']]],
   ['get_5fvsync_5fwindow_10',['get_vsync_window',['../libcngraphic_8h.html#a3a698eff2866de9c9bb2c2e756b09c45',1,'get_vsync_window(const Window *window):&#160;window.c'],['../window_8c.html#a3a698eff2866de9c9bb2c2e756b09c45',1,'get_vsync_window(const Window *window):&#160;window.c']]],
@@ -16,8 +16,11 @@ var searchData=
   ['gpu_5fmode_13',['gpu_mode',['../structgui__board__mode__s.html#ac3cc7255b7889dadbd7699b2c89ccf77',1,'gui_board_mode_s::gpu_mode'],['../structtwod__board__mode__s.html#ae0c03bc0ec40d961cad981a3a5573c66',1,'twod_board_mode_s::gpu_mode']]],
   ['gpu_5ftexture_14',['gpu_texture',['../structtexture__s.html#a8d70837beb0224a5c88bf8e7ca28d211',1,'texture_s']]],
   ['graphic_5fsubmodule_5fctx_2ec_15',['graphic_submodule_ctx.c',['../graphic__submodule__ctx_8c.html',1,'']]],
-  ['gui_5fboard_5fmode_5fs_16',['gui_board_mode_s',['../structgui__board__mode__s.html',1,'']]],
-  ['gui_5fobject_2ec_17',['gui_object.c',['../gui__object_8c.html',1,'']]],
-  ['gui_5fsubmodule_5fctx_2ec_18',['gui_submodule_ctx.c',['../gui__submodule__ctx_8c.html',1,'']]],
-  ['guiboard_2ec_19',['guiboard.c',['../guiboard_8c.html',1,'']]]
+  ['gui_5falign_5fleft_16',['GUI_ALIGN_LEFT',['../librgui_8h.html#af5248c59aaa117d11d85f0dcb78a3951aca09c0c31fe93b5d74f062308f985018',1,'librgui.h']]],
+  ['gui_5falign_5fmiddle_17',['GUI_ALIGN_MIDDLE',['../librgui_8h.html#af5248c59aaa117d11d85f0dcb78a3951a48700954a7f96ae96c9761408991bb67',1,'librgui.h']]],
+  ['gui_5falign_5fright_18',['GUI_ALIGN_RIGHT',['../librgui_8h.html#af5248c59aaa117d11d85f0dcb78a3951a468bf718dab62222fa7c7c135e1a63b6',1,'librgui.h']]],
+  ['gui_5fboard_5fmode_5fs_19',['gui_board_mode_s',['../structgui__board__mode__s.html',1,'']]],
+  ['gui_5fobject_2ec_20',['gui_object.c',['../gui__object_8c.html',1,'']]],
+  ['gui_5fsubmodule_5fctx_2ec_21',['gui_submodule_ctx.c',['../gui__submodule__ctx_8c.html',1,'']]],
+  ['guiboard_2ec_22',['guiboard.c',['../guiboard_8c.html',1,'']]]
 ];
