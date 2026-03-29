@@ -72,7 +72,8 @@ Object *add_home_window(Object *ctx)
             .color = 0xffffffff,
             .font_location = "./assets/fonts/ConsolaMono-Book.ttf",
             .size = 12,
-            .text = "fps: 0.00"
+            .text = "fps: 0.00",
+            .align = GUI_ALIGN_RIGHT
         },
         NULL
     });

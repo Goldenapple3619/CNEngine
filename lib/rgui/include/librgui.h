@@ -10,10 +10,17 @@
         FLAG_RGUI_DYNAMIC_RESOLUTION = (1 << 0)
     } cnrgui_flags;
 
+    typedef enum {
+        GUI_ALIGN_LEFT = 0x00,
+        GUI_ALIGN_MIDDLE,
+        GUI_ALIGN_RIGHT
+    } cnrgui_alignement;
+
     struct text_mode_s {
         Vector2 position;
         cncolor color;
         int32_t size;
+        cnrgui_alignement align;
         const char *text;
         const char *font_location;
     };

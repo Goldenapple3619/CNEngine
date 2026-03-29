@@ -12,6 +12,8 @@ static cn_value _init(Object *__this, void **args)
     if (call_method(__this->base, "_init", (cnany []){&text_mode->position, NULL}).as.i == VALUE_ERR.as.i)
         return (VALUE_ERR);
 
+    set_attr(__this, "align", CN_TYPE_INT, &text_mode->align);
+
     SDL_Color c = (SDL_Color){.r = (text_mode->color & 0xff000000) >> 24,
             .g = (text_mode->color & 0x00ff0000) >> 16,
             .b = (text_mode->color & 0x0000ff00) >> 8,

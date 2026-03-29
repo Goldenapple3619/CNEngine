@@ -6,6 +6,7 @@ static cn_value _init(Object *__this, void **args)
         return (VALUE_ERR);
 
     INIT_VEC2(__this, *(Vector2 *)args[0], "position");
+    INIT_INT(__this, GUI_ALIGN_LEFT, "align");
 
     return (VALUE_OK);
 }

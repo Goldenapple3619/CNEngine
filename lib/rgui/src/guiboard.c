@@ -102,8 +102,10 @@ static cn_value _draw(Object *__this, void **args)
     if (!get_attr(__this, "gpu")->as.i)
         clear_texture(texture, 0x00000000);
 
+    cnrgui_alignement temp_align;
     Vector2 temp_position;
     Vector2 computed_upscale = (Vector2){upscale->x / resolution->x, upscale->y / resolution->y};
+    Texture *temp_texture;
 
     for (size_t i = 0; i < len; ++i) {
         val = call_method(elements, "at", (cnany []){(size_t []){i}, NULL});
@@ -115,11 +117,18 @@ static cn_value _draw(Object *__this, void **args)
 
         if (has_attr(temp, "texture")) {
             temp_position = get_attr(temp, "position")->as.vec2;
-        
+            temp_align = get_attr(temp, "align")->as.i;
+            temp_texture = get_attr(temp, "texture")->as.ptr;
+
+            if (temp_align == GUI_ALIGN_MIDDLE)
+                temp_position.x += (resolution->x / 2 - temp_texture->size.x / 2);
+            if (temp_align == GUI_ALIGN_RIGHT)
+                temp_position.x = (resolution->x - temp_texture->size.x) - temp_position.x;
+
             if (!get_attr(__this, "gpu")->as.i)
-                blit(get_attr(temp, "texture")->as.ptr, texture, NULL, &temp_position);
+                blit(temp_texture, texture, NULL, &temp_position);
             else
-                draw_texture(get_attr(temp, "texture")->as.ptr, window->renderer, NULL, &(Vector2){.x = position->x + temp_position.x * computed_upscale.x, .y = position->y + temp_position.y * computed_upscale.y}, &computed_upscale, 0);
+                draw_texture(temp_texture, window->renderer, NULL, &(Vector2){.x = position->x + temp_position.x * computed_upscale.x, .y = position->y + temp_position.y * computed_upscale.y}, &computed_upscale, 0);
         }
 
         if (has_method(temp, "_draw"))
