@@ -107,10 +107,10 @@ Object *add_test_twod_window(Object *ctx)
 
     Object *tile = build_object(new_tile(), (cnany []){
         &(struct scene_object_mode_s){
-            .coords = {15, 15},
+            .coords = {15, 15, 0},
             .flags = CN_OBJ_DRAWABLE | CN_OBJ_HOST,
             .rotation = {0, 0, 0, 0},
-            .scale = {2, 2}
+            .scale = {2, 2, 1}
         }
     });
 
