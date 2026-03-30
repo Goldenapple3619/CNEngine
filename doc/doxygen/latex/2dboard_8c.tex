@@ -11,6 +11,14 @@
 \item 
 static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{2dboard_8c_a1a63a6f58510226876eb4212dbe5da70}{\+\_\+init}} (\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+this, void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}args)
 \item 
+static void \mbox{\hyperlink{2dboard_8c_ac40df33fcd863511a8eaed80c3486b64}{\+\_\+cpu\+\_\+rendering}} (const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}position, const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}scale, const \mbox{\hyperlink{libcncore_8h_a44e2d24ab2a21b90d03880cab9cc6d16}{Rect}} \texorpdfstring{$\ast$}{*}bounding, const \mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}object\+\_\+texture, \mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}cpu\+\_\+texture)
+\item 
+static void \mbox{\hyperlink{2dboard_8c_a19cfaa5af23c1d838dfc5e1daa829799}{\+\_\+gpu\+\_\+rendering}} (const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}position, const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}scale, const \mbox{\hyperlink{libcncore_8h_a44e2d24ab2a21b90d03880cab9cc6d16}{Rect}} \texorpdfstring{$\ast$}{*}bounding, const \mbox{\hyperlink{libcncore_8h_a44e2d24ab2a21b90d03880cab9cc6d16}{Rect}} \texorpdfstring{$\ast$}{*}rotation, \mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}object\+\_\+texture, \mbox{\hyperlink{structgpu__rendering__data}{gpu\+\_\+rendering\+\_\+data}} \texorpdfstring{$\ast$}{*}rendering\+\_\+data)
+\item 
+static void \mbox{\hyperlink{2dboard_8c_a86ce2e3c791680debf6fb5cbab32ae51}{\+\_\+opengl\+\_\+rendering}} (void)
+\item 
+static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{2dboard_8c_ac8f59d4c97b9fb23bd6dccb19d3502a0}{\+\_\+render\+\_\+object}} (\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+this, void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}args)
+\item 
 static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{2dboard_8c_a073035db0895ef52d81de1aa76eba487}{\+\_\+draw}} (\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+this, void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}args)
 \item 
 static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{2dboard_8c_a97a1051659d95d0248dbe386029c17f3}{\+\_\+del}} (\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+this, void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}args)
@@ -29,6 +37,12 @@ static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{2dboar
 
 
 \doxysubsection{Function Documentation}
+\Hypertarget{2dboard_8c_ac40df33fcd863511a8eaed80c3486b64}\label{2dboard_8c_ac40df33fcd863511a8eaed80c3486b64} 
+\index{2dboard.c@{2dboard.c}!\_cpu\_rendering@{\_cpu\_rendering}}
+\index{\_cpu\_rendering@{\_cpu\_rendering}!2dboard.c@{2dboard.c}}
+\doxysubsubsection{\texorpdfstring{\_cpu\_rendering()}{\_cpu\_rendering()}}
+{\footnotesize\ttfamily static void \+\_\+cpu\+\_\+rendering (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}}]{position,  }\item[{const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}}]{scale,  }\item[{const \mbox{\hyperlink{libcncore_8h_a44e2d24ab2a21b90d03880cab9cc6d16}{Rect}} \texorpdfstring{$\ast$}{*}}]{bounding,  }\item[{const \mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}}]{object\+\_\+texture,  }\item[{\mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}}]{cpu\+\_\+texture }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
 \Hypertarget{2dboard_8c_a97a1051659d95d0248dbe386029c17f3}\label{2dboard_8c_a97a1051659d95d0248dbe386029c17f3} 
 \index{2dboard.c@{2dboard.c}!\_del@{\_del}}
 \index{\_del@{\_del}!2dboard.c@{2dboard.c}}
@@ -41,11 +55,29 @@ static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{2dboar
 \doxysubsubsection{\texorpdfstring{\_draw()}{\_draw()}}
 {\footnotesize\ttfamily static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \+\_\+draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+this,  }\item[{void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+\Hypertarget{2dboard_8c_a19cfaa5af23c1d838dfc5e1daa829799}\label{2dboard_8c_a19cfaa5af23c1d838dfc5e1daa829799} 
+\index{2dboard.c@{2dboard.c}!\_gpu\_rendering@{\_gpu\_rendering}}
+\index{\_gpu\_rendering@{\_gpu\_rendering}!2dboard.c@{2dboard.c}}
+\doxysubsubsection{\texorpdfstring{\_gpu\_rendering()}{\_gpu\_rendering()}}
+{\footnotesize\ttfamily static void \+\_\+gpu\+\_\+rendering (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}}]{position,  }\item[{const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}}]{scale,  }\item[{const \mbox{\hyperlink{libcncore_8h_a44e2d24ab2a21b90d03880cab9cc6d16}{Rect}} \texorpdfstring{$\ast$}{*}}]{bounding,  }\item[{const \mbox{\hyperlink{libcncore_8h_a44e2d24ab2a21b90d03880cab9cc6d16}{Rect}} \texorpdfstring{$\ast$}{*}}]{rotation,  }\item[{\mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}}]{object\+\_\+texture,  }\item[{\mbox{\hyperlink{structgpu__rendering__data}{gpu\+\_\+rendering\+\_\+data}} \texorpdfstring{$\ast$}{*}}]{rendering\+\_\+data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
 \Hypertarget{2dboard_8c_a1a63a6f58510226876eb4212dbe5da70}\label{2dboard_8c_a1a63a6f58510226876eb4212dbe5da70} 
 \index{2dboard.c@{2dboard.c}!\_init@{\_init}}
 \index{\_init@{\_init}!2dboard.c@{2dboard.c}}
 \doxysubsubsection{\texorpdfstring{\_init()}{\_init()}}
 {\footnotesize\ttfamily static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+this,  }\item[{void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{2dboard_8c_a86ce2e3c791680debf6fb5cbab32ae51}\label{2dboard_8c_a86ce2e3c791680debf6fb5cbab32ae51} 
+\index{2dboard.c@{2dboard.c}!\_opengl\_rendering@{\_opengl\_rendering}}
+\index{\_opengl\_rendering@{\_opengl\_rendering}!2dboard.c@{2dboard.c}}
+\doxysubsubsection{\texorpdfstring{\_opengl\_rendering()}{\_opengl\_rendering()}}
+{\footnotesize\ttfamily static void \+\_\+opengl\+\_\+rendering (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{2dboard_8c_ac8f59d4c97b9fb23bd6dccb19d3502a0}\label{2dboard_8c_ac8f59d4c97b9fb23bd6dccb19d3502a0} 
+\index{2dboard.c@{2dboard.c}!\_render\_object@{\_render\_object}}
+\index{\_render\_object@{\_render\_object}!2dboard.c@{2dboard.c}}
+\doxysubsubsection{\texorpdfstring{\_render\_object()}{\_render\_object()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \+\_\+render\+\_\+object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+this,  }\item[{void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 \Hypertarget{2dboard_8c_a1135e54b12d5b674491fb5754839d034}\label{2dboard_8c_a1135e54b12d5b674491fb5754839d034} 
 \index{2dboard.c@{2dboard.c}!new\_2dboard@{new\_2dboard}}
