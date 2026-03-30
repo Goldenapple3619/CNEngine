@@ -26,7 +26,9 @@
         VDM_CLOSABLE = (1 << 1),
         VDM_ACCELERATION = (1 << 2),
         VDM_INACTIVE = (1 << 3),
-        VDM_GPU = (1 << 4)
+        VDM_GPU = (1 << 4),
+        VDM_OPENGL = (1 << 5),
+        VDM_CPU = (1 << 6)
     };
 
     enum VIDEOMODE_NATIVE_FLAGS {
@@ -92,6 +94,7 @@
 
         SDL_Window *window;
         SDL_Renderer *renderer;
+        SDL_GLContext *gl_ctx;
         struct texture_s *texture;
 
         struct event_map_entry_s **event_map; // null terminated

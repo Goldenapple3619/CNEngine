@@ -7,6 +7,7 @@ static cn_value _init(Object *__this, void **args)
 
     INIT_VEC2(__this, *(Vector2 *)args[0], "position");
     INIT_INT(__this, GUI_ALIGN_LEFT, "align");
+    INIT_INT(__this, 0, "z-index");
 
     return (VALUE_OK);
 }

@@ -123,6 +123,8 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(SDL2_mixer)
 
+find_package(OpenGL REQUIRED)
+
 # ========= Modules =========
 add_subdirectory(lib/cncore)
 add_subdirectory(lib/cngraphic)

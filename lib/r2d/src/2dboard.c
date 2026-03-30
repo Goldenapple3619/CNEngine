@@ -21,7 +21,6 @@ static cn_value _init(Object *__this, void **args)
     INIT_VEC2(__this, mode->position, "position");
     INIT_VEC2(__this, mode->resolution, "resolution");
     INIT_VEC2(__this, upscale, "upscale");
-    INIT_INT(__this, mode->gpu_mode, "gpu");
 
     INIT_CUSTOM_ALLOCATION(__this, new_texture(&mode->resolution, true), delete_texture, "texture");
     INIT_OBJECT_SHR(__this, mode->scene, "scene");
@@ -37,7 +36,7 @@ static cn_value _draw(Object *__this, void **args)
     Texture *texture = get_attr(__this, "texture")->as.ptr;
     Window *window = args[0];
 
-    if (!get_attr(__this, "gpu")->as.i)
+    if (((window->video_mode.flags & VDM_CPU) > 0))
         clear_texture(texture, 0x000000ff);
 
     Vector2 *upscale = &get_attr(__this, "upscale")->as.vec2;
@@ -78,20 +77,24 @@ static cn_value _draw(Object *__this, void **args)
         if (has_attr(temp, "texture")) {
             temp_texture = get_attr(temp, "texture")->as.ptr;
 
-            if (!get_attr(__this, "gpu")->as.i)
+            if (((window->video_mode.flags & VDM_CPU) > 0))
                 if ((temp_scale->x == 1.0) && (temp_scale->y == 1.0))
                     blit(temp_texture, texture, temp_texture_bounding, &(Vector2){.x = temp_position->x, .y = temp_position->y});
                 else
                     blit_ratio(temp_texture, texture, temp_texture_bounding, &(Vector2){.x = temp_position->x, .y = temp_position->y}, &(Vector2){.x = temp_scale->x, .y = temp_scale->y});
-            else
+            else if ((window->video_mode.flags & VDM_GPU) > 0)
                 draw_texture(temp_texture, window->renderer, temp_texture_bounding, &(Vector2){.x = position->x + temp_position->x * computed_upscale.x, .y = position->y + temp_position->y * computed_upscale.y}, &(Vector2){.x = temp_scale->x * computed_upscale.x, .y = temp_scale->y * computed_upscale.y}, 2.0 * atan2((double)temp_rotation->w, (double)temp_rotation->h) * (180.0 / M_PI));
+            else if ((window->video_mode.flags & VDM_OPENGL) > 0) {
+                // not implemented
+                continue;
+            }
         }
 
         if (has_method(temp, "_draw"))
             (void)call_method(temp, "_draw", (cnany []){__this, window, NULL});
     }
 
-    if (!get_attr(__this, "gpu")->as.i)
+    if (((window->video_mode.flags & VDM_CPU) > 0))
         blit_ratio(texture, window->texture, NULL, position, &computed_upscale);
 
     return (null_value);

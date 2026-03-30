@@ -17,7 +17,6 @@ static cn_value _init(Object *__this, void **args)
     INIT_VEC2(__this, mode->position, "position");
     INIT_VEC2(__this, mode->resolution, "resolution");
     INIT_VEC2(__this, upscale, "upscale");
-    INIT_INT(__this, mode->gpu_mode, "gpu");
     INIT_INT(__this, mode->flags, "_flags");
 
     INIT_CUSTOM_ALLOCATION(__this, new_texture(&mode->resolution, true), delete_texture, "texture");
@@ -99,7 +98,7 @@ static cn_value _draw(Object *__this, void **args)
     cn_value val;
     Object *temp;
 
-    if (!get_attr(__this, "gpu")->as.i)
+    if (((window->video_mode.flags & VDM_CPU) > 0))
         clear_texture(texture, 0x00000000);
 
     cnrgui_alignement temp_align;
@@ -125,17 +124,20 @@ static cn_value _draw(Object *__this, void **args)
             if (temp_align == GUI_ALIGN_RIGHT)
                 temp_position.x = (resolution->x - temp_texture->size.x) - temp_position.x;
 
-            if (!get_attr(__this, "gpu")->as.i)
+            if (((window->video_mode.flags & VDM_CPU) > 0))
                 blit(temp_texture, texture, NULL, &temp_position);
-            else
+            else if ((window->video_mode.flags & VDM_GPU) > 0)
                 draw_texture(temp_texture, window->renderer, NULL, &(Vector2){.x = position->x + temp_position.x * computed_upscale.x, .y = position->y + temp_position.y * computed_upscale.y}, &computed_upscale, 0);
+            else
+                continue;
+                // not implemented
         }
 
         if (has_method(temp, "_draw"))
             (void)call_method(temp, "_draw", (cnany []){__this, window, NULL});
     }
 
-    if (!get_attr(__this, "gpu")->as.i)
+    if (((window->video_mode.flags & VDM_CPU) > 0))
         blit_ratio(texture, window->texture, NULL, position, &computed_upscale);
 
     return (null_value);

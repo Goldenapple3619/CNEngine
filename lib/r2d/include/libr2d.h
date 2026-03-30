@@ -10,7 +10,6 @@
         Vector2 upscale;
 
         Object *scene;
-        cnbool gpu_mode;
     };
 
     CN_API Object *new_2dboard(void);

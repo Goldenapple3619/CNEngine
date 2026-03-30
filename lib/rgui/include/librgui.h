@@ -30,7 +30,6 @@
         Vector2 resolution;
         Vector2 upscale;
 
-        cnbool gpu_mode;
         cnrgui_flags flags;
     };
 

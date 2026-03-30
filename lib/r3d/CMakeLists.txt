@@ -1,5 +1,7 @@
 project(r3d C)
 
+find_package(OpenGL REQUIRED)
+
 add_library(r3d SHARED
     src/3dboard.c
     src/camera3d.c
@@ -20,4 +22,5 @@ target_link_libraries(r3d
         cncore
         cngraphic
         SDL2::SDL2
+        OpenGL::GL
 )

@@ -4,6 +4,8 @@
     #include "libcncore.h"
     #include "libcngraphic.h"
 
+    #include <GL/gl.h>
+
     struct threed_board_mode_s {
         Vector2 position;
         Vector2 resolution;

@@ -23,20 +23,25 @@ static cn_value _init(Object *__this, void **args)
 
 static cn_value _draw(Object *__this, void **args)
 {
-    (void)__this;
-    (void)args;
-
     Window *window = args[0];
 
     Object *scene = get_attr(__this, "scene")->as.ptr;
     Object *elements = get_attr(scene, "objects")->as.ptr;
     size_t len = call_method(elements, "len", NULL).as.i;
+    Vector2 upscale = get_attr(__this, "upscale")->as.vec2;
+    Vector2 resolution = get_attr(__this, "resolution")->as.vec2;
+    Vector2 position = get_attr(__this, "position")->as.vec2;
     cn_value val;
     Object *temp;
     int64_t flags;
     Vector3 *temp_position;
     Vector3 *temp_scale;
     Rect *temp_rotation;
+
+    (void)upscale;
+
+    glViewport(position.x, position.y, resolution.x, resolution.y);
+
 
     for (size_t i = 0; i < len; ++i) {
         val = call_method(elements, "at", (cnany []){(size_t []){i}, NULL});
@@ -61,12 +66,6 @@ static cn_value _draw(Object *__this, void **args)
         if (has_method(temp, "_draw"))
             (void)call_method(temp, "_draw", (cnany []){__this, window, NULL});
     }
-
-    Vector2 upscale = get_attr(__this, "upscale")->as.vec2;
-    Vector2 resolution = get_attr(__this, "resolution")->as.vec2;
-
-    (void)upscale;
-    (void)resolution;
 
     return (null_value);
 }

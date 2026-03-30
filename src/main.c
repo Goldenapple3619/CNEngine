@@ -6,6 +6,7 @@
 #include "libcngraphic.h"
 #include "librgui.h"
 #include "libr2d.h"
+#include "libr3d.h"
 
 static Object *global_ctx = NULL;
 
@@ -30,12 +31,51 @@ cn_value fps_update(Object *__this, void **args)
 
     return (null_value);
 }
+
+Object *add_test_opengl_window(Object *ctx)
+{
+    Videomode v = (Videomode){
+        .size.x = 800, .size.y = 600,
+        .position.x = (SDL_WINDOWPOS_CENTERED), .position.y = (SDL_WINDOWPOS_CENTERED),
+        .flags = VDM_CLOSABLE | VDM_OPENGL,
+        .native_flags = VDM_N_SHWN | VDM_N_RSZL | VDM_N_OPENGL
+    };
+    cn_value val = call_method(ctx, "spawn_interface", (cnany []){"test", NULL, &v});
+
+    if (val.type == CN_TYPE_NULL) {
+        return (NULL);
+    }
+
+    Object *interface = val.as.ptr;
+
+    Object *threed_board = build_object(new_3dboard(), (cnany []){
+        &(struct threed_board_mode_s){
+            .position = (Vector2){.x = 0, .y = 0},
+            .resolution = ((Window *)get_attr(interface, "window")->as.ptr)->video_mode.size,
+            .upscale = (Vector2){.x = -1, .y = -1},
+            .scene = get_attr(ctx, "scene")->as.ptr
+        },
+        NULL
+    });
+
+    if (!threed_board) {
+        return (NULL);
+    }
+
+    if (call_method(interface, "add_element", (cnany []){threed_board, NULL}).as.i == VALUE_ERR.as.i) {
+        delete_object(threed_board);
+        return (NULL);
+    }
+
+    return (interface);
+}
+
 Object *add_home_window(Object *ctx)
 {
     Videomode v = (Videomode){
         .size.x = 800, .size.y = 600,
         .position.x = (SDL_WINDOWPOS_CENTERED), .position.y = (SDL_WINDOWPOS_CENTERED),
-        .flags = VDM_CLOSABLE,
+        .flags = VDM_CLOSABLE | VDM_CPU,
         .native_flags = VDM_N_SHWN | VDM_N_RSZL
     };
     cn_value val = call_method(ctx, "spawn_interface", (cnany []){"test", NULL, &v});
@@ -51,7 +91,6 @@ Object *add_home_window(Object *ctx)
             .position = (Vector2){.x = 0, .y = 0},
             .resolution = ((Window *)get_attr(interface, "window")->as.ptr)->video_mode.size,
             .upscale = (Vector2){.x = -1, .y = -1},
-            .gpu_mode = false,
             .flags = FLAG_RGUI_DYNAMIC_RESOLUTION
         },
         NULL
@@ -138,6 +177,11 @@ int main(int argc, char *argv[])
         return (1);
     }
 
+    if (!add_test_opengl_window(ctx)) {
+        delete_object(ctx);
+        return (1);
+    }
+
     // if (call_method(get_attr(ctx, "scene")->as.ptr, "add_element",
     //         (cnany []){
     //             build_object(new_tile(), (cnany[]){&(struct scene_object_mode_s){
@@ -159,7 +203,6 @@ int main(int argc, char *argv[])
     //         .upscale = (Vector2){.x = 300, .y = 300},
 
     //         .scene = get_attr(ctx, "scene")->as.ptr,
-    //         .gpu_mode = true
     //     },
     //     NULL
     // });

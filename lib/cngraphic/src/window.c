@@ -1,5 +1,6 @@
 #include "libcngraphic.h"
 
+#include <GL/gl.h>
 #include <string.h>
 
 CN_API Window *new_window(const char *name, const Texture *icon, const Videomode *video_mode)
@@ -38,17 +39,57 @@ CN_API Window *new_window(const char *name, const Texture *icon, const Videomode
     if ((window->video_mode.flags & VDM_VSYNC) > 0)
         renderer_flags |= SDL_RENDERER_PRESENTVSYNC;
 
-    window->renderer = SDL_CreateRenderer(window->window, -1, renderer_flags);
+    if ((video_mode->flags & VDM_GPU) > 0) {
+        window->renderer = SDL_CreateRenderer(window->window, -1, renderer_flags);
 
-    if (!window->renderer) {
-        (void)free(window->title);
-        (void)SDL_DestroyWindowSurface(window->window);
-        (void)SDL_DestroyWindow(window->window);
-        (void)free(window);
-        return (NULL);
+        if (!window->renderer) {
+            (void)free(window->title);
+            (void)SDL_DestroyWindowSurface(window->window);
+            (void)SDL_DestroyWindow(window->window);
+            (void)free(window);
+            return (NULL);
+        }
+    } else {
+        window->renderer = NULL;
     }
 
-    window->texture = new_texture_from_surface(SDL_GetWindowSurface(window->window));
+    if ((video_mode->flags & VDM_OPENGL) > 0) {
+        window->gl_ctx = SDL_GL_CreateContext(window->window);
+
+        if (!window->gl_ctx) {
+            if (window->renderer)
+                (void)SDL_DestroyRenderer(window->renderer);
+            (void)free(window->title);
+            (void)SDL_DestroyWindowSurface(window->window);
+            (void)SDL_DestroyWindow(window->window);
+            (void)free(window);
+            return (NULL);
+        }
+
+        if ((video_mode->flags & VDM_VSYNC) > 0) {
+            SDL_GL_SetSwapInterval(1);
+        }
+    } else {
+        window->gl_ctx = NULL;
+    }
+
+    if (((video_mode->flags & VDM_CPU) > 0)) {
+        window->texture = new_texture_from_surface(SDL_GetWindowSurface(window->window));
+
+        if (!window->texture) {
+            if (window->renderer)
+                (void)SDL_DestroyRenderer(window->renderer);
+            if (window->gl_ctx)
+                (void)SDL_GL_DeleteContext(window->gl_ctx);
+            (void)free(window->title);
+            (void)SDL_DestroyWindowSurface(window->window);
+            (void)SDL_DestroyWindow(window->window);
+            (void)free(window);
+            return (NULL);
+        }
+    } else {
+        window->texture = NULL;
+    }
 
     if (icon)
         SDL_SetWindowIcon(window->window, icon->surface);
@@ -183,11 +224,13 @@ static void _update_window_resize(Window *window)
     window->video_mode.size.x = events->events[events->size - 1]->x;
     window->video_mode.size.y = events->events[events->size - 1]->y;
 
-    SDL_UpdateWindowSurface(window->window);
+    if ((window->video_mode.flags & VDM_CPU) > 0) {
+        SDL_UpdateWindowSurface(window->window);
 
-    window->texture->surface = SDL_GetWindowSurface(window->window);
-    window->texture->size.x = window->texture->surface->w;
-    window->texture->size.y = window->texture->surface->h;
+        window->texture->surface = SDL_GetWindowSurface(window->window);
+        window->texture->size.x = window->texture->surface->w;
+        window->texture->size.y = window->texture->surface->h;
+    }
 }
 
 static void _update_window_move(Window *window)
@@ -228,8 +271,11 @@ CN_API void draw_window(Window *window)
         return;
     if ((window->video_mode.flags & VDM_GPU) > 0)
         (void)SDL_RenderPresent(window->renderer);
-    else
+    else if ((window->video_mode.flags & VDM_CPU) > 0)
         (void)SDL_UpdateWindowSurface(window->window);
+    else if ((window->video_mode.flags & VDM_OPENGL) > 0) {
+        (void)SDL_GL_SwapWindow(window->window);
+    } 
 }
 
 CN_API cnbool has_event_window(const Window *window, cn_event type)
@@ -267,8 +313,15 @@ CN_API void clear_window(Window *window, cncolor color)
             (color & 0x0000ff00) >> 8,
             (color & 0x000000ff));
         (void)SDL_RenderClear(window->renderer);
-    } else
+    } else if ((window->video_mode.flags & VDM_CPU) > 0) {
         (void)clear_texture(window->texture, color);
+    } else if  ((window->video_mode.flags & VDM_OPENGL) > 0) {
+        (void)glClearColor(((color & 0xff000000) >> 24) / 255.0f,
+            ((color & 0x00ff0000) >> 16) / 255.0f,
+            ((color & 0x0000ff00) >> 8) / 255.0f,
+            (color & 0x000000ff) / 255.0f);
+        (void)glClear(GL_COLOR_BUFFER_BIT);
+    }
 }
 
 CN_API void delete_window(Window *window)
@@ -279,6 +332,10 @@ CN_API void delete_window(Window *window)
     if (window->title) {
         (void)free(window->title);
         window->title = NULL;
+    }
+    if (window->gl_ctx) {
+        (void)SDL_GL_DeleteContext(window->gl_ctx);
+        window->gl_ctx = NULL;
     }
     if (window->renderer) {
         (void)SDL_DestroyRenderer(window->renderer);
