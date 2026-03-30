@@ -34,7 +34,9 @@ var libcngraphic_8h =
       [ "VDM_CLOSABLE", "libcngraphic_8h.html#aad7f25e3a9ef262bf91e20087cd42bb9a46d365269e951dcfbd13cbcccf99dcc4", null ],
       [ "VDM_ACCELERATION", "libcngraphic_8h.html#aad7f25e3a9ef262bf91e20087cd42bb9af6d6a276fa9abae75eef561f88813e52", null ],
       [ "VDM_INACTIVE", "libcngraphic_8h.html#aad7f25e3a9ef262bf91e20087cd42bb9a569b287825b4345fd1dc6c727c170c35", null ],
-      [ "VDM_GPU", "libcngraphic_8h.html#aad7f25e3a9ef262bf91e20087cd42bb9aaff10aedece1315ec141f857218a65ea", null ]
+      [ "VDM_GPU", "libcngraphic_8h.html#aad7f25e3a9ef262bf91e20087cd42bb9aaff10aedece1315ec141f857218a65ea", null ],
+      [ "VDM_OPENGL", "libcngraphic_8h.html#aad7f25e3a9ef262bf91e20087cd42bb9a5cb1b34421a07068431ad104fb0d2de4", null ],
+      [ "VDM_CPU", "libcngraphic_8h.html#aad7f25e3a9ef262bf91e20087cd42bb9ae4038d3dd1eff8fdf465e04d5e7303d7", null ]
     ] ],
     [ "VIDEOMODE_NATIVE_FLAGS", "libcngraphic_8h.html#ada22b2de90eaaac1a7d37ab53211e3dd", [
       [ "VDM_N_FSCRN", "libcngraphic_8h.html#ada22b2de90eaaac1a7d37ab53211e3dda8ec56a28a2d47a4a5407a54359b85cca", null ],
