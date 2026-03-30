@@ -37,11 +37,13 @@ static cn_value _draw(Object *__this, void **args)
     Vector3 *temp_position;
     Vector3 *temp_scale;
     Rect *temp_rotation;
+    Mesh *temp_mesh;
+    Material *temp_mat;
+    Object *camera;
 
     (void)upscale;
 
     glViewport(position.x, position.y, resolution.x, resolution.y);
-
 
     for (size_t i = 0; i < len; ++i) {
         val = call_method(elements, "at", (cnany []){(size_t []){i}, NULL});
@@ -63,8 +65,26 @@ static cn_value _draw(Object *__this, void **args)
         (void)temp_scale;
         (void)temp_rotation;
 
-        if (has_method(temp, "_draw"))
-            (void)call_method(temp, "_draw", (cnany []){__this, window, NULL});
+        if (has_attr(__this, "camera")) {
+            camera = get_attr(__this, "camera")->as.ptr;
+
+            if (!camera)
+                continue;
+
+            if (has_attr(temp, "mesh") && has_attr(temp, "material")) {
+                temp_mesh = get_attr(temp, "mesh")->as.ptr;
+                temp_mat = get_attr(temp, "material")->as.ptr;
+
+                if (!temp_mesh || !temp_mat)
+                    continue;
+
+                // render the object
+
+            }
+
+            if (has_method(temp, "_draw"))
+                (void)call_method(temp, "_draw", (cnany []){__this, window, NULL});
+        }
     }
 
     return (null_value);

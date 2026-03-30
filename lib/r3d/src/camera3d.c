@@ -7,6 +7,9 @@ static cn_value _init(Object *__this, void **args)
     call_method(__this->base, "_init", args);
 
     INIT_VEC3(__this, ((Vector3){.x = 0, .y = 0, .z = 0}), "velocity");
+    INIT_NUMBER(__this, 60.0f, "fov");
+    INIT_NUMBER(__this, 0.1f, "near");
+    INIT_NUMBER(__this, 1000.0f, "far");
 
     return (VALUE_OK);
 }
