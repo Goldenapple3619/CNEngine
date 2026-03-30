@@ -224,6 +224,8 @@ if(CN_BUILD_GAME)
 
     # machine specific libs
     if(WIN32)
+        get_filename_component(MINGW_BIN_DIR ${CMAKE_C_COMPILER} DIRECTORY)
+
         foreach(dll libwinpthread-1.dll libgcc_s_seh-1.dll)
             add_custom_command(TARGET cn_engine POST_BUILD
                 COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/lib"
