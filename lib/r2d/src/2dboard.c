@@ -28,6 +28,93 @@ static cn_value _init(Object *__this, void **args)
     return (VALUE_OK);
 }
 
+static void _cpu_rendering(const Vector2 *position,
+    const Vector2 *scale, const Rect *bounding, const Texture *object_texture, Texture *cpu_texture)
+{
+    if ((scale->x == 1.0) && (scale->y == 1.0))
+        blit(object_texture, cpu_texture, bounding, &(Vector2){.x = position->x, .y = position->y});
+    else
+        blit_ratio(object_texture, cpu_texture, bounding, &(Vector2){.x = position->x, .y = position->y}, &(Vector2){.x = scale->x, .y = scale->y});
+}
+
+static void _gpu_rendering(const Vector2 *position,
+    const Vector2 *scale, const Rect *bounding, const Rect *rotation, Texture *object_texture, gpu_rendering_data *rendering_data)
+{
+    draw_texture(
+        object_texture, rendering_data->renderer,
+        bounding,
+        &(Vector2){
+            .x = rendering_data->canva_off.x + position->x * rendering_data->canva_ratio.x,
+            .y = rendering_data->canva_off.y + position->y * rendering_data->canva_ratio.y
+        },
+        &(Vector2){
+            .x = scale->x * rendering_data->canva_ratio.x,
+            .y = scale->y * rendering_data->canva_ratio.y
+        },
+        2.0 * atan2((double)rotation->w, (double)rotation->h) * (180.0 / M_PI)
+    );
+}
+
+static void _opengl_rendering(void)
+{
+    // not implemented for now
+    return;
+}
+
+static cn_value _render_object(Object *__this, void **args)
+{
+    if (!args && !args[0])
+        return (null_value);
+
+    twod_render_stack *render_stack = args[0]; 
+    int64_t flags = get_attr(render_stack->obj, "_flags")->as.i;
+    
+    if (!((flags & CN_OBJ_DRAWABLE) > 0))
+        return (null_value);
+
+    Vector3 *object_position = &get_attr(render_stack->obj, "position")->as.vec3;
+    Vector3 *object_scale = &get_attr(render_stack->obj, "scale")->as.vec3;
+    Rect *object_rotation = &get_attr(render_stack->obj, "rotation")->as.rect;
+    Rect *object_texture_bounding = has_attr(render_stack->obj, "texture_bounding") ?
+        &get_attr(render_stack->obj, "texture_bounding")->as.rect : NULL;
+
+    if (has_attr(render_stack->obj, "texture")) {
+        Texture *temp_texture = get_attr(render_stack->obj, "texture")->as.ptr;
+
+        if (((render_stack->window->video_mode.flags & VDM_CPU) > 0)) {
+            Texture *cpu_texture = render_stack->cpu_texture ? render_stack->cpu_texture : get_attr(__this, "texture")->as.ptr;
+
+            _cpu_rendering(
+                &(Vector2){object_position->x, object_position->y},
+                &(Vector2){object_scale->x, object_scale->y},
+                object_texture_bounding,
+                temp_texture, cpu_texture
+            );
+        } else if ((render_stack->window->video_mode.flags & VDM_GPU) > 0) {
+            gpu_rendering_data gpu_data = {
+                .canva_off = render_stack->canva_position,
+                .canva_ratio = render_stack->canva_ratio,
+                .canva_scale = render_stack->canva_scale,
+                .renderer = render_stack->window->renderer
+            };
+
+            _gpu_rendering(
+                &(Vector2){object_position->x, object_position->y},
+                &(Vector2){object_scale->x,object_scale->y},
+                object_texture_bounding,
+                object_rotation, temp_texture, &gpu_data
+            );
+        } else if ((render_stack->window->video_mode.flags & VDM_OPENGL) > 0) {
+            _opengl_rendering();
+        }
+    }
+
+    if (has_method(render_stack->obj, "_draw"))
+        (void)call_method(render_stack->obj, "_draw", (cnany []){__this, render_stack->window, NULL});
+
+    return (null_value);
+}
+
 static cn_value _draw(Object *__this, void **args)
 {
     (void)__this;
@@ -42,18 +129,11 @@ static cn_value _draw(Object *__this, void **args)
     Vector2 *upscale = &get_attr(__this, "upscale")->as.vec2;
     Vector2 *resolution = &get_attr(__this, "resolution")->as.vec2;
     Vector2 *position = &get_attr(__this, "position")->as.vec2;
+    Vector2 computed_upscale = (Vector2){upscale->x / resolution->x, upscale->y / resolution->y};
     Object *scene = get_attr(__this, "scene")->as.ptr;
     Object *elements = get_attr(scene, "objects")->as.ptr;
     size_t len = call_method(elements, "len", NULL).as.i;
-    Vector2 computed_upscale = (Vector2){upscale->x / resolution->x, upscale->y / resolution->y};
     cn_value val;
-    Object *temp;
-    int64_t flags;
-    Texture *temp_texture;
-    Vector3 *temp_position;
-    Vector3 *temp_scale;
-    Rect *temp_rotation;
-    Rect *temp_texture_bounding;
 
     for (size_t i = 0; i < len; ++i) {
         val = call_method(elements, "at", (cnany []){(size_t []){i}, NULL});
@@ -61,37 +141,23 @@ static cn_value _draw(Object *__this, void **args)
         if (val.type == CN_TYPE_NULL)
             continue;
         
-        temp = val.as.ptr;
-        flags = get_attr(temp, "_flags")->as.i;
-        
-        if (!((flags & CN_OBJ_DRAWABLE) > 0))
-            continue;
+        _render_object(__this, (cnany []){&(twod_render_stack){
+            .obj = val.as.ptr,
+            .window = window,
+            .cpu_texture = texture,
 
-        temp_position = &get_attr(temp, "position")->as.vec3;
-        temp_scale = &get_attr(temp, "scale")->as.vec3;
-        temp_rotation = &get_attr(temp, "rotation")->as.rect;
-        temp_texture_bounding = has_attr(temp, "texture_bounding") ? &get_attr(temp, "texture_bounding")->as.rect : NULL;
+            .canva_position.x = position->x,
+            .canva_position.y = position->y,
 
-        (void)temp_rotation;
+            .canva_scale.x = upscale->x,
+            .canva_scale.y = upscale->y,
 
-        if (has_attr(temp, "texture")) {
-            temp_texture = get_attr(temp, "texture")->as.ptr;
+            .canva_size.x = resolution->x,
+            .canva_size.y = resolution->y,
 
-            if (((window->video_mode.flags & VDM_CPU) > 0))
-                if ((temp_scale->x == 1.0) && (temp_scale->y == 1.0))
-                    blit(temp_texture, texture, temp_texture_bounding, &(Vector2){.x = temp_position->x, .y = temp_position->y});
-                else
-                    blit_ratio(temp_texture, texture, temp_texture_bounding, &(Vector2){.x = temp_position->x, .y = temp_position->y}, &(Vector2){.x = temp_scale->x, .y = temp_scale->y});
-            else if ((window->video_mode.flags & VDM_GPU) > 0)
-                draw_texture(temp_texture, window->renderer, temp_texture_bounding, &(Vector2){.x = position->x + temp_position->x * computed_upscale.x, .y = position->y + temp_position->y * computed_upscale.y}, &(Vector2){.x = temp_scale->x * computed_upscale.x, .y = temp_scale->y * computed_upscale.y}, 2.0 * atan2((double)temp_rotation->w, (double)temp_rotation->h) * (180.0 / M_PI));
-            else if ((window->video_mode.flags & VDM_OPENGL) > 0) {
-                // not implemented
-                continue;
-            }
-        }
-
-        if (has_method(temp, "_draw"))
-            (void)call_method(temp, "_draw", (cnany []){__this, window, NULL});
+            .canva_ratio.x = computed_upscale.x,
+            .canva_ratio.y = computed_upscale.y
+        }, NULL});
     }
 
     if (((window->video_mode.flags & VDM_CPU) > 0))
@@ -120,6 +186,7 @@ CN_API Object *new_2dboard(void)
 
     SET_PARENT_CLASS_BUILD(obj, create_default_object());
     CREATE_METHOD_CLASS_BUILD(obj, "_init", &_init);
+    CREATE_METHOD_CLASS_BUILD(obj, "render_object", &_render_object);
     CREATE_METHOD_CLASS_BUILD(obj, "_draw", &_draw);
     CREATE_METHOD_CLASS_BUILD(obj, "_del", &_del);
     return (obj);

@@ -70,6 +70,61 @@ Object *add_test_opengl_window(Object *ctx)
     return (window_interface);
 }
 
+Object *add_test_twod_window(Object *ctx)
+{
+    Videomode v = (Videomode){
+        .size.x = 800, .size.y = 600,
+        .position.x = (SDL_WINDOWPOS_CENTERED), .position.y = (SDL_WINDOWPOS_CENTERED),
+        .flags = VDM_CLOSABLE | VDM_GPU,
+        .native_flags = VDM_N_SHWN | VDM_N_RSZL
+    };
+    cn_value val = call_method(ctx, "spawn_interface", (cnany []){"test", NULL, &v});
+
+    if (val.type == CN_TYPE_NULL) {
+        return (NULL);
+    }
+
+    Object *window_interface = val.as.ptr;
+
+    Object *twod_board = build_object(new_2dboard(), (cnany []){
+        &(struct twod_board_mode_s){
+            .position = (Vector2){.x = 0, .y = 0},
+            .resolution = ((Window *)get_attr(window_interface, "window")->as.ptr)->video_mode.size,
+            .upscale = (Vector2){.x = -1, .y = -1},
+            .scene = get_attr(ctx, "scene")->as.ptr
+        },
+        NULL
+    });
+
+    if (!twod_board) {
+        return (NULL);
+    }
+
+    if (call_method(window_interface, "add_element", (cnany []){twod_board, NULL}).as.i == VALUE_ERR.as.i) {
+        delete_object(twod_board);
+        return (NULL);
+    }
+
+    Object *tile = build_object(new_tile(), (cnany []){
+        &(struct scene_object_mode_s){
+            .coords = {15, 15},
+            .flags = CN_OBJ_DRAWABLE | CN_OBJ_HOST,
+            .rotation = {0, 0, 0, 0},
+            .scale = {2, 2}
+        }
+    });
+
+    if (!tile)
+        return (NULL);
+
+    if (call_method(get_attr(ctx, "scene")->as.ptr, "add_element", (cnany []){tile, NULL}).as.i == VALUE_ERR.as.i) {
+        delete_object(tile);
+        return (NULL);
+    }
+
+    return (window_interface);
+}
+
 Object *add_home_window(Object *ctx)
 {
     Videomode v = (Videomode){
@@ -177,47 +232,15 @@ int main(int argc, char *argv[])
         return (1);
     }
 
-    if (!add_test_opengl_window(ctx)) {
-        delete_object(ctx);
-        return (1);
-    }
-
-    // if (call_method(get_attr(ctx, "scene")->as.ptr, "add_element",
-    //         (cnany []){
-    //             build_object(new_tile(), (cnany[]){&(struct scene_object_mode_s){
-    //                 .coords = (Vector3){.x = 16, .y = 16, .z = 0},
-    //                 .flags = CN_OBJ_DRAWABLE | CN_OBJ_HOST,
-    //                 .rotation = (Rect){.x = 0, .y = 0, .w = 0, .h = 0},
-    //                 .scale = (Vector3){.x = 1, .y = 1, .z = 1}
-    //             }, NULL}),
-    //             NULL
-    //         }).as.i == VALUE_ERR.as.i) {
+    // if (!add_test_opengl_window(ctx)) {
     //     delete_object(ctx);
     //     return (1);
     // }
 
-    // Object *twod_board = build_object(new_2dboard(), (cnany []){
-    //     &(struct twod_board_mode_s){
-    //         .position = (Vector2){.x = 100, .y = 100},
-    //         .resolution = (Vector2){.x = 50, .y = 50},
-    //         .upscale = (Vector2){.x = 300, .y = 300},
-
-    //         .scene = get_attr(ctx, "scene")->as.ptr,
-    //     },
-    //     NULL
-    // });
-
-    // if (!twod_board) {
+    // if (!add_test_twod_window(ctx)) {
     //     delete_object(ctx);
     //     return (1);
     // }
-
-    // if (call_method(val.as.ptr, "add_element", (cnany []){twod_board, NULL}).as.i == VALUE_ERR.as.i) {
-    //     delete_object(twod_board);
-    //     delete_object(ctx);
-    //     return (1);
-    // }
-
 
     call_method(ctx, "_run", NULL);
     delete_object(ctx);

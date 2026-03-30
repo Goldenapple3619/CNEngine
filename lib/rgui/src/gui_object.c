@@ -5,9 +5,13 @@ static cn_value _init(Object *__this, void **args)
     if (!args || !args[0])
         return (VALUE_ERR);
 
+    PREP_INIT()
+
     INIT_VEC2(__this, *(Vector2 *)args[0], "position");
     INIT_INT(__this, GUI_ALIGN_LEFT, "align");
     INIT_INT(__this, 0, "z-index");
+
+    INIT_OBJECT_STATIC(__this, new_list(), NULL, "childs");
 
     return (VALUE_OK);
 }
