@@ -11,6 +11,8 @@ var annotated_dup =
     [ "event_s", "structevent__s.html", "structevent__s" ],
     [ "gui_board_mode_s", "structgui__board__mode__s.html", "structgui__board__mode__s" ],
     [ "interface_s", "structinterface__s.html", "structinterface__s" ],
+    [ "Material", "structMaterial.html", "structMaterial" ],
+    [ "Mesh", "structMesh.html", "structMesh" ],
     [ "object_attribute_s", "structobject__attribute__s.html", "structobject__attribute__s" ],
     [ "object_s", "structobject__s.html", "structobject__s" ],
     [ "object_vector_s", "structobject__vector__s.html", "structobject__vector__s" ],

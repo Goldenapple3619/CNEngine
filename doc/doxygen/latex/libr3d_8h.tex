@@ -6,19 +6,55 @@
 \doxysubsubsection*{Data Structures}
 \begin{DoxyCompactItemize}
 \item 
+struct \mbox{\hyperlink{structMaterial}{Material}}
+\item 
+struct \mbox{\hyperlink{structMesh}{Mesh}}
+\item 
 struct \mbox{\hyperlink{structthreed__board__mode__s}{threed\+\_\+board\+\_\+mode\+\_\+s}}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libr3d_8h_aceb3847097062843afaa3459f132b1d9}{new\+\_\+3dboard}} (void)
+\item 
+\mbox{\hyperlink{structMesh}{Mesh}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libr3d_8h_a802b355a0d22d93a04106c3e3f835433}{new\+\_\+mesh}} (void)
+\item 
+void \mbox{\hyperlink{libr3d_8h_aae4e77fb2db668a230d818fb1d1ce9dd}{delete\+\_\+mesh}} (\mbox{\hyperlink{structMesh}{Mesh}} \texorpdfstring{$\ast$}{*}mesh)
+\item 
+\mbox{\hyperlink{structMaterial}{Material}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libr3d_8h_a41778fea7c4b4d65121652d8d3af7dbe}{new\+\_\+material}} (void)
+\item 
+void \mbox{\hyperlink{libr3d_8h_a176f1f0871adb1184a0845a974994ba7}{delete\+\_\+material}} (\mbox{\hyperlink{structMaterial}{Material}} \texorpdfstring{$\ast$}{*}material)
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
+\Hypertarget{libr3d_8h_a176f1f0871adb1184a0845a974994ba7}\label{libr3d_8h_a176f1f0871adb1184a0845a974994ba7} 
+\index{libr3d.h@{libr3d.h}!delete\_material@{delete\_material}}
+\index{delete\_material@{delete\_material}!libr3d.h@{libr3d.h}}
+\doxysubsubsection{\texorpdfstring{delete\_material()}{delete\_material()}}
+{\footnotesize\ttfamily void delete\+\_\+material (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structMaterial}{Material}} \texorpdfstring{$\ast$}{*}}]{material }\end{DoxyParamCaption})}
+
+\Hypertarget{libr3d_8h_aae4e77fb2db668a230d818fb1d1ce9dd}\label{libr3d_8h_aae4e77fb2db668a230d818fb1d1ce9dd} 
+\index{libr3d.h@{libr3d.h}!delete\_mesh@{delete\_mesh}}
+\index{delete\_mesh@{delete\_mesh}!libr3d.h@{libr3d.h}}
+\doxysubsubsection{\texorpdfstring{delete\_mesh()}{delete\_mesh()}}
+{\footnotesize\ttfamily void delete\+\_\+mesh (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structMesh}{Mesh}} \texorpdfstring{$\ast$}{*}}]{mesh }\end{DoxyParamCaption})}
+
 \Hypertarget{libr3d_8h_aceb3847097062843afaa3459f132b1d9}\label{libr3d_8h_aceb3847097062843afaa3459f132b1d9} 
 \index{libr3d.h@{libr3d.h}!new\_3dboard@{new\_3dboard}}
 \index{new\_3dboard@{new\_3dboard}!libr3d.h@{libr3d.h}}
 \doxysubsubsection{\texorpdfstring{new\_3dboard()}{new\_3dboard()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*} new\+\_\+3dboard (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{libr3d_8h_a41778fea7c4b4d65121652d8d3af7dbe}\label{libr3d_8h_a41778fea7c4b4d65121652d8d3af7dbe} 
+\index{libr3d.h@{libr3d.h}!new\_material@{new\_material}}
+\index{new\_material@{new\_material}!libr3d.h@{libr3d.h}}
+\doxysubsubsection{\texorpdfstring{new\_material()}{new\_material()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structMaterial}{Material}} \texorpdfstring{$\ast$}{*} new\+\_\+material (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{libr3d_8h_a802b355a0d22d93a04106c3e3f835433}\label{libr3d_8h_a802b355a0d22d93a04106c3e3f835433} 
+\index{libr3d.h@{libr3d.h}!new\_mesh@{new\_mesh}}
+\index{new\_mesh@{new\_mesh}!libr3d.h@{libr3d.h}}
+\doxysubsubsection{\texorpdfstring{new\_mesh()}{new\_mesh()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structMesh}{Mesh}} \texorpdfstring{$\ast$}{*} new\+\_\+mesh (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 

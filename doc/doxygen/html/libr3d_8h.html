@@ -117,6 +117,10 @@ $(document).ready(function(){initNavTree('libr3d_8h.html',''); initResizable(); 
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMaterial.html">Material</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMesh.html">Mesh</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structthreed__board__mode__s.html">threed_board_mode_s</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -124,8 +128,52 @@ Data Structures</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:aceb3847097062843afaa3459f132b1d9" id="r_aceb3847097062843afaa3459f132b1d9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libr3d_8h.html#aceb3847097062843afaa3459f132b1d9">new_3dboard</a> (void)</td></tr>
 <tr class="separator:aceb3847097062843afaa3459f132b1d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a802b355a0d22d93a04106c3e3f835433" id="r_a802b355a0d22d93a04106c3e3f835433"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structMesh.html">Mesh</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libr3d_8h.html#a802b355a0d22d93a04106c3e3f835433">new_mesh</a> (void)</td></tr>
+<tr class="separator:a802b355a0d22d93a04106c3e3f835433"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae4e77fb2db668a230d818fb1d1ce9dd" id="r_aae4e77fb2db668a230d818fb1d1ce9dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libr3d_8h.html#aae4e77fb2db668a230d818fb1d1ce9dd">delete_mesh</a> (<a class="el" href="structMesh.html">Mesh</a> *mesh)</td></tr>
+<tr class="separator:aae4e77fb2db668a230d818fb1d1ce9dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41778fea7c4b4d65121652d8d3af7dbe" id="r_a41778fea7c4b4d65121652d8d3af7dbe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structMaterial.html">Material</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libr3d_8h.html#a41778fea7c4b4d65121652d8d3af7dbe">new_material</a> (void)</td></tr>
+<tr class="separator:a41778fea7c4b4d65121652d8d3af7dbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a176f1f0871adb1184a0845a974994ba7" id="r_a176f1f0871adb1184a0845a974994ba7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libr3d_8h.html#a176f1f0871adb1184a0845a974994ba7">delete_material</a> (<a class="el" href="structMaterial.html">Material</a> *material)</td></tr>
+<tr class="separator:a176f1f0871adb1184a0845a974994ba7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a176f1f0871adb1184a0845a974994ba7" name="a176f1f0871adb1184a0845a974994ba7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a176f1f0871adb1184a0845a974994ba7">&#9670;&#160;</a></span>delete_material()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void delete_material </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structMaterial.html">Material</a> *&#160;</td>
+          <td class="paramname"><em>material</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aae4e77fb2db668a230d818fb1d1ce9dd" name="aae4e77fb2db668a230d818fb1d1ce9dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae4e77fb2db668a230d818fb1d1ce9dd">&#9670;&#160;</a></span>delete_mesh()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void delete_mesh </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structMesh.html">Mesh</a> *&#160;</td>
+          <td class="paramname"><em>mesh</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="aceb3847097062843afaa3459f132b1d9" name="aceb3847097062843afaa3459f132b1d9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aceb3847097062843afaa3459f132b1d9">&#9670;&#160;</a></span>new_3dboard()</h2>
 
@@ -134,6 +182,42 @@ Functions</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> * new_3dboard </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a41778fea7c4b4d65121652d8d3af7dbe" name="a41778fea7c4b4d65121652d8d3af7dbe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41778fea7c4b4d65121652d8d3af7dbe">&#9670;&#160;</a></span>new_material()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structMaterial.html">Material</a> * new_material </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a802b355a0d22d93a04106c3e3f835433" name="a802b355a0d22d93a04106c3e3f835433"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a802b355a0d22d93a04106c3e3f835433">&#9670;&#160;</a></span>new_mesh()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structMesh.html">Mesh</a> * new_mesh </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>

@@ -3,7 +3,7 @@ var searchData=
   ['text_0',['text',['../structtext__mode__s.html#afe24c21256c5484d8b1ab2b5faa31ec2',1,'text_mode_s']]],
   ['text_2ec_1',['text.c',['../text_8c.html',1,'']]],
   ['text_5fmode_5fs_2',['text_mode_s',['../structtext__mode__s.html',1,'']]],
-  ['texture_3',['texture',['../libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99',1,'Texture:&#160;libcngraphic.h'],['../structwindow__s.html#a51a60c544448bfe06e633b4f30f98d8d',1,'window_s::texture']]],
+  ['texture_3',['texture',['../libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99',1,'Texture:&#160;libcngraphic.h'],['../structMaterial.html#ad151148dc3460f25435e951786171350',1,'Material::texture'],['../structwindow__s.html#a51a60c544448bfe06e633b4f30f98d8d',1,'window_s::texture']]],
   ['texture_2ec_4',['texture.c',['../texture_8c.html',1,'']]],
   ['texture_5fatlas_2ec_5',['texture_atlas.c',['../texture__atlas_8c.html',1,'']]],
   ['texture_5fatlas_5fresize_6',['texture_atlas_resize',['../texture__atlas_8c.html#a9f3205a3e8afe3bdad1767a25aae3e76',1,'texture_atlas_resize(TextureAtlas *atlas, size_t new_capacity):&#160;texture_atlas.c'],['../libcngraphic_8h.html#a9f3205a3e8afe3bdad1767a25aae3e76',1,'texture_atlas_resize(TextureAtlas *atlas, size_t new_capacity):&#160;texture_atlas.c']]],

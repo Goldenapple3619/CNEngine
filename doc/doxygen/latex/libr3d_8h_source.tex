@@ -15,16 +15,33 @@
 \DoxyCodeLine{00011\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ <GL/gl.h>}}
 \DoxyCodeLine{00012\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
 \DoxyCodeLine{00013\ }
-\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structthreed__board__mode__s}{threed\_board\_mode\_s}}\ \{}
-\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structvector2__s}{Vector2}}\ \mbox{\hyperlink{structthreed__board__mode__s_a9e5e0acc23035ca9c7139cfc0dcdd211}{position}};}
-\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structvector2__s}{Vector2}}\ \mbox{\hyperlink{structthreed__board__mode__s_aa9bb3de0b5ae3685ed0f65ebe3eb661b}{resolution}};}
-\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structvector2__s}{Vector2}}\ \mbox{\hyperlink{structthreed__board__mode__s_a2dc871846cf889fc8289b5aeb0c4d8cd}{upscale}};}
-\DoxyCodeLine{00018\ }
-\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structobject__s}{Object}}\ *\mbox{\hyperlink{structthreed__board__mode__s_a4bac89b877fb921c1406b990b1b65ec1}{scene}};}
-\DoxyCodeLine{00020\ \ \ \ \ \};}
-\DoxyCodeLine{00021\ }
-\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\mbox{\hyperlink{libr3d_8h_aceb3847097062843afaa3459f132b1d9}{new\_3dboard}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00023\ }
-\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structtexture__s}{Texture}}\ *\mbox{\hyperlink{structMaterial_ad151148dc3460f25435e951786171350}{texture}};}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ GLuint\ \mbox{\hyperlink{structMaterial_ad69034f872f4261a6b9e10942ff07758}{shader}};}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcngraphic_8h_a0b2773fdce5fa81de32a2e7a552ff37d}{cncolor}}\ \mbox{\hyperlink{structMaterial_acb65226e740fa398d09868e0a4d2cf11}{color}};}
+\DoxyCodeLine{00018\ \ \ \ \ \}\ \mbox{\hyperlink{structMaterial}{Material}};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ GLuint\ \mbox{\hyperlink{structMesh_a101a39d88bc5c8d33f0ebd6e77a60129}{vao}};}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structMesh_a0317db3a3dc8f90bf480bd236d4ff7e1}{vertex\_count}};}
+\DoxyCodeLine{00023\ \ \ \ \ \}\ \mbox{\hyperlink{structMesh}{Mesh}};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structthreed__board__mode__s}{threed\_board\_mode\_s}}\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structvector2__s}{Vector2}}\ \mbox{\hyperlink{structthreed__board__mode__s_a9e5e0acc23035ca9c7139cfc0dcdd211}{position}};}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structvector2__s}{Vector2}}\ \mbox{\hyperlink{structthreed__board__mode__s_aa9bb3de0b5ae3685ed0f65ebe3eb661b}{resolution}};}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structvector2__s}{Vector2}}\ \mbox{\hyperlink{structthreed__board__mode__s_a2dc871846cf889fc8289b5aeb0c4d8cd}{upscale}};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structobject__s}{Object}}\ *\mbox{\hyperlink{structthreed__board__mode__s_a4bac89b877fb921c1406b990b1b65ec1}{scene}};}
+\DoxyCodeLine{00031\ \ \ \ \ \};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\mbox{\hyperlink{libr3d_8h_aceb3847097062843afaa3459f132b1d9}{new\_3dboard}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structMesh}{Mesh}}\ *\mbox{\hyperlink{libr3d_8h_a802b355a0d22d93a04106c3e3f835433}{new\_mesh}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libr3d_8h_aae4e77fb2db668a230d818fb1d1ce9dd}{delete\_mesh}}(\mbox{\hyperlink{structMesh}{Mesh}}\ *mesh);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structMaterial}{Material}}\ *\mbox{\hyperlink{libr3d_8h_a41778fea7c4b4d65121652d8d3af7dbe}{new\_material}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libr3d_8h_a176f1f0871adb1184a0845a974994ba7}{delete\_material}}(\mbox{\hyperlink{structMaterial}{Material}}\ *material);}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}
