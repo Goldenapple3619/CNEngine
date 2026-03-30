@@ -226,7 +226,13 @@ if(CN_BUILD_GAME)
     if(WIN32)
         get_filename_component(MINGW_BIN_DIR ${CMAKE_C_COMPILER} DIRECTORY)
 
-        foreach(dll libwinpthread-1.dll libgcc_s_seh-1.dll)
+        if(TARGET_ARCH STREQUAL "i386")
+            set(MINGW_RUNTIME_DLLS libwinpthread-1.dll libgcc_s_dw2-1.dll)
+        else()
+            set(MINGW_RUNTIME_DLLS libwinpthread-1.dll libgcc_s_seh-1.dll)
+        endif()
+
+        foreach(dll ${MINGW_RUNTIME_DLLS})
             add_custom_command(TARGET cn_engine POST_BUILD
                 COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/lib"
                 COMMAND ${CMAKE_COMMAND} -E copy_if_different
