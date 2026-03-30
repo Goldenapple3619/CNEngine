@@ -230,7 +230,7 @@ if(CN_BUILD_GAME)
             add_custom_command(TARGET cn_engine POST_BUILD
                 COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/lib"
                 COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                    "${CMAKE_FIND_ROOT_PATH}/bin/${dll}"
+                    "${MINGW_BIN_DIR}/${dll}"
                     "${DIST_DIR}/lib/"
             )
         endforeach()
