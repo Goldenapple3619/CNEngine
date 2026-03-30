@@ -1,13 +1,15 @@
 name: documentation
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - dev
 
 permissions:
   contents: write
 
 jobs:
   build-documentation:
-    if: ${{ github.event_name == 'push' && github.ref_name == 'dev' }}
     runs-on: ubuntu-latest
 
     steps:
@@ -38,8 +40,6 @@ jobs:
         path: doc/doxygen/html
 
   deploy-documentation:
-    if: ${{ github.event_name == 'push' && github.ref_name == 'dev' }}
-
     needs: build-documentation
 
     permissions:

@@ -1,0 +1,76 @@
+name: release
+
+on:
+  workflow_run:
+    workflows: ["build"]
+    branches:
+      - dev
+      - main
+    types:
+      - completed
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+    steps:
+      - name: Set release info
+        id: info
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          BRANCH="${{ github.event.workflow_run.head_branch }}"
+
+          LATEST=$(gh release list \
+            --repo ${{ github.repository }} \
+            --json tagName \
+            --jq '[.[] | select(.tagName | test("^v[0-9]+\\.[0-9]+\\.[0-9]+$"))] | sort_by(.tagName) | last | .tagName' \
+            2>/dev/null)
+
+          if [ -z "$LATEST" ] || [ "$LATEST" = "null" ]; then
+            LATEST="v1.0.0"
+          fi
+
+          MAJOR=$(echo $LATEST | cut -d. -f1 | tr -d 'v')
+          MINOR=$(echo $LATEST | cut -d. -f2)
+          PATCH=$(echo $LATEST | cut -d. -f3)
+
+          if [ "$BRANCH" = "main" ]; then
+            MINOR=$((MINOR + 1))
+            PATCH=0
+            TAG="v${MAJOR}.${MINOR}.${PATCH}-stable"
+            NAME="Stable Release $TAG"
+            PRERELEASE="false"
+          else
+            PATCH=$((PATCH + 1))
+            TAG="v${MAJOR}.${MINOR}.${PATCH}-dev"
+            NAME="Dev Release $TAG"
+            PRERELEASE="true"
+          fi
+
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
+          echo "name=$NAME" >> $GITHUB_OUTPUT
+          echo "prerelease=$PRERELEASE" >> $GITHUB_OUTPUT
+
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: dist
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Zip artifacts
+        run: |
+          cd dist
+          for dir in */; do
+            zip -r "${dir%/}.zip" "$dir"
+          done
+
+      - name: Create release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.info.outputs.tag }}
+          name: ${{ steps.info.outputs.name }}
+          prerelease: ${{ steps.info.outputs.prerelease }}
+          files: dist/*.zip
