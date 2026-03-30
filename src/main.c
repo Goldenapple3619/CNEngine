@@ -46,12 +46,12 @@ Object *add_test_opengl_window(Object *ctx)
         return (NULL);
     }
 
-    Object *interface = val.as.ptr;
+    Object *window_interface = val.as.ptr;
 
     Object *threed_board = build_object(new_3dboard(), (cnany []){
         &(struct threed_board_mode_s){
             .position = (Vector2){.x = 0, .y = 0},
-            .resolution = ((Window *)get_attr(interface, "window")->as.ptr)->video_mode.size,
+            .resolution = ((Window *)get_attr(window_interface, "window")->as.ptr)->video_mode.size,
             .upscale = (Vector2){.x = -1, .y = -1},
             .scene = get_attr(ctx, "scene")->as.ptr
         },
@@ -62,12 +62,12 @@ Object *add_test_opengl_window(Object *ctx)
         return (NULL);
     }
 
-    if (call_method(interface, "add_element", (cnany []){threed_board, NULL}).as.i == VALUE_ERR.as.i) {
+    if (call_method(window_interface, "add_element", (cnany []){threed_board, NULL}).as.i == VALUE_ERR.as.i) {
         delete_object(threed_board);
         return (NULL);
     }
 
-    return (interface);
+    return (window_interface);
 }
 
 Object *add_home_window(Object *ctx)
@@ -84,12 +84,12 @@ Object *add_home_window(Object *ctx)
         return (NULL);
     }
 
-    Object *interface = val.as.ptr;
+    Object *window_interface = val.as.ptr;
 
     Object *gui_board = build_object(new_guiboard(), (cnany []){
         &(struct gui_board_mode_s){
             .position = (Vector2){.x = 0, .y = 0},
-            .resolution = ((Window *)get_attr(interface, "window")->as.ptr)->video_mode.size,
+            .resolution = ((Window *)get_attr(window_interface, "window")->as.ptr)->video_mode.size,
             .upscale = (Vector2){.x = -1, .y = -1},
             .flags = FLAG_RGUI_DYNAMIC_RESOLUTION
         },
@@ -100,7 +100,7 @@ Object *add_home_window(Object *ctx)
         return (NULL);
     }
 
-    if (call_method(interface, "add_element", (cnany []){gui_board, NULL}).as.i == VALUE_ERR.as.i) {
+    if (call_method(window_interface, "add_element", (cnany []){gui_board, NULL}).as.i == VALUE_ERR.as.i) {
         delete_object(gui_board);
         return (NULL);
     }
@@ -127,7 +127,7 @@ Object *add_home_window(Object *ctx)
         return (NULL);
     }
 
-    return (interface);
+    return (window_interface);
 }
 
 

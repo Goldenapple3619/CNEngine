@@ -4,7 +4,11 @@
     #include "libcncore.h"
     #include "libcngraphic.h"
 
-    #include <GL/gl.h>
+    #ifdef __APPLE__
+        #include <OpenGL/gl.h>
+    #else
+        #include <GL/gl.h>
+    #endif
 
     struct threed_board_mode_s {
         Vector2 position;
