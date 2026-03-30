@@ -189,6 +189,21 @@ if(CN_BUILD_GAME)
         )
     endforeach()
 
+    # vendored
+    foreach(lib freetype harfbuzz ogg opus opusfile xmp tiff)
+        if(TARGET ${lib})
+            get_target_property(lib_type ${lib} TYPE)
+            if(lib_type STREQUAL "SHARED_LIBRARY")
+                add_custom_command(TARGET cn_engine POST_BUILD
+                    COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/lib"
+                    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                        $<TARGET_FILE:${lib}>
+                        "${DIST_DIR}/lib/"
+                )
+            endif()
+        endif()
+    endforeach()
+
     # includes
     foreach(lib cncore cngraphic cnaudio cninput rgui r2d r3d)
         add_custom_command(TARGET cn_engine POST_BUILD
@@ -206,4 +221,16 @@ if(CN_BUILD_GAME)
                 "${DIST_DIR}/lib/"
         )
     endforeach()
+
+    # machine specific libs
+    if(WIN32)
+        foreach(dll libwinpthread-1.dll libgcc_s_seh-1.dll)
+            add_custom_command(TARGET cn_engine POST_BUILD
+                COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/lib"
+                COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                    "${CMAKE_FIND_ROOT_PATH}/bin/${dll}"
+                    "${DIST_DIR}/lib/"
+            )
+        endforeach()
+    endif()
 endif()
