@@ -25,16 +25,17 @@ jobs:
           LATEST=$(gh release list \
             --repo ${{ github.repository }} \
             --json tagName \
-            --jq '[.[] | select(.tagName | test("^v[0-9]+\\.[0-9]+\\.[0-9]+$"))] | sort_by(.tagName) | last | .tagName' \
+            --jq '[.[] | select(.tagName | test("^v[0-9]+\\.[0-9]+\\.[0-9]+-(dev|stable)$"))] | sort_by(.tagName) | last | .tagName' \
             2>/dev/null)
 
           if [ -z "$LATEST" ] || [ "$LATEST" = "null" ]; then
             LATEST="v1.0.0"
           fi
 
-          MAJOR=$(echo $LATEST | cut -d. -f1 | tr -d 'v')
-          MINOR=$(echo $LATEST | cut -d. -f2)
-          PATCH=$(echo $LATEST | cut -d. -f3)
+          BASE=$(echo "$LATEST" | sed 's/-(dev|stable)$//' | sed -E 's/-(dev|stable)$//')
+          MAJOR=$(echo "$BASE" | cut -d. -f1 | tr -d 'v')
+          MINOR=$(echo "$BASE" | cut -d. -f2)
+          PATCH=$(echo "$BASE" | cut -d. -f3)
 
           if [ "$BRANCH" = "main" ]; then
             MINOR=$((MINOR + 1))
