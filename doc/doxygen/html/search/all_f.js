@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['name_0',['name',['../structproject__ctx__s.html#a8cc4a5e24d63a43a2372a818d9d8a6d4',1,'project_ctx_s::name'],['../structobject__attribute__s.html#a2decd404b6fa8439e0564ec1359c71d0',1,'object_attribute_s::name']]],
+  ['name_0',['name',['../structobject__attribute__s.html#a2decd404b6fa8439e0564ec1359c71d0',1,'object_attribute_s']]],
   ['native_5fflags_1',['native_flags',['../structvideomode__s.html#a7921103ce24493f3c87d10c994b01355',1,'videomode_s']]],
   ['new_5f2dboard_2',['new_2dboard',['../libr2d_8h.html#a1135e54b12d5b674491fb5754839d034',1,'new_2dboard(void):&#160;2dboard.c'],['../2dboard_8c.html#a1135e54b12d5b674491fb5754839d034',1,'new_2dboard(void):&#160;2dboard.c']]],
   ['new_5f3dboard_3',['new_3dboard',['../libr3d_8h.html#aceb3847097062843afaa3459f132b1d9',1,'new_3dboard(void):&#160;3dboard.c'],['../3dboard_8c.html#aceb3847097062843afaa3459f132b1d9',1,'new_3dboard(void):&#160;3dboard.c']]],

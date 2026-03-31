@@ -17,7 +17,6 @@ var annotated_dup =
     [ "object_attribute_s", "structobject__attribute__s.html", "structobject__attribute__s" ],
     [ "object_s", "structobject__s.html", "structobject__s" ],
     [ "object_vector_s", "structobject__vector__s.html", "structobject__vector__s" ],
-    [ "project_ctx_s", "structproject__ctx__s.html", "structproject__ctx__s" ],
     [ "rect_s", "structrect__s.html", "structrect__s" ],
     [ "scene_object_mode_s", "structscene__object__mode__s.html", "structscene__object__mode__s" ],
     [ "text_mode_s", "structtext__mode__s.html", "structtext__mode__s" ],

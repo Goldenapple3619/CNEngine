@@ -40,13 +40,12 @@ var searchData=
   ['vector3_37',['Vector3',['../libcncore_8h.html#a3dd97d4c265b35e13059fcd0a8d6128f',1,'libcncore.h']]],
   ['vector3_2ec_38',['vector3.c',['../vector3_8c.html',1,'']]],
   ['vector3_5fs_39',['vector3_s',['../structvector3__s.html',1,'']]],
-  ['version_40',['version',['../structproject__ctx__s.html#a71b262b1cf794527ebdbce5c368039c2',1,'project_ctx_s']]],
-  ['vertex_5fcount_41',['vertex_count',['../structMesh.html#a0317db3a3dc8f90bf480bd236d4ff7e1',1,'Mesh']]],
-  ['video_5fmode_42',['video_mode',['../structwindow__s.html#ad9d1f838ffa2a66e911f2258f8f04c57',1,'window_s']]],
-  ['videomode_43',['Videomode',['../libcngraphic_8h.html#a11fee8bdf914a878a155af5fea79040b',1,'libcngraphic.h']]],
-  ['videomode_5fflags_44',['VIDEOMODE_FLAGS',['../libcngraphic_8h.html#aad7f25e3a9ef262bf91e20087cd42bb9',1,'libcngraphic.h']]],
-  ['videomode_5fnative_5fflags_45',['VIDEOMODE_NATIVE_FLAGS',['../libcngraphic_8h.html#ada22b2de90eaaac1a7d37ab53211e3dd',1,'libcngraphic.h']]],
-  ['videomode_5fs_46',['videomode_s',['../structvideomode__s.html',1,'']]],
-  ['vmd_5fn_5finpfoc_47',['VMD_N_INPFOC',['../libcngraphic_8h.html#ada22b2de90eaaac1a7d37ab53211e3dda4874f0135797247579bc7c6cbfead8e5',1,'libcngraphic.h']]],
-  ['vmd_5fn_5fmsfoc_48',['VMD_N_MSFOC',['../libcngraphic_8h.html#ada22b2de90eaaac1a7d37ab53211e3ddae1a2a2cda763650cd5b167386eca7b61',1,'libcngraphic.h']]]
+  ['vertex_5fcount_40',['vertex_count',['../structMesh.html#a0317db3a3dc8f90bf480bd236d4ff7e1',1,'Mesh']]],
+  ['video_5fmode_41',['video_mode',['../structwindow__s.html#ad9d1f838ffa2a66e911f2258f8f04c57',1,'window_s']]],
+  ['videomode_42',['Videomode',['../libcngraphic_8h.html#a11fee8bdf914a878a155af5fea79040b',1,'libcngraphic.h']]],
+  ['videomode_5fflags_43',['VIDEOMODE_FLAGS',['../libcngraphic_8h.html#aad7f25e3a9ef262bf91e20087cd42bb9',1,'libcngraphic.h']]],
+  ['videomode_5fnative_5fflags_44',['VIDEOMODE_NATIVE_FLAGS',['../libcngraphic_8h.html#ada22b2de90eaaac1a7d37ab53211e3dd',1,'libcngraphic.h']]],
+  ['videomode_5fs_45',['videomode_s',['../structvideomode__s.html',1,'']]],
+  ['vmd_5fn_5finpfoc_46',['VMD_N_INPFOC',['../libcngraphic_8h.html#ada22b2de90eaaac1a7d37ab53211e3dda4874f0135797247579bc7c6cbfead8e5',1,'libcngraphic.h']]],
+  ['vmd_5fn_5fmsfoc_47',['VMD_N_MSFOC',['../libcngraphic_8h.html#ada22b2de90eaaac1a7d37ab53211e3ddae1a2a2cda763650cd5b167386eca7b61',1,'libcngraphic.h']]]
 ];
