@@ -9,6 +9,7 @@ var searchData=
   ['libr2d_2eh_6',['libr2d.h',['../libr2d_8h.html',1,'']]],
   ['libr3d_2eh_7',['libr3d.h',['../libr3d_8h.html',1,'']]],
   ['librgui_2eh_8',['librgui.h',['../librgui_8h.html',1,'']]],
-  ['license_9',['License',['../md_README.html#autotoc_md5',1,'']]],
-  ['list_2ec_10',['list.c',['../list_8c.html',1,'']]]
+  ['license_9',['License',['../md_README.html#autotoc_md13',1,'']]],
+  ['linux_10',['Linux',['../md_README.html#autotoc_md9',1,'']]],
+  ['list_2ec_11',['list.c',['../list_8c.html',1,'']]]
 ];
