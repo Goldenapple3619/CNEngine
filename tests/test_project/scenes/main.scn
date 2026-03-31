@@ -1,0 +1,18 @@
+<scene>
+    <name>main</name>
+
+    <build src_as="library">
+    </build>
+
+    <content>
+        <object type="tile">
+            <name>tile 0</name>
+            <attrs>
+                <vec3 as="position">0,0,0</vec3>
+            </attrs>
+            <childs>
+            
+            </childs>
+        </object>
+    </content>
+</scene>

@@ -14,3 +14,4 @@ temp
 
 *.exe
 *.out
+**/__generated_*

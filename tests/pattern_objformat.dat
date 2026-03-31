@@ -1,0 +1,49 @@
+# /--- File Format ---\ #
+
+#         header
+0x4 magic
+0x1 endian
+0x4 flags
+0x8 section_header_offset REF
+0x8 strndx REF
+0x4 name
+
+#       section header
+/ref section_header_offset
+  - 0x8 section_header_size
+  - 0x8 section_number LOC
+  - /loop section_number
+    -- 0x4 section_name REF
+    -- 0x4 section_type
+    -- 0x4 section_flags
+    -- 0x8 section_size LOC
+    -- 0x8 section_offset REF
+
+#         sections
+/loop section_number
+  - /ref section_offset
+    -- DYN_section_size data
+
+#          strndx
+/ref strndx
+  - /loop
+    -- 0x4 strlen LOC
+    -- DYN_strlen value
+
+# /--- Pattern Data ---\ #
+/colors
+  - magic 0xbf6926
+  - endian 0x26bf7a
+  - name 0x440993
+  - flags 0xbf223d
+  - section_header_offset 0x5761ad
+  - section_size 0x32bdc7
+  - section_flags 0xc7bd32
+  - section_header_size 0xebe188
+  - section_number 0xdbba42
+  - section_offset 0x9a9cab
+  - section_type 0x60636e
+  - data 0x3960cc
+  - strlen 0xd17171
+  - value 0xba2525
+  - strndx 0xe05c5c

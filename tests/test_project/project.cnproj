@@ -3,7 +3,7 @@
     <version>1.0.0</version>
 
     <builds>
-        <binary type="client" os="win" arch="x86_64">
+        <binary type="client" os="win" arch="amd64">
             <dependencies>
                 <module>core</module>
                 <module>graphic</module>
@@ -12,7 +12,7 @@
             </dependencies>
             <name>${project_name}-client-windows-64bits.exe</name>
         </binary>
-        <binary type="server" os="win" arch="x86_64">
+        <binary type="server" os="win" arch="amd64">
             <dependencies>
                 <module>core</module>
                 <module>graphic-headless</module>
