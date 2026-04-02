@@ -38,7 +38,7 @@ static void _cpu_rendering(const Vector2 *position,
 }
 
 static void _gpu_rendering(const Vector2 *position,
-    const Vector2 *scale, const Rect *bounding, const Rect *rotation, Texture *object_texture, gpu_rendering_data *rendering_data)
+    const Vector2 *scale, const Rect *bounding, const Vector3 *rotation, Texture *object_texture, gpu_rendering_data *rendering_data)
 {
     draw_texture(
         object_texture, rendering_data->renderer,
@@ -51,7 +51,7 @@ static void _gpu_rendering(const Vector2 *position,
             .x = scale->x * rendering_data->canva_ratio.x,
             .y = scale->y * rendering_data->canva_ratio.y
         },
-        2.0 * atan2((double)rotation->w, (double)rotation->h) * (180.0 / M_PI)
+        rotation->z
     );
 }
 
@@ -74,7 +74,7 @@ static cn_value _render_object(Object *__this, void **args)
 
     Vector3 *object_position = &get_attr(render_stack->obj, "position")->as.vec3;
     Vector3 *object_scale = &get_attr(render_stack->obj, "scale")->as.vec3;
-    Rect *object_rotation = &get_attr(render_stack->obj, "rotation")->as.rect;
+    Vector3 *object_rotation = &get_attr(render_stack->obj, "rotation")->as.vec3;
     Rect *object_texture_bounding = has_attr(render_stack->obj, "texture_bounding") ?
         &get_attr(render_stack->obj, "texture_bounding")->as.rect : NULL;
 

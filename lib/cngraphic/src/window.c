@@ -71,6 +71,17 @@ CN_API Window *new_window(const char *name, const Texture *icon, const Videomode
             return (NULL);
         }
 
+        if (!gladLoadGL((GLADloadfunc)SDL_GL_GetProcAddress)) {
+            (void)SDL_GL_DeleteContext(window->gl_ctx);
+            if (window->renderer)
+                (void)SDL_DestroyRenderer(window->renderer);
+            (void)free(window->title);
+            (void)SDL_DestroyWindowSurface(window->window);
+            (void)SDL_DestroyWindow(window->window);
+            (void)free(window);
+            return (NULL);
+        }
+
         if ((video_mode->flags & VDM_VSYNC) > 0) {
             SDL_GL_SetSwapInterval(1);
         }
@@ -325,6 +336,8 @@ CN_API void clear_window(Window *window, cncolor color)
             ((color & 0x00ff0000) >> 16) / 255.0f,
             ((color & 0x0000ff00) >> 8) / 255.0f,
             (color & 0x000000ff) / 255.0f);
+        (void)glEnable(GL_DEPTH_TEST);
+        (void)glDisable(GL_CULL_FACE);
         (void)glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     }
 }

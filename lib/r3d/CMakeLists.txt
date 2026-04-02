@@ -8,6 +8,7 @@ add_library(r3d SHARED
     src/object3d.c
     src/material.c
     src/mesh.c
+    src/shader.c
 )
 
 target_compile_options(r3d

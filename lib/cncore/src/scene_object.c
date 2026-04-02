@@ -11,7 +11,7 @@ static cn_value _init(Object *__this, void **args)
     struct scene_object_mode_s *mode = args[0];
 
     INIT_VEC3(__this, mode->coords, "position");
-    INIT_RECT(__this, mode->rotation, "rotation");
+    INIT_VEC3(__this, mode->rotation, "rotation");
     INIT_VEC3(__this, mode->scale, "scale");
 
     INIT_INT(__this, mode->flags, "_flags");

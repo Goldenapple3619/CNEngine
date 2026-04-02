@@ -67,6 +67,24 @@ Object *add_test_opengl_window(Object *ctx)
         return (NULL);
     }
 
+    Object *obj = build_object(new_object3d(), (cnany []){
+        &(struct scene_object_mode_s){
+            .coords = {0, 0, 0},
+            .flags = CN_OBJ_DRAWABLE | CN_OBJ_HOST,
+            .rotation = {0, 0, 0},
+            .scale = {1, 1, 1}
+        }
+    });
+
+    if (!obj) {
+        return (NULL);
+    }
+
+    if (call_method(get_attr(ctx, "scene")->as.ptr, "add_element", (cnany []){obj, NULL}).as.i == VALUE_ERR.as.i) {
+        delete_object(obj);
+        return (NULL);
+    }
+
     return (window_interface);
 }
 
@@ -109,7 +127,7 @@ Object *add_test_twod_window(Object *ctx)
         &(struct scene_object_mode_s){
             .coords = {15, 15, 0},
             .flags = CN_OBJ_DRAWABLE | CN_OBJ_HOST,
-            .rotation = {0, 0, 0, 0},
+            .rotation = {0, 0, 0},
             .scale = {2, 2, 1}
         }
     });
@@ -232,10 +250,10 @@ int main(int argc, char *argv[])
         return (1);
     }
 
-    // if (!add_test_opengl_window(ctx)) {
-    //     delete_object(ctx);
-    //     return (1);
-    // }
+    if (!add_test_opengl_window(ctx)) {
+        delete_object(ctx);
+        return (1);
+    }
 
     // if (!add_test_twod_window(ctx)) {
     //     delete_object(ctx);

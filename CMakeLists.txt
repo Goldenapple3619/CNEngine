@@ -123,6 +123,27 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(SDL2_mixer)
 
+FetchContent_Declare(
+    glad
+    GIT_REPOSITORY https://github.com/Dav1dde/glad.git
+    GIT_TAG v2.0.6
+    GIT_SHALLOW TRUE
+    SOURCE_SUBDIR cmake
+)
+
+FetchContent_GetProperties(glad)
+if(NOT glad_POPULATED)
+    FetchContent_Populate(glad)
+    add_subdirectory(${glad_SOURCE_DIR}/cmake ${glad_BINARY_DIR})
+endif()
+
+glad_add_library(glad_gl STATIC
+    LANGUAGE C
+    API gl:core=4.6
+)
+
+FetchContent_MakeAvailable(glad)
+
 find_package(OpenGL REQUIRED)
 
 # ========= Modules =========

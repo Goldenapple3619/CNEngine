@@ -1,6 +1,7 @@
 #ifndef _LIBCNGRAPGIC_H_
     #define _LIBCNGRAPGIC_H_
 
+    #include <glad/gl.h>
     #include <SDL2/SDL.h>
     #include <SDL_image.h>
     #include "libcncore.h"

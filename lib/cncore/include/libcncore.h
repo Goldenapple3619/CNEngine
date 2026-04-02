@@ -208,7 +208,7 @@
     struct scene_object_mode_s {
         struct vector3_s coords;
         struct vector3_s scale;
-        struct rect_s rotation;
+        struct vector3_s rotation;
         scene_object_flags flags;
     };
 
