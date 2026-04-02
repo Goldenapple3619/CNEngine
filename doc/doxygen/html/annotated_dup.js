@@ -27,6 +27,7 @@ var annotated_dup =
     [ "twod_render_stack", "structtwod__render__stack.html", "structtwod__render__stack" ],
     [ "vector2_s", "structvector2__s.html", "structvector2__s" ],
     [ "vector3_s", "structvector3__s.html", "structvector3__s" ],
+    [ "Vertex", "structVertex.html", "structVertex" ],
     [ "videomode_s", "structvideomode__s.html", "structvideomode__s" ],
     [ "window_s", "structwindow__s.html", "structwindow__s" ],
     [ "window_universe_s", "structwindow__universe__s.html", "structwindow__universe__s" ]

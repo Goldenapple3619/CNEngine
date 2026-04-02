@@ -9,24 +9,75 @@
 \item 
 \mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structMaterial_ad151148dc3460f25435e951786171350}{texture}}
 \item 
-GLuint \mbox{\hyperlink{structMaterial_ad69034f872f4261a6b9e10942ff07758}{shader}}
-\item 
 \mbox{\hyperlink{libcngraphic_8h_a0b2773fdce5fa81de32a2e7a552ff37d}{cncolor}} \mbox{\hyperlink{structMaterial_acb65226e740fa398d09868e0a4d2cf11}{color}}
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>uint32\_t \mbox{\hyperlink{structMaterial_a6bf4520632b163316d4f0b8041d14fad}{gl\_shader}}\\
+\} \mbox{\hyperlink{structMaterial_aa690f3094166dfcbc951dc1dbdfd468c}{gpu\_handler}}\\
+
+\end{tabbing}\item 
+\mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}} \mbox{\hyperlink{structMaterial_ab7f39eb925a5496ce4a956f9619e3ccd}{ambient}}
+\item 
+\mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}} \mbox{\hyperlink{structMaterial_ab4c6fbcfd2e7e342d67dd5d37c353ed1}{diffuse}}
+\item 
+\mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}} \mbox{\hyperlink{structMaterial_ad1b1e97512e6eefe4edc3e220e37bedb}{specular}}
+\item 
+\mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}} \mbox{\hyperlink{structMaterial_a7e36b8405184cbfb204eb96f0ccd742a}{shininess}}
+\item 
+\mbox{\hyperlink{libr3d_8h_a68f9fcaba986f3dcdf56316330102559}{rendering\+\_\+api}} \mbox{\hyperlink{structMaterial_a9db3da4dd99ec5e352ab546389265792}{api}}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Field Documentation}
+\Hypertarget{structMaterial_ab7f39eb925a5496ce4a956f9619e3ccd}\label{structMaterial_ab7f39eb925a5496ce4a956f9619e3ccd} 
+\index{Material@{Material}!ambient@{ambient}}
+\index{ambient@{ambient}!Material@{Material}}
+\doxysubsubsection{\texorpdfstring{ambient}{ambient}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}} Material\+::ambient}
+
+\Hypertarget{structMaterial_a9db3da4dd99ec5e352ab546389265792}\label{structMaterial_a9db3da4dd99ec5e352ab546389265792} 
+\index{Material@{Material}!api@{api}}
+\index{api@{api}!Material@{Material}}
+\doxysubsubsection{\texorpdfstring{api}{api}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libr3d_8h_a68f9fcaba986f3dcdf56316330102559}{rendering\+\_\+api}} Material\+::api}
+
 \Hypertarget{structMaterial_acb65226e740fa398d09868e0a4d2cf11}\label{structMaterial_acb65226e740fa398d09868e0a4d2cf11} 
 \index{Material@{Material}!color@{color}}
 \index{color@{color}!Material@{Material}}
 \doxysubsubsection{\texorpdfstring{color}{color}}
 {\footnotesize\ttfamily \mbox{\hyperlink{libcngraphic_8h_a0b2773fdce5fa81de32a2e7a552ff37d}{cncolor}} Material\+::color}
 
-\Hypertarget{structMaterial_ad69034f872f4261a6b9e10942ff07758}\label{structMaterial_ad69034f872f4261a6b9e10942ff07758} 
-\index{Material@{Material}!shader@{shader}}
-\index{shader@{shader}!Material@{Material}}
-\doxysubsubsection{\texorpdfstring{shader}{shader}}
-{\footnotesize\ttfamily GLuint Material\+::shader}
+\Hypertarget{structMaterial_ab4c6fbcfd2e7e342d67dd5d37c353ed1}\label{structMaterial_ab4c6fbcfd2e7e342d67dd5d37c353ed1} 
+\index{Material@{Material}!diffuse@{diffuse}}
+\index{diffuse@{diffuse}!Material@{Material}}
+\doxysubsubsection{\texorpdfstring{diffuse}{diffuse}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}} Material\+::diffuse}
+
+\Hypertarget{structMaterial_a6bf4520632b163316d4f0b8041d14fad}\label{structMaterial_a6bf4520632b163316d4f0b8041d14fad} 
+\index{Material@{Material}!gl\_shader@{gl\_shader}}
+\index{gl\_shader@{gl\_shader}!Material@{Material}}
+\doxysubsubsection{\texorpdfstring{gl\_shader}{gl\_shader}}
+{\footnotesize\ttfamily uint32\+\_\+t Material\+::gl\+\_\+shader}
+
+\Hypertarget{structMaterial_aa690f3094166dfcbc951dc1dbdfd468c}\label{structMaterial_aa690f3094166dfcbc951dc1dbdfd468c} 
+\index{Material@{Material}!gpu\_handler@{gpu\_handler}}
+\index{gpu\_handler@{gpu\_handler}!Material@{Material}}
+\doxysubsubsection{\texorpdfstring{[union]}{[union]}}
+{\footnotesize\ttfamily union  \{ ... \}  Material\+::gpu\+\_\+handler}
+
+\Hypertarget{structMaterial_a7e36b8405184cbfb204eb96f0ccd742a}\label{structMaterial_a7e36b8405184cbfb204eb96f0ccd742a} 
+\index{Material@{Material}!shininess@{shininess}}
+\index{shininess@{shininess}!Material@{Material}}
+\doxysubsubsection{\texorpdfstring{shininess}{shininess}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}} Material\+::shininess}
+
+\Hypertarget{structMaterial_ad1b1e97512e6eefe4edc3e220e37bedb}\label{structMaterial_ad1b1e97512e6eefe4edc3e220e37bedb} 
+\index{Material@{Material}!specular@{specular}}
+\index{specular@{specular}!Material@{Material}}
+\doxysubsubsection{\texorpdfstring{specular}{specular}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}} Material\+::specular}
 
 \Hypertarget{structMaterial_ad151148dc3460f25435e951786171350}\label{structMaterial_ad151148dc3460f25435e951786171350} 
 \index{Material@{Material}!texture@{texture}}

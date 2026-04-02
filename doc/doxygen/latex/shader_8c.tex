@@ -1,0 +1,43 @@
+\doxysection{lib/r3d/src/shader.c File Reference}
+\hypertarget{shader_8c}{}\label{shader_8c}\index{lib/r3d/src/shader.c@{lib/r3d/src/shader.c}}
+{\ttfamily \#include "{}libr3d.\+h"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static GLuint \mbox{\hyperlink{shader_8c_adc13172cb669583fb24b1831c90575eb}{\+\_\+compile\+\_\+stage}} (GLenum type, const char \texorpdfstring{$\ast$}{*}src)
+\item 
+static char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{shader_8c_a1e593979ef398ef6f7b4fa27bc878db4}{\+\_\+read\+\_\+file}} (const char \texorpdfstring{$\ast$}{*}path)
+\item 
+GLuint \mbox{\hyperlink{shader_8c_a528b8af313e24057283c3e0f6af3f8d8}{shader\+\_\+compile}} (const char \texorpdfstring{$\ast$}{*}vert\+\_\+src, const char \texorpdfstring{$\ast$}{*}frag\+\_\+src)
+\item 
+GLuint \mbox{\hyperlink{shader_8c_aa9265033bf35b3cf66ed06efe9fdee62}{shader\+\_\+load}} (const char \texorpdfstring{$\ast$}{*}vert\+\_\+path, const char \texorpdfstring{$\ast$}{*}frag\+\_\+path)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{shader_8c_adc13172cb669583fb24b1831c90575eb}\label{shader_8c_adc13172cb669583fb24b1831c90575eb} 
+\index{shader.c@{shader.c}!\_compile\_stage@{\_compile\_stage}}
+\index{\_compile\_stage@{\_compile\_stage}!shader.c@{shader.c}}
+\doxysubsubsection{\texorpdfstring{\_compile\_stage()}{\_compile\_stage()}}
+{\footnotesize\ttfamily static GLuint \+\_\+compile\+\_\+stage (\begin{DoxyParamCaption}\item[{GLenum}]{type,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{src }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{shader_8c_a1e593979ef398ef6f7b4fa27bc878db4}\label{shader_8c_a1e593979ef398ef6f7b4fa27bc878db4} 
+\index{shader.c@{shader.c}!\_read\_file@{\_read\_file}}
+\index{\_read\_file@{\_read\_file}!shader.c@{shader.c}}
+\doxysubsubsection{\texorpdfstring{\_read\_file()}{\_read\_file()}}
+{\footnotesize\ttfamily static char \texorpdfstring{$\ast$}{*} \+\_\+read\+\_\+file (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{shader_8c_a528b8af313e24057283c3e0f6af3f8d8}\label{shader_8c_a528b8af313e24057283c3e0f6af3f8d8} 
+\index{shader.c@{shader.c}!shader\_compile@{shader\_compile}}
+\index{shader\_compile@{shader\_compile}!shader.c@{shader.c}}
+\doxysubsubsection{\texorpdfstring{shader\_compile()}{shader\_compile()}}
+{\footnotesize\ttfamily GLuint shader\+\_\+compile (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{vert\+\_\+src,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{frag\+\_\+src }\end{DoxyParamCaption})}
+
+\Hypertarget{shader_8c_aa9265033bf35b3cf66ed06efe9fdee62}\label{shader_8c_aa9265033bf35b3cf66ed06efe9fdee62} 
+\index{shader.c@{shader.c}!shader\_load@{shader\_load}}
+\index{shader\_load@{shader\_load}!shader.c@{shader.c}}
+\doxysubsubsection{\texorpdfstring{shader\_load()}{shader\_load()}}
+{\footnotesize\ttfamily GLuint shader\+\_\+load (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{vert\+\_\+path,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{frag\+\_\+path }\end{DoxyParamCaption})}
+

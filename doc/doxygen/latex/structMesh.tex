@@ -7,24 +7,97 @@
 \doxysubsubsection*{Data Fields}
 \begin{DoxyCompactItemize}
 \item 
-GLuint \mbox{\hyperlink{structMesh_a101a39d88bc5c8d33f0ebd6e77a60129}{vao}}
+\mbox{\hyperlink{structVertex}{Vertex}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structMesh_aaab3bc90baf629029813e0812dbeec74}{vertices}}
+\item 
+uint32\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structMesh_aa27c1a36100d89dae54350c9b627a1fc}{indices}}
 \item 
 size\+\_\+t \mbox{\hyperlink{structMesh_a0317db3a3dc8f90bf480bd236d4ff7e1}{vertex\+\_\+count}}
-\end{DoxyCompactItemize}
+\item 
+size\+\_\+t \mbox{\hyperlink{structMesh_a9a709cb2d89346aac8b267813913106e}{index\+\_\+count}}
+\item 
+\mbox{\hyperlink{libr3d_8h_a68f9fcaba986f3dcdf56316330102559}{rendering\+\_\+api}} \mbox{\hyperlink{structMesh_af74f33225711147f397907bf519e6bcc}{api}}
+\item 
+\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} \mbox{\hyperlink{structMesh_ad8127861de8427d8f43a5baa407e1620}{uploaded}}
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>struct \{\\
+\>\>uint32\_t \mbox{\hyperlink{structMesh_a49bab4d6ae7a771f1f9a5dd06e82429e}{vao}}\\
+\>\>uint32\_t \mbox{\hyperlink{structMesh_a32d7cd6b96d51fc012b9618ea1de96bd}{vbo}}\\
+\>\>uint32\_t \mbox{\hyperlink{structMesh_ab4367d0b333d6bd991be1da94b84e09f}{ebo}}\\
+\>\} \mbox{\hyperlink{structMesh_a3173a5651f35cf090549b80235a2ae9b}{gl}}\\
+\} \mbox{\hyperlink{structMesh_adcc90b27277a67ea48e3fe1642aba90c}{gpu\_handler}}\\
+
+\end{tabbing}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Field Documentation}
-\Hypertarget{structMesh_a101a39d88bc5c8d33f0ebd6e77a60129}\label{structMesh_a101a39d88bc5c8d33f0ebd6e77a60129} 
+\Hypertarget{structMesh_af74f33225711147f397907bf519e6bcc}\label{structMesh_af74f33225711147f397907bf519e6bcc} 
+\index{Mesh@{Mesh}!api@{api}}
+\index{api@{api}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{api}{api}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libr3d_8h_a68f9fcaba986f3dcdf56316330102559}{rendering\+\_\+api}} Mesh\+::api}
+
+\Hypertarget{structMesh_ab4367d0b333d6bd991be1da94b84e09f}\label{structMesh_ab4367d0b333d6bd991be1da94b84e09f} 
+\index{Mesh@{Mesh}!ebo@{ebo}}
+\index{ebo@{ebo}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{ebo}{ebo}}
+{\footnotesize\ttfamily uint32\+\_\+t Mesh\+::ebo}
+
+\Hypertarget{structMesh_a3173a5651f35cf090549b80235a2ae9b}\label{structMesh_a3173a5651f35cf090549b80235a2ae9b} 
+\index{Mesh@{Mesh}!gl@{gl}}
+\index{gl@{gl}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{[struct]}{[struct]}}
+{\footnotesize\ttfamily struct  \{ ... \}  Mesh\+::gl}
+
+\Hypertarget{structMesh_adcc90b27277a67ea48e3fe1642aba90c}\label{structMesh_adcc90b27277a67ea48e3fe1642aba90c} 
+\index{Mesh@{Mesh}!gpu\_handler@{gpu\_handler}}
+\index{gpu\_handler@{gpu\_handler}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{[union]}{[union]}}
+{\footnotesize\ttfamily union  \{ ... \}  Mesh\+::gpu\+\_\+handler}
+
+\Hypertarget{structMesh_a9a709cb2d89346aac8b267813913106e}\label{structMesh_a9a709cb2d89346aac8b267813913106e} 
+\index{Mesh@{Mesh}!index\_count@{index\_count}}
+\index{index\_count@{index\_count}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{index\_count}{index\_count}}
+{\footnotesize\ttfamily size\+\_\+t Mesh\+::index\+\_\+count}
+
+\Hypertarget{structMesh_aa27c1a36100d89dae54350c9b627a1fc}\label{structMesh_aa27c1a36100d89dae54350c9b627a1fc} 
+\index{Mesh@{Mesh}!indices@{indices}}
+\index{indices@{indices}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{indices}{indices}}
+{\footnotesize\ttfamily uint32\+\_\+t\texorpdfstring{$\ast$}{*} Mesh\+::indices}
+
+\Hypertarget{structMesh_ad8127861de8427d8f43a5baa407e1620}\label{structMesh_ad8127861de8427d8f43a5baa407e1620} 
+\index{Mesh@{Mesh}!uploaded@{uploaded}}
+\index{uploaded@{uploaded}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{uploaded}{uploaded}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} Mesh\+::uploaded}
+
+\Hypertarget{structMesh_a49bab4d6ae7a771f1f9a5dd06e82429e}\label{structMesh_a49bab4d6ae7a771f1f9a5dd06e82429e} 
 \index{Mesh@{Mesh}!vao@{vao}}
 \index{vao@{vao}!Mesh@{Mesh}}
 \doxysubsubsection{\texorpdfstring{vao}{vao}}
-{\footnotesize\ttfamily GLuint Mesh\+::vao}
+{\footnotesize\ttfamily uint32\+\_\+t Mesh\+::vao}
+
+\Hypertarget{structMesh_a32d7cd6b96d51fc012b9618ea1de96bd}\label{structMesh_a32d7cd6b96d51fc012b9618ea1de96bd} 
+\index{Mesh@{Mesh}!vbo@{vbo}}
+\index{vbo@{vbo}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{vbo}{vbo}}
+{\footnotesize\ttfamily uint32\+\_\+t Mesh\+::vbo}
 
 \Hypertarget{structMesh_a0317db3a3dc8f90bf480bd236d4ff7e1}\label{structMesh_a0317db3a3dc8f90bf480bd236d4ff7e1} 
 \index{Mesh@{Mesh}!vertex\_count@{vertex\_count}}
 \index{vertex\_count@{vertex\_count}!Mesh@{Mesh}}
 \doxysubsubsection{\texorpdfstring{vertex\_count}{vertex\_count}}
 {\footnotesize\ttfamily size\+\_\+t Mesh\+::vertex\+\_\+count}
+
+\Hypertarget{structMesh_aaab3bc90baf629029813e0812dbeec74}\label{structMesh_aaab3bc90baf629029813e0812dbeec74} 
+\index{Mesh@{Mesh}!vertices@{vertices}}
+\index{vertices@{vertices}!Mesh@{Mesh}}
+\doxysubsubsection{\texorpdfstring{vertices}{vertices}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structVertex}{Vertex}}\texorpdfstring{$\ast$}{*} Mesh\+::vertices}
 
 
 
