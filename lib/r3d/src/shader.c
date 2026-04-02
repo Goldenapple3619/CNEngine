@@ -32,7 +32,7 @@ static char *_read_file(const char *path)
     rewind(f);
 
     char *buf = malloc(len + 1);
-    fread(buf, 1, len, f);
+    (void)fread(buf, 1, len, f);
     buf[len] = '\0';
     fclose(f);
     return buf;

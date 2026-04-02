@@ -94,6 +94,10 @@ jobs:
           restore-keys: |
             cmake-build-${{ runner.os }}-windows-i386-
 
+      - name: Install Python dependencies (Windows)
+        run: python -m pip install jinja2
+        shell: cmd
+
       - name: Install mingw
         run: |
           choco install msys2 -y
@@ -136,6 +140,10 @@ jobs:
           key: cmake-build-${{ runner.os }}-windows-amd64-${{ hashFiles('**/CMakeLists.txt') }}
           restore-keys: |
             cmake-build-${{ runner.os }}-windows-amd64-
+
+      - name: Install Python dependencies (Windows)
+        run: python -m pip install jinja2
+        shell: cmd
 
       - name: Install mingw
         run: |
@@ -183,6 +191,9 @@ jobs:
 
       - name: Install NASM
         run: brew install nasm
+
+      - name: Install Python dependencies
+        run: pip install jinja2
 
       - name: Build macos-arm64
         run: |
