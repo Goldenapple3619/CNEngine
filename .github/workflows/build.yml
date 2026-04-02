@@ -95,7 +95,7 @@ jobs:
             cmake-build-${{ runner.os }}-windows-i386-
 
       - name: Install Python dependencies (Windows)
-        run: python -m pip install jinja2
+        run: python3 -m pip install jinja2
         shell: cmd
 
       - name: Install mingw
@@ -142,7 +142,7 @@ jobs:
             cmake-build-${{ runner.os }}-windows-amd64-
 
       - name: Install Python dependencies (Windows)
-        run: python -m pip install jinja2
+        run: python3 -m pip install jinja2
         shell: cmd
 
       - name: Install mingw
@@ -193,7 +193,7 @@ jobs:
         run: brew install nasm
 
       - name: Install Python dependencies
-        run: pip install jinja2
+        run: python3 -m pip install jinja2
 
       - name: Build macos-arm64
         run: |
