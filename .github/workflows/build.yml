@@ -94,27 +94,18 @@ jobs:
           restore-keys: |
             cmake-build-${{ runner.os }}-windows-i386-
 
-      - name: Install Python dependencies (Windows)
-        run: python3 -m pip install jinja2
-        shell: cmd
-
-      - name: Install mingw
+      - name: Install mingw + jinja2
+        shell: C:\msys64\usr\bin\bash.exe -leo pipefail {0}
+        env:
+          MSYSTEM: MINGW32
         run: |
-          choco install msys2 -y
-
-          $msys2Path = "${env:ProgramFiles}\msys2\usr\bin"
-          $env:Path = "$msys2Path;$env:Path"
-
-          C:\tools\msys64\usr\bin\bash.exe -lc "pacman -Syu --noconfirm"
-          C:\tools\msys64\usr\bin\bash.exe -lc "pacman -S --noconfirm mingw-w64-i686-toolchain mingw-w64-x86_64-python-jinja2 base-devel"
-
-          copy C:\tools\msys64\mingw32\bin\windres.exe C:\tools\msys64\mingw32\bin\i686-w64-mingw32-windres.exe
-
-          $env:Path = "C:\tools\msys64\mingw32\bin;$env:Path"
+          pacman -Syu --noconfirm
+          pacman -S --noconfirm mingw-w64-i686-toolchain mingw-w64-i686-python-jinja2 base-devel
+          cp /mingw32/bin/windres.exe /mingw32/bin/i686-w64-mingw32-windres.exe
 
       - name: Build windows-i386
         run: |
-          $env:Path = "C:\tools\msys64\mingw32\bin;$env:Path"
+          $env:Path = "C:\msys64\mingw32\bin;$env:Path"
           cmd.exe /c scripts\build_windows-i386.bat
         shell: powershell
 
@@ -141,28 +132,18 @@ jobs:
           restore-keys: |
             cmake-build-${{ runner.os }}-windows-amd64-
 
-      - name: Install Python dependencies (Windows)
-        run: python3 -m pip install jinja2
-        shell: cmd
-
-      - name: Install mingw
+      - name: Install mingw + jinja2
+        shell: C:\msys64\usr\bin\bash.exe -leo pipefail {0}
+        env:
+          MSYSTEM: MINGW64
         run: |
-          choco install msys2 -y
-
-          $msys2Path = "${env:ProgramFiles}\msys2\usr\bin"
-          $env:Path = "$msys2Path;$env:Path"
-
-          C:\tools\msys64\usr\bin\bash.exe -lc "pacman -Syu --noconfirm"
-          C:\tools\msys64\usr\bin\bash.exe -lc "pacman -S --noconfirm mingw-w64-x86_64-toolchain mingw-w64-x86_64-python-jinja2 base-devel"
-
-          copy C:\tools\msys64\mingw64\bin\windres.exe C:\tools\msys64\mingw64\bin\x86_64-w64-mingw32-windres.exe
-
-          $env:Path = "C:\tools\msys64\mingw64\bin;$env:Path"
-        shell: powershell
+          pacman -Syu --noconfirm
+          pacman -S --noconfirm mingw-w64-x86_64-toolchain mingw-w64-x86_64-python-jinja2 base-devel
+          cp /mingw64/bin/windres.exe /mingw64/bin/x86_64-w64-mingw32-windres.exe
 
       - name: Build windows-amd64
         run: |
-          $env:Path = "C:\tools\msys64\mingw64\bin;$env:Path"
+          $env:Path = "C:\msys64\mingw64\bin;$env:Path"
           cmd.exe /c scripts\build_windows-amd64.bat
         shell: powershell
 
