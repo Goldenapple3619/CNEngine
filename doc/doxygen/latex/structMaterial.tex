@@ -2,12 +2,12 @@
 \hypertarget{structMaterial}{}\label{structMaterial}\index{Material@{Material}}
 
 
-{\ttfamily \#include $<$libr3d.\+h$>$}
+{\ttfamily \#include $<$libcngraphic.\+h$>$}
 
 \doxysubsubsection*{Data Fields}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structMaterial_ad151148dc3460f25435e951786171350}{texture}}
+struct \mbox{\hyperlink{structtexture__s}{texture\+\_\+s}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structMaterial_aaf2e5cfe5e27f8ad57eab6dff72b3375}{texture}}
 \item 
 \mbox{\hyperlink{libcngraphic_8h_a0b2773fdce5fa81de32a2e7a552ff37d}{cncolor}} \mbox{\hyperlink{structMaterial_acb65226e740fa398d09868e0a4d2cf11}{color}}
 \item 
@@ -15,7 +15,7 @@
 xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
 union \{\\
 \>uint32\_t \mbox{\hyperlink{structMaterial_a6bf4520632b163316d4f0b8041d14fad}{gl\_shader}}\\
-\} \mbox{\hyperlink{structMaterial_aa690f3094166dfcbc951dc1dbdfd468c}{gpu\_handler}}\\
+\} \mbox{\hyperlink{structMaterial_a5680945d5cc220aafbfa2f6e9d6f635a}{gpu\_handler}}\\
 
 \end{tabbing}\item 
 \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}} \mbox{\hyperlink{structMaterial_ab7f39eb925a5496ce4a956f9619e3ccd}{ambient}}
@@ -26,7 +26,7 @@ union \{\\
 \item 
 \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}} \mbox{\hyperlink{structMaterial_a7e36b8405184cbfb204eb96f0ccd742a}{shininess}}
 \item 
-\mbox{\hyperlink{libr3d_8h_a68f9fcaba986f3dcdf56316330102559}{rendering\+\_\+api}} \mbox{\hyperlink{structMaterial_a9db3da4dd99ec5e352ab546389265792}{api}}
+\mbox{\hyperlink{libcngraphic_8h_a68f9fcaba986f3dcdf56316330102559}{rendering\+\_\+api}} \mbox{\hyperlink{structMaterial_a9db3da4dd99ec5e352ab546389265792}{api}}
 \end{DoxyCompactItemize}
 
 
@@ -41,7 +41,7 @@ union \{\\
 \index{Material@{Material}!api@{api}}
 \index{api@{api}!Material@{Material}}
 \doxysubsubsection{\texorpdfstring{api}{api}}
-{\footnotesize\ttfamily \mbox{\hyperlink{libr3d_8h_a68f9fcaba986f3dcdf56316330102559}{rendering\+\_\+api}} Material\+::api}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcngraphic_8h_a68f9fcaba986f3dcdf56316330102559}{rendering\+\_\+api}} Material\+::api}
 
 \Hypertarget{structMaterial_acb65226e740fa398d09868e0a4d2cf11}\label{structMaterial_acb65226e740fa398d09868e0a4d2cf11} 
 \index{Material@{Material}!color@{color}}
@@ -61,7 +61,7 @@ union \{\\
 \doxysubsubsection{\texorpdfstring{gl\_shader}{gl\_shader}}
 {\footnotesize\ttfamily uint32\+\_\+t Material\+::gl\+\_\+shader}
 
-\Hypertarget{structMaterial_aa690f3094166dfcbc951dc1dbdfd468c}\label{structMaterial_aa690f3094166dfcbc951dc1dbdfd468c} 
+\Hypertarget{structMaterial_a5680945d5cc220aafbfa2f6e9d6f635a}\label{structMaterial_a5680945d5cc220aafbfa2f6e9d6f635a} 
 \index{Material@{Material}!gpu\_handler@{gpu\_handler}}
 \index{gpu\_handler@{gpu\_handler}!Material@{Material}}
 \doxysubsubsection{\texorpdfstring{[union]}{[union]}}
@@ -79,14 +79,14 @@ union \{\\
 \doxysubsubsection{\texorpdfstring{specular}{specular}}
 {\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}} Material\+::specular}
 
-\Hypertarget{structMaterial_ad151148dc3460f25435e951786171350}\label{structMaterial_ad151148dc3460f25435e951786171350} 
+\Hypertarget{structMaterial_aaf2e5cfe5e27f8ad57eab6dff72b3375}\label{structMaterial_aaf2e5cfe5e27f8ad57eab6dff72b3375} 
 \index{Material@{Material}!texture@{texture}}
 \index{texture@{texture}!Material@{Material}}
 \doxysubsubsection{\texorpdfstring{texture}{texture}}
-{\footnotesize\ttfamily \mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}}\texorpdfstring{$\ast$}{*} Material\+::texture}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structtexture__s}{texture\+\_\+s}}\texorpdfstring{$\ast$}{*} Material\+::texture}
 
 
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-lib/r3d/include/\mbox{\hyperlink{libr3d_8h}{libr3d.\+h}}\end{DoxyCompactItemize}
+lib/cngraphic/include/\mbox{\hyperlink{libcngraphic_8h}{libcngraphic.\+h}}\end{DoxyCompactItemize}

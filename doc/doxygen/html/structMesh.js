@@ -2,8 +2,8 @@ var structMesh =
 [
     [ "api", "structMesh.html#af74f33225711147f397907bf519e6bcc", null ],
     [ "ebo", "structMesh.html#ab4367d0b333d6bd991be1da94b84e09f", null ],
-    [ "gl", "structMesh.html#a3173a5651f35cf090549b80235a2ae9b", null ],
-    [ "gpu_handler", "structMesh.html#adcc90b27277a67ea48e3fe1642aba90c", null ],
+    [ "gl", "structMesh.html#a0c6306bf0be80c776aff9cefe14e0f4b", null ],
+    [ "gpu_handler", "structMesh.html#a9ad9e2be72fa05abd32ca51fbad64c36", null ],
     [ "index_count", "structMesh.html#a9a709cb2d89346aac8b267813913106e", null ],
     [ "indices", "structMesh.html#aa27c1a36100d89dae54350c9b627a1fc", null ],
     [ "uploaded", "structMesh.html#ad8127861de8427d8f43a5baa407e1620", null ],

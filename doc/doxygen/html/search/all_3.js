@@ -8,7 +8,7 @@ var searchData=
   ['align_5',['align',['../structtext__mode__s.html#a00a5a0b98520500590f53dd76a11693d',1,'text_mode_s']]],
   ['allow_5fevent_6',['allow_event',['../window_8c.html#a3e1325c3d5c89b6c6e8d0310b7608bf8',1,'allow_event(Window *window, cn_event ev):&#160;window.c'],['../libcngraphic_8h.html#a3e1325c3d5c89b6c6e8d0310b7608bf8',1,'allow_event(Window *window, cn_event ev):&#160;window.c']]],
   ['ambient_7',['ambient',['../structMaterial.html#ab7f39eb925a5496ce4a956f9619e3ccd',1,'Material']]],
-  ['api_8',['api',['../structMaterial.html#a9db3da4dd99ec5e352ab546389265792',1,'Material::api'],['../structMesh.html#af74f33225711147f397907bf519e6bcc',1,'Mesh::api']]],
+  ['api_8',['api',['../structtexture__s.html#aab7b489526ddca85fa1bc612262908e5',1,'texture_s::api'],['../structMaterial.html#a9db3da4dd99ec5e352ab546389265792',1,'Material::api'],['../structMesh.html#af74f33225711147f397907bf519e6bcc',1,'Mesh::api']]],
   ['are_5fall_5fwindow_5fclosed_9',['are_all_window_closed',['../window__universe_8c.html#a67df556120ccab945a2754bc36315c03',1,'are_all_window_closed(const WindowUniverse *universe):&#160;window_universe.c'],['../libcngraphic_8h.html#a67df556120ccab945a2754bc36315c03',1,'are_all_window_closed(const WindowUniverse *universe):&#160;window_universe.c']]],
   ['as_10',['as',['../structcn__value.html#aa0efdb4b1109c1af80d1fad3f68bd5fa',1,'cn_value']]],
   ['attr_5fmap_5fs_11',['attr_map_s',['../structattr__map__s.html',1,'']]],

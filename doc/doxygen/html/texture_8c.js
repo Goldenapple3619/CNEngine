@@ -12,5 +12,6 @@ var texture_8c =
     [ "new_texture_from_file", "texture_8c.html#a79c99d0204a1a105d607a732727df67c", null ],
     [ "new_texture_from_surface", "texture_8c.html#a4f44c1daf5ef4da04877e134951c2b30", null ],
     [ "resize_texture", "texture_8c.html#ac8f66e67da6d5dabf0e20c8404a9e359", null ],
-    [ "set_opacity_texture", "texture_8c.html#a9f6ff2003b1a697490e1195bac48bd8c", null ]
+    [ "set_opacity_texture", "texture_8c.html#a9f6ff2003b1a697490e1195bac48bd8c", null ],
+    [ "texture_upload_gl", "texture_8c.html#a1b2d02e333f84ea64de019adfc91e3fe", null ]
 ];

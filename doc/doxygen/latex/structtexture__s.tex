@@ -11,13 +11,40 @@
 \item 
 SDL\+\_\+\+Surface \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structtexture__s_aae18cd81b667d434c2c308e54159d5e4}{surface}}
 \item 
-SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structtexture__s_a8d70837beb0224a5c88bf8e7ca28d211}{gpu\+\_\+texture}}
+\mbox{\hyperlink{libcngraphic_8h_a68f9fcaba986f3dcdf56316330102559}{rendering\+\_\+api}} \mbox{\hyperlink{structtexture__s_aab7b489526ddca85fa1bc612262908e5}{api}}
 \item 
-const SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structtexture__s_a286f960e0b81d4a286b5ddb80b0ea582}{renderer}}
-\end{DoxyCompactItemize}
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>struct \{\\
+\>\>SDL\_Texture \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structtexture__s_a8d70837beb0224a5c88bf8e7ca28d211}{gpu\_texture}}\\
+\>\>const SDL\_Renderer \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structtexture__s_a286f960e0b81d4a286b5ddb80b0ea582}{renderer}}\\
+\>\} \mbox{\hyperlink{structtexture__s_acc75709ddf55f4300e1bd4230af3436f}{sdl\_texture}}\\
+\>uint32\_t \mbox{\hyperlink{structtexture__s_aecf1d41b8440a4f9c0cea1e5496f0082}{gl\_id}}\\
+\} \mbox{\hyperlink{structtexture__s_a33c3a6c2a91691afd5b43f9f214e4a82}{gpu\_handler}}\\
+
+\end{tabbing}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Field Documentation}
+\Hypertarget{structtexture__s_aab7b489526ddca85fa1bc612262908e5}\label{structtexture__s_aab7b489526ddca85fa1bc612262908e5} 
+\index{texture\_s@{texture\_s}!api@{api}}
+\index{api@{api}!texture\_s@{texture\_s}}
+\doxysubsubsection{\texorpdfstring{api}{api}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcngraphic_8h_a68f9fcaba986f3dcdf56316330102559}{rendering\+\_\+api}} texture\+\_\+s\+::api}
+
+\Hypertarget{structtexture__s_aecf1d41b8440a4f9c0cea1e5496f0082}\label{structtexture__s_aecf1d41b8440a4f9c0cea1e5496f0082} 
+\index{texture\_s@{texture\_s}!gl\_id@{gl\_id}}
+\index{gl\_id@{gl\_id}!texture\_s@{texture\_s}}
+\doxysubsubsection{\texorpdfstring{gl\_id}{gl\_id}}
+{\footnotesize\ttfamily uint32\+\_\+t texture\+\_\+s\+::gl\+\_\+id}
+
+\Hypertarget{structtexture__s_a33c3a6c2a91691afd5b43f9f214e4a82}\label{structtexture__s_a33c3a6c2a91691afd5b43f9f214e4a82} 
+\index{texture\_s@{texture\_s}!gpu\_handler@{gpu\_handler}}
+\index{gpu\_handler@{gpu\_handler}!texture\_s@{texture\_s}}
+\doxysubsubsection{\texorpdfstring{[union]}{[union]}}
+{\footnotesize\ttfamily union  \{ ... \}  texture\+\_\+s\+::gpu\+\_\+handler}
+
 \Hypertarget{structtexture__s_a8d70837beb0224a5c88bf8e7ca28d211}\label{structtexture__s_a8d70837beb0224a5c88bf8e7ca28d211} 
 \index{texture\_s@{texture\_s}!gpu\_texture@{gpu\_texture}}
 \index{gpu\_texture@{gpu\_texture}!texture\_s@{texture\_s}}
@@ -29,6 +56,12 @@ const SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structtext
 \index{renderer@{renderer}!texture\_s@{texture\_s}}
 \doxysubsubsection{\texorpdfstring{renderer}{renderer}}
 {\footnotesize\ttfamily const SDL\+\_\+\+Renderer\texorpdfstring{$\ast$}{*} texture\+\_\+s\+::renderer}
+
+\Hypertarget{structtexture__s_acc75709ddf55f4300e1bd4230af3436f}\label{structtexture__s_acc75709ddf55f4300e1bd4230af3436f} 
+\index{texture\_s@{texture\_s}!sdl\_texture@{sdl\_texture}}
+\index{sdl\_texture@{sdl\_texture}!texture\_s@{texture\_s}}
+\doxysubsubsection{\texorpdfstring{[struct]}{[struct]}}
+{\footnotesize\ttfamily struct  \{ ... \}  texture\+\_\+s\+::sdl\+\_\+texture}
 
 \Hypertarget{structtexture__s_a2cfac756a0a2644944c4e383ab860a7f}\label{structtexture__s_a2cfac756a0a2644944c4e383ab860a7f} 
 \index{texture\_s@{texture\_s}!size@{size}}

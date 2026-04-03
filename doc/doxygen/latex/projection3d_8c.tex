@@ -1,0 +1,47 @@
+\doxysection{lib/r3d/src/projection3d.c File Reference}
+\hypertarget{projection3d_8c}{}\label{projection3d_8c}\index{lib/r3d/src/projection3d.c@{lib/r3d/src/projection3d.c}}
+{\ttfamily \#include "{}libr3d.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{projection3d_8c_ae71449b1cc6e6250b91f539153a7a0d3}{M\+\_\+\+PI}}~3.\+14159265358979323846
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{projection3d_8c_a9bd5352c1d0cbb605ee607c19aa7d92d}{\+\_\+make\+\_\+proj}} (\mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}} out\mbox{[}16\mbox{]}, \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}} fov\+\_\+deg, \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}} aspect, \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}} near, \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}} far)
+\item 
+void \mbox{\hyperlink{projection3d_8c_a7054cf18456f6c613f5c3c67d9db1226}{\+\_\+make\+\_\+view}} (\mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}} out\mbox{[}16\mbox{]}, const \mbox{\hyperlink{libcncore_8h_a3dd97d4c265b35e13059fcd0a8d6128f}{Vector3}} \texorpdfstring{$\ast$}{*}pos, const \mbox{\hyperlink{libcncore_8h_a3dd97d4c265b35e13059fcd0a8d6128f}{Vector3}} \texorpdfstring{$\ast$}{*}rot)
+\item 
+void \mbox{\hyperlink{projection3d_8c_ac492fd267e9ce3e1c31a83e87c01c2ab}{\+\_\+make\+\_\+model}} (\mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}} out\mbox{[}16\mbox{]}, const \mbox{\hyperlink{libcncore_8h_a3dd97d4c265b35e13059fcd0a8d6128f}{Vector3}} \texorpdfstring{$\ast$}{*}pos, const \mbox{\hyperlink{libcncore_8h_a3dd97d4c265b35e13059fcd0a8d6128f}{Vector3}} \texorpdfstring{$\ast$}{*}scl, const \mbox{\hyperlink{libcncore_8h_a3dd97d4c265b35e13059fcd0a8d6128f}{Vector3}} \texorpdfstring{$\ast$}{*}rot)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{projection3d_8c_ae71449b1cc6e6250b91f539153a7a0d3}\label{projection3d_8c_ae71449b1cc6e6250b91f539153a7a0d3} 
+\index{projection3d.c@{projection3d.c}!M\_PI@{M\_PI}}
+\index{M\_PI@{M\_PI}!projection3d.c@{projection3d.c}}
+\doxysubsubsection{\texorpdfstring{M\_PI}{M\_PI}}
+{\footnotesize\ttfamily \#define M\+\_\+\+PI~3.\+14159265358979323846}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{projection3d_8c_ac492fd267e9ce3e1c31a83e87c01c2ab}\label{projection3d_8c_ac492fd267e9ce3e1c31a83e87c01c2ab} 
+\index{projection3d.c@{projection3d.c}!\_make\_model@{\_make\_model}}
+\index{\_make\_model@{\_make\_model}!projection3d.c@{projection3d.c}}
+\doxysubsubsection{\texorpdfstring{\_make\_model()}{\_make\_model()}}
+{\footnotesize\ttfamily void \+\_\+make\+\_\+model (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}}]{out\mbox{[}16\mbox{]},  }\item[{const \mbox{\hyperlink{libcncore_8h_a3dd97d4c265b35e13059fcd0a8d6128f}{Vector3}} \texorpdfstring{$\ast$}{*}}]{pos,  }\item[{const \mbox{\hyperlink{libcncore_8h_a3dd97d4c265b35e13059fcd0a8d6128f}{Vector3}} \texorpdfstring{$\ast$}{*}}]{scl,  }\item[{const \mbox{\hyperlink{libcncore_8h_a3dd97d4c265b35e13059fcd0a8d6128f}{Vector3}} \texorpdfstring{$\ast$}{*}}]{rot }\end{DoxyParamCaption})}
+
+\Hypertarget{projection3d_8c_a9bd5352c1d0cbb605ee607c19aa7d92d}\label{projection3d_8c_a9bd5352c1d0cbb605ee607c19aa7d92d} 
+\index{projection3d.c@{projection3d.c}!\_make\_proj@{\_make\_proj}}
+\index{\_make\_proj@{\_make\_proj}!projection3d.c@{projection3d.c}}
+\doxysubsubsection{\texorpdfstring{\_make\_proj()}{\_make\_proj()}}
+{\footnotesize\ttfamily void \+\_\+make\+\_\+proj (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}}]{out\mbox{[}16\mbox{]},  }\item[{\mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}}]{fov\+\_\+deg,  }\item[{\mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}}]{aspect,  }\item[{\mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}}]{near,  }\item[{\mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}}]{far }\end{DoxyParamCaption})}
+
+\Hypertarget{projection3d_8c_a7054cf18456f6c613f5c3c67d9db1226}\label{projection3d_8c_a7054cf18456f6c613f5c3c67d9db1226} 
+\index{projection3d.c@{projection3d.c}!\_make\_view@{\_make\_view}}
+\index{\_make\_view@{\_make\_view}!projection3d.c@{projection3d.c}}
+\doxysubsubsection{\texorpdfstring{\_make\_view()}{\_make\_view()}}
+{\footnotesize\ttfamily void \+\_\+make\+\_\+view (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}}]{out\mbox{[}16\mbox{]},  }\item[{const \mbox{\hyperlink{libcncore_8h_a3dd97d4c265b35e13059fcd0a8d6128f}{Vector3}} \texorpdfstring{$\ast$}{*}}]{pos,  }\item[{const \mbox{\hyperlink{libcncore_8h_a3dd97d4c265b35e13059fcd0a8d6128f}{Vector3}} \texorpdfstring{$\ast$}{*}}]{rot }\end{DoxyParamCaption})}
+

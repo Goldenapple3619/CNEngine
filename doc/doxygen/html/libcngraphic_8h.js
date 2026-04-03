@@ -1,6 +1,9 @@
 var libcngraphic_8h =
 [
+    [ "Vertex", "structVertex.html", "structVertex" ],
     [ "texture_s", "structtexture__s.html", "structtexture__s" ],
+    [ "Material", "structMaterial.html", "structMaterial" ],
+    [ "Mesh", "structMesh.html", "structMesh" ],
     [ "videomode_s", "structvideomode__s.html", "structvideomode__s" ],
     [ "event_s", "structevent__s.html", "structevent__s" ],
     [ "event_map_entry_s", "structevent__map__entry__s.html", "structevent__map__entry__s" ],
@@ -28,6 +31,14 @@ var libcngraphic_8h =
       [ "EV_MOUSEDOWN", "libcngraphic_8h.html#ad45875ce61fd859f5134e43571880a0baf139cf48a45247cc5e9c085d2a3fb3e1", null ],
       [ "EV_MOUSEUP", "libcngraphic_8h.html#ad45875ce61fd859f5134e43571880a0ba8e13ca0dbb8084ca50392bff2f62ae9a", null ],
       [ "EV_MOUSEWHEEL", "libcngraphic_8h.html#ad45875ce61fd859f5134e43571880a0baac173336f03154766b610e8ca850a821", null ]
+    ] ],
+    [ "rendering_api", "libcngraphic_8h.html#a68f9fcaba986f3dcdf56316330102559", [
+      [ "R_API_NONE", "libcngraphic_8h.html#a68f9fcaba986f3dcdf56316330102559a1c7eb184fb4b982471ad220324072a6e", null ],
+      [ "R_API_SDL", "libcngraphic_8h.html#a68f9fcaba986f3dcdf56316330102559a9fd5fd6e7280133b8d973ebee204e89c", null ],
+      [ "R_API_GL", "libcngraphic_8h.html#a68f9fcaba986f3dcdf56316330102559a903f3798fd8ab4ee1f84117589009a23", null ],
+      [ "R_API_VULKAN", "libcngraphic_8h.html#a68f9fcaba986f3dcdf56316330102559a5d7423700d96220a40783a2011363f1a", null ],
+      [ "R_API_METAL", "libcngraphic_8h.html#a68f9fcaba986f3dcdf56316330102559a8affbf0197af0f0ba104bc2088839827", null ],
+      [ "R_API_DX11", "libcngraphic_8h.html#a68f9fcaba986f3dcdf56316330102559ab9c82fa7ba53e0a73793fdedfdb43648", null ]
     ] ],
     [ "VIDEOMODE_FLAGS", "libcngraphic_8h.html#aad7f25e3a9ef262bf91e20087cd42bb9", [
       [ "VDM_VSYNC", "libcngraphic_8h.html#aad7f25e3a9ef262bf91e20087cd42bb9a40cfd56bc0af5a24fb501875077d2354", null ],
@@ -74,6 +85,8 @@ var libcngraphic_8h =
     [ "copy_texture", "libcngraphic_8h.html#a1367e6cdfbb28d89f995ed1c1c304474", null ],
     [ "delete_event", "libcngraphic_8h.html#ae767098b55507aff0b328c89c64d3972", null ],
     [ "delete_event_map", "libcngraphic_8h.html#aeeeb8dfc34f66700cda8f0a19c988077", null ],
+    [ "delete_material", "libcngraphic_8h.html#a176f1f0871adb1184a0845a974994ba7", null ],
+    [ "delete_mesh", "libcngraphic_8h.html#aae4e77fb2db668a230d818fb1d1ce9dd", null ],
     [ "delete_texture", "libcngraphic_8h.html#a03d48464911484eff9ffa228302a51ec", null ],
     [ "delete_texture_atlas", "libcngraphic_8h.html#a85517192fe011fb5f2d930f3e3c713c3", null ],
     [ "delete_window", "libcngraphic_8h.html#a85b9dfd4cc9b7d77d5f5f79070fb87b0", null ],
@@ -92,13 +105,20 @@ var libcngraphic_8h =
     [ "get_texture", "libcngraphic_8h.html#a2b8d7f4921f5410c3d60a2aca0231867", null ],
     [ "get_vsync_window", "libcngraphic_8h.html#a3a698eff2866de9c9bb2c2e756b09c45", null ],
     [ "get_window_in_universe", "libcngraphic_8h.html#aa2ac8d6c033498608d615384e1565f9b", null ],
+    [ "gl_shader_compile", "libcngraphic_8h.html#ab596f9f0529f1a7cb183a23e33cb9cc7", null ],
+    [ "gl_shader_load", "libcngraphic_8h.html#a1b55c6188090af7a9440ff77a3f34b2b", null ],
     [ "has_event_window", "libcngraphic_8h.html#ac4133c5aaed3d5ed6d84003d009062f2", null ],
     [ "is_window_closed", "libcngraphic_8h.html#a3ad73b86968872fb9168b4f117d4b2a9", null ],
     [ "is_window_closed_addr", "libcngraphic_8h.html#a9eb1863a4e5ae2747e9d334a62cce175", null ],
+    [ "material_use_gl", "libcngraphic_8h.html#ae94d815251ac55cfb251ebc375b22fa6", null ],
+    [ "mesh_draw_gl", "libcngraphic_8h.html#a9e477f4333422c372d1b5e75c439968c", null ],
+    [ "mesh_upload_gl", "libcngraphic_8h.html#a72fce26160c250bd11da7dcf05f8b8fe", null ],
     [ "new_event", "libcngraphic_8h.html#afbdf6fdfba2f9f70f534ef8c9a8406eb", null ],
     [ "new_event_map", "libcngraphic_8h.html#aa6f72501bc23fe99f9925bea9219d721", null ],
     [ "new_graphic_submodule", "libcngraphic_8h.html#ad3e5b2029ba67b450f33ccca48adce7a", null ],
     [ "new_interface", "libcngraphic_8h.html#a3ec23b778f9d4418dce69e8844ce2c11", null ],
+    [ "new_material", "libcngraphic_8h.html#a41778fea7c4b4d65121652d8d3af7dbe", null ],
+    [ "new_mesh", "libcngraphic_8h.html#a802b355a0d22d93a04106c3e3f835433", null ],
     [ "new_texture", "libcngraphic_8h.html#a6afa86ecf7185b47b663f8717177ce70", null ],
     [ "new_texture_atlas", "libcngraphic_8h.html#a3f29d51a85b563831dc01cdb89dfaabc", null ],
     [ "new_texture_from_file", "libcngraphic_8h.html#a79c99d0204a1a105d607a732727df67c", null ],
@@ -119,6 +139,7 @@ var libcngraphic_8h =
     [ "set_vsync_window", "libcngraphic_8h.html#a8a7c3d26c77a6091d5ab15ac0ac59d1c", null ],
     [ "start_graphics", "libcngraphic_8h.html#a76500eae9be8678c5e2191b7e8c492e7", null ],
     [ "texture_atlas_resize", "libcngraphic_8h.html#a9f3205a3e8afe3bdad1767a25aae3e76", null ],
+    [ "texture_upload_gl", "libcngraphic_8h.html#a1b2d02e333f84ea64de019adfc91e3fe", null ],
     [ "update_all_window", "libcngraphic_8h.html#ae69fa8b6f6568d08c13a619a13950fbc", null ],
     [ "update_window", "libcngraphic_8h.html#afa2335ad8474674a041e606a759b122c", null ]
 ];
