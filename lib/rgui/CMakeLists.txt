@@ -22,6 +22,5 @@ target_link_libraries(rgui
     PUBLIC
         cncore
         cngraphic
-        SDL2::SDL2
         SDL2_ttf::SDL2_ttf
 )

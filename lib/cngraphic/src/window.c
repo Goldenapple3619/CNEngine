@@ -337,7 +337,7 @@ CN_API void clear_window(Window *window, cncolor color)
             ((color & 0x0000ff00) >> 8) / 255.0f,
             (color & 0x000000ff) / 255.0f);
         (void)glEnable(GL_DEPTH_TEST);
-        (void)glDisable(GL_CULL_FACE);
+        // (void)glDisable(GL_CULL_FACE);
         (void)glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     }
 }

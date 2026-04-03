@@ -1,4 +1,4 @@
-#include "libr3d.h"
+#include "libcngraphic.h"
 
 CN_API Mesh *new_mesh(void)
 {
@@ -12,7 +12,7 @@ CN_API Mesh *new_mesh(void)
     mesh->indices = NULL;
     mesh->vertices = NULL;
     mesh->uploaded = false;
-    mesh->api = R_API_UKN;
+    mesh->api = R_API_NONE;
     return (mesh);
 }
 

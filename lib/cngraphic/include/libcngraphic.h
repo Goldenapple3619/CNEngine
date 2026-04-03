@@ -6,8 +6,25 @@
     #include <SDL_image.h>
     #include "libcncore.h"
 
-    #define INVALIDATE_GPU(t) \
-        if ((t) && (t)->gpu_texture) { SDL_DestroyTexture((t)->gpu_texture); (t)->gpu_texture = NULL; }
+    #define INVALIDATE_GPU(t)                                                    \
+    if ((t)) {                                                                   \
+        switch ((t)->api) {                                                      \
+            case R_API_SDL:                                                      \
+                if ((t)->gpu_handler.sdl_texture.gpu_texture) {                  \
+                    SDL_DestroyTexture((t)->gpu_handler.sdl_texture.gpu_texture);\
+                    (t)->gpu_handler.sdl_texture.gpu_texture = NULL;             \
+                }                                                                \
+                break;                                                           \
+            case R_API_GL:                                                       \
+                if ((t)->gpu_handler.gl_id) {                                    \
+                    glDeleteTextures(1, &(t)->gpu_handler.gl_id);                \
+                    (t)->gpu_handler.gl_id = 0;                                  \
+                }                                                                \
+                break;                                                           \
+            default:                                                             \
+                break;                                                           \
+        }                                                                        \
+    }
 
     typedef enum {
         EV_NULL = 0x00,
@@ -56,13 +73,70 @@
         VDM_N_METAL = SDL_WINDOW_METAL
     };
 
+    typedef enum {
+        R_API_NONE = 0x00,
+        R_API_SDL,
+        R_API_GL,
+        R_API_VULKAN,
+        R_API_METAL,
+        R_API_DX11
+    } rendering_api;
+
+    typedef uint32_t cncolor;
+
+    typedef struct {
+        cnnumber x, y, z;
+        cnnumber nx, ny, nz;
+        cnnumber u, v;
+    } Vertex;
+
     struct texture_s {
         Vector2 size;
 
         SDL_Surface *surface;
-        SDL_Texture *gpu_texture;
-        const SDL_Renderer *renderer;
+
+        rendering_api api;
+        union {
+            struct {
+                SDL_Texture *gpu_texture;
+                const SDL_Renderer *renderer;
+            } sdl_texture;
+            uint32_t gl_id;
+        } gpu_handler;
     };
+
+    typedef struct {
+        struct texture_s *texture;
+        cncolor color;
+
+        union {
+            uint32_t  gl_shader;
+        } gpu_handler;
+
+        cnnumber ambient;
+        cnnumber diffuse;
+        cnnumber specular;
+        cnnumber shininess;
+
+        rendering_api api;
+    } Material;
+
+    typedef struct {
+        Vertex *vertices;
+        uint32_t *indices;
+        size_t vertex_count;
+        size_t index_count;
+
+        rendering_api api;
+        cnbool uploaded;
+        union {
+            struct {
+                uint32_t vao;
+                uint32_t vbo;
+                uint32_t ebo;
+            } gl;
+        } gpu_handler;
+    } Mesh;
 
     struct videomode_s {
         Vector2 size;
@@ -133,13 +207,13 @@
     typedef struct event_s Event;
     typedef struct interface_s Interface;
     typedef struct texture_atlas_s TextureAtlas;
-    typedef uint32_t cncolor;
 
     CN_API void blit(const Texture *__src, Texture *__dst, const Rect *__src_rect, const Vector2 *__dest_at);
     CN_API void blit_ratio(const Texture *__src, Texture *__dst, const Rect *__src_rect, const Vector2 *__dest_at, const Vector2 *__ratios);
     CN_API void draw_texture(Texture *__src_texture, SDL_Renderer *__dest_renderer, const Rect *__src_rect, const Vector2 *__dest_at, const Vector2 *__ratios, double __angle);
 
     CN_API Texture *new_texture(const Vector2 *size, cnbool alpha);
+    CN_API cnbool texture_upload_gl(Texture *texture);
     CN_API uint8_t resize_texture(Texture *texture, const Vector2 *new_size);
     CN_API Texture *copy_texture(Texture *texture);
     CN_API Texture *new_texture_from_file(const char *path);
@@ -205,5 +279,20 @@
     CN_API Object *new_interface(void);
 
     CN_API Object *new_graphic_submodule(void);
+
+    CN_API Mesh *new_mesh(void);
+    CN_API void mesh_draw_gl(const Mesh *m);
+    CN_API cnbool mesh_upload_gl(Mesh *m);
+    CN_API void delete_mesh(Mesh *mesh);
+
+    CN_API Material *new_material(void);
+    CN_API void material_use_gl(const Material *mat,
+                  const float model[16],
+                  const float view[16],
+                  const float proj[16]);
+    CN_API void delete_material(Material *material);
+
+    GLuint gl_shader_compile(const char *vert_src, const char *frag_src);
+    GLuint gl_shader_load(const char *vert_path, const char *frag_path);
 
 #endif

@@ -20,5 +20,4 @@ target_link_libraries(r2d
     PUBLIC
         cncore
         cngraphic
-        SDL2::SDL2
 )

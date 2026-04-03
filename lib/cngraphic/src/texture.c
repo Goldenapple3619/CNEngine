@@ -20,8 +20,8 @@ CN_API Texture *new_texture(const Vector2 *size, cnbool alpha)
     
     texture->size.x = size->x;
     texture->size.y = size->y;
-    texture->gpu_texture = NULL;
-    texture->renderer = NULL;
+    texture->api = R_API_NONE;
+    memset(&texture->gpu_handler, 0, sizeof(texture->gpu_handler));
     return (texture);
 }
 
@@ -41,9 +41,7 @@ CN_API uint8_t resize_texture(Texture *texture, const Vector2 *new_size)
     if (!new_surface)
         return (1);
 
-    if (texture->gpu_texture) {
-        INVALIDATE_GPU(texture);
-    }
+    INVALIDATE_GPU(texture);
 
     (void)SDL_FreeSurface(texture->surface);
     texture->surface = new_surface;
@@ -54,13 +52,13 @@ CN_API uint8_t resize_texture(Texture *texture, const Vector2 *new_size)
 
 CN_API void draw_texture(Texture *__src_texture, SDL_Renderer *__dest_renderer, const Rect *__src_rect, const Vector2 *__dest_at, const Vector2 *__ratios, double __angle)
 {
-    if (!__src_texture || !__dest_renderer)
+    if (!__src_texture || !__dest_renderer || __src_texture->api != R_API_SDL)
         return;
 
-    if (!__src_texture->gpu_texture || __src_texture->renderer != __dest_renderer) {
-        __src_texture->renderer = __dest_renderer;
-        __src_texture->gpu_texture = SDL_CreateTextureFromSurface(__dest_renderer, __src_texture->surface);
-        if (!__src_texture->gpu_texture)
+    if (!__src_texture->gpu_handler.sdl_texture.gpu_texture || __src_texture->gpu_handler.sdl_texture.renderer != __dest_renderer) {
+        __src_texture->gpu_handler.sdl_texture.renderer = __dest_renderer;
+        __src_texture->gpu_handler.sdl_texture.gpu_texture = SDL_CreateTextureFromSurface(__dest_renderer, __src_texture->surface);
+        if (!__src_texture->gpu_handler.sdl_texture.gpu_texture)
             return;
     }
 
@@ -83,7 +81,7 @@ CN_API void draw_texture(Texture *__src_texture, SDL_Renderer *__dest_renderer, 
     if (__ratios)
         (void)memcpy(&ratio_vec, __ratios, sizeof(Vector2));
 
-    (void)SDL_RenderCopyEx(__dest_renderer, __src_texture->gpu_texture,
+    (void)SDL_RenderCopyEx(__dest_renderer, __src_texture->gpu_handler.sdl_texture.gpu_texture,
         &(SDL_Rect){(int)r.x, (int)r.y, (int)r.w, (int)r.h},
         &(SDL_Rect){
             (int)dst_vec.x, (int)dst_vec.y,
@@ -141,8 +139,8 @@ CN_API Texture *new_texture_from_file(const char *path)
 
     texture->size.x = texture->surface->w;
     texture->size.y = texture->surface->h;
-    texture->renderer = NULL;
-    texture->gpu_texture = NULL;
+    texture->api = R_API_NONE;
+    memset(&texture->gpu_handler, 0, sizeof(texture->gpu_handler));
 
     return (texture);
 }
@@ -162,8 +160,8 @@ CN_API Texture *new_texture_from_surface(SDL_Surface *surface)
     texture->surface = surface;
     texture->size.x = texture->surface->w;
     texture->size.y = texture->surface->h;
-    texture->renderer = NULL;
-    texture->gpu_texture = NULL;
+    texture->api = R_API_NONE;
+    memset(&texture->gpu_handler, 0, sizeof(texture->gpu_handler));
     return (texture);
 }
 
@@ -171,15 +169,24 @@ CN_API void delete_texture(Texture *texture)
 {
     if (!texture)
         return;
-    if (texture->gpu_texture)
-        (void)SDL_DestroyTexture(texture->gpu_texture);
+    switch (texture->api) {
+        case R_API_SDL:
+            if (texture->gpu_handler.sdl_texture.gpu_texture)
+                (void)SDL_DestroyTexture(texture->gpu_handler.sdl_texture.gpu_texture);
+            break;
+        case R_API_GL:
+            if (texture->gpu_handler.gl_id)
+                (void)glDeleteTextures(1, &texture->gpu_handler.gl_id);
+        default:
+            break;
+    }
+
     if (texture->surface)
         (void)SDL_FreeSurface(texture->surface);
     texture->size.x = 0;
     texture->size.y = 0;
     texture->surface = NULL;
-    texture->renderer = NULL;
-    texture->gpu_texture = NULL;
+    memset(&texture->gpu_handler, 0, sizeof(texture->gpu_handler));
     (void)free((void *)texture);
 }
 
@@ -290,4 +297,36 @@ CN_API void clear_texture(Texture *texture, cncolor color)
             (color & 0x0000ff00) >> 8,
             (color & 0x000000ff)));
     INVALIDATE_GPU(texture);
+}
+
+CN_API cnbool texture_upload_gl(Texture *texture)
+{
+    if (!texture || !texture->surface || texture->api != R_API_GL)
+        return false;
+
+    if (texture->gpu_handler.gl_id)
+        glDeleteTextures(1, &texture->gpu_handler.gl_id);
+
+    SDL_Surface *rgba = SDL_ConvertSurfaceFormat(texture->surface,
+                            SDL_PIXELFORMAT_RGBA32, 0);
+    if (!rgba)
+        return false;
+
+    glGenTextures(1, &texture->gpu_handler.gl_id);
+    glBindTexture(GL_TEXTURE_2D, texture->gpu_handler.gl_id);
+
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S,     GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,     GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA,
+                 rgba->w, rgba->h,
+                 0, GL_RGBA, GL_UNSIGNED_BYTE,
+                 rgba->pixels);
+    glGenerateMipmap(GL_TEXTURE_2D);
+
+    glBindTexture(GL_TEXTURE_2D, 0);
+    SDL_FreeSurface(rgba);
+    return true;
 }

@@ -126,9 +126,11 @@ static cn_value _draw(Object *__this, void **args)
 
             if (((window->video_mode.flags & VDM_CPU) > 0))
                 blit(temp_texture, texture, NULL, &temp_position);
-            else if ((window->video_mode.flags & VDM_GPU) > 0)
+            else if ((window->video_mode.flags & VDM_GPU) > 0) {
+                if (temp_texture->api == R_API_NONE)
+                    temp_texture->api = R_API_SDL;
                 draw_texture(temp_texture, window->renderer, NULL, &(Vector2){.x = position->x + temp_position.x * computed_upscale.x, .y = position->y + temp_position.y * computed_upscale.y}, &computed_upscale, 0);
-            else
+            } else
                 continue;
                 // not implemented
         }

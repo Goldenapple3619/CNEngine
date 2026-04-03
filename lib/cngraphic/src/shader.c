@@ -1,4 +1,4 @@
-#include "libr3d.h"
+#include "libcngraphic.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -39,7 +39,7 @@ static char *_read_file(const char *path)
     return buf;
 }
 
-GLuint shader_compile(const char *vert_src, const char *frag_src)
+GLuint gl_shader_compile(const char *vert_src, const char *frag_src)
 {
     GLuint vert = _compile_stage(GL_VERTEX_SHADER,   vert_src);
     GLuint frag = _compile_stage(GL_FRAGMENT_SHADER, frag_src);
@@ -70,7 +70,7 @@ GLuint shader_compile(const char *vert_src, const char *frag_src)
     return prog;
 }
 
-GLuint shader_load(const char *vert_path, const char *frag_path)
+GLuint gl_shader_load(const char *vert_path, const char *frag_path)
 {
     char *vert_src = _read_file(vert_path);
     char *frag_src = _read_file(frag_path);
@@ -81,7 +81,7 @@ GLuint shader_load(const char *vert_path, const char *frag_path)
         return 0;
     }
 
-    GLuint prog = shader_compile(vert_src, frag_src);
+    GLuint prog = gl_shader_compile(vert_src, frag_src);
     free(vert_src);
     free(frag_src);
     return prog;

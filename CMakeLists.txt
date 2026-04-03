@@ -210,6 +210,16 @@ if(CN_BUILD_GAME)
         )
     endforeach()
 
+    #gl
+    foreach(lib glad_gl)
+        add_custom_command(TARGET cn_engine POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/lib"
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                $<TARGET_FILE:${lib}>
+                "${DIST_DIR}/lib/"
+        )
+    endforeach()
+
     # vendored
     foreach(lib freetype harfbuzz ogg opus opusfile xmp tiff)
         if(TARGET ${lib})

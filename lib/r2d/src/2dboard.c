@@ -40,6 +40,8 @@ static void _cpu_rendering(const Vector2 *position,
 static void _gpu_rendering(const Vector2 *position,
     const Vector2 *scale, const Rect *bounding, const Vector3 *rotation, Texture *object_texture, gpu_rendering_data *rendering_data)
 {
+    if (object_texture->api == R_API_NONE)
+        object_texture->api = R_API_SDL;
     draw_texture(
         object_texture, rendering_data->renderer,
         bounding,

@@ -1,4 +1,4 @@
-#include "libr3d.h"
+#include "libcngraphic.h"
 
 CN_API Material *new_material(void)
 {
@@ -12,15 +12,15 @@ CN_API Material *new_material(void)
     material->diffuse   = 0.8f;
     material->specular  = 0.5f;
     material->shininess = 32.0f;
-    material->api = R_API_UKN;
+    material->api = R_API_NONE;
     (void)memset(&material->gpu_handler, 0, sizeof(material->gpu_handler));
     return (material);
 }
 
 void material_use_gl(const Material *mat,
-                  const float model[16],
-                  const float view[16],
-                  const float proj[16])
+                  const cnnumber model[16],
+                  const cnnumber view[16],
+                  const cnnumber proj[16])
 {
     if (!mat || !mat->gpu_handler.gl_shader)
         return;
@@ -46,9 +46,15 @@ void material_use_gl(const Material *mat,
     glUniform1f(glGetUniformLocation(mat->gpu_handler.gl_shader, "u_shininess"), mat->shininess);
 
     /* Texture slot 0 */
-    if (mat->texture) {
+    if (mat->texture && mat->texture->api == R_API_GL) {
+        if (!mat->texture->gpu_handler.gl_id) {
+            if (!texture_upload_gl(mat->texture)) {
+                glUniform1i(glGetUniformLocation(mat->gpu_handler.gl_shader, "u_has_texture"), 0);
+                return;
+            }
+        }
         glActiveTexture(GL_TEXTURE0);
-        // glBindTexture(GL_TEXTURE_2D, mat->texture->id); todo: implement
+        glBindTexture(GL_TEXTURE_2D, mat->texture->gpu_handler.gl_id);
         glUniform1i(glGetUniformLocation(mat->gpu_handler.gl_shader, "u_texture"), 0);
         glUniform1i(glGetUniformLocation(mat->gpu_handler.gl_shader, "u_has_texture"), 1);
     } else {

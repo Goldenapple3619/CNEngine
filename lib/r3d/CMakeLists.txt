@@ -6,9 +6,7 @@ add_library(r3d SHARED
     src/3dboard.c
     src/camera3d.c
     src/object3d.c
-    src/material.c
-    src/mesh.c
-    src/shader.c
+    src/projection3d.c
 )
 
 target_compile_options(r3d
@@ -25,6 +23,4 @@ target_link_libraries(r3d
     PUBLIC
         cncore
         cngraphic
-        SDL2::SDL2
-        OpenGL::GL
 )

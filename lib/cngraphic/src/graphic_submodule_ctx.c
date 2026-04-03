@@ -48,7 +48,7 @@ static cn_value _update(Object *__this, void **args)
                 if (!has_attr(val.as.ptr, "texture"))
                     continue;
                 
-                if (((Texture *)get_attr(val.as.ptr, "texture")->as.ptr)->renderer == ((Window *)(get_attr(interfaces->objects[i], "window")->as.ptr))->renderer) {
+                if (((Texture *)get_attr(val.as.ptr, "texture")->as.ptr)->api == R_API_SDL && ((Texture *)get_attr(val.as.ptr, "texture")->as.ptr)->gpu_handler.sdl_texture.renderer == ((Window *)(get_attr(interfaces->objects[i], "window")->as.ptr))->renderer) {
                     INVALIDATE_GPU((Texture *)(get_attr(val.as.ptr, "texture")->as.ptr));
                 }
             }
