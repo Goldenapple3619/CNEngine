@@ -104,7 +104,7 @@ jobs:
           Copy-Item C:\msys64\mingw32\bin\windres.exe C:\msys64\mingw32\bin\i686-w64-mingw32-windres.exe
 
       - name: Install jinja2 for glad (system Python)
-        run: python3 -m pip install jinja2 --break-system-packages
+        run: C:\hostedtoolcache\windows\Python\3.14.3\x64\python3.exe -m pip install jinja2
         shell: cmd
 
       - name: Install jinja2 into MSYS2 mingw32 Python
@@ -155,7 +155,7 @@ jobs:
           Copy-Item C:\msys64\mingw64\bin\windres.exe C:\msys64\mingw64\bin\x86_64-w64-mingw32-windres.exe
 
       - name: Install jinja2 for glad (system Python)
-        run: python3 -m pip install jinja2 --break-system-packages
+        run: C:\hostedtoolcache\windows\Python\3.14.3\x64\python3.exe -m pip install jinja2
         shell: cmd
 
       - name: Install jinja2 into MSYS2 mingw64 Python
