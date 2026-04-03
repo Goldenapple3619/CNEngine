@@ -106,7 +106,7 @@ jobs:
           $env:Path = "$msys2Path;$env:Path"
 
           C:\tools\msys64\usr\bin\bash.exe -lc "pacman -Syu --noconfirm"
-          C:\tools\msys64\usr\bin\bash.exe -lc "pacman -S --noconfirm mingw-w64-i686-toolchain base-devel"
+          C:\tools\msys64\usr\bin\bash.exe -lc "pacman -S --noconfirm mingw-w64-i686-toolchain mingw-w64-x86_64-python-jinja2 base-devel"
 
           copy C:\tools\msys64\mingw32\bin\windres.exe C:\tools\msys64\mingw32\bin\i686-w64-mingw32-windres.exe
 
@@ -153,7 +153,7 @@ jobs:
           $env:Path = "$msys2Path;$env:Path"
 
           C:\tools\msys64\usr\bin\bash.exe -lc "pacman -Syu --noconfirm"
-          C:\tools\msys64\usr\bin\bash.exe -lc "pacman -S --noconfirm mingw-w64-x86_64-toolchain base-devel"
+          C:\tools\msys64\usr\bin\bash.exe -lc "pacman -S --noconfirm mingw-w64-x86_64-toolchain mingw-w64-x86_64-python-jinja2 base-devel"
 
           copy C:\tools\msys64\mingw64\bin\windres.exe C:\tools\msys64\mingw64\bin\x86_64-w64-mingw32-windres.exe
 
@@ -193,7 +193,7 @@ jobs:
         run: brew install nasm
 
       - name: Install Python dependencies
-        run: python3 -m pip install jinja2
+        run: python3 -m pip install jinja2 --break-system-packages
 
       - name: Build macos-arm64
         run: |
