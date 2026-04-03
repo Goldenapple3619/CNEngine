@@ -94,15 +94,18 @@ jobs:
           restore-keys: |
             cmake-build-${{ runner.os }}-windows-i386-
 
-      - name: Install mingw + jinja2
+      - name: Install mingw
         shell: powershell
         env:
           MSYSTEM: MINGW32
         run: |
           C:\msys64\usr\bin\bash.exe -lc "pacman -Syu --noconfirm" | Out-Null
           C:\msys64\usr\bin\bash.exe -lc "pacman -Syu --noconfirm && pacman -S --noconfirm mingw-w64-i686-toolchain base-devel"
-          C:\msys64\usr\bin\bash.exe -lc "python3 -m pip install jinja2 --break-system-packages"
           Copy-Item C:\msys64\mingw32\bin\windres.exe C:\msys64\mingw32\bin\i686-w64-mingw32-windres.exe
+
+      - name: Install jinja2 for glad (system Python)
+        run: python3 -m pip install jinja2 --break-system-packages
+        shell: cmd
 
       - name: Build windows-i386
         run: |
@@ -133,15 +136,18 @@ jobs:
           restore-keys: |
             cmake-build-${{ runner.os }}-windows-amd64-
 
-      - name: Install mingw + jinja2
+      - name: Install mingw
         shell: powershell
         env:
           MSYSTEM: MINGW64
         run: |
           C:\msys64\usr\bin\bash.exe -lc "pacman -Syu --noconfirm" | Out-Null
           C:\msys64\usr\bin\bash.exe -lc "pacman -Syu --noconfirm && pacman -S --noconfirm mingw-w64-x86_64-toolchain base-devel"
-          C:\msys64\usr\bin\bash.exe -lc "python3 -m pip install jinja2 --break-system-packages"
           Copy-Item C:\msys64\mingw64\bin\windres.exe C:\msys64\mingw64\bin\x86_64-w64-mingw32-windres.exe
+
+      - name: Install jinja2 for glad (system Python)
+        run: python3 -m pip install jinja2 --break-system-packages
+        shell: cmd
 
       - name: Build windows-amd64
         run: |
