@@ -109,7 +109,7 @@ jobs:
 
       - name: Install jinja2 into MSYS2 mingw32 Python
         shell: cmd
-        run: C:\msys64\mingw64\bin\python.exe -m pip install jinja2
+          C:\msys64\usr\bin\bash.exe -lc "pacman -S --noconfirm mingw-w64-i686-python-pip && pip install jinja2 --break-system-packages"
 
       - name: Build windows-i386
         run: |
@@ -153,9 +153,9 @@ jobs:
         run: python3 -m pip install jinja2 --break-system-packages
         shell: cmd
 
-      - name: Install jinja2 into MSYS2 mingw64 Python
+      - name: Install jinja2 into MSYS2 mingw32 Python
         shell: cmd
-        run: C:\msys64\mingw64\bin\python.exe -m pip install jinja2
+          C:\msys64\usr\bin\bash.exe -lc "pacman -S --noconfirm mingw-w64-x86_64-python-pip && pip install jinja2 --break-system-packages"
 
       - name: Build windows-amd64
         run: |
