@@ -116,6 +116,8 @@ jobs:
           C:\msys64\usr\bin\bash.exe -lc "python3 -m pip install jinja2 --break-system-packages"
 
       - name: Build windows-i386
+        env:
+          MSYSTEM: MINGW32
         run: |
           $env:Path = "C:\msys64\mingw32\bin;$env:Path"
           cmd.exe /c scripts\build_windows-i386.bat
@@ -166,6 +168,8 @@ jobs:
           C:\msys64\usr\bin\bash.exe -lc "python3 -m pip install jinja2 --break-system-packages"
 
       - name: Build windows-amd64
+        env:
+          MSYSTEM: MINGW64
         run: |
           $env:Path = "C:\msys64\mingw64\bin;$env:Path"
           cmd.exe /c scripts\build_windows-amd64.bat
