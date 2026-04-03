@@ -39,7 +39,7 @@ static char *_read_file(const char *path)
     return buf;
 }
 
-GLuint gl_shader_compile(const char *vert_src, const char *frag_src)
+CN_API GLuint gl_shader_compile(const char *vert_src, const char *frag_src)
 {
     GLuint vert = _compile_stage(GL_VERTEX_SHADER,   vert_src);
     GLuint frag = _compile_stage(GL_FRAGMENT_SHADER, frag_src);
@@ -70,7 +70,7 @@ GLuint gl_shader_compile(const char *vert_src, const char *frag_src)
     return prog;
 }
 
-GLuint gl_shader_load(const char *vert_path, const char *frag_path)
+CN_API GLuint gl_shader_load(const char *vert_path, const char *frag_path)
 {
     char *vert_src = _read_file(vert_path);
     char *frag_src = _read_file(frag_path);

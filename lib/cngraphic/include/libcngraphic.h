@@ -292,7 +292,7 @@
                   const float proj[16]);
     CN_API void delete_material(Material *material);
 
-    GLuint gl_shader_compile(const char *vert_src, const char *frag_src);
-    GLuint gl_shader_load(const char *vert_path, const char *frag_path);
+    CN_API GLuint gl_shader_compile(const char *vert_src, const char *frag_src);
+    CN_API GLuint gl_shader_load(const char *vert_path, const char *frag_path);
 
 #endif
