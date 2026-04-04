@@ -66,6 +66,8 @@ static cn_value _draw(Object *__this, void **args)
     for (size_t i = 0; i < elements->size; ++i)
         (void)call_method(elements->objects[i], "_draw", ((cnany []){(cnany)w, NULL}));
 
+    (void)draw_window(w);
+
     return (null_value);
 }
 

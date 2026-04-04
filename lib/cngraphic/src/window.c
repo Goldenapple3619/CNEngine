@@ -332,6 +332,8 @@ CN_API void clear_window(Window *window, cncolor color)
     } else if ((window->video_mode.flags & VDM_CPU) > 0) {
         (void)clear_texture(window->texture, color);
     } else if  ((window->video_mode.flags & VDM_OPENGL) > 0) {
+        (void)SDL_GL_MakeCurrent(window->window, window->gl_ctx);
+
         (void)glClearColor(((color & 0xff000000) >> 24) / 255.0f,
             ((color & 0x00ff0000) >> 16) / 255.0f,
             ((color & 0x0000ff00) >> 8) / 255.0f,

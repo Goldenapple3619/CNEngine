@@ -6,9 +6,9 @@ static cn_value _draw(Object *__this, void **args)
     (void)args;
 
     ObjectVector *interfaces = get_attr(__this, "interfaces")->as.ptr;
-    WindowUniverse *wu = get_attr(__this, "all_window")->as.ptr;
+    // WindowUniverse *wu = get_attr(__this, "all_window")->as.ptr;
 
-    (void)draw_all_window(wu);
+    // (void)draw_all_window(wu); this is now handled by the interfaces to respect draw order
 
     for (size_t i = 0; i < interfaces->size; ++i)
         (void)call_method(interfaces->objects[i], "_draw", NULL);

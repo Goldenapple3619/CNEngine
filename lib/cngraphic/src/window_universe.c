@@ -252,6 +252,8 @@ CN_API void update_all_window(WindowUniverse *universe)
 
 CN_API void draw_all_window(WindowUniverse *universe)
 {
+    // this is now legacy and shouldn't be used
+
     if (!universe)
         return;
     for (size_t i = 0; i < universe->size; ++i) {
