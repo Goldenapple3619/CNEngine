@@ -264,12 +264,16 @@ if(CN_BUILD_GAME)
         endif()
 
         foreach(dll ${MINGW_RUNTIME_DLLS})
-            add_custom_command(TARGET cn_engine POST_BUILD
-                COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/lib"
-                COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                    "${MINGW_BIN_DIR}/${dll}"
-                    "${DIST_DIR}/lib/"
-            )
+            if (EXISTS "${MINGW_BIN_DIR}/${dll}")
+                add_custom_command(TARGET cn_engine POST_BUILD
+                    COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/lib"
+                    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                        "${MINGW_BIN_DIR}/${dll}"
+                        "${DIST_DIR}/lib/"
+                )
+            else()
+                message(STATUS "Skipping ${dll} - not found in ${MINGW_BIN_DIR}")
+            endif()
         endforeach()
     endif()
 endif()
