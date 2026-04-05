@@ -1,7 +1,5 @@
 #include "libr2d.h"
 
-#include "libr2d.h"
-
 static cn_value _init(Object *__this, void **args)
 {
     PREP_INIT()
@@ -26,7 +24,7 @@ static cn_value _del(Object *__this, void **args)
     return (null_value);
 }
 
-CN_API Object *new_tile(void)
+CN_API Object *new_object2(void)
 {
     Object *obj = new_object();
 

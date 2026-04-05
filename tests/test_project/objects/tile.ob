@@ -1,4 +1,4 @@
-<object base="__builtin_tile">
+<object base="__builtin_object2">
     <name>tile</name>
 
     <srcs>
