@@ -104,10 +104,8 @@ static cn_value _draw(Object *__this, void **args)
 
     Object *scene = get_attr(__this, "scene")->as.ptr;
     Object *elements = get_attr(scene, "objects")->as.ptr;
-    size_t len = call_method(elements, "len", NULL).as.i;
     cnbool have_camera = has_attr(__this, "camera");
     Object *camera = NULL;
-    cn_value val;
 
     render_stack.window = args[0];
     render_stack.canva_scale = get_attr(__this, "upscale")->as.vec2;
@@ -130,16 +128,14 @@ static cn_value _draw(Object *__this, void **args)
         }
     }
 
-    for (size_t i = 0; i < len; ++i) {
-        val = call_method(elements, "at", (cnany []){(size_t []){i}, NULL});
-
-        if (val.type == CN_TYPE_NULL)
+    for (struct list_iterator_s it = list_get_iterator(elements); !list_iterator_isend(&it); list_iterator_next(&it)) {
+        if (list_iterator_value_isnull(&it))
             continue;
 
         if (!have_camera || !camera)
             continue;
         
-        render_stack.obj = val.as.ptr;
+        render_stack.obj = it.val.as.ptr;
 
         _render_object(__this, (cnany[]){&render_stack, NULL});
     }

@@ -16,9 +16,9 @@
                 }                                                                \
                 break;                                                           \
             case R_API_GL:                                                       \
-                if ((t)->gpu_handler.gl_id) {                                    \
-                    glDeleteTextures(1, &(t)->gpu_handler.gl_id);                \
-                    (t)->gpu_handler.gl_id = 0;                                  \
+                if ((t)->gpu_handler.gl_texture.gl_id) {                         \
+                    glDeleteTextures(1, &(t)->gpu_handler.gl_texture.gl_id);     \
+                    (t)->gpu_handler.gl_texture.gl_id = 0;                       \
                 }                                                                \
                 break;                                                           \
             default:                                                             \
@@ -106,7 +106,10 @@
                 SDL_Texture *gpu_texture;
                 const SDL_Renderer *renderer;
             } sdl_texture;
-            uint32_t gl_id;
+            struct {
+                uint32_t gl_id;
+                SDL_GLContext gl_ctx;
+            } gl_texture;
         } gpu_handler;
         rendering_api api;
     };
@@ -175,7 +178,7 @@
 
         SDL_Window *window;
         SDL_Renderer *renderer;
-        SDL_GLContext *gl_ctx;
+        SDL_GLContext gl_ctx;
         struct texture_s *texture;
 
         struct event_map_entry_s **event_map; // null terminated

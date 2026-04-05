@@ -14,18 +14,14 @@ static cn_value _init(Object *__this, void **args)
 static cn_value _update(Object *__this, void **args)
 {
     Object *elements = get_attr(__this, "objects")->as.ptr;
-    size_t len = call_method(elements, "len", NULL).as.i;
-    cn_value val;
     Object *temp;
     int64_t flags;
 
-    for (size_t i = 0; i < len; ++i) {
-        val = call_method(elements, "at", (cnany []){(size_t []){i}, NULL});
-
-        if (val.type == CN_TYPE_NULL)
+    for (struct list_iterator_s it = list_get_iterator(elements); !list_iterator_isend(&it); list_iterator_next(&it)) {
+        if (list_iterator_value_isnull(&it))
             continue;
         
-        temp = val.as.ptr;
+        temp = it.val.as.ptr;
         flags = get_attr(temp, "_flags")->as.i;
         
         if (((flags & CN_OBJ_REPLICATE) > 0) && !((flags & CN_OBJ_HOST) > 0))

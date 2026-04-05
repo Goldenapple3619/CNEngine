@@ -71,6 +71,46 @@ static cn_value _del(Object *__this, void **args)
     return (null_value);
 }
 
+CN_API struct list_iterator_s list_get_iterator(Object *__list)
+{
+    if (!__list)
+        return ((struct list_iterator_s){0});
+
+    cn_method __at = get_method(__list, "at");
+    size_t __len = call_method(__list, "len", NULL).as.i;
+
+    if (!__at)
+        return ((struct list_iterator_s){0});
+
+    return ((struct list_iterator_s){.get_element = __at, .size = __len, .pos = 0, ._obj = __list, .val = __at(__list, (cnany []){&(size_t){0}})});
+}
+
+CN_API void list_iterator_next(struct list_iterator_s *iterator)
+{
+    if (!iterator || !iterator->get_element || iterator->pos >= iterator->size) {
+        iterator->val = null_value;
+        return;
+    }
+
+    ++iterator->pos;
+    iterator->val = (iterator->get_element(iterator->_obj, (cnany []){&iterator->pos}));
+}
+
+CN_API cnbool list_iterator_value_isnull(const struct list_iterator_s *iterator)
+{
+    if (!iterator || iterator->val.type == CN_TYPE_NULL) {
+        return (true);
+    }
+    return (false);
+}
+
+CN_API cnbool list_iterator_isend(const struct list_iterator_s *iterator)
+{
+    if (!iterator || iterator->pos >= iterator->size)
+        return (true);
+    return (false);
+}
+
 CN_API Object *new_list()
 {
     Object *obj = new_object();

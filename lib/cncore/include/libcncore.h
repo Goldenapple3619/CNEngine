@@ -212,6 +212,14 @@
         scene_object_flags flags;
     };
 
+    struct list_iterator_s {
+        size_t pos;
+        size_t size;
+        cn_method get_element;
+        cn_value val;
+        struct object_s *_obj;
+    };
+
     typedef struct vector2_s Vector2;
     typedef struct vector3_s Vector3;
     typedef struct rect_s Rect;
@@ -306,6 +314,11 @@
     CN_API void remove_value_vector(struct cn_value_vector_s *vec, size_t i);
     CN_API void remove_value_ordered_vector(struct cn_value_vector_s *vec, size_t i);
     CN_API void delete_value_vector(struct cn_value_vector_s *vec);
+
+    CN_API struct list_iterator_s list_get_iterator(Object *__list);
+    CN_API void list_iterator_next(struct list_iterator_s *iterator);
+    CN_API cnbool list_iterator_isend(const struct list_iterator_s *iterator);
+    CN_API cnbool list_iterator_value_isnull(const struct list_iterator_s *iterator);
 
     CN_API Object *new_list(void);
     CN_API Object *new_scene(void);

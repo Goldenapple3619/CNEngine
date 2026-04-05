@@ -95,7 +95,7 @@ CN_API void draw_texture_gl(Texture *__src_texture, Quad *__dst_quad, const Vect
     if (!__src_texture || !__dst_quad || __src_texture->api != R_API_GL)
         return;
 
-    if (!__src_texture->gpu_handler.gl_id)
+    if (!__src_texture->gpu_handler.gl_texture.gl_id || __src_texture->gpu_handler.gl_texture.gl_ctx != SDL_GL_GetCurrentContext())
         if (!texture_upload_gl(__src_texture))
             return;
 
@@ -126,7 +126,7 @@ CN_API void draw_texture_gl(Texture *__src_texture, Quad *__dst_quad, const Vect
 
 
     glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, __src_texture->gpu_handler.gl_id);
+    glBindTexture(GL_TEXTURE_2D, __src_texture->gpu_handler.gl_texture.gl_id);
     glUniform1i(glGetUniformLocation(__dst_quad->shader, "u_texture"), 0);
     glUniform1i(glGetUniformLocation(__dst_quad->shader, "u_has_texture"), 1);
 
@@ -225,8 +225,8 @@ CN_API void delete_texture(Texture *texture)
                 (void)SDL_DestroyTexture(texture->gpu_handler.sdl_texture.gpu_texture);
             break;
         case R_API_GL:
-            if (texture->gpu_handler.gl_id)
-                (void)glDeleteTextures(1, &texture->gpu_handler.gl_id);
+            if (texture->gpu_handler.gl_texture.gl_id)
+                (void)glDeleteTextures(1, &texture->gpu_handler.gl_texture.gl_id);
         default:
             break;
     }
@@ -354,16 +354,16 @@ CN_API cnbool texture_upload_gl(Texture *texture)
     if (!texture || !texture->surface || texture->api != R_API_GL)
         return false;
 
-    if (texture->gpu_handler.gl_id)
-        glDeleteTextures(1, &texture->gpu_handler.gl_id);
+    if (texture->gpu_handler.gl_texture.gl_id)
+        glDeleteTextures(1, &texture->gpu_handler.gl_texture.gl_id);
 
     SDL_Surface *rgba = SDL_ConvertSurfaceFormat(texture->surface,
                             SDL_PIXELFORMAT_RGBA32, 0);
     if (!rgba)
         return false;
 
-    glGenTextures(1, &texture->gpu_handler.gl_id);
-    glBindTexture(GL_TEXTURE_2D, texture->gpu_handler.gl_id);
+    glGenTextures(1, &texture->gpu_handler.gl_texture.gl_id);
+    glBindTexture(GL_TEXTURE_2D, texture->gpu_handler.gl_texture.gl_id);
 
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S,     GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,     GL_REPEAT);
@@ -378,5 +378,6 @@ CN_API cnbool texture_upload_gl(Texture *texture)
 
     glBindTexture(GL_TEXTURE_2D, 0);
     SDL_FreeSurface(rgba);
+    texture->gpu_handler.gl_texture.gl_ctx = SDL_GL_GetCurrentContext();
     return true;
 }

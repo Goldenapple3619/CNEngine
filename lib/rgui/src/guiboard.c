@@ -28,17 +28,13 @@ static cn_value _init(Object *__this, void **args)
 static cn_value _update(Object *__this, void **args)
 {
     Object *elements = get_attr(__this, "elements")->as.ptr;
-    size_t len = call_method(elements, "len", NULL).as.i;
-    cn_value val;
     Object *temp;
 
-    for (size_t i = 0; i < len; ++i) {
-        val = call_method(elements, "at", (cnany []){(size_t []){i}, NULL});
-
-        if (val.type == CN_TYPE_NULL)
+    for (struct list_iterator_s it = list_get_iterator(elements); !list_iterator_isend(&it); list_iterator_next(&it)) {
+        if (list_iterator_value_isnull(&it))
             continue;
         
-        temp = val.as.ptr;
+        temp = it.val.as.ptr;
         
         if (has_method(temp, "_update"))
             (void)call_method(temp, "_update", args);
@@ -50,8 +46,6 @@ static cn_value _update(Object *__this, void **args)
 static cn_value _events(Object *__this, void **args)
 {
     Object *elements = get_attr(__this, "elements")->as.ptr;
-    size_t len = call_method(elements, "len", NULL).as.i;
-    cn_value val;
     Object *temp;
 
     if (!args || !args[0])
@@ -68,13 +62,11 @@ static cn_value _events(Object *__this, void **args)
         resize_texture(get_attr(__this, "texture")->as.ptr, &new_size);
     }
 
-    for (size_t i = 0; i < len; ++i) {
-        val = call_method(elements, "at", (cnany []){(size_t []){i}, NULL});
-
-        if (val.type == CN_TYPE_NULL)
+    for (struct list_iterator_s it = list_get_iterator(elements); !list_iterator_isend(&it); list_iterator_next(&it)) {
+        if (list_iterator_value_isnull(&it))
             continue;
         
-        temp = val.as.ptr;
+        temp = it.val.as.ptr;
         
         if (has_method(temp, "_events"))
             (void)call_method(temp, "_events", args);
@@ -93,10 +85,8 @@ static cn_value _draw(Object *__this, void **args)
     Vector2 *position = &get_attr(__this, "position")->as.vec2;
     Object *elements = get_attr(__this, "elements")->as.ptr;
     Texture *texture = get_attr(__this, "texture")->as.ptr;
-    size_t len = call_method(elements, "len", NULL).as.i;
     Window *window = args[0];
     Quad *gl_quad = NULL;
-    cn_value val;
     Object *temp;
 
     if (((window->video_mode.flags & VDM_CPU) > 0))
@@ -114,13 +104,11 @@ static cn_value _draw(Object *__this, void **args)
         gl_quad = get_attr(__this, "gl_quad")->as.ptr;
     }
 
-    for (size_t i = 0; i < len; ++i) {
-        val = call_method(elements, "at", (cnany []){(size_t []){i}, NULL});
-
-        if (val.type == CN_TYPE_NULL)
+    for (struct list_iterator_s it = list_get_iterator(elements); !list_iterator_isend(&it); list_iterator_next(&it)) {
+        if (list_iterator_value_isnull(&it))
             continue;
         
-        temp = val.as.ptr;
+        temp = it.val.as.ptr;
 
         if (has_attr(temp, "texture")) {
             temp_position = get_attr(temp, "position")->as.vec2;
