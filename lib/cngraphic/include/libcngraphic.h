@@ -85,6 +85,12 @@
     typedef uint32_t cncolor;
 
     typedef struct {
+        uint32_t vao;
+        uint32_t vbo;
+        uint32_t shader;
+    } Quad;
+
+    typedef struct {
         cnnumber x, y, z;
         cnnumber nx, ny, nz;
         cnnumber u, v;
@@ -95,7 +101,6 @@
 
         SDL_Surface *surface;
 
-        rendering_api api;
         union {
             struct {
                 SDL_Texture *gpu_texture;
@@ -103,6 +108,7 @@
             } sdl_texture;
             uint32_t gl_id;
         } gpu_handler;
+        rendering_api api;
     };
 
     typedef struct {
@@ -211,6 +217,7 @@
     CN_API void blit(const Texture *__src, Texture *__dst, const Rect *__src_rect, const Vector2 *__dest_at);
     CN_API void blit_ratio(const Texture *__src, Texture *__dst, const Rect *__src_rect, const Vector2 *__dest_at, const Vector2 *__ratios);
     CN_API void draw_texture(Texture *__src_texture, SDL_Renderer *__dest_renderer, const Rect *__src_rect, const Vector2 *__dest_at, const Vector2 *__ratios, double __angle);
+CN_API void draw_texture_gl(Texture *__src_texture, Quad *__dst_quad, const Vector2 *__at, const Vector2 *__size, cncolor __tint, const Vector2 *__view_port);
 
     CN_API Texture *new_texture(const Vector2 *size, cnbool alpha);
     CN_API cnbool texture_upload_gl(Texture *texture);
@@ -294,5 +301,9 @@
 
     CN_API GLuint gl_shader_compile(const char *vert_src, const char *frag_src);
     CN_API GLuint gl_shader_load(const char *vert_path, const char *frag_path);
+
+    CN_API Quad *new_quad(void);
+    CN_API Quad *new_quad2d(void);
+    CN_API void delete_quad(Quad *quad);
 
 #endif

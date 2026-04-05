@@ -22,6 +22,12 @@ static cn_value _init(Object *__this, void **args)
     INIT_VEC2(__this, mode->resolution, "resolution");
     INIT_VEC2(__this, upscale, "upscale");
 
+    INIT_OBJECT_STATIC(__this, new_camera2d(),
+        ((cnany []){
+            &(struct scene_object_mode_s){{0, 0, 0}, {1, 1, 1}, {0, 0, 0}, CN_OBJ_HOST | CN_OBJ_DRAWABLE},
+            NULL
+        })
+    , "camera")
     INIT_CUSTOM_ALLOCATION(__this, new_texture(&mode->resolution, true), delete_texture, "texture");
     INIT_OBJECT_SHR(__this, mode->scene, "scene");
 
@@ -57,10 +63,25 @@ static void _gpu_rendering(const Vector2 *position,
     );
 }
 
-static void _opengl_rendering(void)
+static void _opengl_rendering(const Vector2 *position,
+    const Vector2 *scale, const Vector2 *canva_ratio, const Vector2 *canva_upscale, Texture *object_texture, Quad *gl_quad)
 {
-    // not implemented for now
-    return;
+    if (object_texture->api == R_API_NONE)
+        object_texture->api = R_API_GL;
+
+    draw_texture_gl(
+        object_texture, gl_quad,
+        &(Vector2){
+            .x = position->x * canva_ratio->x,
+            .y = position->y * canva_ratio->y
+        },
+        &(Vector2){
+            .x = object_texture->size.x * scale->x * canva_ratio->x,
+            .y = object_texture->size.y * scale->y * canva_ratio->y
+        },
+        (cncolor)0xffffffff,
+        canva_upscale
+    );
 }
 
 static cn_value _render_object(Object *__this, void **args)
@@ -110,7 +131,13 @@ static cn_value _render_object(Object *__this, void **args)
                 &(Vector3){object_rotation->x, object_rotation->y, object_rotation->z + render_stack->camera_rotation.z}, temp_texture, &gpu_data
             );
         } else if ((render_stack->window->video_mode.flags & VDM_OPENGL) > 0) {
-            _opengl_rendering();
+            _opengl_rendering(
+                &(Vector2){object_position->x - camera_position_center.x, object_position->y - camera_position_center.y},
+                &(Vector2){object_scale->x,object_scale->y},
+                &render_stack->canva_ratio,
+                &render_stack->canva_scale,
+                temp_texture, render_stack->gl_quad
+            );
         }
     }
 
@@ -142,6 +169,15 @@ static cn_value _draw(Object *__this, void **args)
 
     if (((render_stack.window->video_mode.flags & VDM_CPU) > 0))
         clear_texture(render_stack.cpu_texture, 0x000000ff);
+
+    if (((render_stack.window->video_mode.flags & VDM_OPENGL) > 0)) {
+        glViewport(render_stack.canva_position.x, render_stack.canva_position.y, render_stack.canva_scale.x, render_stack.canva_scale.y);
+
+        if (!has_attr(__this, "gl_quad")) {
+            PREP_INIT(); INIT_CUSTOM_ALLOCATION(__this, new_quad2d(), delete_quad, "gl_quad");
+        }
+        render_stack.gl_quad = get_attr(__this, "gl_quad")->as.ptr;
+    }
 
     if (have_camera) {
         camera = get_attr(__this, "camera")->as.ptr;

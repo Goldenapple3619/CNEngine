@@ -2,7 +2,11 @@
 
 static cn_value _init(Object *__this, void **args)
 {
+    PREP_INIT()
+
     call_method(__this->base, "_init", args);
+
+    INIT_CUSTOM_ALLOCATION(__this, new_texture_from_file("./assets/dirt.png"), delete_texture, "texture");
 
     return (VALUE_OK);
 }
@@ -10,7 +14,10 @@ static cn_value _init(Object *__this, void **args)
 static cn_value _del(Object *__this, void **args)
 {
     (void)args;
-    (void)__this;
+
+    PREP_DEL()
+
+    DEL_CUSTOM_ALLOCAION(__this, delete_texture, "texture")
 
     return (null_value);
 }

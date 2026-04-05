@@ -95,6 +95,7 @@ static cn_value _draw(Object *__this, void **args)
     Texture *texture = get_attr(__this, "texture")->as.ptr;
     size_t len = call_method(elements, "len", NULL).as.i;
     Window *window = args[0];
+    Quad *gl_quad = NULL;
     cn_value val;
     Object *temp;
 
@@ -105,6 +106,13 @@ static cn_value _draw(Object *__this, void **args)
     Vector2 temp_position;
     Vector2 computed_upscale = (Vector2){upscale->x / resolution->x, upscale->y / resolution->y};
     Texture *temp_texture;
+
+    if (((window->video_mode.flags & VDM_OPENGL) > 0)) {
+        if (!has_attr(__this, "gl_quad")) {
+            PREP_INIT(); INIT_CUSTOM_ALLOCATION(__this, new_quad2d(), delete_quad, "gl_quad");
+        }
+        gl_quad = get_attr(__this, "gl_quad")->as.ptr;
+    }
 
     for (size_t i = 0; i < len; ++i) {
         val = call_method(elements, "at", (cnany []){(size_t []){i}, NULL});
@@ -130,6 +138,17 @@ static cn_value _draw(Object *__this, void **args)
                 if (temp_texture->api == R_API_NONE)
                     temp_texture->api = R_API_SDL;
                 draw_texture(temp_texture, window->renderer, NULL, &(Vector2){.x = position->x + temp_position.x * computed_upscale.x, .y = position->y + temp_position.y * computed_upscale.y}, &computed_upscale, 0);
+             } else if ((window->video_mode.flags & VDM_OPENGL) > 0) {
+                if (temp_texture->api == R_API_NONE)
+                    temp_texture->api = R_API_GL;
+
+                draw_texture_gl(
+                    temp_texture, gl_quad,
+                    &(Vector2){position->x + temp_position.x * computed_upscale.x, position->y + temp_position.y * computed_upscale.y},
+                    &(Vector2){temp_texture->size.x * computed_upscale.x, temp_texture->size.y * computed_upscale.y},
+                    (cncolor)0xffffffff,
+                    upscale
+                );
             } else
                 continue;
                 // not implemented

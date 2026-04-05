@@ -6,6 +6,8 @@ static cn_value _init(Object *__this, void **args)
     if (!args || !args[0])
         return (VALUE_ERR);
 
+    PREP_INIT()
+
     struct threed_board_mode_s *mode = args[0];
 
     Vector2 upscale = (Vector2){
@@ -17,6 +19,12 @@ static cn_value _init(Object *__this, void **args)
     INIT_VEC2(__this, mode->resolution, "resolution");
     INIT_VEC2(__this, upscale, "upscale");
 
+    INIT_OBJECT_STATIC(__this, new_camera3d(),
+        ((cnany []){
+            &(struct scene_object_mode_s){{0, 0, 5}, {1, 1, 1}, {0, 0, 0}, CN_OBJ_HOST | CN_OBJ_DRAWABLE},
+            NULL
+        })
+    , "camera")
     INIT_OBJECT_SHR(__this, mode->scene, "scene");
 
     return (VALUE_OK);
@@ -31,9 +39,7 @@ static void _gpu_rendering(void)
     // not implemented
 }
 
-static void _opengl_rendering(Mesh *mesh, Material *material,
-    const Vector3 *position, const Vector3 *scale, const Vector3 *rotation,
-    const cnnumber view[16], const cnnumber proj[16])
+static void _opengl_rendering(Mesh *mesh, Material *material, const Vector3 *position, const Vector3 *scale, const Vector3 *rotation, const cnnumber view[16], const cnnumber proj[16])
 {
     cnnumber model[16];
 
@@ -109,7 +115,7 @@ static cn_value _draw(Object *__this, void **args)
     render_stack.canva_position = get_attr(__this, "position")->as.vec2;
 
     if (((render_stack.window->video_mode.flags & VDM_OPENGL) > 0))
-        glViewport(render_stack.canva_position.x, render_stack.canva_position.y, render_stack.canva_size.x, render_stack.canva_size.y);
+        glViewport(render_stack.canva_position.x, render_stack.canva_position.y, render_stack.canva_scale.x, render_stack.canva_scale.y);
 
     if (have_camera) {
         camera = get_attr(__this, "camera")->as.ptr;

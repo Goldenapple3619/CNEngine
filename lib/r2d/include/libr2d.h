@@ -24,6 +24,7 @@
 
         Window *window;
         Texture *cpu_texture;
+        Quad *gl_quad;
 
         Vector2 canva_position;
         Vector2 canva_size;

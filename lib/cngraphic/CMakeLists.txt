@@ -15,6 +15,7 @@ add_library(cngraphic SHARED
     src/material.c
     src/mesh.c
     src/shader.c
+    src/quad.c
 )
 
 target_compile_options(cngraphic

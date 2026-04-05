@@ -90,6 +90,56 @@ CN_API void draw_texture(Texture *__src_texture, SDL_Renderer *__dest_renderer, 
         }, __angle, NULL, SDL_FLIP_NONE);
 }
 
+CN_API void draw_texture_gl(Texture *__src_texture, Quad *__dst_quad, const Vector2 *__at, const Vector2 *__size, cncolor __tint, const Vector2 *__view_port)
+{
+    if (!__src_texture || !__dst_quad || __src_texture->api != R_API_GL)
+        return;
+
+    if (!__src_texture->gpu_handler.gl_id)
+        if (!texture_upload_gl(__src_texture))
+            return;
+
+    Vector2 size = *__size;
+
+    if (__size->x == 0)
+        size.x = __src_texture->size.x;
+    if (__size->y == 0)
+        size.y = __src_texture->size.y;
+
+    uint32_t depth_was_enabled = glIsEnabled(GL_DEPTH_TEST);
+    uint32_t blend_was_enabled = glIsEnabled(GL_BLEND);
+
+    glDisable(GL_DEPTH_TEST);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+    glUseProgram(__dst_quad->shader);
+
+    glUniform2f(glGetUniformLocation(__dst_quad->shader, "u_position"),   __at->x, __at->y);
+    glUniform2f(glGetUniformLocation(__dst_quad->shader, "u_size"),       size.x, size.y);
+    glUniform2f(glGetUniformLocation(__dst_quad->shader, "u_resolution"), __view_port->x, __view_port->y);
+    glUniform4f(glGetUniformLocation(__dst_quad->shader, "u_color"),
+            ((__tint & 0xff000000) >> 24) / 255.0f,
+            ((__tint & 0x00ff0000) >> 16) / 255.0f,
+            ((__tint & 0x0000ff00) >> 8) / 255.0f,
+            (__tint & 0x000000ff) / 255.0f);
+
+
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, __src_texture->gpu_handler.gl_id);
+    glUniform1i(glGetUniformLocation(__dst_quad->shader, "u_texture"), 0);
+    glUniform1i(glGetUniformLocation(__dst_quad->shader, "u_has_texture"), 1);
+
+    glBindVertexArray(__dst_quad->vao);
+    glDrawArrays(GL_TRIANGLES, 0, 6);
+    glBindVertexArray(0);
+
+    if (depth_was_enabled)
+        glEnable(GL_DEPTH_TEST);
+    if (!blend_was_enabled)
+        glDisable(GL_BLEND);
+}
+
 CN_API Texture *copy_texture(Texture *texture)
 {
     if (!texture)
