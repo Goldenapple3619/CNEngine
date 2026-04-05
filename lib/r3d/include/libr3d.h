@@ -19,6 +19,20 @@
         Object *scene;
     };
 
+    typedef struct {
+        Object *obj;
+
+        Window *window;
+        Texture *cpu_texture;
+
+        Vector2 canva_position;
+        Vector2 canva_size;
+        Vector2 canva_scale;
+
+        cnnumber proj[16];
+        cnnumber view[16];
+    } threed_render_stack;
+
     CN_API Object *new_3dboard(void);
     CN_API Object *new_camera3d(void);
     CN_API Object *new_object3d(void);

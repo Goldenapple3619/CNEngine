@@ -123,7 +123,7 @@ Object *add_test_twod_window(Object *ctx)
         return (NULL);
     }
 
-    Object *tile = build_object(new_object2(), (cnany []){
+    Object *tile = build_object(new_object2d(), (cnany []){
         &(struct scene_object_mode_s){
             .coords = {15, 15, 0},
             .flags = CN_OBJ_DRAWABLE | CN_OBJ_HOST,
