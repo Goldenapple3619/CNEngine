@@ -1,31 +1,78 @@
 #include "libcnaudio.h"
 
 CN_API Audio *new_audio(const Mix_Chunk *audio_chunk_ptr,
-    cn_method on_audio_end)
+    cn_method on_audio_end, Object *on_end_obj)
 {
     Audio *audio = (Audio *)malloc(sizeof(Audio));
 
     if (!audio)
         return (NULL);
     audio->audio_ptr = audio_chunk_ptr;
-    audio->sequence.event_list = NULL;
-    audio->sequence.size = 0;
-    audio->sequence.capacity = 0;
-    audio->sequence.sequence_timer = 0;
     audio->on_end = on_audio_end;
+    audio->on_end_obj = on_end_obj;
     audio->playing_on = -1;
     audio->is_ended = false;
     audio->is_playing = false;
+    init_audio_sequence_content(&audio->sequence);
     return (audio);
 }
 
-CN_API void audio_run_sequence(Audio *audio, int32_t delta_time, int32_t *free_channels, size_t number_of_free_channel)
+CN_API void audio_run_sequence(Audio *audio, int32_t delta_time, int32_t *free_channels, size_t *number_of_free_channel)
 {
-    if (!audio || !free_channels || number_of_free_channel == 0)
+    if (!audio)
         return;
 
-    (void)delta_time;
-    //to implement
+    AudioEvent end_seq = {.type = CNAUDIO_EVENT_NOOP};
+    AudioEvent ev = {0};
+
+    if (audio->is_playing && audio->playing_on != -1) {
+        if (Mix_Playing(audio->playing_on) == 0) {
+            audio->is_playing = false;
+            audio->playing_on = -1;
+
+            audio->on_end(audio->on_end_obj, (cnany[]){audio});
+        }
+    }
+
+    audio_sequence_increment(&audio->sequence, delta_time);
+
+    while (audio_sequence_pull_event(&audio->sequence, &ev)) {
+        switch (ev.type) {
+            case CNAUDIO_EVENT_NOOP:
+                break;
+            
+            case CNAUDIO_EVENT_PLAY:
+                if (!number_of_free_channel || *number_of_free_channel == 0 || !free_channels) {
+                    continue;
+                    audio_sequence_push_event(&audio->sequence, &ev);
+                }
+                play_audio(audio, free_channels[(*number_of_free_channel) - 1]);
+                *number_of_free_channel = *number_of_free_channel - 1;
+                break;
+            case CNAUDIO_EVENT_SEQ_END:
+                end_seq = ev;
+                break;
+            case CNAUDIO_EVENT_VOLUME:
+                set_volume_audio(audio, ev.value.as.num);
+                break;
+            case CNAUDIO_EVENT_PANNING:
+                set_panning_audio(audio, ev.value.as.vec2.x, ev.value.as.vec2.y);
+                break;
+            default:
+                break;
+        }
+    }
+
+    if (end_seq.type == CNAUDIO_EVENT_NOOP)
+        return;
+        
+    if (end_seq.value.as.b || audio_sequence_is_empty(&audio->sequence)) {
+        audio->is_ended = true;
+        return;
+    }
+
+    audio_sequence_push_event(&audio->sequence, &end_seq);
+
 }
 
 CN_API void play_audio(Audio *audio, int32_t channel)
@@ -70,8 +117,7 @@ CN_API void delete_audio(Audio *audio)
 {
     if (!audio)
         return;
-    if (audio->sequence.event_list)
-        (void)free(audio->sequence.event_list);
+    delete_audio_sequence_content(&audio->sequence);
     (void)stop_audio(audio);
     audio->is_ended = true;
     (void)free(audio);

@@ -129,6 +129,7 @@
         CN_TYPE_VEC2,
         CN_TYPE_VEC3,
         CN_TYPE_RECT,
+        CN_TYPE_BOOL,
         CN_TYPE_STRING,
         CN_TYPE_OBJECT,
         CN_TYPE_FUNCTION,
@@ -144,11 +145,13 @@
 
     typedef struct {
         cn_type type;
-        union {
+        union {            
+            cnbool b;
+
             int64_t i;
             double f;
             cnnumber num;
-
+            
             char *str;
             void *ptr;
 
@@ -160,9 +163,9 @@
 
     struct object_s;
 
-    #define null_value (cn_value){0}
-    #define VALUE_ERR (cn_value){CN_TYPE_INT, {1}}
-    #define VALUE_OK (cn_value){CN_TYPE_INT, {0}}
+    #define null_value (cn_value){CN_TYPE_NULL, .as.i = 0}
+    #define VALUE_ERR (cn_value){CN_TYPE_INT, .as.i = 1}
+    #define VALUE_OK (cn_value){CN_TYPE_INT, .as.i = 0}
     typedef cn_value (*cn_method)(struct object_s *self, void **args);
 
     struct object_attribute_s {

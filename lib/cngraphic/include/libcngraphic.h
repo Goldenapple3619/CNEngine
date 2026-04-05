@@ -191,16 +191,6 @@
         size_t capacity;
     };
 
-    struct interface_s {
-        struct window_s *window;
-
-        struct object_vector_s elements;
-
-        void (*draw)(struct object_s *__this);
-        void (*update)(struct object_s *__this, cntime delta_time);
-        void (*event)(struct object_s *__this);
-    };
-
     struct texture_atlas_s {
         struct texture_s **content;
         uint64_t *keys; // keys[i] -> content[i]
@@ -214,7 +204,6 @@
     typedef struct window_universe_s WindowUniverse;
     typedef struct videomode_s Videomode;
     typedef struct event_s Event;
-    typedef struct interface_s Interface;
     typedef struct texture_atlas_s TextureAtlas;
 
     CN_API void blit(const Texture *__src, Texture *__dst, const Rect *__src_rect, const Vector2 *__dest_at);
