@@ -58,6 +58,9 @@
     typedef struct audio_sequence_s AudioSequence;
     typedef struct audio_s Audio;
 
+    CN_API cnbool start_audio(void);
+    CN_API void end_audio(void);
+
     CN_API Audio *new_audio(const Mix_Chunk *audio_chunk_ptr, cn_method on_audio_end, Object *on_end_obj);
     CN_API void audio_run_sequence(Audio *audio, int32_t delta_time, struct free_channels_arr_s *free_channels);
     CN_API void play_audio(Audio *audio, int32_t channel);
@@ -79,5 +82,7 @@
     CN_API void audio_sequence_push_event(AudioSequence *seq, const AudioEvent *ev);
     CN_API void audio_sequence_increment(AudioSequence *seq, double delta_time);
     CN_API void delete_audio_sequence_content(AudioSequence *seq);
+
+    CN_API Object *new_audio_ctx(cnbool skip_init_error);
 
 #endif

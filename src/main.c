@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <signal.h>
 #include "libcncore.h"
+#include "libcnaudio.h"
 #include "libcngraphic.h"
 #include "librgui.h"
 #include "libr2d.h"
@@ -214,6 +215,11 @@ Object *build_engine(void)
     global_ctx = ctx;
 
     if (!submodule_ctx(ctx, new_graphic_submodule())) {
+        (void)delete_object(ctx);
+        return (NULL);
+    }
+
+    if (!submodule_ctx(ctx, new_audio_ctx(true))) {
         (void)delete_object(ctx);
         return (NULL);
     }
