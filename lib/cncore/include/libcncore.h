@@ -223,6 +223,14 @@
         struct object_s *_obj;
     };
 
+    struct generic_map_s {
+        void **content;
+        uint64_t *keys; // keys[i] -> content[i]
+
+        size_t size;
+        size_t capacity;
+    };
+
     typedef struct vector2_s Vector2;
     typedef struct vector3_s Vector3;
     typedef struct rect_s Rect;
@@ -296,6 +304,13 @@
     CN_API void remove_object_ordered_vector(ObjectVector *vec, size_t i);
     void remove_object_vector(ObjectVector *vec, size_t i);
 
+    CN_API struct generic_map_s *new_generic_map(void);
+    CN_API uint8_t generic_map_resize(struct generic_map_s *gen_map, size_t new_capacity);
+    CN_API uint8_t add_generic_map(struct generic_map_s *gen_map, void *element, const char *key, void (*_delete_obj)(void *));
+    CN_API void remove_generic_map(struct generic_map_s *gen_map, const char *key, void (*_delete_obj)(void *));
+    CN_API const void *get_generic_map(struct generic_map_s *gen_map, const char *key, void *(*_obj_from_key_default)(const char *), void (*_delete_obj)(void *));
+    CN_API void delete_generic_map(struct generic_map_s *gen_map, void (*_delete_obj)(void *));
+
     CN_API Object *new_ctx(void);
     CN_API cnbool submodule_ctx(Object *ctx, Object *module);
 
@@ -323,9 +338,15 @@
     CN_API cnbool list_iterator_isend(const struct list_iterator_s *iterator);
     CN_API cnbool list_iterator_value_isnull(const struct list_iterator_s *iterator);
 
+    CN_API struct list_iterator_s atlas_get_iterator(Object *__atlas, cnbool get_value_instead_of_key);
+    CN_API void atlas_iterator_next(struct list_iterator_s *iterator);
+    CN_API cnbool atlas_iterator_value_isnull(const struct list_iterator_s *iterator);
+    CN_API cnbool atlas_iterator_isend(const struct list_iterator_s *iterator);
+
     CN_API Object *new_list(void);
     CN_API Object *new_scene(void);
     CN_API Object *new_scene_object(void);
+    CN_API Object *new_atlas(void *(*_fetch_default)(const char *k), void (*_delete_obj)(void *));
 
     CN_API cnbool start_core(void);
     CN_API void end_core(void);

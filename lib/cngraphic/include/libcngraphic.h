@@ -209,7 +209,7 @@
     CN_API void blit(const Texture *__src, Texture *__dst, const Rect *__src_rect, const Vector2 *__dest_at);
     CN_API void blit_ratio(const Texture *__src, Texture *__dst, const Rect *__src_rect, const Vector2 *__dest_at, const Vector2 *__ratios);
     CN_API void draw_texture(Texture *__src_texture, SDL_Renderer *__dest_renderer, const Rect *__src_rect, const Vector2 *__dest_at, const Vector2 *__ratios, double __angle);
-CN_API void draw_texture_gl(Texture *__src_texture, Quad *__dst_quad, const Vector2 *__at, const Vector2 *__size, cncolor __tint, const Vector2 *__view_port);
+    CN_API void draw_texture_gl(Texture *__src_texture, Quad *__dst_quad, const Vector2 *__at, const Vector2 *__size, cncolor __tint, const Vector2 *__view_port);
 
     CN_API Texture *new_texture(const Vector2 *size, cnbool alpha);
     CN_API cnbool texture_upload_gl(Texture *texture);
@@ -286,9 +286,9 @@ CN_API void draw_texture_gl(Texture *__src_texture, Quad *__dst_quad, const Vect
 
     CN_API Material *new_material(void);
     CN_API void material_use_gl(const Material *mat,
-                  const float model[16],
-                  const float view[16],
-                  const float proj[16]);
+                  const cnnumber model[16],
+                  const cnnumber view[16],
+                  const cnnumber proj[16]);
     CN_API void delete_material(Material *material);
 
     CN_API GLuint gl_shader_compile(const char *vert_src, const char *frag_src);
