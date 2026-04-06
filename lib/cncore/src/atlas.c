@@ -27,7 +27,7 @@ static cn_value _push(Object *__this, void **args)
     struct generic_map_s *gen_map = get_attr(__this, "_map")->as.ptr;
     void (*_delobj_cb)(void *) = get_attr(__this, "_delobj_cb")->as.ptr;
     
-    if (add_generic_map(gen_map, args[0], *(size_t *)(args[1]), _delobj_cb))
+    if (add_generic_map(gen_map, args[0], (char *)(args[1]), _delobj_cb))
         return (VALUE_ERR);
 
     return (VALUE_OK);
@@ -40,13 +40,14 @@ static cn_value _at(Object *__this, void **args)
     
     struct generic_map_s *gen_map = get_attr(__this, "_map")->as.ptr;
     void (*_delobj_cb)(void *) = get_attr(__this, "_delobj_cb")->as.ptr;
-    void (*_fetchobj_cb)(void *) = get_attr(__this, "_fetchobj_cb")->as.ptr;
+    void *(*_fetchobj_cb)(const char *) = get_attr(__this, "_fetchobj_cb")->as.ptr;
     const char *entry = args[0];
+    const void *item = get_generic_map(gen_map, entry, _fetchobj_cb, _delobj_cb);
 
-    if (gen_map->size <= index)
+    if (item)
+        return ((cn_value){.type=CN_TYPE_GENERIC_UNIQ_PTR, .as.ptr=(void *)item});
+    else
         return (null_value);
-
-    return ((cn_value){.type=CN_TYPE_GENERIC_UNIQ_PTR, .as.ptr=get_generic_map(gen_map, entry, _fetchobj_cb, _delobj_cb)});
 }
 
 static cn_value _at_value(Object *__this, void **args)
@@ -158,7 +159,7 @@ CN_API cnbool atlas_iterator_isend(const struct list_iterator_s *iterator)
     return (false);
 }
 
-CN_API Object *new_atlas(void *(*_fetch_default)(const char *k), void (*_delete_obj)(void *))
+CN_API Object *new_atlas(void *(*_fetch_default)(const char *), void (*_delete_obj)(void *))
 {
     Object *obj = new_object();
 

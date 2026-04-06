@@ -17,7 +17,7 @@ CN_API Audio *new_audio(const Mix_Chunk *audio_chunk_ptr,
     return (audio);
 }
 
-CN_API void audio_run_sequence(Audio *audio, int32_t delta_time, int32_t *free_channels, size_t *number_of_free_channel)
+CN_API void audio_run_sequence(Audio *audio, int32_t delta_time, struct free_channels_arr_s *free_channels)
 {
     if (!audio)
         return;
@@ -42,12 +42,12 @@ CN_API void audio_run_sequence(Audio *audio, int32_t delta_time, int32_t *free_c
                 break;
             
             case CNAUDIO_EVENT_PLAY:
-                if (!number_of_free_channel || *number_of_free_channel == 0 || !free_channels) {
+                if (!free_channels || free_channels->size == 0 || !free_channels->free_channels_arr) {
                     continue;
                     audio_sequence_push_event(&audio->sequence, &ev);
                 }
-                play_audio(audio, free_channels[(*number_of_free_channel) - 1]);
-                *number_of_free_channel = *number_of_free_channel - 1;
+                play_audio(audio, free_channels->free_channels_arr[(free_channels->size) - 1]);
+                free_channels->size = free_channels->size - 1;
                 break;
             case CNAUDIO_EVENT_SEQ_END:
                 end_seq = ev;

@@ -4,6 +4,8 @@ add_library(cnaudio SHARED
     src/common.c
     src/audio.c
     src/audio_sequence.c
+    src/audio_ctx.c
+    src/audio_vector.c
 )
 
 target_compile_options(cnaudio

@@ -42,7 +42,7 @@ CN_API uint8_t add_generic_map(struct generic_map_s *gen_map, void *element, con
 
     for (size_t i = 0; i < gen_map->size; ++i) {
         if (gen_map->keys[i] == k) {
-            if (_delete_obj)
+            if (_delete_obj && gen_map->content[i])
                 (void)_delete_obj(gen_map->content[i]);
             gen_map->content[i] = element;
             return (0);
@@ -72,7 +72,7 @@ CN_API void remove_generic_map(struct generic_map_s *gen_map, const char *key, v
         if (gen_map->keys[i] == k) {
             size_t last = gen_map->size - 1;
 
-            if (_delete_obj)
+            if (_delete_obj && gen_map->content[i])
                 (void)_delete_obj(gen_map->content[i]);
 
             gen_map->keys[i]  = gen_map->keys[last];
@@ -121,7 +121,8 @@ CN_API void delete_generic_map(struct generic_map_s *gen_map, void (*_delete_obj
 
     if (_delete_obj) {
         for (size_t i = 0; i < gen_map->size; ++i) {
-            (void)_delete_obj(gen_map->content[i]);
+            if (gen_map->content[i])
+                (void)_delete_obj(gen_map->content[i]);
         }
     }
     if (gen_map->keys) {

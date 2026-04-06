@@ -42,17 +42,36 @@
         Object *on_end_obj;
     };
 
+    struct audio_vector_s {
+        struct audio_s **audios;
+
+        size_t size;
+        size_t capacity;
+    };
+
+    struct free_channels_arr_s {
+        int32_t *free_channels_arr;
+        size_t size;
+    };
+
     typedef struct audio_event_s AudioEvent;
     typedef struct audio_sequence_s AudioSequence;
     typedef struct audio_s Audio;
 
     CN_API Audio *new_audio(const Mix_Chunk *audio_chunk_ptr, cn_method on_audio_end, Object *on_end_obj);
-    CN_API void audio_run_sequence(Audio *audio, int32_t delta_time, int32_t *free_channels, size_t *number_of_free_channel);
+    CN_API void audio_run_sequence(Audio *audio, int32_t delta_time, struct free_channels_arr_s *free_channels);
     CN_API void play_audio(Audio *audio, int32_t channel);
     CN_API void set_volume_audio(Audio *audio, int32_t volume);
     CN_API void set_panning_audio(Audio *audio, uint8_t left, uint8_t right);
     CN_API void stop_audio(Audio *audio);
     CN_API void delete_audio(Audio *audio);
+
+    CN_API struct audio_vector_s *new_audio_vector(void);
+    CN_API void delete_audio_vector(struct audio_vector_s *vec);
+    CN_API uint8_t resize_audio_vector(struct audio_vector_s *vec, size_t new_capacity);
+    CN_API uint8_t insert_audio_vector(struct audio_vector_s *vec, Audio *value);
+    CN_API void remove_audio_vector(struct audio_vector_s *vec, size_t i);
+    CN_API void remove_audio_ordered_vector(struct audio_vector_s *vec, size_t i);
 
     CN_API void init_audio_sequence_content(AudioSequence *seq);
     CN_API cnbool audio_sequence_is_empty(const AudioSequence *seq);
