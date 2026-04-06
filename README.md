@@ -55,6 +55,7 @@ Higly configurable on the back technology allow the usage of multiple graphics a
 - GCC (mingw for Windows)
 - LIBC
 - LIBM
+- python-jinja (jinja2)
 
 ## How to build
 
