@@ -22,6 +22,7 @@ static cn_value _update(Object *__this, void **args)
 
     ObjectVector *interfaces = get_attr(__this, "interfaces")->as.ptr;
     WindowUniverse *wu = get_attr(__this, "all_window")->as.ptr;
+    int64_t main_window = get_attr(__this, "_main_window_id")->as.i;
     Window *temp;
 
     if (are_all_window_closed(wu)) {
@@ -62,7 +63,10 @@ static cn_value _update(Object *__this, void **args)
                         break;
                 }
             }
-
+            if (main_window != -1 && temp->id == main_window) {
+                (void)call_method(__this, "_stop", NULL);
+                set_attr(__this, "_main_window_id", CN_TYPE_INT, (int64_t []){-1});
+            }
             (void)remove_object_vector(interfaces, i);
             --i;
             continue;
@@ -88,6 +92,29 @@ static cn_value _events(Object *__this, void **args)
         (void)call_method(interfaces->objects[i], "_events", NULL);
 
     return (null_value);
+}
+
+static cn_value _set_main_window(Object *__this, void **args)
+{
+    if (!args || !args[0])
+        return (VALUE_ERR);
+
+    ObjectVector *interfaces = get_attr(__this, "interfaces")->as.ptr;
+    cnbool found = false;
+
+    for (size_t i = 0; i < interfaces->size; ++i) {
+        if (((Window *)(get_attr(interfaces->objects[i], "window")->as.ptr))->id != *(int64_t *)args[0])
+            continue;
+        found = true;
+        break;
+    }
+
+    if (!found)
+        return (VALUE_ERR);
+
+    INIT_INT(__this, *(int64_t *)args[0], "_main_window_id");
+
+    return (VALUE_OK);
 }
 
 static cn_value _spawn_interface(Object *__this, void **args)
@@ -128,6 +155,7 @@ static cn_value _init(Object *__this, void **args)
     if (!start_graphics())
         return (VALUE_ERR);
 
+    INIT_INT(ctx, -1, "_main_window_id");
     INIT_CUSTOM_ALLOCATION(ctx, new_object_vector(), delete_object_vector, "interfaces");
     INIT_CUSTOM_ALLOCATION(ctx, new_window_universe(), delete_window_universe, "all_window");
     INIT_CUSTOM_ALLOCATION(ctx, new_texture_atlas(), delete_texture_atlas, "texture_atlas");
@@ -140,6 +168,7 @@ static cn_value _init(Object *__this, void **args)
         return (VALUE_ERR);
 
     INIT_METHOD(ctx, "spawn_interface", _spawn_interface)
+    INIT_METHOD(ctx, "set_main_window", _set_main_window)
     
     return (VALUE_OK);
 }

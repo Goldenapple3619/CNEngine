@@ -4,6 +4,7 @@
 #include <signal.h>
 #include "libcncore.h"
 #include "libcnaudio.h"
+#include "libcninput.h"
 #include "libcngraphic.h"
 #include "librgui.h"
 #include "libr2d.h"
@@ -85,6 +86,8 @@ Object *add_test_opengl_window(Object *ctx)
         delete_object(obj);
         return (NULL);
     }
+
+    call_method(ctx, "set_main_window", (cnany []){(int64_t []){((Window *)get_attr(window_interface, "window")->as.ptr)->id}});
 
     return (window_interface);
 }
@@ -225,6 +228,11 @@ Object *build_engine(void)
     }
 
     if (!submodule_ctx(ctx, new_gui_submodule())) {
+        (void)delete_object(ctx);
+        return (NULL);
+    }
+
+    if (!submodule_ctx(ctx, new_input_submodule())) {
         (void)delete_object(ctx);
         return (NULL);
     }

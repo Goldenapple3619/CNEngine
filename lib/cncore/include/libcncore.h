@@ -231,6 +231,11 @@
         size_t capacity;
     };
 
+    typedef struct {
+        struct object_s *obj;
+        cn_method method;
+    } ObjMethodPair;
+
     typedef struct vector2_s Vector2;
     typedef struct vector3_s Vector3;
     typedef struct rect_s Rect;
