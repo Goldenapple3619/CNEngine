@@ -38,6 +38,12 @@
         if (!set_attr(__this, name, CN_TYPE_OBJECT, (cnany)obj)) { \
             return (VALUE_ERR); \
         }
+    #define INIT_OBJECT_SHR_WEAK(__this, obj, name) \
+        if (!obj) \
+            return (VALUE_ERR); \
+        if (!set_attr(__this, name, CN_TYPE_WEAK_OBJECT, (cnany)obj)) { \
+            return (VALUE_ERR); \
+        }
     #define PREP_DEL() cn_value *__temp_alloc;
     #define DEL_CUSTOM_ALLOCAION(__this, expr_free, name) \
         __temp_alloc = get_attr(__this, name); \
@@ -132,6 +138,7 @@
         CN_TYPE_BOOL,
         CN_TYPE_STRING,
         CN_TYPE_OBJECT,
+        CN_TYPE_WEAK_OBJECT,
         CN_TYPE_FUNCTION,
         CN_TYPE_GENERIC_UNIQ_PTR // custom things that may be handled by user in the dtor
     } cn_type;
@@ -348,10 +355,15 @@
     CN_API cnbool atlas_iterator_value_isnull(const struct list_iterator_s *iterator);
     CN_API cnbool atlas_iterator_isend(const struct list_iterator_s *iterator);
 
+    CN_API ObjMethodPair *new_object_method_pair(Object *obj, cn_method *method);
+    CN_API ObjMethodPair *new_weak_object_method_pair(Object *obj, cn_method *method);
+    CN_API void delete_object_method_pair(ObjMethodPair *pair);
+    CN_API void delete_weak_object_method_pair(ObjMethodPair *pair);
+
     CN_API Object *new_list(void);
     CN_API Object *new_scene(void);
     CN_API Object *new_scene_object(void);
-    CN_API Object *new_atlas(void *(*_fetch_default)(const char *k), void (*_delete_obj)(void *));
+    CN_API Object *new_atlas(void *(*_fetch_default)(const char *), void (*_delete_obj)(void *));
 
     CN_API cnbool start_core(void);
     CN_API void end_core(void);

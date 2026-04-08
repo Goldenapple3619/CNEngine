@@ -14,6 +14,7 @@ void _delete_object_attribute_value(cn_value *val)
         case (CN_TYPE_RECT):
         case (CN_TYPE_FLOAT):
         case (CN_TYPE_FUNCTION):
+        case (CN_TYPE_WEAK_OBJECT):
         case (CN_TYPE_GENERIC_UNIQ_PTR):
             break;
 
@@ -32,7 +33,7 @@ void _delete_object_attribute_value(cn_value *val)
             }
             val->as.ptr = NULL;
             break;
-    
+
         default:
             break;
     }
@@ -72,6 +73,9 @@ void _init_attribute_value(cn_value *dest, cnany value)
             break;
         case (CN_TYPE_OBJECT):
             dest->as.ptr = share_object((Object *)value);
+            break;
+        case (CN_TYPE_WEAK_OBJECT):
+            dest->as.ptr = value;
             break;
         case (CN_TYPE_GENERIC_UNIQ_PTR):
             dest->as.ptr = value;
@@ -117,6 +121,9 @@ void *_attribute_value_extract(const cn_value *src)
             return src->as.ptr;
             break;
         case (CN_TYPE_OBJECT):
+            return src->as.ptr;
+            break;
+        case (CN_TYPE_WEAK_OBJECT):
             return src->as.ptr;
             break;
         case (CN_TYPE_GENERIC_UNIQ_PTR):

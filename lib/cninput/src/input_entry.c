@@ -36,10 +36,8 @@ void delete_input_entry(InputEntry *ie)
         (void)free(ie->controllers);
     }
     if (ie->cbs) {
-        for (size_t i = 0; i < ie->cbs_size; ++i) {
-            (void)release_object(ie->cbs[i]->obj);
-            (void)free(ie->cbs[i]);
-        }
+        for (size_t i = 0; i < ie->cbs_size; ++i)
+            (void)delete_object_method_pair(ie->cbs[i]);
         (void)free(ie->cbs);
     }
     if (ie->name)

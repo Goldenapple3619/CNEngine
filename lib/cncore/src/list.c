@@ -37,7 +37,7 @@ static cn_value _at(Object *__this, void **args)
     if (vec->size <= index)
         return (null_value);
 
-    return ((cn_value){.type=CN_TYPE_OBJECT, .as.ptr=vec->objects[index]});
+    return ((cn_value){.type=CN_TYPE_WEAK_OBJECT, .as.ptr=vec->objects[index]});
 }
 
 static cn_value _len(Object *__this, void **args)

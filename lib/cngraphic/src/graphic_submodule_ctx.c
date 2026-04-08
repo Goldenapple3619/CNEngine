@@ -138,7 +138,7 @@ static cn_value _spawn_interface(Object *__this, void **args)
         return (null_value);
     }
 
-    return ((cn_value){.type=CN_TYPE_OBJECT, .as.ptr=interface});
+    return ((cn_value){.type=CN_TYPE_WEAK_OBJECT, .as.ptr=interface});
 }
 
 static cn_value _init(Object *__this, void **args)
