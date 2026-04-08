@@ -2,6 +2,8 @@ project(cninput C)
 
 add_library(cninput SHARED
     src/input_submodule_ctx.c
+    src/input_entry.c
+    src/input_controller.c
     src/common.c
 )
 

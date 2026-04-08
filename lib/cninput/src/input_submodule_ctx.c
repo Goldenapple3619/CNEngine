@@ -12,7 +12,7 @@ static cn_value _events(Object *__this, void **args)
     Window *temp = get_window_in_universe(wu, main_window);
     Object *atlas = get_attr(__this, "inputs")->as.ptr;
     const struct event_map_entry_s *ev_map;
-    void *entry;
+    const InputEntry *entry;
 
     if (!temp)
         return (null_value);
@@ -48,6 +48,14 @@ static cn_value _register_input(Object *__this, void **args)
     return (null_value);
 }
 
+static cn_value _unregister_input(Object *__this, void **args)
+{
+    (void)__this;
+    (void)args;
+
+    return (null_value);
+}
+
 static cn_value _init(Object *__this, void **args)
 {
     (void)__this;
@@ -71,6 +79,7 @@ static cn_value _init(Object *__this, void **args)
         return (VALUE_ERR);
 
     INIT_METHOD(ctx, "register_input", _register_input);
+    INIT_METHOD(ctx, "unregister_input", _unregister_input);
     
     return (VALUE_OK);
 }
