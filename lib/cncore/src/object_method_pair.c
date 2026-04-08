@@ -1,6 +1,6 @@
 #include "libcncore.h"
 
-CN_API ObjMethodPair *new_object_method_pair(Object *obj, cn_method *method)
+CN_API ObjMethodPair *new_object_method_pair(Object *obj, cn_method method)
 {
     if (!method)
         return (NULL);
@@ -14,7 +14,7 @@ CN_API ObjMethodPair *new_object_method_pair(Object *obj, cn_method *method)
     return (pair);
 }
 
-CN_API ObjMethodPair *new_weak_object_method_pair(Object *obj, cn_method *method)
+CN_API ObjMethodPair *new_weak_object_method_pair(Object *obj, cn_method method)
 {
     if (!method)
         return (NULL);

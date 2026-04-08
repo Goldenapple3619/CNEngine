@@ -355,8 +355,8 @@
     CN_API cnbool atlas_iterator_value_isnull(const struct list_iterator_s *iterator);
     CN_API cnbool atlas_iterator_isend(const struct list_iterator_s *iterator);
 
-    CN_API ObjMethodPair *new_object_method_pair(Object *obj, cn_method *method);
-    CN_API ObjMethodPair *new_weak_object_method_pair(Object *obj, cn_method *method);
+    CN_API ObjMethodPair *new_object_method_pair(Object *obj, cn_method method);
+    CN_API ObjMethodPair *new_weak_object_method_pair(Object *obj, cn_method method);
     CN_API void delete_object_method_pair(ObjMethodPair *pair);
     CN_API void delete_weak_object_method_pair(ObjMethodPair *pair);
 
