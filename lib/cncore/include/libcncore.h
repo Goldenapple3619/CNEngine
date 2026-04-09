@@ -38,6 +38,12 @@
         if (!set_attr(__this, name, CN_TYPE_OBJECT, (cnany)obj)) { \
             return (VALUE_ERR); \
         }
+    #define INIT_OBJECT_SHR_WEAK(__this, obj, name) \
+        if (!obj) \
+            return (VALUE_ERR); \
+        if (!set_attr(__this, name, CN_TYPE_WEAK_OBJECT, (cnany)obj)) { \
+            return (VALUE_ERR); \
+        }
     #define PREP_DEL() cn_value *__temp_alloc;
     #define DEL_CUSTOM_ALLOCAION(__this, expr_free, name) \
         __temp_alloc = get_attr(__this, name); \
@@ -129,8 +135,10 @@
         CN_TYPE_VEC2,
         CN_TYPE_VEC3,
         CN_TYPE_RECT,
+        CN_TYPE_BOOL,
         CN_TYPE_STRING,
         CN_TYPE_OBJECT,
+        CN_TYPE_WEAK_OBJECT,
         CN_TYPE_FUNCTION,
         CN_TYPE_GENERIC_UNIQ_PTR // custom things that may be handled by user in the dtor
     } cn_type;
@@ -144,11 +152,13 @@
 
     typedef struct {
         cn_type type;
-        union {
+        union {            
+            cnbool b;
+
             int64_t i;
             double f;
             cnnumber num;
-
+            
             char *str;
             void *ptr;
 
@@ -160,9 +170,9 @@
 
     struct object_s;
 
-    #define null_value (cn_value){0}
-    #define VALUE_ERR (cn_value){CN_TYPE_INT, {1}}
-    #define VALUE_OK (cn_value){CN_TYPE_INT, {0}}
+    #define null_value (cn_value){CN_TYPE_NULL, .as.i = 0}
+    #define VALUE_ERR (cn_value){CN_TYPE_INT, .as.i = 1}
+    #define VALUE_OK (cn_value){CN_TYPE_INT, .as.i = 0}
     typedef cn_value (*cn_method)(struct object_s *self, void **args);
 
     struct object_attribute_s {
@@ -211,6 +221,27 @@
         struct vector3_s rotation;
         scene_object_flags flags;
     };
+
+    struct list_iterator_s {
+        size_t pos;
+        size_t size;
+        cn_method get_element;
+        cn_value val;
+        struct object_s *_obj;
+    };
+
+    struct generic_map_s {
+        void **content;
+        uint64_t *keys; // keys[i] -> content[i]
+
+        size_t size;
+        size_t capacity;
+    };
+
+    typedef struct {
+        struct object_s *obj;
+        cn_method method;
+    } ObjMethodPair;
 
     typedef struct vector2_s Vector2;
     typedef struct vector3_s Vector3;
@@ -285,6 +316,13 @@
     CN_API void remove_object_ordered_vector(ObjectVector *vec, size_t i);
     void remove_object_vector(ObjectVector *vec, size_t i);
 
+    CN_API struct generic_map_s *new_generic_map(void);
+    CN_API uint8_t generic_map_resize(struct generic_map_s *gen_map, size_t new_capacity);
+    CN_API uint8_t add_generic_map(struct generic_map_s *gen_map, void *element, const char *key, void (*_delete_obj)(void *));
+    CN_API void remove_generic_map(struct generic_map_s *gen_map, const char *key, void (*_delete_obj)(void *));
+    CN_API const void *get_generic_map(struct generic_map_s *gen_map, const char *key, void *(*_obj_from_key_default)(const char *), void (*_delete_obj)(void *));
+    CN_API void delete_generic_map(struct generic_map_s *gen_map, void (*_delete_obj)(void *));
+
     CN_API Object *new_ctx(void);
     CN_API cnbool submodule_ctx(Object *ctx, Object *module);
 
@@ -307,9 +345,25 @@
     CN_API void remove_value_ordered_vector(struct cn_value_vector_s *vec, size_t i);
     CN_API void delete_value_vector(struct cn_value_vector_s *vec);
 
+    CN_API struct list_iterator_s list_get_iterator(Object *__list);
+    CN_API void list_iterator_next(struct list_iterator_s *iterator);
+    CN_API cnbool list_iterator_isend(const struct list_iterator_s *iterator);
+    CN_API cnbool list_iterator_value_isnull(const struct list_iterator_s *iterator);
+
+    CN_API struct list_iterator_s atlas_get_iterator(Object *__atlas, cnbool get_value_instead_of_key);
+    CN_API void atlas_iterator_next(struct list_iterator_s *iterator);
+    CN_API cnbool atlas_iterator_value_isnull(const struct list_iterator_s *iterator);
+    CN_API cnbool atlas_iterator_isend(const struct list_iterator_s *iterator);
+
+    CN_API ObjMethodPair *new_object_method_pair(Object *obj, cn_method method);
+    CN_API ObjMethodPair *new_weak_object_method_pair(Object *obj, cn_method method);
+    CN_API void delete_object_method_pair(ObjMethodPair *pair);
+    CN_API void delete_weak_object_method_pair(ObjMethodPair *pair);
+
     CN_API Object *new_list(void);
     CN_API Object *new_scene(void);
     CN_API Object *new_scene_object(void);
+    CN_API Object *new_atlas(void *(*_fetch_default)(const char *), void (*_delete_obj)(void *));
 
     CN_API cnbool start_core(void);
     CN_API void end_core(void);

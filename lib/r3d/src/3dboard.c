@@ -3,10 +3,10 @@
 
 static cn_value _init(Object *__this, void **args)
 {
-    PREP_INIT()
-
     if (!args || !args[0])
         return (VALUE_ERR);
+
+    PREP_INIT()
 
     struct threed_board_mode_s *mode = args[0];
 
@@ -19,7 +19,6 @@ static cn_value _init(Object *__this, void **args)
     INIT_VEC2(__this, mode->resolution, "resolution");
     INIT_VEC2(__this, upscale, "upscale");
 
-    // teporary testing purpose
     INIT_OBJECT_STATIC(__this, new_camera3d(),
         ((cnany []){
             &(struct scene_object_mode_s){{0, 0, 5}, {1, 1, 1}, {0, 0, 0}, CN_OBJ_HOST | CN_OBJ_DRAWABLE},
@@ -30,88 +29,115 @@ static cn_value _init(Object *__this, void **args)
 
     return (VALUE_OK);
 }
+static void _cpu_rendering(void)
+{
+    // not implemented
+}
+
+static void _gpu_rendering(void)
+{
+    // not implemented
+}
+
+static void _opengl_rendering(Mesh *mesh, Material *material, const Vector3 *position, const Vector3 *scale, const Vector3 *rotation, const cnnumber view[16], const cnnumber proj[16])
+{
+    cnnumber model[16];
+
+    if (!mesh->uploaded) {
+        if (!mesh_upload_gl(mesh))
+            return;
+    }
+
+    _make_model(model, position, scale, rotation);
+
+    material_use_gl(material, model, view, proj);
+    mesh_draw_gl(mesh);
+}
+
+static cn_value _render_object(Object *__this, void **args)
+{
+    if (!args && !args[0])
+        return (null_value);
+
+    threed_render_stack *render_stack = args[0]; 
+    int64_t flags = get_attr(render_stack->obj, "_flags")->as.i;
+    
+    if (!((flags & CN_OBJ_DRAWABLE) > 0))
+        return (null_value);
+
+    Vector3 *object_position = &get_attr(render_stack->obj, "position")->as.vec3;
+    Vector3 *object_scale = &get_attr(render_stack->obj, "scale")->as.vec3;
+    Vector3 *object_rotation = &get_attr(render_stack->obj, "rotation")->as.vec3;
+
+    if (has_attr(render_stack->obj, "mesh") && has_attr(render_stack->obj, "material")) {
+        Mesh *object_mesh = get_attr(render_stack->obj, "mesh")->as.ptr;
+        Material *object_mat = get_attr(render_stack->obj, "material")->as.ptr;
+
+        if (!object_mesh || !object_mat)
+            return (null_value);
+
+        if (((render_stack->window->video_mode.flags & VDM_CPU) > 0)) {
+            _cpu_rendering();
+        } else if ((render_stack->window->video_mode.flags & VDM_GPU) > 0) {
+            _gpu_rendering();
+        } else if ((render_stack->window->video_mode.flags & VDM_OPENGL) > 0) {
+            _opengl_rendering(
+                object_mesh,
+                object_mat,
+                object_position,
+                object_scale,
+                object_rotation,
+                render_stack->view,
+                render_stack->proj);
+        }
+    }
+
+    if (has_method(render_stack->obj, "_draw"))
+        (void)call_method(render_stack->obj, "_draw", (cnany []){__this, render_stack->window, NULL});
+
+    return (null_value);
+}
 
 static cn_value _draw(Object *__this, void **args)
 {
-    Window *window = args[0];
+    threed_render_stack render_stack;
 
-    cnnumber view[16], proj[16], model[16];
     Object *scene = get_attr(__this, "scene")->as.ptr;
     Object *elements = get_attr(scene, "objects")->as.ptr;
-    size_t len = call_method(elements, "len", NULL).as.i;
-    Vector2 upscale = get_attr(__this, "upscale")->as.vec2;
-    Vector2 resolution = get_attr(__this, "resolution")->as.vec2;
-    Vector2 position = get_attr(__this, "position")->as.vec2;
-    cn_value val;
-    Object *temp;
-    int64_t flags;
-    Vector3 *temp_position;
-    Vector3 *temp_scale;
-    Vector3 *temp_rotation;
-    Mesh *temp_mesh;
-    Material *temp_mat;
     cnbool have_camera = has_attr(__this, "camera");
     Object *camera = NULL;
 
-    (void)upscale;
+    render_stack.window = args[0];
+    render_stack.canva_scale = get_attr(__this, "upscale")->as.vec2;
+    render_stack.canva_size = get_attr(__this, "resolution")->as.vec2;
+    render_stack.canva_position = get_attr(__this, "position")->as.vec2;
 
-    glViewport(position.x, position.y, resolution.x, resolution.y);
+    if (((render_stack.window->video_mode.flags & VDM_OPENGL) > 0))
+        glViewport(render_stack.canva_position.x, render_stack.canva_position.y, render_stack.canva_scale.x, render_stack.canva_scale.y);
 
     if (have_camera) {
         camera = get_attr(__this, "camera")->as.ptr;
 
         if (camera) {
-            Vector3 *cam_pos = &get_attr(camera, "position")->as.vec3;
-            Vector3    *cam_rot = &get_attr(camera, "rotation")->as.vec3;
-            cnnumber    fov     =  get_attr(camera, "fov")->as.num;
-            cnnumber    near    =  get_attr(camera, "near")->as.num;
-            cnnumber    far     =  get_attr(camera, "far")->as.num;
-            cnnumber    aspect  =  resolution.x / resolution.y;
-
-            _make_view(view, cam_pos, cam_rot);
-            _make_proj(proj, fov, aspect, near, far);
+            _make_view(render_stack.view,
+                &get_attr(camera, "position")->as.vec3, &get_attr(camera, "rotation")->as.vec3);
+            _make_proj(render_stack.proj,
+                get_attr(camera, "fov")->as.num,
+                render_stack.canva_size.x / render_stack.canva_size.y,
+                get_attr(camera, "near")->as.num, get_attr(camera, "far")->as.num);
         }
     }
 
-    for (size_t i = 0; i < len; ++i) {
-        val = call_method(elements, "at", (cnany []){(size_t []){i}, NULL});
-
-        if (val.type == CN_TYPE_NULL)
+    for (struct list_iterator_s it = list_get_iterator(elements); !list_iterator_isend(&it); list_iterator_next(&it)) {
+        if (list_iterator_value_isnull(&it))
             continue;
-        
-        temp = val.as.ptr;
-        flags = get_attr(temp, "_flags")->as.i;
-        
-        if (!((flags & CN_OBJ_DRAWABLE) > 0))
-            continue;
-
-        temp_position = &get_attr(temp, "position")->as.vec3;
-        temp_scale = &get_attr(temp, "scale")->as.vec3;
-        temp_rotation = &get_attr(temp, "rotation")->as.vec3;
 
         if (!have_camera || !camera)
             continue;
+        
+        render_stack.obj = it.val.as.ptr;
 
-        if (has_attr(temp, "mesh") && has_attr(temp, "material")) {
-            temp_mesh = get_attr(temp, "mesh")->as.ptr;
-            temp_mat = get_attr(temp, "material")->as.ptr;
-
-            if (!temp_mesh || !temp_mat)
-                continue;
-
-            if (!temp_mesh->uploaded) {
-                if (!mesh_upload_gl(temp_mesh))
-                    continue;
-            }
-
-            _make_model(model, temp_position, temp_scale, temp_rotation);
-
-            material_use_gl(temp_mat, model, view, proj);
-            mesh_draw_gl(temp_mesh);
-        }
-
-        if (has_method(temp, "_draw"))
-            (void)call_method(temp, "_draw", (cnany []){__this, window, NULL});
+        _render_object(__this, (cnany[]){&render_stack, NULL});
     }
 
     return (null_value);

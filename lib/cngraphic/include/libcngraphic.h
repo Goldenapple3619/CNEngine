@@ -16,9 +16,9 @@
                 }                                                                \
                 break;                                                           \
             case R_API_GL:                                                       \
-                if ((t)->gpu_handler.gl_id) {                                    \
-                    glDeleteTextures(1, &(t)->gpu_handler.gl_id);                \
-                    (t)->gpu_handler.gl_id = 0;                                  \
+                if ((t)->gpu_handler.gl_texture.gl_id) {                         \
+                    glDeleteTextures(1, &(t)->gpu_handler.gl_texture.gl_id);     \
+                    (t)->gpu_handler.gl_texture.gl_id = 0;                       \
                 }                                                                \
                 break;                                                           \
             default:                                                             \
@@ -85,6 +85,12 @@
     typedef uint32_t cncolor;
 
     typedef struct {
+        uint32_t vao;
+        uint32_t vbo;
+        uint32_t shader;
+    } Quad;
+
+    typedef struct {
         cnnumber x, y, z;
         cnnumber nx, ny, nz;
         cnnumber u, v;
@@ -95,14 +101,17 @@
 
         SDL_Surface *surface;
 
-        rendering_api api;
         union {
             struct {
                 SDL_Texture *gpu_texture;
                 const SDL_Renderer *renderer;
             } sdl_texture;
-            uint32_t gl_id;
+            struct {
+                uint32_t gl_id;
+                SDL_GLContext gl_ctx;
+            } gl_texture;
         } gpu_handler;
+        rendering_api api;
     };
 
     typedef struct {
@@ -169,7 +178,7 @@
 
         SDL_Window *window;
         SDL_Renderer *renderer;
-        SDL_GLContext *gl_ctx;
+        SDL_GLContext gl_ctx;
         struct texture_s *texture;
 
         struct event_map_entry_s **event_map; // null terminated
@@ -180,16 +189,6 @@
 
         size_t size;
         size_t capacity;
-    };
-
-    struct interface_s {
-        struct window_s *window;
-
-        struct object_vector_s elements;
-
-        void (*draw)(struct object_s *__this);
-        void (*update)(struct object_s *__this, cntime delta_time);
-        void (*event)(struct object_s *__this);
     };
 
     struct texture_atlas_s {
@@ -205,12 +204,12 @@
     typedef struct window_universe_s WindowUniverse;
     typedef struct videomode_s Videomode;
     typedef struct event_s Event;
-    typedef struct interface_s Interface;
     typedef struct texture_atlas_s TextureAtlas;
 
     CN_API void blit(const Texture *__src, Texture *__dst, const Rect *__src_rect, const Vector2 *__dest_at);
     CN_API void blit_ratio(const Texture *__src, Texture *__dst, const Rect *__src_rect, const Vector2 *__dest_at, const Vector2 *__ratios);
     CN_API void draw_texture(Texture *__src_texture, SDL_Renderer *__dest_renderer, const Rect *__src_rect, const Vector2 *__dest_at, const Vector2 *__ratios, double __angle);
+    CN_API void draw_texture_gl(Texture *__src_texture, Quad *__dst_quad, const Vector2 *__at, const Vector2 *__size, cncolor __tint, const Vector2 *__view_port);
 
     CN_API Texture *new_texture(const Vector2 *size, cnbool alpha);
     CN_API cnbool texture_upload_gl(Texture *texture);
@@ -287,12 +286,16 @@
 
     CN_API Material *new_material(void);
     CN_API void material_use_gl(const Material *mat,
-                  const float model[16],
-                  const float view[16],
-                  const float proj[16]);
+                  const cnnumber model[16],
+                  const cnnumber view[16],
+                  const cnnumber proj[16]);
     CN_API void delete_material(Material *material);
 
     CN_API GLuint gl_shader_compile(const char *vert_src, const char *frag_src);
     CN_API GLuint gl_shader_load(const char *vert_path, const char *frag_path);
+
+    CN_API Quad *new_quad(void);
+    CN_API Quad *new_quad2d(void);
+    CN_API void delete_quad(Quad *quad);
 
 #endif

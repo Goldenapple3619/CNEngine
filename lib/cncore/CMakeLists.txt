@@ -12,11 +12,14 @@ add_library(cncore SHARED
     src/object_ownership.c
     src/object_attributes.c
     src/object_map.c
+    src/object_method_pair.c
     src/list.c
     src/core_ctx.c
     src/scene.c
     src/scene_object.c
     src/common.c
+    src/atlas.c
+    src/generic_map.c
 )
 
 target_compile_options(cncore

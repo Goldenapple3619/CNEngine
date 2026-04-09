@@ -2,7 +2,7 @@ project(r2d C)
 
 add_library(r2d SHARED
     src/2dboard.c
-    src/tile.c
+    src/object2d.c
     src/camera2d.c
 )
 

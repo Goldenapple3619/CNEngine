@@ -1,6 +1,9 @@
 project(cninput C)
 
 add_library(cninput SHARED
+    src/input_submodule_ctx.c
+    src/input_entry.c
+    src/input_controller.c
     src/common.c
 )
 
@@ -16,6 +19,7 @@ target_include_directories(cninput
 
 target_link_libraries(cninput
     PUBLIC
-        cncore
-        SDL2::SDL2
+
+    cncore
+    cngraphic
 )

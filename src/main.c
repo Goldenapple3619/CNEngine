@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <signal.h>
 #include "libcncore.h"
+#include "libcnaudio.h"
+#include "libcninput.h"
 #include "libcngraphic.h"
 #include "librgui.h"
 #include "libr2d.h"
@@ -85,6 +87,8 @@ Object *add_test_opengl_window(Object *ctx)
         return (NULL);
     }
 
+    call_method(ctx, "set_main_window", (cnany []){(int64_t []){((Window *)get_attr(window_interface, "window")->as.ptr)->id}});
+
     return (window_interface);
 }
 
@@ -123,7 +127,7 @@ Object *add_test_twod_window(Object *ctx)
         return (NULL);
     }
 
-    Object *tile = build_object(new_tile(), (cnany []){
+    Object *tile = build_object(new_object2d(), (cnany []){
         &(struct scene_object_mode_s){
             .coords = {15, 15, 0},
             .flags = CN_OBJ_DRAWABLE | CN_OBJ_HOST,
@@ -218,7 +222,17 @@ Object *build_engine(void)
         return (NULL);
     }
 
+    if (!submodule_ctx(ctx, new_audio_ctx(true))) {
+        (void)delete_object(ctx);
+        return (NULL);
+    }
+
     if (!submodule_ctx(ctx, new_gui_submodule())) {
+        (void)delete_object(ctx);
+        return (NULL);
+    }
+
+    if (!submodule_ctx(ctx, new_input_submodule())) {
         (void)delete_object(ctx);
         return (NULL);
     }

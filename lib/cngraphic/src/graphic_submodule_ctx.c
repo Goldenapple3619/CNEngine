@@ -22,6 +22,7 @@ static cn_value _update(Object *__this, void **args)
 
     ObjectVector *interfaces = get_attr(__this, "interfaces")->as.ptr;
     WindowUniverse *wu = get_attr(__this, "all_window")->as.ptr;
+    int64_t main_window = get_attr(__this, "_main_window_id")->as.i;
     Window *temp;
 
     if (are_all_window_closed(wu)) {
@@ -36,23 +37,36 @@ static cn_value _update(Object *__this, void **args)
         if (is_window_closed_addr(wu, temp)) {
             Object *scene = get_attr(__this, "scene")->as.ptr;
             Object *elements = get_attr(scene, "objects")->as.ptr;
-            size_t len = call_method(elements, "len", NULL).as.i;
-            cn_value val;
+            Texture *temp_texture;
 
-            for (size_t j = 0; j < len; ++j) {
-                val = call_method(elements, "at", (cnany []){(size_t []){j}, NULL});
-
-                if (val.type == CN_TYPE_NULL)
+            for (struct list_iterator_s it = list_get_iterator(elements); !list_iterator_isend(&it); list_iterator_next(&it)) {
+                if (list_iterator_value_isnull(&it))
                     continue;
 
-                if (!has_attr(val.as.ptr, "texture"))
+                if (!has_attr(it.val.as.ptr, "texture"))
                     continue;
+
+                temp_texture = get_attr(it.val.as.ptr, "texture")->as.ptr;
                 
-                if (((Texture *)get_attr(val.as.ptr, "texture")->as.ptr)->api == R_API_SDL && ((Texture *)get_attr(val.as.ptr, "texture")->as.ptr)->gpu_handler.sdl_texture.renderer == ((Window *)(get_attr(interfaces->objects[i], "window")->as.ptr))->renderer) {
-                    INVALIDATE_GPU((Texture *)(get_attr(val.as.ptr, "texture")->as.ptr));
+                switch (temp_texture->api) {
+                    case R_API_SDL:
+                        if (temp_texture->gpu_handler.sdl_texture.renderer == temp->renderer) {
+                            INVALIDATE_GPU(temp_texture);
+                        }
+                        break;
+                    case R_API_GL:
+                        if (temp_texture->gpu_handler.gl_texture.gl_ctx == temp->gl_ctx) {
+                            INVALIDATE_GPU(temp_texture);
+                        }
+                        break;
+                    default:
+                        break;
                 }
             }
-
+            if (main_window != -1 && temp->id == main_window) {
+                (void)call_method(__this, "_stop", NULL);
+                set_attr(__this, "_main_window_id", CN_TYPE_INT, (int64_t []){-1});
+            }
             (void)remove_object_vector(interfaces, i);
             --i;
             continue;
@@ -80,6 +94,29 @@ static cn_value _events(Object *__this, void **args)
     return (null_value);
 }
 
+static cn_value _set_main_window(Object *__this, void **args)
+{
+    if (!args || !args[0])
+        return (VALUE_ERR);
+
+    ObjectVector *interfaces = get_attr(__this, "interfaces")->as.ptr;
+    cnbool found = false;
+
+    for (size_t i = 0; i < interfaces->size; ++i) {
+        if (((Window *)(get_attr(interfaces->objects[i], "window")->as.ptr))->id != *(int64_t *)args[0])
+            continue;
+        found = true;
+        break;
+    }
+
+    if (!found)
+        return (VALUE_ERR);
+
+    INIT_INT(__this, *(int64_t *)args[0], "_main_window_id");
+
+    return (VALUE_OK);
+}
+
 static cn_value _spawn_interface(Object *__this, void **args)
 {
     if (!args)
@@ -101,7 +138,7 @@ static cn_value _spawn_interface(Object *__this, void **args)
         return (null_value);
     }
 
-    return ((cn_value){.type=CN_TYPE_OBJECT, .as.ptr=interface});
+    return ((cn_value){.type=CN_TYPE_WEAK_OBJECT, .as.ptr=interface});
 }
 
 static cn_value _init(Object *__this, void **args)
@@ -118,6 +155,7 @@ static cn_value _init(Object *__this, void **args)
     if (!start_graphics())
         return (VALUE_ERR);
 
+    INIT_INT(ctx, -1, "_main_window_id");
     INIT_CUSTOM_ALLOCATION(ctx, new_object_vector(), delete_object_vector, "interfaces");
     INIT_CUSTOM_ALLOCATION(ctx, new_window_universe(), delete_window_universe, "all_window");
     INIT_CUSTOM_ALLOCATION(ctx, new_texture_atlas(), delete_texture_atlas, "texture_atlas");
@@ -130,6 +168,7 @@ static cn_value _init(Object *__this, void **args)
         return (VALUE_ERR);
 
     INIT_METHOD(ctx, "spawn_interface", _spawn_interface)
+    INIT_METHOD(ctx, "set_main_window", _set_main_window)
     
     return (VALUE_OK);
 }
@@ -144,22 +183,17 @@ static cn_value _del(Object *__this, void **args)
         return (VALUE_ERR);
     
     Object *ctx = (Object *)(args[0]);
-
     Object *scene = get_attr(ctx, "scene")->as.ptr;
     Object *elements = get_attr(scene, "objects")->as.ptr;
-    size_t len = call_method(elements, "len", NULL).as.i;
-    cn_value val;
 
-    for (size_t i = 0; i < len; ++i) {
-        val = call_method(elements, "at", (cnany []){(size_t []){i}, NULL});
-
-        if (val.type == CN_TYPE_NULL)
+    for (struct list_iterator_s it = list_get_iterator(elements); !list_iterator_isend(&it); list_iterator_next(&it)) {
+        if (list_iterator_value_isnull(&it))
             continue;
 
-        if (!has_attr(val.as.ptr, "texture"))
+        if (!has_attr(it.val.as.ptr, "texture"))
             continue;
 
-        INVALIDATE_GPU((Texture *)(get_attr(val.as.ptr, "texture")->as.ptr));
+        INVALIDATE_GPU((Texture *)(get_attr(it.val.as.ptr, "texture")->as.ptr));
     }
 
     DEL_CUSTOM_ALLOCAION(ctx, delete_object_vector, "interfaces");

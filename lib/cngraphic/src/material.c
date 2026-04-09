@@ -47,14 +47,14 @@ void material_use_gl(const Material *mat,
 
     /* Texture slot 0 */
     if (mat->texture && mat->texture->api == R_API_GL) {
-        if (!mat->texture->gpu_handler.gl_id) {
+        if (!mat->texture->gpu_handler.gl_texture.gl_id || mat->texture->gpu_handler.gl_texture.gl_ctx != SDL_GL_GetCurrentContext()) {
             if (!texture_upload_gl(mat->texture)) {
                 glUniform1i(glGetUniformLocation(mat->gpu_handler.gl_shader, "u_has_texture"), 0);
                 return;
             }
         }
         glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, mat->texture->gpu_handler.gl_id);
+        glBindTexture(GL_TEXTURE_2D, mat->texture->gpu_handler.gl_texture.gl_id);
         glUniform1i(glGetUniformLocation(mat->gpu_handler.gl_shader, "u_texture"), 0);
         glUniform1i(glGetUniformLocation(mat->gpu_handler.gl_shader, "u_has_texture"), 1);
     } else {

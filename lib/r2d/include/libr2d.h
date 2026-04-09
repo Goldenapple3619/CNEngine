@@ -24,16 +24,21 @@
 
         Window *window;
         Texture *cpu_texture;
+        Quad *gl_quad;
 
         Vector2 canva_position;
         Vector2 canva_size;
         Vector2 canva_scale;
         Vector2 canva_ratio;
 
+        Vector3 camera_position;
+        Vector3 camera_rotation;
+
         Vector2 offset;
     } twod_render_stack;
 
     CN_API Object *new_2dboard(void);
-    CN_API Object *new_tile(void);
+    CN_API Object *new_camera2d(void);
+    CN_API Object *new_object2d(void);
 
 #endif

@@ -7,12 +7,14 @@ void _delete_object_attribute_value(cn_value *val)
     switch (val->type) {
         case (CN_TYPE_INT):
         case (CN_TYPE_NUMBER):
+        case (CN_TYPE_BOOL):
         case (CN_TYPE_NULL):
         case (CN_TYPE_VEC2):
         case (CN_TYPE_VEC3):
         case (CN_TYPE_RECT):
         case (CN_TYPE_FLOAT):
         case (CN_TYPE_FUNCTION):
+        case (CN_TYPE_WEAK_OBJECT):
         case (CN_TYPE_GENERIC_UNIQ_PTR):
             break;
 
@@ -31,7 +33,7 @@ void _delete_object_attribute_value(cn_value *val)
             }
             val->as.ptr = NULL;
             break;
-    
+
         default:
             break;
     }
@@ -44,6 +46,9 @@ void _init_attribute_value(cn_value *dest, cnany value)
     switch (dest->type) {
         case (CN_TYPE_NULL):
             dest->as.i = 0;
+            break;
+        case (CN_TYPE_BOOL):
+            dest->as.b = value ? *((typeof(dest->as.b) *)value) : 0;
             break;
         case (CN_TYPE_INT):
             dest->as.i = value ? *((typeof(dest->as.i) *)value) : 0;
@@ -69,6 +74,9 @@ void _init_attribute_value(cn_value *dest, cnany value)
         case (CN_TYPE_OBJECT):
             dest->as.ptr = share_object((Object *)value);
             break;
+        case (CN_TYPE_WEAK_OBJECT):
+            dest->as.ptr = value;
+            break;
         case (CN_TYPE_GENERIC_UNIQ_PTR):
             dest->as.ptr = value;
             break;
@@ -85,6 +93,24 @@ void *_attribute_value_extract(const cn_value *src)
     if (!src)
         return (NULL);
     switch (src->type) {
+        case (CN_TYPE_NULL):
+            return (void *)&src->as.i;
+            break;
+        case (CN_TYPE_BOOL):
+            return (void *)&src->as.b;
+            break;
+        case (CN_TYPE_VEC2):
+            return (void *)&src->as.vec2;
+            break;
+        case (CN_TYPE_VEC3):
+            return (void *)&src->as.vec3;
+            break;
+        case (CN_TYPE_RECT):
+            return (void *)&src->as.rect;
+            break;
+        case (CN_TYPE_NUMBER):
+            return (void *)&src->as.num;
+            break;
         case (CN_TYPE_INT):
             return (void *)&src->as.i;
             break;
@@ -95,6 +121,9 @@ void *_attribute_value_extract(const cn_value *src)
             return src->as.ptr;
             break;
         case (CN_TYPE_OBJECT):
+            return src->as.ptr;
+            break;
+        case (CN_TYPE_WEAK_OBJECT):
             return src->as.ptr;
             break;
         case (CN_TYPE_GENERIC_UNIQ_PTR):

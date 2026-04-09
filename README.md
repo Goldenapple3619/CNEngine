@@ -1,5 +1,13 @@
-<!-- <a href="https://github.com/Goldenapple3619/CNEngine"> <img src=./assets/banner.png alt="CNEngine"/> </a> -->
-# CNEngine
+<a href="https://github.com/Goldenapple3619/CNEngine">
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/images/banner_dark_XL.png">
+  <img alt="CNEngine" src="./assets/images/banner_XL.png">
+</picture>
+
+</a>
+
+
 <div align="center">
   
 [![GitHub contributors](https://img.shields.io/github/contributors/Goldenapple3619/CNEngine?style=for-the-badge)](https://github.com/Goldenapple3619/CNEngine/graphs/contributors) ![GitHub repo size](https://img.shields.io/github/repo-size/Goldenapple3619/CNEngine?style=for-the-badge) [![GitHub License](https://img.shields.io/github/license/Goldenapple3619/CNEngine?style=for-the-badge)](https://github.com/Goldenapple3619/CNEngine/blob/dev/LICENSE) [![GitHub Actions Status](https://img.shields.io/github/actions/workflow/status/Goldenapple3619/CNEngine/build.yml?style=for-the-badge)](https://github.com/Goldenapple3619/CNEngine/actions/workflows/build.yml) [![GitHub Actions Status](https://img.shields.io/github/actions/workflow/status/Goldenapple3619/CNEngine/documentation.yml?style=for-the-badge&label=Documentation)](https://github.com/Goldenapple3619/CNEngine/actions/workflows/documentation.yml)
@@ -55,6 +63,7 @@ Higly configurable on the back technology allow the usage of multiple graphics a
 - GCC (mingw for Windows)
 - LIBC
 - LIBM
+- python-jinja (jinja2)
 
 ## How to build
 
