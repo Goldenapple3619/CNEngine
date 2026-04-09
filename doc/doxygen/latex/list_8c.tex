@@ -16,6 +16,14 @@ static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{list_8
 \item 
 static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{list_8c_a97a1051659d95d0248dbe386029c17f3}{\+\_\+del}} (\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+this, void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}args)
 \item 
+struct \mbox{\hyperlink{structlist__iterator__s}{list\+\_\+iterator\+\_\+s}} \mbox{\hyperlink{list_8c_aea80fcc93f7e297bbfa53fc81749747c}{list\+\_\+get\+\_\+iterator}} (\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+list)
+\item 
+void \mbox{\hyperlink{list_8c_a4c7610112a3a4b02b642d392eba87b0b}{list\+\_\+iterator\+\_\+next}} (struct \mbox{\hyperlink{structlist__iterator__s}{list\+\_\+iterator\+\_\+s}} \texorpdfstring{$\ast$}{*}iterator)
+\item 
+\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} \mbox{\hyperlink{list_8c_a8fed0630b348b6325ff41d30653737b1}{list\+\_\+iterator\+\_\+value\+\_\+isnull}} (const struct \mbox{\hyperlink{structlist__iterator__s}{list\+\_\+iterator\+\_\+s}} \texorpdfstring{$\ast$}{*}iterator)
+\item 
+\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} \mbox{\hyperlink{list_8c_a01f85eb0f466d9be2244cbc2a3c3fe7c}{list\+\_\+iterator\+\_\+isend}} (const struct \mbox{\hyperlink{structlist__iterator__s}{list\+\_\+iterator\+\_\+s}} \texorpdfstring{$\ast$}{*}iterator)
+\item 
 \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{list_8c_adf3f9ba324386dc67303266db4e24eb2}{new\+\_\+list}} ()
 \end{DoxyCompactItemize}
 
@@ -56,6 +64,30 @@ static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{list_8
 \index{\_remove@{\_remove}!list.c@{list.c}}
 \doxysubsubsection{\texorpdfstring{\_remove()}{\_remove()}}
 {\footnotesize\ttfamily static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \+\_\+remove (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+this,  }\item[{void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{list_8c_aea80fcc93f7e297bbfa53fc81749747c}\label{list_8c_aea80fcc93f7e297bbfa53fc81749747c} 
+\index{list.c@{list.c}!list\_get\_iterator@{list\_get\_iterator}}
+\index{list\_get\_iterator@{list\_get\_iterator}!list.c@{list.c}}
+\doxysubsubsection{\texorpdfstring{list\_get\_iterator()}{list\_get\_iterator()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structlist__iterator__s}{list\+\_\+iterator\+\_\+s}} list\+\_\+get\+\_\+iterator (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+list }\end{DoxyParamCaption})}
+
+\Hypertarget{list_8c_a01f85eb0f466d9be2244cbc2a3c3fe7c}\label{list_8c_a01f85eb0f466d9be2244cbc2a3c3fe7c} 
+\index{list.c@{list.c}!list\_iterator\_isend@{list\_iterator\_isend}}
+\index{list\_iterator\_isend@{list\_iterator\_isend}!list.c@{list.c}}
+\doxysubsubsection{\texorpdfstring{list\_iterator\_isend()}{list\_iterator\_isend()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} list\+\_\+iterator\+\_\+isend (\begin{DoxyParamCaption}\item[{const struct \mbox{\hyperlink{structlist__iterator__s}{list\+\_\+iterator\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{iterator }\end{DoxyParamCaption})}
+
+\Hypertarget{list_8c_a4c7610112a3a4b02b642d392eba87b0b}\label{list_8c_a4c7610112a3a4b02b642d392eba87b0b} 
+\index{list.c@{list.c}!list\_iterator\_next@{list\_iterator\_next}}
+\index{list\_iterator\_next@{list\_iterator\_next}!list.c@{list.c}}
+\doxysubsubsection{\texorpdfstring{list\_iterator\_next()}{list\_iterator\_next()}}
+{\footnotesize\ttfamily void list\+\_\+iterator\+\_\+next (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structlist__iterator__s}{list\+\_\+iterator\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{iterator }\end{DoxyParamCaption})}
+
+\Hypertarget{list_8c_a8fed0630b348b6325ff41d30653737b1}\label{list_8c_a8fed0630b348b6325ff41d30653737b1} 
+\index{list.c@{list.c}!list\_iterator\_value\_isnull@{list\_iterator\_value\_isnull}}
+\index{list\_iterator\_value\_isnull@{list\_iterator\_value\_isnull}!list.c@{list.c}}
+\doxysubsubsection{\texorpdfstring{list\_iterator\_value\_isnull()}{list\_iterator\_value\_isnull()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} list\+\_\+iterator\+\_\+value\+\_\+isnull (\begin{DoxyParamCaption}\item[{const struct \mbox{\hyperlink{structlist__iterator__s}{list\+\_\+iterator\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{iterator }\end{DoxyParamCaption})}
 
 \Hypertarget{list_8c_adf3f9ba324386dc67303266db4e24eb2}\label{list_8c_adf3f9ba324386dc67303266db4e24eb2} 
 \index{list.c@{list.c}!new\_list@{new\_list}}

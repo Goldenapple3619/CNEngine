@@ -1,6 +1,7 @@
 var structcn__value =
 [
     [ "as", "structcn__value.html#aa0efdb4b1109c1af80d1fad3f68bd5fa", null ],
+    [ "b", "structcn__value.html#a3959193368d8a6b97790f672005e744a", null ],
     [ "f", "structcn__value.html#a3489c7eba8ca23110ee4c3bced9c892d", null ],
     [ "i", "structcn__value.html#abc594e31bc923cd0dd226321dbfd1645", null ],
     [ "num", "structcn__value.html#a94cda7dac494346639ec6d2d75ea776d", null ],

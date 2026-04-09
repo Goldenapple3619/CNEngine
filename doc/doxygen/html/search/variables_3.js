@@ -1,5 +1,21 @@
 var searchData=
 [
-  ['diffuse_0',['diffuse',['../structMaterial.html#ab4c6fbcfd2e7e342d67dd5d37c353ed1',1,'Material']]],
-  ['draw_1',['draw',['../structinterface__s.html#acb2d6af304e38e846735bf777fbf3c52',1,'interface_s']]]
+  ['camera_5fposition_0',['camera_position',['../structtwod__render__stack.html#ab01958236fabafee340d645d93532a96',1,'twod_render_stack']]],
+  ['camera_5frotation_1',['camera_rotation',['../structtwod__render__stack.html#a0a861fe3b08f2eb4d5cf13680107ac2f',1,'twod_render_stack']]],
+  ['canva_5foff_2',['canva_off',['../structgpu__rendering__data.html#a8ac075617b46433fd9ff59714d125035',1,'gpu_rendering_data']]],
+  ['canva_5fposition_3',['canva_position',['../structtwod__render__stack.html#af1cf85a9cd0366803817acadd6af8503',1,'twod_render_stack::canva_position'],['../structthreed__render__stack.html#a3fa601eb2af46d51b4cf83335ca7b53f',1,'threed_render_stack::canva_position']]],
+  ['canva_5fratio_4',['canva_ratio',['../structgpu__rendering__data.html#a2b142fd667527e673389ba7bd67aa9ed',1,'gpu_rendering_data::canva_ratio'],['../structtwod__render__stack.html#a1c0956721108e88a4073df06b90ca5cc',1,'twod_render_stack::canva_ratio']]],
+  ['canva_5fscale_5',['canva_scale',['../structgpu__rendering__data.html#aca24dcbdca97a6e3a0797e9a7ee34de2',1,'gpu_rendering_data::canva_scale'],['../structtwod__render__stack.html#aef65392400f05bb167f364854932c992',1,'twod_render_stack::canva_scale'],['../structthreed__render__stack.html#a452eac7ed4ea27da319f209bcd84cb0c',1,'threed_render_stack::canva_scale']]],
+  ['canva_5fsize_6',['canva_size',['../structtwod__render__stack.html#a16bc0a52a2f3f33596d868d3950e8f6d',1,'twod_render_stack::canva_size'],['../structthreed__render__stack.html#a41e2c343f5d683c4f8d434363f61fc04',1,'threed_render_stack::canva_size']]],
+  ['capacity_7',['capacity',['../structgeneric__map__s.html#a8bbe4fb8f970091d9d338d1526209eb4',1,'generic_map_s::capacity'],['../structtexture__atlas__s.html#a5b35429eedda420d2190b560665f36ed',1,'texture_atlas_s::capacity'],['../structwindow__universe__s.html#ad7c04c529cbb22a858cb648a3ebfb820',1,'window_universe_s::capacity'],['../structevent__map__entry__s.html#abd15dd8579b4e53c4125b9030a38f527',1,'event_map_entry_s::capacity'],['../structobject__vector__s.html#ac8ca5c51f1e8464e6d8f42cb4da5508a',1,'object_vector_s::capacity'],['../structattr__map__s.html#a9bacc1de623c5c5df8ca68edf214b5f4',1,'attr_map_s::capacity'],['../structaudio__vector__s.html#a6126fefe01e60456ee86e266afc33c96',1,'audio_vector_s::capacity'],['../structaudio__sequence__s.html#a5a163ad4241aa61eda9301cf02a49e75',1,'audio_sequence_s::capacity'],['../structcn__value__vector__s.html#aa0c0843917f1469e098191f43120be6c',1,'cn_value_vector_s::capacity']]],
+  ['cbs_8',['cbs',['../structInputEntry.html#a67e9a8d0833cce7efefd40c1a0310a29',1,'InputEntry']]],
+  ['cbs_5fcapacity_9',['cbs_capacity',['../structInputEntry.html#a2646772e5eb6af4965cb5eb2ba0ccfa9',1,'InputEntry']]],
+  ['cbs_5fsize_10',['cbs_size',['../structInputEntry.html#a4544bf1aea1ea19a287f47113d4273d7',1,'InputEntry']]],
+  ['color_11',['color',['../structtext__mode__s.html#ae0251c8d544d35f880565d5ef7fce66d',1,'text_mode_s::color'],['../structMaterial.html#acb65226e740fa398d09868e0a4d2cf11',1,'Material::color']]],
+  ['content_12',['content',['../structgeneric__map__s.html#a6e252ab085c1db4e9cb13ce14c0b2a05',1,'generic_map_s::content'],['../structtexture__atlas__s.html#a69b2b7fba1e386083eae7a319106c859',1,'texture_atlas_s::content']]],
+  ['controllers_13',['controllers',['../structInputEntry.html#a5f96bf7ca8061f337cf2bbd89a2d3829',1,'InputEntry']]],
+  ['controllers_5fcapacity_14',['controllers_capacity',['../structInputEntry.html#a864b0eaa2d8781e992da299597d77750',1,'InputEntry']]],
+  ['controllers_5fsize_15',['controllers_size',['../structInputEntry.html#ae1e151306a9243cf35cefd78f382de3a',1,'InputEntry']]],
+  ['coords_16',['coords',['../structscene__object__mode__s.html#acb595fc6d06f704d4a3bc6e1ce32b4ce',1,'scene_object_mode_s']]],
+  ['cpu_5ftexture_17',['cpu_texture',['../structtwod__render__stack.html#a2309a6782263c194b2277718ccbe10db',1,'twod_render_stack::cpu_texture'],['../structthreed__render__stack.html#a0f8cb2e4ee1b61e98e60841bad17c928',1,'threed_render_stack::cpu_texture']]]
 ];

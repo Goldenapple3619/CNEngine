@@ -121,6 +121,8 @@ $(document).ready(function(){initNavTree('libcngraphic_8h.html',''); initResizab
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structQuad.html">Quad</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structVertex.html">Vertex</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtexture__s.html">texture_s</a></td></tr>
@@ -138,8 +140,6 @@ Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwindow__s.html">window_s</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwindow__universe__s.html">window_universe_s</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structinterface__s.html">interface_s</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtexture__atlas__s.html">texture_atlas_s</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -163,8 +163,6 @@ Typedefs</h2></td></tr>
 <tr class="separator:a11fee8bdf914a878a155af5fea79040b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60921eba80b4569fa79c67165460331e" id="r_a60921eba80b4569fa79c67165460331e"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structevent__s.html">event_s</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a60921eba80b4569fa79c67165460331e">Event</a></td></tr>
 <tr class="separator:a60921eba80b4569fa79c67165460331e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a6eca39ec9ca9c0b98ec41651bf2ecd" id="r_a0a6eca39ec9ca9c0b98ec41651bf2ecd"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structinterface__s.html">interface_s</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a0a6eca39ec9ca9c0b98ec41651bf2ecd">Interface</a></td></tr>
-<tr class="separator:a0a6eca39ec9ca9c0b98ec41651bf2ecd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a23359974f04ef93017c6a11fec3741ac" id="r_a23359974f04ef93017c6a11fec3741ac"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structtexture__atlas__s.html">texture_atlas_s</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a23359974f04ef93017c6a11fec3741ac">TextureAtlas</a></td></tr>
 <tr class="separator:a23359974f04ef93017c6a11fec3741ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -248,6 +246,8 @@ Functions</h2></td></tr>
 <tr class="separator:a6568a6d06f3f71f65a3457306c0959e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2da153b5b29828b70e502633bf450375" id="r_a2da153b5b29828b70e502633bf450375"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a2da153b5b29828b70e502633bf450375">draw_texture</a> (<a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> *__src_texture, SDL_Renderer *__dest_renderer, const <a class="el" href="libcncore_8h.html#a44e2d24ab2a21b90d03880cab9cc6d16">Rect</a> *__src_rect, const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *__dest_at, const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *__ratios, double __angle)</td></tr>
 <tr class="separator:a2da153b5b29828b70e502633bf450375"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a231487f473359a884727f26d496f11e4" id="r_a231487f473359a884727f26d496f11e4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a231487f473359a884727f26d496f11e4">draw_texture_gl</a> (<a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> *__src_texture, <a class="el" href="structQuad.html">Quad</a> *__dst_quad, const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *__at, const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *__size, <a class="el" href="libcngraphic_8h.html#a0b2773fdce5fa81de32a2e7a552ff37d">cncolor</a> __tint, const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *__view_port)</td></tr>
+<tr class="separator:a231487f473359a884727f26d496f11e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6afa86ecf7185b47b663f8717177ce70" id="r_a6afa86ecf7185b47b663f8717177ce70"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a6afa86ecf7185b47b663f8717177ce70">new_texture</a> (const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *size, <a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> alpha)</td></tr>
 <tr class="separator:a6afa86ecf7185b47b663f8717177ce70"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b2d02e333f84ea64de019adfc91e3fe" id="r_a1b2d02e333f84ea64de019adfc91e3fe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a1b2d02e333f84ea64de019adfc91e3fe">texture_upload_gl</a> (<a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> *texture)</td></tr>
@@ -374,14 +374,20 @@ Functions</h2></td></tr>
 <tr class="separator:aae4e77fb2db668a230d818fb1d1ce9dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a41778fea7c4b4d65121652d8d3af7dbe" id="r_a41778fea7c4b4d65121652d8d3af7dbe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structMaterial.html">Material</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a41778fea7c4b4d65121652d8d3af7dbe">new_material</a> (void)</td></tr>
 <tr class="separator:a41778fea7c4b4d65121652d8d3af7dbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae94d815251ac55cfb251ebc375b22fa6" id="r_ae94d815251ac55cfb251ebc375b22fa6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#ae94d815251ac55cfb251ebc375b22fa6">material_use_gl</a> (const <a class="el" href="structMaterial.html">Material</a> *mat, const float model[16], const float view[16], const float proj[16])</td></tr>
-<tr class="separator:ae94d815251ac55cfb251ebc375b22fa6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6cce96e755402d79b79c58c117f4b910" id="r_a6cce96e755402d79b79c58c117f4b910"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a6cce96e755402d79b79c58c117f4b910">material_use_gl</a> (const <a class="el" href="structMaterial.html">Material</a> *mat, const <a class="el" href="libcncore_8h.html#a7b05d657b3da4196f19727ba490b7401">cnnumber</a> model[16], const <a class="el" href="libcncore_8h.html#a7b05d657b3da4196f19727ba490b7401">cnnumber</a> view[16], const <a class="el" href="libcncore_8h.html#a7b05d657b3da4196f19727ba490b7401">cnnumber</a> proj[16])</td></tr>
+<tr class="separator:a6cce96e755402d79b79c58c117f4b910"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a176f1f0871adb1184a0845a974994ba7" id="r_a176f1f0871adb1184a0845a974994ba7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a176f1f0871adb1184a0845a974994ba7">delete_material</a> (<a class="el" href="structMaterial.html">Material</a> *material)</td></tr>
 <tr class="separator:a176f1f0871adb1184a0845a974994ba7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab596f9f0529f1a7cb183a23e33cb9cc7" id="r_ab596f9f0529f1a7cb183a23e33cb9cc7"><td class="memItemLeft" align="right" valign="top">GLuint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#ab596f9f0529f1a7cb183a23e33cb9cc7">gl_shader_compile</a> (const char *vert_src, const char *frag_src)</td></tr>
 <tr class="separator:ab596f9f0529f1a7cb183a23e33cb9cc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b55c6188090af7a9440ff77a3f34b2b" id="r_a1b55c6188090af7a9440ff77a3f34b2b"><td class="memItemLeft" align="right" valign="top">GLuint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a1b55c6188090af7a9440ff77a3f34b2b">gl_shader_load</a> (const char *vert_path, const char *frag_path)</td></tr>
 <tr class="separator:a1b55c6188090af7a9440ff77a3f34b2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4599b0e74f85c513d582c9c79d60e1a4" id="r_a4599b0e74f85c513d582c9c79d60e1a4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structQuad.html">Quad</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a4599b0e74f85c513d582c9c79d60e1a4">new_quad</a> (void)</td></tr>
+<tr class="separator:a4599b0e74f85c513d582c9c79d60e1a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af092b68246e4ab8cf14f306998c64246" id="r_af092b68246e4ab8cf14f306998c64246"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structQuad.html">Quad</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#af092b68246e4ab8cf14f306998c64246">new_quad2d</a> (void)</td></tr>
+<tr class="separator:af092b68246e4ab8cf14f306998c64246"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7af5ec3998e6efc3e8069eecd6a54352" id="r_a7af5ec3998e6efc3e8069eecd6a54352"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a7af5ec3998e6efc3e8069eecd6a54352">delete_quad</a> (<a class="el" href="structQuad.html">Quad</a> *quad)</td></tr>
+<tr class="separator:a7af5ec3998e6efc3e8069eecd6a54352"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="aca512f8d300fd34e355be5e23ce8680b" name="aca512f8d300fd34e355be5e23ce8680b"></a>
@@ -408,9 +414,9 @@ Functions</h2></td></tr>
 <div class="line">                }                                                                \</div>
 <div class="line">                <span class="keywordflow">break</span>;                                                           \</div>
 <div class="line">            <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="libcngraphic_8h.html#a68f9fcaba986f3dcdf56316330102559a903f3798fd8ab4ee1f84117589009a23">R_API_GL</a>:                                                       \</div>
-<div class="line">                if ((t)-&gt;gpu_handler.gl_id) {                                    \</div>
-<div class="line">                    glDeleteTextures(1, &amp;(t)-&gt;gpu_handler.gl_id);                \</div>
-<div class="line">                    (t)-&gt;gpu_handler.gl_id = 0;                                  \</div>
+<div class="line">                if ((t)-&gt;gpu_handler.gl_texture.gl_id) {                         \</div>
+<div class="line">                    glDeleteTextures(1, &amp;(t)-&gt;gpu_handler.gl_texture.gl_id);     \</div>
+<div class="line">                    (t)-&gt;gpu_handler.gl_texture.gl_id = 0;                       \</div>
 <div class="line">                }                                                                \</div>
 <div class="line">                <span class="keywordflow">break</span>;                                                           \</div>
 <div class="line">            <span class="keywordflow">default</span>:                                                             \</div>
@@ -445,20 +451,6 @@ Functions</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">typedef struct <a class="el" href="structevent__s.html">event_s</a> <a class="el" href="libcngraphic_8h.html#a60921eba80b4569fa79c67165460331e">Event</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a0a6eca39ec9ca9c0b98ec41651bf2ecd" name="a0a6eca39ec9ca9c0b98ec41651bf2ecd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0a6eca39ec9ca9c0b98ec41651bf2ecd">&#9670;&#160;</a></span>Interface</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef struct <a class="el" href="structinterface__s.html">interface_s</a> <a class="el" href="libcngraphic_8h.html#a0a6eca39ec9ca9c0b98ec41651bf2ecd">Interface</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1021,6 +1013,24 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a7af5ec3998e6efc3e8069eecd6a54352" name="a7af5ec3998e6efc3e8069eecd6a54352"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7af5ec3998e6efc3e8069eecd6a54352">&#9670;&#160;</a></span>delete_quad()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void delete_quad </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structQuad.html">Quad</a> *&#160;</td>
+          <td class="paramname"><em>quad</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a03d48464911484eff9ffa228302a51ec" name="a03d48464911484eff9ffa228302a51ec"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a03d48464911484eff9ffa228302a51ec">&#9670;&#160;</a></span>delete_texture()</h2>
 
@@ -1186,6 +1196,58 @@ Functions</h2></td></tr>
           <td></td>
           <td class="paramtype">double&#160;</td>
           <td class="paramname"><em>__angle</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a231487f473359a884727f26d496f11e4" name="a231487f473359a884727f26d496f11e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a231487f473359a884727f26d496f11e4">&#9670;&#160;</a></span>draw_texture_gl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void draw_texture_gl </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> *&#160;</td>
+          <td class="paramname"><em>__src_texture</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structQuad.html">Quad</a> *&#160;</td>
+          <td class="paramname"><em>__dst_quad</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *&#160;</td>
+          <td class="paramname"><em>__at</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *&#160;</td>
+          <td class="paramname"><em>__size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="libcngraphic_8h.html#a0b2773fdce5fa81de32a2e7a552ff37d">cncolor</a>&#160;</td>
+          <td class="paramname"><em>__tint</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *&#160;</td>
+          <td class="paramname"><em>__view_port</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1571,8 +1633,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ae94d815251ac55cfb251ebc375b22fa6" name="ae94d815251ac55cfb251ebc375b22fa6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae94d815251ac55cfb251ebc375b22fa6">&#9670;&#160;</a></span>material_use_gl()</h2>
+<a id="a6cce96e755402d79b79c58c117f4b910" name="a6cce96e755402d79b79c58c117f4b910"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6cce96e755402d79b79c58c117f4b910">&#9670;&#160;</a></span>material_use_gl()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1586,19 +1648,19 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const float&#160;</td>
+          <td class="paramtype">const <a class="el" href="libcncore_8h.html#a7b05d657b3da4196f19727ba490b7401">cnnumber</a>&#160;</td>
           <td class="paramname"><em>model</em>[16], </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const float&#160;</td>
+          <td class="paramtype">const <a class="el" href="libcncore_8h.html#a7b05d657b3da4196f19727ba490b7401">cnnumber</a>&#160;</td>
           <td class="paramname"><em>view</em>[16], </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const float&#160;</td>
+          <td class="paramtype">const <a class="el" href="libcncore_8h.html#a7b05d657b3da4196f19727ba490b7401">cnnumber</a>&#160;</td>
           <td class="paramname"><em>proj</em>[16]&#160;</td>
         </tr>
         <tr>
@@ -1767,6 +1829,42 @@ Functions</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="structMesh.html">Mesh</a> * new_mesh </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4599b0e74f85c513d582c9c79d60e1a4" name="a4599b0e74f85c513d582c9c79d60e1a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4599b0e74f85c513d582c9c79d60e1a4">&#9670;&#160;</a></span>new_quad()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structQuad.html">Quad</a> * new_quad </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af092b68246e4ab8cf14f306998c64246" name="af092b68246e4ab8cf14f306998c64246"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af092b68246e4ab8cf14f306998c64246">&#9670;&#160;</a></span>new_quad2d()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structQuad.html">Quad</a> * new_quad2d </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>

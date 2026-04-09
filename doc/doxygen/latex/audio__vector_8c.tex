@@ -1,0 +1,58 @@
+\doxysection{lib/cnaudio/src/audio\+\_\+vector.c File Reference}
+\hypertarget{audio__vector_8c}{}\label{audio__vector_8c}\index{lib/cnaudio/src/audio\_vector.c@{lib/cnaudio/src/audio\_vector.c}}
+{\ttfamily \#include "{}libcnaudio.\+h"{}}\newline
+{\ttfamily \#include "{}libcncore.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structaudio__vector__s}{audio\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{audio__vector_8c_af9057de3e2ca5f3486bf6d480a7d598b}{new\+\_\+audio\+\_\+vector}} (void)
+\item 
+void \mbox{\hyperlink{audio__vector_8c_adc5fa4df37ed000a5eccd0c49add5160}{delete\+\_\+audio\+\_\+vector}} (struct \mbox{\hyperlink{structaudio__vector__s}{audio\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}vec)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{audio__vector_8c_ae24a67eb35d088b851638cbdba4d9347}{resize\+\_\+audio\+\_\+vector}} (struct \mbox{\hyperlink{structaudio__vector__s}{audio\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}vec, size\+\_\+t new\+\_\+capacity)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{audio__vector_8c_a90125cf364f0cc8446e13a0e89add620}{insert\+\_\+audio\+\_\+vector}} (struct \mbox{\hyperlink{structaudio__vector__s}{audio\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}vec, \mbox{\hyperlink{libcnaudio_8h_a47d4b2ae444f11e00a3a595fc7b20fd6}{Audio}} \texorpdfstring{$\ast$}{*}value)
+\item 
+void \mbox{\hyperlink{audio__vector_8c_a0160bf0ef2dc6b141f67c423a00f7806}{remove\+\_\+audio\+\_\+vector}} (struct \mbox{\hyperlink{structaudio__vector__s}{audio\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}vec, size\+\_\+t i)
+\item 
+void \mbox{\hyperlink{audio__vector_8c_a9370a2639fc3b5d88e677a9af9a43793}{remove\+\_\+audio\+\_\+ordered\+\_\+vector}} (struct \mbox{\hyperlink{structaudio__vector__s}{audio\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}vec, size\+\_\+t i)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{audio__vector_8c_adc5fa4df37ed000a5eccd0c49add5160}\label{audio__vector_8c_adc5fa4df37ed000a5eccd0c49add5160} 
+\index{audio\_vector.c@{audio\_vector.c}!delete\_audio\_vector@{delete\_audio\_vector}}
+\index{delete\_audio\_vector@{delete\_audio\_vector}!audio\_vector.c@{audio\_vector.c}}
+\doxysubsubsection{\texorpdfstring{delete\_audio\_vector()}{delete\_audio\_vector()}}
+{\footnotesize\ttfamily void delete\+\_\+audio\+\_\+vector (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structaudio__vector__s}{audio\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{vec }\end{DoxyParamCaption})}
+
+\Hypertarget{audio__vector_8c_a90125cf364f0cc8446e13a0e89add620}\label{audio__vector_8c_a90125cf364f0cc8446e13a0e89add620} 
+\index{audio\_vector.c@{audio\_vector.c}!insert\_audio\_vector@{insert\_audio\_vector}}
+\index{insert\_audio\_vector@{insert\_audio\_vector}!audio\_vector.c@{audio\_vector.c}}
+\doxysubsubsection{\texorpdfstring{insert\_audio\_vector()}{insert\_audio\_vector()}}
+{\footnotesize\ttfamily uint8\+\_\+t insert\+\_\+audio\+\_\+vector (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structaudio__vector__s}{audio\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{vec,  }\item[{\mbox{\hyperlink{libcnaudio_8h_a47d4b2ae444f11e00a3a595fc7b20fd6}{Audio}} \texorpdfstring{$\ast$}{*}}]{value }\end{DoxyParamCaption})}
+
+\Hypertarget{audio__vector_8c_af9057de3e2ca5f3486bf6d480a7d598b}\label{audio__vector_8c_af9057de3e2ca5f3486bf6d480a7d598b} 
+\index{audio\_vector.c@{audio\_vector.c}!new\_audio\_vector@{new\_audio\_vector}}
+\index{new\_audio\_vector@{new\_audio\_vector}!audio\_vector.c@{audio\_vector.c}}
+\doxysubsubsection{\texorpdfstring{new\_audio\_vector()}{new\_audio\_vector()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structaudio__vector__s}{audio\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*} new\+\_\+audio\+\_\+vector (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{audio__vector_8c_a9370a2639fc3b5d88e677a9af9a43793}\label{audio__vector_8c_a9370a2639fc3b5d88e677a9af9a43793} 
+\index{audio\_vector.c@{audio\_vector.c}!remove\_audio\_ordered\_vector@{remove\_audio\_ordered\_vector}}
+\index{remove\_audio\_ordered\_vector@{remove\_audio\_ordered\_vector}!audio\_vector.c@{audio\_vector.c}}
+\doxysubsubsection{\texorpdfstring{remove\_audio\_ordered\_vector()}{remove\_audio\_ordered\_vector()}}
+{\footnotesize\ttfamily void remove\+\_\+audio\+\_\+ordered\+\_\+vector (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structaudio__vector__s}{audio\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{vec,  }\item[{size\+\_\+t}]{i }\end{DoxyParamCaption})}
+
+\Hypertarget{audio__vector_8c_a0160bf0ef2dc6b141f67c423a00f7806}\label{audio__vector_8c_a0160bf0ef2dc6b141f67c423a00f7806} 
+\index{audio\_vector.c@{audio\_vector.c}!remove\_audio\_vector@{remove\_audio\_vector}}
+\index{remove\_audio\_vector@{remove\_audio\_vector}!audio\_vector.c@{audio\_vector.c}}
+\doxysubsubsection{\texorpdfstring{remove\_audio\_vector()}{remove\_audio\_vector()}}
+{\footnotesize\ttfamily void remove\+\_\+audio\+\_\+vector (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structaudio__vector__s}{audio\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{vec,  }\item[{size\+\_\+t}]{i }\end{DoxyParamCaption})}
+
+\Hypertarget{audio__vector_8c_ae24a67eb35d088b851638cbdba4d9347}\label{audio__vector_8c_ae24a67eb35d088b851638cbdba4d9347} 
+\index{audio\_vector.c@{audio\_vector.c}!resize\_audio\_vector@{resize\_audio\_vector}}
+\index{resize\_audio\_vector@{resize\_audio\_vector}!audio\_vector.c@{audio\_vector.c}}
+\doxysubsubsection{\texorpdfstring{resize\_audio\_vector()}{resize\_audio\_vector()}}
+{\footnotesize\ttfamily uint8\+\_\+t resize\+\_\+audio\+\_\+vector (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structaudio__vector__s}{audio\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{vec,  }\item[{size\+\_\+t}]{new\+\_\+capacity }\end{DoxyParamCaption})}
+

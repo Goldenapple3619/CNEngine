@@ -124,8 +124,8 @@ Functions</h2></td></tr>
 <tr class="separator:ac40df33fcd863511a8eaed80c3486b64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af1afb79d4c52dd85d4fb0db2ceadf5f3" id="r_af1afb79d4c52dd85d4fb0db2ceadf5f3"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="2dboard_8c.html#af1afb79d4c52dd85d4fb0db2ceadf5f3">_gpu_rendering</a> (const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *position, const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *scale, const <a class="el" href="libcncore_8h.html#a44e2d24ab2a21b90d03880cab9cc6d16">Rect</a> *bounding, const <a class="el" href="libcncore_8h.html#a3dd97d4c265b35e13059fcd0a8d6128f">Vector3</a> *rotation, <a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> *object_texture, <a class="el" href="structgpu__rendering__data.html">gpu_rendering_data</a> *rendering_data)</td></tr>
 <tr class="separator:af1afb79d4c52dd85d4fb0db2ceadf5f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a86ce2e3c791680debf6fb5cbab32ae51" id="r_a86ce2e3c791680debf6fb5cbab32ae51"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="2dboard_8c.html#a86ce2e3c791680debf6fb5cbab32ae51">_opengl_rendering</a> (void)</td></tr>
-<tr class="separator:a86ce2e3c791680debf6fb5cbab32ae51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9af93dc16764f64928072a70233e26c9" id="r_a9af93dc16764f64928072a70233e26c9"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="2dboard_8c.html#a9af93dc16764f64928072a70233e26c9">_opengl_rendering</a> (const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *position, const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *scale, const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *canva_ratio, const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *canva_upscale, <a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> *object_texture, <a class="el" href="structQuad.html">Quad</a> *gl_quad)</td></tr>
+<tr class="separator:a9af93dc16764f64928072a70233e26c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac8f59d4c97b9fb23bd6dccb19d3502a0" id="r_ac8f59d4c97b9fb23bd6dccb19d3502a0"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structcn__value.html">cn_value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="2dboard_8c.html#ac8f59d4c97b9fb23bd6dccb19d3502a0">_render_object</a> (<a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *__this, void **args)</td></tr>
 <tr class="separator:ac8f59d4c97b9fb23bd6dccb19d3502a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a073035db0895ef52d81de1aa76eba487" id="r_a073035db0895ef52d81de1aa76eba487"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structcn__value.html">cn_value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="2dboard_8c.html#a073035db0895ef52d81de1aa76eba487">_draw</a> (<a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *__this, void **args)</td></tr>
@@ -373,8 +373,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a86ce2e3c791680debf6fb5cbab32ae51" name="a86ce2e3c791680debf6fb5cbab32ae51"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a86ce2e3c791680debf6fb5cbab32ae51">&#9670;&#160;</a></span>_opengl_rendering()</h2>
+<a id="a9af93dc16764f64928072a70233e26c9" name="a9af93dc16764f64928072a70233e26c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9af93dc16764f64928072a70233e26c9">&#9670;&#160;</a></span>_opengl_rendering()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -385,9 +385,43 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">static void _opengl_rendering </td>
           <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *&#160;</td>
+          <td class="paramname"><em>position</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *&#160;</td>
+          <td class="paramname"><em>scale</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *&#160;</td>
+          <td class="paramname"><em>canva_ratio</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *&#160;</td>
+          <td class="paramname"><em>canva_upscale</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> *&#160;</td>
+          <td class="paramname"><em>object_texture</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structQuad.html">Quad</a> *&#160;</td>
+          <td class="paramname"><em>gl_quad</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>

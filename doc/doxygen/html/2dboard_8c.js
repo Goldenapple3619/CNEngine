@@ -6,7 +6,7 @@ var 2dboard_8c =
     [ "_draw", "2dboard_8c.html#a073035db0895ef52d81de1aa76eba487", null ],
     [ "_gpu_rendering", "2dboard_8c.html#af1afb79d4c52dd85d4fb0db2ceadf5f3", null ],
     [ "_init", "2dboard_8c.html#a1a63a6f58510226876eb4212dbe5da70", null ],
-    [ "_opengl_rendering", "2dboard_8c.html#a86ce2e3c791680debf6fb5cbab32ae51", null ],
+    [ "_opengl_rendering", "2dboard_8c.html#a9af93dc16764f64928072a70233e26c9", null ],
     [ "_render_object", "2dboard_8c.html#ac8f59d4c97b9fb23bd6dccb19d3502a0", null ],
     [ "new_2dboard", "2dboard_8c.html#a1135e54b12d5b674491fb5754839d034", null ]
 ];

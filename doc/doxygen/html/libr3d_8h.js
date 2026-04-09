@@ -1,6 +1,7 @@
 var libr3d_8h =
 [
     [ "threed_board_mode_s", "structthreed__board__mode__s.html", "structthreed__board__mode__s" ],
+    [ "threed_render_stack", "structthreed__render__stack.html", "structthreed__render__stack" ],
     [ "_make_model", "libr3d_8h.html#ac492fd267e9ce3e1c31a83e87c01c2ab", null ],
     [ "_make_proj", "libr3d_8h.html#a9bd5352c1d0cbb605ee607c19aa7d92d", null ],
     [ "_make_view", "libr3d_8h.html#a7054cf18456f6c613f5c3c67d9db1226", null ],

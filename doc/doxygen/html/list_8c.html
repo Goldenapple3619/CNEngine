@@ -124,6 +124,14 @@ Functions</h2></td></tr>
 <tr class="separator:af52aeceef927e8b8cf67e92f92ea779d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a97a1051659d95d0248dbe386029c17f3" id="r_a97a1051659d95d0248dbe386029c17f3"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structcn__value.html">cn_value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8c.html#a97a1051659d95d0248dbe386029c17f3">_del</a> (<a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *__this, void **args)</td></tr>
 <tr class="separator:a97a1051659d95d0248dbe386029c17f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea80fcc93f7e297bbfa53fc81749747c" id="r_aea80fcc93f7e297bbfa53fc81749747c"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structlist__iterator__s.html">list_iterator_s</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8c.html#aea80fcc93f7e297bbfa53fc81749747c">list_get_iterator</a> (<a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *__list)</td></tr>
+<tr class="separator:aea80fcc93f7e297bbfa53fc81749747c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c7610112a3a4b02b642d392eba87b0b" id="r_a4c7610112a3a4b02b642d392eba87b0b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8c.html#a4c7610112a3a4b02b642d392eba87b0b">list_iterator_next</a> (struct <a class="el" href="structlist__iterator__s.html">list_iterator_s</a> *iterator)</td></tr>
+<tr class="separator:a4c7610112a3a4b02b642d392eba87b0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fed0630b348b6325ff41d30653737b1" id="r_a8fed0630b348b6325ff41d30653737b1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8c.html#a8fed0630b348b6325ff41d30653737b1">list_iterator_value_isnull</a> (const struct <a class="el" href="structlist__iterator__s.html">list_iterator_s</a> *iterator)</td></tr>
+<tr class="separator:a8fed0630b348b6325ff41d30653737b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01f85eb0f466d9be2244cbc2a3c3fe7c" id="r_a01f85eb0f466d9be2244cbc2a3c3fe7c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8c.html#a01f85eb0f466d9be2244cbc2a3c3fe7c">list_iterator_isend</a> (const struct <a class="el" href="structlist__iterator__s.html">list_iterator_s</a> *iterator)</td></tr>
+<tr class="separator:a01f85eb0f466d9be2244cbc2a3c3fe7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf3f9ba324386dc67303266db4e24eb2" id="r_adf3f9ba324386dc67303266db4e24eb2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8c.html#adf3f9ba324386dc67303266db4e24eb2">new_list</a> ()</td></tr>
 <tr class="separator:adf3f9ba324386dc67303266db4e24eb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -340,6 +348,78 @@ Functions</h2></td></tr>
 <span class="mlabels"><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aea80fcc93f7e297bbfa53fc81749747c" name="aea80fcc93f7e297bbfa53fc81749747c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea80fcc93f7e297bbfa53fc81749747c">&#9670;&#160;</a></span>list_get_iterator()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structlist__iterator__s.html">list_iterator_s</a> list_get_iterator </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *&#160;</td>
+          <td class="paramname"><em>__list</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a01f85eb0f466d9be2244cbc2a3c3fe7c" name="a01f85eb0f466d9be2244cbc2a3c3fe7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01f85eb0f466d9be2244cbc2a3c3fe7c">&#9670;&#160;</a></span>list_iterator_isend()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> list_iterator_isend </td>
+          <td>(</td>
+          <td class="paramtype">const struct <a class="el" href="structlist__iterator__s.html">list_iterator_s</a> *&#160;</td>
+          <td class="paramname"><em>iterator</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4c7610112a3a4b02b642d392eba87b0b" name="a4c7610112a3a4b02b642d392eba87b0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c7610112a3a4b02b642d392eba87b0b">&#9670;&#160;</a></span>list_iterator_next()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void list_iterator_next </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structlist__iterator__s.html">list_iterator_s</a> *&#160;</td>
+          <td class="paramname"><em>iterator</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8fed0630b348b6325ff41d30653737b1" name="a8fed0630b348b6325ff41d30653737b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8fed0630b348b6325ff41d30653737b1">&#9670;&#160;</a></span>list_iterator_value_isnull()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> list_iterator_value_isnull </td>
+          <td>(</td>
+          <td class="paramtype">const struct <a class="el" href="structlist__iterator__s.html">list_iterator_s</a> *&#160;</td>
+          <td class="paramname"><em>iterator</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
 </div><div class="memdoc">
 
 </div>

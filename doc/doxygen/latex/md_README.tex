@@ -1,11 +1,12 @@
 \chapter{README}
 \hypertarget{md_README}{}\label{md_README}\index{README@{README}}
-\hypertarget{md_README_autotoc_md0}{}\doxysection{\texorpdfstring{CNEngine}{CNEngine}}\label{md_README_autotoc_md0}
+\href{https://github.com/Goldenapple3619/CNEngine}{\texttt{   }}
+
 
 
 \href{https://github.com/Goldenapple3619/CNEngine/graphs/contributors}{\texttt{ }}  \href{https://github.com/Goldenapple3619/CNEngine/blob/dev/LICENSE}{\texttt{ }} \href{https://github.com/Goldenapple3619/CNEngine/actions/workflows/build.yml}{\texttt{ }} \href{https://github.com/Goldenapple3619/CNEngine/actions/workflows/documentation.yml}{\texttt{ }}
 
-\hypertarget{md_README_autotoc_md1}{}\doxysubsection{\texorpdfstring{Table of content}{Table of content}}\label{md_README_autotoc_md1}
+\hypertarget{md_README_autotoc_md0}{}\doxysubsection{\texorpdfstring{Table of content}{Table of content}}\label{md_README_autotoc_md0}
 
 \begin{DoxyEnumerate}
 \item \href{\#overview}{\texttt{ Overview}} 
@@ -23,15 +24,15 @@
 \item \href{\#license}{\texttt{ License}} 
 \item \href{\#faq}{\texttt{ FAQ}} 
 \item \href{\#contact}{\texttt{ Contact}} 
-\end{DoxyEnumerate}\hypertarget{md_README_autotoc_md2}{}\doxysubsection{\texorpdfstring{Overview}{Overview}}\label{md_README_autotoc_md2}
+\end{DoxyEnumerate}\hypertarget{md_README_autotoc_md1}{}\doxysubsection{\texorpdfstring{Overview}{Overview}}\label{md_README_autotoc_md1}
 This project is a complete game engine programmed in C that allow 2d rendering, 3d rendering, GUI rendering.
 
-Higly configurable on the back technology allow the usage of multiple graphics api (via SDL surface, SDL renderer, Open\+GL context, ...) and to render using CPU or GPU.\hypertarget{md_README_autotoc_md3}{}\doxysubsection{\texorpdfstring{Built with}{Built with}}\label{md_README_autotoc_md3}
+Higly configurable on the back technology allow the usage of multiple graphics api (via SDL surface, SDL renderer, Open\+GL context, ...) and to render using CPU or GPU.\hypertarget{md_README_autotoc_md2}{}\doxysubsection{\texorpdfstring{Built with}{Built with}}\label{md_README_autotoc_md2}
 
 
      
 
-\hypertarget{md_README_autotoc_md4}{}\doxysubsection{\texorpdfstring{Projects using CNEngine}{Projects using CNEngine}}\label{md_README_autotoc_md4}
+\hypertarget{md_README_autotoc_md3}{}\doxysubsection{\texorpdfstring{Projects using CNEngine}{Projects using CNEngine}}\label{md_README_autotoc_md3}
 \tabulinesep=1mm
 \begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
 \hline
@@ -44,7 +45,7 @@ Higly configurable on the back technology allow the usage of multiple graphics a
 \endhead
 \multicolumn{3}{|l|}{{\itshape None for now, still in developpement}   }\\\cline{1-3}
 \end{longtabu}
-\hypertarget{md_README_autotoc_md5}{}\doxysubsection{\texorpdfstring{Prerequisites}{Prerequisites}}\label{md_README_autotoc_md5}
+\hypertarget{md_README_autotoc_md4}{}\doxysubsection{\texorpdfstring{Prerequisites}{Prerequisites}}\label{md_README_autotoc_md4}
 
 \begin{DoxyItemize}
 \item CMake
@@ -52,8 +53,9 @@ Higly configurable on the back technology allow the usage of multiple graphics a
 \item GCC (mingw for Windows)
 \item LIBC
 \item LIBM
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md6}{}\doxysubsection{\texorpdfstring{How to build}{How to build}}\label{md_README_autotoc_md6}
-{\itshape Before installing make sure you have every prerequisites installed (libm, libc are most of the time install with the mingw / gcc package).}\hypertarget{md_README_autotoc_md7}{}\doxysubsubsection{\texorpdfstring{Windows using MSYS}{Windows using MSYS}}\label{md_README_autotoc_md7}
+\item python-\/jinja (jinja2)
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md5}{}\doxysubsection{\texorpdfstring{How to build}{How to build}}\label{md_README_autotoc_md5}
+{\itshape Before installing make sure you have every prerequisites installed (libm, libc are most of the time install with the mingw / gcc package).}\hypertarget{md_README_autotoc_md6}{}\doxysubsubsection{\texorpdfstring{Windows using MSYS}{Windows using MSYS}}\label{md_README_autotoc_md6}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{git\ clone\ https://github.com/Goldenapple3619/CNEngine.git\ \&\&\ cd\ CNEngine}
@@ -65,7 +67,7 @@ Higly configurable on the back technology allow the usage of multiple graphics a
 \DoxyCodeLine{sh\ scripts/build\_windows-\/\$\{ARCH\}.sh}
 
 \end{DoxyCode}
-\hypertarget{md_README_autotoc_md8}{}\doxysubsubsection{\texorpdfstring{Windows using WSL}{Windows using WSL}}\label{md_README_autotoc_md8}
+\hypertarget{md_README_autotoc_md7}{}\doxysubsubsection{\texorpdfstring{Windows using WSL}{Windows using WSL}}\label{md_README_autotoc_md7}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{git\ clone\ https://github.com/Goldenapple3619/CNEngine.git\ \&\&\ cd\ CNEngine}
@@ -73,7 +75,7 @@ Higly configurable on the back technology allow the usage of multiple graphics a
 \DoxyCodeLine{sh\ scripts/build\_wsl-\/\$\{ARCH\}.sh}
 
 \end{DoxyCode}
-\hypertarget{md_README_autotoc_md9}{}\doxysubsubsection{\texorpdfstring{Linux}{Linux}}\label{md_README_autotoc_md9}
+\hypertarget{md_README_autotoc_md8}{}\doxysubsubsection{\texorpdfstring{Linux}{Linux}}\label{md_README_autotoc_md8}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{git\ clone\ https://github.com/Goldenapple3619/CNEngine.git\ \&\&\ cd\ CNEngine}
@@ -81,7 +83,7 @@ Higly configurable on the back technology allow the usage of multiple graphics a
 \DoxyCodeLine{sh\ scripts/build\_linux-\/\$\{ARCH\}.sh}
 
 \end{DoxyCode}
-\hypertarget{md_README_autotoc_md10}{}\doxysubsubsection{\texorpdfstring{Mac\+OS}{MacOS}}\label{md_README_autotoc_md10}
+\hypertarget{md_README_autotoc_md9}{}\doxysubsubsection{\texorpdfstring{Mac\+OS}{MacOS}}\label{md_README_autotoc_md9}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{git\ clone\ https://github.com/Goldenapple3619/CNEngine.git\ \&\&\ cd\ CNEngine}
@@ -89,15 +91,15 @@ Higly configurable on the back technology allow the usage of multiple graphics a
 \DoxyCodeLine{sh\ scripts/build\_macos-\/\$\{ARCH\}.sh}
 
 \end{DoxyCode}
-\hypertarget{md_README_autotoc_md11}{}\doxysubsection{\texorpdfstring{Documentation}{Documentation}}\label{md_README_autotoc_md11}
+\hypertarget{md_README_autotoc_md10}{}\doxysubsection{\texorpdfstring{Documentation}{Documentation}}\label{md_README_autotoc_md10}
 Code documentation available via the doxygen at \href{https://Goldenapple3619.github.io/CNEngine/}{\texttt{ https\+://\+Goldenapple3619.\+github.\+io/\+CNEngine}} or by compiling the doc with\+: 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{doxygen\ doc/doxygen/doxydoc}
 
 \end{DoxyCode}
-\hypertarget{md_README_autotoc_md12}{}\doxysubsection{\texorpdfstring{Contributors}{Contributors}}\label{md_README_autotoc_md12}
-\href{https://github.com/Goldenapple3619/CNEngine/graphs/contributors}{\texttt{  }}\hypertarget{md_README_autotoc_md13}{}\doxysubsection{\texorpdfstring{License}{License}}\label{md_README_autotoc_md13}
-See \href{https://github.com/Goldenapple3619/CNEngine/blob/dev/LICENSE}{\texttt{ LICENSE}} for more information.\hypertarget{md_README_autotoc_md14}{}\doxysubsection{\texorpdfstring{FAQ}{FAQ}}\label{md_README_autotoc_md14}
+\hypertarget{md_README_autotoc_md11}{}\doxysubsection{\texorpdfstring{Contributors}{Contributors}}\label{md_README_autotoc_md11}
+\href{https://github.com/Goldenapple3619/CNEngine/graphs/contributors}{\texttt{  }}\hypertarget{md_README_autotoc_md12}{}\doxysubsection{\texorpdfstring{License}{License}}\label{md_README_autotoc_md12}
+See \href{https://github.com/Goldenapple3619/CNEngine/blob/dev/LICENSE}{\texttt{ LICENSE}} for more information.\hypertarget{md_README_autotoc_md13}{}\doxysubsection{\texorpdfstring{FAQ}{FAQ}}\label{md_README_autotoc_md13}
 
 \begin{DoxyItemize}
 \item {\bfseries{Can I use this engine to release commercial products?}} \begin{quote}
@@ -112,5 +114,5 @@ See \href{https://github.com/Goldenapple3619/CNEngine/blob/dev/LICENSE}{\texttt{
 \item {\bfseries{Can I contribute to this repo by doing a PR?}} \begin{quote}
 {\itshape If you\textquotesingle{}re reading the FAQ section, there\textquotesingle{}s 99.\+99\% of chance that the anwser is no, but you can still give suggestion / report bugs.} \end{quote}
 
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md15}{}\doxysubsection{\texorpdfstring{Contact}{Contact}}\label{md_README_autotoc_md15}
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md14}{}\doxysubsection{\texorpdfstring{Contact}{Contact}}\label{md_README_autotoc_md14}
 For more infos, join the \href{https://discord.gg/F34jV23hjd}{\texttt{ Discord server}}. 

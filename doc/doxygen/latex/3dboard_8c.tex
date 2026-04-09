@@ -7,6 +7,14 @@
 \item 
 static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{3dboard_8c_a1a63a6f58510226876eb4212dbe5da70}{\+\_\+init}} (\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+this, void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}args)
 \item 
+static void \mbox{\hyperlink{3dboard_8c_afd56c5d9185dbe3a9ba539eab9ac5ff0}{\+\_\+cpu\+\_\+rendering}} (void)
+\item 
+static void \mbox{\hyperlink{3dboard_8c_aff4435fc88b9e32d2941dc612b61a587}{\+\_\+gpu\+\_\+rendering}} (void)
+\item 
+static void \mbox{\hyperlink{3dboard_8c_af3985d7d548620cdd9e67f6a8ff3ccad}{\+\_\+opengl\+\_\+rendering}} (\mbox{\hyperlink{structMesh}{Mesh}} \texorpdfstring{$\ast$}{*}mesh, \mbox{\hyperlink{structMaterial}{Material}} \texorpdfstring{$\ast$}{*}material, const \mbox{\hyperlink{libcncore_8h_a3dd97d4c265b35e13059fcd0a8d6128f}{Vector3}} \texorpdfstring{$\ast$}{*}position, const \mbox{\hyperlink{libcncore_8h_a3dd97d4c265b35e13059fcd0a8d6128f}{Vector3}} \texorpdfstring{$\ast$}{*}scale, const \mbox{\hyperlink{libcncore_8h_a3dd97d4c265b35e13059fcd0a8d6128f}{Vector3}} \texorpdfstring{$\ast$}{*}rotation, const \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}} view\mbox{[}16\mbox{]}, const \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}} proj\mbox{[}16\mbox{]})
+\item 
+static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{3dboard_8c_ac8f59d4c97b9fb23bd6dccb19d3502a0}{\+\_\+render\+\_\+object}} (\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+this, void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}args)
+\item 
 static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{3dboard_8c_a073035db0895ef52d81de1aa76eba487}{\+\_\+draw}} (\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+this, void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}args)
 \item 
 static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{3dboard_8c_a97a1051659d95d0248dbe386029c17f3}{\+\_\+del}} (\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+this, void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}args)
@@ -16,6 +24,12 @@ static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{3dboar
 
 
 \doxysubsection{Function Documentation}
+\Hypertarget{3dboard_8c_afd56c5d9185dbe3a9ba539eab9ac5ff0}\label{3dboard_8c_afd56c5d9185dbe3a9ba539eab9ac5ff0} 
+\index{3dboard.c@{3dboard.c}!\_cpu\_rendering@{\_cpu\_rendering}}
+\index{\_cpu\_rendering@{\_cpu\_rendering}!3dboard.c@{3dboard.c}}
+\doxysubsubsection{\texorpdfstring{\_cpu\_rendering()}{\_cpu\_rendering()}}
+{\footnotesize\ttfamily static void \+\_\+cpu\+\_\+rendering (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
 \Hypertarget{3dboard_8c_a97a1051659d95d0248dbe386029c17f3}\label{3dboard_8c_a97a1051659d95d0248dbe386029c17f3} 
 \index{3dboard.c@{3dboard.c}!\_del@{\_del}}
 \index{\_del@{\_del}!3dboard.c@{3dboard.c}}
@@ -28,11 +42,29 @@ static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{3dboar
 \doxysubsubsection{\texorpdfstring{\_draw()}{\_draw()}}
 {\footnotesize\ttfamily static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \+\_\+draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+this,  }\item[{void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+\Hypertarget{3dboard_8c_aff4435fc88b9e32d2941dc612b61a587}\label{3dboard_8c_aff4435fc88b9e32d2941dc612b61a587} 
+\index{3dboard.c@{3dboard.c}!\_gpu\_rendering@{\_gpu\_rendering}}
+\index{\_gpu\_rendering@{\_gpu\_rendering}!3dboard.c@{3dboard.c}}
+\doxysubsubsection{\texorpdfstring{\_gpu\_rendering()}{\_gpu\_rendering()}}
+{\footnotesize\ttfamily static void \+\_\+gpu\+\_\+rendering (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
 \Hypertarget{3dboard_8c_a1a63a6f58510226876eb4212dbe5da70}\label{3dboard_8c_a1a63a6f58510226876eb4212dbe5da70} 
 \index{3dboard.c@{3dboard.c}!\_init@{\_init}}
 \index{\_init@{\_init}!3dboard.c@{3dboard.c}}
 \doxysubsubsection{\texorpdfstring{\_init()}{\_init()}}
 {\footnotesize\ttfamily static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+this,  }\item[{void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{3dboard_8c_af3985d7d548620cdd9e67f6a8ff3ccad}\label{3dboard_8c_af3985d7d548620cdd9e67f6a8ff3ccad} 
+\index{3dboard.c@{3dboard.c}!\_opengl\_rendering@{\_opengl\_rendering}}
+\index{\_opengl\_rendering@{\_opengl\_rendering}!3dboard.c@{3dboard.c}}
+\doxysubsubsection{\texorpdfstring{\_opengl\_rendering()}{\_opengl\_rendering()}}
+{\footnotesize\ttfamily static void \+\_\+opengl\+\_\+rendering (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structMesh}{Mesh}} \texorpdfstring{$\ast$}{*}}]{mesh,  }\item[{\mbox{\hyperlink{structMaterial}{Material}} \texorpdfstring{$\ast$}{*}}]{material,  }\item[{const \mbox{\hyperlink{libcncore_8h_a3dd97d4c265b35e13059fcd0a8d6128f}{Vector3}} \texorpdfstring{$\ast$}{*}}]{position,  }\item[{const \mbox{\hyperlink{libcncore_8h_a3dd97d4c265b35e13059fcd0a8d6128f}{Vector3}} \texorpdfstring{$\ast$}{*}}]{scale,  }\item[{const \mbox{\hyperlink{libcncore_8h_a3dd97d4c265b35e13059fcd0a8d6128f}{Vector3}} \texorpdfstring{$\ast$}{*}}]{rotation,  }\item[{const \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}}]{view\mbox{[}16\mbox{]},  }\item[{const \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}}]{proj\mbox{[}16\mbox{]} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{3dboard_8c_ac8f59d4c97b9fb23bd6dccb19d3502a0}\label{3dboard_8c_ac8f59d4c97b9fb23bd6dccb19d3502a0} 
+\index{3dboard.c@{3dboard.c}!\_render\_object@{\_render\_object}}
+\index{\_render\_object@{\_render\_object}!3dboard.c@{3dboard.c}}
+\doxysubsubsection{\texorpdfstring{\_render\_object()}{\_render\_object()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \+\_\+render\+\_\+object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+this,  }\item[{void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 \Hypertarget{3dboard_8c_aceb3847097062843afaa3459f132b1d9}\label{3dboard_8c_aceb3847097062843afaa3459f132b1d9} 
 \index{3dboard.c@{3dboard.c}!new\_3dboard@{new\_3dboard}}

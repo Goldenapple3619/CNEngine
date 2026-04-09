@@ -124,6 +124,10 @@ Data Structures</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaudio__s.html">audio_s</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structaudio__vector__s.html">audio_vector_s</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structfree__channels__arr__s.html">free_channels_arr_s</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -151,10 +155,14 @@ Enumerations</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aaf6d8080e4f801eeda8da5cdf5fee0f6" id="r_aaf6d8080e4f801eeda8da5cdf5fee0f6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcnaudio_8h.html#a47d4b2ae444f11e00a3a595fc7b20fd6">Audio</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcnaudio_8h.html#aaf6d8080e4f801eeda8da5cdf5fee0f6">new_audio</a> (const Mix_Chunk *audio_chunk_ptr, <a class="el" href="libcncore_8h.html#a45176b455e70053cf81874c72e0aa5fe">cn_method</a> on_audio_end)</td></tr>
-<tr class="separator:aaf6d8080e4f801eeda8da5cdf5fee0f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a72ad581b595e60a7408d97c43391836e" id="r_a72ad581b595e60a7408d97c43391836e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcnaudio_8h.html#a72ad581b595e60a7408d97c43391836e">audio_run_sequence</a> (<a class="el" href="libcnaudio_8h.html#a47d4b2ae444f11e00a3a595fc7b20fd6">Audio</a> *audio, int32_t delta_time, int32_t *free_channels, size_t number_of_free_channel)</td></tr>
-<tr class="separator:a72ad581b595e60a7408d97c43391836e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9d4189a71cbbcb47bfb74c0c6ce9e41" id="r_ab9d4189a71cbbcb47bfb74c0c6ce9e41"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcnaudio_8h.html#ab9d4189a71cbbcb47bfb74c0c6ce9e41">start_audio</a> (void)</td></tr>
+<tr class="separator:ab9d4189a71cbbcb47bfb74c0c6ce9e41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c7ebe7634d17e2040e376d8a0249e94" id="r_a4c7ebe7634d17e2040e376d8a0249e94"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcnaudio_8h.html#a4c7ebe7634d17e2040e376d8a0249e94">end_audio</a> (void)</td></tr>
+<tr class="separator:a4c7ebe7634d17e2040e376d8a0249e94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b2864ca0048da63a6d9e7b283d35aec" id="r_a3b2864ca0048da63a6d9e7b283d35aec"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcnaudio_8h.html#a47d4b2ae444f11e00a3a595fc7b20fd6">Audio</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcnaudio_8h.html#a3b2864ca0048da63a6d9e7b283d35aec">new_audio</a> (const Mix_Chunk *audio_chunk_ptr, <a class="el" href="libcncore_8h.html#a45176b455e70053cf81874c72e0aa5fe">cn_method</a> on_audio_end, <a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *on_end_obj)</td></tr>
+<tr class="separator:a3b2864ca0048da63a6d9e7b283d35aec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a360d5ddb2751b2ff79b765d01920c6" id="r_a2a360d5ddb2751b2ff79b765d01920c6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcnaudio_8h.html#a2a360d5ddb2751b2ff79b765d01920c6">audio_run_sequence</a> (<a class="el" href="libcnaudio_8h.html#a47d4b2ae444f11e00a3a595fc7b20fd6">Audio</a> *audio, int32_t delta_time, struct <a class="el" href="structfree__channels__arr__s.html">free_channels_arr_s</a> *free_channels)</td></tr>
+<tr class="separator:a2a360d5ddb2751b2ff79b765d01920c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a59f93501670dbb80b5890fba6b594f85" id="r_a59f93501670dbb80b5890fba6b594f85"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcnaudio_8h.html#a59f93501670dbb80b5890fba6b594f85">play_audio</a> (<a class="el" href="libcnaudio_8h.html#a47d4b2ae444f11e00a3a595fc7b20fd6">Audio</a> *audio, int32_t channel)</td></tr>
 <tr class="separator:a59f93501670dbb80b5890fba6b594f85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa1b1c553ab130ffad8539301bdff2f12" id="r_aa1b1c553ab130ffad8539301bdff2f12"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcnaudio_8h.html#aa1b1c553ab130ffad8539301bdff2f12">set_volume_audio</a> (<a class="el" href="libcnaudio_8h.html#a47d4b2ae444f11e00a3a595fc7b20fd6">Audio</a> *audio, int32_t volume)</td></tr>
@@ -165,6 +173,32 @@ Functions</h2></td></tr>
 <tr class="separator:a245b0a63e0bc546fcab1e6a78edb1f8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa7623c8a59ca473a5d47993b28d8cee9" id="r_aa7623c8a59ca473a5d47993b28d8cee9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcnaudio_8h.html#aa7623c8a59ca473a5d47993b28d8cee9">delete_audio</a> (<a class="el" href="libcnaudio_8h.html#a47d4b2ae444f11e00a3a595fc7b20fd6">Audio</a> *audio)</td></tr>
 <tr class="separator:aa7623c8a59ca473a5d47993b28d8cee9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9057de3e2ca5f3486bf6d480a7d598b" id="r_af9057de3e2ca5f3486bf6d480a7d598b"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structaudio__vector__s.html">audio_vector_s</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcnaudio_8h.html#af9057de3e2ca5f3486bf6d480a7d598b">new_audio_vector</a> (void)</td></tr>
+<tr class="separator:af9057de3e2ca5f3486bf6d480a7d598b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc5fa4df37ed000a5eccd0c49add5160" id="r_adc5fa4df37ed000a5eccd0c49add5160"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcnaudio_8h.html#adc5fa4df37ed000a5eccd0c49add5160">delete_audio_vector</a> (struct <a class="el" href="structaudio__vector__s.html">audio_vector_s</a> *vec)</td></tr>
+<tr class="separator:adc5fa4df37ed000a5eccd0c49add5160"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae24a67eb35d088b851638cbdba4d9347" id="r_ae24a67eb35d088b851638cbdba4d9347"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcnaudio_8h.html#ae24a67eb35d088b851638cbdba4d9347">resize_audio_vector</a> (struct <a class="el" href="structaudio__vector__s.html">audio_vector_s</a> *vec, size_t new_capacity)</td></tr>
+<tr class="separator:ae24a67eb35d088b851638cbdba4d9347"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90125cf364f0cc8446e13a0e89add620" id="r_a90125cf364f0cc8446e13a0e89add620"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcnaudio_8h.html#a90125cf364f0cc8446e13a0e89add620">insert_audio_vector</a> (struct <a class="el" href="structaudio__vector__s.html">audio_vector_s</a> *vec, <a class="el" href="libcnaudio_8h.html#a47d4b2ae444f11e00a3a595fc7b20fd6">Audio</a> *value)</td></tr>
+<tr class="separator:a90125cf364f0cc8446e13a0e89add620"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0160bf0ef2dc6b141f67c423a00f7806" id="r_a0160bf0ef2dc6b141f67c423a00f7806"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcnaudio_8h.html#a0160bf0ef2dc6b141f67c423a00f7806">remove_audio_vector</a> (struct <a class="el" href="structaudio__vector__s.html">audio_vector_s</a> *vec, size_t i)</td></tr>
+<tr class="separator:a0160bf0ef2dc6b141f67c423a00f7806"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9370a2639fc3b5d88e677a9af9a43793" id="r_a9370a2639fc3b5d88e677a9af9a43793"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcnaudio_8h.html#a9370a2639fc3b5d88e677a9af9a43793">remove_audio_ordered_vector</a> (struct <a class="el" href="structaudio__vector__s.html">audio_vector_s</a> *vec, size_t i)</td></tr>
+<tr class="separator:a9370a2639fc3b5d88e677a9af9a43793"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1848667d6af9d44f22453472c4b4c285" id="r_a1848667d6af9d44f22453472c4b4c285"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcnaudio_8h.html#a1848667d6af9d44f22453472c4b4c285">init_audio_sequence_content</a> (<a class="el" href="libcnaudio_8h.html#a1c69ee57b2d9f89ab4ee80867221b2ab">AudioSequence</a> *seq)</td></tr>
+<tr class="separator:a1848667d6af9d44f22453472c4b4c285"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04e87e4e6b62c59a0142f220a79e8613" id="r_a04e87e4e6b62c59a0142f220a79e8613"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcnaudio_8h.html#a04e87e4e6b62c59a0142f220a79e8613">audio_sequence_is_empty</a> (const <a class="el" href="libcnaudio_8h.html#a1c69ee57b2d9f89ab4ee80867221b2ab">AudioSequence</a> *seq)</td></tr>
+<tr class="separator:a04e87e4e6b62c59a0142f220a79e8613"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a855e0520d8f1d3dd585bf6088998e3a2" id="r_a855e0520d8f1d3dd585bf6088998e3a2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcnaudio_8h.html#a855e0520d8f1d3dd585bf6088998e3a2">audio_sequence_pull_event</a> (const <a class="el" href="libcnaudio_8h.html#a1c69ee57b2d9f89ab4ee80867221b2ab">AudioSequence</a> *seq, <a class="el" href="libcnaudio_8h.html#a347ec905c7fad000f823987f44363621">AudioEvent</a> *ev)</td></tr>
+<tr class="separator:a855e0520d8f1d3dd585bf6088998e3a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e4a0042cefa07f7c07c4bd6da2c71c2" id="r_a4e4a0042cefa07f7c07c4bd6da2c71c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcnaudio_8h.html#a4e4a0042cefa07f7c07c4bd6da2c71c2">audio_sequence_push_event</a> (<a class="el" href="libcnaudio_8h.html#a1c69ee57b2d9f89ab4ee80867221b2ab">AudioSequence</a> *seq, const <a class="el" href="libcnaudio_8h.html#a347ec905c7fad000f823987f44363621">AudioEvent</a> *ev)</td></tr>
+<tr class="separator:a4e4a0042cefa07f7c07c4bd6da2c71c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b9ea8cbf17b15209069ce826e65fa76" id="r_a4b9ea8cbf17b15209069ce826e65fa76"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcnaudio_8h.html#a4b9ea8cbf17b15209069ce826e65fa76">audio_sequence_increment</a> (<a class="el" href="libcnaudio_8h.html#a1c69ee57b2d9f89ab4ee80867221b2ab">AudioSequence</a> *seq, double delta_time)</td></tr>
+<tr class="separator:a4b9ea8cbf17b15209069ce826e65fa76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa772a5a36486a671f5deaf865e7f4d5d" id="r_aa772a5a36486a671f5deaf865e7f4d5d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcnaudio_8h.html#aa772a5a36486a671f5deaf865e7f4d5d">delete_audio_sequence_content</a> (<a class="el" href="libcnaudio_8h.html#a1c69ee57b2d9f89ab4ee80867221b2ab">AudioSequence</a> *seq)</td></tr>
+<tr class="separator:aa772a5a36486a671f5deaf865e7f4d5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a398b3cb49c901d43739de1a63c9d202b" id="r_a398b3cb49c901d43739de1a63c9d202b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcnaudio_8h.html#a398b3cb49c901d43739de1a63c9d202b">new_audio_ctx</a> (<a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> skip_init_error)</td></tr>
+<tr class="separator:a398b3cb49c901d43739de1a63c9d202b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="a47d4b2ae444f11e00a3a595fc7b20fd6" name="a47d4b2ae444f11e00a3a595fc7b20fd6"></a>
@@ -234,8 +268,8 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a72ad581b595e60a7408d97c43391836e" name="a72ad581b595e60a7408d97c43391836e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a72ad581b595e60a7408d97c43391836e">&#9670;&#160;</a></span>audio_run_sequence()</h2>
+<a id="a2a360d5ddb2751b2ff79b765d01920c6" name="a2a360d5ddb2751b2ff79b765d01920c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a360d5ddb2751b2ff79b765d01920c6">&#9670;&#160;</a></span>audio_run_sequence()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -255,14 +289,110 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int32_t *&#160;</td>
-          <td class="paramname"><em>free_channels</em>, </td>
+          <td class="paramtype">struct <a class="el" href="structfree__channels__arr__s.html">free_channels_arr_s</a> *&#160;</td>
+          <td class="paramname"><em>free_channels</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4b9ea8cbf17b15209069ce826e65fa76" name="a4b9ea8cbf17b15209069ce826e65fa76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b9ea8cbf17b15209069ce826e65fa76">&#9670;&#160;</a></span>audio_sequence_increment()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void audio_sequence_increment </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="libcnaudio_8h.html#a1c69ee57b2d9f89ab4ee80867221b2ab">AudioSequence</a> *&#160;</td>
+          <td class="paramname"><em>seq</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>number_of_free_channel</em>&#160;</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>delta_time</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a04e87e4e6b62c59a0142f220a79e8613" name="a04e87e4e6b62c59a0142f220a79e8613"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04e87e4e6b62c59a0142f220a79e8613">&#9670;&#160;</a></span>audio_sequence_is_empty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> audio_sequence_is_empty </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="libcnaudio_8h.html#a1c69ee57b2d9f89ab4ee80867221b2ab">AudioSequence</a> *&#160;</td>
+          <td class="paramname"><em>seq</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a855e0520d8f1d3dd585bf6088998e3a2" name="a855e0520d8f1d3dd585bf6088998e3a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a855e0520d8f1d3dd585bf6088998e3a2">&#9670;&#160;</a></span>audio_sequence_pull_event()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> audio_sequence_pull_event </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="libcnaudio_8h.html#a1c69ee57b2d9f89ab4ee80867221b2ab">AudioSequence</a> *&#160;</td>
+          <td class="paramname"><em>seq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="libcnaudio_8h.html#a347ec905c7fad000f823987f44363621">AudioEvent</a> *&#160;</td>
+          <td class="paramname"><em>ev</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4e4a0042cefa07f7c07c4bd6da2c71c2" name="a4e4a0042cefa07f7c07c4bd6da2c71c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e4a0042cefa07f7c07c4bd6da2c71c2">&#9670;&#160;</a></span>audio_sequence_push_event()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void audio_sequence_push_event </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="libcnaudio_8h.html#a1c69ee57b2d9f89ab4ee80867221b2ab">AudioSequence</a> *&#160;</td>
+          <td class="paramname"><em>seq</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="libcnaudio_8h.html#a347ec905c7fad000f823987f44363621">AudioEvent</a> *&#160;</td>
+          <td class="paramname"><em>ev</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -292,8 +422,108 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="aaf6d8080e4f801eeda8da5cdf5fee0f6" name="aaf6d8080e4f801eeda8da5cdf5fee0f6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaf6d8080e4f801eeda8da5cdf5fee0f6">&#9670;&#160;</a></span>new_audio()</h2>
+<a id="aa772a5a36486a671f5deaf865e7f4d5d" name="aa772a5a36486a671f5deaf865e7f4d5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa772a5a36486a671f5deaf865e7f4d5d">&#9670;&#160;</a></span>delete_audio_sequence_content()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void delete_audio_sequence_content </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="libcnaudio_8h.html#a1c69ee57b2d9f89ab4ee80867221b2ab">AudioSequence</a> *&#160;</td>
+          <td class="paramname"><em>seq</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adc5fa4df37ed000a5eccd0c49add5160" name="adc5fa4df37ed000a5eccd0c49add5160"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc5fa4df37ed000a5eccd0c49add5160">&#9670;&#160;</a></span>delete_audio_vector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void delete_audio_vector </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structaudio__vector__s.html">audio_vector_s</a> *&#160;</td>
+          <td class="paramname"><em>vec</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4c7ebe7634d17e2040e376d8a0249e94" name="a4c7ebe7634d17e2040e376d8a0249e94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c7ebe7634d17e2040e376d8a0249e94">&#9670;&#160;</a></span>end_audio()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void end_audio </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1848667d6af9d44f22453472c4b4c285" name="a1848667d6af9d44f22453472c4b4c285"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1848667d6af9d44f22453472c4b4c285">&#9670;&#160;</a></span>init_audio_sequence_content()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void init_audio_sequence_content </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="libcnaudio_8h.html#a1c69ee57b2d9f89ab4ee80867221b2ab">AudioSequence</a> *&#160;</td>
+          <td class="paramname"><em>seq</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a90125cf364f0cc8446e13a0e89add620" name="a90125cf364f0cc8446e13a0e89add620"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90125cf364f0cc8446e13a0e89add620">&#9670;&#160;</a></span>insert_audio_vector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t insert_audio_vector </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structaudio__vector__s.html">audio_vector_s</a> *&#160;</td>
+          <td class="paramname"><em>vec</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="libcnaudio_8h.html#a47d4b2ae444f11e00a3a595fc7b20fd6">Audio</a> *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3b2864ca0048da63a6d9e7b283d35aec" name="a3b2864ca0048da63a6d9e7b283d35aec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b2864ca0048da63a6d9e7b283d35aec">&#9670;&#160;</a></span>new_audio()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -308,12 +538,54 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="libcncore_8h.html#a45176b455e70053cf81874c72e0aa5fe">cn_method</a>&#160;</td>
-          <td class="paramname"><em>on_audio_end</em>&#160;</td>
+          <td class="paramname"><em>on_audio_end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *&#160;</td>
+          <td class="paramname"><em>on_end_obj</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
           <td>)</td>
           <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a398b3cb49c901d43739de1a63c9d202b" name="a398b3cb49c901d43739de1a63c9d202b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a398b3cb49c901d43739de1a63c9d202b">&#9670;&#160;</a></span>new_audio_ctx()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> * new_audio_ctx </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a>&#160;</td>
+          <td class="paramname"><em>skip_init_error</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af9057de3e2ca5f3486bf6d480a7d598b" name="af9057de3e2ca5f3486bf6d480a7d598b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9057de3e2ca5f3486bf6d480a7d598b">&#9670;&#160;</a></span>new_audio_vector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structaudio__vector__s.html">audio_vector_s</a> * new_audio_vector </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -337,6 +609,90 @@ Functions</h2></td></tr>
           <td></td>
           <td class="paramtype">int32_t&#160;</td>
           <td class="paramname"><em>channel</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9370a2639fc3b5d88e677a9af9a43793" name="a9370a2639fc3b5d88e677a9af9a43793"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9370a2639fc3b5d88e677a9af9a43793">&#9670;&#160;</a></span>remove_audio_ordered_vector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void remove_audio_ordered_vector </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structaudio__vector__s.html">audio_vector_s</a> *&#160;</td>
+          <td class="paramname"><em>vec</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>i</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0160bf0ef2dc6b141f67c423a00f7806" name="a0160bf0ef2dc6b141f67c423a00f7806"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0160bf0ef2dc6b141f67c423a00f7806">&#9670;&#160;</a></span>remove_audio_vector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void remove_audio_vector </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structaudio__vector__s.html">audio_vector_s</a> *&#160;</td>
+          <td class="paramname"><em>vec</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>i</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae24a67eb35d088b851638cbdba4d9347" name="ae24a67eb35d088b851638cbdba4d9347"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae24a67eb35d088b851638cbdba4d9347">&#9670;&#160;</a></span>resize_audio_vector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t resize_audio_vector </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structaudio__vector__s.html">audio_vector_s</a> *&#160;</td>
+          <td class="paramname"><em>vec</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>new_capacity</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -404,6 +760,24 @@ Functions</h2></td></tr>
           <td></td>
           <td>)</td>
           <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab9d4189a71cbbcb47bfb74c0c6ce9e41" name="ab9d4189a71cbbcb47bfb74c0c6ce9e41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9d4189a71cbbcb47bfb74c0c6ce9e41">&#9670;&#160;</a></span>start_audio()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> start_audio </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">

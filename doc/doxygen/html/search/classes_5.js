@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['material_0',['Material',['../structMaterial.html',1,'']]],
-  ['mesh_1',['Mesh',['../structMesh.html',1,'']]]
+  ['inputcontroller_0',['InputController',['../structInputController.html',1,'']]],
+  ['inputentry_1',['InputEntry',['../structInputEntry.html',1,'']]]
 ];

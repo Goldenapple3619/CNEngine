@@ -1,7 +1,7 @@
 var structwindow__s =
 [
     [ "event_map", "structwindow__s.html#a27c99122e1f2ae70d8733dd435a081f2", null ],
-    [ "gl_ctx", "structwindow__s.html#a9fc04769a4e082c46cb19b7a9f43f2ef", null ],
+    [ "gl_ctx", "structwindow__s.html#a1475cca58e68027ef12dfb2d8457e8d4", null ],
     [ "id", "structwindow__s.html#a179aa5960597ed632710ecccbf65129f", null ],
     [ "renderer", "structwindow__s.html#a9e2653e6ea972601d9f18263990e6e0f", null ],
     [ "texture", "structwindow__s.html#a51a60c544448bfe06e633b4f30f98d8d", null ],

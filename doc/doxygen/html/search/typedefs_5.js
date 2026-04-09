@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['rect_0',['Rect',['../libcncore_8h.html#a44e2d24ab2a21b90d03880cab9cc6d16',1,'libcncore.h']]]
+  ['texture_0',['Texture',['../libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99',1,'libcngraphic.h']]],
+  ['textureatlas_1',['TextureAtlas',['../libcngraphic_8h.html#a23359974f04ef93017c6a11fec3741ac',1,'libcngraphic.h']]]
 ];

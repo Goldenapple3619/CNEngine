@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['rect_0',['rect',['../structcn__value.html#ac86a41b353ef5b6a1ce53bb54c32b7d3',1,'cn_value']]],
-  ['ref_5fcount_1',['ref_count',['../structobject__s.html#ae8559e10f290cd7d95dd6d948d918678',1,'object_s']]],
-  ['renderer_2',['renderer',['../structtexture__s.html#a286f960e0b81d4a286b5ddb80b0ea582',1,'texture_s::renderer'],['../structwindow__s.html#a9e2653e6ea972601d9f18263990e6e0f',1,'window_s::renderer'],['../structgpu__rendering__data.html#a9de4a517dffcff2f8d3896014eed75a7',1,'gpu_rendering_data::renderer']]],
-  ['resolution_3',['resolution',['../structtwod__board__mode__s.html#a9a3731b8963138f7fc9d83d2733ac1ab',1,'twod_board_mode_s::resolution'],['../structthreed__board__mode__s.html#aa9bb3de0b5ae3685ed0f65ebe3eb661b',1,'threed_board_mode_s::resolution'],['../structgui__board__mode__s.html#a0f33295f5711bab42765bbbd06245271',1,'gui_board_mode_s::resolution']]],
-  ['rotation_4',['rotation',['../structscene__object__mode__s.html#acab8988a6a697184fc10ce46c88c1e3a',1,'scene_object_mode_s']]]
+  ['playing_5fon_0',['playing_on',['../structaudio__s.html#a5c4e7f5052a0a02cc8be4520b0e7ae64',1,'audio_s']]],
+  ['pos_1',['pos',['../structlist__iterator__s.html#aa7c2a3519e77e43966a27a6e9efb4505',1,'list_iterator_s']]],
+  ['position_2',['position',['../structvideomode__s.html#a07bd3022d9e1fc5d8d605341d011cae7',1,'videomode_s::position'],['../structtwod__board__mode__s.html#afd092727d6d8315e6f728ea3883a83e1',1,'twod_board_mode_s::position'],['../structthreed__board__mode__s.html#a9e5e0acc23035ca9c7139cfc0dcdd211',1,'threed_board_mode_s::position'],['../structtext__mode__s.html#a9473e2934151fefddb56a4d250c2afcb',1,'text_mode_s::position'],['../structgui__board__mode__s.html#a01014a4e124f01002d246f7b925045f8',1,'gui_board_mode_s::position']]],
+  ['proj_3',['proj',['../structthreed__render__stack.html#a43051683068fad0883e91796c1712dec',1,'threed_render_stack']]],
+  ['ptr_4',['ptr',['../structcn__value.html#a4c75cd5394a9dcb406456b70075db433',1,'cn_value']]]
 ];

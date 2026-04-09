@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['vector2_0',['Vector2',['../libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d',1,'libcncore.h']]],
-  ['vector3_1',['Vector3',['../libcncore_8h.html#a3dd97d4c265b35e13059fcd0a8d6128f',1,'libcncore.h']]],
-  ['videomode_2',['Videomode',['../libcngraphic_8h.html#a11fee8bdf914a878a155af5fea79040b',1,'libcngraphic.h']]]
+  ['window_0',['Window',['../libcngraphic_8h.html#a5fc44cc59f6ddab0d0b7a09326031a29',1,'libcngraphic.h']]],
+  ['windowuniverse_1',['WindowUniverse',['../libcngraphic_8h.html#ac168ed2f37bffc15af0623a2b45c207f',1,'libcngraphic.h']]]
 ];

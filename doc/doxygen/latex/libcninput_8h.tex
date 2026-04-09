@@ -1,17 +1,99 @@
 \doxysection{lib/cninput/include/libcninput.h File Reference}
 \hypertarget{libcninput_8h}{}\label{libcninput_8h}\index{lib/cninput/include/libcninput.h@{lib/cninput/include/libcninput.h}}
 {\ttfamily \#include "{}libcncore.\+h"{}}\newline
+{\ttfamily \#include "{}libcngraphic.\+h"{}}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structInputController}{Input\+Controller}}
+\item 
+struct \mbox{\hyperlink{structInputEntry}{Input\+Entry}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{libcninput_8h_a0ae208dfa21925e3cb4a7c4ea17ea8ef}{input\+\_\+type}} \{ \mbox{\hyperlink{libcninput_8h_a0ae208dfa21925e3cb4a7c4ea17ea8efab53c2e62dcbebac6e39efa145ac3daff}{INPUT\+\_\+\+UKN}} = 0x00
+, \mbox{\hyperlink{libcninput_8h_a0ae208dfa21925e3cb4a7c4ea17ea8efa05d215b1d861e760b2385a889551e87d}{INPUT\+\_\+\+KEY\+\_\+\+PRESS}}
+ \}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-bool \mbox{\hyperlink{libcninput_8h_a2540cb50defc3dbc9110f41c207aff3a}{start\+\_\+input}} (void)
+\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} \mbox{\hyperlink{libcninput_8h_a55e78903d9376f12cf5bfd33b7e48d75}{start\+\_\+input}} (void)
+\item 
+void \mbox{\hyperlink{libcninput_8h_a3880bb541d5dae632bddfcc8512ea3d9}{end\+\_\+input}} (void)
+\item 
+\mbox{\hyperlink{structInputEntry}{Input\+Entry}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcninput_8h_a24a9653ffea4b83ed6701baddf2ae0d1}{new\+\_\+input\+\_\+entry}} (const char \texorpdfstring{$\ast$}{*}name)
+\item 
+void \mbox{\hyperlink{libcninput_8h_af1cbfd6b80db68fb87308498b247c786}{delete\+\_\+input\+\_\+entry}} (\mbox{\hyperlink{structInputEntry}{Input\+Entry}} \texorpdfstring{$\ast$}{*}ie)
+\item 
+\mbox{\hyperlink{structInputController}{Input\+Controller}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcninput_8h_a7ae64410d115051d827092a994dbdac3}{new\+\_\+input\+\_\+controller}} (\mbox{\hyperlink{libcninput_8h_a0ae208dfa21925e3cb4a7c4ea17ea8ef}{input\+\_\+type}} target\+\_\+type, int64\+\_\+t target\+\_\+value)
+\item 
+void \mbox{\hyperlink{libcninput_8h_acb2399507da4b40ae24a5988444b6e54}{delete\+\_\+input\+\_\+controller}} (\mbox{\hyperlink{structInputController}{Input\+Controller}} \texorpdfstring{$\ast$}{*}ic)
+\item 
+\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcninput_8h_a3ffd89b8cc95895b590d9aae3e6f3699}{new\+\_\+input\+\_\+submodule}} (void)
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{libcninput_8h_a0ae208dfa21925e3cb4a7c4ea17ea8ef}\label{libcninput_8h_a0ae208dfa21925e3cb4a7c4ea17ea8ef} 
+\index{libcninput.h@{libcninput.h}!input\_type@{input\_type}}
+\index{input\_type@{input\_type}!libcninput.h@{libcninput.h}}
+\doxysubsubsection{\texorpdfstring{input\_type}{input\_type}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{libcninput_8h_a0ae208dfa21925e3cb4a7c4ea17ea8ef}{input\+\_\+type}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{INPUT\_UKN@{INPUT\_UKN}!libcninput.h@{libcninput.h}}\index{libcninput.h@{libcninput.h}!INPUT\_UKN@{INPUT\_UKN}}}\Hypertarget{libcninput_8h_a0ae208dfa21925e3cb4a7c4ea17ea8efab53c2e62dcbebac6e39efa145ac3daff}\label{libcninput_8h_a0ae208dfa21925e3cb4a7c4ea17ea8efab53c2e62dcbebac6e39efa145ac3daff} 
+INPUT\+\_\+\+UKN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{INPUT\_KEY\_PRESS@{INPUT\_KEY\_PRESS}!libcninput.h@{libcninput.h}}\index{libcninput.h@{libcninput.h}!INPUT\_KEY\_PRESS@{INPUT\_KEY\_PRESS}}}\Hypertarget{libcninput_8h_a0ae208dfa21925e3cb4a7c4ea17ea8efa05d215b1d861e760b2385a889551e87d}\label{libcninput_8h_a0ae208dfa21925e3cb4a7c4ea17ea8efa05d215b1d861e760b2385a889551e87d} 
+INPUT\+\_\+\+KEY\+\_\+\+PRESS&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
 \doxysubsection{Function Documentation}
-\Hypertarget{libcninput_8h_a2540cb50defc3dbc9110f41c207aff3a}\label{libcninput_8h_a2540cb50defc3dbc9110f41c207aff3a} 
+\Hypertarget{libcninput_8h_acb2399507da4b40ae24a5988444b6e54}\label{libcninput_8h_acb2399507da4b40ae24a5988444b6e54} 
+\index{libcninput.h@{libcninput.h}!delete\_input\_controller@{delete\_input\_controller}}
+\index{delete\_input\_controller@{delete\_input\_controller}!libcninput.h@{libcninput.h}}
+\doxysubsubsection{\texorpdfstring{delete\_input\_controller()}{delete\_input\_controller()}}
+{\footnotesize\ttfamily void delete\+\_\+input\+\_\+controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structInputController}{Input\+Controller}} \texorpdfstring{$\ast$}{*}}]{ic }\end{DoxyParamCaption})}
+
+\Hypertarget{libcninput_8h_af1cbfd6b80db68fb87308498b247c786}\label{libcninput_8h_af1cbfd6b80db68fb87308498b247c786} 
+\index{libcninput.h@{libcninput.h}!delete\_input\_entry@{delete\_input\_entry}}
+\index{delete\_input\_entry@{delete\_input\_entry}!libcninput.h@{libcninput.h}}
+\doxysubsubsection{\texorpdfstring{delete\_input\_entry()}{delete\_input\_entry()}}
+{\footnotesize\ttfamily void delete\+\_\+input\+\_\+entry (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structInputEntry}{Input\+Entry}} \texorpdfstring{$\ast$}{*}}]{ie }\end{DoxyParamCaption})}
+
+\Hypertarget{libcninput_8h_a3880bb541d5dae632bddfcc8512ea3d9}\label{libcninput_8h_a3880bb541d5dae632bddfcc8512ea3d9} 
+\index{libcninput.h@{libcninput.h}!end\_input@{end\_input}}
+\index{end\_input@{end\_input}!libcninput.h@{libcninput.h}}
+\doxysubsubsection{\texorpdfstring{end\_input()}{end\_input()}}
+{\footnotesize\ttfamily void end\+\_\+input (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{libcninput_8h_a7ae64410d115051d827092a994dbdac3}\label{libcninput_8h_a7ae64410d115051d827092a994dbdac3} 
+\index{libcninput.h@{libcninput.h}!new\_input\_controller@{new\_input\_controller}}
+\index{new\_input\_controller@{new\_input\_controller}!libcninput.h@{libcninput.h}}
+\doxysubsubsection{\texorpdfstring{new\_input\_controller()}{new\_input\_controller()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structInputController}{Input\+Controller}} \texorpdfstring{$\ast$}{*} new\+\_\+input\+\_\+controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcninput_8h_a0ae208dfa21925e3cb4a7c4ea17ea8ef}{input\+\_\+type}}}]{target\+\_\+type,  }\item[{int64\+\_\+t}]{target\+\_\+value }\end{DoxyParamCaption})}
+
+\Hypertarget{libcninput_8h_a24a9653ffea4b83ed6701baddf2ae0d1}\label{libcninput_8h_a24a9653ffea4b83ed6701baddf2ae0d1} 
+\index{libcninput.h@{libcninput.h}!new\_input\_entry@{new\_input\_entry}}
+\index{new\_input\_entry@{new\_input\_entry}!libcninput.h@{libcninput.h}}
+\doxysubsubsection{\texorpdfstring{new\_input\_entry()}{new\_input\_entry()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structInputEntry}{Input\+Entry}} \texorpdfstring{$\ast$}{*} new\+\_\+input\+\_\+entry (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name }\end{DoxyParamCaption})}
+
+\Hypertarget{libcninput_8h_a3ffd89b8cc95895b590d9aae3e6f3699}\label{libcninput_8h_a3ffd89b8cc95895b590d9aae3e6f3699} 
+\index{libcninput.h@{libcninput.h}!new\_input\_submodule@{new\_input\_submodule}}
+\index{new\_input\_submodule@{new\_input\_submodule}!libcninput.h@{libcninput.h}}
+\doxysubsubsection{\texorpdfstring{new\_input\_submodule()}{new\_input\_submodule()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*} new\+\_\+input\+\_\+submodule (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{libcninput_8h_a55e78903d9376f12cf5bfd33b7e48d75}\label{libcninput_8h_a55e78903d9376f12cf5bfd33b7e48d75} 
 \index{libcninput.h@{libcninput.h}!start\_input@{start\_input}}
 \index{start\_input@{start\_input}!libcninput.h@{libcninput.h}}
 \doxysubsubsection{\texorpdfstring{start\_input()}{start\_input()}}
-{\footnotesize\ttfamily bool start\+\_\+input (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} start\+\_\+input (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 

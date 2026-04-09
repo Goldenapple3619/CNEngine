@@ -7,6 +7,7 @@ var dir_401cb2143ef11513238729cb97b06071 =
     [ "interface.c", "interface_8c.html", "interface_8c" ],
     [ "material.c", "material_8c.html", "material_8c" ],
     [ "mesh.c", "mesh_8c.html", "mesh_8c" ],
+    [ "quad.c", "quad_8c.html", "quad_8c" ],
     [ "shader.c", "shader_8c.html", "shader_8c" ],
     [ "texture.c", "texture_8c.html", "texture_8c" ],
     [ "texture_atlas.c", "texture__atlas_8c.html", "texture__atlas_8c" ],

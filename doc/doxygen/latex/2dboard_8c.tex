@@ -15,7 +15,7 @@ static void \mbox{\hyperlink{2dboard_8c_ac40df33fcd863511a8eaed80c3486b64}{\+\_\
 \item 
 static void \mbox{\hyperlink{2dboard_8c_af1afb79d4c52dd85d4fb0db2ceadf5f3}{\+\_\+gpu\+\_\+rendering}} (const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}position, const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}scale, const \mbox{\hyperlink{libcncore_8h_a44e2d24ab2a21b90d03880cab9cc6d16}{Rect}} \texorpdfstring{$\ast$}{*}bounding, const \mbox{\hyperlink{libcncore_8h_a3dd97d4c265b35e13059fcd0a8d6128f}{Vector3}} \texorpdfstring{$\ast$}{*}rotation, \mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}object\+\_\+texture, \mbox{\hyperlink{structgpu__rendering__data}{gpu\+\_\+rendering\+\_\+data}} \texorpdfstring{$\ast$}{*}rendering\+\_\+data)
 \item 
-static void \mbox{\hyperlink{2dboard_8c_a86ce2e3c791680debf6fb5cbab32ae51}{\+\_\+opengl\+\_\+rendering}} (void)
+static void \mbox{\hyperlink{2dboard_8c_a9af93dc16764f64928072a70233e26c9}{\+\_\+opengl\+\_\+rendering}} (const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}position, const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}scale, const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}canva\+\_\+ratio, const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}canva\+\_\+upscale, \mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}object\+\_\+texture, \mbox{\hyperlink{structQuad}{Quad}} \texorpdfstring{$\ast$}{*}gl\+\_\+quad)
 \item 
 static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{2dboard_8c_ac8f59d4c97b9fb23bd6dccb19d3502a0}{\+\_\+render\+\_\+object}} (\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+this, void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}args)
 \item 
@@ -67,11 +67,11 @@ static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{2dboar
 \doxysubsubsection{\texorpdfstring{\_init()}{\_init()}}
 {\footnotesize\ttfamily static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+this,  }\item[{void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-\Hypertarget{2dboard_8c_a86ce2e3c791680debf6fb5cbab32ae51}\label{2dboard_8c_a86ce2e3c791680debf6fb5cbab32ae51} 
+\Hypertarget{2dboard_8c_a9af93dc16764f64928072a70233e26c9}\label{2dboard_8c_a9af93dc16764f64928072a70233e26c9} 
 \index{2dboard.c@{2dboard.c}!\_opengl\_rendering@{\_opengl\_rendering}}
 \index{\_opengl\_rendering@{\_opengl\_rendering}!2dboard.c@{2dboard.c}}
 \doxysubsubsection{\texorpdfstring{\_opengl\_rendering()}{\_opengl\_rendering()}}
-{\footnotesize\ttfamily static void \+\_\+opengl\+\_\+rendering (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily static void \+\_\+opengl\+\_\+rendering (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}}]{position,  }\item[{const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}}]{scale,  }\item[{const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}}]{canva\+\_\+ratio,  }\item[{const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}}]{canva\+\_\+upscale,  }\item[{\mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}}]{object\+\_\+texture,  }\item[{\mbox{\hyperlink{structQuad}{Quad}} \texorpdfstring{$\ast$}{*}}]{gl\+\_\+quad }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 \Hypertarget{2dboard_8c_ac8f59d4c97b9fb23bd6dccb19d3502a0}\label{2dboard_8c_ac8f59d4c97b9fb23bd6dccb19d3502a0} 
 \index{2dboard.c@{2dboard.c}!\_render\_object@{\_render\_object}}
