@@ -9,6 +9,8 @@
         #define CN_API
     #endif
 
+    #define GC_MAX_SIZE 256
+
     #define true ~(0 << 1)
     #define false 0
 
@@ -238,6 +240,13 @@
         size_t capacity;
     };
 
+    struct generic_vector_s {
+        void **content;
+
+        size_t size;
+        size_t capacity;
+    };
+
     typedef struct {
         struct object_s *obj;
         cn_method method;
@@ -296,6 +305,8 @@
     CN_API Object *new_object(void);
     CN_API Object *build_object(Object *obj, void **args);
     CN_API Object *share_object(Object *object);
+    CN_API void collect_object(Object *object);
+    CN_API void run_gc(void);
     CN_API cnbool set_attr(Object *object, const char *name, cn_type type, cnany value);
     CN_API cn_value *get_attr(const Object *object, const char *name);
     CN_API cnbool has_attr(const Object *object, const char *name);
@@ -322,6 +333,13 @@
     CN_API void remove_generic_map(struct generic_map_s *gen_map, const char *key, void (*_delete_obj)(void *));
     CN_API const void *get_generic_map(struct generic_map_s *gen_map, const char *key, void *(*_obj_from_key_default)(const char *), void (*_delete_obj)(void *));
     CN_API void delete_generic_map(struct generic_map_s *gen_map, void (*_delete_obj)(void *));
+
+    CN_API struct generic_vector_s *new_generic_vector(void);
+    CN_API uint8_t resize_generic_vector(struct generic_vector_s *vec, size_t new_capacity);
+    CN_API uint8_t insert_generic_vector(struct generic_vector_s *vec, void *obj);
+    CN_API void remove_generic_vector(struct generic_vector_s *vec, size_t i, void (*_delete_obj)(void *));
+    CN_API void remove_generic_ordered_vector(struct generic_vector_s *vec, size_t i, void (*_delete_obj)(void *));
+    CN_API void delete_generic_vector(struct generic_vector_s *vec, void (*_delete_obj)(void *));
 
     CN_API Object *new_ctx(void);
     CN_API cnbool submodule_ctx(Object *ctx, Object *module);

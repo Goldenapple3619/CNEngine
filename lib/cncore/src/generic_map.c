@@ -21,7 +21,7 @@ CN_API uint8_t generic_map_resize(struct generic_map_s *gen_map, size_t new_capa
     if (!gen_map)
         return (1);
 
-    gen_map->content = realloc(gen_map->content, new_capacity * sizeof(struct generic_map_s *));
+    gen_map->content = realloc(gen_map->content, new_capacity * sizeof(void *));
     gen_map->keys  = realloc(gen_map->keys,  new_capacity * sizeof(uint64_t));
 
     if (!gen_map->content || !gen_map->keys) {

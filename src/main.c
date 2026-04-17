@@ -282,5 +282,7 @@ int main(int argc, char *argv[])
     call_method(ctx, "_run", NULL);
     delete_object(ctx);
 
+    run_gc();
+
     return (0);
 }
