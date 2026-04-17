@@ -13,5 +13,7 @@ CN_API cnbool start_input(void)
 
 CN_API void end_input(void)
 {
-
+    (void)SDL_QuitSubSystem(SDL_INIT_GAMECONTROLLER);
+    (void)SDL_QuitSubSystem(SDL_INIT_HAPTIC);
+    (void)SDL_QuitSubSystem(SDL_INIT_JOYSTICK);
 }
