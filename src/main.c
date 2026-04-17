@@ -42,13 +42,17 @@ Object *add_test_opengl_window(Object *ctx)
         .flags = VDM_CLOSABLE | VDM_OPENGL,
         .native_flags = VDM_N_SHWN | VDM_N_RSZL | VDM_N_OPENGL
     };
-    cn_value val = call_method(ctx, "spawn_interface", (cnany []){"test", NULL, &v});
+    Texture *tex = new_texture_from_file("./assets/images/logo_XL.png");
+    cn_value val = call_method(ctx, "spawn_interface", (cnany []){"test", tex, &v});
+
+    delete_texture(tex); // don't worry, it won't cause any use after free, trust
 
     if (val.type == CN_TYPE_NULL) {
         return (NULL);
     }
 
     Object *window_interface = val.as.ptr;
+
 
     Object *threed_board = build_object(new_3dboard(), (cnany []){
         &(struct threed_board_mode_s){
