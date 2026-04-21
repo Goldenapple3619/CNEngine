@@ -20,7 +20,7 @@ static void sigint_handler(int signum)
         call_method(global_ctx, "_stop", NULL);
 }
 
-cn_value fps_update(Object *__this, void **args)
+static cn_value fps_update(Object *__this, void **args)
 {
     if (!args || !args[0])
         return (null_value);
@@ -34,12 +34,61 @@ cn_value fps_update(Object *__this, void **args)
     return (null_value);
 }
 
+static cn_value _move_left(Object *__this, void **args)
+{
+    if (!args || !args[0])
+        return (null_value);
+
+    if (!(*(cnbool *)args[0]))
+        get_attr(__this, "velocity")->as.vec3.x = -0.01;
+    else if (get_attr(__this, "velocity")->as.vec3.x < 0)
+        get_attr(__this, "velocity")->as.vec3.x = 0;
+    return (null_value);
+}
+
+static cn_value _move_right(Object *__this, void **args)
+{
+    if (!args || !args[0])
+        return (null_value);
+
+    if (!(*(cnbool *)args[0]))
+        get_attr(__this, "velocity")->as.vec3.x = 0.01;
+    else if (get_attr(__this, "velocity")->as.vec3.x > 0)
+        get_attr(__this, "velocity")->as.vec3.x = 0;
+    return (null_value);
+}
+
+static cn_value _move_forward(Object *__this, void **args)
+{
+    if (!args || !args[0])
+        return (null_value);
+
+    if (!(*(cnbool *)args[0]))
+        get_attr(__this, "velocity")->as.vec3.z = -0.01;
+    else if (get_attr(__this, "velocity")->as.vec3.z < 0)
+        get_attr(__this, "velocity")->as.vec3.z = 0;
+    return (null_value);
+}
+
+static cn_value _move_backward(Object *__this, void **args)
+{
+    if (!args || !args[0])
+        return (null_value);
+
+    if (!(*(cnbool *)args[0])) {
+        get_attr(__this, "velocity")->as.vec3.z = 0.01;
+    } else if (get_attr(__this, "velocity")->as.vec3.z > 0) {
+        get_attr(__this, "velocity")->as.vec3.z = 0;
+    }
+    return (null_value);
+}
+
 Object *add_test_opengl_window(Object *ctx)
 {
     Videomode v = (Videomode){
         .size.x = 800, .size.y = 600,
         .position.x = (SDL_WINDOWPOS_CENTERED), .position.y = (SDL_WINDOWPOS_CENTERED),
-        .flags = VDM_CLOSABLE | VDM_OPENGL,
+        .flags = VDM_CLOSABLE | VDM_OPENGL | VDM_ACCELERATION | VDM_VSYNC,
         .native_flags = VDM_N_SHWN | VDM_N_RSZL | VDM_N_OPENGL
     };
     Texture *tex = new_texture_from_file("./assets/images/logo_XL.png");
@@ -65,6 +114,44 @@ Object *add_test_opengl_window(Object *ctx)
     });
 
     if (!threed_board) {
+        return (NULL);
+    }
+
+    Object *camera = get_attr(threed_board, "camera")->as.ptr;
+
+    if (
+        call_method(ctx, "register_input_controller", (cnany []){
+            "left", &(InputController){.ignore_value = false, .target_type = INPUT_KEY_PRESS, .target_value = SDLK_q}
+        }).as.i == VALUE_ERR.as.i ||
+        call_method(ctx, "register_input_controller", (cnany []){
+            "right", &(InputController){.ignore_value = false, .target_type = INPUT_KEY_PRESS, .target_value = SDLK_d}
+        }).as.i == VALUE_ERR.as.i ||
+        call_method(ctx, "register_input_controller", (cnany []){
+            "forward", &(InputController){.ignore_value = false, .target_type = INPUT_KEY_PRESS, .target_value = SDLK_z}
+        }).as.i == VALUE_ERR.as.i ||
+        call_method(ctx, "register_input_controller", (cnany []){
+            "backward", &(InputController){.ignore_value = false, .target_type = INPUT_KEY_PRESS, .target_value = SDLK_s}
+        }).as.i == VALUE_ERR.as.i
+        )
+        return (NULL);
+
+    if (
+        call_method(ctx, "register_input_callback", (cnany []){
+            "left", &(ObjMethodPair){.obj = camera, .method = &_move_left}
+        }).as.i == VALUE_ERR.as.i ||
+        call_method(ctx, "register_input_callback", (cnany []){
+            "right", &(ObjMethodPair){.obj = camera, .method = &_move_right}
+        }).as.i == VALUE_ERR.as.i ||
+        call_method(ctx, "register_input_callback", (cnany []){
+            "forward", &(ObjMethodPair){.obj = camera, .method = &_move_forward}
+        }).as.i == VALUE_ERR.as.i ||
+        call_method(ctx, "register_input_callback", (cnany []){
+            "backward", &(ObjMethodPair){.obj = camera, .method = &_move_backward}
+        }).as.i == VALUE_ERR.as.i
+        )
+        return (NULL);
+
+    if (call_method(get_attr(ctx, "scene")->as.ptr, "add_element", (cnany []){camera, NULL}).as.i == VALUE_ERR.as.i) {
         return (NULL);
     }
 

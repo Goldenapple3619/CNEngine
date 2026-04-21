@@ -12,6 +12,10 @@ static cn_value _init(Object *__this, void **args)
         return (VALUE_ERR);
     if (allow_event(get_attr(__this, "window")->as.ptr, EV_MOVE))
         return (VALUE_ERR);
+    if (allow_event(get_attr(__this, "window")->as.ptr, EV_KEYDOWN))
+        return (VALUE_ERR);
+    if (allow_event(get_attr(__this, "window")->as.ptr, EV_KEYUP))
+        return (VALUE_ERR);
 
     return (VALUE_OK);
 }

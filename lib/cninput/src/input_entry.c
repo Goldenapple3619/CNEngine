@@ -105,7 +105,7 @@ uint8_t input_entry_add_callback(InputEntry *ie, cn_method method, Object *obj)
     if (!ie->cbs[ie->cbs_size])
         return (1);
 
-    ie->cbs_capacity++;
+    ie->cbs_size++;
     return (0);
 }
 
@@ -122,7 +122,7 @@ uint8_t input_entry_add_controller(InputEntry *ie, input_type target_type, int64
 
     ie->controllers[ie->controllers_size] = new_input_controller(target_type, target_value, value_ignored);
 
-    if (!ie->cbs[ie->cbs_size])
+    if (!ie->controllers[ie->controllers_size])
         return (1);
 
     ie->controllers_size++;

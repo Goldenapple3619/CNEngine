@@ -29,7 +29,7 @@ cnbool input_controller_cmp(const InputController *ic, const Event *ev)
     if (input_type_from_event(ev->type) != ic->target_type)
         return (false);
 
-    if (ic->ignore_value && ev->v != ic->target_value)
+    if (!ic->ignore_value && ev->v != ic->target_value)
         return (false);
 
     return (true);

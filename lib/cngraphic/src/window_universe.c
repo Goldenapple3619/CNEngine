@@ -111,7 +111,7 @@ static void sdl_ev_to_cnev(const SDL_Event *ev, Event *cnev)
 
         case SDL_KEYDOWN:
         case SDL_KEYUP:
-            *cnev = (Event){0, 0, ev->key.type == SDL_KEYUP ? EV_MOUSEUP : EV_MOUSEDOWN, ev->key.keysym.scancode};
+            *cnev = (Event){0, 0, ev->key.type == SDL_KEYUP ? EV_KEYUP : EV_KEYDOWN, ev->key.keysym.sym};
             break;
 
         case SDL_MOUSEMOTION:
@@ -159,6 +159,17 @@ static uint32_t get_video_id_from_event(const SDL_Event *ev)
     }
 }
 
+static cnbool filter_is_repeat_event(const SDL_Event *ev)
+{
+    switch (ev->type) {
+        case SDL_KEYDOWN:
+            return (ev->key.repeat == 1);
+
+        default:
+            return (false);
+    }
+}
+
 CN_API void fetch_events_all_window(WindowUniverse *universe)
 {
     if (!universe)
@@ -168,6 +179,9 @@ CN_API void fetch_events_all_window(WindowUniverse *universe)
     Event cnev;
 
     while (SDL_PollEvent(&ev)) {
+        if (filter_is_repeat_event(&ev))
+            continue;
+
         Window *window = get_window_in_universe(universe, get_video_id_from_event(&ev));
 
         if (window) {
