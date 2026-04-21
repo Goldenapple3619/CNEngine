@@ -15,3 +15,5 @@ temp
 *.exe
 *.out
 **/__generated_*
+
+**/agame

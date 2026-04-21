@@ -32,7 +32,10 @@ static cn_value _events(Object *__this, void **args)
             for (struct list_iterator_s it = atlas_get_iterator(atlas, true); !atlas_iterator_isend(&it); atlas_iterator_next(&it)) {
                 entry = it.val.as.ptr;
 
-                (void)entry; // todo: check with ev map
+                if (!input_entry_cmp(entry, ev_map->events[j]))
+                    continue;
+
+                (void)input_entry_activate(entry, ev_map->events[j]);
             }
         }
     }
