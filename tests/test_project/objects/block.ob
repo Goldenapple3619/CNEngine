@@ -1,0 +1,16 @@
+<object base="__builtin_object3d">
+    <name>block</name>
+
+    <srcs packing="lib">
+        <c>${PROJECT_SRC}/block.c</c>
+    </srcs>
+
+    <methods>
+        <symbol name="_update">_update_block</symbol>
+    </methods>
+    <attrs>
+        <str default="test_string">test</str>
+        <material>material</material>
+        <mesh>mesh</mesh>
+    </attrs>
+</object>

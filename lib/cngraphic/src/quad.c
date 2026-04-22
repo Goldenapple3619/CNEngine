@@ -41,7 +41,7 @@ CN_API Quad *new_quad(void)
         "out vec4 frag_color;\n"
         "void main() { frag_color = texture(u_screen, v_uv); }\n";
 
-    quad->shader = gl_shader_compile(vert, frag);
+    gl_shader_compile(&quad->shader, vert, frag);
 
     return (quad);
 }
@@ -107,7 +107,7 @@ CN_API Quad *new_quad2d(void)
         "    frag_color = base;\n"
         "}\n";
 
-    quad2d->shader = gl_shader_compile(vert, frag);
+    gl_shader_compile(&quad2d->shader, vert, frag);
 
     return (quad2d);
 }
@@ -120,8 +120,6 @@ CN_API void delete_quad(Quad *quad)
         (void)glDeleteVertexArrays(1, &quad->vao);
     if (quad->vbo)
         (void)glDeleteBuffers(1, &quad->vbo);
-    if (quad->shader)
-        (void)glDeleteProgram(quad->shader);
-
+    (void)delete_gpu_shader(&quad->shader);
     (void)free(quad);
 }

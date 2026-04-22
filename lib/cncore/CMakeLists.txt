@@ -20,6 +20,7 @@ add_library(cncore SHARED
     src/common.c
     src/atlas.c
     src/generic_map.c
+    src/generic_vector.c
 )
 
 target_compile_options(cncore

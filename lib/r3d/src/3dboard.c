@@ -113,7 +113,7 @@ static cn_value _draw(Object *__this, void **args)
     render_stack.canva_position = get_attr(__this, "position")->as.vec2;
 
     if (((render_stack.window->video_mode.flags & VDM_OPENGL) > 0))
-        glViewport(render_stack.canva_position.x, render_stack.canva_position.y, render_stack.canva_scale.x, render_stack.canva_scale.y);
+        glViewport(render_stack.canva_position.x, render_stack.window->video_mode.size.y / 2 - render_stack.canva_position.y, render_stack.canva_scale.x, render_stack.canva_scale.y);
 
     if (have_camera) {
         camera = get_attr(__this, "camera")->as.ptr;

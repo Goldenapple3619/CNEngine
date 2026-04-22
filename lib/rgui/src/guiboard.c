@@ -98,6 +98,7 @@ static cn_value _draw(Object *__this, void **args)
     Texture *temp_texture;
 
     if (((window->video_mode.flags & VDM_OPENGL) > 0)) {
+        glViewport(position->x, position->y, window->video_mode.size.x, window->video_mode.size.y);
         if (!has_attr(__this, "gl_quad")) {
             PREP_INIT(); INIT_CUSTOM_ALLOCATION(__this, new_quad2d(), delete_quad, "gl_quad");
         }
@@ -132,7 +133,7 @@ static cn_value _draw(Object *__this, void **args)
 
                 draw_texture_gl(
                     temp_texture, gl_quad,
-                    &(Vector2){position->x + temp_position.x * computed_upscale.x, position->y + temp_position.y * computed_upscale.y},
+                    &(Vector2){temp_position.x * computed_upscale.x, temp_position.y * computed_upscale.y},
                     &(Vector2){temp_texture->size.x * computed_upscale.x, temp_texture->size.y * computed_upscale.y},
                     (cncolor)0xffffffff,
                     upscale

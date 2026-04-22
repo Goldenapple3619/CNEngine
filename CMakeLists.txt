@@ -11,7 +11,7 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_REQUIRED_LIBRARIES m CACHE BOOL "" FORCE)
 
 # ========= Options =========
-option(CN_BUILD_GAME "Build game executable" ON)
+option(CN_BUILD_ENGINE "Build engine executable" ON)
 
 if(NOT DEFINED DIST_DIR)
     get_filename_component(CWD_NAME ${CMAKE_SOURCE_DIR} NAME)
@@ -155,10 +155,11 @@ add_subdirectory(lib/rgui)
 add_subdirectory(lib/r2d)
 add_subdirectory(lib/r3d)
 
-# ========= Game executable =========
-if(CN_BUILD_GAME)
+# ========= engine executable =========
+if(CN_BUILD_ENGINE)
     add_executable(cn_engine
         src/main.c
+        src/map_editor.c
     )
 
     target_compile_options(cn_engine

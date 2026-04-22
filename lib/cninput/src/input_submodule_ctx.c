@@ -32,7 +32,10 @@ static cn_value _events(Object *__this, void **args)
             for (struct list_iterator_s it = atlas_get_iterator(atlas, true); !atlas_iterator_isend(&it); atlas_iterator_next(&it)) {
                 entry = it.val.as.ptr;
 
-                (void)entry; // todo: check with ev map
+                if (!input_entry_cmp(entry, ev_map->events[j]))
+                    continue;
+
+                (void)input_entry_activate(entry, ev_map->events[j]);
             }
         }
     }
@@ -40,18 +43,79 @@ static cn_value _events(Object *__this, void **args)
     return (null_value);
 }
 
-static cn_value _register_input(Object *__this, void **args)
+static cn_value _register_input_callback(Object *__this, void **args)
 {
-    (void)__this;
-    (void)args;
+    if (!args || !args[0] || !args[1])
+        return (VALUE_ERR);
 
-    return (null_value);
+    Object *atlas = get_attr(__this, "inputs")->as.ptr;
+    InputEntry *ie;
+    cn_value temp = call_method(atlas, "at", (cnany []){args[0]});
+
+    if (temp.type == CN_TYPE_NULL) {
+        ie = new_input_entry(args[0]);
+
+        if (!ie)
+            return (VALUE_ERR);
+
+        if (call_method(atlas, "push", (cnany []){ie, args[0]}).as.i == VALUE_ERR.as.i)
+            return (VALUE_ERR);
+    } else {
+        ie = temp.as.ptr;
+    }
+
+    if (input_entry_add_callback(ie, ((ObjMethodPair *)args[1])->method, ((ObjMethodPair *)args[1])->obj))
+        return (VALUE_ERR);
+
+    return (VALUE_OK);
 }
 
-static cn_value _unregister_input(Object *__this, void **args)
+static cn_value _register_input_controller(Object *__this, void **args)
 {
-    (void)__this;
-    (void)args;
+    if (!args || !args[0] || !args[1])
+        return (VALUE_ERR);
+
+    Object *atlas = get_attr(__this, "inputs")->as.ptr;
+    InputEntry *ie;
+    cn_value temp = call_method(atlas, "at", (cnany []){args[0]});
+
+    if (temp.type == CN_TYPE_NULL) {
+        ie = new_input_entry(args[0]);
+
+        if (!ie)
+            return (VALUE_ERR);
+
+        if (call_method(atlas, "push", (cnany []){ie, args[0]}).as.i == VALUE_ERR.as.i)
+            return (VALUE_ERR);
+    } else {
+        ie = temp.as.ptr;
+    }
+
+    if (input_entry_add_controller(ie, ((InputController *)args[1])->target_type, ((InputController *)args[1])->target_value, ((InputController *)args[1])->ignore_value))
+        return (VALUE_ERR);
+
+    return (VALUE_OK);
+}
+
+static cn_value _unregister_input_callback(Object *__this, void **args)
+{
+    if (!args || !args[0] || !args[1])
+        return (null_value);
+
+    Object *atlas = get_attr(__this, "inputs")->as.ptr;
+    InputEntry *ie;
+    cn_value temp = call_method(atlas, "at", (cnany []){args[0]});
+
+    if (temp.type == CN_TYPE_NULL) {
+        return (null_value);
+    } else {
+        ie = temp.as.ptr;
+    }
+
+    for (size_t i = 0; i < ie->cbs_size; ++i) {
+        if (ie->cbs[i]->method == ((ObjMethodPair *)args[1])->method && ie->cbs[i]->obj == ((ObjMethodPair *)args[1])->obj)
+            input_entry_remove_callback(ie, i);
+    }
 
     return (null_value);
 }
@@ -73,13 +137,14 @@ static cn_value _init(Object *__this, void **args)
     if (!has_attr(ctx, "_main_window_id") || !has_attr(ctx, "all_window"))
         return (VALUE_ERR);
 
-    INIT_OBJECT_STATIC(ctx, new_atlas(NULL, NULL), NULL, "inputs");
+    INIT_OBJECT_STATIC(ctx, new_atlas(NULL, (void (*)(void *))(&delete_input_entry)), NULL, "inputs");
 
-    if (call_method(ctx, "register_event", (cnany []){_events, NULL}).as.i == VALUE_ERR.as.i)
+    if (call_method(ctx, "register_event", (cnany []){&_events, NULL}).as.i == VALUE_ERR.as.i)
         return (VALUE_ERR);
 
-    INIT_METHOD(ctx, "register_input", _register_input);
-    INIT_METHOD(ctx, "unregister_input", _unregister_input);
+    INIT_METHOD(ctx, "register_input_controller", _register_input_controller);
+    INIT_METHOD(ctx, "register_input_callback", _register_input_callback);
+    INIT_METHOD(ctx, "unregister_input_callback", _unregister_input_callback);
     
     return (VALUE_OK);
 }

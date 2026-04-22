@@ -12,10 +12,11 @@ static cn_value _init(Object *__this, void **args)
     Material *mat = new_material();
     if (mat) {
         mat->color = 0x0000ff00;
-        mat->gpu_handler.gl_shader = gl_shader_load(
+        mat->shader = new_shader(); // <- not freed
+        (void)gl_shader_load(mat->shader,
             "assets/shaders/default.vert",
             "assets/shaders/default.frag"
-        ); // <- not freed btw to implement later
+        ); // <- not freed
         mat->texture = new_texture_from_file("assets/dirt.png"); // <- not freed also
         if (mat->texture)
             mat->texture->api = R_API_GL; 
