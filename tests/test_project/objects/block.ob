@@ -1,8 +1,8 @@
-<object base="__builtin_object2d">
+<object base="__builtin_object3d">
     <name>tile</name>
 
     <srcs>
-        <c>${PROJECT_SRC}/tile.c</c>
+        <c>${PROJECT_SRC}/block.c</c>
     </srcs>
 
     <methods>
@@ -10,5 +10,7 @@
     </methods>
     <attrs>
         <str default="test_string">test</str>
+        <material>material</material>
+        <mesh>mesh</mesh>
     </attrs>
 </object>

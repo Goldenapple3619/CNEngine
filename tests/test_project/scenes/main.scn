@@ -5,8 +5,8 @@
     </build>
 
     <content>
-        <object type="tile">
-            <name>tile 0</name>
+        <object type="block">
+            <name>block 0</name>
             <attrs>
                 <vec3 as="position">0,0,0</vec3>
             </attrs>

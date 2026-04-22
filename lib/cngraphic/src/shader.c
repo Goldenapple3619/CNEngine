@@ -5,84 +5,143 @@
 static GLuint _compile_stage(GLenum type, const char *src)
 {
     GLuint s = glCreateShader(type);
+    GLint ok;
+
     glShaderSource(s, 1, &src, NULL);
     glCompileShader(s);
 
-    GLint ok;
     glGetShaderiv(s, GL_COMPILE_STATUS, &ok);
+
     if (!ok) {
         char log[1024];
+
         glGetShaderInfoLog(s, sizeof(log), NULL, log);
         fprintf(stderr, "shader compile error:\n%s\n", log);
         glDeleteShader(s);
-        return 0;
+        return (0);
     }
-    return s;
+
+    return (s);
 }
 
 static char *_read_file(const char *path)
 {
     FILE *f = fopen(path, "rb");
+    long len;
+    char *buf;
+    size_t _;
+
     if (!f) {
         fprintf(stderr, "shader: cannot open %s\n", path);
-        return NULL;
+        return (NULL);
     }
-    fseek(f, 0, SEEK_END);
-    long len = ftell(f);
-    rewind(f);
+    (void)fseek(f, 0, SEEK_END);
+    len = ftell(f);
+    (void)rewind(f);
 
-    char *buf = malloc(len + 1);
-    size_t _ = fread(buf, 1, len, f);
+    buf = malloc(len + 1);
+    _ = fread(buf, 1, len, f);
+
     (void)_;
+
     buf[len] = '\0';
-    fclose(f);
-    return buf;
+    (void)fclose(f);
+
+    return (buf);
 }
 
-CN_API GLuint gl_shader_compile(const char *vert_src, const char *frag_src)
+CN_API uint8_t gl_shader_compile(Shader *shader, const char *vert_src, const char *frag_src)
 {
     GLuint vert = _compile_stage(GL_VERTEX_SHADER,   vert_src);
     GLuint frag = _compile_stage(GL_FRAGMENT_SHADER, frag_src);
+    GLint ok;
+    GLuint program;
 
     if (!vert || !frag) {
         glDeleteShader(vert);
         glDeleteShader(frag);
-        return 0;
+        return (1);
     }
 
-    GLuint prog = glCreateProgram();
-    glAttachShader(prog, vert);
-    glAttachShader(prog, frag);
-    glLinkProgram(prog);
+    program = glCreateProgram();
+    glAttachShader(program, vert);
+    glAttachShader(program, frag);
+    glLinkProgram(program);
 
-    GLint ok;
-    glGetProgramiv(prog, GL_LINK_STATUS, &ok);
+    glGetProgramiv(program, GL_LINK_STATUS, &ok);
+
     if (!ok) {
         char log[1024];
-        glGetProgramInfoLog(prog, sizeof(log), NULL, log);
+
+        glGetProgramInfoLog(program, sizeof(log), NULL, log);
         fprintf(stderr, "shader link error:\n%s\n", log);
-        glDeleteProgram(prog);
-        prog = 0;
+        glDeleteProgram(program);
+        program = 0;
     }
 
     glDeleteShader(vert);
     glDeleteShader(frag);
-    return prog;
+
+    if (!program)
+        return (1);
+
+    shader->api = R_API_GL;
+    shader->gpu_handler.gl_shader = program;
+    return (0);
 }
 
-CN_API GLuint gl_shader_load(const char *vert_path, const char *frag_path)
+CN_API uint8_t gl_shader_load(Shader *shader, const char *vert_path, const char *frag_path)
 {
     char *vert_src = _read_file(vert_path);
     char *frag_src = _read_file(frag_path);
+    uint8_t ret;
 
     if (!vert_src || !frag_src) {
-        free(vert_src);
-        free(frag_src);
-        return 0;
+        (void)free(vert_src);
+        (void)free(frag_src);
+        return (1);
     }
 
-    GLuint prog = gl_shader_compile(vert_src, frag_src);
-    free(vert_src);
-    free(frag_src);
-    return prog;
+    ret = gl_shader_compile(shader, vert_src, frag_src);
+
+    (void)free(vert_src);
+    (void)free(frag_src);
+
+    return (ret);
+}
+
+CN_API Shader *new_shader(void)
+{
+    Shader *shader = (Shader *)malloc(sizeof(Shader));
+
+    if (!shader)
+        return (NULL);
+    shader->api = R_API_NONE;
+    (void)memset(&shader->gpu_handler, 0, sizeof(shader->gpu_handler));
+    return (shader);
+}
+
+CN_API void delete_gpu_shader(Shader *shader)
+{
+    if (!shader)
+        return;
+
+    switch (shader->api) {
+        case R_API_GL:
+            (void)glDeleteProgram(shader->gpu_handler.gl_shader);
+            shader->gpu_handler.gl_shader = 0;
+            break;
+        default:
+            break;
+    }
+    shader->api = R_API_NONE;
+}
+
+CN_API void delete_shader(Shader *shader)
+{
+    if (!shader)
+        return;
+
+    (void)delete_gpu_shader(shader);
+    (void)free(shader);
 }

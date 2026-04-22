@@ -85,12 +85,6 @@
     typedef uint32_t cncolor;
 
     typedef struct {
-        uint32_t vao;
-        uint32_t vbo;
-        uint32_t shader;
-    } Quad;
-
-    typedef struct {
         cnnumber x, y, z;
         cnnumber nx, ny, nz;
         cnnumber u, v;
@@ -115,19 +109,29 @@
     };
 
     typedef struct {
-        struct texture_s *texture;
-        cncolor color;
-
         union {
             uint32_t  gl_shader;
         } gpu_handler;
+
+        rendering_api api;
+    } Shader;
+
+    typedef struct {
+        uint32_t vao;
+        uint32_t vbo;
+        Shader shader;
+    } Quad;
+
+    typedef struct {
+        struct texture_s *texture;
+        cncolor color;
+
+        Shader *shader;
 
         cnnumber ambient;
         cnnumber diffuse;
         cnnumber specular;
         cnnumber shininess;
-
-        rendering_api api;
     } Material;
 
     typedef struct {
@@ -291,8 +295,11 @@
                   const cnnumber proj[16]);
     CN_API void delete_material(Material *material);
 
-    CN_API GLuint gl_shader_compile(const char *vert_src, const char *frag_src);
-    CN_API GLuint gl_shader_load(const char *vert_path, const char *frag_path);
+    CN_API Shader *new_shader(void);
+    CN_API void delete_gpu_shader(Shader *shader);
+    CN_API void delete_shader(Shader *shader);
+    CN_API uint8_t gl_shader_compile(Shader *shader, const char *vert_src, const char *frag_src);
+    CN_API uint8_t gl_shader_load(Shader *shader, const char *vert_path, const char *frag_path);
 
     CN_API Quad *new_quad(void);
     CN_API Quad *new_quad2d(void);

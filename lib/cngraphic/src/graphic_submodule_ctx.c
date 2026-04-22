@@ -158,7 +158,9 @@ static cn_value _init(Object *__this, void **args)
     INIT_INT(ctx, -1, "_main_window_id");
     INIT_CUSTOM_ALLOCATION(ctx, new_object_vector(), delete_object_vector, "interfaces");
     INIT_CUSTOM_ALLOCATION(ctx, new_window_universe(), delete_window_universe, "all_window");
-    INIT_CUSTOM_ALLOCATION(ctx, new_texture_atlas(), delete_texture_atlas, "texture_atlas");
+    INIT_OBJECT_STATIC(ctx, new_atlas(NULL, (void (*)(void *))delete_texture), NULL,  "texture_atlas");
+    INIT_OBJECT_STATIC(ctx, new_atlas(NULL, (void (*)(void *))delete_mesh), NULL, "mesh_atlas");
+    INIT_OBJECT_STATIC(ctx, new_atlas(NULL, (void (*)(void *))delete_material), NULL, "material_atlas");
 
     if (call_method(ctx, "register_draw", (cnany []){_draw, NULL}).as.i == VALUE_ERR.as.i)
         return (VALUE_ERR);
@@ -198,7 +200,6 @@ static cn_value _del(Object *__this, void **args)
 
     DEL_CUSTOM_ALLOCAION(ctx, delete_object_vector, "interfaces");
     DEL_CUSTOM_ALLOCAION(ctx, delete_window_universe, "all_window");
-    DEL_CUSTOM_ALLOCAION(ctx, delete_texture_atlas, "texture_atlas");
 
     end_graphics();
     
