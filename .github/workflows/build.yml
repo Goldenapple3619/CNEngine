@@ -103,9 +103,13 @@ jobs:
           C:\msys64\usr\bin\bash.exe -lc "pacman -Syu --noconfirm && pacman -S --noconfirm mingw-w64-i686-toolchain base-devel"
           Copy-Item C:\msys64\mingw32\bin\windres.exe C:\msys64\mingw32\bin\i686-w64-mingw32-windres.exe
 
-      - name: Install jinja2 for glad (system Python)
-        run: C:\hostedtoolcache\windows\Python\3.14.3\x64\python3.exe -m pip install jinja2
-        shell: cmd
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install jinja2 for glad
+        run: python -m pip install jinja2
 
       - name: Install jinja2 into MSYS2 mingw32 Python
         shell: powershell
@@ -154,9 +158,13 @@ jobs:
           C:\msys64\usr\bin\bash.exe -lc "pacman -Syu --noconfirm && pacman -S --noconfirm mingw-w64-x86_64-toolchain base-devel"
           Copy-Item C:\msys64\mingw64\bin\windres.exe C:\msys64\mingw64\bin\x86_64-w64-mingw32-windres.exe
 
-      - name: Install jinja2 for glad (system Python)
-        run: C:\hostedtoolcache\windows\Python\3.14.3\x64\python3.exe -m pip install jinja2
-        shell: cmd
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install jinja2 for glad
+        run: python -m pip install jinja2
 
       - name: Install jinja2 into MSYS2 mingw64 Python
         shell: powershell
