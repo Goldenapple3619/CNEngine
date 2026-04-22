@@ -1,9 +1,6 @@
 <scene>
     <name>main</name>
 
-    <build src_as="library">
-    </build>
-
     <content>
         <object type="block">
             <name>block 0</name>

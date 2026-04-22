@@ -53,9 +53,9 @@ Higly configurable on the back technology allow the usage of multiple graphics a
 </div>
 
 ## Projects using CNEngine
-|Name|Description|Website|
-|---|---|---|
-|*None for now, still in developpement*|||
+|Name|Description|By|Website|
+|---|---|---|---|
+|**Alice - Gunz & Arrests**|*Still in developement*|**CNStudio™**|*Not avaiable until end of developement of the game and the engine itself*|
 
 ## Prerequisites
 - CMake
