@@ -15,6 +15,10 @@ struct \mbox{\hyperlink{structInputEntry}{Input\+Entry}}
 enum \mbox{\hyperlink{libcninput_8h_a0ae208dfa21925e3cb4a7c4ea17ea8ef}{input\+\_\+type}} \{ \mbox{\hyperlink{libcninput_8h_a0ae208dfa21925e3cb4a7c4ea17ea8efab53c2e62dcbebac6e39efa145ac3daff}{INPUT\+\_\+\+UKN}} = 0x00
 , \mbox{\hyperlink{libcninput_8h_a0ae208dfa21925e3cb4a7c4ea17ea8efa05d215b1d861e760b2385a889551e87d}{INPUT\+\_\+\+KEY\+\_\+\+PRESS}}
  \}
+\item 
+enum \mbox{\hyperlink{libcninput_8h_ab6a9a77d24941f4213521fdc931391e3}{INPUT\+\_\+\+STATE}} \{ \mbox{\hyperlink{libcninput_8h_ab6a9a77d24941f4213521fdc931391e3a9e79deb9a89297cc17dfc4f9e90a3327}{INPUT\+\_\+\+STATE\+\_\+\+ACTIVATE}} = 0
+, \mbox{\hyperlink{libcninput_8h_ab6a9a77d24941f4213521fdc931391e3abb04dc0541a52353084b15e05d8b5805}{INPUT\+\_\+\+STATE\+\_\+\+STOP}}
+ \}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -25,9 +29,31 @@ void \mbox{\hyperlink{libcninput_8h_a3880bb541d5dae632bddfcc8512ea3d9}{end\+\_\+
 \item 
 \mbox{\hyperlink{structInputEntry}{Input\+Entry}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcninput_8h_a24a9653ffea4b83ed6701baddf2ae0d1}{new\+\_\+input\+\_\+entry}} (const char \texorpdfstring{$\ast$}{*}name)
 \item 
+\mbox{\hyperlink{libcninput_8h_ab6a9a77d24941f4213521fdc931391e3}{INPUT\+\_\+\+STATE}} \mbox{\hyperlink{libcninput_8h_afaae2ab66bf7e6ae1a60afd552f451a2}{input\+\_\+state\+\_\+from\+\_\+event}} (\mbox{\hyperlink{libcngraphic_8h_ad45875ce61fd859f5134e43571880a0b}{cn\+\_\+event}} ev)
+\item 
+void \mbox{\hyperlink{libcninput_8h_a53a3aeeef2ff76deaf104bf7bdc07a2a}{input\+\_\+entry\+\_\+activate}} (const \mbox{\hyperlink{structInputEntry}{Input\+Entry}} \texorpdfstring{$\ast$}{*}ie, const \mbox{\hyperlink{libcngraphic_8h_a60921eba80b4569fa79c67165460331e}{Event}} \texorpdfstring{$\ast$}{*}event)
+\item 
+\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} \mbox{\hyperlink{libcninput_8h_a41b1e8b0a8a89c4505cfa4c72723cbbd}{input\+\_\+entry\+\_\+cmp}} (const \mbox{\hyperlink{structInputEntry}{Input\+Entry}} \texorpdfstring{$\ast$}{*}ie, const \mbox{\hyperlink{libcngraphic_8h_a60921eba80b4569fa79c67165460331e}{Event}} \texorpdfstring{$\ast$}{*}ev)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{libcninput_8h_a9560c0f9d6d537e46cc1f47f4a63ab1d}{input\+\_\+entry\+\_\+resize\+\_\+callback}} (\mbox{\hyperlink{structInputEntry}{Input\+Entry}} \texorpdfstring{$\ast$}{*}ie, size\+\_\+t new\+\_\+capacity)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{libcninput_8h_ad3993dfd4cea68a996af03b089246877}{input\+\_\+entry\+\_\+resize\+\_\+controller}} (\mbox{\hyperlink{structInputEntry}{Input\+Entry}} \texorpdfstring{$\ast$}{*}ie, size\+\_\+t new\+\_\+capacity)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{libcninput_8h_a70f066c46b279c7fe05fd52835790958}{input\+\_\+entry\+\_\+add\+\_\+callback}} (\mbox{\hyperlink{structInputEntry}{Input\+Entry}} \texorpdfstring{$\ast$}{*}ie, \mbox{\hyperlink{libcncore_8h_a45176b455e70053cf81874c72e0aa5fe}{cn\+\_\+method}} method, \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}obj)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{libcninput_8h_ae2a3510c8ef0c1b244971051e01497ee}{input\+\_\+entry\+\_\+add\+\_\+controller}} (\mbox{\hyperlink{structInputEntry}{Input\+Entry}} \texorpdfstring{$\ast$}{*}ie, \mbox{\hyperlink{libcninput_8h_a0ae208dfa21925e3cb4a7c4ea17ea8ef}{input\+\_\+type}} target\+\_\+type, int64\+\_\+t target\+\_\+value, \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} value\+\_\+ignored)
+\item 
+void \mbox{\hyperlink{libcninput_8h_a0a9379954cb298f8b63a974e6088ead7}{input\+\_\+entry\+\_\+remove\+\_\+callback}} (\mbox{\hyperlink{structInputEntry}{Input\+Entry}} \texorpdfstring{$\ast$}{*}ie, size\+\_\+t i)
+\item 
+void \mbox{\hyperlink{libcninput_8h_a2e0d1943327bbb78313dd7c3f875049b}{input\+\_\+entry\+\_\+remove\+\_\+controller}} (\mbox{\hyperlink{structInputEntry}{Input\+Entry}} \texorpdfstring{$\ast$}{*}ie, size\+\_\+t i)
+\item 
 void \mbox{\hyperlink{libcninput_8h_af1cbfd6b80db68fb87308498b247c786}{delete\+\_\+input\+\_\+entry}} (\mbox{\hyperlink{structInputEntry}{Input\+Entry}} \texorpdfstring{$\ast$}{*}ie)
 \item 
-\mbox{\hyperlink{structInputController}{Input\+Controller}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcninput_8h_a7ae64410d115051d827092a994dbdac3}{new\+\_\+input\+\_\+controller}} (\mbox{\hyperlink{libcninput_8h_a0ae208dfa21925e3cb4a7c4ea17ea8ef}{input\+\_\+type}} target\+\_\+type, int64\+\_\+t target\+\_\+value)
+\mbox{\hyperlink{structInputController}{Input\+Controller}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcninput_8h_a575fc2287e2eaa6f269fb7cad8bdf56b}{new\+\_\+input\+\_\+controller}} (\mbox{\hyperlink{libcninput_8h_a0ae208dfa21925e3cb4a7c4ea17ea8ef}{input\+\_\+type}} target\+\_\+type, int64\+\_\+t target\+\_\+value, \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} value\+\_\+ignored)
+\item 
+\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} \mbox{\hyperlink{libcninput_8h_a929507a62178b44cb6cccead35ca33db}{input\+\_\+controller\+\_\+cmp}} (const \mbox{\hyperlink{structInputController}{Input\+Controller}} \texorpdfstring{$\ast$}{*}ic, const \mbox{\hyperlink{libcngraphic_8h_a60921eba80b4569fa79c67165460331e}{Event}} \texorpdfstring{$\ast$}{*}ev)
+\item 
+\mbox{\hyperlink{libcninput_8h_a0ae208dfa21925e3cb4a7c4ea17ea8ef}{input\+\_\+type}} \mbox{\hyperlink{libcninput_8h_a5fb36637157f2e573d50d07cb129361b}{input\+\_\+type\+\_\+from\+\_\+event}} (\mbox{\hyperlink{libcngraphic_8h_ad45875ce61fd859f5134e43571880a0b}{cn\+\_\+event}} ev)
 \item 
 void \mbox{\hyperlink{libcninput_8h_acb2399507da4b40ae24a5988444b6e54}{delete\+\_\+input\+\_\+controller}} (\mbox{\hyperlink{structInputController}{Input\+Controller}} \texorpdfstring{$\ast$}{*}ic)
 \item 
@@ -36,6 +62,22 @@ void \mbox{\hyperlink{libcninput_8h_acb2399507da4b40ae24a5988444b6e54}{delete\+\
 
 
 \doxysubsection{Enumeration Type Documentation}
+\Hypertarget{libcninput_8h_ab6a9a77d24941f4213521fdc931391e3}\label{libcninput_8h_ab6a9a77d24941f4213521fdc931391e3} 
+\index{libcninput.h@{libcninput.h}!INPUT\_STATE@{INPUT\_STATE}}
+\index{INPUT\_STATE@{INPUT\_STATE}!libcninput.h@{libcninput.h}}
+\doxysubsubsection{\texorpdfstring{INPUT\_STATE}{INPUT\_STATE}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{libcninput_8h_ab6a9a77d24941f4213521fdc931391e3}{INPUT\+\_\+\+STATE}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{INPUT\_STATE\_ACTIVATE@{INPUT\_STATE\_ACTIVATE}!libcninput.h@{libcninput.h}}\index{libcninput.h@{libcninput.h}!INPUT\_STATE\_ACTIVATE@{INPUT\_STATE\_ACTIVATE}}}\Hypertarget{libcninput_8h_ab6a9a77d24941f4213521fdc931391e3a9e79deb9a89297cc17dfc4f9e90a3327}\label{libcninput_8h_ab6a9a77d24941f4213521fdc931391e3a9e79deb9a89297cc17dfc4f9e90a3327} 
+INPUT\+\_\+\+STATE\+\_\+\+ACTIVATE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{INPUT\_STATE\_STOP@{INPUT\_STATE\_STOP}!libcninput.h@{libcninput.h}}\index{libcninput.h@{libcninput.h}!INPUT\_STATE\_STOP@{INPUT\_STATE\_STOP}}}\Hypertarget{libcninput_8h_ab6a9a77d24941f4213521fdc931391e3abb04dc0541a52353084b15e05d8b5805}\label{libcninput_8h_ab6a9a77d24941f4213521fdc931391e3abb04dc0541a52353084b15e05d8b5805} 
+INPUT\+\_\+\+STATE\+\_\+\+STOP&\\
+\hline
+
+\end{DoxyEnumFields}
 \Hypertarget{libcninput_8h_a0ae208dfa21925e3cb4a7c4ea17ea8ef}\label{libcninput_8h_a0ae208dfa21925e3cb4a7c4ea17ea8ef} 
 \index{libcninput.h@{libcninput.h}!input\_type@{input\_type}}
 \index{input\_type@{input\_type}!libcninput.h@{libcninput.h}}
@@ -73,11 +115,77 @@ INPUT\+\_\+\+KEY\+\_\+\+PRESS&\\
 \doxysubsubsection{\texorpdfstring{end\_input()}{end\_input()}}
 {\footnotesize\ttfamily void end\+\_\+input (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
-\Hypertarget{libcninput_8h_a7ae64410d115051d827092a994dbdac3}\label{libcninput_8h_a7ae64410d115051d827092a994dbdac3} 
+\Hypertarget{libcninput_8h_a929507a62178b44cb6cccead35ca33db}\label{libcninput_8h_a929507a62178b44cb6cccead35ca33db} 
+\index{libcninput.h@{libcninput.h}!input\_controller\_cmp@{input\_controller\_cmp}}
+\index{input\_controller\_cmp@{input\_controller\_cmp}!libcninput.h@{libcninput.h}}
+\doxysubsubsection{\texorpdfstring{input\_controller\_cmp()}{input\_controller\_cmp()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} input\+\_\+controller\+\_\+cmp (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structInputController}{Input\+Controller}} \texorpdfstring{$\ast$}{*}}]{ic,  }\item[{const \mbox{\hyperlink{libcngraphic_8h_a60921eba80b4569fa79c67165460331e}{Event}} \texorpdfstring{$\ast$}{*}}]{ev }\end{DoxyParamCaption})}
+
+\Hypertarget{libcninput_8h_a53a3aeeef2ff76deaf104bf7bdc07a2a}\label{libcninput_8h_a53a3aeeef2ff76deaf104bf7bdc07a2a} 
+\index{libcninput.h@{libcninput.h}!input\_entry\_activate@{input\_entry\_activate}}
+\index{input\_entry\_activate@{input\_entry\_activate}!libcninput.h@{libcninput.h}}
+\doxysubsubsection{\texorpdfstring{input\_entry\_activate()}{input\_entry\_activate()}}
+{\footnotesize\ttfamily void input\+\_\+entry\+\_\+activate (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structInputEntry}{Input\+Entry}} \texorpdfstring{$\ast$}{*}}]{ie,  }\item[{const \mbox{\hyperlink{libcngraphic_8h_a60921eba80b4569fa79c67165460331e}{Event}} \texorpdfstring{$\ast$}{*}}]{event }\end{DoxyParamCaption})}
+
+\Hypertarget{libcninput_8h_a70f066c46b279c7fe05fd52835790958}\label{libcninput_8h_a70f066c46b279c7fe05fd52835790958} 
+\index{libcninput.h@{libcninput.h}!input\_entry\_add\_callback@{input\_entry\_add\_callback}}
+\index{input\_entry\_add\_callback@{input\_entry\_add\_callback}!libcninput.h@{libcninput.h}}
+\doxysubsubsection{\texorpdfstring{input\_entry\_add\_callback()}{input\_entry\_add\_callback()}}
+{\footnotesize\ttfamily uint8\+\_\+t input\+\_\+entry\+\_\+add\+\_\+callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structInputEntry}{Input\+Entry}} \texorpdfstring{$\ast$}{*}}]{ie,  }\item[{\mbox{\hyperlink{libcncore_8h_a45176b455e70053cf81874c72e0aa5fe}{cn\+\_\+method}}}]{method,  }\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{obj }\end{DoxyParamCaption})}
+
+\Hypertarget{libcninput_8h_ae2a3510c8ef0c1b244971051e01497ee}\label{libcninput_8h_ae2a3510c8ef0c1b244971051e01497ee} 
+\index{libcninput.h@{libcninput.h}!input\_entry\_add\_controller@{input\_entry\_add\_controller}}
+\index{input\_entry\_add\_controller@{input\_entry\_add\_controller}!libcninput.h@{libcninput.h}}
+\doxysubsubsection{\texorpdfstring{input\_entry\_add\_controller()}{input\_entry\_add\_controller()}}
+{\footnotesize\ttfamily uint8\+\_\+t input\+\_\+entry\+\_\+add\+\_\+controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structInputEntry}{Input\+Entry}} \texorpdfstring{$\ast$}{*}}]{ie,  }\item[{\mbox{\hyperlink{libcninput_8h_a0ae208dfa21925e3cb4a7c4ea17ea8ef}{input\+\_\+type}}}]{target\+\_\+type,  }\item[{int64\+\_\+t}]{target\+\_\+value,  }\item[{\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}}]{value\+\_\+ignored }\end{DoxyParamCaption})}
+
+\Hypertarget{libcninput_8h_a41b1e8b0a8a89c4505cfa4c72723cbbd}\label{libcninput_8h_a41b1e8b0a8a89c4505cfa4c72723cbbd} 
+\index{libcninput.h@{libcninput.h}!input\_entry\_cmp@{input\_entry\_cmp}}
+\index{input\_entry\_cmp@{input\_entry\_cmp}!libcninput.h@{libcninput.h}}
+\doxysubsubsection{\texorpdfstring{input\_entry\_cmp()}{input\_entry\_cmp()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} input\+\_\+entry\+\_\+cmp (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structInputEntry}{Input\+Entry}} \texorpdfstring{$\ast$}{*}}]{ie,  }\item[{const \mbox{\hyperlink{libcngraphic_8h_a60921eba80b4569fa79c67165460331e}{Event}} \texorpdfstring{$\ast$}{*}}]{ev }\end{DoxyParamCaption})}
+
+\Hypertarget{libcninput_8h_a0a9379954cb298f8b63a974e6088ead7}\label{libcninput_8h_a0a9379954cb298f8b63a974e6088ead7} 
+\index{libcninput.h@{libcninput.h}!input\_entry\_remove\_callback@{input\_entry\_remove\_callback}}
+\index{input\_entry\_remove\_callback@{input\_entry\_remove\_callback}!libcninput.h@{libcninput.h}}
+\doxysubsubsection{\texorpdfstring{input\_entry\_remove\_callback()}{input\_entry\_remove\_callback()}}
+{\footnotesize\ttfamily void input\+\_\+entry\+\_\+remove\+\_\+callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structInputEntry}{Input\+Entry}} \texorpdfstring{$\ast$}{*}}]{ie,  }\item[{size\+\_\+t}]{i }\end{DoxyParamCaption})}
+
+\Hypertarget{libcninput_8h_a2e0d1943327bbb78313dd7c3f875049b}\label{libcninput_8h_a2e0d1943327bbb78313dd7c3f875049b} 
+\index{libcninput.h@{libcninput.h}!input\_entry\_remove\_controller@{input\_entry\_remove\_controller}}
+\index{input\_entry\_remove\_controller@{input\_entry\_remove\_controller}!libcninput.h@{libcninput.h}}
+\doxysubsubsection{\texorpdfstring{input\_entry\_remove\_controller()}{input\_entry\_remove\_controller()}}
+{\footnotesize\ttfamily void input\+\_\+entry\+\_\+remove\+\_\+controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structInputEntry}{Input\+Entry}} \texorpdfstring{$\ast$}{*}}]{ie,  }\item[{size\+\_\+t}]{i }\end{DoxyParamCaption})}
+
+\Hypertarget{libcninput_8h_a9560c0f9d6d537e46cc1f47f4a63ab1d}\label{libcninput_8h_a9560c0f9d6d537e46cc1f47f4a63ab1d} 
+\index{libcninput.h@{libcninput.h}!input\_entry\_resize\_callback@{input\_entry\_resize\_callback}}
+\index{input\_entry\_resize\_callback@{input\_entry\_resize\_callback}!libcninput.h@{libcninput.h}}
+\doxysubsubsection{\texorpdfstring{input\_entry\_resize\_callback()}{input\_entry\_resize\_callback()}}
+{\footnotesize\ttfamily uint8\+\_\+t input\+\_\+entry\+\_\+resize\+\_\+callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structInputEntry}{Input\+Entry}} \texorpdfstring{$\ast$}{*}}]{ie,  }\item[{size\+\_\+t}]{new\+\_\+capacity }\end{DoxyParamCaption})}
+
+\Hypertarget{libcninput_8h_ad3993dfd4cea68a996af03b089246877}\label{libcninput_8h_ad3993dfd4cea68a996af03b089246877} 
+\index{libcninput.h@{libcninput.h}!input\_entry\_resize\_controller@{input\_entry\_resize\_controller}}
+\index{input\_entry\_resize\_controller@{input\_entry\_resize\_controller}!libcninput.h@{libcninput.h}}
+\doxysubsubsection{\texorpdfstring{input\_entry\_resize\_controller()}{input\_entry\_resize\_controller()}}
+{\footnotesize\ttfamily uint8\+\_\+t input\+\_\+entry\+\_\+resize\+\_\+controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structInputEntry}{Input\+Entry}} \texorpdfstring{$\ast$}{*}}]{ie,  }\item[{size\+\_\+t}]{new\+\_\+capacity }\end{DoxyParamCaption})}
+
+\Hypertarget{libcninput_8h_afaae2ab66bf7e6ae1a60afd552f451a2}\label{libcninput_8h_afaae2ab66bf7e6ae1a60afd552f451a2} 
+\index{libcninput.h@{libcninput.h}!input\_state\_from\_event@{input\_state\_from\_event}}
+\index{input\_state\_from\_event@{input\_state\_from\_event}!libcninput.h@{libcninput.h}}
+\doxysubsubsection{\texorpdfstring{input\_state\_from\_event()}{input\_state\_from\_event()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcninput_8h_ab6a9a77d24941f4213521fdc931391e3}{INPUT\+\_\+\+STATE}} input\+\_\+state\+\_\+from\+\_\+event (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcngraphic_8h_ad45875ce61fd859f5134e43571880a0b}{cn\+\_\+event}}}]{ev }\end{DoxyParamCaption})}
+
+\Hypertarget{libcninput_8h_a5fb36637157f2e573d50d07cb129361b}\label{libcninput_8h_a5fb36637157f2e573d50d07cb129361b} 
+\index{libcninput.h@{libcninput.h}!input\_type\_from\_event@{input\_type\_from\_event}}
+\index{input\_type\_from\_event@{input\_type\_from\_event}!libcninput.h@{libcninput.h}}
+\doxysubsubsection{\texorpdfstring{input\_type\_from\_event()}{input\_type\_from\_event()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcninput_8h_a0ae208dfa21925e3cb4a7c4ea17ea8ef}{input\+\_\+type}} input\+\_\+type\+\_\+from\+\_\+event (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcngraphic_8h_ad45875ce61fd859f5134e43571880a0b}{cn\+\_\+event}}}]{ev }\end{DoxyParamCaption})}
+
+\Hypertarget{libcninput_8h_a575fc2287e2eaa6f269fb7cad8bdf56b}\label{libcninput_8h_a575fc2287e2eaa6f269fb7cad8bdf56b} 
 \index{libcninput.h@{libcninput.h}!new\_input\_controller@{new\_input\_controller}}
 \index{new\_input\_controller@{new\_input\_controller}!libcninput.h@{libcninput.h}}
 \doxysubsubsection{\texorpdfstring{new\_input\_controller()}{new\_input\_controller()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structInputController}{Input\+Controller}} \texorpdfstring{$\ast$}{*} new\+\_\+input\+\_\+controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcninput_8h_a0ae208dfa21925e3cb4a7c4ea17ea8ef}{input\+\_\+type}}}]{target\+\_\+type,  }\item[{int64\+\_\+t}]{target\+\_\+value }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structInputController}{Input\+Controller}} \texorpdfstring{$\ast$}{*} new\+\_\+input\+\_\+controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcninput_8h_a0ae208dfa21925e3cb4a7c4ea17ea8ef}{input\+\_\+type}}}]{target\+\_\+type,  }\item[{int64\+\_\+t}]{target\+\_\+value,  }\item[{\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}}]{value\+\_\+ignored }\end{DoxyParamCaption})}
 
 \Hypertarget{libcninput_8h_a24a9653ffea4b83ed6701baddf2ae0d1}\label{libcninput_8h_a24a9653ffea4b83ed6701baddf2ae0d1} 
 \index{libcninput.h@{libcninput.h}!new\_input\_entry@{new\_input\_entry}}

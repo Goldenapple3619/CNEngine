@@ -1,0 +1,57 @@
+\doxysection{lib/cncore/src/generic\+\_\+vector.c File Reference}
+\hypertarget{generic__vector_8c}{}\label{generic__vector_8c}\index{lib/cncore/src/generic\_vector.c@{lib/cncore/src/generic\_vector.c}}
+{\ttfamily \#include "{}libcncore.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structgeneric__vector__s}{generic\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{generic__vector_8c_a30634f7f9299aade7169a0f284899a6a}{new\+\_\+generic\+\_\+vector}} (void)
+\item 
+void \mbox{\hyperlink{generic__vector_8c_a68dfb4e356ce668c851ada99d02daf10}{delete\+\_\+generic\+\_\+vector}} (struct \mbox{\hyperlink{structgeneric__vector__s}{generic\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}vec, void(\texorpdfstring{$\ast$}{*}\+\_\+delete\+\_\+obj)(void \texorpdfstring{$\ast$}{*}))
+\item 
+uint8\+\_\+t \mbox{\hyperlink{generic__vector_8c_a7736c5ac64e65efe1b62f79e2bda9d8f}{resize\+\_\+generic\+\_\+vector}} (struct \mbox{\hyperlink{structgeneric__vector__s}{generic\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}vec, size\+\_\+t new\+\_\+capacity)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{generic__vector_8c_ae008741fa324696513f7f009a0db7d79}{insert\+\_\+generic\+\_\+vector}} (struct \mbox{\hyperlink{structgeneric__vector__s}{generic\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}vec, void \texorpdfstring{$\ast$}{*}obj)
+\item 
+void \mbox{\hyperlink{generic__vector_8c_a014a0b15762459e95664f6f5f2e9431c}{remove\+\_\+generic\+\_\+vector}} (struct \mbox{\hyperlink{structgeneric__vector__s}{generic\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}vec, size\+\_\+t i, void(\texorpdfstring{$\ast$}{*}\+\_\+delete\+\_\+obj)(void \texorpdfstring{$\ast$}{*}))
+\item 
+void \mbox{\hyperlink{generic__vector_8c_a3beeff2dd03e1a2a92970dd63ca15278}{remove\+\_\+generic\+\_\+ordered\+\_\+vector}} (struct \mbox{\hyperlink{structgeneric__vector__s}{generic\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}vec, size\+\_\+t i, void(\texorpdfstring{$\ast$}{*}\+\_\+delete\+\_\+obj)(void \texorpdfstring{$\ast$}{*}))
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{generic__vector_8c_a68dfb4e356ce668c851ada99d02daf10}\label{generic__vector_8c_a68dfb4e356ce668c851ada99d02daf10} 
+\index{generic\_vector.c@{generic\_vector.c}!delete\_generic\_vector@{delete\_generic\_vector}}
+\index{delete\_generic\_vector@{delete\_generic\_vector}!generic\_vector.c@{generic\_vector.c}}
+\doxysubsubsection{\texorpdfstring{delete\_generic\_vector()}{delete\_generic\_vector()}}
+{\footnotesize\ttfamily void delete\+\_\+generic\+\_\+vector (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structgeneric__vector__s}{generic\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{vec,  }\item[{void(\texorpdfstring{$\ast$}{*})(void \texorpdfstring{$\ast$}{*})}]{\+\_\+delete\+\_\+obj }\end{DoxyParamCaption})}
+
+\Hypertarget{generic__vector_8c_ae008741fa324696513f7f009a0db7d79}\label{generic__vector_8c_ae008741fa324696513f7f009a0db7d79} 
+\index{generic\_vector.c@{generic\_vector.c}!insert\_generic\_vector@{insert\_generic\_vector}}
+\index{insert\_generic\_vector@{insert\_generic\_vector}!generic\_vector.c@{generic\_vector.c}}
+\doxysubsubsection{\texorpdfstring{insert\_generic\_vector()}{insert\_generic\_vector()}}
+{\footnotesize\ttfamily uint8\+\_\+t insert\+\_\+generic\+\_\+vector (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structgeneric__vector__s}{generic\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{vec,  }\item[{void \texorpdfstring{$\ast$}{*}}]{obj }\end{DoxyParamCaption})}
+
+\Hypertarget{generic__vector_8c_a30634f7f9299aade7169a0f284899a6a}\label{generic__vector_8c_a30634f7f9299aade7169a0f284899a6a} 
+\index{generic\_vector.c@{generic\_vector.c}!new\_generic\_vector@{new\_generic\_vector}}
+\index{new\_generic\_vector@{new\_generic\_vector}!generic\_vector.c@{generic\_vector.c}}
+\doxysubsubsection{\texorpdfstring{new\_generic\_vector()}{new\_generic\_vector()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structgeneric__vector__s}{generic\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*} new\+\_\+generic\+\_\+vector (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{generic__vector_8c_a3beeff2dd03e1a2a92970dd63ca15278}\label{generic__vector_8c_a3beeff2dd03e1a2a92970dd63ca15278} 
+\index{generic\_vector.c@{generic\_vector.c}!remove\_generic\_ordered\_vector@{remove\_generic\_ordered\_vector}}
+\index{remove\_generic\_ordered\_vector@{remove\_generic\_ordered\_vector}!generic\_vector.c@{generic\_vector.c}}
+\doxysubsubsection{\texorpdfstring{remove\_generic\_ordered\_vector()}{remove\_generic\_ordered\_vector()}}
+{\footnotesize\ttfamily void remove\+\_\+generic\+\_\+ordered\+\_\+vector (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structgeneric__vector__s}{generic\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{vec,  }\item[{size\+\_\+t}]{i,  }\item[{void(\texorpdfstring{$\ast$}{*})(void \texorpdfstring{$\ast$}{*})}]{\+\_\+delete\+\_\+obj }\end{DoxyParamCaption})}
+
+\Hypertarget{generic__vector_8c_a014a0b15762459e95664f6f5f2e9431c}\label{generic__vector_8c_a014a0b15762459e95664f6f5f2e9431c} 
+\index{generic\_vector.c@{generic\_vector.c}!remove\_generic\_vector@{remove\_generic\_vector}}
+\index{remove\_generic\_vector@{remove\_generic\_vector}!generic\_vector.c@{generic\_vector.c}}
+\doxysubsubsection{\texorpdfstring{remove\_generic\_vector()}{remove\_generic\_vector()}}
+{\footnotesize\ttfamily void remove\+\_\+generic\+\_\+vector (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structgeneric__vector__s}{generic\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{vec,  }\item[{size\+\_\+t}]{i,  }\item[{void(\texorpdfstring{$\ast$}{*})(void \texorpdfstring{$\ast$}{*})}]{\+\_\+delete\+\_\+obj }\end{DoxyParamCaption})}
+
+\Hypertarget{generic__vector_8c_a7736c5ac64e65efe1b62f79e2bda9d8f}\label{generic__vector_8c_a7736c5ac64e65efe1b62f79e2bda9d8f} 
+\index{generic\_vector.c@{generic\_vector.c}!resize\_generic\_vector@{resize\_generic\_vector}}
+\index{resize\_generic\_vector@{resize\_generic\_vector}!generic\_vector.c@{generic\_vector.c}}
+\doxysubsubsection{\texorpdfstring{resize\_generic\_vector()}{resize\_generic\_vector()}}
+{\footnotesize\ttfamily uint8\+\_\+t resize\+\_\+generic\+\_\+vector (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structgeneric__vector__s}{generic\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{vec,  }\item[{size\+\_\+t}]{new\+\_\+capacity }\end{DoxyParamCaption})}
+

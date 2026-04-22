@@ -51,10 +51,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "2dboard_8c.html",
-"libcnaudio_8h.html#a245b0a63e0bc546fcab1e6a78edb1f8c",
-"libcngraphic_8h.html#ad3e5b2029ba67b450f33ccca48adce7a",
-"structObjMethodPair.html#a816b82bfbb5f9b6fbfacbb8b9cb87490",
-"window__universe_8c.html"
+"input__entry_8c.html#afaae2ab66bf7e6ae1a60afd552f451a2",
+"libcngraphic_8h.html#a76500eae9be8678c5e2191b7e8c492e7",
+"quad_8c.html#af092b68246e4ab8cf14f306998c64246",
+"structwindow__s.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

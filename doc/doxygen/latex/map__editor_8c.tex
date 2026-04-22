@@ -1,0 +1,68 @@
+\doxysection{src/map\+\_\+editor.c File Reference}
+\hypertarget{map__editor_8c}{}\label{map__editor_8c}\index{src/map\_editor.c@{src/map\_editor.c}}
+{\ttfamily \#include "{}libcncore.\+h"{}}\newline
+{\ttfamily \#include "{}libcngraphic.\+h"{}}\newline
+{\ttfamily \#include "{}libr3d.\+h"{}}\newline
+{\ttfamily \#include "{}libcninput.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{map__editor_8c_a6f9e5212d41324f2812bdaa442c27d72}{\+\_\+move\+\_\+left}} (\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+this, void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}args)
+\item 
+static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{map__editor_8c_a91cf5a823b7d22e0722b7a747142594d}{\+\_\+move\+\_\+right}} (\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+this, void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}args)
+\item 
+static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{map__editor_8c_a0342d62ac6434dfd040caff7b91fa435}{\+\_\+move\+\_\+forward}} (\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+this, void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}args)
+\item 
+static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{map__editor_8c_a5a39cbda2750ab2d4767fe0ac31292d9}{\+\_\+move\+\_\+backward}} (\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+this, void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}args)
+\item 
+\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{map__editor_8c_a546802cf339970927b439ca1e236bf16}{create\+\_\+threed\+\_\+view}} (\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}ctx, \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} position, \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} size)
+\item 
+\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{map__editor_8c_ad263698e5c49723812fb1a14cbb3227b}{set\+\_\+up\+\_\+camera}} (\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}ctx, \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}board)
+\item 
+\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{map__editor_8c_aa083192710aa84a79ab1d75f9b650705}{add\+\_\+map\+\_\+editor\+\_\+window}} (\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}ctx)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{map__editor_8c_a5a39cbda2750ab2d4767fe0ac31292d9}\label{map__editor_8c_a5a39cbda2750ab2d4767fe0ac31292d9} 
+\index{map\_editor.c@{map\_editor.c}!\_move\_backward@{\_move\_backward}}
+\index{\_move\_backward@{\_move\_backward}!map\_editor.c@{map\_editor.c}}
+\doxysubsubsection{\texorpdfstring{\_move\_backward()}{\_move\_backward()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \+\_\+move\+\_\+backward (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+this,  }\item[{void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{map__editor_8c_a0342d62ac6434dfd040caff7b91fa435}\label{map__editor_8c_a0342d62ac6434dfd040caff7b91fa435} 
+\index{map\_editor.c@{map\_editor.c}!\_move\_forward@{\_move\_forward}}
+\index{\_move\_forward@{\_move\_forward}!map\_editor.c@{map\_editor.c}}
+\doxysubsubsection{\texorpdfstring{\_move\_forward()}{\_move\_forward()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \+\_\+move\+\_\+forward (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+this,  }\item[{void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{map__editor_8c_a6f9e5212d41324f2812bdaa442c27d72}\label{map__editor_8c_a6f9e5212d41324f2812bdaa442c27d72} 
+\index{map\_editor.c@{map\_editor.c}!\_move\_left@{\_move\_left}}
+\index{\_move\_left@{\_move\_left}!map\_editor.c@{map\_editor.c}}
+\doxysubsubsection{\texorpdfstring{\_move\_left()}{\_move\_left()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \+\_\+move\+\_\+left (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+this,  }\item[{void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{map__editor_8c_a91cf5a823b7d22e0722b7a747142594d}\label{map__editor_8c_a91cf5a823b7d22e0722b7a747142594d} 
+\index{map\_editor.c@{map\_editor.c}!\_move\_right@{\_move\_right}}
+\index{\_move\_right@{\_move\_right}!map\_editor.c@{map\_editor.c}}
+\doxysubsubsection{\texorpdfstring{\_move\_right()}{\_move\_right()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \+\_\+move\+\_\+right (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+this,  }\item[{void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{map__editor_8c_aa083192710aa84a79ab1d75f9b650705}\label{map__editor_8c_aa083192710aa84a79ab1d75f9b650705} 
+\index{map\_editor.c@{map\_editor.c}!add\_map\_editor\_window@{add\_map\_editor\_window}}
+\index{add\_map\_editor\_window@{add\_map\_editor\_window}!map\_editor.c@{map\_editor.c}}
+\doxysubsubsection{\texorpdfstring{add\_map\_editor\_window()}{add\_map\_editor\_window()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*} add\+\_\+map\+\_\+editor\+\_\+window (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{ctx }\end{DoxyParamCaption})}
+
+\Hypertarget{map__editor_8c_a546802cf339970927b439ca1e236bf16}\label{map__editor_8c_a546802cf339970927b439ca1e236bf16} 
+\index{map\_editor.c@{map\_editor.c}!create\_threed\_view@{create\_threed\_view}}
+\index{create\_threed\_view@{create\_threed\_view}!map\_editor.c@{map\_editor.c}}
+\doxysubsubsection{\texorpdfstring{create\_threed\_view()}{create\_threed\_view()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*} create\+\_\+threed\+\_\+view (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{ctx,  }\item[{\mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}}}]{position,  }\item[{\mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}}}]{size }\end{DoxyParamCaption})}
+
+\Hypertarget{map__editor_8c_ad263698e5c49723812fb1a14cbb3227b}\label{map__editor_8c_ad263698e5c49723812fb1a14cbb3227b} 
+\index{map\_editor.c@{map\_editor.c}!set\_up\_camera@{set\_up\_camera}}
+\index{set\_up\_camera@{set\_up\_camera}!map\_editor.c@{map\_editor.c}}
+\doxysubsubsection{\texorpdfstring{set\_up\_camera()}{set\_up\_camera()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*} set\+\_\+up\+\_\+camera (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{ctx,  }\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{board }\end{DoxyParamCaption})}
+

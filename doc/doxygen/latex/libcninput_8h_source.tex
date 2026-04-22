@@ -13,34 +13,52 @@
 \DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcninput_8h_a0ae208dfa21925e3cb4a7c4ea17ea8efa05d215b1d861e760b2385a889551e87d}{INPUT\_KEY\_PRESS}},}
 \DoxyCodeLine{00010\ \ \ \ \ \}\ \mbox{\hyperlink{libcninput_8h_a0ae208dfa21925e3cb4a7c4ea17ea8ef}{input\_type}};}
 \DoxyCodeLine{00011\ }
-\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
-\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcninput_8h_a0ae208dfa21925e3cb4a7c4ea17ea8ef}{input\_type}}\ \mbox{\hyperlink{structInputController_a77db9d233f5d0184bd72ee15a245355e}{target\_type}};}
-\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ int64\_t\ \mbox{\hyperlink{structInputController_a723a3f127960ab4640bccdc6c6d0c4ae}{target\_value}};}
-\DoxyCodeLine{00015\ \ \ \ \ \}\ \mbox{\hyperlink{structInputController}{InputController}};}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcninput_8h_ab6a9a77d24941f4213521fdc931391e3a9e79deb9a89297cc17dfc4f9e90a3327}{INPUT\_STATE\_ACTIVATE}}\ =\ 0,}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcninput_8h_ab6a9a77d24941f4213521fdc931391e3abb04dc0541a52353084b15e05d8b5805}{INPUT\_STATE\_STOP}}}
+\DoxyCodeLine{00015\ \ \ \ \ \}\ \mbox{\hyperlink{libcninput_8h_ab6a9a77d24941f4213521fdc931391e3}{INPUT\_STATE}};}
 \DoxyCodeLine{00016\ }
 \DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
-\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structInputEntry_a4544bf1aea1ea19a287f47113d4273d7}{cbs\_size}};}
-\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structInputEntry_a2646772e5eb6af4965cb5eb2ba0ccfa9}{cbs\_capacity}};}
-\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structObjMethodPair}{ObjMethodPair}}\ **\mbox{\hyperlink{structInputEntry_a67e9a8d0833cce7efefd40c1a0310a29}{cbs}};}
-\DoxyCodeLine{00021\ }
-\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structInputEntry_ae1e151306a9243cf35cefd78f382de3a}{controllers\_size}};}
-\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structInputEntry_a864b0eaa2d8781e992da299597d77750}{controllers\_capacity}};}
-\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structInputController}{InputController}}\ **\mbox{\hyperlink{structInputEntry_a5f96bf7ca8061f337cf2bbd89a2d3829}{controllers}};}
-\DoxyCodeLine{00025\ }
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structInputEntry_ada4b00c5823e2b7f9aab997d1d7a44ab}{name}};}
-\DoxyCodeLine{00027\ \ \ \ \ \}\ \mbox{\hyperlink{structInputEntry}{InputEntry}};}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcninput_8h_a0ae208dfa21925e3cb4a7c4ea17ea8ef}{input\_type}}\ \mbox{\hyperlink{structInputController_a77db9d233f5d0184bd72ee15a245355e}{target\_type}};}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ int64\_t\ \mbox{\hyperlink{structInputController_a723a3f127960ab4640bccdc6c6d0c4ae}{target\_value}};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{structInputController_a2012461eae8d224c215e2133b536af1d}{ignore\_value}};}
+\DoxyCodeLine{00022\ \ \ \ \ \}\ \mbox{\hyperlink{structInputController}{InputController}};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structInputEntry_a4544bf1aea1ea19a287f47113d4273d7}{cbs\_size}};}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structInputEntry_a2646772e5eb6af4965cb5eb2ba0ccfa9}{cbs\_capacity}};}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structObjMethodPair}{ObjMethodPair}}\ **\mbox{\hyperlink{structInputEntry_a67e9a8d0833cce7efefd40c1a0310a29}{cbs}};}
 \DoxyCodeLine{00028\ }
-\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{libcninput_8h_a55e78903d9376f12cf5bfd33b7e48d75}{start\_input}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00030\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcninput_8h_a3880bb541d5dae632bddfcc8512ea3d9}{end\_input}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00031\ }
-\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{structInputEntry}{InputEntry}}\ *\mbox{\hyperlink{libcninput_8h_a24a9653ffea4b83ed6701baddf2ae0d1}{new\_input\_entry}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *name);}
-\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcninput_8h_af1cbfd6b80db68fb87308498b247c786}{delete\_input\_entry}}(\mbox{\hyperlink{structInputEntry}{InputEntry}}\ *ie);}
-\DoxyCodeLine{00034\ }
-\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{structInputController}{InputController}}\ *\mbox{\hyperlink{libcninput_8h_a7ae64410d115051d827092a994dbdac3}{new\_input\_controller}}(\mbox{\hyperlink{libcninput_8h_a0ae208dfa21925e3cb4a7c4ea17ea8ef}{input\_type}}\ target\_type,\ int64\_t\ target\_value);}
-\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcninput_8h_acb2399507da4b40ae24a5988444b6e54}{delete\_input\_controller}}(\mbox{\hyperlink{structInputController}{InputController}}\ *ic);}
-\DoxyCodeLine{00037\ }
-\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\mbox{\hyperlink{libcninput_8h_a3ffd89b8cc95895b590d9aae3e6f3699}{new\_input\_submodule}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00039\ }
-\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structInputEntry_ae1e151306a9243cf35cefd78f382de3a}{controllers\_size}};}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structInputEntry_a864b0eaa2d8781e992da299597d77750}{controllers\_capacity}};}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structInputController}{InputController}}\ **\mbox{\hyperlink{structInputEntry_a5f96bf7ca8061f337cf2bbd89a2d3829}{controllers}};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structInputEntry_ada4b00c5823e2b7f9aab997d1d7a44ab}{name}};}
+\DoxyCodeLine{00034\ \ \ \ \ \}\ \mbox{\hyperlink{structInputEntry}{InputEntry}};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{libcninput_8h_a55e78903d9376f12cf5bfd33b7e48d75}{start\_input}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcninput_8h_a3880bb541d5dae632bddfcc8512ea3d9}{end\_input}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{structInputEntry}{InputEntry}}\ *\mbox{\hyperlink{libcninput_8h_a24a9653ffea4b83ed6701baddf2ae0d1}{new\_input\_entry}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *name);}
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{libcninput_8h_ab6a9a77d24941f4213521fdc931391e3}{INPUT\_STATE}}\ \mbox{\hyperlink{libcninput_8h_afaae2ab66bf7e6ae1a60afd552f451a2}{input\_state\_from\_event}}(\mbox{\hyperlink{libcngraphic_8h_ad45875ce61fd859f5134e43571880a0b}{cn\_event}}\ ev);}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcninput_8h_a53a3aeeef2ff76deaf104bf7bdc07a2a}{input\_entry\_activate}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structInputEntry}{InputEntry}}\ *ie,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structevent__s}{Event}}\ *event);}
+\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{libcninput_8h_a41b1e8b0a8a89c4505cfa4c72723cbbd}{input\_entry\_cmp}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structInputEntry}{InputEntry}}\ *ie,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structevent__s}{Event}}\ *ev);}
+\DoxyCodeLine{00043\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{libcninput_8h_a9560c0f9d6d537e46cc1f47f4a63ab1d}{input\_entry\_resize\_callback}}(\mbox{\hyperlink{structInputEntry}{InputEntry}}\ *ie,\ \textcolor{keywordtype}{size\_t}\ new\_capacity);}
+\DoxyCodeLine{00044\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{libcninput_8h_ad3993dfd4cea68a996af03b089246877}{input\_entry\_resize\_controller}}(\mbox{\hyperlink{structInputEntry}{InputEntry}}\ *ie,\ \textcolor{keywordtype}{size\_t}\ new\_capacity);}
+\DoxyCodeLine{00045\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{libcninput_8h_a70f066c46b279c7fe05fd52835790958}{input\_entry\_add\_callback}}(\mbox{\hyperlink{structInputEntry}{InputEntry}}\ *ie,\ \mbox{\hyperlink{libcncore_8h_a45176b455e70053cf81874c72e0aa5fe}{cn\_method}}\ method,\ \mbox{\hyperlink{structobject__s}{Object}}\ *obj);}
+\DoxyCodeLine{00046\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{libcninput_8h_ae2a3510c8ef0c1b244971051e01497ee}{input\_entry\_add\_controller}}(\mbox{\hyperlink{structInputEntry}{InputEntry}}\ *ie,\ \mbox{\hyperlink{libcninput_8h_a0ae208dfa21925e3cb4a7c4ea17ea8ef}{input\_type}}\ target\_type,\ int64\_t\ target\_value,\ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ value\_ignored);}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcninput_8h_a0a9379954cb298f8b63a974e6088ead7}{input\_entry\_remove\_callback}}(\mbox{\hyperlink{structInputEntry}{InputEntry}}\ *ie,\ \textcolor{keywordtype}{size\_t}\ i);}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcninput_8h_a2e0d1943327bbb78313dd7c3f875049b}{input\_entry\_remove\_controller}}(\mbox{\hyperlink{structInputEntry}{InputEntry}}\ *ie,\ \textcolor{keywordtype}{size\_t}\ i);}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcninput_8h_af1cbfd6b80db68fb87308498b247c786}{delete\_input\_entry}}(\mbox{\hyperlink{structInputEntry}{InputEntry}}\ *ie);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{structInputController}{InputController}}\ *\mbox{\hyperlink{libcninput_8h_a575fc2287e2eaa6f269fb7cad8bdf56b}{new\_input\_controller}}(\mbox{\hyperlink{libcninput_8h_a0ae208dfa21925e3cb4a7c4ea17ea8ef}{input\_type}}\ target\_type,\ int64\_t\ target\_value,\ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ value\_ignored);}
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{libcninput_8h_a929507a62178b44cb6cccead35ca33db}{input\_controller\_cmp}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structInputController}{InputController}}\ *ic,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structevent__s}{Event}}\ *ev);}
+\DoxyCodeLine{00053\ \ \ \ \ \mbox{\hyperlink{libcninput_8h_a0ae208dfa21925e3cb4a7c4ea17ea8ef}{input\_type}}\ \mbox{\hyperlink{libcninput_8h_a5fb36637157f2e573d50d07cb129361b}{input\_type\_from\_event}}(\mbox{\hyperlink{libcngraphic_8h_ad45875ce61fd859f5134e43571880a0b}{cn\_event}}\ ev);}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcninput_8h_acb2399507da4b40ae24a5988444b6e54}{delete\_input\_controller}}(\mbox{\hyperlink{structInputController}{InputController}}\ *ic);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\mbox{\hyperlink{libcninput_8h_a3ffd89b8cc95895b590d9aae3e6f3699}{new\_input\_submodule}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

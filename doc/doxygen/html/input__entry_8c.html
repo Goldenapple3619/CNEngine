@@ -114,6 +114,24 @@ $(document).ready(function(){initNavTree('input__entry_8c.html',''); initResizab
 Functions</h2></td></tr>
 <tr class="memitem:a24a9653ffea4b83ed6701baddf2ae0d1" id="r_a24a9653ffea4b83ed6701baddf2ae0d1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structInputEntry.html">InputEntry</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input__entry_8c.html#a24a9653ffea4b83ed6701baddf2ae0d1">new_input_entry</a> (const char *name)</td></tr>
 <tr class="separator:a24a9653ffea4b83ed6701baddf2ae0d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afaae2ab66bf7e6ae1a60afd552f451a2" id="r_afaae2ab66bf7e6ae1a60afd552f451a2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcninput_8h.html#ab6a9a77d24941f4213521fdc931391e3">INPUT_STATE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input__entry_8c.html#afaae2ab66bf7e6ae1a60afd552f451a2">input_state_from_event</a> (<a class="el" href="libcngraphic_8h.html#ad45875ce61fd859f5134e43571880a0b">cn_event</a> ev)</td></tr>
+<tr class="separator:afaae2ab66bf7e6ae1a60afd552f451a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53a3aeeef2ff76deaf104bf7bdc07a2a" id="r_a53a3aeeef2ff76deaf104bf7bdc07a2a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input__entry_8c.html#a53a3aeeef2ff76deaf104bf7bdc07a2a">input_entry_activate</a> (const <a class="el" href="structInputEntry.html">InputEntry</a> *ie, const <a class="el" href="libcngraphic_8h.html#a60921eba80b4569fa79c67165460331e">Event</a> *event)</td></tr>
+<tr class="separator:a53a3aeeef2ff76deaf104bf7bdc07a2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41b1e8b0a8a89c4505cfa4c72723cbbd" id="r_a41b1e8b0a8a89c4505cfa4c72723cbbd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input__entry_8c.html#a41b1e8b0a8a89c4505cfa4c72723cbbd">input_entry_cmp</a> (const <a class="el" href="structInputEntry.html">InputEntry</a> *ie, const <a class="el" href="libcngraphic_8h.html#a60921eba80b4569fa79c67165460331e">Event</a> *ev)</td></tr>
+<tr class="separator:a41b1e8b0a8a89c4505cfa4c72723cbbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9560c0f9d6d537e46cc1f47f4a63ab1d" id="r_a9560c0f9d6d537e46cc1f47f4a63ab1d"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input__entry_8c.html#a9560c0f9d6d537e46cc1f47f4a63ab1d">input_entry_resize_callback</a> (<a class="el" href="structInputEntry.html">InputEntry</a> *ie, size_t new_capacity)</td></tr>
+<tr class="separator:a9560c0f9d6d537e46cc1f47f4a63ab1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3993dfd4cea68a996af03b089246877" id="r_ad3993dfd4cea68a996af03b089246877"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input__entry_8c.html#ad3993dfd4cea68a996af03b089246877">input_entry_resize_controller</a> (<a class="el" href="structInputEntry.html">InputEntry</a> *ie, size_t new_capacity)</td></tr>
+<tr class="separator:ad3993dfd4cea68a996af03b089246877"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70f066c46b279c7fe05fd52835790958" id="r_a70f066c46b279c7fe05fd52835790958"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input__entry_8c.html#a70f066c46b279c7fe05fd52835790958">input_entry_add_callback</a> (<a class="el" href="structInputEntry.html">InputEntry</a> *ie, <a class="el" href="libcncore_8h.html#a45176b455e70053cf81874c72e0aa5fe">cn_method</a> method, <a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *obj)</td></tr>
+<tr class="separator:a70f066c46b279c7fe05fd52835790958"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2a3510c8ef0c1b244971051e01497ee" id="r_ae2a3510c8ef0c1b244971051e01497ee"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input__entry_8c.html#ae2a3510c8ef0c1b244971051e01497ee">input_entry_add_controller</a> (<a class="el" href="structInputEntry.html">InputEntry</a> *ie, <a class="el" href="libcninput_8h.html#a0ae208dfa21925e3cb4a7c4ea17ea8ef">input_type</a> target_type, int64_t target_value, <a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> value_ignored)</td></tr>
+<tr class="separator:ae2a3510c8ef0c1b244971051e01497ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a9379954cb298f8b63a974e6088ead7" id="r_a0a9379954cb298f8b63a974e6088ead7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input__entry_8c.html#a0a9379954cb298f8b63a974e6088ead7">input_entry_remove_callback</a> (<a class="el" href="structInputEntry.html">InputEntry</a> *ie, size_t i)</td></tr>
+<tr class="separator:a0a9379954cb298f8b63a974e6088ead7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e0d1943327bbb78313dd7c3f875049b" id="r_a2e0d1943327bbb78313dd7c3f875049b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input__entry_8c.html#a2e0d1943327bbb78313dd7c3f875049b">input_entry_remove_controller</a> (<a class="el" href="structInputEntry.html">InputEntry</a> *ie, size_t i)</td></tr>
+<tr class="separator:a2e0d1943327bbb78313dd7c3f875049b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af1cbfd6b80db68fb87308498b247c786" id="r_af1cbfd6b80db68fb87308498b247c786"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="input__entry_8c.html#af1cbfd6b80db68fb87308498b247c786">delete_input_entry</a> (<a class="el" href="structInputEntry.html">InputEntry</a> *ie)</td></tr>
 <tr class="separator:af1cbfd6b80db68fb87308498b247c786"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -129,6 +147,266 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structInputEntry.html">InputEntry</a> *&#160;</td>
           <td class="paramname"><em>ie</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a53a3aeeef2ff76deaf104bf7bdc07a2a" name="a53a3aeeef2ff76deaf104bf7bdc07a2a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53a3aeeef2ff76deaf104bf7bdc07a2a">&#9670;&#160;</a></span>input_entry_activate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void input_entry_activate </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structInputEntry.html">InputEntry</a> *&#160;</td>
+          <td class="paramname"><em>ie</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="libcngraphic_8h.html#a60921eba80b4569fa79c67165460331e">Event</a> *&#160;</td>
+          <td class="paramname"><em>event</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a70f066c46b279c7fe05fd52835790958" name="a70f066c46b279c7fe05fd52835790958"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70f066c46b279c7fe05fd52835790958">&#9670;&#160;</a></span>input_entry_add_callback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t input_entry_add_callback </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structInputEntry.html">InputEntry</a> *&#160;</td>
+          <td class="paramname"><em>ie</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="libcncore_8h.html#a45176b455e70053cf81874c72e0aa5fe">cn_method</a>&#160;</td>
+          <td class="paramname"><em>method</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *&#160;</td>
+          <td class="paramname"><em>obj</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae2a3510c8ef0c1b244971051e01497ee" name="ae2a3510c8ef0c1b244971051e01497ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2a3510c8ef0c1b244971051e01497ee">&#9670;&#160;</a></span>input_entry_add_controller()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t input_entry_add_controller </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structInputEntry.html">InputEntry</a> *&#160;</td>
+          <td class="paramname"><em>ie</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="libcninput_8h.html#a0ae208dfa21925e3cb4a7c4ea17ea8ef">input_type</a>&#160;</td>
+          <td class="paramname"><em>target_type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int64_t&#160;</td>
+          <td class="paramname"><em>target_value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a>&#160;</td>
+          <td class="paramname"><em>value_ignored</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a41b1e8b0a8a89c4505cfa4c72723cbbd" name="a41b1e8b0a8a89c4505cfa4c72723cbbd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41b1e8b0a8a89c4505cfa4c72723cbbd">&#9670;&#160;</a></span>input_entry_cmp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> input_entry_cmp </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structInputEntry.html">InputEntry</a> *&#160;</td>
+          <td class="paramname"><em>ie</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="libcngraphic_8h.html#a60921eba80b4569fa79c67165460331e">Event</a> *&#160;</td>
+          <td class="paramname"><em>ev</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0a9379954cb298f8b63a974e6088ead7" name="a0a9379954cb298f8b63a974e6088ead7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a9379954cb298f8b63a974e6088ead7">&#9670;&#160;</a></span>input_entry_remove_callback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void input_entry_remove_callback </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structInputEntry.html">InputEntry</a> *&#160;</td>
+          <td class="paramname"><em>ie</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>i</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2e0d1943327bbb78313dd7c3f875049b" name="a2e0d1943327bbb78313dd7c3f875049b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e0d1943327bbb78313dd7c3f875049b">&#9670;&#160;</a></span>input_entry_remove_controller()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void input_entry_remove_controller </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structInputEntry.html">InputEntry</a> *&#160;</td>
+          <td class="paramname"><em>ie</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>i</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9560c0f9d6d537e46cc1f47f4a63ab1d" name="a9560c0f9d6d537e46cc1f47f4a63ab1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9560c0f9d6d537e46cc1f47f4a63ab1d">&#9670;&#160;</a></span>input_entry_resize_callback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t input_entry_resize_callback </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structInputEntry.html">InputEntry</a> *&#160;</td>
+          <td class="paramname"><em>ie</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>new_capacity</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad3993dfd4cea68a996af03b089246877" name="ad3993dfd4cea68a996af03b089246877"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3993dfd4cea68a996af03b089246877">&#9670;&#160;</a></span>input_entry_resize_controller()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t input_entry_resize_controller </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structInputEntry.html">InputEntry</a> *&#160;</td>
+          <td class="paramname"><em>ie</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>new_capacity</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afaae2ab66bf7e6ae1a60afd552f451a2" name="afaae2ab66bf7e6ae1a60afd552f451a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afaae2ab66bf7e6ae1a60afd552f451a2">&#9670;&#160;</a></span>input_state_from_event()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="libcninput_8h.html#ab6a9a77d24941f4213521fdc931391e3">INPUT_STATE</a> input_state_from_event </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="libcngraphic_8h.html#ad45875ce61fd859f5134e43571880a0b">cn_event</a>&#160;</td>
+          <td class="paramname"><em>ev</em></td><td>)</td>
           <td></td>
         </tr>
       </table>

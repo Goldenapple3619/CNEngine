@@ -7,11 +7,13 @@
 \doxysubsubsection*{Data Structures}
 \begin{DoxyCompactItemize}
 \item 
-struct \mbox{\hyperlink{structQuad}{Quad}}
-\item 
 struct \mbox{\hyperlink{structVertex}{Vertex}}
 \item 
 struct \mbox{\hyperlink{structtexture__s}{texture\+\_\+s}}
+\item 
+struct \mbox{\hyperlink{structShader}{Shader}}
+\item 
+struct \mbox{\hyperlink{structQuad}{Quad}}
 \item 
 struct \mbox{\hyperlink{structMaterial}{Material}}
 \item 
@@ -260,9 +262,15 @@ void \mbox{\hyperlink{libcngraphic_8h_a6cce96e755402d79b79c58c117f4b910}{materia
 \item 
 void \mbox{\hyperlink{libcngraphic_8h_a176f1f0871adb1184a0845a974994ba7}{delete\+\_\+material}} (\mbox{\hyperlink{structMaterial}{Material}} \texorpdfstring{$\ast$}{*}material)
 \item 
-GLuint \mbox{\hyperlink{libcngraphic_8h_ab596f9f0529f1a7cb183a23e33cb9cc7}{gl\+\_\+shader\+\_\+compile}} (const char \texorpdfstring{$\ast$}{*}vert\+\_\+src, const char \texorpdfstring{$\ast$}{*}frag\+\_\+src)
+\mbox{\hyperlink{structShader}{Shader}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcngraphic_8h_a4941ad60be3c2634a883cdc3b79cf374}{new\+\_\+shader}} (void)
 \item 
-GLuint \mbox{\hyperlink{libcngraphic_8h_a1b55c6188090af7a9440ff77a3f34b2b}{gl\+\_\+shader\+\_\+load}} (const char \texorpdfstring{$\ast$}{*}vert\+\_\+path, const char \texorpdfstring{$\ast$}{*}frag\+\_\+path)
+void \mbox{\hyperlink{libcngraphic_8h_a487560ef06357d4d049c7b609b8444f5}{delete\+\_\+gpu\+\_\+shader}} (\mbox{\hyperlink{structShader}{Shader}} \texorpdfstring{$\ast$}{*}shader)
+\item 
+void \mbox{\hyperlink{libcngraphic_8h_a25b56c98489583cd62785ee5a5af2724}{delete\+\_\+shader}} (\mbox{\hyperlink{structShader}{Shader}} \texorpdfstring{$\ast$}{*}shader)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{libcngraphic_8h_ac62d6ab3ebaf848666e55f7a6731dccc}{gl\+\_\+shader\+\_\+compile}} (\mbox{\hyperlink{structShader}{Shader}} \texorpdfstring{$\ast$}{*}shader, const char \texorpdfstring{$\ast$}{*}vert\+\_\+src, const char \texorpdfstring{$\ast$}{*}frag\+\_\+src)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{libcngraphic_8h_af3b371c34ca679528bd68df97a6a00a0}{gl\+\_\+shader\+\_\+load}} (\mbox{\hyperlink{structShader}{Shader}} \texorpdfstring{$\ast$}{*}shader, const char \texorpdfstring{$\ast$}{*}vert\+\_\+path, const char \texorpdfstring{$\ast$}{*}frag\+\_\+path)
 \item 
 \mbox{\hyperlink{structQuad}{Quad}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcngraphic_8h_a4599b0e74f85c513d582c9c79d60e1a4}{new\+\_\+quad}} (void)
 \item 
@@ -638,6 +646,12 @@ VDM\+\_\+\+N\+\_\+\+METAL&\\
 \doxysubsubsection{\texorpdfstring{delete\_event\_map()}{delete\_event\_map()}}
 {\footnotesize\ttfamily void delete\+\_\+event\+\_\+map (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structevent__map__entry__s}{event\+\_\+map\+\_\+entry\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{event\+\_\+map }\end{DoxyParamCaption})}
 
+\Hypertarget{libcngraphic_8h_a487560ef06357d4d049c7b609b8444f5}\label{libcngraphic_8h_a487560ef06357d4d049c7b609b8444f5} 
+\index{libcngraphic.h@{libcngraphic.h}!delete\_gpu\_shader@{delete\_gpu\_shader}}
+\index{delete\_gpu\_shader@{delete\_gpu\_shader}!libcngraphic.h@{libcngraphic.h}}
+\doxysubsubsection{\texorpdfstring{delete\_gpu\_shader()}{delete\_gpu\_shader()}}
+{\footnotesize\ttfamily void delete\+\_\+gpu\+\_\+shader (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structShader}{Shader}} \texorpdfstring{$\ast$}{*}}]{shader }\end{DoxyParamCaption})}
+
 \Hypertarget{libcngraphic_8h_a176f1f0871adb1184a0845a974994ba7}\label{libcngraphic_8h_a176f1f0871adb1184a0845a974994ba7} 
 \index{libcngraphic.h@{libcngraphic.h}!delete\_material@{delete\_material}}
 \index{delete\_material@{delete\_material}!libcngraphic.h@{libcngraphic.h}}
@@ -655,6 +669,12 @@ VDM\+\_\+\+N\+\_\+\+METAL&\\
 \index{delete\_quad@{delete\_quad}!libcngraphic.h@{libcngraphic.h}}
 \doxysubsubsection{\texorpdfstring{delete\_quad()}{delete\_quad()}}
 {\footnotesize\ttfamily void delete\+\_\+quad (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structQuad}{Quad}} \texorpdfstring{$\ast$}{*}}]{quad }\end{DoxyParamCaption})}
+
+\Hypertarget{libcngraphic_8h_a25b56c98489583cd62785ee5a5af2724}\label{libcngraphic_8h_a25b56c98489583cd62785ee5a5af2724} 
+\index{libcngraphic.h@{libcngraphic.h}!delete\_shader@{delete\_shader}}
+\index{delete\_shader@{delete\_shader}!libcngraphic.h@{libcngraphic.h}}
+\doxysubsubsection{\texorpdfstring{delete\_shader()}{delete\_shader()}}
+{\footnotesize\ttfamily void delete\+\_\+shader (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structShader}{Shader}} \texorpdfstring{$\ast$}{*}}]{shader }\end{DoxyParamCaption})}
 
 \Hypertarget{libcngraphic_8h_a03d48464911484eff9ffa228302a51ec}\label{libcngraphic_8h_a03d48464911484eff9ffa228302a51ec} 
 \index{libcngraphic.h@{libcngraphic.h}!delete\_texture@{delete\_texture}}
@@ -770,17 +790,17 @@ VDM\+\_\+\+N\+\_\+\+METAL&\\
 \doxysubsubsection{\texorpdfstring{get\_window\_in\_universe()}{get\_window\_in\_universe()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*} get\+\_\+window\+\_\+in\+\_\+universe (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{libcngraphic_8h_ac168ed2f37bffc15af0623a2b45c207f}{Window\+Universe}} \texorpdfstring{$\ast$}{*}}]{universe,  }\item[{uint32\+\_\+t}]{window\+\_\+id }\end{DoxyParamCaption})}
 
-\Hypertarget{libcngraphic_8h_ab596f9f0529f1a7cb183a23e33cb9cc7}\label{libcngraphic_8h_ab596f9f0529f1a7cb183a23e33cb9cc7} 
+\Hypertarget{libcngraphic_8h_ac62d6ab3ebaf848666e55f7a6731dccc}\label{libcngraphic_8h_ac62d6ab3ebaf848666e55f7a6731dccc} 
 \index{libcngraphic.h@{libcngraphic.h}!gl\_shader\_compile@{gl\_shader\_compile}}
 \index{gl\_shader\_compile@{gl\_shader\_compile}!libcngraphic.h@{libcngraphic.h}}
 \doxysubsubsection{\texorpdfstring{gl\_shader\_compile()}{gl\_shader\_compile()}}
-{\footnotesize\ttfamily GLuint gl\+\_\+shader\+\_\+compile (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{vert\+\_\+src,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{frag\+\_\+src }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily uint8\+\_\+t gl\+\_\+shader\+\_\+compile (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structShader}{Shader}} \texorpdfstring{$\ast$}{*}}]{shader,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{vert\+\_\+src,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{frag\+\_\+src }\end{DoxyParamCaption})}
 
-\Hypertarget{libcngraphic_8h_a1b55c6188090af7a9440ff77a3f34b2b}\label{libcngraphic_8h_a1b55c6188090af7a9440ff77a3f34b2b} 
+\Hypertarget{libcngraphic_8h_af3b371c34ca679528bd68df97a6a00a0}\label{libcngraphic_8h_af3b371c34ca679528bd68df97a6a00a0} 
 \index{libcngraphic.h@{libcngraphic.h}!gl\_shader\_load@{gl\_shader\_load}}
 \index{gl\_shader\_load@{gl\_shader\_load}!libcngraphic.h@{libcngraphic.h}}
 \doxysubsubsection{\texorpdfstring{gl\_shader\_load()}{gl\_shader\_load()}}
-{\footnotesize\ttfamily GLuint gl\+\_\+shader\+\_\+load (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{vert\+\_\+path,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{frag\+\_\+path }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily uint8\+\_\+t gl\+\_\+shader\+\_\+load (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structShader}{Shader}} \texorpdfstring{$\ast$}{*}}]{shader,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{vert\+\_\+path,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{frag\+\_\+path }\end{DoxyParamCaption})}
 
 \Hypertarget{libcngraphic_8h_ac4133c5aaed3d5ed6d84003d009062f2}\label{libcngraphic_8h_ac4133c5aaed3d5ed6d84003d009062f2} 
 \index{libcngraphic.h@{libcngraphic.h}!has\_event\_window@{has\_event\_window}}
@@ -865,6 +885,12 @@ VDM\+\_\+\+N\+\_\+\+METAL&\\
 \index{new\_quad2d@{new\_quad2d}!libcngraphic.h@{libcngraphic.h}}
 \doxysubsubsection{\texorpdfstring{new\_quad2d()}{new\_quad2d()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structQuad}{Quad}} \texorpdfstring{$\ast$}{*} new\+\_\+quad2d (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{libcngraphic_8h_a4941ad60be3c2634a883cdc3b79cf374}\label{libcngraphic_8h_a4941ad60be3c2634a883cdc3b79cf374} 
+\index{libcngraphic.h@{libcngraphic.h}!new\_shader@{new\_shader}}
+\index{new\_shader@{new\_shader}!libcngraphic.h@{libcngraphic.h}}
+\doxysubsubsection{\texorpdfstring{new\_shader()}{new\_shader()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structShader}{Shader}} \texorpdfstring{$\ast$}{*} new\+\_\+shader (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
 \Hypertarget{libcngraphic_8h_a6afa86ecf7185b47b663f8717177ce70}\label{libcngraphic_8h_a6afa86ecf7185b47b663f8717177ce70} 
 \index{libcngraphic.h@{libcngraphic.h}!new\_texture@{new\_texture}}

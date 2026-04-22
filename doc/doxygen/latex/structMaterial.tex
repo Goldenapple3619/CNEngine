@@ -11,13 +11,8 @@ struct \mbox{\hyperlink{structtexture__s}{texture\+\_\+s}} \texorpdfstring{$\ast
 \item 
 \mbox{\hyperlink{libcngraphic_8h_a0b2773fdce5fa81de32a2e7a552ff37d}{cncolor}} \mbox{\hyperlink{structMaterial_acb65226e740fa398d09868e0a4d2cf11}{color}}
 \item 
-\begin{tabbing}
-xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
-union \{\\
-\>uint32\_t \mbox{\hyperlink{structMaterial_a6bf4520632b163316d4f0b8041d14fad}{gl\_shader}}\\
-\} \mbox{\hyperlink{structMaterial_a89a6c84972fd0aca6b27c3c0d18e3fab}{gpu\_handler}}\\
-
-\end{tabbing}\item 
+\mbox{\hyperlink{structShader}{Shader}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structMaterial_abaac6082ee6cf042b2d4da4f6e6fe403}{shader}}
+\item 
 \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}} \mbox{\hyperlink{structMaterial_ab7f39eb925a5496ce4a956f9619e3ccd}{ambient}}
 \item 
 \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}} \mbox{\hyperlink{structMaterial_ab4c6fbcfd2e7e342d67dd5d37c353ed1}{diffuse}}
@@ -25,8 +20,6 @@ union \{\\
 \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}} \mbox{\hyperlink{structMaterial_ad1b1e97512e6eefe4edc3e220e37bedb}{specular}}
 \item 
 \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}} \mbox{\hyperlink{structMaterial_a7e36b8405184cbfb204eb96f0ccd742a}{shininess}}
-\item 
-\mbox{\hyperlink{libcngraphic_8h_a68f9fcaba986f3dcdf56316330102559}{rendering\+\_\+api}} \mbox{\hyperlink{structMaterial_a9db3da4dd99ec5e352ab546389265792}{api}}
 \end{DoxyCompactItemize}
 
 
@@ -36,12 +29,6 @@ union \{\\
 \index{ambient@{ambient}!Material@{Material}}
 \doxysubsubsection{\texorpdfstring{ambient}{ambient}}
 {\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}} Material\+::ambient}
-
-\Hypertarget{structMaterial_a9db3da4dd99ec5e352ab546389265792}\label{structMaterial_a9db3da4dd99ec5e352ab546389265792} 
-\index{Material@{Material}!api@{api}}
-\index{api@{api}!Material@{Material}}
-\doxysubsubsection{\texorpdfstring{api}{api}}
-{\footnotesize\ttfamily \mbox{\hyperlink{libcngraphic_8h_a68f9fcaba986f3dcdf56316330102559}{rendering\+\_\+api}} Material\+::api}
 
 \Hypertarget{structMaterial_acb65226e740fa398d09868e0a4d2cf11}\label{structMaterial_acb65226e740fa398d09868e0a4d2cf11} 
 \index{Material@{Material}!color@{color}}
@@ -55,17 +42,11 @@ union \{\\
 \doxysubsubsection{\texorpdfstring{diffuse}{diffuse}}
 {\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}} Material\+::diffuse}
 
-\Hypertarget{structMaterial_a6bf4520632b163316d4f0b8041d14fad}\label{structMaterial_a6bf4520632b163316d4f0b8041d14fad} 
-\index{Material@{Material}!gl\_shader@{gl\_shader}}
-\index{gl\_shader@{gl\_shader}!Material@{Material}}
-\doxysubsubsection{\texorpdfstring{gl\_shader}{gl\_shader}}
-{\footnotesize\ttfamily uint32\+\_\+t Material\+::gl\+\_\+shader}
-
-\Hypertarget{structMaterial_a89a6c84972fd0aca6b27c3c0d18e3fab}\label{structMaterial_a89a6c84972fd0aca6b27c3c0d18e3fab} 
-\index{Material@{Material}!gpu\_handler@{gpu\_handler}}
-\index{gpu\_handler@{gpu\_handler}!Material@{Material}}
-\doxysubsubsection{\texorpdfstring{[union]}{[union]}}
-{\footnotesize\ttfamily union  \{ ... \}  Material\+::gpu\+\_\+handler}
+\Hypertarget{structMaterial_abaac6082ee6cf042b2d4da4f6e6fe403}\label{structMaterial_abaac6082ee6cf042b2d4da4f6e6fe403} 
+\index{Material@{Material}!shader@{shader}}
+\index{shader@{shader}!Material@{Material}}
+\doxysubsubsection{\texorpdfstring{shader}{shader}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structShader}{Shader}}\texorpdfstring{$\ast$}{*} Material\+::shader}
 
 \Hypertarget{structMaterial_a7e36b8405184cbfb204eb96f0ccd742a}\label{structMaterial_a7e36b8405184cbfb204eb96f0ccd742a} 
 \index{Material@{Material}!shininess@{shininess}}

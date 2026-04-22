@@ -118,10 +118,16 @@ Functions</h2></td></tr>
 <tr class="separator:adc13172cb669583fb24b1831c90575eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e593979ef398ef6f7b4fa27bc878db4" id="r_a1e593979ef398ef6f7b4fa27bc878db4"><td class="memItemLeft" align="right" valign="top">static char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shader_8c.html#a1e593979ef398ef6f7b4fa27bc878db4">_read_file</a> (const char *path)</td></tr>
 <tr class="separator:a1e593979ef398ef6f7b4fa27bc878db4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab596f9f0529f1a7cb183a23e33cb9cc7" id="r_ab596f9f0529f1a7cb183a23e33cb9cc7"><td class="memItemLeft" align="right" valign="top">GLuint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shader_8c.html#ab596f9f0529f1a7cb183a23e33cb9cc7">gl_shader_compile</a> (const char *vert_src, const char *frag_src)</td></tr>
-<tr class="separator:ab596f9f0529f1a7cb183a23e33cb9cc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b55c6188090af7a9440ff77a3f34b2b" id="r_a1b55c6188090af7a9440ff77a3f34b2b"><td class="memItemLeft" align="right" valign="top">GLuint&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shader_8c.html#a1b55c6188090af7a9440ff77a3f34b2b">gl_shader_load</a> (const char *vert_path, const char *frag_path)</td></tr>
-<tr class="separator:a1b55c6188090af7a9440ff77a3f34b2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac62d6ab3ebaf848666e55f7a6731dccc" id="r_ac62d6ab3ebaf848666e55f7a6731dccc"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shader_8c.html#ac62d6ab3ebaf848666e55f7a6731dccc">gl_shader_compile</a> (<a class="el" href="structShader.html">Shader</a> *shader, const char *vert_src, const char *frag_src)</td></tr>
+<tr class="separator:ac62d6ab3ebaf848666e55f7a6731dccc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3b371c34ca679528bd68df97a6a00a0" id="r_af3b371c34ca679528bd68df97a6a00a0"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shader_8c.html#af3b371c34ca679528bd68df97a6a00a0">gl_shader_load</a> (<a class="el" href="structShader.html">Shader</a> *shader, const char *vert_path, const char *frag_path)</td></tr>
+<tr class="separator:af3b371c34ca679528bd68df97a6a00a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4941ad60be3c2634a883cdc3b79cf374" id="r_a4941ad60be3c2634a883cdc3b79cf374"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structShader.html">Shader</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shader_8c.html#a4941ad60be3c2634a883cdc3b79cf374">new_shader</a> (void)</td></tr>
+<tr class="separator:a4941ad60be3c2634a883cdc3b79cf374"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a487560ef06357d4d049c7b609b8444f5" id="r_a487560ef06357d4d049c7b609b8444f5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shader_8c.html#a487560ef06357d4d049c7b609b8444f5">delete_gpu_shader</a> (<a class="el" href="structShader.html">Shader</a> *shader)</td></tr>
+<tr class="separator:a487560ef06357d4d049c7b609b8444f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25b56c98489583cd62785ee5a5af2724" id="r_a25b56c98489583cd62785ee5a5af2724"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="shader_8c.html#a25b56c98489583cd62785ee5a5af2724">delete_shader</a> (<a class="el" href="structShader.html">Shader</a> *shader)</td></tr>
+<tr class="separator:a25b56c98489583cd62785ee5a5af2724"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="adc13172cb669583fb24b1831c90575eb" name="adc13172cb669583fb24b1831c90575eb"></a>
@@ -186,15 +192,57 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ab596f9f0529f1a7cb183a23e33cb9cc7" name="ab596f9f0529f1a7cb183a23e33cb9cc7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab596f9f0529f1a7cb183a23e33cb9cc7">&#9670;&#160;</a></span>gl_shader_compile()</h2>
+<a id="a487560ef06357d4d049c7b609b8444f5" name="a487560ef06357d4d049c7b609b8444f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a487560ef06357d4d049c7b609b8444f5">&#9670;&#160;</a></span>delete_gpu_shader()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">GLuint gl_shader_compile </td>
+          <td class="memname">void delete_gpu_shader </td>
           <td>(</td>
+          <td class="paramtype"><a class="el" href="structShader.html">Shader</a> *&#160;</td>
+          <td class="paramname"><em>shader</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a25b56c98489583cd62785ee5a5af2724" name="a25b56c98489583cd62785ee5a5af2724"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25b56c98489583cd62785ee5a5af2724">&#9670;&#160;</a></span>delete_shader()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void delete_shader </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structShader.html">Shader</a> *&#160;</td>
+          <td class="paramname"><em>shader</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac62d6ab3ebaf848666e55f7a6731dccc" name="ac62d6ab3ebaf848666e55f7a6731dccc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac62d6ab3ebaf848666e55f7a6731dccc">&#9670;&#160;</a></span>gl_shader_compile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t gl_shader_compile </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structShader.html">Shader</a> *&#160;</td>
+          <td class="paramname"><em>shader</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>vert_src</em>, </td>
         </tr>
@@ -214,15 +262,21 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a1b55c6188090af7a9440ff77a3f34b2b" name="a1b55c6188090af7a9440ff77a3f34b2b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1b55c6188090af7a9440ff77a3f34b2b">&#9670;&#160;</a></span>gl_shader_load()</h2>
+<a id="af3b371c34ca679528bd68df97a6a00a0" name="af3b371c34ca679528bd68df97a6a00a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3b371c34ca679528bd68df97a6a00a0">&#9670;&#160;</a></span>gl_shader_load()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">GLuint gl_shader_load </td>
+          <td class="memname">uint8_t gl_shader_load </td>
           <td>(</td>
+          <td class="paramtype"><a class="el" href="structShader.html">Shader</a> *&#160;</td>
+          <td class="paramname"><em>shader</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>vert_path</em>, </td>
         </tr>
@@ -236,6 +290,24 @@ Functions</h2></td></tr>
           <td></td>
           <td>)</td>
           <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4941ad60be3c2634a883cdc3b79cf374" name="a4941ad60be3c2634a883cdc3b79cf374"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4941ad60be3c2634a883cdc3b79cf374">&#9670;&#160;</a></span>new_shader()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structShader.html">Shader</a> * new_shader </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">

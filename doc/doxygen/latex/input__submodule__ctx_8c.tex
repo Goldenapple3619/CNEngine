@@ -8,9 +8,11 @@
 \item 
 static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{input__submodule__ctx_8c_a54784ff19994e720de4144344546ac8f}{\+\_\+events}} (\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+this, void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}args)
 \item 
-static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{input__submodule__ctx_8c_a7ba3f38df535f7ebb48d6c3c51c45415}{\+\_\+register\+\_\+input}} (\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+this, void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}args)
+static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{input__submodule__ctx_8c_a9a3b518c1763490136fc9a0b19cd364c}{\+\_\+register\+\_\+input\+\_\+callback}} (\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+this, void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}args)
 \item 
-static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{input__submodule__ctx_8c_a852b06566070ac3e4e531bdd82810e24}{\+\_\+unregister\+\_\+input}} (\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+this, void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}args)
+static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{input__submodule__ctx_8c_a4efdfa75d48ed9b89e1eaecde8d0f982}{\+\_\+register\+\_\+input\+\_\+controller}} (\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+this, void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}args)
+\item 
+static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{input__submodule__ctx_8c_afa3322b3344baf6f96fac8e469ffc4c9}{\+\_\+unregister\+\_\+input\+\_\+callback}} (\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+this, void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}args)
 \item 
 static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{input__submodule__ctx_8c_a1a63a6f58510226876eb4212dbe5da70}{\+\_\+init}} (\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+this, void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}args)
 \item 
@@ -39,17 +41,23 @@ static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{input_
 \doxysubsubsection{\texorpdfstring{\_init()}{\_init()}}
 {\footnotesize\ttfamily static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+this,  }\item[{void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-\Hypertarget{input__submodule__ctx_8c_a7ba3f38df535f7ebb48d6c3c51c45415}\label{input__submodule__ctx_8c_a7ba3f38df535f7ebb48d6c3c51c45415} 
-\index{input\_submodule\_ctx.c@{input\_submodule\_ctx.c}!\_register\_input@{\_register\_input}}
-\index{\_register\_input@{\_register\_input}!input\_submodule\_ctx.c@{input\_submodule\_ctx.c}}
-\doxysubsubsection{\texorpdfstring{\_register\_input()}{\_register\_input()}}
-{\footnotesize\ttfamily static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \+\_\+register\+\_\+input (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+this,  }\item[{void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+\Hypertarget{input__submodule__ctx_8c_a9a3b518c1763490136fc9a0b19cd364c}\label{input__submodule__ctx_8c_a9a3b518c1763490136fc9a0b19cd364c} 
+\index{input\_submodule\_ctx.c@{input\_submodule\_ctx.c}!\_register\_input\_callback@{\_register\_input\_callback}}
+\index{\_register\_input\_callback@{\_register\_input\_callback}!input\_submodule\_ctx.c@{input\_submodule\_ctx.c}}
+\doxysubsubsection{\texorpdfstring{\_register\_input\_callback()}{\_register\_input\_callback()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \+\_\+register\+\_\+input\+\_\+callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+this,  }\item[{void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-\Hypertarget{input__submodule__ctx_8c_a852b06566070ac3e4e531bdd82810e24}\label{input__submodule__ctx_8c_a852b06566070ac3e4e531bdd82810e24} 
-\index{input\_submodule\_ctx.c@{input\_submodule\_ctx.c}!\_unregister\_input@{\_unregister\_input}}
-\index{\_unregister\_input@{\_unregister\_input}!input\_submodule\_ctx.c@{input\_submodule\_ctx.c}}
-\doxysubsubsection{\texorpdfstring{\_unregister\_input()}{\_unregister\_input()}}
-{\footnotesize\ttfamily static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \+\_\+unregister\+\_\+input (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+this,  }\item[{void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+\Hypertarget{input__submodule__ctx_8c_a4efdfa75d48ed9b89e1eaecde8d0f982}\label{input__submodule__ctx_8c_a4efdfa75d48ed9b89e1eaecde8d0f982} 
+\index{input\_submodule\_ctx.c@{input\_submodule\_ctx.c}!\_register\_input\_controller@{\_register\_input\_controller}}
+\index{\_register\_input\_controller@{\_register\_input\_controller}!input\_submodule\_ctx.c@{input\_submodule\_ctx.c}}
+\doxysubsubsection{\texorpdfstring{\_register\_input\_controller()}{\_register\_input\_controller()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \+\_\+register\+\_\+input\+\_\+controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+this,  }\item[{void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{input__submodule__ctx_8c_afa3322b3344baf6f96fac8e469ffc4c9}\label{input__submodule__ctx_8c_afa3322b3344baf6f96fac8e469ffc4c9} 
+\index{input\_submodule\_ctx.c@{input\_submodule\_ctx.c}!\_unregister\_input\_callback@{\_unregister\_input\_callback}}
+\index{\_unregister\_input\_callback@{\_unregister\_input\_callback}!input\_submodule\_ctx.c@{input\_submodule\_ctx.c}}
+\doxysubsubsection{\texorpdfstring{\_unregister\_input\_callback()}{\_unregister\_input\_callback()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \+\_\+unregister\+\_\+input\+\_\+callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+this,  }\item[{void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 \Hypertarget{input__submodule__ctx_8c_a3ffd89b8cc95895b590d9aae3e6f3699}\label{input__submodule__ctx_8c_a3ffd89b8cc95895b590d9aae3e6f3699} 
 \index{input\_submodule\_ctx.c@{input\_submodule\_ctx.c}!new\_input\_submodule@{new\_input\_submodule}}

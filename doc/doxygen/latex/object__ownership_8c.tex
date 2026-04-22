@@ -7,19 +7,57 @@
 \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{object__ownership_8c_aa657a671bc4f2e222a1174ebde0ae963}{share\+\_\+object}} (\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}object)
 \item 
 \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{object__ownership_8c_ac611a10be70eebc6d8f696c409dce697}{release\+\_\+object}} (\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}object)
+\item 
+void \mbox{\hyperlink{object__ownership_8c_a9c22fad07837480ca5c03cf06b489cea}{run\+\_\+gc}} (void)
+\item 
+void \mbox{\hyperlink{object__ownership_8c_a10a06d8ee21916088494a5ce0188e397}{collect\+\_\+object}} (\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}object)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static volatile \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{object__ownership_8c_a0fa18b7b2624022c0f835b1dc0d4e22c}{gc}} \mbox{[}\mbox{\hyperlink{libcncore_8h_a58d32765d53c109fc2f386946d977219}{GC\+\_\+\+MAX\+\_\+\+SIZE}}\mbox{]} = \{0\}
+\item 
+static volatile size\+\_\+t \mbox{\hyperlink{object__ownership_8c_a971ba5fb608eb3efb7baccdf44a0ecbb}{gc\+\_\+size}} = 0
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
+\Hypertarget{object__ownership_8c_a10a06d8ee21916088494a5ce0188e397}\label{object__ownership_8c_a10a06d8ee21916088494a5ce0188e397} 
+\index{object\_ownership.c@{object\_ownership.c}!collect\_object@{collect\_object}}
+\index{collect\_object@{collect\_object}!object\_ownership.c@{object\_ownership.c}}
+\doxysubsubsection{\texorpdfstring{collect\_object()}{collect\_object()}}
+{\footnotesize\ttfamily void collect\+\_\+object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{object }\end{DoxyParamCaption})}
+
 \Hypertarget{object__ownership_8c_ac611a10be70eebc6d8f696c409dce697}\label{object__ownership_8c_ac611a10be70eebc6d8f696c409dce697} 
 \index{object\_ownership.c@{object\_ownership.c}!release\_object@{release\_object}}
 \index{release\_object@{release\_object}!object\_ownership.c@{object\_ownership.c}}
 \doxysubsubsection{\texorpdfstring{release\_object()}{release\_object()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*} release\+\_\+object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{object }\end{DoxyParamCaption})}
 
+\Hypertarget{object__ownership_8c_a9c22fad07837480ca5c03cf06b489cea}\label{object__ownership_8c_a9c22fad07837480ca5c03cf06b489cea} 
+\index{object\_ownership.c@{object\_ownership.c}!run\_gc@{run\_gc}}
+\index{run\_gc@{run\_gc}!object\_ownership.c@{object\_ownership.c}}
+\doxysubsubsection{\texorpdfstring{run\_gc()}{run\_gc()}}
+{\footnotesize\ttfamily void run\+\_\+gc (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
 \Hypertarget{object__ownership_8c_aa657a671bc4f2e222a1174ebde0ae963}\label{object__ownership_8c_aa657a671bc4f2e222a1174ebde0ae963} 
 \index{object\_ownership.c@{object\_ownership.c}!share\_object@{share\_object}}
 \index{share\_object@{share\_object}!object\_ownership.c@{object\_ownership.c}}
 \doxysubsubsection{\texorpdfstring{share\_object()}{share\_object()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*} share\+\_\+object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{object }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{object__ownership_8c_a0fa18b7b2624022c0f835b1dc0d4e22c}\label{object__ownership_8c_a0fa18b7b2624022c0f835b1dc0d4e22c} 
+\index{object\_ownership.c@{object\_ownership.c}!gc@{gc}}
+\index{gc@{gc}!object\_ownership.c@{object\_ownership.c}}
+\doxysubsubsection{\texorpdfstring{gc}{gc}}
+{\footnotesize\ttfamily volatile \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}}\texorpdfstring{$\ast$}{*} gc\mbox{[}\mbox{\hyperlink{libcncore_8h_a58d32765d53c109fc2f386946d977219}{GC\+\_\+\+MAX\+\_\+\+SIZE}}\mbox{]} = \{0\}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{object__ownership_8c_a971ba5fb608eb3efb7baccdf44a0ecbb}\label{object__ownership_8c_a971ba5fb608eb3efb7baccdf44a0ecbb} 
+\index{object\_ownership.c@{object\_ownership.c}!gc\_size@{gc\_size}}
+\index{gc\_size@{gc\_size}!object\_ownership.c@{object\_ownership.c}}
+\doxysubsubsection{\texorpdfstring{gc\_size}{gc\_size}}
+{\footnotesize\ttfamily volatile size\+\_\+t gc\+\_\+size = 0\hspace{0.3cm}{\ttfamily [static]}}
 

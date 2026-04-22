@@ -104,7 +104,8 @@ $(document).ready(function(){initNavTree('object__ownership_8c.html',''); initRe
 
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">object_ownership.c File Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -116,8 +117,37 @@ Functions</h2></td></tr>
 <tr class="separator:aa657a671bc4f2e222a1174ebde0ae963"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac611a10be70eebc6d8f696c409dce697" id="r_ac611a10be70eebc6d8f696c409dce697"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object__ownership_8c.html#ac611a10be70eebc6d8f696c409dce697">release_object</a> (<a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *object)</td></tr>
 <tr class="separator:ac611a10be70eebc6d8f696c409dce697"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c22fad07837480ca5c03cf06b489cea" id="r_a9c22fad07837480ca5c03cf06b489cea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object__ownership_8c.html#a9c22fad07837480ca5c03cf06b489cea">run_gc</a> (void)</td></tr>
+<tr class="separator:a9c22fad07837480ca5c03cf06b489cea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10a06d8ee21916088494a5ce0188e397" id="r_a10a06d8ee21916088494a5ce0188e397"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object__ownership_8c.html#a10a06d8ee21916088494a5ce0188e397">collect_object</a> (<a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *object)</td></tr>
+<tr class="separator:a10a06d8ee21916088494a5ce0188e397"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a0fa18b7b2624022c0f835b1dc0d4e22c" id="r_a0fa18b7b2624022c0f835b1dc0d4e22c"><td class="memItemLeft" align="right" valign="top">static volatile <a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object__ownership_8c.html#a0fa18b7b2624022c0f835b1dc0d4e22c">gc</a> [<a class="el" href="libcncore_8h.html#a58d32765d53c109fc2f386946d977219">GC_MAX_SIZE</a>] = {0}</td></tr>
+<tr class="separator:a0fa18b7b2624022c0f835b1dc0d4e22c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a971ba5fb608eb3efb7baccdf44a0ecbb" id="r_a971ba5fb608eb3efb7baccdf44a0ecbb"><td class="memItemLeft" align="right" valign="top">static volatile size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="object__ownership_8c.html#a971ba5fb608eb3efb7baccdf44a0ecbb">gc_size</a> = 0</td></tr>
+<tr class="separator:a971ba5fb608eb3efb7baccdf44a0ecbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a10a06d8ee21916088494a5ce0188e397" name="a10a06d8ee21916088494a5ce0188e397"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10a06d8ee21916088494a5ce0188e397">&#9670;&#160;</a></span>collect_object()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void collect_object </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *&#160;</td>
+          <td class="paramname"><em>object</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ac611a10be70eebc6d8f696c409dce697" name="ac611a10be70eebc6d8f696c409dce697"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac611a10be70eebc6d8f696c409dce697">&#9670;&#160;</a></span>release_object()</h2>
 
@@ -129,6 +159,24 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype"><a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *&#160;</td>
           <td class="paramname"><em>object</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9c22fad07837480ca5c03cf06b489cea" name="a9c22fad07837480ca5c03cf06b489cea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c22fad07837480ca5c03cf06b489cea">&#9670;&#160;</a></span>run_gc()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void run_gc </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -150,6 +198,51 @@ Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a0fa18b7b2624022c0f835b1dc0d4e22c" name="a0fa18b7b2624022c0f835b1dc0d4e22c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fa18b7b2624022c0f835b1dc0d4e22c">&#9670;&#160;</a></span>gc</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile <a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a>* gc[<a class="el" href="libcncore_8h.html#a58d32765d53c109fc2f386946d977219">GC_MAX_SIZE</a>] = {0}</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a971ba5fb608eb3efb7baccdf44a0ecbb" name="a971ba5fb608eb3efb7baccdf44a0ecbb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a971ba5fb608eb3efb7baccdf44a0ecbb">&#9670;&#160;</a></span>gc_size</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">volatile size_t gc_size = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
