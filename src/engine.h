@@ -3,4 +3,6 @@
 
     #include "libcncore.h"
 
+    Object *add_map_editor_window(Object *ctx);
+
 #endif
