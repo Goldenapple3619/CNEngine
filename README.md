@@ -129,4 +129,4 @@ See [LICENSE](https://github.com/Goldenapple3619/CNEngine/blob/dev/LICENSE) for 
 > *If you're reading the FAQ section, there's 99.99% of chance that the anwser is no, but you can still give suggestion / report bugs.*
 
 ## Contact
-For more infos, join the [Discord server](https://discord.gg/F34jV23hjd).
+For more infos check our website [https://cnstudio.dev](https://cnstudio.dev) and join the [Discord server](https://discord.gg/F34jV23hjd).
