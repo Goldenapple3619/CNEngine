@@ -33,10 +33,11 @@ CN_API void delete_object_method_pair(ObjMethodPair *pair)
     if (!pair)
         return;
     if (pair->obj) {
-        (void)release_object(pair->obj);
+        // (void)release_object(pair->obj);
 
-        if (pair->obj->ref_count <= 0)
-            (void)delete_object(pair->obj);
+        // if (pair->obj->ref_count <= 0)
+        //     (void)delete_object(pair->obj);
+        (void)collect_object(pair->obj);
 
         pair->obj = NULL;
     }

@@ -26,10 +26,11 @@ void _delete_object_attribute_value(cn_value *val)
 
         case (CN_TYPE_OBJECT):
             if (val->as.ptr) {
-                (void)release_object(val->as.ptr);
+                // (void)release_object(val->as.ptr);
 
-                if (((Object *)val->as.ptr)->ref_count <= 0)
-                    (void)delete_object(val->as.ptr);
+                // if (((Object *)val->as.ptr)->ref_count <= 0)
+                //     (void)delete_object(val->as.ptr);
+                (void)collect_object(val->as.ptr);
             }
             val->as.ptr = NULL;
             break;
