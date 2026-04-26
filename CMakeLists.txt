@@ -251,10 +251,36 @@ foreach(lib cncore cngraphic cnaudio cninput rgui r2d r3d)
 endforeach()
 
 # vendored includes
+
 foreach(pair
     "sdl2_SOURCE_DIR/include"
+)
+    # Split into varname and subdir
+    string(REPLACE "/" ";" pair_list "${pair}")
+    list(GET pair_list 0 _var)
+    list(GET pair_list 1 _subdir)
+
+    set(_dir "${${_var}}/${_subdir}")
+    if(EXISTS "${_dir}")
+        add_custom_command(TARGET cn_dist POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/include/SDL2"
+            COMMAND ${CMAKE_COMMAND} -E copy_directory
+                "${_dir}"
+                "${DIST_DIR}/include/SDL2"
+        )
+    else()
+        message(WARNING "SDL include dir not found: ${_dir}")
+    endif()
+endforeach()
+
+add_custom_command(TARGET cn_dist POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+        "${sdl2_BINARY_DIR}/include"
+        "${DIST_DIR}/include/"
+)
+
+foreach(pair
     "sdl2_image_SOURCE_DIR/include"
-    "sdl2_ttf_SOURCE_DIR/include"
     "sdl2_mixer_SOURCE_DIR/include"
 )
     string(REPLACE "/" ";" pair_list "${pair}")
@@ -264,10 +290,10 @@ foreach(pair
     set(_dir "${${_var}}/${_subdir}")
     if(EXISTS "${_dir}")
         add_custom_command(TARGET cn_dist POST_BUILD
-            COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/include/SDL2"
+            COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/include"
             COMMAND ${CMAKE_COMMAND} -E copy_directory
                 "${_dir}"
-                "${DIST_DIR}/include/SDL2/"
+                "${DIST_DIR}/include"
         )
     else()
         message(WARNING "SDL include dir not found: ${_dir}")
@@ -275,10 +301,10 @@ foreach(pair
 endforeach()
 
 add_custom_command(TARGET cn_dist POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/include/SDL2"
+    COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/include"
     COMMAND ${CMAKE_COMMAND} -E copy_if_different
         "${sdl2_ttf_SOURCE_DIR}/SDL_ttf.h"
-        "${DIST_DIR}/include/SDL2/"
+        "${DIST_DIR}/include"
 )
 
 foreach(lib glad_gl)
