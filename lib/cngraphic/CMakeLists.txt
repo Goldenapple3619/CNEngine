@@ -11,7 +11,6 @@ add_library(cngraphic SHARED
     src/event.c
     src/event_map.c
     src/interface.c
-    src/texture_atlas.c
     src/material.c
     src/mesh.c
     src/shader.c

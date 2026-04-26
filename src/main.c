@@ -72,11 +72,6 @@ int main(int argc, char *argv[])
     if (!ctx)
         return (1);
 
-    if (!add_map_editor_window(ctx)) {
-        delete_object(ctx);
-        return (1);
-    }
-
     call_method(ctx, "_run", NULL);
     delete_object(ctx);
 

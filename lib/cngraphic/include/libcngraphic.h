@@ -3,7 +3,7 @@
 
     #include <glad/gl.h>
     #include <SDL2/SDL.h>
-    #include <SDL_image.h>
+    #include <SDL2/SDL_image.h>
     #include "libcncore.h"
 
     #define INVALIDATE_GPU(t)                                                    \
@@ -195,20 +195,11 @@
         size_t capacity;
     };
 
-    struct texture_atlas_s {
-        struct texture_s **content;
-        uint64_t *keys; // keys[i] -> content[i]
-
-        size_t size;
-        size_t capacity;
-    };
-
     typedef struct texture_s Texture;
     typedef struct window_s Window;
     typedef struct window_universe_s WindowUniverse;
     typedef struct videomode_s Videomode;
     typedef struct event_s Event;
-    typedef struct texture_atlas_s TextureAtlas;
 
     CN_API void blit(const Texture *__src, Texture *__dst, const Rect *__src_rect, const Vector2 *__dest_at);
     CN_API void blit_ratio(const Texture *__src, Texture *__dst, const Rect *__src_rect, const Vector2 *__dest_at, const Vector2 *__ratios);
@@ -227,13 +218,6 @@
     CN_API void draw_rect(Texture *texture, const Rect *rect, cncolor color);
     // CN_API void draw_ellipse(Texture *texture, const Rect *rect, cncolor color); // to implement
     CN_API void delete_texture(Texture *texture);
-
-    CN_API TextureAtlas *new_texture_atlas(void);
-    CN_API const Texture *get_texture(TextureAtlas *atlas, const char *key, Texture *(*tex_from_key)(const char *));
-    CN_API void remove_texture_atlas(TextureAtlas *atlas, const char *key);
-    CN_API uint8_t add_texture_atlas(TextureAtlas *atlas, Texture *texture, const char *key);
-    CN_API uint8_t texture_atlas_resize(TextureAtlas *atlas, size_t new_capacity);
-    CN_API void delete_texture_atlas(TextureAtlas *atlas);
 
     CN_API Window *new_window(const char *name, const Texture *icon, const Videomode *video_mode);
     CN_API void set_vsync_window(Window *window, cnbool value);

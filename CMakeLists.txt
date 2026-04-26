@@ -155,11 +155,15 @@ add_subdirectory(lib/rgui)
 add_subdirectory(lib/r2d)
 add_subdirectory(lib/r3d)
 
+# dist deploy
+add_custom_target(cn_dist ALL)
+
 # ========= engine executable =========
 if(CN_BUILD_ENGINE)
+    add_dependencies(cn_dist cn_engine)
+
     add_executable(cn_engine
         src/main.c
-        src/map_editor.c
     )
 
     target_compile_options(cn_engine
@@ -194,87 +198,133 @@ if(CN_BUILD_ENGINE)
     )
 
     # main
-    add_custom_command(TARGET cn_engine POST_BUILD
+    add_custom_command(TARGET cn_dist POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/bin"
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
             $<TARGET_FILE:cn_engine>
             "${DIST_DIR}/bin/"
     )
+endif()
 
-    # SDL2
-    foreach(lib SDL2 SDL2_image SDL2_mixer SDL2_ttf)
-        add_custom_command(TARGET cn_engine POST_BUILD
-            COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/lib"
-            COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                $<TARGET_FILE:${lib}>
-                "${DIST_DIR}/lib/"
-        )
-    endforeach()
+# SDL2
+foreach(lib SDL2 SDL2_image SDL2_mixer SDL2_ttf)
+    add_custom_command(TARGET cn_dist POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/lib"
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            $<TARGET_FILE:${lib}>
+            "${DIST_DIR}/lib/"
+    )
+endforeach()
 
-    #gl
-    foreach(lib glad_gl)
-        add_custom_command(TARGET cn_engine POST_BUILD
-            COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/lib"
-            COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                $<TARGET_FILE:${lib}>
-                "${DIST_DIR}/lib/"
-        )
-    endforeach()
+#gl
+foreach(lib glad_gl)
+    add_custom_command(TARGET cn_dist POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/lib"
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            $<TARGET_FILE:${lib}>
+            "${DIST_DIR}/lib/"
+    )
+endforeach()
 
-    # vendored
-    foreach(lib freetype harfbuzz ogg opus opusfile xmp tiff)
-        if(TARGET ${lib})
-            get_target_property(lib_type ${lib} TYPE)
-            if(lib_type STREQUAL "SHARED_LIBRARY")
-                add_custom_command(TARGET cn_engine POST_BUILD
-                    COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/lib"
-                    COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                        $<TARGET_FILE:${lib}>
-                        "${DIST_DIR}/lib/"
-                )
-            endif()
+# vendored
+foreach(lib freetype harfbuzz ogg opus opusfile xmp tiff)
+    if(TARGET ${lib})
+        get_target_property(lib_type ${lib} TYPE)
+        if(lib_type STREQUAL "SHARED_LIBRARY")
+            add_custom_command(TARGET cn_dist POST_BUILD
+                COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/lib"
+                COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                    $<TARGET_FILE:${lib}>
+                    "${DIST_DIR}/lib/"
+            )
         endif()
-    endforeach()
+    endif()
+endforeach()
 
-    # includes
-    foreach(lib cncore cngraphic cnaudio cninput rgui r2d r3d)
-        add_custom_command(TARGET cn_engine POST_BUILD
+# includes
+foreach(lib cncore cngraphic cnaudio cninput rgui r2d r3d)
+    add_custom_command(TARGET cn_dist POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+            "${CMAKE_SOURCE_DIR}/lib/${lib}/include"
+            "${DIST_DIR}/include/"
+    )
+endforeach()
+
+# vendored includes
+foreach(pair
+    "sdl2_SOURCE_DIR/include"
+    "sdl2_image_SOURCE_DIR/include"
+    "sdl2_ttf_SOURCE_DIR/include"
+    "sdl2_mixer_SOURCE_DIR/include"
+)
+    string(REPLACE "/" ";" pair_list "${pair}")
+    list(GET pair_list 0 _var)
+    list(GET pair_list 1 _subdir)
+
+    set(_dir "${${_var}}/${_subdir}")
+    if(EXISTS "${_dir}")
+        add_custom_command(TARGET cn_dist POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/include/SDL2"
             COMMAND ${CMAKE_COMMAND} -E copy_directory
-                "${CMAKE_SOURCE_DIR}/lib/${lib}/include"
-                "${DIST_DIR}/include/"
+                "${_dir}"
+                "${DIST_DIR}/include/SDL2/"
         )
-    endforeach()
+    else()
+        message(WARNING "SDL include dir not found: ${_dir}")
+    endif()
+endforeach()
 
-    # modules libraries
-    foreach(lib cncore cngraphic cnaudio cninput rgui r2d r3d)
-        add_custom_command(TARGET cn_engine POST_BUILD
-            COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                $<TARGET_FILE:${lib}>
-                "${DIST_DIR}/lib/"
-        )
-    endforeach()
+add_custom_command(TARGET cn_dist POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/include/SDL2"
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        "${sdl2_ttf_SOURCE_DIR}/SDL_ttf.h"
+        "${DIST_DIR}/include/SDL2/"
+)
 
-    # machine specific libs
-    if(WIN32)
-        get_filename_component(MINGW_BIN_DIR ${CMAKE_C_COMPILER} DIRECTORY)
-
-        if(TARGET_ARCH STREQUAL "i386")
-            set(MINGW_RUNTIME_DLLS libwinpthread-1.dll libgcc_s_dw2-1.dll)
-        else()
-            set(MINGW_RUNTIME_DLLS libwinpthread-1.dll libgcc_s_seh-1.dll)
-        endif()
-
-        foreach(dll ${MINGW_RUNTIME_DLLS})
-            if (EXISTS "${MINGW_BIN_DIR}/${dll}")
-                add_custom_command(TARGET cn_engine POST_BUILD
-                    COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/lib"
-                    COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                        "${MINGW_BIN_DIR}/${dll}"
-                        "${DIST_DIR}/lib/"
+foreach(lib glad_gl)
+    get_target_property(_inc_dirs ${lib} INTERFACE_INCLUDE_DIRECTORIES)
+    if(_inc_dirs)
+        foreach(_dir ${_inc_dirs})
+            if(EXISTS "${_dir}")
+                add_custom_command(TARGET cn_dist POST_BUILD
+                    COMMAND ${CMAKE_COMMAND} -E copy_directory
+                        "${_dir}"
+                        "${DIST_DIR}/include/"
                 )
-            else()
-                message(STATUS "Skipping ${dll} - not found in ${MINGW_BIN_DIR}")
             endif()
         endforeach()
     endif()
+endforeach()
+
+# modules libraries
+foreach(lib cncore cngraphic cnaudio cninput rgui r2d r3d)
+    add_custom_command(TARGET cn_dist POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            $<TARGET_FILE:${lib}>
+            "${DIST_DIR}/lib/"
+    )
+endforeach()
+
+# machine specific libs
+if(WIN32)
+    get_filename_component(MINGW_BIN_DIR ${CMAKE_C_COMPILER} DIRECTORY)
+
+    if(TARGET_ARCH STREQUAL "i386")
+        set(MINGW_RUNTIME_DLLS libwinpthread-1.dll libgcc_s_dw2-1.dll)
+    else()
+        set(MINGW_RUNTIME_DLLS libwinpthread-1.dll libgcc_s_seh-1.dll)
+    endif()
+
+    foreach(dll ${MINGW_RUNTIME_DLLS})
+        if (EXISTS "${MINGW_BIN_DIR}/${dll}")
+            add_custom_command(TARGET cn_dist POST_BUILD
+                COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/lib"
+                COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                    "${MINGW_BIN_DIR}/${dll}"
+                    "${DIST_DIR}/lib/"
+            )
+        else()
+            message(STATUS "Skipping ${dll} - not found in ${MINGW_BIN_DIR}")
+        endif()
+    endforeach()
 endif()
