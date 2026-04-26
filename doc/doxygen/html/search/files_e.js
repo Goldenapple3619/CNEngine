@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['scene_2ec_0',['scene.c',['../scene_8c.html',1,'']]],
-  ['scene_5floader_2ec_1',['scene_loader.c',['../scene__loader_8c.html',1,'']]],
-  ['scene_5fobject_2ec_2',['scene_object.c',['../scene__object_8c.html',1,'']]],
-  ['shader_2ec_3',['shader.c',['../shader_8c.html',1,'']]]
+  ['text_2ec_0',['text.c',['../text_8c.html',1,'']]],
+  ['texture_2ec_1',['texture.c',['../texture_8c.html',1,'']]]
 ];

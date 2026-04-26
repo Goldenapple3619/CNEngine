@@ -10,7 +10,6 @@ var dir_401cb2143ef11513238729cb97b06071 =
     [ "quad.c", "quad_8c.html", "quad_8c" ],
     [ "shader.c", "shader_8c.html", "shader_8c" ],
     [ "texture.c", "texture_8c.html", "texture_8c" ],
-    [ "texture_atlas.c", "texture__atlas_8c.html", "texture__atlas_8c" ],
     [ "window.c", "window_8c.html", "window_8c" ],
     [ "window_universe.c", "window__universe_8c.html", "window__universe_8c" ]
 ];

@@ -29,7 +29,6 @@ var annotated_dup =
     [ "scene_object_mode_s", "structscene__object__mode__s.html", "structscene__object__mode__s" ],
     [ "Shader", "structShader.html", "structShader" ],
     [ "text_mode_s", "structtext__mode__s.html", "structtext__mode__s" ],
-    [ "texture_atlas_s", "structtexture__atlas__s.html", "structtexture__atlas__s" ],
     [ "texture_s", "structtexture__s.html", "structtexture__s" ],
     [ "threed_board_mode_s", "structthreed__board__mode__s.html", "structthreed__board__mode__s" ],
     [ "threed_render_stack", "structthreed__render__stack.html", "structthreed__render__stack" ],

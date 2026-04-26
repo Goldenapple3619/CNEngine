@@ -2,7 +2,7 @@
 \hypertarget{libcngraphic_8h}{}\label{libcngraphic_8h}\index{lib/cngraphic/include/libcngraphic.h@{lib/cngraphic/include/libcngraphic.h}}
 {\ttfamily \#include $<$glad/gl.\+h$>$}\newline
 {\ttfamily \#include $<$SDL2/\+SDL.\+h$>$}\newline
-{\ttfamily \#include $<$SDL\+\_\+image.\+h$>$}\newline
+{\ttfamily \#include $<$SDL2/\+SDL\+\_\+image.\+h$>$}\newline
 {\ttfamily \#include "{}libcncore.\+h"{}}\newline
 \doxysubsubsection*{Data Structures}
 \begin{DoxyCompactItemize}
@@ -28,8 +28,6 @@ struct \mbox{\hyperlink{structevent__map__entry__s}{event\+\_\+map\+\_\+entry\+\
 struct \mbox{\hyperlink{structwindow__s}{window\+\_\+s}}
 \item 
 struct \mbox{\hyperlink{structwindow__universe__s}{window\+\_\+universe\+\_\+s}}
-\item 
-struct \mbox{\hyperlink{structtexture__atlas__s}{texture\+\_\+atlas\+\_\+s}}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Macros}
 \begin{DoxyCompactItemize}
@@ -50,8 +48,6 @@ typedef struct \mbox{\hyperlink{structwindow__universe__s}{window\+\_\+universe\
 typedef struct \mbox{\hyperlink{structvideomode__s}{videomode\+\_\+s}} \mbox{\hyperlink{libcngraphic_8h_a11fee8bdf914a878a155af5fea79040b}{Videomode}}
 \item 
 typedef struct \mbox{\hyperlink{structevent__s}{event\+\_\+s}} \mbox{\hyperlink{libcngraphic_8h_a60921eba80b4569fa79c67165460331e}{Event}}
-\item 
-typedef struct \mbox{\hyperlink{structtexture__atlas__s}{texture\+\_\+atlas\+\_\+s}} \mbox{\hyperlink{libcngraphic_8h_a23359974f04ef93017c6a11fec3741ac}{Texture\+Atlas}}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Enumerations}
 \begin{DoxyCompactItemize}
@@ -153,18 +149,6 @@ uint8\+\_\+t \mbox{\hyperlink{libcngraphic_8h_a4e84f8e66e3368fded26a67b371ce9b9}
 void \mbox{\hyperlink{libcngraphic_8h_a53831b3ef6b9fc27160b293cacc35b8b}{draw\+\_\+rect}} (\mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}texture, const \mbox{\hyperlink{libcncore_8h_a44e2d24ab2a21b90d03880cab9cc6d16}{Rect}} \texorpdfstring{$\ast$}{*}rect, \mbox{\hyperlink{libcngraphic_8h_a0b2773fdce5fa81de32a2e7a552ff37d}{cncolor}} color)
 \item 
 void \mbox{\hyperlink{libcngraphic_8h_a03d48464911484eff9ffa228302a51ec}{delete\+\_\+texture}} (\mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}texture)
-\item 
-\mbox{\hyperlink{libcngraphic_8h_a23359974f04ef93017c6a11fec3741ac}{Texture\+Atlas}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcngraphic_8h_a3f29d51a85b563831dc01cdb89dfaabc}{new\+\_\+texture\+\_\+atlas}} (void)
-\item 
-const \mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcngraphic_8h_a2b8d7f4921f5410c3d60a2aca0231867}{get\+\_\+texture}} (\mbox{\hyperlink{libcngraphic_8h_a23359974f04ef93017c6a11fec3741ac}{Texture\+Atlas}} \texorpdfstring{$\ast$}{*}atlas, const char \texorpdfstring{$\ast$}{*}key, \mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}(\texorpdfstring{$\ast$}{*}tex\+\_\+from\+\_\+key)(const char \texorpdfstring{$\ast$}{*}))
-\item 
-void \mbox{\hyperlink{libcngraphic_8h_a84fcb992c9536df0e5b45a3ca72ab699}{remove\+\_\+texture\+\_\+atlas}} (\mbox{\hyperlink{libcngraphic_8h_a23359974f04ef93017c6a11fec3741ac}{Texture\+Atlas}} \texorpdfstring{$\ast$}{*}atlas, const char \texorpdfstring{$\ast$}{*}key)
-\item 
-uint8\+\_\+t \mbox{\hyperlink{libcngraphic_8h_a0e69b07252a5bb492ee1400e9a495d7c}{add\+\_\+texture\+\_\+atlas}} (\mbox{\hyperlink{libcngraphic_8h_a23359974f04ef93017c6a11fec3741ac}{Texture\+Atlas}} \texorpdfstring{$\ast$}{*}atlas, \mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}texture, const char \texorpdfstring{$\ast$}{*}key)
-\item 
-uint8\+\_\+t \mbox{\hyperlink{libcngraphic_8h_a9f3205a3e8afe3bdad1767a25aae3e76}{texture\+\_\+atlas\+\_\+resize}} (\mbox{\hyperlink{libcngraphic_8h_a23359974f04ef93017c6a11fec3741ac}{Texture\+Atlas}} \texorpdfstring{$\ast$}{*}atlas, size\+\_\+t new\+\_\+capacity)
-\item 
-void \mbox{\hyperlink{libcngraphic_8h_a85517192fe011fb5f2d930f3e3c713c3}{delete\+\_\+texture\+\_\+atlas}} (\mbox{\hyperlink{libcngraphic_8h_a23359974f04ef93017c6a11fec3741ac}{Texture\+Atlas}} \texorpdfstring{$\ast$}{*}atlas)
 \item 
 \mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcngraphic_8h_a15e6e6d395b8e1cb8b169a0a1d2c27cc}{new\+\_\+window}} (const char \texorpdfstring{$\ast$}{*}name, const \mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}icon, const \mbox{\hyperlink{libcngraphic_8h_a11fee8bdf914a878a155af5fea79040b}{Videomode}} \texorpdfstring{$\ast$}{*}video\+\_\+mode)
 \item 
@@ -329,12 +313,6 @@ void \mbox{\hyperlink{libcngraphic_8h_a7af5ec3998e6efc3e8069eecd6a54352}{delete\
 \index{Texture@{Texture}!libcngraphic.h@{libcngraphic.h}}
 \doxysubsubsection{\texorpdfstring{Texture}{Texture}}
 {\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structtexture__s}{texture\+\_\+s}} \mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}}}
-
-\Hypertarget{libcngraphic_8h_a23359974f04ef93017c6a11fec3741ac}\label{libcngraphic_8h_a23359974f04ef93017c6a11fec3741ac} 
-\index{libcngraphic.h@{libcngraphic.h}!TextureAtlas@{TextureAtlas}}
-\index{TextureAtlas@{TextureAtlas}!libcngraphic.h@{libcngraphic.h}}
-\doxysubsubsection{\texorpdfstring{TextureAtlas}{TextureAtlas}}
-{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structtexture__atlas__s}{texture\+\_\+atlas\+\_\+s}} \mbox{\hyperlink{libcngraphic_8h_a23359974f04ef93017c6a11fec3741ac}{Texture\+Atlas}}}
 
 \Hypertarget{libcngraphic_8h_a11fee8bdf914a878a155af5fea79040b}\label{libcngraphic_8h_a11fee8bdf914a878a155af5fea79040b} 
 \index{libcngraphic.h@{libcngraphic.h}!Videomode@{Videomode}}
@@ -568,12 +546,6 @@ VDM\+\_\+\+N\+\_\+\+METAL&\\
 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{libcngraphic_8h_a0e69b07252a5bb492ee1400e9a495d7c}\label{libcngraphic_8h_a0e69b07252a5bb492ee1400e9a495d7c} 
-\index{libcngraphic.h@{libcngraphic.h}!add\_texture\_atlas@{add\_texture\_atlas}}
-\index{add\_texture\_atlas@{add\_texture\_atlas}!libcngraphic.h@{libcngraphic.h}}
-\doxysubsubsection{\texorpdfstring{add\_texture\_atlas()}{add\_texture\_atlas()}}
-{\footnotesize\ttfamily uint8\+\_\+t add\+\_\+texture\+\_\+atlas (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcngraphic_8h_a23359974f04ef93017c6a11fec3741ac}{Texture\+Atlas}} \texorpdfstring{$\ast$}{*}}]{atlas,  }\item[{\mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}}]{texture,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{key }\end{DoxyParamCaption})}
-
 \Hypertarget{libcngraphic_8h_abe036d3502dfce343a8b0af8088519e6}\label{libcngraphic_8h_abe036d3502dfce343a8b0af8088519e6} 
 \index{libcngraphic.h@{libcngraphic.h}!add\_window\_in\_universe@{add\_window\_in\_universe}}
 \index{add\_window\_in\_universe@{add\_window\_in\_universe}!libcngraphic.h@{libcngraphic.h}}
@@ -682,12 +654,6 @@ VDM\+\_\+\+N\+\_\+\+METAL&\\
 \doxysubsubsection{\texorpdfstring{delete\_texture()}{delete\_texture()}}
 {\footnotesize\ttfamily void delete\+\_\+texture (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}}]{texture }\end{DoxyParamCaption})}
 
-\Hypertarget{libcngraphic_8h_a85517192fe011fb5f2d930f3e3c713c3}\label{libcngraphic_8h_a85517192fe011fb5f2d930f3e3c713c3} 
-\index{libcngraphic.h@{libcngraphic.h}!delete\_texture\_atlas@{delete\_texture\_atlas}}
-\index{delete\_texture\_atlas@{delete\_texture\_atlas}!libcngraphic.h@{libcngraphic.h}}
-\doxysubsubsection{\texorpdfstring{delete\_texture\_atlas()}{delete\_texture\_atlas()}}
-{\footnotesize\ttfamily void delete\+\_\+texture\+\_\+atlas (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcngraphic_8h_a23359974f04ef93017c6a11fec3741ac}{Texture\+Atlas}} \texorpdfstring{$\ast$}{*}}]{atlas }\end{DoxyParamCaption})}
-
 \Hypertarget{libcngraphic_8h_a85b9dfd4cc9b7d77d5f5f79070fb87b0}\label{libcngraphic_8h_a85b9dfd4cc9b7d77d5f5f79070fb87b0} 
 \index{libcngraphic.h@{libcngraphic.h}!delete\_window@{delete\_window}}
 \index{delete\_window@{delete\_window}!libcngraphic.h@{libcngraphic.h}}
@@ -771,12 +737,6 @@ VDM\+\_\+\+N\+\_\+\+METAL&\\
 \index{get\_opacity\_texture@{get\_opacity\_texture}!libcngraphic.h@{libcngraphic.h}}
 \doxysubsubsection{\texorpdfstring{get\_opacity\_texture()}{get\_opacity\_texture()}}
 {\footnotesize\ttfamily uint8\+\_\+t get\+\_\+opacity\+\_\+texture (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}}]{texture }\end{DoxyParamCaption})}
-
-\Hypertarget{libcngraphic_8h_a2b8d7f4921f5410c3d60a2aca0231867}\label{libcngraphic_8h_a2b8d7f4921f5410c3d60a2aca0231867} 
-\index{libcngraphic.h@{libcngraphic.h}!get\_texture@{get\_texture}}
-\index{get\_texture@{get\_texture}!libcngraphic.h@{libcngraphic.h}}
-\doxysubsubsection{\texorpdfstring{get\_texture()}{get\_texture()}}
-{\footnotesize\ttfamily const \mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*} get\+\_\+texture (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcngraphic_8h_a23359974f04ef93017c6a11fec3741ac}{Texture\+Atlas}} \texorpdfstring{$\ast$}{*}}]{atlas,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{key,  }\item[{\mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}(\texorpdfstring{$\ast$}{*})(const char \texorpdfstring{$\ast$}{*})}]{tex\+\_\+from\+\_\+key }\end{DoxyParamCaption})}
 
 \Hypertarget{libcngraphic_8h_a3a698eff2866de9c9bb2c2e756b09c45}\label{libcngraphic_8h_a3a698eff2866de9c9bb2c2e756b09c45} 
 \index{libcngraphic.h@{libcngraphic.h}!get\_vsync\_window@{get\_vsync\_window}}
@@ -898,12 +858,6 @@ VDM\+\_\+\+N\+\_\+\+METAL&\\
 \doxysubsubsection{\texorpdfstring{new\_texture()}{new\_texture()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*} new\+\_\+texture (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}}]{size,  }\item[{\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}}]{alpha }\end{DoxyParamCaption})}
 
-\Hypertarget{libcngraphic_8h_a3f29d51a85b563831dc01cdb89dfaabc}\label{libcngraphic_8h_a3f29d51a85b563831dc01cdb89dfaabc} 
-\index{libcngraphic.h@{libcngraphic.h}!new\_texture\_atlas@{new\_texture\_atlas}}
-\index{new\_texture\_atlas@{new\_texture\_atlas}!libcngraphic.h@{libcngraphic.h}}
-\doxysubsubsection{\texorpdfstring{new\_texture\_atlas()}{new\_texture\_atlas()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{libcngraphic_8h_a23359974f04ef93017c6a11fec3741ac}{Texture\+Atlas}} \texorpdfstring{$\ast$}{*} new\+\_\+texture\+\_\+atlas (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
-
 \Hypertarget{libcngraphic_8h_a79c99d0204a1a105d607a732727df67c}\label{libcngraphic_8h_a79c99d0204a1a105d607a732727df67c} 
 \index{libcngraphic.h@{libcngraphic.h}!new\_texture\_from\_file@{new\_texture\_from\_file}}
 \index{new\_texture\_from\_file@{new\_texture\_from\_file}!libcngraphic.h@{libcngraphic.h}}
@@ -939,12 +893,6 @@ VDM\+\_\+\+N\+\_\+\+METAL&\\
 \index{push\_event\_window@{push\_event\_window}!libcngraphic.h@{libcngraphic.h}}
 \doxysubsubsection{\texorpdfstring{push\_event\_window()}{push\_event\_window()}}
 {\footnotesize\ttfamily uint8\+\_\+t push\+\_\+event\+\_\+window (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*}}]{window,  }\item[{\mbox{\hyperlink{libcngraphic_8h_ad45875ce61fd859f5134e43571880a0b}{cn\+\_\+event}}}]{type,  }\item[{\mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}}]{x,  }\item[{\mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}}]{y,  }\item[{int64\+\_\+t}]{v }\end{DoxyParamCaption})}
-
-\Hypertarget{libcngraphic_8h_a84fcb992c9536df0e5b45a3ca72ab699}\label{libcngraphic_8h_a84fcb992c9536df0e5b45a3ca72ab699} 
-\index{libcngraphic.h@{libcngraphic.h}!remove\_texture\_atlas@{remove\_texture\_atlas}}
-\index{remove\_texture\_atlas@{remove\_texture\_atlas}!libcngraphic.h@{libcngraphic.h}}
-\doxysubsubsection{\texorpdfstring{remove\_texture\_atlas()}{remove\_texture\_atlas()}}
-{\footnotesize\ttfamily void remove\+\_\+texture\+\_\+atlas (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcngraphic_8h_a23359974f04ef93017c6a11fec3741ac}{Texture\+Atlas}} \texorpdfstring{$\ast$}{*}}]{atlas,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{key }\end{DoxyParamCaption})}
 
 \Hypertarget{libcngraphic_8h_ab5916a9b4082a40acc0d51548f46db92}\label{libcngraphic_8h_ab5916a9b4082a40acc0d51548f46db92} 
 \index{libcngraphic.h@{libcngraphic.h}!remove\_window\_from\_universe@{remove\_window\_from\_universe}}
@@ -1005,12 +953,6 @@ VDM\+\_\+\+N\+\_\+\+METAL&\\
 \index{start\_graphics@{start\_graphics}!libcngraphic.h@{libcngraphic.h}}
 \doxysubsubsection{\texorpdfstring{start\_graphics()}{start\_graphics()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} start\+\_\+graphics (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
-
-\Hypertarget{libcngraphic_8h_a9f3205a3e8afe3bdad1767a25aae3e76}\label{libcngraphic_8h_a9f3205a3e8afe3bdad1767a25aae3e76} 
-\index{libcngraphic.h@{libcngraphic.h}!texture\_atlas\_resize@{texture\_atlas\_resize}}
-\index{texture\_atlas\_resize@{texture\_atlas\_resize}!libcngraphic.h@{libcngraphic.h}}
-\doxysubsubsection{\texorpdfstring{texture\_atlas\_resize()}{texture\_atlas\_resize()}}
-{\footnotesize\ttfamily uint8\+\_\+t texture\+\_\+atlas\+\_\+resize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcngraphic_8h_a23359974f04ef93017c6a11fec3741ac}{Texture\+Atlas}} \texorpdfstring{$\ast$}{*}}]{atlas,  }\item[{size\+\_\+t}]{new\+\_\+capacity }\end{DoxyParamCaption})}
 
 \Hypertarget{libcngraphic_8h_a1b2d02e333f84ea64de019adfc91e3fe}\label{libcngraphic_8h_a1b2d02e333f84ea64de019adfc91e3fe} 
 \index{libcngraphic.h@{libcngraphic.h}!texture\_upload\_gl@{texture\_upload\_gl}}
