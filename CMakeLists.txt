@@ -164,7 +164,6 @@ if(CN_BUILD_ENGINE)
 
     add_executable(cn_engine
         src/main.c
-        src/map_editor.c
     )
 
     target_compile_options(cn_engine
@@ -249,6 +248,52 @@ foreach(lib cncore cngraphic cnaudio cninput rgui r2d r3d)
             "${CMAKE_SOURCE_DIR}/lib/${lib}/include"
             "${DIST_DIR}/include/"
     )
+endforeach()
+
+# vendored includes
+foreach(pair
+    "sdl2_SOURCE_DIR/include"
+    "sdl2_image_SOURCE_DIR/include"
+    "sdl2_ttf_SOURCE_DIR/include"
+    "sdl2_mixer_SOURCE_DIR/include"
+)
+    string(REPLACE "/" ";" pair_list "${pair}")
+    list(GET pair_list 0 _var)
+    list(GET pair_list 1 _subdir)
+
+    set(_dir "${${_var}}/${_subdir}")
+    if(EXISTS "${_dir}")
+        add_custom_command(TARGET cn_dist POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/include/SDL2"
+            COMMAND ${CMAKE_COMMAND} -E copy_directory
+                "${_dir}"
+                "${DIST_DIR}/include/SDL2/"
+        )
+    else()
+        message(WARNING "SDL include dir not found: ${_dir}")
+    endif()
+endforeach()
+
+add_custom_command(TARGET cn_dist POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/include/SDL2"
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        "${sdl2_ttf_SOURCE_DIR}/SDL_ttf.h"
+        "${DIST_DIR}/include/SDL2/"
+)
+
+foreach(lib glad_gl)
+    get_target_property(_inc_dirs ${lib} INTERFACE_INCLUDE_DIRECTORIES)
+    if(_inc_dirs)
+        foreach(_dir ${_inc_dirs})
+            if(EXISTS "${_dir}")
+                add_custom_command(TARGET cn_dist POST_BUILD
+                    COMMAND ${CMAKE_COMMAND} -E copy_directory
+                        "${_dir}"
+                        "${DIST_DIR}/include/"
+                )
+            endif()
+        endforeach()
+    endif()
 endforeach()
 
 # modules libraries

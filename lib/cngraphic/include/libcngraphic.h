@@ -3,7 +3,7 @@
 
     #include <glad/gl.h>
     #include <SDL2/SDL.h>
-    #include <SDL_image.h>
+    #include <SDL2/SDL_image.h>
     #include "libcncore.h"
 
     #define INVALIDATE_GPU(t)                                                    \
