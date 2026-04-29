@@ -20,6 +20,27 @@ static cn_value _del(Object *__this, void **args)
     if (!args || !(args[0]))
         return (VALUE_ERR);
 
+    cn_value *interfaces_ref = get_attr(__this, "interfaces");
+    ObjectVector *interfaces;
+    ObjectVector *temp;
+
+    if (interfaces_ref && interfaces_ref->as.ptr) {
+        interfaces = interfaces_ref->as.ptr;
+
+        for (size_t i = 0; i < interfaces->size; ++i) {
+            temp = get_attr(interfaces->objects[i], "elements")->as.ptr;
+
+            for (size_t j = 0; j < temp->size; ++j) {
+                if (strcmp(get_attr(temp->objects[j], "name")->as.str, "guiboard"))
+                    continue;
+
+                remove_object_ordered_vector(temp, j);
+                --j;
+            }
+        }
+    }
+
+    run_gc();
     end_gui();
     
     return (VALUE_OK);

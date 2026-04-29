@@ -49,8 +49,10 @@
     #define PREP_DEL() cn_value *__temp_alloc;
     #define DEL_CUSTOM_ALLOCAION(__this, expr_free, name) \
         __temp_alloc = get_attr(__this, name); \
-        if (__temp_alloc && __temp_alloc->as.ptr) \
-            expr_free(__temp_alloc->as.ptr);
+        if (__temp_alloc && __temp_alloc->as.ptr) { \
+            expr_free(__temp_alloc->as.ptr); \
+            __temp_alloc->as.ptr = NULL; \
+        }
     #define INIT_STRING(__this, string, name) \
         if (!set_attr(__this, name, CN_TYPE_STRING, (cnany)string)) \
             return (VALUE_ERR);
@@ -97,6 +99,10 @@
             (void)delete_object(__class); \
             return (NULL); \
         }
+
+    #define PACK_ARG(...) (cnany []){ __VA_ARGS__ }
+    #define INLNE_PRIM_T_ARG(number) ((typeof((number)) [1]){(number)})
+    #define INLN_STRCT_T_ARG(constructor) (&(constructor))
 
     typedef float cnnumber; // less memory, more performance but less accuracy and capacity
     // typedef double cnnumber;

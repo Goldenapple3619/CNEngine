@@ -16,13 +16,25 @@
         GUI_ALIGN_RIGHT
     } cnrgui_alignement;
 
-    struct text_mode_s {
+    struct gui_object_mode_s {
         Vector2 position;
-        cncolor color;
-        int32_t size;
+        Vector2 scale;
+        cnnumber rotation;
+
+        int64_t zindex;
+
         cnrgui_alignement align;
-        const char *text;
+    };
+
+    struct text_mode_s {
+        struct gui_object_mode_s parent_mode;
+    
+        cncolor color;
+
+        int32_t font_size;
         const char *font_location;
+    
+        const char *text;
     };
 
     struct gui_board_mode_s {

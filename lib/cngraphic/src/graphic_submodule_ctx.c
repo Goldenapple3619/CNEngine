@@ -72,7 +72,7 @@ static cn_value _update(Object *__this, void **args)
             continue;
         }
 
-        (void)call_method(interfaces->objects[i], "_update", (cnany []){&get_attr(__this, "dt")->as.f, NULL});
+        (void)call_method(interfaces->objects[i], "_update", PACK_ARG(&get_attr(__this, "dt")->as.f));
     }
 
     return (null_value);
@@ -103,7 +103,7 @@ static cn_value _set_main_window(Object *__this, void **args)
     cnbool found = false;
 
     for (size_t i = 0; i < interfaces->size; ++i) {
-        if (((Window *)(get_attr(interfaces->objects[i], "window")->as.ptr))->id != *(int64_t *)args[0])
+        if (((Window *)(get_attr(interfaces->objects[i], "window")->as.ptr))->id != (int64_t)*(int32_t *)args[0])
             continue;
         found = true;
         break;
@@ -112,7 +112,7 @@ static cn_value _set_main_window(Object *__this, void **args)
     if (!found)
         return (VALUE_ERR);
 
-    INIT_INT(__this, *(int64_t *)args[0], "_main_window_id");
+    INIT_INT(__this, (int64_t)*(int32_t *)args[0], "_main_window_id");
 
     return (VALUE_OK);
 }
@@ -162,11 +162,11 @@ static cn_value _init(Object *__this, void **args)
     INIT_OBJECT_STATIC(ctx, new_atlas(NULL, (void (*)(void *))delete_mesh), NULL, "mesh_atlas");
     INIT_OBJECT_STATIC(ctx, new_atlas(NULL, (void (*)(void *))delete_material), NULL, "material_atlas");
 
-    if (call_method(ctx, "register_draw", (cnany []){_draw, NULL}).as.i == VALUE_ERR.as.i)
+    if (call_method(ctx, "register_draw", PACK_ARG(_draw)).as.i == VALUE_ERR.as.i)
         return (VALUE_ERR);
-    if (call_method(ctx, "register_update", (cnany []){_update, NULL}).as.i == VALUE_ERR.as.i)
+    if (call_method(ctx, "register_update", PACK_ARG(_update)).as.i == VALUE_ERR.as.i)
         return (VALUE_ERR);
-    if (call_method(ctx, "register_event", (cnany []){_events, NULL}).as.i == VALUE_ERR.as.i)
+    if (call_method(ctx, "register_event", PACK_ARG(_events)).as.i == VALUE_ERR.as.i)
         return (VALUE_ERR);
 
     INIT_METHOD(ctx, "spawn_interface", _spawn_interface)

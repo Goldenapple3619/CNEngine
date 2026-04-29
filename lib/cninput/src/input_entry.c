@@ -45,7 +45,7 @@ void input_entry_activate(const InputEntry *ie, const Event *event)
     INPUT_STATE state = input_state_from_event(event->type);
 
     for (size_t i = 0; i < ie->cbs_size; ++i)
-        ie->cbs[i]->method(ie->cbs[i]->obj, (cnany []){(cnany)(&state), (cnany)event});
+        ie->cbs[i]->method(ie->cbs[i]->obj, PACK_ARG((cnany)(&state), (cnany)event));
 }
 
 cnbool input_entry_cmp(const InputEntry *ie, const Event *ev)

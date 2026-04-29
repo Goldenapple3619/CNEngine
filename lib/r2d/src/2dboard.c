@@ -23,10 +23,9 @@ static cn_value _init(Object *__this, void **args)
     INIT_VEC2(__this, upscale, "upscale");
 
     INIT_OBJECT_STATIC(__this, new_camera2d(),
-        ((cnany []){
-            &(struct scene_object_mode_s){{0, 0, 0}, {1, 1, 1}, {0, 0, 0}, CN_OBJ_HOST | CN_OBJ_DRAWABLE},
-            NULL
-        })
+        (PACK_ARG(
+            &(struct scene_object_mode_s){{0, 0, 0}, {1, 1, 1}, {0, 0, 0}, CN_OBJ_HOST | CN_OBJ_DRAWABLE}
+        ))
     , "camera")
     INIT_CUSTOM_ALLOCATION(__this, new_texture(&mode->resolution, true), delete_texture, "texture");
     INIT_OBJECT_SHR(__this, mode->scene, "scene");
@@ -142,7 +141,7 @@ static cn_value _render_object(Object *__this, void **args)
     }
 
     if (has_method(render_stack->obj, "_draw"))
-        (void)call_method(render_stack->obj, "_draw", (cnany []){__this, render_stack->window, NULL});
+        (void)call_method(render_stack->obj, "_draw", PACK_ARG(__this, render_stack->window));
 
     return (null_value);
 }
@@ -169,7 +168,7 @@ static cn_value _draw(Object *__this, void **args)
         clear_texture(render_stack.cpu_texture, 0x000000ff);
 
     if (((render_stack.window->video_mode.flags & VDM_OPENGL) > 0)) {
-        glViewport(render_stack.canva_position.x, render_stack.canva_position.y, render_stack.canva_scale.x, render_stack.canva_scale.y);
+        glViewport(render_stack.canva_position.x, render_stack.window->video_mode.size.y - render_stack.canva_position.y - render_stack.canva_scale.y, render_stack.canva_scale.x, render_stack.canva_scale.y);
 
         if (!has_attr(__this, "gl_quad")) {
             PREP_INIT(); INIT_CUSTOM_ALLOCATION(__this, new_quad2d(), delete_quad, "gl_quad");
@@ -196,7 +195,7 @@ static cn_value _draw(Object *__this, void **args)
 
         render_stack.obj = it.val.as.ptr;
         
-        _render_object(__this, (cnany []){&render_stack, NULL});
+        _render_object(__this, PACK_ARG(&render_stack));
     }
 
     if (((render_stack.window->video_mode.flags & VDM_CPU) > 0))
@@ -212,6 +211,7 @@ static cn_value _del(Object *__this, void **args)
     PREP_DEL()
 
     DEL_CUSTOM_ALLOCAION(__this, delete_texture, "texture")
+    DEL_CUSTOM_ALLOCAION(__this, delete_quad, "gl_quad")
 
     return (null_value);
 }

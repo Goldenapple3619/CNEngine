@@ -22,6 +22,8 @@ static cn_value _init(Object *__this, void **args)
     INIT_CUSTOM_ALLOCATION(__this, new_texture(&mode->resolution, true), delete_texture, "texture");
     INIT_OBJECT_STATIC(__this, new_list(), NULL, "elements");
 
+    INIT_STRING(__this, "name", "guiboard");
+
     return (VALUE_OK);
 }
 
@@ -98,7 +100,8 @@ static cn_value _draw(Object *__this, void **args)
     Texture *temp_texture;
 
     if (((window->video_mode.flags & VDM_OPENGL) > 0)) {
-        glViewport(position->x, position->y, window->video_mode.size.x, window->video_mode.size.y);
+        glViewport(position->x, window->video_mode.size.y - position->y - upscale->y, upscale->x, upscale->y);
+
         if (!has_attr(__this, "gl_quad")) {
             PREP_INIT(); INIT_CUSTOM_ALLOCATION(__this, new_quad2d(), delete_quad, "gl_quad");
         }
@@ -144,7 +147,7 @@ static cn_value _draw(Object *__this, void **args)
         }
 
         if (has_method(temp, "_draw"))
-            (void)call_method(temp, "_draw", (cnany []){__this, window, NULL});
+            (void)call_method(temp, "_draw", PACK_ARG(__this, window));
     }
 
     if (((window->video_mode.flags & VDM_CPU) > 0))
@@ -170,6 +173,7 @@ static cn_value _del(Object *__this, void **args)
     PREP_DEL();
 
     DEL_CUSTOM_ALLOCAION(__this, delete_texture, "texture");
+    DEL_CUSTOM_ALLOCAION(__this, delete_quad, "gl_quad")
 
     return (null_value);
 }

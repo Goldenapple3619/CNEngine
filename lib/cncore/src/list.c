@@ -82,7 +82,7 @@ CN_API struct list_iterator_s list_get_iterator(Object *__list)
     if (!__at)
         return ((struct list_iterator_s){0});
 
-    return ((struct list_iterator_s){.get_element = __at, .size = __len, .pos = 0, ._obj = __list, .val = __at(__list, (cnany []){&(size_t){0}})});
+    return ((struct list_iterator_s){.get_element = __at, .size = __len, .pos = 0, ._obj = __list, .val = __at(__list, PACK_ARG(INLNE_PRIM_T_ARG((size_t)0)))});
 }
 
 CN_API void list_iterator_next(struct list_iterator_s *iterator)
@@ -93,7 +93,7 @@ CN_API void list_iterator_next(struct list_iterator_s *iterator)
     }
 
     ++iterator->pos;
-    iterator->val = (iterator->get_element(iterator->_obj, (cnany []){&iterator->pos}));
+    iterator->val = (iterator->get_element(iterator->_obj, PACK_ARG(&iterator->pos)));
 }
 
 CN_API cnbool list_iterator_value_isnull(const struct list_iterator_s *iterator)

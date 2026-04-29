@@ -130,7 +130,7 @@ CN_API struct list_iterator_s atlas_get_iterator(Object *__atlas, cnbool get_val
     if (!__at)
         return ((struct list_iterator_s){0});
 
-    return ((struct list_iterator_s){.get_element = __at, .size = __len, .pos = 0, ._obj = __atlas, .val = __at(__atlas, (cnany []){&(size_t){0}})});
+    return ((struct list_iterator_s){.get_element = __at, .size = __len, .pos = 0, ._obj = __atlas, .val = __at(__atlas, PACK_ARG(INLNE_PRIM_T_ARG((size_t)0)))});
 }
 
 CN_API void atlas_iterator_next(struct list_iterator_s *iterator)
@@ -141,7 +141,7 @@ CN_API void atlas_iterator_next(struct list_iterator_s *iterator)
     }
 
     ++iterator->pos;
-    iterator->val = (iterator->get_element(iterator->_obj, (cnany []){&iterator->pos}));
+    iterator->val = (iterator->get_element(iterator->_obj, PACK_ARG(&iterator->pos)));
 }
 
 CN_API cnbool atlas_iterator_value_isnull(const struct list_iterator_s *iterator)

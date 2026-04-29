@@ -9,10 +9,8 @@ static cn_value _init(Object *__this, void **args)
 
     struct text_mode_s *text_mode = args[0];
 
-    if (call_method(__this->base, "_init", (cnany []){&text_mode->position, NULL}).as.i == VALUE_ERR.as.i)
+    if (call_method(__this->base, "_init", PACK_ARG(&text_mode->parent_mode)).as.i == VALUE_ERR.as.i)
         return (VALUE_ERR);
-
-    set_attr(__this, "align", CN_TYPE_INT, &text_mode->align);
 
     SDL_Color c = (SDL_Color){.r = (text_mode->color & 0xff000000) >> 24,
             .g = (text_mode->color & 0x00ff0000) >> 16,
@@ -22,9 +20,9 @@ static cn_value _init(Object *__this, void **args)
 
     INIT_STRING(__this, text_mode->text, "text");
     INIT_INT(__this, text_mode->color, "color");
-    INIT_INT(__this, text_mode->size, "size");
+    INIT_INT(__this, text_mode->font_size, "size");
 
-    INIT_CUSTOM_ALLOCATION(__this, TTF_OpenFont(text_mode->font_location, text_mode->size), TTF_CloseFont, "font");
+    INIT_CUSTOM_ALLOCATION(__this, TTF_OpenFont(text_mode->font_location, text_mode->font_size), TTF_CloseFont, "font");
     INIT_CUSTOM_ALLOCATION(__this, new_texture_from_surface(TTF_RenderUTF8_Blended(get_attr(__this, "font")->as.ptr, text_mode->text, c)), delete_texture, "texture");
 
     return (VALUE_OK);

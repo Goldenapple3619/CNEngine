@@ -3,4 +3,6 @@
 
     #include "libcncore.h"
 
+    Object *add_test_window(Object *ctx);
+
 #endif

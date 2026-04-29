@@ -164,6 +164,7 @@ if(CN_BUILD_ENGINE)
 
     add_executable(cn_engine
         src/main.c
+        src/test.c
     )
 
     target_compile_options(cn_engine

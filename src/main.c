@@ -72,6 +72,8 @@ int main(int argc, char *argv[])
     if (!ctx)
         return (1);
 
+    add_test_window(ctx);
+
     call_method(ctx, "_run", NULL);
     delete_object(ctx);
 
