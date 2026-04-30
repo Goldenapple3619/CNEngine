@@ -60,7 +60,9 @@ static cn_value _events(Object *__this, void **args)
 
         set_attr(__this, "resolution", CN_TYPE_VEC2, &new_size);
         set_attr(__this, "upscale", CN_TYPE_VEC2, &new_size);
-        resize_texture(get_attr(__this, "texture")->as.ptr, &new_size);
+
+        if (has_attr(__this, "texture"))
+            resize_texture(get_attr(__this, "texture")->as.ptr, &new_size);
     }
 
     for (struct list_iterator_s it = list_get_iterator(elements); !list_iterator_isend(&it); list_iterator_next(&it)) {
