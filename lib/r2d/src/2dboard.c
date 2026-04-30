@@ -27,7 +27,6 @@ static cn_value _init(Object *__this, void **args)
             &(struct scene_object_mode_s){{0, 0, 0}, {1, 1, 1}, {0, 0, 0}, CN_OBJ_HOST | CN_OBJ_DRAWABLE}
         ))
     , "camera")
-    INIT_CUSTOM_ALLOCATION(__this, new_texture(&mode->resolution, true), delete_texture, "texture");
     INIT_OBJECT_SHR(__this, mode->scene, "scene");
 
     return (VALUE_OK);
@@ -162,10 +161,17 @@ static cn_value _draw(Object *__this, void **args)
     render_stack.canva_size = get_attr(__this, "resolution")->as.vec2;
     render_stack.canva_position = get_attr(__this, "position")->as.vec2;
     render_stack.canva_ratio = (Vector2){render_stack.canva_scale.x / render_stack.canva_size.x, render_stack.canva_scale.y / render_stack.canva_size.y};
-    render_stack.cpu_texture = get_attr(__this, "texture")->as.ptr;
+    render_stack.cpu_texture = NULL;
+    render_stack.gl_quad = NULL;
 
-    if (((render_stack.window->video_mode.flags & VDM_CPU) > 0))
+    if (((render_stack.window->video_mode.flags & VDM_CPU) > 0)) {
+        if (!has_attr(__this, "texture")) {
+            PREP_INIT(); INIT_CUSTOM_ALLOCATION(__this, new_texture(&render_stack.canva_size, true), delete_texture, "texture");
+        }
+
+        render_stack.cpu_texture = get_attr(__this, "cpu_texture")->as.ptr;
         clear_texture(render_stack.cpu_texture, 0x000000ff);
+    }
 
     if (((render_stack.window->video_mode.flags & VDM_OPENGL) > 0)) {
         glViewport(render_stack.canva_position.x, render_stack.window->video_mode.size.y - render_stack.canva_position.y - render_stack.canva_scale.y, render_stack.canva_scale.x, render_stack.canva_scale.y);

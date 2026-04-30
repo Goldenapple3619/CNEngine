@@ -45,6 +45,19 @@
         cnrgui_flags flags;
     };
 
+    typedef struct {
+        Object *obj;
+
+        Window *window;
+        Texture *cpu_texture;
+        Quad *gl_quad;
+
+        Vector2 canva_position;
+        Vector2 canva_size;
+        Vector2 canva_scale;
+        Vector2 canva_ratio;
+    } gui_render_stack;
+
     CN_API cnbool start_gui(void);
     CN_API void end_gui(void);
 
