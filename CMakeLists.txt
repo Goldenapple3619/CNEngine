@@ -164,7 +164,19 @@ if(CN_BUILD_ENGINE)
 
     add_executable(cn_engine
         src/main.c
-        src/test.c
+        src/argparser.c
+
+        src/init/route.c
+
+        src/cnbuild/route.c
+
+        src/help/route.c
+
+        src/test/camera.c
+        src/test/fps.c
+        src/test/inputs.c
+        src/test/render.c
+        src/test/route.c
     )
 
     target_compile_options(cn_engine
