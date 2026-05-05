@@ -26,7 +26,7 @@ Object *build_hud_test(Vector2 position, Vector2 size)
         new_text(),
         PACK_ARG(
             &(struct text_mode_s){.color = 0xffffffff, .font_location = "assets/fonts/ConsolaMono-Book.ttf", .font_size = 16, .text = "hello world",
-                .parent_mode = {.align = GUI_ALIGN_RIGHT, .position = {.x = 15, .y = 0}, .rotation = 0, .scale = {.x = 1, .y = 1}, .zindex = 0}
+                .parent_mode = {.align = GUI_ALIGN_RIGHT, .position = {.x = 15, .y = 0}, .rotation = 0, .scale = {.x = 1, .y = 1}, .zindex = 0, .positionning = GUI_POS_ABS, .justify = GUI_ALIGN_LEFT}
             }
         )
     );
@@ -38,7 +38,7 @@ Object *build_hud_test(Vector2 position, Vector2 size)
             new_text(),
             PACK_ARG(
                 &(struct text_mode_s){.color = 0xff0000ff, .font_location = "assets/fonts/ConsolaMono-Book.ttf", .font_size = 16, .text = "hello world",
-                    .parent_mode = {.align = GUI_ALIGN_MIDDLE, .position = {.x = 0, .y = 0}, .rotation = 0, .scale = {.x = 1, .y = 1}, .zindex = 0}
+                    .parent_mode = {.align = GUI_ALIGN_MIDDLE, .position = {.x = 0, .y = 0}, .rotation = 0, .scale = {.x = 1, .y = 1}, .zindex = 0, .positionning = GUI_POS_ABS, .justify = GUI_ALIGN_MIDDLE}
                 }
             )
         ), NULL

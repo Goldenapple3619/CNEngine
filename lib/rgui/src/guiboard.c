@@ -104,11 +104,41 @@ static void _opengl_rendering(Texture *object_texture, Quad *gl_quad, const Vect
 
     draw_texture_gl(
         object_texture, gl_quad,
-        &(Vector2){at->x * canva_ratio->x, at->y * at->y},
+        &(Vector2){at->x * canva_ratio->x, at->y * canva_ratio->y},
         &(Vector2){object_texture->size.x * canva_ratio->x, object_texture->size.y * canva_ratio->y},
         (cncolor)0xffffffff,
         canva_scale
     );
+}
+
+static Vector2 _compute_object_position(const gui_render_stack *render_stack)
+{
+    cnrgui_alignement temp_align = get_attr(render_stack->obj, "align")->as.i;
+    cnrgui_alignement temp_justify = get_attr(render_stack->obj, "justify")->as.i;
+    Vector2 temp_position = get_attr(render_stack->obj, "position")->as.vec2;
+    Vector2 *temp_size = &get_attr(render_stack->obj, "size")->as.vec2;
+
+    switch (temp_align) {
+        case GUI_ALIGN_MIDDLE:
+            temp_position.x += (render_stack->canva_size.x / 2 - temp_size->x / 2);
+            break;
+        case GUI_ALIGN_RIGHT:
+            temp_position.x = (render_stack->canva_size.x - temp_size->x) - temp_position.x;
+            break;
+        default: break;
+    }
+
+    switch (temp_justify) {
+        case GUI_ALIGN_MIDDLE:
+            temp_position.y += (render_stack->canva_size.y / 2 - temp_size->y / 2);
+            break;
+        case GUI_ALIGN_RIGHT:
+            temp_position.y = (render_stack->canva_size.y - temp_size->y) - temp_position.y;
+            break;
+        default: break;
+    }
+
+    return (temp_position);
 }
 
 static cn_value _render_object(Object *__this, void **args)
@@ -117,28 +147,56 @@ static cn_value _render_object(Object *__this, void **args)
         return (null_value);
 
     gui_render_stack *render_stack = args[0]; 
+    Texture *object_texture = (has_attr(render_stack->obj, "texture") ? get_attr(render_stack->obj, "texture")->as.ptr : NULL);
+    Object *childs = get_attr(render_stack->obj, "childs")->as.ptr;    
 
-    if (has_attr(render_stack->obj, "texture")) {
-        cnrgui_alignement temp_align = get_attr(render_stack->obj, "align")->as.i;
-        Vector2 temp_position = get_attr(render_stack->obj, "position")->as.vec2;
-        Texture *temp_texture = get_attr(render_stack->obj, "texture")->as.ptr;
+    Vector2 base_offset = render_stack->offset;
+    Vector2 base_canva_size = render_stack->canva_size;
+    Vector2 temp_position = _compute_object_position(render_stack);
+    Vector2 temp_size = get_attr(render_stack->obj, "size")->as.vec2;
+    Vector2 absolute_offset = (Vector2){temp_position.x + base_offset.x, temp_position.y + base_offset.y};
+    Vector2 relative_offset = absolute_offset; // only exists for when the render stack as to switch from rel to abs positionning
 
-        if (temp_align == GUI_ALIGN_MIDDLE)
-            temp_position.x += (render_stack->canva_size.x / 2 - temp_texture->size.x / 2);
-        if (temp_align == GUI_ALIGN_RIGHT)
-            temp_position.x = (render_stack->canva_size.x - temp_texture->size.x) - temp_position.x;
-
+    if (object_texture) {
         if (((render_stack->window->video_mode.flags & VDM_CPU) > 0))
-            _cpu_rendering(temp_texture, render_stack->cpu_texture, &temp_position);
+            _cpu_rendering(object_texture, render_stack->cpu_texture, &temp_position);
         else if ((render_stack->window->video_mode.flags & VDM_GPU) > 0)
-            _gpu_rendering(temp_texture, render_stack->window->renderer, &temp_position, &render_stack->canva_ratio, &render_stack->canva_position);
+            _gpu_rendering(object_texture, render_stack->window->renderer, &temp_position, &render_stack->canva_ratio, &render_stack->canva_position);
         else if ((render_stack->window->video_mode.flags & VDM_OPENGL) > 0)
-            _opengl_rendering(temp_texture, render_stack->gl_quad, &temp_position, &render_stack->canva_ratio, &render_stack->canva_scale);
+            _opengl_rendering(object_texture, render_stack->gl_quad, &temp_position, &render_stack->canva_ratio, &render_stack->canva_scale);
     }
 
     if (has_method(render_stack->obj, "_draw"))
-        (void)call_method(render_stack->obj, "_draw", PACK_ARG(__this, render_stack->window));
+        (void)call_method(render_stack->obj, "_draw", PACK_ARG(__this, &render_stack));
 
+    render_stack->offset.x += temp_position.x;
+    render_stack->offset.y += temp_position.y;
+    render_stack->canva_size = temp_size;
+
+    for (struct list_iterator_s it = list_get_iterator(childs); !list_iterator_isend(&it); list_iterator_next(&it)) {
+        if (list_iterator_value_isnull(&it))
+            continue;
+        
+        render_stack->obj = it.val.as.ptr;
+
+        if (get_attr(render_stack->obj, "positionning")->as.i == GUI_POS_ABS) {
+            relative_offset = render_stack->offset;
+            render_stack->offset = absolute_offset;
+
+            _render_object(__this, PACK_ARG(render_stack));
+
+            render_stack->offset = relative_offset;
+        } else {
+            _render_object(__this, PACK_ARG(render_stack));
+
+            render_stack->offset = add_vector2(&render_stack->offset, &get_attr(render_stack->obj, "size")->as.vec2);
+        }
+    }
+
+    render_stack->offset = base_offset;
+    render_stack->canva_size = base_canva_size;
+
+    render_stack->obj = __this;
     return (null_value);
 }
 
@@ -157,6 +215,7 @@ static cn_value _draw(Object *__this, void **args)
     render_stack.window = args[0];
     render_stack.cpu_texture = NULL;
     render_stack.gl_quad = NULL;
+    render_stack.offset = (Vector2){0, 0};
 
     if (((render_stack.window->video_mode.flags & VDM_CPU) > 0)) {
         if (!has_attr(__this, "texture")) {

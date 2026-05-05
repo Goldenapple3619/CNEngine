@@ -20,10 +20,12 @@ static cn_value _init(Object *__this, void **args)
 
     INIT_STRING(__this, text_mode->text, "text");
     INIT_INT(__this, text_mode->color, "color");
-    INIT_INT(__this, text_mode->font_size, "size");
+    INIT_INT(__this, text_mode->font_size, "font_size");
 
     INIT_CUSTOM_ALLOCATION(__this, TTF_OpenFont(text_mode->font_location, text_mode->font_size), TTF_CloseFont, "font");
     INIT_CUSTOM_ALLOCATION(__this, new_texture_from_surface(TTF_RenderUTF8_Blended(get_attr(__this, "font")->as.ptr, text_mode->text, c)), delete_texture, "texture");
+
+    INIT_VEC2(__this, ((Texture *)get_attr(__this, "texture")->as.ptr)->size, "size");
 
     return (VALUE_OK);
 }

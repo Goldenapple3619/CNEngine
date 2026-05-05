@@ -16,6 +16,11 @@
         GUI_ALIGN_RIGHT
     } cnrgui_alignement;
 
+    typedef enum {
+        GUI_POS_REL = 0x00,
+        GUI_POS_ABS,
+    } cnrgui_positionning;
+
     typedef enum  {
         GUI_BG_NONE = 0x00,
         GUI_BG_COLOR,
@@ -29,7 +34,10 @@
 
         int64_t zindex;
 
+        cnrgui_positionning positionning;
+
         cnrgui_alignement align;
+        cnrgui_alignement justify;
     };
 
     struct text_mode_s {
@@ -75,6 +83,8 @@
         Vector2 canva_size;
         Vector2 canva_scale;
         Vector2 canva_ratio;
+
+        Vector2 offset;
     } gui_render_stack;
 
     CN_API cnbool start_gui(void);

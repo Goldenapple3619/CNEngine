@@ -25,6 +25,8 @@ static cn_value _init(Object *__this, void **args)
             break;
     } 
 
+    INIT_VEC2(__this, container_mode->size, "size");
+
     return (VALUE_OK);
 }
 

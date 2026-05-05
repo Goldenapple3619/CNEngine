@@ -63,13 +63,13 @@
         if (!set_attr(__this, name, CN_TYPE_NUMBER, (cnany)((cnnumber [1]){number}))) \
             return (VALUE_ERR);
     #define INIT_VEC2(__this, vec2, name) \
-        if (!set_attr(__this, name, CN_TYPE_VEC2, (cnany)((struct vector2_s [1]){vec2}))) \
+        if (!set_attr(__this, name, CN_TYPE_VEC2, (cnany)(&vec2))) \
             return (VALUE_ERR);
     #define INIT_VEC3(__this, vec3, name) \
-        if (!set_attr(__this, name, CN_TYPE_VEC3, (cnany)((struct vector3_s [1]){vec3}))) \
+        if (!set_attr(__this, name, CN_TYPE_VEC3, (cnany)(&vec3))) \
             return (VALUE_ERR);
     #define INIT_RECT(__this, rect, name) \
-        if (!set_attr(__this, name, CN_TYPE_RECT, (cnany)((struct rect_s [1]){rect}))) \
+        if (!set_attr(__this, name, CN_TYPE_RECT, (cnany)(&rect))) \
             return (VALUE_ERR);
     #define INIT_FLOAT(__this, number, name) \
         if (!set_attr(__this, name, CN_TYPE_FLOAT, (cnany)((double [1]){number}))) \
@@ -299,6 +299,7 @@
     CN_API void delete_rect(Rect *r);
 
     CN_API Vector2 *new_vector2(cnnumber x, cnnumber y);
+    CN_API Vector2 add_vector2(const Vector2 *vec0, const Vector2 *vec1);
     CN_API void delete_vector2(Vector2 *v);
 
     CN_API Vector3 *new_vector3(cnnumber x, cnnumber y, cnnumber z);

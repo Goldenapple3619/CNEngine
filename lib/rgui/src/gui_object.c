@@ -13,8 +13,11 @@ static cn_value _init(Object *__this, void **args)
     INIT_VEC2(__this, mode->scale, "scale");
     INIT_NUMBER(__this, mode->rotation, "rotation");
 
-    INIT_INT(__this, mode->align, "align");
+    INIT_VEC2(__this, ((Vector2){0, 0}), "size");
 
+    INIT_INT(__this, mode->align, "align");
+    INIT_INT(__this, mode->justify, "justify");
+    INIT_INT(__this, mode->positionning, "positionning");
     INIT_INT(__this, mode->zindex, "z-index");
 
     INIT_OBJECT_STATIC(__this, new_list(), NULL, "childs");
