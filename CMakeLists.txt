@@ -160,6 +160,8 @@ add_custom_target(cn_dist ALL)
 
 # ========= engine executable =========
 if(CN_BUILD_ENGINE)
+    find_package(LibXml2 REQUIRED)
+
     add_dependencies(cn_dist cn_engine)
 
     add_executable(cn_engine
@@ -196,6 +198,8 @@ if(CN_BUILD_ENGINE)
             r3d
 
             m
+
+            LibXml2::LibXml2
     )
 
     target_include_directories(cn_engine

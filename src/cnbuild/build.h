@@ -1,18 +1,10 @@
 #ifndef _BUILD_H_
     #define _BUILD_H_
 
-    #include "../engine.h"
+    #include <libxml/parser.h>
+    #include <libxml/tree.h>
 
-    static const struct {
-        const char *name;
-        route_callback callback;
-    } build_types[] = {
-        {"gui", NULL},
-        {"obj", NULL},
-        {"scn", NULL},
-        {"proj", NULL},
-        {NULL, NULL}
-    };
+    #include "../engine.h"
 
     #define ENGINE_OBJ_MAGIC 0x0875C4E3
 
@@ -74,5 +66,18 @@
     };
 
     uint8_t write_object_file(const struct engine_object_file_s *object_file_write_ctx);
+
+    int build_gui(size_t argc, char **argv);
+
+    static const struct {
+        const char *name;
+        route_callback callback;
+    } build_types[] = {
+        {"gui", &build_gui},
+        {"obj", NULL},
+        {"scn", NULL},
+        {"proj", NULL},
+        {NULL, NULL}
+    };
 
 #endif
