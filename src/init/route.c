@@ -50,10 +50,10 @@ int init(size_t argc, char **argv)
     (void)argc;
     (void)argv;
 
-    char *name = get_input("Project name: ");
+    char *name = get_input("project name: ");
 
     if (!name) {
-        printf("cancelled.\n");
+        fprintf(stderr, "cancelled.\n");
         return (1);
     }
 

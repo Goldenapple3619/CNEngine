@@ -2,10 +2,20 @@
 
 int build(size_t argc, char **argv)
 {
-    (void)argc;
-    (void)argv;
+    size_t i = 0;
 
-    printf("not implemented.\n");
+    if (argc < 3) {
+        fprintf(stderr, "%s: asset build toolchain missing.", argv[0]);
+        return (1);
+    }
 
-    return (0);
+    while ((*(build_types + i)).name) {
+        if (!strcmp((*(build_types + i)).name, argv[2]))
+            return ((*(build_types + i)).callback(argc, argv));
+        ++i;
+    };
+
+    fprintf(stderr, "%s: invalid build toolchain '%s'.", argv[0], argv[2]);
+
+    return (1);
 }
