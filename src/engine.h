@@ -10,6 +10,7 @@
     #include "librgui.h"
     #include "libr2d.h"
     #include "libr3d.h"
+    #include "libcnassets.h"
 
     int argument_route(size_t argc, char **argv);
 

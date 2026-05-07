@@ -1,7 +1,7 @@
 project(cnassets C)
 
 add_library(cnassets SHARED
-
+    src/engine_object_writer.c
 )
 
 target_compile_options(cnassets
@@ -16,5 +16,5 @@ target_include_directories(cnassets
 
 target_link_libraries(cnassets
     PUBLIC
-
+        cncore
 )

@@ -151,6 +151,7 @@ add_subdirectory(lib/cncore)
 add_subdirectory(lib/cngraphic)
 add_subdirectory(lib/cnaudio)
 add_subdirectory(lib/cninput)
+add_subdirectory(lib/cnassets)
 add_subdirectory(lib/rgui)
 add_subdirectory(lib/r2d)
 add_subdirectory(lib/r3d)
@@ -192,6 +193,7 @@ if(CN_BUILD_ENGINE)
             cngraphic
             cnaudio
             cninput
+            cnassets
 
             rgui
             r2d
@@ -208,6 +210,7 @@ if(CN_BUILD_ENGINE)
             lib/cngraphic/include
             lib/cnaudio/include
             lib/cninput/include
+            lib/cnassets/include
 
             lib/rgui/include
             lib/r2d/include
@@ -259,7 +262,7 @@ foreach(lib freetype harfbuzz ogg opus opusfile xmp tiff)
 endforeach()
 
 # includes
-foreach(lib cncore cngraphic cnaudio cninput rgui r2d r3d)
+foreach(lib cncore cngraphic cnaudio cninput cnassets rgui r2d r3d)
     add_custom_command(TARGET cn_dist POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory
             "${CMAKE_SOURCE_DIR}/lib/${lib}/include"
@@ -340,7 +343,7 @@ foreach(lib glad_gl)
 endforeach()
 
 # modules libraries
-foreach(lib cncore cngraphic cnaudio cninput rgui r2d r3d)
+foreach(lib cncore cngraphic cnaudio cninput cnassets rgui r2d r3d)
     add_custom_command(TARGET cn_dist POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
             $<TARGET_FILE:${lib}>
