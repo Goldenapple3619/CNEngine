@@ -338,7 +338,7 @@
     CN_API uint8_t generic_map_resize(struct generic_map_s *gen_map, size_t new_capacity);
     CN_API uint8_t add_generic_map(struct generic_map_s *gen_map, void *element, const char *key, void (*_delete_obj)(void *));
     CN_API void remove_generic_map(struct generic_map_s *gen_map, const char *key, void (*_delete_obj)(void *));
-    CN_API const void *get_generic_map(struct generic_map_s *gen_map, const char *key, void *(*_obj_from_key_default)(const char *), void (*_delete_obj)(void *));
+    CN_API void *get_generic_map(struct generic_map_s *gen_map, const char *key, void *(*_obj_from_key_default)(const char *), void (*_delete_obj)(void *));
     CN_API void delete_generic_map(struct generic_map_s *gen_map, void (*_delete_obj)(void *));
 
     CN_API struct generic_vector_s *new_generic_vector(void);

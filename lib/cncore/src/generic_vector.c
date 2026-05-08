@@ -18,8 +18,10 @@ CN_API void delete_generic_vector(struct generic_vector_s *vec, void (*_delete_o
     if (!vec)
         return;
 
-    for (size_t i = 0; i < vec->size; ++i)
-        (void)_delete_obj(vec->content[i]);
+    if (_delete_obj) {
+        for (size_t i = 0; i < vec->size; ++i)
+            (void)_delete_obj(vec->content[i]);
+    }
 
     if (vec->content) {
         (void)free(vec->content);
@@ -71,7 +73,8 @@ CN_API void remove_generic_vector(struct generic_vector_s *vec, size_t i, void (
 
     size_t last = vec->size - 1;
 
-    (void)_delete_obj(vec->content[i]);
+    if (_delete_obj)
+        (void)_delete_obj(vec->content[i]);
 
     vec->content[i]  = vec->content[last];
     vec->size--;
@@ -82,7 +85,8 @@ CN_API void remove_generic_ordered_vector(struct generic_vector_s *vec, size_t i
     if (!vec || vec->size == 0 || i >= vec->size)
         return;
 
-    (void)_delete_obj(vec->content[i]);
+    if (_delete_obj)
+        (void)_delete_obj(vec->content[i]);
 
     for (size_t j = i; j < vec->size - 1; ++j)
         vec->content[j] = vec->content[j + 1];

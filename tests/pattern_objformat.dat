@@ -4,6 +4,7 @@
 0x4 magic
 0x1 endian
 0x4 flags
+0x4 type
 0x8 section_header_offset REF
 0x8 strndx REF
 0x4 name
@@ -27,8 +28,7 @@
 #          strndx
 /ref strndx
   - /loop
-    -- 0x4 strlen LOC
-    -- DYN_strlen value
+    -- 0x1 value
 
 # /--- Pattern Data ---\ #
 /colors
