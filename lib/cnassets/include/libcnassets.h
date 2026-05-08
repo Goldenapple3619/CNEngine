@@ -45,8 +45,8 @@
         ENGINE_WRT_ALIGN8_FLAG = (1 << 2),
         ENGINE_WRT_ALIGN16_FLAG = (1 << 3),
         ENGINE_WRT_ALIGN64_FLAG = (1 << 4),
-        ENGINE_WRT_ALIGN4096_FLAG = (1 << 4)
-    } engine_wrt_type;
+        ENGINE_WRT_ALIGN4096_FLAG = (1 << 5)
+    } engine_wrt_flags;
 
     struct engine_object_file_section_writer_ctx_s {
         char *section_name;

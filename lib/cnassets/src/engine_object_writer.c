@@ -60,6 +60,8 @@ static uint32_t flags_to_align(uint32_t flags)
         return (8);
     if ((flags & ENGINE_WRT_ALIGN4_FLAG) > 0)
         return (4);
+    if ((flags & ENGINE_WRT_ALIGN4096_FLAG) > 0)
+        return (4096);
     return (1);
 }
 
