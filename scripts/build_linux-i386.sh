@@ -18,8 +18,6 @@ cmake ../.. \
     -DCMAKE_CXX_FLAGS="-m32" \
     -DCMAKE_FIND_ROOT_PATH="/usr/lib/i386-linux-gnu;/usr/i686-linux-gnu" \
     -DCMAKE_LIBRARY_PATH="/usr/lib/i386-linux-gnu" \
-    -DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY=ONLY \
-    -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE=ONLY \
     -DTARGET_ARCH="i386" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_POLICY_VERSION_MINIMUM=3.5

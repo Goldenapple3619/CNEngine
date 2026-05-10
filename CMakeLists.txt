@@ -275,17 +275,31 @@ endforeach()
 
 # xml2
 if(WIN32)
+if(WIN32)
+    get_filename_component(MINGW_BIN_DIR ${CMAKE_C_COMPILER} DIRECTORY)
+
     find_file(XML2_DLL
         NAMES libxml2-2.dll libxml2.dll
-        PATHS "${CMAKE_FIND_ROOT_PATH}/bin"
+        PATHS "${MINGW_BIN_DIR}"
         NO_DEFAULT_PATH
         REQUIRED
     )
+
     add_custom_command(TARGET cn_dist POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/lib"
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
             "${XML2_DLL}" "${DIST_DIR}/lib/"
     )
+
+    # libxml2 deps
+    foreach(dep_dll libiconv-2.dll zlib1.dll)
+        if(EXISTS "${MINGW_BIN_DIR}/${dep_dll}")
+            add_custom_command(TARGET cn_dist POST_BUILD
+                COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                    "${MINGW_BIN_DIR}/${dep_dll}" "${DIST_DIR}/lib/"
+            )
+        endif()
+    endforeach()
 elseif(UNIX AND NOT APPLE)
     get_target_property(XML2_LIB LibXml2::LibXml2 LOCATION)
     get_filename_component(XML2_REAL "${XML2_LIB}" REALPATH)
@@ -293,9 +307,14 @@ elseif(UNIX AND NOT APPLE)
 
     add_custom_command(TARGET cn_dist POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/lib"
+
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
             "${XML2_REAL}" "${DIST_DIR}/lib/${XML2_NAME}"
-    )
+
+        COMMAND ${CMAKE_COMMAND}
+            -DXML2_LIB="${XML2_REAL}"
+            -DDIST_DIR="${DIST_DIR}"
+            -P "${CMAKE_SOURCE_DIR}/cmake/copy_xml2_deps.cmake"
 endif()
 
 # vendored
