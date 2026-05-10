@@ -34,6 +34,13 @@ uint8_t writer_ctx_set_object_name(struct engine_object_file_writer_ctx_s *wctx,
     return (0);
 }
 
+uint8_t writer_ctx_add_section(struct engine_object_file_writer_ctx_s *wctx, struct engine_object_file_section_writer_ctx_s *section)
+{
+    if (!wctx || !section)
+        return (1);
+    return (insert_generic_vector(&wctx->sections, section));
+}
+
 void delete_writer_ctx(struct engine_object_file_writer_ctx_s *wctx)
 {
     if (!wctx)
@@ -42,12 +49,57 @@ void delete_writer_ctx(struct engine_object_file_writer_ctx_s *wctx)
         (void)free(wctx->object_name);
     if (wctx->sections.content) {
         for (size_t i = 0; i < wctx->sections.size; ++i) {
-            (void)free(wctx->sections.content[i]);
+            (void)delete_writer_section(wctx->sections.content[i]);
         }
 
         (void)free(wctx->sections.content);
     }
     (void)free(wctx);
+}
+
+struct engine_object_file_section_writer_ctx_s *new_writer_section(const char *name, void *content_holder)
+{
+    struct engine_object_file_section_writer_ctx_s *section = malloc(sizeof(struct engine_object_file_section_writer_ctx_s));
+
+    if (!section)
+        return (NULL);
+
+    section->section_name = name ? strdup(name) : NULL;
+    if (name && !section->section_name) {
+        (void)free(section);
+        return (NULL);
+    }
+
+    section->write_infos.type = ENGINE_SEC_UKN;
+    section->write_infos.flags = ENGINE_SEC_NULL_FLAG;
+    section->content_generator = NULL;
+    section->content_size_generator = NULL;
+    section->_v = content_holder;
+    return (section);
+}
+
+uint8_t writer_section_set_name(struct engine_object_file_section_writer_ctx_s *section, const char *name)
+{
+    if (!section)
+        return (1);
+    if (section->section_name)
+        (void)free(section->section_name);
+    section->section_name = name ? strdup(name) : NULL;
+    if (name && !section->section_name)
+        return (1);
+    return (0);
+}
+
+void delete_writer_section(struct engine_object_file_section_writer_ctx_s *section)
+{
+    if (!section)
+        return;
+    if (section->section_name)
+        (void)free(section->section_name);
+    section->content_generator = NULL;
+    section->content_size_generator = NULL;
+    section->_v = NULL;
+    (void)free(section);
 }
 
 static uint32_t flags_to_align(uint32_t flags)
@@ -208,6 +260,8 @@ uint8_t write_object_file(FILE *fp, const struct engine_object_file_writer_ctx_s
     fpio_handler_t io_handler;
     int32_t align = flags_to_align(object_file_write_ctx->write_infos.flags);
     int64_t x;
+    size_t content_size;
+    char *content;
 
     if (!fp || !object_file_write_ctx)
         return (1);
@@ -261,7 +315,7 @@ uint8_t write_object_file(FILE *fp, const struct engine_object_file_writer_ctx_s
     
         temp_entry->section_flags = temp_section->write_infos.flags;
         temp_entry->section_type = temp_section->write_infos.type;
-        temp_entry->section_size = temp_section->content_size;
+        temp_entry->section_size = temp_section->content_size_generator ? temp_section->content_size_generator(temp_section) : 0;
         temp_entry->section_name = add_str_table(temp_section->section_name, strndx);
         temp_entry->section_off = 0;
 
@@ -301,12 +355,26 @@ uint8_t write_object_file(FILE *fp, const struct engine_object_file_writer_ctx_s
                 return (1);
             };
             ((struct engine_obj_section_header_entry_s *)section_header_entries->content[i])->section_off = (uint64_t)x;
+        } else {
+            if ((x = ENGINE_FTELL(fp)) < 0) {
+                delete_generic_map(strndx, (void(*)(void *))&delete_strndx_entry);
+                delete_generic_vector(section_header_entries, &free);
+                return (1);
+            }
+            ((struct engine_obj_section_header_entry_s *)section_header_entries->content[i])->section_off = (uint64_t)x;
         }
 
-        if (fwrite(temp_section->content, 1, (size_t)temp_section->content_size, fp) != (size_t)temp_section->content_size) {
-            delete_generic_map(strndx, (void(*)(void *))&delete_strndx_entry);
-            delete_generic_vector(section_header_entries, &free);
-            return (1);
+        content_size = temp_section->content_size_generator ? (size_t)temp_section->content_size_generator(temp_section) : (size_t)0;
+        content = temp_section->content_generator ? temp_section->content_generator(temp_section, object_file_write_ctx, strndx) : NULL;
+
+        if (content_size && content) {
+            if (fwrite(content, 1, content_size, fp) != content_size) {
+                delete_generic_map(strndx, (void(*)(void *))&delete_strndx_entry);
+                delete_generic_vector(section_header_entries, &free);
+                return (1);
+            }
+        } else {
+            fprintf(stderr, "warning: empty section written at %lx\n", ENGINE_FTELL(fp));
         }
     }
 

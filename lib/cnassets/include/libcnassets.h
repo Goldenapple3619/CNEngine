@@ -48,6 +48,19 @@
         ENGINE_WRT_ALIGN4096_FLAG = (1 << 5)
     } engine_wrt_flags;
 
+    typedef enum {
+        ENGINE_SEC_UKN = 0x00,
+        ENGINE_SEC_GUI_NODES,
+        ENGINE_SEC_GUI_STYLE,
+        ENGINE_SEC_GUI_CONN
+    } engine_section_type;
+
+    typedef enum {
+        ENGINE_SEC_NULL_FLAG = 0x00
+    } engine_section_wrt_flags;
+
+    struct engine_object_file_writer_ctx_s;
+
     struct engine_object_file_section_writer_ctx_s {
         char *section_name;
     
@@ -56,8 +69,10 @@
             uint32_t flags;
         } write_infos;
 
-        char *content;
-        uint64_t content_size;
+        char *(*content_generator)(struct engine_object_file_section_writer_ctx_s *self, const struct engine_object_file_writer_ctx_s *writer, struct generic_map_s *strndx);
+        uint64_t (*content_size_generator)(struct engine_object_file_section_writer_ctx_s *self);
+
+        void *_v;
     };
 
     struct engine_object_file_writer_ctx_s {
@@ -122,11 +137,26 @@
     uint8_t fpwr_u64_be(FILE *fp, uint64_t v);
     uint8_t fpwr_u64_le(FILE *fp, uint64_t v);
 
+    void bufwr_u8(char *buf, uint8_t v);
+    void bufwr_u16_be(char *buf, uint16_t v);
+    ;void bufwr_u16_le(char *buf, uint16_t v);
+    void bufwr_u32_be(char *buf, uint32_t v);
+    void bufwr_u32_le(char *buf, uint32_t v);
+    void bufwr_u64_be(char *buf, uint64_t v);
+    void bufwr_u64_le(char *buf, uint64_t v);
+
     fpio_handler_t fpio_handler_from_writer(const struct engine_object_file_writer_ctx_s *object_file_write_ctx);
 
     struct engine_object_file_writer_ctx_s *new_writer_ctx(const char *name);
     uint8_t writer_ctx_set_object_name(struct engine_object_file_writer_ctx_s *wctx, const char *name);
     uint8_t write_object_file(FILE *fp, const struct engine_object_file_writer_ctx_s *object_file_write_ctx);
+    uint8_t writer_ctx_add_section(struct engine_object_file_writer_ctx_s *wctx, struct engine_object_file_section_writer_ctx_s *section);
     void delete_writer_ctx(struct engine_object_file_writer_ctx_s *wctx);
+
+    struct engine_object_file_section_writer_ctx_s *new_writer_section(const char *name, void *content_holder);
+    uint8_t writer_section_set_name(struct engine_object_file_section_writer_ctx_s *section, const char *name);
+    void delete_writer_section(struct engine_object_file_section_writer_ctx_s *section);
+
+    uint32_t add_str_table(const char *str, struct generic_map_s *strndx);
 
 #endif

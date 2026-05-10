@@ -202,6 +202,7 @@ if(CN_BUILD_ENGINE)
             m
 
             LibXml2::LibXml2
+            uuid
     )
 
     target_include_directories(cn_engine

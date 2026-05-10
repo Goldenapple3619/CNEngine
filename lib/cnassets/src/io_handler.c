@@ -79,3 +79,64 @@ fpio_handler_t fpio_handler_from_writer(const struct engine_object_file_writer_c
 
     return (io_handler);
 }
+
+void bufwr_u8(char *buf, uint8_t v)
+{
+    buf[0] = v;
+}
+
+void bufwr_u16_be(char *buf, uint16_t v)
+{
+    uint8_t b[2] = {
+        (uint8_t)(v >>  8), (uint8_t)(v)
+    };
+    (void)memcpy(buf, b, sizeof(b));
+}
+
+void bufwr_u16_le(char *buf, uint16_t v)
+{
+    uint8_t b[2] = {
+        (uint8_t)(v), (uint8_t)(v >>  8),
+    };
+    (void)memcpy(buf, b, sizeof(b));
+}
+
+void bufwr_u32_be(char *buf, uint32_t v)
+{
+    uint8_t b[4] = {
+        (uint8_t)(v >> 24), (uint8_t)(v >> 16),
+        (uint8_t)(v >>  8), (uint8_t)(v)
+    };
+    (void)memcpy(buf, b, sizeof(b));
+}
+
+void bufwr_u32_le(char *buf, uint32_t v)
+{
+    uint8_t b[4] = {
+        (uint8_t)(v), (uint8_t)(v >>  8),
+        (uint8_t)(v >> 16), (uint8_t)(v >> 24)
+    };
+    (void)memcpy(buf, b, sizeof(b));
+}
+
+void bufwr_u64_be(char *buf, uint64_t v)
+{
+    uint8_t b[8] = {
+        (uint8_t)(v >> 56), (uint8_t)(v >> 48),
+        (uint8_t)(v >> 40), (uint8_t)(v >> 32),
+        (uint8_t)(v >> 24), (uint8_t)(v >> 16),
+        (uint8_t)(v >>  8), (uint8_t)(v)
+    };
+    (void)memcpy(buf, b, sizeof(b));
+}
+
+void bufwr_u64_le(char *buf, uint64_t v)
+{
+    uint8_t b[8] = {
+        (uint8_t)(v), (uint8_t)(v >>  8),
+        (uint8_t)(v >> 16), (uint8_t)(v >> 24),
+        (uint8_t)(v >> 32), (uint8_t)(v >> 40),
+        (uint8_t)(v >> 48), (uint8_t)(v >> 56)
+    };
+    (void)memcpy(buf, b, sizeof(b));
+}

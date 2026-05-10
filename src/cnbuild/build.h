@@ -15,6 +15,15 @@
         engine_wrt_endian endian;
     };
 
+    struct parsed_gui_element_data_s {
+        char *id;
+        char *object_type;
+        char *text_content;
+
+        const struct parsed_gui_element_data_s *parent;
+        struct generic_map_s styles;
+    };
+
     int build_gui(size_t argc, char **argv);
 
     static const struct {
