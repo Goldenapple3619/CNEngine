@@ -202,8 +202,18 @@ if(CN_BUILD_ENGINE)
             m
 
             LibXml2::LibXml2
-            uuid
     )
+
+    if(WIN32)
+        target_link_libraries(cn_engine PRIVATE Rpcrt4)
+    elseif(APPLE)
+        target_link_libraries(cn_engine PRIVATE "-framework CoreFoundation")
+    else()
+        find_package(PkgConfig REQUIRED)
+        pkg_check_modules(UUID REQUIRED uuid)
+        target_link_libraries(cn_engine PRIVATE ${UUID_LIBRARIES})
+        target_include_directories(cn_engine PRIVATE ${UUID_INCLUDE_DIRS})
+    endif()
 
     target_include_directories(cn_engine
         PRIVATE
@@ -236,6 +246,22 @@ foreach(lib SDL2 SDL2_image SDL2_mixer SDL2_ttf)
             "${DIST_DIR}/lib/"
     )
 endforeach()
+
+# uuid
+if(UNIX AND NOT APPLE)
+    pkg_check_modules(UUID REQUIRED uuid)
+
+    foreach(lib_path ${UUID_LINK_LIBRARIES})
+        get_filename_component(lib_real "${lib_path}" REALPATH)
+
+        add_custom_command(TARGET cn_dist POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/lib"
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                "${lib_real}"
+                "${DIST_DIR}/lib/"
+        )
+    endforeach()
+endif()
 
 #gl
 foreach(lib glad_gl)

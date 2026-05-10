@@ -348,7 +348,7 @@ uint8_t write_object_file(FILE *fp, const struct engine_object_file_writer_ctx_s
     for (size_t i = 0; i < object_file_write_ctx->sections.size; ++i) {
         temp_section = object_file_write_ctx->sections.content[i];
 
-        if (object_file_write_ctx->sections.size - 1 != i) {
+        if (object_file_write_ctx->sections.size - 1 != i || i == 0) {
             if ((x = ENGINE_FTELL(fp)) < 0 || write_pad(fp, (uint64_t)x, align) || (x = ENGINE_FTELL(fp)) < 0) {
                 delete_generic_map(strndx, (void(*)(void *))&delete_strndx_entry);
                 delete_generic_vector(section_header_entries, &free);
