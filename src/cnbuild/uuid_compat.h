@@ -26,6 +26,9 @@
             RpcStringFreeA(&p);
         }
 
+        #ifdef uuid_t
+            #undef uuid_t
+        #endif
         #define uuid_t cn_uuid_bytes
 
     #elif defined(__APPLE__)
