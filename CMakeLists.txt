@@ -273,22 +273,20 @@ foreach(lib glad_gl)
     )
 endforeach()
 
-# xml2
 if(WIN32)
     get_filename_component(MINGW_BIN_DIR ${CMAKE_C_COMPILER} DIRECTORY)
-    message(STATUS "Looking for xml2 dll in: ${MINGW_BIN_DIR}")
-    message(STATUS "Files in that dir:")
-    file(GLOB _xml2_candidates "${MINGW_BIN_DIR}/libxml*")
-    foreach(f ${_xml2_candidates})
-        message(STATUS "  ${f}")
-    endforeach()
 
-    find_file(XML2_DLL
-        NAMES libxml2-2.dll libxml2.dll
-        PATHS "${MINGW_BIN_DIR}"
-        NO_DEFAULT_PATH
-        REQUIRED
+    # Use glob instead of hardcoded names
+    file(GLOB XML2_DLL_CANDIDATES
+        "${MINGW_BIN_DIR}/libxml2*.dll"
     )
+
+    if(NOT XML2_DLL_CANDIDATES)
+        message(FATAL_ERROR "Could not find libxml2*.dll in ${MINGW_BIN_DIR}")
+    endif()
+
+    list(GET XML2_DLL_CANDIDATES 0 XML2_DLL)
+    message(STATUS "Found xml2 dll: ${XML2_DLL}")
 
     add_custom_command(TARGET cn_dist POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/lib"
@@ -296,7 +294,6 @@ if(WIN32)
             "${XML2_DLL}" "${DIST_DIR}/lib/"
     )
 
-    # libxml2 deps
     foreach(dep_dll libiconv-2.dll zlib1.dll)
         if(EXISTS "${MINGW_BIN_DIR}/${dep_dll}")
             add_custom_command(TARGET cn_dist POST_BUILD
