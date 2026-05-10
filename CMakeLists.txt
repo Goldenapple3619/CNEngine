@@ -273,6 +273,17 @@ foreach(lib glad_gl)
     )
 endforeach()
 
+# xml2
+get_target_property(XML2_LIB LibXml2::LibXml2 LOCATION)
+get_filename_component(XML2_REAL "${XML2_LIB}" REALPATH)
+get_filename_component(XML2_NAME "${XML2_REAL}" NAME)
+
+add_custom_command(TARGET cn_dist POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/lib"
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        "${XML2_REAL}" "${DIST_DIR}/lib/${XML2_NAME}"
+)
+
 # vendored
 foreach(lib freetype harfbuzz ogg opus opusfile xmp tiff)
     if(TARGET ${lib})
