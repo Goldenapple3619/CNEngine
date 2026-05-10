@@ -12,7 +12,7 @@
 \DoxyCodeLine{00008\ }
 \DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ uuid\_t[16];}
 \DoxyCodeLine{00010\ }
-\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ uuid\_generate(uuid\_t\ out)\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ uuid\_generate\_random(uuid\_t\ out)\ \{}
 \DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \ \ \ \ UUID\ w;}
 \DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \ \ \ \ UuidCreate(\&w);}
 \DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \ \ \ \ memcpy(out,\ \&w,\ 16);}
@@ -33,7 +33,7 @@
 \DoxyCodeLine{00029\ }
 \DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ uuid\_t[16];}
 \DoxyCodeLine{00031\ }
-\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ uuid\_generate(uuid\_t\ out)\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ uuid\_generate\_random(uuid\_t\ out)\ \{}
 \DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ CFUUIDRef\ u\ =\ CFUUIDCreate(NULL);}
 \DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ CFUUIDBytes\ b\ =\ CFUUIDGetUUIDBytes(u);}
 \DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ CFRelease(u);}
