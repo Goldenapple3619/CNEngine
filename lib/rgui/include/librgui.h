@@ -16,13 +16,52 @@
         GUI_ALIGN_RIGHT
     } cnrgui_alignement;
 
-    struct text_mode_s {
+    typedef enum {
+        GUI_POS_REL = 0x00,
+        GUI_POS_ABS,
+    } cnrgui_positionning;
+
+    typedef enum  {
+        GUI_BG_NONE = 0x00,
+        GUI_BG_COLOR,
+        GUI_BG_IMAGE
+    } cnrgui_background_type;
+
+    struct gui_object_mode_s {
         Vector2 position;
-        cncolor color;
-        int32_t size;
+        Vector2 scale;
+        cnnumber rotation;
+
+        int64_t zindex;
+
+        cnrgui_positionning positionning;
+
         cnrgui_alignement align;
-        const char *text;
+        cnrgui_alignement justify;
+    };
+
+    struct text_mode_s {
+        struct gui_object_mode_s parent_mode;
+    
+        cncolor color;
+
+        int32_t font_size;
         const char *font_location;
+    
+        const char *text;
+    };
+
+    struct container_mode_s {
+        struct gui_object_mode_s parent_mode;
+    
+        union {
+            cncolor background_color;
+            const Texture *background_image;
+        } background;
+        cnrgui_background_type background_type;
+
+        Vector2 size;
+        cnbool overflow;
     };
 
     struct gui_board_mode_s {
@@ -33,6 +72,21 @@
         cnrgui_flags flags;
     };
 
+    typedef struct {
+        Object *obj;
+
+        Window *window;
+        Texture *cpu_texture;
+        Quad *gl_quad;
+
+        Vector2 canva_position;
+        Vector2 canva_size;
+        Vector2 canva_scale;
+        Vector2 canva_ratio;
+
+        Vector2 offset;
+    } gui_render_stack;
+
     CN_API cnbool start_gui(void);
     CN_API void end_gui(void);
 
@@ -40,6 +94,7 @@
 
     CN_API Object *new_guiobject(void);
     CN_API Object *new_text(void);
+    CN_API Object *new_container(void);
 
     CN_API Object *new_gui_submodule(void);
 #endif

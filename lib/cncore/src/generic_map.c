@@ -84,7 +84,7 @@ CN_API void remove_generic_map(struct generic_map_s *gen_map, const char *key, v
     }
 }
 
-CN_API const void *get_generic_map(struct generic_map_s *gen_map, const char *key, void *(*_obj_from_key_default)(const char *), void (*_delete_obj)(void *))
+CN_API void *get_generic_map(struct generic_map_s *gen_map, const char *key, void *(*_obj_from_key_default)(const char *), void (*_delete_obj)(void *))
 {
     if (!gen_map || !key)
         return (NULL);

@@ -13,6 +13,11 @@ CN_API Vector2 *new_vector2(cnnumber x, cnnumber y)
     return (v);
 }
 
+CN_API Vector2 add_vector2(const Vector2 *vec0, const Vector2 *vec1)
+{
+    return (Vector2){.x = vec1->x + vec0->x, .y = vec1->y + vec0->y};
+}
+
 CN_API void delete_vector2(Vector2 *v)
 {
     if (!v)

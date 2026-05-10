@@ -7,9 +7,18 @@ static cn_value _init(Object *__this, void **args)
 
     PREP_INIT()
 
-    INIT_VEC2(__this, *(Vector2 *)args[0], "position");
-    INIT_INT(__this, GUI_ALIGN_LEFT, "align");
-    INIT_INT(__this, 0, "z-index");
+    struct gui_object_mode_s *mode = (struct gui_object_mode_s *)(args[0]);
+
+    INIT_VEC2(__this, mode->position, "position");
+    INIT_VEC2(__this, mode->scale, "scale");
+    INIT_NUMBER(__this, mode->rotation, "rotation");
+
+    INIT_VEC2(__this, ((Vector2){0, 0}), "size");
+
+    INIT_INT(__this, mode->align, "align");
+    INIT_INT(__this, mode->justify, "justify");
+    INIT_INT(__this, mode->positionning, "positionning");
+    INIT_INT(__this, mode->zindex, "z-index");
 
     INIT_OBJECT_STATIC(__this, new_list(), NULL, "childs");
 

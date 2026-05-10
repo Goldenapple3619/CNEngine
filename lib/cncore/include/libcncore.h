@@ -49,8 +49,10 @@
     #define PREP_DEL() cn_value *__temp_alloc;
     #define DEL_CUSTOM_ALLOCAION(__this, expr_free, name) \
         __temp_alloc = get_attr(__this, name); \
-        if (__temp_alloc && __temp_alloc->as.ptr) \
-            expr_free(__temp_alloc->as.ptr);
+        if (__temp_alloc && __temp_alloc->as.ptr) { \
+            expr_free(__temp_alloc->as.ptr); \
+            __temp_alloc->as.ptr = NULL; \
+        }
     #define INIT_STRING(__this, string, name) \
         if (!set_attr(__this, name, CN_TYPE_STRING, (cnany)string)) \
             return (VALUE_ERR);
@@ -61,13 +63,13 @@
         if (!set_attr(__this, name, CN_TYPE_NUMBER, (cnany)((cnnumber [1]){number}))) \
             return (VALUE_ERR);
     #define INIT_VEC2(__this, vec2, name) \
-        if (!set_attr(__this, name, CN_TYPE_VEC2, (cnany)((struct vector2_s [1]){vec2}))) \
+        if (!set_attr(__this, name, CN_TYPE_VEC2, (cnany)(&vec2))) \
             return (VALUE_ERR);
     #define INIT_VEC3(__this, vec3, name) \
-        if (!set_attr(__this, name, CN_TYPE_VEC3, (cnany)((struct vector3_s [1]){vec3}))) \
+        if (!set_attr(__this, name, CN_TYPE_VEC3, (cnany)(&vec3))) \
             return (VALUE_ERR);
     #define INIT_RECT(__this, rect, name) \
-        if (!set_attr(__this, name, CN_TYPE_RECT, (cnany)((struct rect_s [1]){rect}))) \
+        if (!set_attr(__this, name, CN_TYPE_RECT, (cnany)(&rect))) \
             return (VALUE_ERR);
     #define INIT_FLOAT(__this, number, name) \
         if (!set_attr(__this, name, CN_TYPE_FLOAT, (cnany)((double [1]){number}))) \
@@ -97,6 +99,10 @@
             (void)delete_object(__class); \
             return (NULL); \
         }
+
+    #define PACK_ARG(...) (cnany []){ __VA_ARGS__ }
+    #define INLNE_PRIM_T_ARG(number) ((typeof((number)) [1]){(number)})
+    #define INLN_STRCT_T_ARG(constructor) (&(constructor))
 
     typedef float cnnumber; // less memory, more performance but less accuracy and capacity
     // typedef double cnnumber;
@@ -293,6 +299,7 @@
     CN_API void delete_rect(Rect *r);
 
     CN_API Vector2 *new_vector2(cnnumber x, cnnumber y);
+    CN_API Vector2 add_vector2(const Vector2 *vec0, const Vector2 *vec1);
     CN_API void delete_vector2(Vector2 *v);
 
     CN_API Vector3 *new_vector3(cnnumber x, cnnumber y, cnnumber z);
@@ -331,7 +338,7 @@
     CN_API uint8_t generic_map_resize(struct generic_map_s *gen_map, size_t new_capacity);
     CN_API uint8_t add_generic_map(struct generic_map_s *gen_map, void *element, const char *key, void (*_delete_obj)(void *));
     CN_API void remove_generic_map(struct generic_map_s *gen_map, const char *key, void (*_delete_obj)(void *));
-    CN_API const void *get_generic_map(struct generic_map_s *gen_map, const char *key, void *(*_obj_from_key_default)(const char *), void (*_delete_obj)(void *));
+    CN_API void *get_generic_map(struct generic_map_s *gen_map, const char *key, void *(*_obj_from_key_default)(const char *), void (*_delete_obj)(void *));
     CN_API void delete_generic_map(struct generic_map_s *gen_map, void (*_delete_obj)(void *));
 
     CN_API struct generic_vector_s *new_generic_vector(void);

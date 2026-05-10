@@ -6,7 +6,7 @@ static cn_value _update_scene(Object *__this, void **args)
 
     Object *scene = get_attr(__this, "scene")->as.ptr;
 
-    (void)call_method(scene, "_update", (cnany []){&get_attr(__this, "dt")->as.f , NULL});
+    (void)call_method(scene, "_update", PACK_ARG(&get_attr(__this, "dt")->as.f));
     return (null_value);
 }
 
@@ -29,7 +29,7 @@ static cn_value _init(Object *__this, void **args)
     INIT_CUSTOM_ALLOCATION(__this, new_value_vector(), delete_value_vector, "draw_pool");
     INIT_OBJECT_STATIC(__this, new_scene(), NULL, "scene");
 
-    if (call_method(__this, "register_update", (cnany []){&_update_scene, NULL}).as.i == VALUE_ERR.as.i) {
+    if (call_method(__this, "register_update", PACK_ARG(&_update_scene)).as.i == VALUE_ERR.as.i) {
         return (VALUE_ERR);
     }
 
@@ -42,7 +42,7 @@ static cn_value _init(Object *__this, void **args)
     cn_value ret;
 
     for (size_t i = 0; i < temp_vec->size; ++i) {
-        ret = call_method(temp_vec->objects[i], "_init", ((cnany []){(cnany)__this, NULL}));
+        ret = call_method(temp_vec->objects[i], "_init", PACK_ARG((cnany)__this));
 
         if (ret.type == CN_TYPE_NULL || ret.as.i == VALUE_ERR.as.i)
             return (VALUE_ERR);
@@ -128,7 +128,7 @@ static cn_value _del(Object *__this, void **args)
         ObjectVector *vec = s->as.ptr;
 
         for (size_t i = 0; i < vec->size; ++i) {
-            call_method(vec->objects[i], "_del", ((cnany []){(cnany)__this, NULL}));
+            call_method(vec->objects[i], "_del", PACK_ARG((cnany)__this));
         }
 
         delete_object_vector(vec);

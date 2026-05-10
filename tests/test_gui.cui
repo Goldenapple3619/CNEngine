@@ -1,0 +1,23 @@
+<gui name="test_gui">
+    <content>
+        <container background_color="aaaaaacc" align="right" justify="middle" size="200,600">
+            <text align="left" color="ff0000ff">left</text>
+            <text align="middle" color="00ff00ff">middle</text>
+            <text align="middle" justify="middle" positionning="absolute" color="ffffffff">absolute</text>
+            <text align="right" color="0000ffff">right</text>
+        </container>
+
+        <text align="left" justify="top" color="ffffffff" id="FPS_TEXT">
+            fps: 00.00
+        </text>
+    </content>
+
+    <connectors>
+        <FPS_TEXT>
+            <symbol>
+                <name>update_fps</name>
+                <override>_update</override>
+            </symbol>
+        </FPS_TEXT>
+    </connectors>
+</gui>

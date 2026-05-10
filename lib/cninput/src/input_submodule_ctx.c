@@ -50,7 +50,7 @@ static cn_value _register_input_callback(Object *__this, void **args)
 
     Object *atlas = get_attr(__this, "inputs")->as.ptr;
     InputEntry *ie;
-    cn_value temp = call_method(atlas, "at", (cnany []){args[0]});
+    cn_value temp = call_method(atlas, "at", PACK_ARG(args[0]));
 
     if (temp.type == CN_TYPE_NULL) {
         ie = new_input_entry(args[0]);
@@ -58,7 +58,7 @@ static cn_value _register_input_callback(Object *__this, void **args)
         if (!ie)
             return (VALUE_ERR);
 
-        if (call_method(atlas, "push", (cnany []){ie, args[0]}).as.i == VALUE_ERR.as.i)
+        if (call_method(atlas, "push", PACK_ARG(ie, args[0])).as.i == VALUE_ERR.as.i)
             return (VALUE_ERR);
     } else {
         ie = temp.as.ptr;
@@ -77,7 +77,7 @@ static cn_value _register_input_controller(Object *__this, void **args)
 
     Object *atlas = get_attr(__this, "inputs")->as.ptr;
     InputEntry *ie;
-    cn_value temp = call_method(atlas, "at", (cnany []){args[0]});
+    cn_value temp = call_method(atlas, "at", PACK_ARG(args[0]));
 
     if (temp.type == CN_TYPE_NULL) {
         ie = new_input_entry(args[0]);
@@ -85,7 +85,7 @@ static cn_value _register_input_controller(Object *__this, void **args)
         if (!ie)
             return (VALUE_ERR);
 
-        if (call_method(atlas, "push", (cnany []){ie, args[0]}).as.i == VALUE_ERR.as.i)
+        if (call_method(atlas, "push", PACK_ARG(ie, args[0])).as.i == VALUE_ERR.as.i)
             return (VALUE_ERR);
     } else {
         ie = temp.as.ptr;
@@ -104,7 +104,7 @@ static cn_value _unregister_input_callback(Object *__this, void **args)
 
     Object *atlas = get_attr(__this, "inputs")->as.ptr;
     InputEntry *ie;
-    cn_value temp = call_method(atlas, "at", (cnany []){args[0]});
+    cn_value temp = call_method(atlas, "at", PACK_ARG(args[0]));
 
     if (temp.type == CN_TYPE_NULL) {
         return (null_value);
@@ -139,7 +139,7 @@ static cn_value _init(Object *__this, void **args)
 
     INIT_OBJECT_STATIC(ctx, new_atlas(NULL, (void (*)(void *))(&delete_input_entry)), NULL, "inputs");
 
-    if (call_method(ctx, "register_event", (cnany []){&_events, NULL}).as.i == VALUE_ERR.as.i)
+    if (call_method(ctx, "register_event", PACK_ARG(&_events)).as.i == VALUE_ERR.as.i)
         return (VALUE_ERR);
 
     INIT_METHOD(ctx, "register_input_controller", _register_input_controller);

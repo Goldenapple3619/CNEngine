@@ -40,7 +40,7 @@ static cn_value _events(Object *__this, void **args)
     ObjectVector *elements = get_attr(__this, "elements")->as.ptr;
 
     for (size_t i = 0; i < elements->size; ++i)
-        (void)call_method(elements->objects[i], "_events", ((cnany []){(cnany)w, NULL}));
+        (void)call_method(elements->objects[i], "_events", PACK_ARG((cnany)w));
 
     return (null_value);
 }
@@ -68,7 +68,7 @@ static cn_value _draw(Object *__this, void **args)
     (void)clear_window(w, 0x000000ff);
 
     for (size_t i = 0; i < elements->size; ++i)
-        (void)call_method(elements->objects[i], "_draw", ((cnany []){(cnany)w, NULL}));
+        (void)call_method(elements->objects[i], "_draw", PACK_ARG((cnany)w));
 
     (void)draw_window(w);
 

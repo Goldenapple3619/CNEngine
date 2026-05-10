@@ -49,9 +49,9 @@ static cn_value _init(Object *__this, void **args)
     if (!start_audio() && get_attr(__this, "init_errors")->as.b)
         return (VALUE_ERR);
 
-    if (call_method(ctx, "register_update", (cnany []){_update, NULL}).as.i == VALUE_ERR.as.i)
+    if (call_method(ctx, "register_update", PACK_ARG(_update)).as.i == VALUE_ERR.as.i)
         return (VALUE_ERR);
-    // if (call_method(ctx, "register_event", (cnany []){_events, NULL}).as.i == VALUE_ERR.as.i)
+    // if (call_method(ctx, "register_event", PACK_ARG(_events, NULL)).as.i == VALUE_ERR.as.i)
     //     return (VALUE_ERR);
 
     INIT_OBJECT_STATIC(ctx, new_atlas(NULL, (void (*)(void *))Mix_FreeChunk), NULL, "audio_atlas");

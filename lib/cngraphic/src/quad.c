@@ -7,6 +7,8 @@ CN_API Quad *new_quad(void)
     if (!quad)
         return (NULL);
 
+    quad->shader.api = R_API_NONE;
+
     cnnumber quad_vert[] = {
         -1, -1,      0, 0,
          1, -1,      1, 0,
@@ -41,7 +43,10 @@ CN_API Quad *new_quad(void)
         "out vec4 frag_color;\n"
         "void main() { frag_color = texture(u_screen, v_uv); }\n";
 
-    gl_shader_compile(&quad->shader, vert, frag);
+    if (gl_shader_compile(&quad->shader, vert, frag)) {
+        (void)delete_quad(quad);
+        return (NULL);
+    }
 
     return (quad);
 }
@@ -52,6 +57,8 @@ CN_API Quad *new_quad2d(void)
 
     if (!quad2d)
         return (NULL);
+
+    quad2d->shader.api = R_API_NONE;
 
     cnnumber quad_vert[] = {
         0, 0,       0, 0,
@@ -107,7 +114,10 @@ CN_API Quad *new_quad2d(void)
         "    frag_color = base;\n"
         "}\n";
 
-    gl_shader_compile(&quad2d->shader, vert, frag);
+    if (gl_shader_compile(&quad2d->shader, vert, frag)) {
+        (void)delete_quad(quad2d);
+        return (NULL);
+    }
 
     return (quad2d);
 }
