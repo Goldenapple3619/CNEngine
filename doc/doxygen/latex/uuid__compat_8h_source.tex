@@ -30,31 +30,34 @@
 \DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ RpcStringFreeA(\&p);}
 \DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00028\ }
-\DoxyCodeLine{00029\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ uuid\_t\ cn\_uuid\_bytes}}
-\DoxyCodeLine{00030\ }
-\DoxyCodeLine{00031\ \textcolor{preprocessor}{\ \ \ \ \#elif\ defined(\_\_APPLE\_\_)}}
-\DoxyCodeLine{00032\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ <CoreFoundation/CFUUID.h>}}
-\DoxyCodeLine{00033\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ <string.h>}}
-\DoxyCodeLine{00034\ }
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ uuid\_t[16];}
-\DoxyCodeLine{00036\ }
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ uuid\_generate\_random(uuid\_t\ out)\ \{}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ CFUUIDRef\ u\ =\ CFUUIDCreate(NULL);}
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ CFUUIDBytes\ b\ =\ CFUUIDGetUUIDBytes(u);}
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ CFRelease(u);}
-\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ memcpy(out,\ \&b,\ 16);}
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00043\ }
-\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ uuid\_unparse\_lower(\textcolor{keyword}{const}\ uuid\_t\ uu,\ \textcolor{keywordtype}{char}\ *out)\ \{}
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ snprintf(out,\ 37,}
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\%02x\%02x\%02x\%02x-\/\%02x\%02x-\/\%02x\%02x-\/\%02x\%02x-\/\%02x\%02x\%02x\%02x\%02x\%02x"{}},}
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uu[0],uu[1],uu[2],uu[3],\ uu[4],uu[5],\ uu[6],uu[7],}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uu[8],uu[9],\ uu[10],uu[11],uu[12],uu[13],uu[14],uu[15]);}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00050\ }
-\DoxyCodeLine{00051\ \textcolor{preprocessor}{\ \ \ \ \#else}}
-\DoxyCodeLine{00052\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ <uuid/uuid.h>}}
-\DoxyCodeLine{00053\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
-\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#ifdef\ uuid\_t}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#undef\ uuid\_t}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endif}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ uuid\_t\ cn\_uuid\_bytes}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\ \ \ \ \#elif\ defined(\_\_APPLE\_\_)}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ <CoreFoundation/CFUUID.h>}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ <string.h>}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ uuid\_t[16];}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ uuid\_generate\_random(uuid\_t\ out)\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ CFUUIDRef\ u\ =\ CFUUIDCreate(NULL);}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ CFUUIDBytes\ b\ =\ CFUUIDGetUUIDBytes(u);}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ CFRelease(u);}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ memcpy(out,\ \&b,\ 16);}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ uuid\_unparse\_lower(\textcolor{keyword}{const}\ uuid\_t\ uu,\ \textcolor{keywordtype}{char}\ *out)\ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ snprintf(out,\ 37,}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\%02x\%02x\%02x\%02x-\/\%02x\%02x-\/\%02x\%02x-\/\%02x\%02x-\/\%02x\%02x\%02x\%02x\%02x\%02x"{}},}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uu[0],uu[1],uu[2],uu[3],\ uu[4],uu[5],\ uu[6],uu[7],}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uu[8],uu[9],\ uu[10],uu[11],uu[12],uu[13],uu[14],uu[15]);}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\ \ \ \ \#else}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ <uuid/uuid.h>}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}
