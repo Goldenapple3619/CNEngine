@@ -374,7 +374,7 @@ uint8_t write_object_file(FILE *fp, const struct engine_object_file_writer_ctx_s
                 return (1);
             }
         } else {
-            fprintf(stderr, "warning: empty section written at %lx\n", ENGINE_FTELL(fp));
+            fprintf(stderr, "warning: empty section written at %lx\n", (long unsigned int)ENGINE_FTELL(fp));
         }
     }
 
