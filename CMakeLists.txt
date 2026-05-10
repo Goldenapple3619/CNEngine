@@ -275,7 +275,6 @@ endforeach()
 
 # xml2
 if(WIN32)
-if(WIN32)
     get_filename_component(MINGW_BIN_DIR ${CMAKE_C_COMPILER} DIRECTORY)
 
     find_file(XML2_DLL
