@@ -1,4 +1,3 @@
-#include <uuid/uuid.h>
 #include "build.h"
 
 static char *strip_whitespace(const char *str) {

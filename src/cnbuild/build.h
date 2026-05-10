@@ -4,6 +4,8 @@
     #include <libxml/parser.h>
     #include <libxml/tree.h>
 
+    #include "uuid_compat.h"
+
     #include "../engine.h"
 
 
