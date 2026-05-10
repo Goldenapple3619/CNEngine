@@ -6,9 +6,15 @@
 \doxysubsubsection*{Data Structures}
 \begin{DoxyCompactItemize}
 \item 
+struct \mbox{\hyperlink{structgui__object__mode__s}{gui\+\_\+object\+\_\+mode\+\_\+s}}
+\item 
 struct \mbox{\hyperlink{structtext__mode__s}{text\+\_\+mode\+\_\+s}}
 \item 
+struct \mbox{\hyperlink{structcontainer__mode__s}{container\+\_\+mode\+\_\+s}}
+\item 
 struct \mbox{\hyperlink{structgui__board__mode__s}{gui\+\_\+board\+\_\+mode\+\_\+s}}
+\item 
+struct \mbox{\hyperlink{structgui__render__stack}{gui\+\_\+render\+\_\+stack}}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Enumerations}
 \begin{DoxyCompactItemize}
@@ -20,6 +26,15 @@ enum \mbox{\hyperlink{librgui_8h_ab685ffe290d85089a981203d90e3eb59}{cnrgui\+\_\+
 enum \mbox{\hyperlink{librgui_8h_af5248c59aaa117d11d85f0dcb78a3951}{cnrgui\+\_\+alignement}} \{ \mbox{\hyperlink{librgui_8h_af5248c59aaa117d11d85f0dcb78a3951aca09c0c31fe93b5d74f062308f985018}{GUI\+\_\+\+ALIGN\+\_\+\+LEFT}} = 0x00
 , \mbox{\hyperlink{librgui_8h_af5248c59aaa117d11d85f0dcb78a3951a48700954a7f96ae96c9761408991bb67}{GUI\+\_\+\+ALIGN\+\_\+\+MIDDLE}}
 , \mbox{\hyperlink{librgui_8h_af5248c59aaa117d11d85f0dcb78a3951a468bf718dab62222fa7c7c135e1a63b6}{GUI\+\_\+\+ALIGN\+\_\+\+RIGHT}}
+ \}
+\item 
+enum \mbox{\hyperlink{librgui_8h_a08b612612b0cb29c70cfef741b0c6e66}{cnrgui\+\_\+positionning}} \{ \mbox{\hyperlink{librgui_8h_a08b612612b0cb29c70cfef741b0c6e66affb9806e0874212ce9ba7255244bdba6}{GUI\+\_\+\+POS\+\_\+\+REL}} = 0x00
+, \mbox{\hyperlink{librgui_8h_a08b612612b0cb29c70cfef741b0c6e66ac00e96b4c354b82e1593bdcf29ce998d}{GUI\+\_\+\+POS\+\_\+\+ABS}}
+ \}
+\item 
+enum \mbox{\hyperlink{librgui_8h_ae7bc6b993157daaef96e6975e3863bbf}{cnrgui\+\_\+background\+\_\+type}} \{ \mbox{\hyperlink{librgui_8h_ae7bc6b993157daaef96e6975e3863bbfaf372d55ba52297fb7d1f568c66afa1b2}{GUI\+\_\+\+BG\+\_\+\+NONE}} = 0x00
+, \mbox{\hyperlink{librgui_8h_ae7bc6b993157daaef96e6975e3863bbfa07a055ef06d65c3c0b4560626f08c2ed}{GUI\+\_\+\+BG\+\_\+\+COLOR}}
+, \mbox{\hyperlink{librgui_8h_ae7bc6b993157daaef96e6975e3863bbfa570099e23c3d559304dadab5cd532f39}{GUI\+\_\+\+BG\+\_\+\+IMAGE}}
  \}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
@@ -34,6 +49,8 @@ void \mbox{\hyperlink{librgui_8h_a0f47c4c5d7f3f37481f8c2a53be14bb8}{end\+\_\+gui
 \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{librgui_8h_a0e8300f95083353df13219082e801440}{new\+\_\+guiobject}} (void)
 \item 
 \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{librgui_8h_aba5d1bc879083eaf34b53409b1abaacc}{new\+\_\+text}} (void)
+\item 
+\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{librgui_8h_aea8b4a65167c9057985d961612ecb18b}{new\+\_\+container}} (void)
 \item 
 \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{librgui_8h_aff5cc70651aac69e1aedd53537c2f125}{new\+\_\+gui\+\_\+submodule}} (void)
 \end{DoxyCompactItemize}
@@ -60,6 +77,26 @@ GUI\+\_\+\+ALIGN\+\_\+\+RIGHT&\\
 \hline
 
 \end{DoxyEnumFields}
+\Hypertarget{librgui_8h_ae7bc6b993157daaef96e6975e3863bbf}\label{librgui_8h_ae7bc6b993157daaef96e6975e3863bbf} 
+\index{librgui.h@{librgui.h}!cnrgui\_background\_type@{cnrgui\_background\_type}}
+\index{cnrgui\_background\_type@{cnrgui\_background\_type}!librgui.h@{librgui.h}}
+\doxysubsubsection{\texorpdfstring{cnrgui\_background\_type}{cnrgui\_background\_type}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{librgui_8h_ae7bc6b993157daaef96e6975e3863bbf}{cnrgui\+\_\+background\+\_\+type}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GUI\_BG\_NONE@{GUI\_BG\_NONE}!librgui.h@{librgui.h}}\index{librgui.h@{librgui.h}!GUI\_BG\_NONE@{GUI\_BG\_NONE}}}\Hypertarget{librgui_8h_ae7bc6b993157daaef96e6975e3863bbfaf372d55ba52297fb7d1f568c66afa1b2}\label{librgui_8h_ae7bc6b993157daaef96e6975e3863bbfaf372d55ba52297fb7d1f568c66afa1b2} 
+GUI\+\_\+\+BG\+\_\+\+NONE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GUI\_BG\_COLOR@{GUI\_BG\_COLOR}!librgui.h@{librgui.h}}\index{librgui.h@{librgui.h}!GUI\_BG\_COLOR@{GUI\_BG\_COLOR}}}\Hypertarget{librgui_8h_ae7bc6b993157daaef96e6975e3863bbfa07a055ef06d65c3c0b4560626f08c2ed}\label{librgui_8h_ae7bc6b993157daaef96e6975e3863bbfa07a055ef06d65c3c0b4560626f08c2ed} 
+GUI\+\_\+\+BG\+\_\+\+COLOR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GUI\_BG\_IMAGE@{GUI\_BG\_IMAGE}!librgui.h@{librgui.h}}\index{librgui.h@{librgui.h}!GUI\_BG\_IMAGE@{GUI\_BG\_IMAGE}}}\Hypertarget{librgui_8h_ae7bc6b993157daaef96e6975e3863bbfa570099e23c3d559304dadab5cd532f39}\label{librgui_8h_ae7bc6b993157daaef96e6975e3863bbfa570099e23c3d559304dadab5cd532f39} 
+GUI\+\_\+\+BG\+\_\+\+IMAGE&\\
+\hline
+
+\end{DoxyEnumFields}
 \Hypertarget{librgui_8h_ab685ffe290d85089a981203d90e3eb59}\label{librgui_8h_ab685ffe290d85089a981203d90e3eb59} 
 \index{librgui.h@{librgui.h}!cnrgui\_flags@{cnrgui\_flags}}
 \index{cnrgui\_flags@{cnrgui\_flags}!librgui.h@{librgui.h}}
@@ -76,6 +113,22 @@ FLAG\+\_\+\+RGUI\+\_\+\+DYNAMIC\+\_\+\+RESOLUTION&\\
 \hline
 
 \end{DoxyEnumFields}
+\Hypertarget{librgui_8h_a08b612612b0cb29c70cfef741b0c6e66}\label{librgui_8h_a08b612612b0cb29c70cfef741b0c6e66} 
+\index{librgui.h@{librgui.h}!cnrgui\_positionning@{cnrgui\_positionning}}
+\index{cnrgui\_positionning@{cnrgui\_positionning}!librgui.h@{librgui.h}}
+\doxysubsubsection{\texorpdfstring{cnrgui\_positionning}{cnrgui\_positionning}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{librgui_8h_a08b612612b0cb29c70cfef741b0c6e66}{cnrgui\+\_\+positionning}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GUI\_POS\_REL@{GUI\_POS\_REL}!librgui.h@{librgui.h}}\index{librgui.h@{librgui.h}!GUI\_POS\_REL@{GUI\_POS\_REL}}}\Hypertarget{librgui_8h_a08b612612b0cb29c70cfef741b0c6e66affb9806e0874212ce9ba7255244bdba6}\label{librgui_8h_a08b612612b0cb29c70cfef741b0c6e66affb9806e0874212ce9ba7255244bdba6} 
+GUI\+\_\+\+POS\+\_\+\+REL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GUI\_POS\_ABS@{GUI\_POS\_ABS}!librgui.h@{librgui.h}}\index{librgui.h@{librgui.h}!GUI\_POS\_ABS@{GUI\_POS\_ABS}}}\Hypertarget{librgui_8h_a08b612612b0cb29c70cfef741b0c6e66ac00e96b4c354b82e1593bdcf29ce998d}\label{librgui_8h_a08b612612b0cb29c70cfef741b0c6e66ac00e96b4c354b82e1593bdcf29ce998d} 
+GUI\+\_\+\+POS\+\_\+\+ABS&\\
+\hline
+
+\end{DoxyEnumFields}
 
 
 \doxysubsection{Function Documentation}
@@ -84,6 +137,12 @@ FLAG\+\_\+\+RGUI\+\_\+\+DYNAMIC\+\_\+\+RESOLUTION&\\
 \index{end\_gui@{end\_gui}!librgui.h@{librgui.h}}
 \doxysubsubsection{\texorpdfstring{end\_gui()}{end\_gui()}}
 {\footnotesize\ttfamily void end\+\_\+gui (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{librgui_8h_aea8b4a65167c9057985d961612ecb18b}\label{librgui_8h_aea8b4a65167c9057985d961612ecb18b} 
+\index{librgui.h@{librgui.h}!new\_container@{new\_container}}
+\index{new\_container@{new\_container}!librgui.h@{librgui.h}}
+\doxysubsubsection{\texorpdfstring{new\_container()}{new\_container()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*} new\+\_\+container (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
 \Hypertarget{librgui_8h_aff5cc70651aac69e1aedd53537c2f125}\label{librgui_8h_aff5cc70651aac69e1aedd53537c2f125} 
 \index{librgui.h@{librgui.h}!new\_gui\_submodule@{new\_gui\_submodule}}

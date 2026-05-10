@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['vector2_5fs_0',['vector2_s',['../structvector2__s.html',1,'']]],
-  ['vector3_5fs_1',['vector3_s',['../structvector3__s.html',1,'']]],
-  ['vertex_2',['Vertex',['../structVertex.html',1,'']]],
-  ['videomode_5fs_3',['videomode_s',['../structvideomode__s.html',1,'']]]
+  ['scene_5fobject_5fmode_5fs_0',['scene_object_mode_s',['../structscene__object__mode__s.html',1,'']]],
+  ['shader_1',['Shader',['../structShader.html',1,'']]],
+  ['strndx_5fentry_5fs_2',['strndx_entry_s',['../structstrndx__entry__s.html',1,'']]]
 ];

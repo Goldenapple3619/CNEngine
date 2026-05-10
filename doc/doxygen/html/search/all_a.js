@@ -4,5 +4,7 @@ var searchData=
   ['has_5fattr_1',['has_attr',['../libcncore_8h.html#a48a248e7350d8316019df9d177df446a',1,'has_attr(const Object *object, const char *name):&#160;object.c'],['../object_8c.html#a48a248e7350d8316019df9d177df446a',1,'has_attr(const Object *object, const char *name):&#160;object.c']]],
   ['has_5fevent_5fwindow_2',['has_event_window',['../libcngraphic_8h.html#ac4133c5aaed3d5ed6d84003d009062f2',1,'has_event_window(const Window *window, cn_event type):&#160;window.c'],['../window_8c.html#ac4133c5aaed3d5ed6d84003d009062f2',1,'has_event_window(const Window *window, cn_event type):&#160;window.c']]],
   ['has_5fmethod_3',['has_method',['../libcncore_8h.html#a279b2ab4efcad21dbfcb8a8ee92a9944',1,'has_method(const Object *object, const char *name):&#160;object.c'],['../object_8c.html#a279b2ab4efcad21dbfcb8a8ee92a9944',1,'has_method(const Object *object, const char *name):&#160;object.c']]],
-  ['how_20to_20build_4',['How to build',['../md_README.html#autotoc_md5',1,'']]]
+  ['help_4',['help',['../engine_8h.html#abfce15a97dc0d59066145deb6db71971',1,'help(size_t argc, char **argv):&#160;route.c'],['../help_2route_8c.html#abfce15a97dc0d59066145deb6db71971',1,'help(size_t argc, char **argv):&#160;route.c']]],
+  ['help_2eh_5',['help.h',['../help_8h.html',1,'']]],
+  ['how_20to_20build_6',['How to build',['../md_README.html#autotoc_md5',1,'']]]
 ];

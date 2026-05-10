@@ -1,0 +1,114 @@
+\doxysection{src/cnbuild/route.c File Reference}
+\hypertarget{cnbuild_2route_8c}{}\label{cnbuild_2route_8c}\index{src/cnbuild/route.c@{src/cnbuild/route.c}}
+{\ttfamily \#include $<$uuid/uuid.\+h$>$}\newline
+{\ttfamily \#include "{}build.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{cnbuild_2route_8c_a1e9079aed8c9f7df796757f7a8d2edfc}{strip\+\_\+whitespace}} (const char \texorpdfstring{$\ast$}{*}str)
+\item 
+void \mbox{\hyperlink{cnbuild_2route_8c_ab9257754faf36f2edc03de44778d2855}{delete\+\_\+parsed\+\_\+gui}} (struct \mbox{\hyperlink{structparsed__gui__element__data__s}{parsed\+\_\+gui\+\_\+element\+\_\+data\+\_\+s}} \texorpdfstring{$\ast$}{*}parsed\+\_\+gui)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{cnbuild_2route_8c_a13b7954b4557d8d7f75dc8c3f12b334c}{fill\+\_\+gui\+\_\+element}} (xml\+Node \texorpdfstring{$\ast$}{*}node, struct \mbox{\hyperlink{structparsed__gui__element__data__s}{parsed\+\_\+gui\+\_\+element\+\_\+data\+\_\+s}} \texorpdfstring{$\ast$}{*}element)
+\item 
+uint64\+\_\+t \mbox{\hyperlink{cnbuild_2route_8c_a91e9ab11f7a447df0694c83cc3f49d61}{generate\+\_\+gui\+\_\+node\+\_\+section\+\_\+size}} (struct \mbox{\hyperlink{structengine__object__file__section__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+section\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}self)
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{cnbuild_2route_8c_a8100c487d38642db6f7d5b838dc50d46}{generate\+\_\+gui\+\_\+node\+\_\+section\+\_\+content}} (struct \mbox{\hyperlink{structengine__object__file__section__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+section\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}self, const struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}wctx, struct \mbox{\hyperlink{structgeneric__map__s}{generic\+\_\+map\+\_\+s}} \texorpdfstring{$\ast$}{*}strndx)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{cnbuild_2route_8c_a85875ec04a699f98d848cc9a94f547c5}{element\+\_\+gui\+\_\+to\+\_\+wctx}} (struct \mbox{\hyperlink{structgeneric__vector__s}{generic\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}element, struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}wctx)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{cnbuild_2route_8c_a9e1b28832ea0b4a7554212160279856e}{build\+\_\+gui\+\_\+element}} (xml\+Node \texorpdfstring{$\ast$}{*}node, struct \mbox{\hyperlink{structgeneric__vector__s}{generic\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}parsed\+\_\+data, struct \mbox{\hyperlink{structparsed__gui__element__data__s}{parsed\+\_\+gui\+\_\+element\+\_\+data\+\_\+s}} \texorpdfstring{$\ast$}{*}parent)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{cnbuild_2route_8c_a9836297f3990ab7ef8c783b81084da4c}{parse\+\_\+gui}} (const char \texorpdfstring{$\ast$}{*}file\+\_\+path, struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}wctx)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{cnbuild_2route_8c_a7190a3d21b93572e6ee510eb4e743209}{build\+\_\+get\+\_\+args}} (size\+\_\+t argc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv, struct \mbox{\hyperlink{structbuild__args__s}{build\+\_\+args\+\_\+s}} \texorpdfstring{$\ast$}{*}args)
+\item 
+void \mbox{\hyperlink{cnbuild_2route_8c_a85972f2507e3f8ad72097fc4eba02dab}{reset\+\_\+args}} (struct \mbox{\hyperlink{structbuild__args__s}{build\+\_\+args\+\_\+s}} \texorpdfstring{$\ast$}{*}args)
+\item 
+void \mbox{\hyperlink{cnbuild_2route_8c_a30f0b08a3b1e808a54618e4d0e89b191}{delete\+\_\+parsed\+\_\+data}} (struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}wctx)
+\item 
+int \mbox{\hyperlink{cnbuild_2route_8c_a7c0a4901634cd71315b384c4612b1d57}{build\+\_\+gui}} (size\+\_\+t argc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv)
+\item 
+int \mbox{\hyperlink{cnbuild_2route_8c_acbae52c879a1243e0097c06aa9a3ad82}{build}} (size\+\_\+t argc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{cnbuild_2route_8c_acbae52c879a1243e0097c06aa9a3ad82}\label{cnbuild_2route_8c_acbae52c879a1243e0097c06aa9a3ad82} 
+\index{route.c@{route.c}!build@{build}}
+\index{build@{build}!route.c@{route.c}}
+\doxysubsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily int build (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv }\end{DoxyParamCaption})}
+
+\Hypertarget{cnbuild_2route_8c_a7190a3d21b93572e6ee510eb4e743209}\label{cnbuild_2route_8c_a7190a3d21b93572e6ee510eb4e743209} 
+\index{route.c@{route.c}!build\_get\_args@{build\_get\_args}}
+\index{build\_get\_args@{build\_get\_args}!route.c@{route.c}}
+\doxysubsubsection{\texorpdfstring{build\_get\_args()}{build\_get\_args()}}
+{\footnotesize\ttfamily uint8\+\_\+t build\+\_\+get\+\_\+args (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv,  }\item[{struct \mbox{\hyperlink{structbuild__args__s}{build\+\_\+args\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{args }\end{DoxyParamCaption})}
+
+\Hypertarget{cnbuild_2route_8c_a7c0a4901634cd71315b384c4612b1d57}\label{cnbuild_2route_8c_a7c0a4901634cd71315b384c4612b1d57} 
+\index{route.c@{route.c}!build\_gui@{build\_gui}}
+\index{build\_gui@{build\_gui}!route.c@{route.c}}
+\doxysubsubsection{\texorpdfstring{build\_gui()}{build\_gui()}}
+{\footnotesize\ttfamily int build\+\_\+gui (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv }\end{DoxyParamCaption})}
+
+\Hypertarget{cnbuild_2route_8c_a9e1b28832ea0b4a7554212160279856e}\label{cnbuild_2route_8c_a9e1b28832ea0b4a7554212160279856e} 
+\index{route.c@{route.c}!build\_gui\_element@{build\_gui\_element}}
+\index{build\_gui\_element@{build\_gui\_element}!route.c@{route.c}}
+\doxysubsubsection{\texorpdfstring{build\_gui\_element()}{build\_gui\_element()}}
+{\footnotesize\ttfamily uint8\+\_\+t build\+\_\+gui\+\_\+element (\begin{DoxyParamCaption}\item[{xml\+Node \texorpdfstring{$\ast$}{*}}]{node,  }\item[{struct \mbox{\hyperlink{structgeneric__vector__s}{generic\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{parsed\+\_\+data,  }\item[{struct \mbox{\hyperlink{structparsed__gui__element__data__s}{parsed\+\_\+gui\+\_\+element\+\_\+data\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{parent }\end{DoxyParamCaption})}
+
+\Hypertarget{cnbuild_2route_8c_a30f0b08a3b1e808a54618e4d0e89b191}\label{cnbuild_2route_8c_a30f0b08a3b1e808a54618e4d0e89b191} 
+\index{route.c@{route.c}!delete\_parsed\_data@{delete\_parsed\_data}}
+\index{delete\_parsed\_data@{delete\_parsed\_data}!route.c@{route.c}}
+\doxysubsubsection{\texorpdfstring{delete\_parsed\_data()}{delete\_parsed\_data()}}
+{\footnotesize\ttfamily void delete\+\_\+parsed\+\_\+data (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{wctx }\end{DoxyParamCaption})}
+
+\Hypertarget{cnbuild_2route_8c_ab9257754faf36f2edc03de44778d2855}\label{cnbuild_2route_8c_ab9257754faf36f2edc03de44778d2855} 
+\index{route.c@{route.c}!delete\_parsed\_gui@{delete\_parsed\_gui}}
+\index{delete\_parsed\_gui@{delete\_parsed\_gui}!route.c@{route.c}}
+\doxysubsubsection{\texorpdfstring{delete\_parsed\_gui()}{delete\_parsed\_gui()}}
+{\footnotesize\ttfamily void delete\+\_\+parsed\+\_\+gui (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structparsed__gui__element__data__s}{parsed\+\_\+gui\+\_\+element\+\_\+data\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{parsed\+\_\+gui }\end{DoxyParamCaption})}
+
+\Hypertarget{cnbuild_2route_8c_a85875ec04a699f98d848cc9a94f547c5}\label{cnbuild_2route_8c_a85875ec04a699f98d848cc9a94f547c5} 
+\index{route.c@{route.c}!element\_gui\_to\_wctx@{element\_gui\_to\_wctx}}
+\index{element\_gui\_to\_wctx@{element\_gui\_to\_wctx}!route.c@{route.c}}
+\doxysubsubsection{\texorpdfstring{element\_gui\_to\_wctx()}{element\_gui\_to\_wctx()}}
+{\footnotesize\ttfamily uint8\+\_\+t element\+\_\+gui\+\_\+to\+\_\+wctx (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structgeneric__vector__s}{generic\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{element,  }\item[{struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{wctx }\end{DoxyParamCaption})}
+
+\Hypertarget{cnbuild_2route_8c_a13b7954b4557d8d7f75dc8c3f12b334c}\label{cnbuild_2route_8c_a13b7954b4557d8d7f75dc8c3f12b334c} 
+\index{route.c@{route.c}!fill\_gui\_element@{fill\_gui\_element}}
+\index{fill\_gui\_element@{fill\_gui\_element}!route.c@{route.c}}
+\doxysubsubsection{\texorpdfstring{fill\_gui\_element()}{fill\_gui\_element()}}
+{\footnotesize\ttfamily uint8\+\_\+t fill\+\_\+gui\+\_\+element (\begin{DoxyParamCaption}\item[{xml\+Node \texorpdfstring{$\ast$}{*}}]{node,  }\item[{struct \mbox{\hyperlink{structparsed__gui__element__data__s}{parsed\+\_\+gui\+\_\+element\+\_\+data\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{element }\end{DoxyParamCaption})}
+
+\Hypertarget{cnbuild_2route_8c_a8100c487d38642db6f7d5b838dc50d46}\label{cnbuild_2route_8c_a8100c487d38642db6f7d5b838dc50d46} 
+\index{route.c@{route.c}!generate\_gui\_node\_section\_content@{generate\_gui\_node\_section\_content}}
+\index{generate\_gui\_node\_section\_content@{generate\_gui\_node\_section\_content}!route.c@{route.c}}
+\doxysubsubsection{\texorpdfstring{generate\_gui\_node\_section\_content()}{generate\_gui\_node\_section\_content()}}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} generate\+\_\+gui\+\_\+node\+\_\+section\+\_\+content (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structengine__object__file__section__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+section\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{self,  }\item[{const struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{wctx,  }\item[{struct \mbox{\hyperlink{structgeneric__map__s}{generic\+\_\+map\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{strndx }\end{DoxyParamCaption})}
+
+\Hypertarget{cnbuild_2route_8c_a91e9ab11f7a447df0694c83cc3f49d61}\label{cnbuild_2route_8c_a91e9ab11f7a447df0694c83cc3f49d61} 
+\index{route.c@{route.c}!generate\_gui\_node\_section\_size@{generate\_gui\_node\_section\_size}}
+\index{generate\_gui\_node\_section\_size@{generate\_gui\_node\_section\_size}!route.c@{route.c}}
+\doxysubsubsection{\texorpdfstring{generate\_gui\_node\_section\_size()}{generate\_gui\_node\_section\_size()}}
+{\footnotesize\ttfamily uint64\+\_\+t generate\+\_\+gui\+\_\+node\+\_\+section\+\_\+size (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structengine__object__file__section__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+section\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{self }\end{DoxyParamCaption})}
+
+\Hypertarget{cnbuild_2route_8c_a9836297f3990ab7ef8c783b81084da4c}\label{cnbuild_2route_8c_a9836297f3990ab7ef8c783b81084da4c} 
+\index{route.c@{route.c}!parse\_gui@{parse\_gui}}
+\index{parse\_gui@{parse\_gui}!route.c@{route.c}}
+\doxysubsubsection{\texorpdfstring{parse\_gui()}{parse\_gui()}}
+{\footnotesize\ttfamily uint8\+\_\+t parse\+\_\+gui (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{file\+\_\+path,  }\item[{struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{wctx }\end{DoxyParamCaption})}
+
+\Hypertarget{cnbuild_2route_8c_a85972f2507e3f8ad72097fc4eba02dab}\label{cnbuild_2route_8c_a85972f2507e3f8ad72097fc4eba02dab} 
+\index{route.c@{route.c}!reset\_args@{reset\_args}}
+\index{reset\_args@{reset\_args}!route.c@{route.c}}
+\doxysubsubsection{\texorpdfstring{reset\_args()}{reset\_args()}}
+{\footnotesize\ttfamily void reset\+\_\+args (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structbuild__args__s}{build\+\_\+args\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{args }\end{DoxyParamCaption})}
+
+\Hypertarget{cnbuild_2route_8c_a1e9079aed8c9f7df796757f7a8d2edfc}\label{cnbuild_2route_8c_a1e9079aed8c9f7df796757f7a8d2edfc} 
+\index{route.c@{route.c}!strip\_whitespace@{strip\_whitespace}}
+\index{strip\_whitespace@{strip\_whitespace}!route.c@{route.c}}
+\doxysubsubsection{\texorpdfstring{strip\_whitespace()}{strip\_whitespace()}}
+{\footnotesize\ttfamily static char \texorpdfstring{$\ast$}{*} strip\+\_\+whitespace (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{str }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+

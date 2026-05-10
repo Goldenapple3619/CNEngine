@@ -1,0 +1,69 @@
+\doxysection{src/cnbuild/build.h File Reference}
+\hypertarget{build_8h}{}\label{build_8h}\index{src/cnbuild/build.h@{src/cnbuild/build.h}}
+{\ttfamily \#include $<$libxml/parser.\+h$>$}\newline
+{\ttfamily \#include $<$libxml/tree.\+h$>$}\newline
+{\ttfamily \#include "{}../engine.\+h"{}}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structbuild__args__s}{build\+\_\+args\+\_\+s}}
+\item 
+struct \mbox{\hyperlink{structparsed__gui__element__data__s}{parsed\+\_\+gui\+\_\+element\+\_\+data\+\_\+s}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{build_8h_a7c0a4901634cd71315b384c4612b1d57}{build\+\_\+gui}} (size\+\_\+t argc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}}\\
+\>\mbox{\hyperlink{engine_8h_a3f7bf39bb2c4a4841a227fe878595dbc}{route\_callback}} \mbox{\hyperlink{build_8h_a825191a40d9de85e5b0dc7f60c1e3cd3}{callback}}\\
+\} \mbox{\hyperlink{build_8h_aeab8ba315596f823ac80964c00c48f83}{build\_types}} \mbox{[}$\,$\mbox{]}\\
+
+\end{tabbing}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{build_8h_a7c0a4901634cd71315b384c4612b1d57}\label{build_8h_a7c0a4901634cd71315b384c4612b1d57} 
+\index{build.h@{build.h}!build\_gui@{build\_gui}}
+\index{build\_gui@{build\_gui}!build.h@{build.h}}
+\doxysubsubsection{\texorpdfstring{build\_gui()}{build\_gui()}}
+{\footnotesize\ttfamily int build\+\_\+gui (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{build_8h_aeab8ba315596f823ac80964c00c48f83}\label{build_8h_aeab8ba315596f823ac80964c00c48f83} 
+\index{build.h@{build.h}!build\_types@{build\_types}}
+\index{build\_types@{build\_types}!build.h@{build.h}}
+\doxysubsubsection{\texorpdfstring{[struct]}{[struct]}}
+{\footnotesize\ttfamily const struct  \{ ... \}  build\+\_\+types\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}gui"{}},\ \&\mbox{\hyperlink{build_8h_a7c0a4901634cd71315b384c4612b1d57}{build\_gui}}\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}obj"{}},\ NULL\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}scn"{}},\ NULL\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}proj"{}},\ NULL\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{NULL,\ NULL\}}
+\DoxyCodeLine{\ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{build_8h_a825191a40d9de85e5b0dc7f60c1e3cd3}\label{build_8h_a825191a40d9de85e5b0dc7f60c1e3cd3} 
+\index{build.h@{build.h}!callback@{callback}}
+\index{callback@{callback}!build.h@{build.h}}
+\doxysubsubsection{\texorpdfstring{callback}{callback}}
+{\footnotesize\ttfamily \mbox{\hyperlink{engine_8h_a3f7bf39bb2c4a4841a227fe878595dbc}{route\+\_\+callback}} callback}
+
+\Hypertarget{build_8h_a8f8f80d37794cde9472343e4487ba3eb}\label{build_8h_a8f8f80d37794cde9472343e4487ba3eb} 
+\index{build.h@{build.h}!name@{name}}
+\index{name@{name}!build.h@{build.h}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily const char\texorpdfstring{$\ast$}{*} name}
+

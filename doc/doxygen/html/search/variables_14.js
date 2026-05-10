@@ -1,15 +1,10 @@
 var searchData=
 [
-  ['v_0',['v',['../structVertex.html#afc266ea7bad7eb69745a314d6b7577c8',1,'Vertex::v'],['../structevent__s.html#ad58643dc7b2efd86931d30f82b4c6e68',1,'event_s::v']]],
-  ['val_1',['val',['../structlist__iterator__s.html#a0c567de7bfb7103460ad5e10aa97f90a',1,'list_iterator_s']]],
-  ['value_2',['value',['../structaudio__event__s.html#a3bdad2be34f55ac507ce4a88d9518cbb',1,'audio_event_s::value'],['../structobject__attribute__s.html#ab8a7110f405d5e069553e5284197e8db',1,'object_attribute_s::value']]],
-  ['values_3',['values',['../structcn__value__vector__s.html#a521be7a0ac8a8fc4224195e6ee6fd65c',1,'cn_value_vector_s']]],
-  ['vao_4',['vao',['../structQuad.html#a11fe1b5a533bf2de74d6472756a14acd',1,'Quad::vao'],['../structMesh.html#a49bab4d6ae7a771f1f9a5dd06e82429e',1,'Mesh::vao']]],
-  ['vbo_5',['vbo',['../structQuad.html#a784da47f1e13b2368521406ae0d6cfe6',1,'Quad::vbo'],['../structMesh.html#a32d7cd6b96d51fc012b9618ea1de96bd',1,'Mesh::vbo']]],
-  ['vec2_6',['vec2',['../structcn__value.html#a5095f43ce4d98447c696eb56b9c7ed2c',1,'cn_value']]],
-  ['vec3_7',['vec3',['../structcn__value.html#abece31f2443bf98db7b9672f0df29dc9',1,'cn_value']]],
-  ['vertex_5fcount_8',['vertex_count',['../structMesh.html#a0317db3a3dc8f90bf480bd236d4ff7e1',1,'Mesh']]],
-  ['vertices_9',['vertices',['../structMesh.html#aaab3bc90baf629029813e0812dbeec74',1,'Mesh']]],
-  ['video_5fmode_10',['video_mode',['../structwindow__s.html#ad9d1f838ffa2a66e911f2258f8f04c57',1,'window_s']]],
-  ['view_11',['view',['../structthreed__render__stack.html#abadca68433df5bc59fa6532f8451a607',1,'threed_render_stack']]]
+  ['u_0',['u',['../structVertex.html#a2aae5dc53431a7cc9d840f81d05eab84',1,'Vertex']]],
+  ['u16_1',['u16',['../structfpio__handler__t.html#a0c60e911abf0d24f8d0a1ce95a72d573',1,'fpio_handler_t']]],
+  ['u32_2',['u32',['../structfpio__handler__t.html#ac42dbd06ac2d78f23fe3c606b306f12e',1,'fpio_handler_t']]],
+  ['u64_3',['u64',['../structfpio__handler__t.html#a39ba4f255866c3bcb9e2c87a8dd5230d',1,'fpio_handler_t']]],
+  ['u8_4',['u8',['../structfpio__handler__t.html#a5b5343f5003b973d6f66313193d50d99',1,'fpio_handler_t']]],
+  ['uploaded_5',['uploaded',['../structMesh.html#ad8127861de8427d8f43a5baa407e1620',1,'Mesh']]],
+  ['upscale_6',['upscale',['../structtwod__board__mode__s.html#a6dc08d72e0b32b33c4adcc5a4c9e21d3',1,'twod_board_mode_s::upscale'],['../structthreed__board__mode__s.html#a2dc871846cf889fc8289b5aeb0c4d8cd',1,'threed_board_mode_s::upscale'],['../structgui__board__mode__s.html#abf428ec383eff58b394e69deff9abdb7',1,'gui_board_mode_s::upscale']]]
 ];

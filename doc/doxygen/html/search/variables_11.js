@@ -1,15 +1,9 @@
 var searchData=
 [
-  ['scale_0',['scale',['../structscene__object__mode__s.html#aa68b12eeb123f907948eac988ebb4eec',1,'scene_object_mode_s']]],
-  ['scene_1',['scene',['../structtwod__board__mode__s.html#af967f6565ba1fdd87891b9a9b023da42',1,'twod_board_mode_s::scene'],['../structthreed__board__mode__s.html#a4bac89b877fb921c1406b990b1b65ec1',1,'threed_board_mode_s::scene']]],
-  ['sdl_5ftexture_2',['sdl_texture',['../structtexture__s.html#acc75709ddf55f4300e1bd4230af3436f',1,'texture_s']]],
-  ['sequence_3',['sequence',['../structaudio__s.html#ab35898d87b61b5d1e9c96079f98d9a8d',1,'audio_s']]],
-  ['sequence_5ftimer_4',['sequence_timer',['../structaudio__sequence__s.html#aad5f6a90c2540cddcb4dac778e5dc8c1',1,'audio_sequence_s']]],
-  ['shader_5',['shader',['../structQuad.html#a77da6e26a691b32aea75fb0a4821fe7f',1,'Quad::shader'],['../structMaterial.html#abaac6082ee6cf042b2d4da4f6e6fe403',1,'Material::shader']]],
-  ['shininess_6',['shininess',['../structMaterial.html#a7e36b8405184cbfb204eb96f0ccd742a',1,'Material']]],
-  ['size_7',['size',['../structobject__vector__s.html#a58cd077f77c8a3aad0250d75be7d0b90',1,'object_vector_s::size'],['../structtext__mode__s.html#a0a928ad148edce2ef53d857e45ef67c3',1,'text_mode_s::size'],['../structwindow__universe__s.html#ab95ae3f9e0a529cc6389bb1e9bb50f04',1,'window_universe_s::size'],['../structevent__map__entry__s.html#ab56c58de52ef43ee338a6357f091922e',1,'event_map_entry_s::size'],['../structvideomode__s.html#ad5183c63141813652459e86b4f63755d',1,'videomode_s::size'],['../structtexture__s.html#a2cfac756a0a2644944c4e383ab860a7f',1,'texture_s::size'],['../structgeneric__vector__s.html#a8e1eb9010ce0492091b85a9f4c382ca3',1,'generic_vector_s::size'],['../structgeneric__map__s.html#ab55b6ba2a883b34ba63fe2735a60aa94',1,'generic_map_s::size'],['../structlist__iterator__s.html#ab75daa4a79a9ad1c555c9c3be9ce6099',1,'list_iterator_s::size'],['../structcn__value__vector__s.html#af4293d70445810812faa270cdb4e6695',1,'cn_value_vector_s::size'],['../structattr__map__s.html#a404d96db44642eb02eb15de2457f5dc6',1,'attr_map_s::size'],['../structfree__channels__arr__s.html#a8a2098b0e270fb391d4df5385c95b613',1,'free_channels_arr_s::size'],['../structaudio__vector__s.html#a0f385d59e52b957af16e3d75f7186582',1,'audio_vector_s::size'],['../structaudio__sequence__s.html#abbcc7c4829a5c9f81ddff75df57fec46',1,'audio_sequence_s::size']]],
-  ['specular_8',['specular',['../structMaterial.html#ad1b1e97512e6eefe4edc3e220e37bedb',1,'Material']]],
-  ['start_5fin_9',['start_in',['../structaudio__event__s.html#a42e876813614367eff8bd9ade02dab67',1,'audio_event_s']]],
-  ['str_10',['str',['../structcn__value.html#a0f7d548adc8c6c78accf474221f37135',1,'cn_value']]],
-  ['surface_11',['surface',['../structtexture__s.html#aae18cd81b667d434c2c308e54159d5e4',1,'texture_s']]]
+  ['rect_0',['rect',['../structcn__value.html#ac86a41b353ef5b6a1ce53bb54c32b7d3',1,'cn_value']]],
+  ['ref_5fcount_1',['ref_count',['../structobject__s.html#ae8559e10f290cd7d95dd6d948d918678',1,'object_s']]],
+  ['renderer_2',['renderer',['../structtexture__s.html#a286f960e0b81d4a286b5ddb80b0ea582',1,'texture_s::renderer'],['../structwindow__s.html#a9e2653e6ea972601d9f18263990e6e0f',1,'window_s::renderer'],['../structgpu__rendering__data.html#a9de4a517dffcff2f8d3896014eed75a7',1,'gpu_rendering_data::renderer']]],
+  ['resolution_3',['resolution',['../structtwod__board__mode__s.html#a9a3731b8963138f7fc9d83d2733ac1ab',1,'twod_board_mode_s::resolution'],['../structthreed__board__mode__s.html#aa9bb3de0b5ae3685ed0f65ebe3eb661b',1,'threed_board_mode_s::resolution'],['../structgui__board__mode__s.html#a0f33295f5711bab42765bbbd06245271',1,'gui_board_mode_s::resolution']]],
+  ['rotation_4',['rotation',['../structscene__object__mode__s.html#acab8988a6a697184fc10ce46c88c1e3a',1,'scene_object_mode_s::rotation'],['../structgui__object__mode__s.html#abebd7735c104db3cb3eb8853b6217d14',1,'gui_object_mode_s::rotation']]],
+  ['routes_5',['routes',['../engine_8h.html#ae42255584dd2cdada9e4e0a159d84213',1,'engine.h']]]
 ];

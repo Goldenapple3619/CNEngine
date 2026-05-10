@@ -114,10 +114,55 @@ $(document).ready(function(){initNavTree('engine_8h_source.html',''); initResiza
 <a href="engine_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef _ENGINE_H_</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">    #define _ENGINE_H_</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">    #include &quot;<a class="code" href="libcncore_8h.html">libcncore.h</a>&quot;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">    #include &lt;stdio.h&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">    #include &lt;signal.h&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">    #include &quot;<a class="code" href="libcncore_8h.html">libcncore.h</a>&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">    #include &quot;<a class="code" href="libcnaudio_8h.html">libcnaudio.h</a>&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">    #include &quot;<a class="code" href="libcninput_8h.html">libcninput.h</a>&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">    #include &quot;<a class="code" href="libcngraphic_8h.html">libcngraphic.h</a>&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">    #include &quot;<a class="code" href="librgui_8h.html">librgui.h</a>&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">    #include &quot;<a class="code" href="libr2d_8h.html">libr2d.h</a>&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">    #include &quot;<a class="code" href="libr3d_8h.html">libr3d.h</a>&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">    #include &quot;<a class="code" href="libcnassets_8h.html">libcnassets.h</a>&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="engine_8h.html#ae1b6db075e69c7d50940c6e0a9d357f6">argument_route</a>(<span class="keywordtype">size_t</span> argc, <span class="keywordtype">char</span> **argv);</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="engine_8h.html#a152b2bafff5976ca602c43ed93c181c1">init</a>(<span class="keywordtype">size_t</span> argc, <span class="keywordtype">char</span> **argv);</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="engine_8h.html#a652dfa3636c93a60db188937488e156a">test</a>(<span class="keywordtype">size_t</span> argc, <span class="keywordtype">char</span> **argv);</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="engine_8h.html#abfce15a97dc0d59066145deb6db71971">help</a>(<span class="keywordtype">size_t</span> argc, <span class="keywordtype">char</span> **argv);</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="engine_8h.html#acbae52c879a1243e0097c06aa9a3ad82">build</a>(<span class="keywordtype">size_t</span> argc, <span class="keywordtype">char</span> **argv);</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="engine_8h.html#a3f7bf39bb2c4a4841a227fe878595dbc">   22</a></span>    <span class="keyword">typedef</span> int (*<a class="code hl_typedef" href="engine_8h.html#a3f7bf39bb2c4a4841a227fe878595dbc">route_callback</a>)(size_t, <span class="keywordtype">char</span> **);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="engine_8h.html#a8f8f80d37794cde9472343e4487ba3eb">   25</a></span>        <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_variable" href="engine_8h.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="engine_8h.html#a825191a40d9de85e5b0dc7f60c1e3cd3">   26</a></span>        <a class="code hl_typedef" href="engine_8h.html#a3f7bf39bb2c4a4841a227fe878595dbc">route_callback</a> <a class="code hl_variable" href="engine_8h.html#a825191a40d9de85e5b0dc7f60c1e3cd3">callback</a>;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    } <a class="code hl_variable" href="engine_8h.html#ae42255584dd2cdada9e4e0a159d84213">routes</a>[] = {</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        {<span class="stringliteral">&quot;init&quot;</span>, &amp;<a class="code hl_function" href="engine_8h.html#a152b2bafff5976ca602c43ed93c181c1">init</a>},</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        {<span class="stringliteral">&quot;help&quot;</span>, &amp;<a class="code hl_function" href="engine_8h.html#abfce15a97dc0d59066145deb6db71971">help</a>},</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        {<span class="stringliteral">&quot;test&quot;</span>, &amp;<a class="code hl_function" href="engine_8h.html#a652dfa3636c93a60db188937488e156a">test</a>},</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        {<span class="stringliteral">&quot;build&quot;</span>, &amp;<a class="code hl_function" href="engine_8h.html#acbae52c879a1243e0097c06aa9a3ad82">build</a>},</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        {NULL, NULL}</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="engine_8h.html#ae42255584dd2cdada9e4e0a159d84213">   33</a></span>    };</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aengine_8h_html_a152b2bafff5976ca602c43ed93c181c1"><div class="ttname"><a href="engine_8h.html#a152b2bafff5976ca602c43ed93c181c1">init</a></div><div class="ttdeci">int init(size_t argc, char **argv)</div><div class="ttdef"><b>Definition</b> route.c:48</div></div>
+<div class="ttc" id="aengine_8h_html_a3f7bf39bb2c4a4841a227fe878595dbc"><div class="ttname"><a href="engine_8h.html#a3f7bf39bb2c4a4841a227fe878595dbc">route_callback</a></div><div class="ttdeci">int(* route_callback)(size_t, char **)</div><div class="ttdef"><b>Definition</b> engine.h:22</div></div>
+<div class="ttc" id="aengine_8h_html_a652dfa3636c93a60db188937488e156a"><div class="ttname"><a href="engine_8h.html#a652dfa3636c93a60db188937488e156a">test</a></div><div class="ttdeci">int test(size_t argc, char **argv)</div><div class="ttdef"><b>Definition</b> route.c:54</div></div>
+<div class="ttc" id="aengine_8h_html_a825191a40d9de85e5b0dc7f60c1e3cd3"><div class="ttname"><a href="engine_8h.html#a825191a40d9de85e5b0dc7f60c1e3cd3">callback</a></div><div class="ttdeci">route_callback callback</div><div class="ttdef"><b>Definition</b> engine.h:26</div></div>
+<div class="ttc" id="aengine_8h_html_a8f8f80d37794cde9472343e4487ba3eb"><div class="ttname"><a href="engine_8h.html#a8f8f80d37794cde9472343e4487ba3eb">name</a></div><div class="ttdeci">const char * name</div><div class="ttdef"><b>Definition</b> engine.h:25</div></div>
+<div class="ttc" id="aengine_8h_html_abfce15a97dc0d59066145deb6db71971"><div class="ttname"><a href="engine_8h.html#abfce15a97dc0d59066145deb6db71971">help</a></div><div class="ttdeci">int help(size_t argc, char **argv)</div><div class="ttdef"><b>Definition</b> route.c:9</div></div>
+<div class="ttc" id="aengine_8h_html_acbae52c879a1243e0097c06aa9a3ad82"><div class="ttname"><a href="engine_8h.html#acbae52c879a1243e0097c06aa9a3ad82">build</a></div><div class="ttdeci">int build(size_t argc, char **argv)</div><div class="ttdef"><b>Definition</b> route.c:449</div></div>
+<div class="ttc" id="aengine_8h_html_ae1b6db075e69c7d50940c6e0a9d357f6"><div class="ttname"><a href="engine_8h.html#ae1b6db075e69c7d50940c6e0a9d357f6">argument_route</a></div><div class="ttdeci">int argument_route(size_t argc, char **argv)</div><div class="ttdef"><b>Definition</b> argparser.c:3</div></div>
+<div class="ttc" id="aengine_8h_html_ae42255584dd2cdada9e4e0a159d84213"><div class="ttname"><a href="engine_8h.html#ae42255584dd2cdada9e4e0a159d84213">routes</a></div><div class="ttdeci">static const struct @11 routes[]</div></div>
+<div class="ttc" id="alibcnassets_8h_html"><div class="ttname"><a href="libcnassets_8h.html">libcnassets.h</a></div></div>
+<div class="ttc" id="alibcnaudio_8h_html"><div class="ttname"><a href="libcnaudio_8h.html">libcnaudio.h</a></div></div>
 <div class="ttc" id="alibcncore_8h_html"><div class="ttname"><a href="libcncore_8h.html">libcncore.h</a></div></div>
+<div class="ttc" id="alibcngraphic_8h_html"><div class="ttname"><a href="libcngraphic_8h.html">libcngraphic.h</a></div></div>
+<div class="ttc" id="alibcninput_8h_html"><div class="ttname"><a href="libcninput_8h.html">libcninput.h</a></div></div>
+<div class="ttc" id="alibr2d_8h_html"><div class="ttname"><a href="libr2d_8h.html">libr2d.h</a></div></div>
+<div class="ttc" id="alibr3d_8h_html"><div class="ttname"><a href="libr3d_8h.html">libr3d.h</a></div></div>
+<div class="ttc" id="alibrgui_8h_html"><div class="ttname"><a href="librgui_8h.html">librgui.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

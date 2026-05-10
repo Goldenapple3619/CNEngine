@@ -1,0 +1,129 @@
+\doxysection{lib/cnassets/src/io\+\_\+handler.c File Reference}
+\hypertarget{io__handler_8c}{}\label{io__handler_8c}\index{lib/cnassets/src/io\_handler.c@{lib/cnassets/src/io\_handler.c}}
+{\ttfamily \#include "{}libcnassets.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{io__handler_8c_a66860af8ef61a90197277713fad011b5}{fpwr\+\_\+u8}} (FILE \texorpdfstring{$\ast$}{*}fp, uint8\+\_\+t v)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{io__handler_8c_a4d2de7175cfc66cb72cab3bf19961371}{fpwr\+\_\+u16\+\_\+be}} (FILE \texorpdfstring{$\ast$}{*}fp, uint16\+\_\+t v)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{io__handler_8c_af347d6139313fe701f10a355f623e659}{fpwr\+\_\+u16\+\_\+le}} (FILE \texorpdfstring{$\ast$}{*}fp, uint16\+\_\+t v)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{io__handler_8c_a7ed6363c82893e3a694ae79f52420249}{fpwr\+\_\+u32\+\_\+be}} (FILE \texorpdfstring{$\ast$}{*}fp, uint32\+\_\+t v)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{io__handler_8c_a2be86566a54290d951d688a8eb59e0c4}{fpwr\+\_\+u32\+\_\+le}} (FILE \texorpdfstring{$\ast$}{*}fp, uint32\+\_\+t v)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{io__handler_8c_aabc3b6ecb31ec7caff21ad7071a476d9}{fpwr\+\_\+u64\+\_\+be}} (FILE \texorpdfstring{$\ast$}{*}fp, uint64\+\_\+t v)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{io__handler_8c_a57b3614243ef77e873a597e90e5962f4}{fpwr\+\_\+u64\+\_\+le}} (FILE \texorpdfstring{$\ast$}{*}fp, uint64\+\_\+t v)
+\item 
+\mbox{\hyperlink{structfpio__handler__t}{fpio\+\_\+handler\+\_\+t}} \mbox{\hyperlink{io__handler_8c_ad04bf40432b928bd98bc5c1e8861742b}{fpio\+\_\+handler\+\_\+from\+\_\+writer}} (const struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}object\+\_\+file\+\_\+write\+\_\+ctx)
+\item 
+void \mbox{\hyperlink{io__handler_8c_a85348a309a19546d30c12a416aeb1abe}{bufwr\+\_\+u8}} (char \texorpdfstring{$\ast$}{*}buf, uint8\+\_\+t v)
+\item 
+void \mbox{\hyperlink{io__handler_8c_a3dcb3c082123e52a066be3695a89b323}{bufwr\+\_\+u16\+\_\+be}} (char \texorpdfstring{$\ast$}{*}buf, uint16\+\_\+t v)
+\item 
+void \mbox{\hyperlink{io__handler_8c_a88ab3bf57ac4832cae822607eb18321a}{bufwr\+\_\+u16\+\_\+le}} (char \texorpdfstring{$\ast$}{*}buf, uint16\+\_\+t v)
+\item 
+void \mbox{\hyperlink{io__handler_8c_a9f49e0d3089b862e89c8b407a438063b}{bufwr\+\_\+u32\+\_\+be}} (char \texorpdfstring{$\ast$}{*}buf, uint32\+\_\+t v)
+\item 
+void \mbox{\hyperlink{io__handler_8c_af369b1a541e04ed45a10460595258cb0}{bufwr\+\_\+u32\+\_\+le}} (char \texorpdfstring{$\ast$}{*}buf, uint32\+\_\+t v)
+\item 
+void \mbox{\hyperlink{io__handler_8c_a1699fcbbcc24e140c632309ccfaad3be}{bufwr\+\_\+u64\+\_\+be}} (char \texorpdfstring{$\ast$}{*}buf, uint64\+\_\+t v)
+\item 
+void \mbox{\hyperlink{io__handler_8c_a4691063c5b3e1cf9fa563a0645657867}{bufwr\+\_\+u64\+\_\+le}} (char \texorpdfstring{$\ast$}{*}buf, uint64\+\_\+t v)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{io__handler_8c_a3dcb3c082123e52a066be3695a89b323}\label{io__handler_8c_a3dcb3c082123e52a066be3695a89b323} 
+\index{io\_handler.c@{io\_handler.c}!bufwr\_u16\_be@{bufwr\_u16\_be}}
+\index{bufwr\_u16\_be@{bufwr\_u16\_be}!io\_handler.c@{io\_handler.c}}
+\doxysubsubsection{\texorpdfstring{bufwr\_u16\_be()}{bufwr\_u16\_be()}}
+{\footnotesize\ttfamily void bufwr\+\_\+u16\+\_\+be (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{buf,  }\item[{uint16\+\_\+t}]{v }\end{DoxyParamCaption})}
+
+\Hypertarget{io__handler_8c_a88ab3bf57ac4832cae822607eb18321a}\label{io__handler_8c_a88ab3bf57ac4832cae822607eb18321a} 
+\index{io\_handler.c@{io\_handler.c}!bufwr\_u16\_le@{bufwr\_u16\_le}}
+\index{bufwr\_u16\_le@{bufwr\_u16\_le}!io\_handler.c@{io\_handler.c}}
+\doxysubsubsection{\texorpdfstring{bufwr\_u16\_le()}{bufwr\_u16\_le()}}
+{\footnotesize\ttfamily void bufwr\+\_\+u16\+\_\+le (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{buf,  }\item[{uint16\+\_\+t}]{v }\end{DoxyParamCaption})}
+
+\Hypertarget{io__handler_8c_a9f49e0d3089b862e89c8b407a438063b}\label{io__handler_8c_a9f49e0d3089b862e89c8b407a438063b} 
+\index{io\_handler.c@{io\_handler.c}!bufwr\_u32\_be@{bufwr\_u32\_be}}
+\index{bufwr\_u32\_be@{bufwr\_u32\_be}!io\_handler.c@{io\_handler.c}}
+\doxysubsubsection{\texorpdfstring{bufwr\_u32\_be()}{bufwr\_u32\_be()}}
+{\footnotesize\ttfamily void bufwr\+\_\+u32\+\_\+be (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{buf,  }\item[{uint32\+\_\+t}]{v }\end{DoxyParamCaption})}
+
+\Hypertarget{io__handler_8c_af369b1a541e04ed45a10460595258cb0}\label{io__handler_8c_af369b1a541e04ed45a10460595258cb0} 
+\index{io\_handler.c@{io\_handler.c}!bufwr\_u32\_le@{bufwr\_u32\_le}}
+\index{bufwr\_u32\_le@{bufwr\_u32\_le}!io\_handler.c@{io\_handler.c}}
+\doxysubsubsection{\texorpdfstring{bufwr\_u32\_le()}{bufwr\_u32\_le()}}
+{\footnotesize\ttfamily void bufwr\+\_\+u32\+\_\+le (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{buf,  }\item[{uint32\+\_\+t}]{v }\end{DoxyParamCaption})}
+
+\Hypertarget{io__handler_8c_a1699fcbbcc24e140c632309ccfaad3be}\label{io__handler_8c_a1699fcbbcc24e140c632309ccfaad3be} 
+\index{io\_handler.c@{io\_handler.c}!bufwr\_u64\_be@{bufwr\_u64\_be}}
+\index{bufwr\_u64\_be@{bufwr\_u64\_be}!io\_handler.c@{io\_handler.c}}
+\doxysubsubsection{\texorpdfstring{bufwr\_u64\_be()}{bufwr\_u64\_be()}}
+{\footnotesize\ttfamily void bufwr\+\_\+u64\+\_\+be (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{buf,  }\item[{uint64\+\_\+t}]{v }\end{DoxyParamCaption})}
+
+\Hypertarget{io__handler_8c_a4691063c5b3e1cf9fa563a0645657867}\label{io__handler_8c_a4691063c5b3e1cf9fa563a0645657867} 
+\index{io\_handler.c@{io\_handler.c}!bufwr\_u64\_le@{bufwr\_u64\_le}}
+\index{bufwr\_u64\_le@{bufwr\_u64\_le}!io\_handler.c@{io\_handler.c}}
+\doxysubsubsection{\texorpdfstring{bufwr\_u64\_le()}{bufwr\_u64\_le()}}
+{\footnotesize\ttfamily void bufwr\+\_\+u64\+\_\+le (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{buf,  }\item[{uint64\+\_\+t}]{v }\end{DoxyParamCaption})}
+
+\Hypertarget{io__handler_8c_a85348a309a19546d30c12a416aeb1abe}\label{io__handler_8c_a85348a309a19546d30c12a416aeb1abe} 
+\index{io\_handler.c@{io\_handler.c}!bufwr\_u8@{bufwr\_u8}}
+\index{bufwr\_u8@{bufwr\_u8}!io\_handler.c@{io\_handler.c}}
+\doxysubsubsection{\texorpdfstring{bufwr\_u8()}{bufwr\_u8()}}
+{\footnotesize\ttfamily void bufwr\+\_\+u8 (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{buf,  }\item[{uint8\+\_\+t}]{v }\end{DoxyParamCaption})}
+
+\Hypertarget{io__handler_8c_ad04bf40432b928bd98bc5c1e8861742b}\label{io__handler_8c_ad04bf40432b928bd98bc5c1e8861742b} 
+\index{io\_handler.c@{io\_handler.c}!fpio\_handler\_from\_writer@{fpio\_handler\_from\_writer}}
+\index{fpio\_handler\_from\_writer@{fpio\_handler\_from\_writer}!io\_handler.c@{io\_handler.c}}
+\doxysubsubsection{\texorpdfstring{fpio\_handler\_from\_writer()}{fpio\_handler\_from\_writer()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structfpio__handler__t}{fpio\+\_\+handler\+\_\+t}} fpio\+\_\+handler\+\_\+from\+\_\+writer (\begin{DoxyParamCaption}\item[{const struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{object\+\_\+file\+\_\+write\+\_\+ctx }\end{DoxyParamCaption})}
+
+\Hypertarget{io__handler_8c_a4d2de7175cfc66cb72cab3bf19961371}\label{io__handler_8c_a4d2de7175cfc66cb72cab3bf19961371} 
+\index{io\_handler.c@{io\_handler.c}!fpwr\_u16\_be@{fpwr\_u16\_be}}
+\index{fpwr\_u16\_be@{fpwr\_u16\_be}!io\_handler.c@{io\_handler.c}}
+\doxysubsubsection{\texorpdfstring{fpwr\_u16\_be()}{fpwr\_u16\_be()}}
+{\footnotesize\ttfamily uint8\+\_\+t fpwr\+\_\+u16\+\_\+be (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{fp,  }\item[{uint16\+\_\+t}]{v }\end{DoxyParamCaption})}
+
+\Hypertarget{io__handler_8c_af347d6139313fe701f10a355f623e659}\label{io__handler_8c_af347d6139313fe701f10a355f623e659} 
+\index{io\_handler.c@{io\_handler.c}!fpwr\_u16\_le@{fpwr\_u16\_le}}
+\index{fpwr\_u16\_le@{fpwr\_u16\_le}!io\_handler.c@{io\_handler.c}}
+\doxysubsubsection{\texorpdfstring{fpwr\_u16\_le()}{fpwr\_u16\_le()}}
+{\footnotesize\ttfamily uint8\+\_\+t fpwr\+\_\+u16\+\_\+le (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{fp,  }\item[{uint16\+\_\+t}]{v }\end{DoxyParamCaption})}
+
+\Hypertarget{io__handler_8c_a7ed6363c82893e3a694ae79f52420249}\label{io__handler_8c_a7ed6363c82893e3a694ae79f52420249} 
+\index{io\_handler.c@{io\_handler.c}!fpwr\_u32\_be@{fpwr\_u32\_be}}
+\index{fpwr\_u32\_be@{fpwr\_u32\_be}!io\_handler.c@{io\_handler.c}}
+\doxysubsubsection{\texorpdfstring{fpwr\_u32\_be()}{fpwr\_u32\_be()}}
+{\footnotesize\ttfamily uint8\+\_\+t fpwr\+\_\+u32\+\_\+be (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{fp,  }\item[{uint32\+\_\+t}]{v }\end{DoxyParamCaption})}
+
+\Hypertarget{io__handler_8c_a2be86566a54290d951d688a8eb59e0c4}\label{io__handler_8c_a2be86566a54290d951d688a8eb59e0c4} 
+\index{io\_handler.c@{io\_handler.c}!fpwr\_u32\_le@{fpwr\_u32\_le}}
+\index{fpwr\_u32\_le@{fpwr\_u32\_le}!io\_handler.c@{io\_handler.c}}
+\doxysubsubsection{\texorpdfstring{fpwr\_u32\_le()}{fpwr\_u32\_le()}}
+{\footnotesize\ttfamily uint8\+\_\+t fpwr\+\_\+u32\+\_\+le (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{fp,  }\item[{uint32\+\_\+t}]{v }\end{DoxyParamCaption})}
+
+\Hypertarget{io__handler_8c_aabc3b6ecb31ec7caff21ad7071a476d9}\label{io__handler_8c_aabc3b6ecb31ec7caff21ad7071a476d9} 
+\index{io\_handler.c@{io\_handler.c}!fpwr\_u64\_be@{fpwr\_u64\_be}}
+\index{fpwr\_u64\_be@{fpwr\_u64\_be}!io\_handler.c@{io\_handler.c}}
+\doxysubsubsection{\texorpdfstring{fpwr\_u64\_be()}{fpwr\_u64\_be()}}
+{\footnotesize\ttfamily uint8\+\_\+t fpwr\+\_\+u64\+\_\+be (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{fp,  }\item[{uint64\+\_\+t}]{v }\end{DoxyParamCaption})}
+
+\Hypertarget{io__handler_8c_a57b3614243ef77e873a597e90e5962f4}\label{io__handler_8c_a57b3614243ef77e873a597e90e5962f4} 
+\index{io\_handler.c@{io\_handler.c}!fpwr\_u64\_le@{fpwr\_u64\_le}}
+\index{fpwr\_u64\_le@{fpwr\_u64\_le}!io\_handler.c@{io\_handler.c}}
+\doxysubsubsection{\texorpdfstring{fpwr\_u64\_le()}{fpwr\_u64\_le()}}
+{\footnotesize\ttfamily uint8\+\_\+t fpwr\+\_\+u64\+\_\+le (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{fp,  }\item[{uint64\+\_\+t}]{v }\end{DoxyParamCaption})}
+
+\Hypertarget{io__handler_8c_a66860af8ef61a90197277713fad011b5}\label{io__handler_8c_a66860af8ef61a90197277713fad011b5} 
+\index{io\_handler.c@{io\_handler.c}!fpwr\_u8@{fpwr\_u8}}
+\index{fpwr\_u8@{fpwr\_u8}!io\_handler.c@{io\_handler.c}}
+\doxysubsubsection{\texorpdfstring{fpwr\_u8()}{fpwr\_u8()}}
+{\footnotesize\ttfamily uint8\+\_\+t fpwr\+\_\+u8 (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{fp,  }\item[{uint8\+\_\+t}]{v }\end{DoxyParamCaption})}
+

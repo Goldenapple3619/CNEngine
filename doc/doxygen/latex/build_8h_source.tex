@@ -1,0 +1,46 @@
+\doxysection{build.\+h}
+\hypertarget{build_8h_source}{}\label{build_8h_source}\index{src/cnbuild/build.h@{src/cnbuild/build.h}}
+\mbox{\hyperlink{build_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_BUILD\_H\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\ \ \ \ \#define\ \_BUILD\_H\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\ \ \ \ \#include\ <libxml/parser.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\ \ \ \ \#include\ <libxml/tree.h>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}../engine.h"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structbuild__args__s}{build\_args\_s}}\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structbuild__args__s_a91fb902daa31036ce721448c2edd464e}{output\_file}};}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgeneric__vector__s}{generic\_vector\_s}}\ \mbox{\hyperlink{structbuild__args__s_a82b7034f84e82e866f350e36dc7a6092}{input\_files}};}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnassets_8h_a80aea36b56e30038a40d82b823efcf20}{engine\_wrt\_flags}}\ \mbox{\hyperlink{structbuild__args__s_ab3d260e440aaaa239f2e7e52a467c730}{padding}};}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnassets_8h_ab1164f59055b40a6fea404d875315464}{engine\_wrt\_endian}}\ \mbox{\hyperlink{structbuild__args__s_a74092f39d638de90eb8d8faac5910ebb}{endian}};}
+\DoxyCodeLine{00016\ \ \ \ \ \};}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structparsed__gui__element__data__s}{parsed\_gui\_element\_data\_s}}\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structparsed__gui__element__data__s_a02b081dacc80f0f572149152f974676d}{id}};}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structparsed__gui__element__data__s_afabbb8dd1229da2ceacc4cbef5c10c76}{object\_type}};}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structparsed__gui__element__data__s_a36166e24fa2aa14cd66540accc4d161d}{text\_content}};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structparsed__gui__element__data__s}{parsed\_gui\_element\_data\_s}}\ *\mbox{\hyperlink{structparsed__gui__element__data__s_ae0f42db9fac4407a3c01ffabf7981960}{parent}};}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgeneric__map__s}{generic\_map\_s}}\ \mbox{\hyperlink{structparsed__gui__element__data__s_a89a2a555b2f8bb428e9ba89725f63e01}{styles}};}
+\DoxyCodeLine{00025\ \ \ \ \ \};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{build_8h_a7c0a4901634cd71315b384c4612b1d57}{build\_gui}}(\textcolor{keywordtype}{size\_t}\ argc,\ \textcolor{keywordtype}{char}\ **argv);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}};}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{engine_8h_a3f7bf39bb2c4a4841a227fe878595dbc}{route\_callback}}\ \mbox{\hyperlink{build_8h_a825191a40d9de85e5b0dc7f60c1e3cd3}{callback}};}
+\DoxyCodeLine{00032\ \ \ \ \ \}\ \mbox{\hyperlink{build_8h_aeab8ba315596f823ac80964c00c48f83}{build\_types}}[]\ =\ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}gui"{}},\ \&\mbox{\hyperlink{build_8h_a7c0a4901634cd71315b384c4612b1d57}{build\_gui}}\},}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}obj"{}},\ NULL\},}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}scn"{}},\ NULL\},}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}proj"{}},\ NULL\},}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \{NULL,\ NULL\}}
+\DoxyCodeLine{00038\ \ \ \ \ \};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

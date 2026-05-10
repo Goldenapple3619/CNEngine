@@ -103,12 +103,265 @@ $(document).ready(function(){initNavTree('engine_8h.html',''); initResizable(); 
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">engine.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="libcncore_8h_source.html">libcncore.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;signal.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="libcncore_8h_source.html">libcncore.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="libcnaudio_8h_source.html">libcnaudio.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="libcninput_8h_source.html">libcninput.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="libcngraphic_8h_source.html">libcngraphic.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="librgui_8h_source.html">librgui.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="libr2d_8h_source.html">libr2d.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="libr3d_8h_source.html">libr3d.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="libcnassets_8h_source.html">libcnassets.h</a>&quot;</code><br />
 </div>
 <p><a href="engine_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a3f7bf39bb2c4a4841a227fe878595dbc" id="r_a3f7bf39bb2c4a4841a227fe878595dbc"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a3f7bf39bb2c4a4841a227fe878595dbc">route_callback</a>) (size_t, char **)</td></tr>
+<tr class="separator:a3f7bf39bb2c4a4841a227fe878595dbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ae1b6db075e69c7d50940c6e0a9d357f6" id="r_ae1b6db075e69c7d50940c6e0a9d357f6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#ae1b6db075e69c7d50940c6e0a9d357f6">argument_route</a> (size_t argc, char **argv)</td></tr>
+<tr class="separator:ae1b6db075e69c7d50940c6e0a9d357f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a152b2bafff5976ca602c43ed93c181c1" id="r_a152b2bafff5976ca602c43ed93c181c1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a152b2bafff5976ca602c43ed93c181c1">init</a> (size_t argc, char **argv)</td></tr>
+<tr class="separator:a152b2bafff5976ca602c43ed93c181c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a652dfa3636c93a60db188937488e156a" id="r_a652dfa3636c93a60db188937488e156a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a652dfa3636c93a60db188937488e156a">test</a> (size_t argc, char **argv)</td></tr>
+<tr class="separator:a652dfa3636c93a60db188937488e156a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfce15a97dc0d59066145deb6db71971" id="r_abfce15a97dc0d59066145deb6db71971"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#abfce15a97dc0d59066145deb6db71971">help</a> (size_t argc, char **argv)</td></tr>
+<tr class="separator:abfce15a97dc0d59066145deb6db71971"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbae52c879a1243e0097c06aa9a3ad82" id="r_acbae52c879a1243e0097c06aa9a3ad82"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#acbae52c879a1243e0097c06aa9a3ad82">build</a> (size_t argc, char **argv)</td></tr>
+<tr class="separator:acbae52c879a1243e0097c06aa9a3ad82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ae42255584dd2cdada9e4e0a159d84213" id="r_ae42255584dd2cdada9e4e0a159d84213"><td class="memItemLeft" >struct {&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbd0d4a108356ca906ecabf7a0de3089" id="r_acbd0d4a108356ca906ecabf7a0de3089"><td class="memItemLeft" >&#160;&#160;&#160;const char *&#160;&#160;&#160;<a class="el" href="engine_8h.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="separator:acbd0d4a108356ca906ecabf7a0de3089"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea9ebdafa574105f0b5cff453010f521" id="r_aea9ebdafa574105f0b5cff453010f521"><td class="memItemLeft" >&#160;&#160;&#160;<a class="el" href="engine_8h.html#a3f7bf39bb2c4a4841a227fe878595dbc">route_callback</a>&#160;&#160;&#160;<a class="el" href="engine_8h.html#a825191a40d9de85e5b0dc7f60c1e3cd3">callback</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="separator:aea9ebdafa574105f0b5cff453010f521"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae42255584dd2cdada9e4e0a159d84213" id="r_ae42255584dd2cdada9e4e0a159d84213"><td class="memItemLeft" valign="top">}&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#ae42255584dd2cdada9e4e0a159d84213">routes</a> []&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="separator:ae42255584dd2cdada9e4e0a159d84213"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a id="a3f7bf39bb2c4a4841a227fe878595dbc" name="a3f7bf39bb2c4a4841a227fe878595dbc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f7bf39bb2c4a4841a227fe878595dbc">&#9670;&#160;</a></span>route_callback</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef int(* route_callback) (size_t, char **)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="ae1b6db075e69c7d50940c6e0a9d357f6" name="ae1b6db075e69c7d50940c6e0a9d357f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1b6db075e69c7d50940c6e0a9d357f6">&#9670;&#160;</a></span>argument_route()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int argument_route </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>argv</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acbae52c879a1243e0097c06aa9a3ad82" name="acbae52c879a1243e0097c06aa9a3ad82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acbae52c879a1243e0097c06aa9a3ad82">&#9670;&#160;</a></span>build()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int build </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>argv</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abfce15a97dc0d59066145deb6db71971" name="abfce15a97dc0d59066145deb6db71971"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abfce15a97dc0d59066145deb6db71971">&#9670;&#160;</a></span>help()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int help </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>argv</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a152b2bafff5976ca602c43ed93c181c1" name="a152b2bafff5976ca602c43ed93c181c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a152b2bafff5976ca602c43ed93c181c1">&#9670;&#160;</a></span>init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int init </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>argv</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a652dfa3636c93a60db188937488e156a" name="a652dfa3636c93a60db188937488e156a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a652dfa3636c93a60db188937488e156a">&#9670;&#160;</a></span>test()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int test </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>argv</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a825191a40d9de85e5b0dc7f60c1e3cd3" name="a825191a40d9de85e5b0dc7f60c1e3cd3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a825191a40d9de85e5b0dc7f60c1e3cd3">&#9670;&#160;</a></span>callback</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="engine_8h.html#a3f7bf39bb2c4a4841a227fe878595dbc">route_callback</a> callback</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8f8f80d37794cde9472343e4487ba3eb" name="a8f8f80d37794cde9472343e4487ba3eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f8f80d37794cde9472343e4487ba3eb">&#9670;&#160;</a></span>name</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* name</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae42255584dd2cdada9e4e0a159d84213" name="ae42255584dd2cdada9e4e0a159d84213"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae42255584dd2cdada9e4e0a159d84213">&#9670;&#160;</a></span>[struct]</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const struct  { ... }  routes[]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">        {<span class="stringliteral">&quot;init&quot;</span>, &amp;<a class="code hl_function" href="engine_8h.html#a152b2bafff5976ca602c43ed93c181c1">init</a>},</div>
+<div class="line">        {<span class="stringliteral">&quot;help&quot;</span>, &amp;<a class="code hl_function" href="engine_8h.html#abfce15a97dc0d59066145deb6db71971">help</a>},</div>
+<div class="line">        {<span class="stringliteral">&quot;test&quot;</span>, &amp;<a class="code hl_function" href="engine_8h.html#a652dfa3636c93a60db188937488e156a">test</a>},</div>
+<div class="line">        {<span class="stringliteral">&quot;build&quot;</span>, &amp;<a class="code hl_function" href="engine_8h.html#acbae52c879a1243e0097c06aa9a3ad82">build</a>},</div>
+<div class="line">        {NULL, NULL}</div>
+<div class="line">    }</div>
+<div class="ttc" id="aengine_8h_html_a152b2bafff5976ca602c43ed93c181c1"><div class="ttname"><a href="engine_8h.html#a152b2bafff5976ca602c43ed93c181c1">init</a></div><div class="ttdeci">int init(size_t argc, char **argv)</div><div class="ttdef"><b>Definition</b> route.c:48</div></div>
+<div class="ttc" id="aengine_8h_html_a652dfa3636c93a60db188937488e156a"><div class="ttname"><a href="engine_8h.html#a652dfa3636c93a60db188937488e156a">test</a></div><div class="ttdeci">int test(size_t argc, char **argv)</div><div class="ttdef"><b>Definition</b> route.c:54</div></div>
+<div class="ttc" id="aengine_8h_html_abfce15a97dc0d59066145deb6db71971"><div class="ttname"><a href="engine_8h.html#abfce15a97dc0d59066145deb6db71971">help</a></div><div class="ttdeci">int help(size_t argc, char **argv)</div><div class="ttdef"><b>Definition</b> route.c:9</div></div>
+<div class="ttc" id="aengine_8h_html_acbae52c879a1243e0097c06aa9a3ad82"><div class="ttname"><a href="engine_8h.html#acbae52c879a1243e0097c06aa9a3ad82">build</a></div><div class="ttdeci">int build(size_t argc, char **argv)</div><div class="ttdef"><b>Definition</b> route.c:449</div></div>
+</div><!-- fragment -->
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
