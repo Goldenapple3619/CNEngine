@@ -33,7 +33,7 @@ jobs:
           sudo apt update
           sudo apt install -y gcc-multilib g++-multilib libc6-dev-i386 lib32z1 lib32ncurses6 lib32gcc-s1 libc6:i386 libc6-dev:i386
           sudo apt-get install -y libgl1-mesa-dev:i386 libglu1-mesa-dev:i386 libglx-dev:i386 libx11-dev:i386 libxext-dev:i386
-          sudo apt-get install -y uuid-dev:i386
+          sudo apt-get install -y uuid-dev:i386 libxml2-dev:i386
 
       - name: Build linux-i386
         run: |
@@ -103,7 +103,7 @@ jobs:
           MSYSTEM: MINGW32
         run: |
           C:\msys64\usr\bin\bash.exe -lc "pacman -Syu --noconfirm" | Out-Null
-          C:\msys64\usr\bin\bash.exe -lc "pacman -Syu --noconfirm && pacman -S --noconfirm mingw-w64-i686-toolchain base-devel"
+          C:\msys64\usr\bin\bash.exe -lc "pacman -Syu --noconfirm && pacman -S --noconfirm mingw-w64-i686-toolchain base-devel mingw-w64-i686-libxml2"
           Copy-Item C:\msys64\mingw32\bin\windres.exe C:\msys64\mingw32\bin\i686-w64-mingw32-windres.exe
 
       - name: Set up Python
@@ -158,7 +158,7 @@ jobs:
           MSYSTEM: MINGW64
         run: |
           C:\msys64\usr\bin\bash.exe -lc "pacman -Syu --noconfirm" | Out-Null
-          C:\msys64\usr\bin\bash.exe -lc "pacman -Syu --noconfirm && pacman -S --noconfirm mingw-w64-x86_64-toolchain base-devel"
+          C:\msys64\usr\bin\bash.exe -lc "pacman -Syu --noconfirm && pacman -S --noconfirm mingw-w64-x86_64-toolchain base-devel mingw-w64-x86_64-libxml2"
           Copy-Item C:\msys64\mingw64\bin\windres.exe C:\msys64\mingw64\bin\x86_64-w64-mingw32-windres.exe
 
       - name: Set up Python

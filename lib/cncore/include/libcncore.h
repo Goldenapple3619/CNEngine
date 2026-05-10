@@ -260,7 +260,12 @@
 
     typedef struct vector2_s Vector2;
     typedef struct vector3_s Vector3;
-    typedef struct rect_s Rect;
+    #if !defined(__APPLE__)
+        typedef struct rect_s Rect;
+    #else
+        typedef struct rect_s CNRect;
+        #define Rect CNRect
+    #endif
     typedef struct clock_s Clock;
     typedef struct object_s Object;
     typedef struct object_attribute_s OBJAttrib;

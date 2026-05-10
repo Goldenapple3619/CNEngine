@@ -8,7 +8,7 @@
 
         typedef unsigned char uuid_t[16];
 
-        static inline void uuid_generate(uuid_t out) {
+        static inline void uuid_generate_random(uuid_t out) {
             UUID w;
             UuidCreate(&w);
             memcpy(out, &w, 16);
@@ -29,7 +29,7 @@
 
         typedef unsigned char uuid_t[16];
 
-        static inline void uuid_generate(uuid_t out) {
+        static inline void uuid_generate_random(uuid_t out) {
             CFUUIDRef u = CFUUIDCreate(NULL);
             CFUUIDBytes b = CFUUIDGetUUIDBytes(u);
             CFRelease(u);

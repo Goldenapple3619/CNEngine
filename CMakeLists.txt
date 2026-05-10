@@ -274,15 +274,29 @@ foreach(lib glad_gl)
 endforeach()
 
 # xml2
-get_target_property(XML2_LIB LibXml2::LibXml2 LOCATION)
-get_filename_component(XML2_REAL "${XML2_LIB}" REALPATH)
-get_filename_component(XML2_NAME "${XML2_REAL}" NAME)
+if(WIN32)
+    find_file(XML2_DLL
+        NAMES libxml2-2.dll libxml2.dll
+        PATHS "${CMAKE_FIND_ROOT_PATH}/bin"
+        NO_DEFAULT_PATH
+        REQUIRED
+    )
+    add_custom_command(TARGET cn_dist POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/lib"
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            "${XML2_DLL}" "${DIST_DIR}/lib/"
+    )
+elseif(UNIX AND NOT APPLE)
+    get_target_property(XML2_LIB LibXml2::LibXml2 LOCATION)
+    get_filename_component(XML2_REAL "${XML2_LIB}" REALPATH)
+    get_filename_component(XML2_NAME "${XML2_REAL}" NAME)
 
-add_custom_command(TARGET cn_dist POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/lib"
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        "${XML2_REAL}" "${DIST_DIR}/lib/${XML2_NAME}"
-)
+    add_custom_command(TARGET cn_dist POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/lib"
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            "${XML2_REAL}" "${DIST_DIR}/lib/${XML2_NAME}"
+    )
+endif()
 
 # vendored
 foreach(lib freetype harfbuzz ogg opus opusfile xmp tiff)
