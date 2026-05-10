@@ -276,6 +276,12 @@ endforeach()
 # xml2
 if(WIN32)
     get_filename_component(MINGW_BIN_DIR ${CMAKE_C_COMPILER} DIRECTORY)
+    message(STATUS "Looking for xml2 dll in: ${MINGW_BIN_DIR}")
+    message(STATUS "Files in that dir:")
+    file(GLOB _xml2_candidates "${MINGW_BIN_DIR}/libxml*")
+    foreach(f ${_xml2_candidates})
+        message(STATUS "  ${f}")
+    endforeach()
 
     find_file(XML2_DLL
         NAMES libxml2-2.dll libxml2.dll
@@ -313,7 +319,7 @@ elseif(UNIX AND NOT APPLE)
         COMMAND ${CMAKE_COMMAND}
             -DXML2_LIB="${XML2_REAL}"
             -DDIST_DIR="${DIST_DIR}"
-            -P "${CMAKE_SOURCE_DIR}/cmake/copy_xml2_deps.cmake"
+            -P "${CMAKE_SOURCE_DIR}/toolchain/copy_xml2_deps.cmake"
     )
 endif()
 
