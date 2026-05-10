@@ -314,6 +314,7 @@ elseif(UNIX AND NOT APPLE)
             -DXML2_LIB="${XML2_REAL}"
             -DDIST_DIR="${DIST_DIR}"
             -P "${CMAKE_SOURCE_DIR}/cmake/copy_xml2_deps.cmake"
+    )
 endif()
 
 # vendored
