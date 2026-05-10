@@ -3,25 +3,30 @@
 
     #if defined(_WIN32)
         #include <rpc.h>
-        #include <rpcdce.h>
-        #pragma comment(lib, "Rpcrt4.lib")
 
-        typedef unsigned char uuid_t[16];
+        #ifdef _MSC_VER
+            #pragma comment(lib, "Rpcrt4.lib")
+        #endif
 
-        static inline void uuid_generate_random(uuid_t out) {
+        typedef unsigned char cn_uuid_bytes[16];
+
+        static inline void uuid_generate_random(cn_uuid_bytes out) {
             UUID w;
             UuidCreate(&w);
-            memcpy(out, &w, 16);
+            memcpy(out, &w, sizeof(UUID));
         }
 
-        static inline void uuid_unparse_lower(const uuid_t uu, char *out) {
-            UUID *w = (UUID *)uu;
-            unsigned char *p;
-            UuidToStringA(w, &p);
+        static inline void uuid_unparse_lower(const cn_uuid_bytes uu, char *out) {
+            UUID w;
+            RPC_CSTR p;
+            memcpy(&w, uu, sizeof(UUID));
+            UuidToStringA(&w, &p);
             strncpy(out, (char *)p, 36);
             out[36] = '\0';
             RpcStringFreeA(&p);
         }
+
+        #define uuid_t cn_uuid_bytes
 
     #elif defined(__APPLE__)
         #include <CoreFoundation/CFUUID.h>
