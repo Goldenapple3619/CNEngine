@@ -10,6 +10,16 @@ static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{guiboa
 \item 
 static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{guiboard_8c_a54784ff19994e720de4144344546ac8f}{\+\_\+events}} (\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+this, void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}args)
 \item 
+static void \mbox{\hyperlink{guiboard_8c_a616a08a89aae0c418ae0635cb9e4e1ae}{\+\_\+cpu\+\_\+rendering}} (const \mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}object\+\_\+texture, \mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}dest\+\_\+texture, const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}at)
+\item 
+static void \mbox{\hyperlink{guiboard_8c_a2b67117addd3ad7fa0879717dba8dcbb}{\+\_\+gpu\+\_\+rendering}} (\mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}object\+\_\+texture, SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer, const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}at, const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}canva\+\_\+ratio, const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}canva\+\_\+position)
+\item 
+static void \mbox{\hyperlink{guiboard_8c_a1f552014b4e9d723673e3d1a3e45b8d4}{\+\_\+opengl\+\_\+rendering}} (\mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}object\+\_\+texture, \mbox{\hyperlink{structQuad}{Quad}} \texorpdfstring{$\ast$}{*}gl\+\_\+quad, const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}at, const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}canva\+\_\+ratio, const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}canva\+\_\+scale)
+\item 
+static \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \mbox{\hyperlink{guiboard_8c_a0be7119526e85935404a2b65c6071e8a}{\+\_\+compute\+\_\+object\+\_\+position}} (const \mbox{\hyperlink{structgui__render__stack}{gui\+\_\+render\+\_\+stack}} \texorpdfstring{$\ast$}{*}render\+\_\+stack)
+\item 
+static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{guiboard_8c_ac8f59d4c97b9fb23bd6dccb19d3502a0}{\+\_\+render\+\_\+object}} (\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+this, void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}args)
+\item 
 static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{guiboard_8c_a073035db0895ef52d81de1aa76eba487}{\+\_\+draw}} (\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+this, void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}args)
 \item 
 static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{guiboard_8c_a67c4a28f0f0ac152d946ac6a91bbf3fe}{\+\_\+add\+\_\+element}} (\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+this, void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}args)
@@ -26,6 +36,18 @@ static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{guiboa
 \index{\_add\_element@{\_add\_element}!guiboard.c@{guiboard.c}}
 \doxysubsubsection{\texorpdfstring{\_add\_element()}{\_add\_element()}}
 {\footnotesize\ttfamily static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \+\_\+add\+\_\+element (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+this,  }\item[{void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{guiboard_8c_a0be7119526e85935404a2b65c6071e8a}\label{guiboard_8c_a0be7119526e85935404a2b65c6071e8a} 
+\index{guiboard.c@{guiboard.c}!\_compute\_object\_position@{\_compute\_object\_position}}
+\index{\_compute\_object\_position@{\_compute\_object\_position}!guiboard.c@{guiboard.c}}
+\doxysubsubsection{\texorpdfstring{\_compute\_object\_position()}{\_compute\_object\_position()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \+\_\+compute\+\_\+object\+\_\+position (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structgui__render__stack}{gui\+\_\+render\+\_\+stack}} \texorpdfstring{$\ast$}{*}}]{render\+\_\+stack }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{guiboard_8c_a616a08a89aae0c418ae0635cb9e4e1ae}\label{guiboard_8c_a616a08a89aae0c418ae0635cb9e4e1ae} 
+\index{guiboard.c@{guiboard.c}!\_cpu\_rendering@{\_cpu\_rendering}}
+\index{\_cpu\_rendering@{\_cpu\_rendering}!guiboard.c@{guiboard.c}}
+\doxysubsubsection{\texorpdfstring{\_cpu\_rendering()}{\_cpu\_rendering()}}
+{\footnotesize\ttfamily static void \+\_\+cpu\+\_\+rendering (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}}]{object\+\_\+texture,  }\item[{\mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}}]{dest\+\_\+texture,  }\item[{const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}}]{at }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 \Hypertarget{guiboard_8c_a97a1051659d95d0248dbe386029c17f3}\label{guiboard_8c_a97a1051659d95d0248dbe386029c17f3} 
 \index{guiboard.c@{guiboard.c}!\_del@{\_del}}
@@ -45,11 +67,29 @@ static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{guiboa
 \doxysubsubsection{\texorpdfstring{\_events()}{\_events()}}
 {\footnotesize\ttfamily static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \+\_\+events (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+this,  }\item[{void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+\Hypertarget{guiboard_8c_a2b67117addd3ad7fa0879717dba8dcbb}\label{guiboard_8c_a2b67117addd3ad7fa0879717dba8dcbb} 
+\index{guiboard.c@{guiboard.c}!\_gpu\_rendering@{\_gpu\_rendering}}
+\index{\_gpu\_rendering@{\_gpu\_rendering}!guiboard.c@{guiboard.c}}
+\doxysubsubsection{\texorpdfstring{\_gpu\_rendering()}{\_gpu\_rendering()}}
+{\footnotesize\ttfamily static void \+\_\+gpu\+\_\+rendering (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}}]{object\+\_\+texture,  }\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer,  }\item[{const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}}]{at,  }\item[{const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}}]{canva\+\_\+ratio,  }\item[{const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}}]{canva\+\_\+position }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
 \Hypertarget{guiboard_8c_a1a63a6f58510226876eb4212dbe5da70}\label{guiboard_8c_a1a63a6f58510226876eb4212dbe5da70} 
 \index{guiboard.c@{guiboard.c}!\_init@{\_init}}
 \index{\_init@{\_init}!guiboard.c@{guiboard.c}}
 \doxysubsubsection{\texorpdfstring{\_init()}{\_init()}}
 {\footnotesize\ttfamily static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+this,  }\item[{void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{guiboard_8c_a1f552014b4e9d723673e3d1a3e45b8d4}\label{guiboard_8c_a1f552014b4e9d723673e3d1a3e45b8d4} 
+\index{guiboard.c@{guiboard.c}!\_opengl\_rendering@{\_opengl\_rendering}}
+\index{\_opengl\_rendering@{\_opengl\_rendering}!guiboard.c@{guiboard.c}}
+\doxysubsubsection{\texorpdfstring{\_opengl\_rendering()}{\_opengl\_rendering()}}
+{\footnotesize\ttfamily static void \+\_\+opengl\+\_\+rendering (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}}]{object\+\_\+texture,  }\item[{\mbox{\hyperlink{structQuad}{Quad}} \texorpdfstring{$\ast$}{*}}]{gl\+\_\+quad,  }\item[{const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}}]{at,  }\item[{const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}}]{canva\+\_\+ratio,  }\item[{const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}}]{canva\+\_\+scale }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{guiboard_8c_ac8f59d4c97b9fb23bd6dccb19d3502a0}\label{guiboard_8c_ac8f59d4c97b9fb23bd6dccb19d3502a0} 
+\index{guiboard.c@{guiboard.c}!\_render\_object@{\_render\_object}}
+\index{\_render\_object@{\_render\_object}!guiboard.c@{guiboard.c}}
+\doxysubsubsection{\texorpdfstring{\_render\_object()}{\_render\_object()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \+\_\+render\+\_\+object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+this,  }\item[{void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 \Hypertarget{guiboard_8c_ad04b21d0b8952a7c15d18e29f996fac2}\label{guiboard_8c_ad04b21d0b8952a7c15d18e29f996fac2} 
 \index{guiboard.c@{guiboard.c}!\_update@{\_update}}

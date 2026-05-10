@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['false_0',['false',['../libcncore_8h.html#a65e9886d74aaee76545e83dd09011727',1,'libcncore.h']]]
+  ['del_5fcustom_5fallocaion_0',['DEL_CUSTOM_ALLOCAION',['../libcncore_8h.html#acd460b2632ceae92211e96ad795b35ff',1,'libcncore.h']]]
 ];

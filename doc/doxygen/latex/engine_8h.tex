@@ -1,3 +1,115 @@
 \doxysection{src/engine.h File Reference}
 \hypertarget{engine_8h}{}\label{engine_8h}\index{src/engine.h@{src/engine.h}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$signal.\+h$>$}\newline
 {\ttfamily \#include "{}libcncore.\+h"{}}\newline
+{\ttfamily \#include "{}libcnaudio.\+h"{}}\newline
+{\ttfamily \#include "{}libcninput.\+h"{}}\newline
+{\ttfamily \#include "{}libcngraphic.\+h"{}}\newline
+{\ttfamily \#include "{}librgui.\+h"{}}\newline
+{\ttfamily \#include "{}libr2d.\+h"{}}\newline
+{\ttfamily \#include "{}libr3d.\+h"{}}\newline
+{\ttfamily \#include "{}libcnassets.\+h"{}}\newline
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef int(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{engine_8h_a3f7bf39bb2c4a4841a227fe878595dbc}{route\+\_\+callback}}) (size\+\_\+t, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{engine_8h_ae1b6db075e69c7d50940c6e0a9d357f6}{argument\+\_\+route}} (size\+\_\+t argc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv)
+\item 
+int \mbox{\hyperlink{engine_8h_a152b2bafff5976ca602c43ed93c181c1}{init}} (size\+\_\+t argc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv)
+\item 
+int \mbox{\hyperlink{engine_8h_a652dfa3636c93a60db188937488e156a}{test}} (size\+\_\+t argc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv)
+\item 
+int \mbox{\hyperlink{engine_8h_abfce15a97dc0d59066145deb6db71971}{help}} (size\+\_\+t argc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv)
+\item 
+int \mbox{\hyperlink{engine_8h_acbae52c879a1243e0097c06aa9a3ad82}{build}} (size\+\_\+t argc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{engine_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}}\\
+\>\mbox{\hyperlink{engine_8h_a3f7bf39bb2c4a4841a227fe878595dbc}{route\_callback}} \mbox{\hyperlink{engine_8h_a825191a40d9de85e5b0dc7f60c1e3cd3}{callback}}\\
+\} \mbox{\hyperlink{engine_8h_ae42255584dd2cdada9e4e0a159d84213}{routes}} \mbox{[}$\,$\mbox{]}\\
+
+\end{tabbing}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{engine_8h_a3f7bf39bb2c4a4841a227fe878595dbc}\label{engine_8h_a3f7bf39bb2c4a4841a227fe878595dbc} 
+\index{engine.h@{engine.h}!route\_callback@{route\_callback}}
+\index{route\_callback@{route\_callback}!engine.h@{engine.h}}
+\doxysubsubsection{\texorpdfstring{route\_callback}{route\_callback}}
+{\footnotesize\ttfamily typedef int(\texorpdfstring{$\ast$}{*} route\+\_\+callback) (size\+\_\+t, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*})}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{engine_8h_ae1b6db075e69c7d50940c6e0a9d357f6}\label{engine_8h_ae1b6db075e69c7d50940c6e0a9d357f6} 
+\index{engine.h@{engine.h}!argument\_route@{argument\_route}}
+\index{argument\_route@{argument\_route}!engine.h@{engine.h}}
+\doxysubsubsection{\texorpdfstring{argument\_route()}{argument\_route()}}
+{\footnotesize\ttfamily int argument\+\_\+route (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv }\end{DoxyParamCaption})}
+
+\Hypertarget{engine_8h_acbae52c879a1243e0097c06aa9a3ad82}\label{engine_8h_acbae52c879a1243e0097c06aa9a3ad82} 
+\index{engine.h@{engine.h}!build@{build}}
+\index{build@{build}!engine.h@{engine.h}}
+\doxysubsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily int build (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv }\end{DoxyParamCaption})}
+
+\Hypertarget{engine_8h_abfce15a97dc0d59066145deb6db71971}\label{engine_8h_abfce15a97dc0d59066145deb6db71971} 
+\index{engine.h@{engine.h}!help@{help}}
+\index{help@{help}!engine.h@{engine.h}}
+\doxysubsubsection{\texorpdfstring{help()}{help()}}
+{\footnotesize\ttfamily int help (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv }\end{DoxyParamCaption})}
+
+\Hypertarget{engine_8h_a152b2bafff5976ca602c43ed93c181c1}\label{engine_8h_a152b2bafff5976ca602c43ed93c181c1} 
+\index{engine.h@{engine.h}!init@{init}}
+\index{init@{init}!engine.h@{engine.h}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily int init (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv }\end{DoxyParamCaption})}
+
+\Hypertarget{engine_8h_a652dfa3636c93a60db188937488e156a}\label{engine_8h_a652dfa3636c93a60db188937488e156a} 
+\index{engine.h@{engine.h}!test@{test}}
+\index{test@{test}!engine.h@{engine.h}}
+\doxysubsubsection{\texorpdfstring{test()}{test()}}
+{\footnotesize\ttfamily int test (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{engine_8h_a825191a40d9de85e5b0dc7f60c1e3cd3}\label{engine_8h_a825191a40d9de85e5b0dc7f60c1e3cd3} 
+\index{engine.h@{engine.h}!callback@{callback}}
+\index{callback@{callback}!engine.h@{engine.h}}
+\doxysubsubsection{\texorpdfstring{callback}{callback}}
+{\footnotesize\ttfamily \mbox{\hyperlink{engine_8h_a3f7bf39bb2c4a4841a227fe878595dbc}{route\+\_\+callback}} callback}
+
+\Hypertarget{engine_8h_a8f8f80d37794cde9472343e4487ba3eb}\label{engine_8h_a8f8f80d37794cde9472343e4487ba3eb} 
+\index{engine.h@{engine.h}!name@{name}}
+\index{name@{name}!engine.h@{engine.h}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily const char\texorpdfstring{$\ast$}{*} name}
+
+\Hypertarget{engine_8h_ae42255584dd2cdada9e4e0a159d84213}\label{engine_8h_ae42255584dd2cdada9e4e0a159d84213} 
+\index{engine.h@{engine.h}!routes@{routes}}
+\index{routes@{routes}!engine.h@{engine.h}}
+\doxysubsubsection{\texorpdfstring{[struct]}{[struct]}}
+{\footnotesize\ttfamily const struct  \{ ... \}  routes\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}init"{}},\ \&\mbox{\hyperlink{engine_8h_a152b2bafff5976ca602c43ed93c181c1}{init}}\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}help"{}},\ \&\mbox{\hyperlink{engine_8h_abfce15a97dc0d59066145deb6db71971}{help}}\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}test"{}},\ \&\mbox{\hyperlink{engine_8h_a652dfa3636c93a60db188937488e156a}{test}}\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}build"{}},\ \&\mbox{\hyperlink{engine_8h_acbae52c879a1243e0097c06aa9a3ad82}{build}}\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{NULL,\ NULL\}}
+\DoxyCodeLine{\ \ \ \ \}}
+
+\end{DoxyCode}

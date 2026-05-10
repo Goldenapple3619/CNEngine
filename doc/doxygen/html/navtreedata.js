@@ -29,8 +29,8 @@ var NAVTREE =
       [ "Data Structures", "annotated.html", "annotated_dup" ],
       [ "Data Structure Index", "classes.html", null ],
       [ "Data Fields", "functions.html", [
-        [ "All", "functions.html", null ],
-        [ "Variables", "functions_vars.html", null ]
+        [ "All", "functions.html", "functions_dup" ],
+        [ "Variables", "functions_vars.html", "functions_vars" ]
       ] ]
     ] ],
     [ "Globals", "globals.html", [
@@ -51,10 +51,11 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "2dboard_8c.html",
-"input__submodule__ctx_8c.html#a54784ff19994e720de4144344546ac8f",
-"libcngraphic_8h.html#a9e477f4333422c372d1b5e75c439968c",
-"shader_8c.html#a1e593979ef398ef6f7b4fa27bc878db4",
-"texture_8c.html#a4f44c1daf5ef4da04877e134951c2b30"
+"functions_vars_z.html",
+"libcnaudio_8h.html#a965ab79ae726810cf1a354a3b6d69549a9989ab0524cd415d4a47fff75deb00da",
+"libcngraphic_8h.html#ada22b2de90eaaac1a7d37ab53211e3dd",
+"structMesh.html",
+"structtwod__board__mode__s.html#afd092727d6d8315e6f728ea3883a83e1"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

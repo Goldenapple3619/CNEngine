@@ -1,0 +1,137 @@
+\doxysection{lib/cnassets/src/engine\+\_\+object\+\_\+writer.c File Reference}
+\hypertarget{engine__object__writer_8c}{}\label{engine__object__writer_8c}\index{lib/cnassets/src/engine\_object\_writer.c@{lib/cnassets/src/engine\_object\_writer.c}}
+{\ttfamily \#include "{}libcnassets.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{engine__object__writer_8c_a147441e586c29ce32c689291bb2744b9}{new\+\_\+writer\+\_\+ctx}} (const char \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}})
+\item 
+uint8\+\_\+t \mbox{\hyperlink{engine__object__writer_8c_a8a2a63e1b596e6529b2484009b8877d6}{writer\+\_\+ctx\+\_\+set\+\_\+object\+\_\+name}} (struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}wctx, const char \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}})
+\item 
+uint8\+\_\+t \mbox{\hyperlink{engine__object__writer_8c_a711484cbe40b54ca2b29f4ae0534fa0d}{writer\+\_\+ctx\+\_\+add\+\_\+section}} (struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}wctx, struct \mbox{\hyperlink{structengine__object__file__section__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+section\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}section)
+\item 
+void \mbox{\hyperlink{engine__object__writer_8c_aa28366e917bbeeea7f8bdd77e842eba3}{delete\+\_\+writer\+\_\+ctx}} (struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}wctx)
+\item 
+struct \mbox{\hyperlink{structengine__object__file__section__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+section\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{engine__object__writer_8c_a422854657dc72193e8b853509c7b0826}{new\+\_\+writer\+\_\+section}} (const char \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}}, void \texorpdfstring{$\ast$}{*}content\+\_\+holder)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{engine__object__writer_8c_ae8f03b75370a07d2bfeb6cb0ac4d2973}{writer\+\_\+section\+\_\+set\+\_\+name}} (struct \mbox{\hyperlink{structengine__object__file__section__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+section\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}section, const char \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}})
+\item 
+void \mbox{\hyperlink{engine__object__writer_8c_a94f23195c4b372d2f9537a65f97dfb92}{delete\+\_\+writer\+\_\+section}} (struct \mbox{\hyperlink{structengine__object__file__section__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+section\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}section)
+\item 
+static uint32\+\_\+t \mbox{\hyperlink{engine__object__writer_8c_ac82d767ebd746ab2f95dda8e60af5038}{flags\+\_\+to\+\_\+align}} (uint32\+\_\+t flags)
+\item 
+static uint8\+\_\+t \mbox{\hyperlink{engine__object__writer_8c_a7239a0cbdb55a82449ddd5d53c1a16ee}{write\+\_\+pad}} (FILE \texorpdfstring{$\ast$}{*}fp, uint64\+\_\+t pos, uint32\+\_\+t align)
+\item 
+static uint8\+\_\+t \mbox{\hyperlink{engine__object__writer_8c_a1f124b31861ec552cfb05e638cc5ed9d}{write\+\_\+object\+\_\+file\+\_\+header}} (FILE \texorpdfstring{$\ast$}{*}fp, const \mbox{\hyperlink{structfpio__handler__t}{fpio\+\_\+handler\+\_\+t}} \texorpdfstring{$\ast$}{*}io, const struct \mbox{\hyperlink{structengine__obj__header__s}{engine\+\_\+obj\+\_\+header\+\_\+s}} \texorpdfstring{$\ast$}{*}header)
+\item 
+static uint8\+\_\+t \mbox{\hyperlink{engine__object__writer_8c_abbc36285e05a3bd2d0fc2581b990812b}{write\+\_\+object\+\_\+file\+\_\+section\+\_\+header}} (FILE \texorpdfstring{$\ast$}{*}fp, const \mbox{\hyperlink{structfpio__handler__t}{fpio\+\_\+handler\+\_\+t}} \texorpdfstring{$\ast$}{*}io, const struct \mbox{\hyperlink{structengine__obj__section__header__s}{engine\+\_\+obj\+\_\+section\+\_\+header\+\_\+s}} \texorpdfstring{$\ast$}{*}section\+\_\+header, const struct \mbox{\hyperlink{structgeneric__vector__s}{generic\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}section\+\_\+header\+\_\+entries)
+\item 
+static uint8\+\_\+t \mbox{\hyperlink{engine__object__writer_8c_a5ebcf3de180ae23c9b6c6c6af734d26c}{write\+\_\+object\+\_\+file\+\_\+strndx}} (FILE \texorpdfstring{$\ast$}{*}fp, const \mbox{\hyperlink{structfpio__handler__t}{fpio\+\_\+handler\+\_\+t}} \texorpdfstring{$\ast$}{*}io, const struct \mbox{\hyperlink{structgeneric__map__s}{generic\+\_\+map\+\_\+s}} \texorpdfstring{$\ast$}{*}strndx)
+\item 
+static struct \mbox{\hyperlink{structstrndx__entry__s}{strndx\+\_\+entry\+\_\+s}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{engine__object__writer_8c_a8dc0ea661e4ec2dc5cc08f9c8013fa34}{new\+\_\+strndx\+\_\+entry}} (const char \texorpdfstring{$\ast$}{*}str)
+\item 
+static void \mbox{\hyperlink{engine__object__writer_8c_a413c9a6211d4233d58ae3ae7c7a5956c}{delete\+\_\+strndx\+\_\+entry}} (struct \mbox{\hyperlink{structstrndx__entry__s}{strndx\+\_\+entry\+\_\+s}} \texorpdfstring{$\ast$}{*}entry)
+\item 
+uint32\+\_\+t \mbox{\hyperlink{engine__object__writer_8c_a5ef11e9fb3a608b84a0462590b9c6d58}{add\+\_\+str\+\_\+table}} (const char \texorpdfstring{$\ast$}{*}str, struct \mbox{\hyperlink{structgeneric__map__s}{generic\+\_\+map\+\_\+s}} \texorpdfstring{$\ast$}{*}strndx)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{engine__object__writer_8c_a8b388339c7e7503ea76cf39cb507aeba}{write\+\_\+object\+\_\+file}} (FILE \texorpdfstring{$\ast$}{*}fp, const struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}object\+\_\+file\+\_\+write\+\_\+ctx)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{engine__object__writer_8c_a5ef11e9fb3a608b84a0462590b9c6d58}\label{engine__object__writer_8c_a5ef11e9fb3a608b84a0462590b9c6d58} 
+\index{engine\_object\_writer.c@{engine\_object\_writer.c}!add\_str\_table@{add\_str\_table}}
+\index{add\_str\_table@{add\_str\_table}!engine\_object\_writer.c@{engine\_object\_writer.c}}
+\doxysubsubsection{\texorpdfstring{add\_str\_table()}{add\_str\_table()}}
+{\footnotesize\ttfamily uint32\+\_\+t add\+\_\+str\+\_\+table (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{str,  }\item[{struct \mbox{\hyperlink{structgeneric__map__s}{generic\+\_\+map\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{strndx }\end{DoxyParamCaption})}
+
+\Hypertarget{engine__object__writer_8c_a413c9a6211d4233d58ae3ae7c7a5956c}\label{engine__object__writer_8c_a413c9a6211d4233d58ae3ae7c7a5956c} 
+\index{engine\_object\_writer.c@{engine\_object\_writer.c}!delete\_strndx\_entry@{delete\_strndx\_entry}}
+\index{delete\_strndx\_entry@{delete\_strndx\_entry}!engine\_object\_writer.c@{engine\_object\_writer.c}}
+\doxysubsubsection{\texorpdfstring{delete\_strndx\_entry()}{delete\_strndx\_entry()}}
+{\footnotesize\ttfamily static void delete\+\_\+strndx\+\_\+entry (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structstrndx__entry__s}{strndx\+\_\+entry\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{entry }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{engine__object__writer_8c_aa28366e917bbeeea7f8bdd77e842eba3}\label{engine__object__writer_8c_aa28366e917bbeeea7f8bdd77e842eba3} 
+\index{engine\_object\_writer.c@{engine\_object\_writer.c}!delete\_writer\_ctx@{delete\_writer\_ctx}}
+\index{delete\_writer\_ctx@{delete\_writer\_ctx}!engine\_object\_writer.c@{engine\_object\_writer.c}}
+\doxysubsubsection{\texorpdfstring{delete\_writer\_ctx()}{delete\_writer\_ctx()}}
+{\footnotesize\ttfamily void delete\+\_\+writer\+\_\+ctx (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{wctx }\end{DoxyParamCaption})}
+
+\Hypertarget{engine__object__writer_8c_a94f23195c4b372d2f9537a65f97dfb92}\label{engine__object__writer_8c_a94f23195c4b372d2f9537a65f97dfb92} 
+\index{engine\_object\_writer.c@{engine\_object\_writer.c}!delete\_writer\_section@{delete\_writer\_section}}
+\index{delete\_writer\_section@{delete\_writer\_section}!engine\_object\_writer.c@{engine\_object\_writer.c}}
+\doxysubsubsection{\texorpdfstring{delete\_writer\_section()}{delete\_writer\_section()}}
+{\footnotesize\ttfamily void delete\+\_\+writer\+\_\+section (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structengine__object__file__section__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+section\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{section }\end{DoxyParamCaption})}
+
+\Hypertarget{engine__object__writer_8c_ac82d767ebd746ab2f95dda8e60af5038}\label{engine__object__writer_8c_ac82d767ebd746ab2f95dda8e60af5038} 
+\index{engine\_object\_writer.c@{engine\_object\_writer.c}!flags\_to\_align@{flags\_to\_align}}
+\index{flags\_to\_align@{flags\_to\_align}!engine\_object\_writer.c@{engine\_object\_writer.c}}
+\doxysubsubsection{\texorpdfstring{flags\_to\_align()}{flags\_to\_align()}}
+{\footnotesize\ttfamily static uint32\+\_\+t flags\+\_\+to\+\_\+align (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{flags }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{engine__object__writer_8c_a8dc0ea661e4ec2dc5cc08f9c8013fa34}\label{engine__object__writer_8c_a8dc0ea661e4ec2dc5cc08f9c8013fa34} 
+\index{engine\_object\_writer.c@{engine\_object\_writer.c}!new\_strndx\_entry@{new\_strndx\_entry}}
+\index{new\_strndx\_entry@{new\_strndx\_entry}!engine\_object\_writer.c@{engine\_object\_writer.c}}
+\doxysubsubsection{\texorpdfstring{new\_strndx\_entry()}{new\_strndx\_entry()}}
+{\footnotesize\ttfamily static struct \mbox{\hyperlink{structstrndx__entry__s}{strndx\+\_\+entry\+\_\+s}} \texorpdfstring{$\ast$}{*} new\+\_\+strndx\+\_\+entry (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{str }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{engine__object__writer_8c_a147441e586c29ce32c689291bb2744b9}\label{engine__object__writer_8c_a147441e586c29ce32c689291bb2744b9} 
+\index{engine\_object\_writer.c@{engine\_object\_writer.c}!new\_writer\_ctx@{new\_writer\_ctx}}
+\index{new\_writer\_ctx@{new\_writer\_ctx}!engine\_object\_writer.c@{engine\_object\_writer.c}}
+\doxysubsubsection{\texorpdfstring{new\_writer\_ctx()}{new\_writer\_ctx()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*} new\+\_\+writer\+\_\+ctx (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name }\end{DoxyParamCaption})}
+
+\Hypertarget{engine__object__writer_8c_a422854657dc72193e8b853509c7b0826}\label{engine__object__writer_8c_a422854657dc72193e8b853509c7b0826} 
+\index{engine\_object\_writer.c@{engine\_object\_writer.c}!new\_writer\_section@{new\_writer\_section}}
+\index{new\_writer\_section@{new\_writer\_section}!engine\_object\_writer.c@{engine\_object\_writer.c}}
+\doxysubsubsection{\texorpdfstring{new\_writer\_section()}{new\_writer\_section()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structengine__object__file__section__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+section\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*} new\+\_\+writer\+\_\+section (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{void \texorpdfstring{$\ast$}{*}}]{content\+\_\+holder }\end{DoxyParamCaption})}
+
+\Hypertarget{engine__object__writer_8c_a8b388339c7e7503ea76cf39cb507aeba}\label{engine__object__writer_8c_a8b388339c7e7503ea76cf39cb507aeba} 
+\index{engine\_object\_writer.c@{engine\_object\_writer.c}!write\_object\_file@{write\_object\_file}}
+\index{write\_object\_file@{write\_object\_file}!engine\_object\_writer.c@{engine\_object\_writer.c}}
+\doxysubsubsection{\texorpdfstring{write\_object\_file()}{write\_object\_file()}}
+{\footnotesize\ttfamily uint8\+\_\+t write\+\_\+object\+\_\+file (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{fp,  }\item[{const struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{object\+\_\+file\+\_\+write\+\_\+ctx }\end{DoxyParamCaption})}
+
+\Hypertarget{engine__object__writer_8c_a1f124b31861ec552cfb05e638cc5ed9d}\label{engine__object__writer_8c_a1f124b31861ec552cfb05e638cc5ed9d} 
+\index{engine\_object\_writer.c@{engine\_object\_writer.c}!write\_object\_file\_header@{write\_object\_file\_header}}
+\index{write\_object\_file\_header@{write\_object\_file\_header}!engine\_object\_writer.c@{engine\_object\_writer.c}}
+\doxysubsubsection{\texorpdfstring{write\_object\_file\_header()}{write\_object\_file\_header()}}
+{\footnotesize\ttfamily static uint8\+\_\+t write\+\_\+object\+\_\+file\+\_\+header (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{fp,  }\item[{const \mbox{\hyperlink{structfpio__handler__t}{fpio\+\_\+handler\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{io,  }\item[{const struct \mbox{\hyperlink{structengine__obj__header__s}{engine\+\_\+obj\+\_\+header\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{header }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{engine__object__writer_8c_abbc36285e05a3bd2d0fc2581b990812b}\label{engine__object__writer_8c_abbc36285e05a3bd2d0fc2581b990812b} 
+\index{engine\_object\_writer.c@{engine\_object\_writer.c}!write\_object\_file\_section\_header@{write\_object\_file\_section\_header}}
+\index{write\_object\_file\_section\_header@{write\_object\_file\_section\_header}!engine\_object\_writer.c@{engine\_object\_writer.c}}
+\doxysubsubsection{\texorpdfstring{write\_object\_file\_section\_header()}{write\_object\_file\_section\_header()}}
+{\footnotesize\ttfamily static uint8\+\_\+t write\+\_\+object\+\_\+file\+\_\+section\+\_\+header (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{fp,  }\item[{const \mbox{\hyperlink{structfpio__handler__t}{fpio\+\_\+handler\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{io,  }\item[{const struct \mbox{\hyperlink{structengine__obj__section__header__s}{engine\+\_\+obj\+\_\+section\+\_\+header\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{section\+\_\+header,  }\item[{const struct \mbox{\hyperlink{structgeneric__vector__s}{generic\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{section\+\_\+header\+\_\+entries }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{engine__object__writer_8c_a5ebcf3de180ae23c9b6c6c6af734d26c}\label{engine__object__writer_8c_a5ebcf3de180ae23c9b6c6c6af734d26c} 
+\index{engine\_object\_writer.c@{engine\_object\_writer.c}!write\_object\_file\_strndx@{write\_object\_file\_strndx}}
+\index{write\_object\_file\_strndx@{write\_object\_file\_strndx}!engine\_object\_writer.c@{engine\_object\_writer.c}}
+\doxysubsubsection{\texorpdfstring{write\_object\_file\_strndx()}{write\_object\_file\_strndx()}}
+{\footnotesize\ttfamily static uint8\+\_\+t write\+\_\+object\+\_\+file\+\_\+strndx (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{fp,  }\item[{const \mbox{\hyperlink{structfpio__handler__t}{fpio\+\_\+handler\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{io,  }\item[{const struct \mbox{\hyperlink{structgeneric__map__s}{generic\+\_\+map\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{strndx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{engine__object__writer_8c_a7239a0cbdb55a82449ddd5d53c1a16ee}\label{engine__object__writer_8c_a7239a0cbdb55a82449ddd5d53c1a16ee} 
+\index{engine\_object\_writer.c@{engine\_object\_writer.c}!write\_pad@{write\_pad}}
+\index{write\_pad@{write\_pad}!engine\_object\_writer.c@{engine\_object\_writer.c}}
+\doxysubsubsection{\texorpdfstring{write\_pad()}{write\_pad()}}
+{\footnotesize\ttfamily static uint8\+\_\+t write\+\_\+pad (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{fp,  }\item[{uint64\+\_\+t}]{pos,  }\item[{uint32\+\_\+t}]{align }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{engine__object__writer_8c_a711484cbe40b54ca2b29f4ae0534fa0d}\label{engine__object__writer_8c_a711484cbe40b54ca2b29f4ae0534fa0d} 
+\index{engine\_object\_writer.c@{engine\_object\_writer.c}!writer\_ctx\_add\_section@{writer\_ctx\_add\_section}}
+\index{writer\_ctx\_add\_section@{writer\_ctx\_add\_section}!engine\_object\_writer.c@{engine\_object\_writer.c}}
+\doxysubsubsection{\texorpdfstring{writer\_ctx\_add\_section()}{writer\_ctx\_add\_section()}}
+{\footnotesize\ttfamily uint8\+\_\+t writer\+\_\+ctx\+\_\+add\+\_\+section (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{wctx,  }\item[{struct \mbox{\hyperlink{structengine__object__file__section__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+section\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{section }\end{DoxyParamCaption})}
+
+\Hypertarget{engine__object__writer_8c_a8a2a63e1b596e6529b2484009b8877d6}\label{engine__object__writer_8c_a8a2a63e1b596e6529b2484009b8877d6} 
+\index{engine\_object\_writer.c@{engine\_object\_writer.c}!writer\_ctx\_set\_object\_name@{writer\_ctx\_set\_object\_name}}
+\index{writer\_ctx\_set\_object\_name@{writer\_ctx\_set\_object\_name}!engine\_object\_writer.c@{engine\_object\_writer.c}}
+\doxysubsubsection{\texorpdfstring{writer\_ctx\_set\_object\_name()}{writer\_ctx\_set\_object\_name()}}
+{\footnotesize\ttfamily uint8\+\_\+t writer\+\_\+ctx\+\_\+set\+\_\+object\+\_\+name (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{wctx,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{name }\end{DoxyParamCaption})}
+
+\Hypertarget{engine__object__writer_8c_ae8f03b75370a07d2bfeb6cb0ac4d2973}\label{engine__object__writer_8c_ae8f03b75370a07d2bfeb6cb0ac4d2973} 
+\index{engine\_object\_writer.c@{engine\_object\_writer.c}!writer\_section\_set\_name@{writer\_section\_set\_name}}
+\index{writer\_section\_set\_name@{writer\_section\_set\_name}!engine\_object\_writer.c@{engine\_object\_writer.c}}
+\doxysubsubsection{\texorpdfstring{writer\_section\_set\_name()}{writer\_section\_set\_name()}}
+{\footnotesize\ttfamily uint8\+\_\+t writer\+\_\+section\+\_\+set\+\_\+name (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structengine__object__file__section__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+section\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{section,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{name }\end{DoxyParamCaption})}
+

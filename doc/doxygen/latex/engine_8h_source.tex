@@ -5,8 +5,37 @@
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_ENGINE\_H\_}}
 \DoxyCodeLine{00002\ \textcolor{preprocessor}{\ \ \ \ \#define\ \_ENGINE\_H\_}}
 \DoxyCodeLine{00003\ }
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{libcncore_8h}{libcncore.h}}"{}}}
-\DoxyCodeLine{00005\ }
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\ \ \ \ \#include\ <stdio.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\ \ \ \ \#include\ <signal.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{libcncore_8h}{libcncore.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{libcnaudio_8h}{libcnaudio.h}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{libcninput_8h}{libcninput.h}}"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{libcngraphic_8h}{libcngraphic.h}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{librgui_8h}{librgui.h}}"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{libr2d_8h}{libr2d.h}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{libr3d_8h}{libr3d.h}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{libcnassets_8h}{libcnassets.h}}"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{engine_8h_ae1b6db075e69c7d50940c6e0a9d357f6}{argument\_route}}(\textcolor{keywordtype}{size\_t}\ argc,\ \textcolor{keywordtype}{char}\ **argv);}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{engine_8h_a152b2bafff5976ca602c43ed93c181c1}{init}}(\textcolor{keywordtype}{size\_t}\ argc,\ \textcolor{keywordtype}{char}\ **argv);}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{engine_8h_a652dfa3636c93a60db188937488e156a}{test}}(\textcolor{keywordtype}{size\_t}\ argc,\ \textcolor{keywordtype}{char}\ **argv);}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{engine_8h_abfce15a97dc0d59066145deb6db71971}{help}}(\textcolor{keywordtype}{size\_t}\ argc,\ \textcolor{keywordtype}{char}\ **argv);}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{engine_8h_acbae52c879a1243e0097c06aa9a3ad82}{build}}(\textcolor{keywordtype}{size\_t}\ argc,\ \textcolor{keywordtype}{char}\ **argv);}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{typedef}\ int\ (*\mbox{\hyperlink{engine_8h_a3f7bf39bb2c4a4841a227fe878595dbc}{route\_callback}})(size\_t,\ \textcolor{keywordtype}{char}\ **);}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{engine_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}};}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{engine_8h_a3f7bf39bb2c4a4841a227fe878595dbc}{route\_callback}}\ \mbox{\hyperlink{engine_8h_a825191a40d9de85e5b0dc7f60c1e3cd3}{callback}};}
+\DoxyCodeLine{00027\ \ \ \ \ \}\ \mbox{\hyperlink{engine_8h_ae42255584dd2cdada9e4e0a159d84213}{routes}}[]\ =\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}init"{}},\ \&\mbox{\hyperlink{engine_8h_a152b2bafff5976ca602c43ed93c181c1}{init}}\},}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}help"{}},\ \&\mbox{\hyperlink{engine_8h_abfce15a97dc0d59066145deb6db71971}{help}}\},}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}test"{}},\ \&\mbox{\hyperlink{engine_8h_a652dfa3636c93a60db188937488e156a}{test}}\},}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}build"{}},\ \&\mbox{\hyperlink{engine_8h_acbae52c879a1243e0097c06aa9a3ad82}{build}}\},}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \{NULL,\ NULL\}}
+\DoxyCodeLine{00033\ \ \ \ \ \};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

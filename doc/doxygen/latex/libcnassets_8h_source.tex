@@ -5,8 +5,164 @@
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_LIBCNASSETS\_H\_}}
 \DoxyCodeLine{00002\ \textcolor{preprocessor}{\ \ \ \ \#define\ \_LIBCNASSETS\_H\_}}
 \DoxyCodeLine{00003\ }
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{libcncore_8h}{libcncore.h}}"{}}}
-\DoxyCodeLine{00005\ }
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\ \ \ \ \#define\ ENGINE\_USE\_LARGE\_FILE\ true}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\ \ \ \ \#define\ \_FILE\_OFFSET\_BITS\ 64}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{libcncore_8h}{libcncore.h}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\ \ \ \ \#include\ <stdlib.h>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\ \ \ \ \#include\ <string.h>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\ \ \ \ \#define\ ENGINE\_OBJ\_MAGIC\ 0x0875C4E3U}}
+\DoxyCodeLine{00012\ \ \ \ \ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\ \ \ \ \#define\ ENGINE\_OBJ\_HDR\_SZ\ 33U}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\ \ \ \ \#define\ ENGINE\_OBJ\_SECHDR\_PREFIX\_SZ\ 16U}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\ \ \ \ \#define\ ENGINE\_OBJ\_SECHDR\_ENTRY\_SZ\ 28U}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\ \ \ \ \#define\ ENGINE\_MAX\_PAD\ 4096U}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\ \ \ \ \#define\ ENGINE\_PAD\_CHAR\ 0xCD}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\ \ \ \ \#ifdef\ ENGINE\_USE\_LARGE\_FILE}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ ENGINE\_FTELL(fp)\ \ \ \ \ \ \ \ ftello(fp)}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ ENGINE\_FSEEK(fp,\ o,\ w)\ \ fseeko((fp),\ (o),\ (w))}}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ off\_t\ \mbox{\hyperlink{libcnassets_8h_a9182ea29e999746dfa0887d6f86f0e24}{file\_off\_t}};}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\ \ \ \ \#else}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ ENGINE\_FTELL(fp)\ \ \ \ \ \ \ \ ftell(fp)}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ ENGINE\_FSEEK(fp,\ o,\ w)\ \ fseek((fp),\ (long)(o),\ (w))}}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{libcnassets_8h_a9182ea29e999746dfa0887d6f86f0e24}{file\_off\_t}};}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnassets_8h_ab6f57059a2b8b8eb3fb281cbea5aab34ac5eb0006acdeb543b210dd74eb00e505}{ENGINE\_OBJ\_UKN}}\ =\ 0x00,}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnassets_8h_ab6f57059a2b8b8eb3fb281cbea5aab34a3eb429f414b69b5b3f082b2c0ab0f873}{ENGINE\_OBJ\_GUI}},}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnassets_8h_ab6f57059a2b8b8eb3fb281cbea5aab34a13ec1c8cfa5f5daef529725a46f700f4}{ENGINE\_OBJ\_SCN}},}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnassets_8h_ab6f57059a2b8b8eb3fb281cbea5aab34a62cde0330ca290b277a126bd66c5ab16}{ENGINE\_OBJ\_OBJ}}}
+\DoxyCodeLine{00034\ \ \ \ \ \}\ \mbox{\hyperlink{libcnassets_8h_ab6f57059a2b8b8eb3fb281cbea5aab34}{engine\_obj\_type}};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnassets_8h_ab1164f59055b40a6fea404d875315464a4646cad244125210d8d894087df4004a}{ENGINE\_WRT\_BIG\_ENDIAN}}\ =\ 0x00,}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnassets_8h_ab1164f59055b40a6fea404d875315464ab24e1f7b1ce44fe2b06321702828c525}{ENGINE\_WRT\_LITTLE\_ENDIAN}}}
+\DoxyCodeLine{00039\ \ \ \ \ \}\ \mbox{\hyperlink{libcnassets_8h_ab1164f59055b40a6fea404d875315464}{engine\_wrt\_endian}};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnassets_8h_a80aea36b56e30038a40d82b823efcf20a93fc6d882240558c74eb3173a685ba98}{ENGINE\_WRT\_NULL\_FLAG}}\ =\ 0x00,}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnassets_8h_a80aea36b56e30038a40d82b823efcf20a368f2029a8f46205fd70a7a56c04c243}{ENGINE\_WRT\_ALIGN1\_FLAG}}\ =\ (1\ <<\ 0),}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnassets_8h_a80aea36b56e30038a40d82b823efcf20a468d9b9269407dc8b8f7a0c1d0872d3e}{ENGINE\_WRT\_ALIGN4\_FLAG}}\ =\ (1\ <<\ 1),}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnassets_8h_a80aea36b56e30038a40d82b823efcf20aee1ac9cc47dd77451cc252f77e907d89}{ENGINE\_WRT\_ALIGN8\_FLAG}}\ =\ (1\ <<\ 2),}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnassets_8h_a80aea36b56e30038a40d82b823efcf20ab582a4309e2ef296279556d93084e59f}{ENGINE\_WRT\_ALIGN16\_FLAG}}\ =\ (1\ <<\ 3),}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnassets_8h_a80aea36b56e30038a40d82b823efcf20ac628740c058f52f0fea36599b0cd74bd}{ENGINE\_WRT\_ALIGN64\_FLAG}}\ =\ (1\ <<\ 4),}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnassets_8h_a80aea36b56e30038a40d82b823efcf20a84135a00642d0e96ebd16e2445897b0e}{ENGINE\_WRT\_ALIGN4096\_FLAG}}\ =\ (1\ <<\ 5)}
+\DoxyCodeLine{00049\ \ \ \ \ \}\ \mbox{\hyperlink{libcnassets_8h_a80aea36b56e30038a40d82b823efcf20}{engine\_wrt\_flags}};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnassets_8h_a959be715a1657adac70a74c248795869a77c7bcdb8d72538d0b10e5435c93cba6}{ENGINE\_SEC\_UKN}}\ =\ 0x00,}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnassets_8h_a959be715a1657adac70a74c248795869a0bea8b02b15cf276b9db591d5a7fdf5f}{ENGINE\_SEC\_GUI\_NODES}},}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnassets_8h_a959be715a1657adac70a74c248795869ad1fd9a83161480581c578d882a501ace}{ENGINE\_SEC\_GUI\_STYLE}},}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnassets_8h_a959be715a1657adac70a74c248795869ac2034ea9ebde71027843a1076979a266}{ENGINE\_SEC\_GUI\_CONN}}}
+\DoxyCodeLine{00056\ \ \ \ \ \}\ \mbox{\hyperlink{libcnassets_8h_a959be715a1657adac70a74c248795869}{engine\_section\_type}};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnassets_8h_a476d44b2fd664f18b92f351d4f06aaaaaba005e807a79d4a40b76ce98e3c718bc}{ENGINE\_SEC\_NULL\_FLAG}}\ =\ 0x00}
+\DoxyCodeLine{00060\ \ \ \ \ \}\ \mbox{\hyperlink{libcnassets_8h_a476d44b2fd664f18b92f351d4f06aaaa}{engine\_section\_wrt\_flags}};}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\_object\_file\_writer\_ctx\_s}};}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structengine__object__file__section__writer__ctx__s}{engine\_object\_file\_section\_writer\_ctx\_s}}\ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structengine__object__file__section__writer__ctx__s_ab10f7604d3eaa6246997ad2ceabb2fd1}{section\_name}};}
+\DoxyCodeLine{00066\ \ \ \ \ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structengine__object__file__section__writer__ctx__s_a802f71106ae9f1f2e70fb558c3684eb4}{type}};}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structengine__object__file__section__writer__ctx__s_a81103e1de87725ecf192d7d9d78ff544}{flags}};}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \}\ \mbox{\hyperlink{structengine__object__file__section__writer__ctx__s_a69fa0db72a2978142364979de2fd2f4f}{write\_infos}};}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *(*content\_generator)(\textcolor{keyword}{struct\ }\mbox{\hyperlink{structengine__object__file__section__writer__ctx__s}{engine\_object\_file\_section\_writer\_ctx\_s}}\ *self,\ \textcolor{keyword}{const}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\_object\_file\_writer\_ctx\_s}}\ *writer,\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgeneric__map__s}{generic\_map\_s}}\ *strndx);}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ uint64\_t\ (*\mbox{\hyperlink{structengine__object__file__section__writer__ctx__s_a1238e398a26fd5ed78cb44f1282f1734}{content\_size\_generator}})(\textcolor{keyword}{struct\ }\mbox{\hyperlink{structengine__object__file__section__writer__ctx__s}{engine\_object\_file\_section\_writer\_ctx\_s}}\ *self);}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{structengine__object__file__section__writer__ctx__s_a16423ea335acd9e08f2bf4d229c9ab88}{\_v}};}
+\DoxyCodeLine{00076\ \ \ \ \ \};}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\_object\_file\_writer\_ctx\_s}}\ \{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structengine__object__file__writer__ctx__s_a051c7b6bb18cb9b0c930fbfcb952ec8c}{object\_name}};}
+\DoxyCodeLine{00080\ \ \ \ \ }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structengine__object__file__writer__ctx__s_a6399d8b1e1bb1f576d73f7e20df31a94}{endian}};}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structengine__object__file__writer__ctx__s_a38b469336d8fb140721f8fc1e2d817bf}{type}};}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structengine__object__file__writer__ctx__s_a82559aaa2b8d020945ea90c76485f7fa}{flags}};}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \}\ \mbox{\hyperlink{structengine__object__file__writer__ctx__s_aaf8e07398302816139388890c671b0cc}{write\_infos}};}
+\DoxyCodeLine{00086\ \ \ \ \ }
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgeneric__vector__s}{generic\_vector\_s}}\ \mbox{\hyperlink{structengine__object__file__writer__ctx__s_a1b5be82027742af1d3709b87396e5359}{sections}};}
+\DoxyCodeLine{00088\ \ \ \ \ \};}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structengine__obj__header__s}{engine\_obj\_header\_s}}\ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structengine__obj__header__s_a921ac7b72376b4238cf1af4264db9ac8}{magic}};}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structengine__obj__header__s_aad27ce07af759834d8101deb91effd6e}{endian}};}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structengine__obj__header__s_abb72aa3ee40d941c8d9d97cdbba35517}{flags}};}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structengine__obj__header__s_a3a2ab927d3aeab806f79a170a80d4c0a}{type}};}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ uint64\_t\ \mbox{\hyperlink{structengine__obj__header__s_aa286e6ad82ed014293fe685b52b5d3fc}{section\_header\_off}};}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ uint64\_t\ \mbox{\hyperlink{structengine__obj__header__s_abb49c1b0ea00be5c820811cf5a8f9259}{strndx\_off}};}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structengine__obj__header__s_a743aa2854a6aa8613cfc03067773cf86}{name}};}
+\DoxyCodeLine{00098\ \ \ \ \ \};}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structengine__obj__section__header__entry__s}{engine\_obj\_section\_header\_entry\_s}}\ \{}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structengine__obj__section__header__entry__s_ac4def25d4ca9a197ff895501f98b003a}{section\_name}};}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structengine__obj__section__header__entry__s_a2e3b55eff881730fe409a03e319091e6}{section\_type}};}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structengine__obj__section__header__entry__s_a1e9f3b2adde20eda7e65381fd2a29c33}{section\_flags}};}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ uint64\_t\ \mbox{\hyperlink{structengine__obj__section__header__entry__s_a719ea81613c37de5aafab24f5286c374}{section\_size}};}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ uint64\_t\ \mbox{\hyperlink{structengine__obj__section__header__entry__s_aaa36adabaa5ee2d9cd457b5894e9ad04}{section\_off}};}
+\DoxyCodeLine{00107\ \ \ \ \ \};}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structengine__obj__section__header__s}{engine\_obj\_section\_header\_s}}\ \{}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ uint64\_t\ \mbox{\hyperlink{structengine__obj__section__header__s_a8db67642ee99492d600efdf330e1f59c}{size}};}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ uint64\_t\ \mbox{\hyperlink{structengine__obj__section__header__s_ae457c02c28251df8487547efbc13c580}{section\_count}};}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structengine__obj__section__header__entry__s}{engine\_obj\_section\_header\_entry\_s}}\ *\mbox{\hyperlink{structengine__obj__section__header__s_a08d6c5a8cc9474939ee34b4f82b2b6ea}{entries}};}
+\DoxyCodeLine{00114\ \ \ \ \ \};}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structstrndx__entry__s}{strndx\_entry\_s}}\ \{}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structstrndx__entry__s_a54a3ed3db71c45acfb66975ac68cbbd0}{string}};}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structstrndx__entry__s_ab9410443da25d83057c678d475121f7f}{addr}};}
+\DoxyCodeLine{00119\ \ \ \ \ \};}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keyword}{typedef}\ uint8\_t\ (*\mbox{\hyperlink{libcnassets_8h_a99e925cd028331cf810aab147f5fb245}{wr8\_fn}})(FILE\ *,\ uint8\_t);}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keyword}{typedef}\ uint8\_t\ (*\mbox{\hyperlink{libcnassets_8h_ae61bc8511231d35388d00b9e311a9039}{wr16\_fn}})(FILE\ *,\ uint16\_t);}
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keyword}{typedef}\ uint8\_t\ (*\mbox{\hyperlink{libcnassets_8h_a232d6219574587019490228dedff1933}{wr32\_fn}})(FILE\ *,\ uint32\_t);}
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keyword}{typedef}\ uint8\_t\ (*\mbox{\hyperlink{libcnassets_8h_ae282cff5b65567d2b8f4291136f82519}{wr64\_fn}})(FILE\ *,\ uint64\_t);}
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnassets_8h_a99e925cd028331cf810aab147f5fb245}{wr8\_fn}}\ \mbox{\hyperlink{structfpio__handler__t_a5b5343f5003b973d6f66313193d50d99}{u8}};}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnassets_8h_ae61bc8511231d35388d00b9e311a9039}{wr16\_fn}}\ \mbox{\hyperlink{structfpio__handler__t_a0c60e911abf0d24f8d0a1ce95a72d573}{u16}};}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnassets_8h_a232d6219574587019490228dedff1933}{wr32\_fn}}\ \mbox{\hyperlink{structfpio__handler__t_ac42dbd06ac2d78f23fe3c606b306f12e}{u32}};}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnassets_8h_ae282cff5b65567d2b8f4291136f82519}{wr64\_fn}}\ \mbox{\hyperlink{structfpio__handler__t_a39ba4f255866c3bcb9e2c87a8dd5230d}{u64}};}
+\DoxyCodeLine{00130\ \ \ \ \ \}\ \mbox{\hyperlink{structfpio__handler__t}{fpio\_handler\_t}};}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{libcnassets_8h_a66860af8ef61a90197277713fad011b5}{fpwr\_u8}}(FILE\ *fp,\ uint8\_t\ v);}
+\DoxyCodeLine{00133\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{libcnassets_8h_a4d2de7175cfc66cb72cab3bf19961371}{fpwr\_u16\_be}}(FILE\ *fp,\ uint16\_t\ v);}
+\DoxyCodeLine{00134\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{libcnassets_8h_af347d6139313fe701f10a355f623e659}{fpwr\_u16\_le}}(FILE\ *fp,\ uint16\_t\ v);}
+\DoxyCodeLine{00135\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{libcnassets_8h_a7ed6363c82893e3a694ae79f52420249}{fpwr\_u32\_be}}(FILE\ *fp,\ uint32\_t\ v);}
+\DoxyCodeLine{00136\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{libcnassets_8h_a2be86566a54290d951d688a8eb59e0c4}{fpwr\_u32\_le}}(FILE\ *fp,\ uint32\_t\ v);}
+\DoxyCodeLine{00137\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{libcnassets_8h_aabc3b6ecb31ec7caff21ad7071a476d9}{fpwr\_u64\_be}}(FILE\ *fp,\ uint64\_t\ v);}
+\DoxyCodeLine{00138\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{libcnassets_8h_a57b3614243ef77e873a597e90e5962f4}{fpwr\_u64\_le}}(FILE\ *fp,\ uint64\_t\ v);}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcnassets_8h_a85348a309a19546d30c12a416aeb1abe}{bufwr\_u8}}(\textcolor{keywordtype}{char}\ *buf,\ uint8\_t\ v);}
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcnassets_8h_a3dcb3c082123e52a066be3695a89b323}{bufwr\_u16\_be}}(\textcolor{keywordtype}{char}\ *buf,\ uint16\_t\ v);}
+\DoxyCodeLine{00142\ \ \ \ \ ;\textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcnassets_8h_a88ab3bf57ac4832cae822607eb18321a}{bufwr\_u16\_le}}(\textcolor{keywordtype}{char}\ *buf,\ uint16\_t\ v);}
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcnassets_8h_a9f49e0d3089b862e89c8b407a438063b}{bufwr\_u32\_be}}(\textcolor{keywordtype}{char}\ *buf,\ uint32\_t\ v);}
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcnassets_8h_af369b1a541e04ed45a10460595258cb0}{bufwr\_u32\_le}}(\textcolor{keywordtype}{char}\ *buf,\ uint32\_t\ v);}
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcnassets_8h_a1699fcbbcc24e140c632309ccfaad3be}{bufwr\_u64\_be}}(\textcolor{keywordtype}{char}\ *buf,\ uint64\_t\ v);}
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcnassets_8h_a4691063c5b3e1cf9fa563a0645657867}{bufwr\_u64\_le}}(\textcolor{keywordtype}{char}\ *buf,\ uint64\_t\ v);}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \ \ \ \ \mbox{\hyperlink{structfpio__handler__t}{fpio\_handler\_t}}\ \mbox{\hyperlink{libcnassets_8h_ad04bf40432b928bd98bc5c1e8861742b}{fpio\_handler\_from\_writer}}(\textcolor{keyword}{const}\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\_object\_file\_writer\_ctx\_s}}\ *object\_file\_write\_ctx);}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00150\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\_object\_file\_writer\_ctx\_s}}\ *\mbox{\hyperlink{libcnassets_8h_a147441e586c29ce32c689291bb2744b9}{new\_writer\_ctx}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}});}
+\DoxyCodeLine{00151\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{libcnassets_8h_a8a2a63e1b596e6529b2484009b8877d6}{writer\_ctx\_set\_object\_name}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\_object\_file\_writer\_ctx\_s}}\ *wctx,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}});}
+\DoxyCodeLine{00152\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{libcnassets_8h_a8b388339c7e7503ea76cf39cb507aeba}{write\_object\_file}}(FILE\ *fp,\ \textcolor{keyword}{const}\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\_object\_file\_writer\_ctx\_s}}\ *object\_file\_write\_ctx);}
+\DoxyCodeLine{00153\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{libcnassets_8h_a711484cbe40b54ca2b29f4ae0534fa0d}{writer\_ctx\_add\_section}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\_object\_file\_writer\_ctx\_s}}\ *wctx,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structengine__object__file__section__writer__ctx__s}{engine\_object\_file\_section\_writer\_ctx\_s}}\ *section);}
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcnassets_8h_aa28366e917bbeeea7f8bdd77e842eba3}{delete\_writer\_ctx}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\_object\_file\_writer\_ctx\_s}}\ *wctx);}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structengine__object__file__section__writer__ctx__s}{engine\_object\_file\_section\_writer\_ctx\_s}}\ *\mbox{\hyperlink{libcnassets_8h_a422854657dc72193e8b853509c7b0826}{new\_writer\_section}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}},\ \textcolor{keywordtype}{void}\ *content\_holder);}
+\DoxyCodeLine{00157\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{libcnassets_8h_ae8f03b75370a07d2bfeb6cb0ac4d2973}{writer\_section\_set\_name}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structengine__object__file__section__writer__ctx__s}{engine\_object\_file\_section\_writer\_ctx\_s}}\ *section,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}});}
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcnassets_8h_a94f23195c4b372d2f9537a65f97dfb92}{delete\_writer\_section}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structengine__object__file__section__writer__ctx__s}{engine\_object\_file\_section\_writer\_ctx\_s}}\ *section);}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00160\ \ \ \ \ uint32\_t\ \mbox{\hyperlink{libcnassets_8h_a5ef11e9fb3a608b84a0462590b9c6d58}{add\_str\_table}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *str,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structgeneric__map__s}{generic\_map\_s}}\ *strndx);}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

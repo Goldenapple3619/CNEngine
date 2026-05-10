@@ -1,3 +1,500 @@
 \doxysection{lib/cnassets/include/libcnassets.h File Reference}
 \hypertarget{libcnassets_8h}{}\label{libcnassets_8h}\index{lib/cnassets/include/libcnassets.h@{lib/cnassets/include/libcnassets.h}}
 {\ttfamily \#include "{}libcncore.\+h"{}}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structengine__object__file__section__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+section\+\_\+writer\+\_\+ctx\+\_\+s}}
+\item 
+struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}}
+\item 
+struct \mbox{\hyperlink{structengine__obj__header__s}{engine\+\_\+obj\+\_\+header\+\_\+s}}
+\item 
+struct \mbox{\hyperlink{structengine__obj__section__header__entry__s}{engine\+\_\+obj\+\_\+section\+\_\+header\+\_\+entry\+\_\+s}}
+\item 
+struct \mbox{\hyperlink{structengine__obj__section__header__s}{engine\+\_\+obj\+\_\+section\+\_\+header\+\_\+s}}
+\item 
+struct \mbox{\hyperlink{structstrndx__entry__s}{strndx\+\_\+entry\+\_\+s}}
+\item 
+struct \mbox{\hyperlink{structfpio__handler__t}{fpio\+\_\+handler\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{libcnassets_8h_ad97361d0513873f8385349db4695d604}{ENGINE\+\_\+\+USE\+\_\+\+LARGE\+\_\+\+FILE}}~\mbox{\hyperlink{libcncore_8h_a41f9c5fb8b08eb5dc3edce4dcb37fee7}{true}}
+\item 
+\#define \mbox{\hyperlink{libcnassets_8h_a44d01ba0a136b8e27ad362f5a823d14e}{\+\_\+\+FILE\+\_\+\+OFFSET\+\_\+\+BITS}}~64
+\item 
+\#define \mbox{\hyperlink{libcnassets_8h_aca281cffd077e6fd10f5d338f89e794d}{ENGINE\+\_\+\+OBJ\+\_\+\+MAGIC}}~0x0875\+C4\+E3U
+\item 
+\#define \mbox{\hyperlink{libcnassets_8h_a0934f917144c8de44f4c072267b52ac4}{ENGINE\+\_\+\+OBJ\+\_\+\+HDR\+\_\+\+SZ}}~33U
+\item 
+\#define \mbox{\hyperlink{libcnassets_8h_aa6e8bd688a451c2e990753bb10d06845}{ENGINE\+\_\+\+OBJ\+\_\+\+SECHDR\+\_\+\+PREFIX\+\_\+\+SZ}}~16U
+\item 
+\#define \mbox{\hyperlink{libcnassets_8h_ae357d00db5cf024dace6f54a4b5f8e48}{ENGINE\+\_\+\+OBJ\+\_\+\+SECHDR\+\_\+\+ENTRY\+\_\+\+SZ}}~28U
+\item 
+\#define \mbox{\hyperlink{libcnassets_8h_ad444754534842319d2b19ae960dd42d2}{ENGINE\+\_\+\+MAX\+\_\+\+PAD}}~4096U
+\item 
+\#define \mbox{\hyperlink{libcnassets_8h_a1b39e3e92ee7fe328ba93b1dc18086e2}{ENGINE\+\_\+\+PAD\+\_\+\+CHAR}}~0x\+CD
+\item 
+\#define \mbox{\hyperlink{libcnassets_8h_ac0a50e5589a9b3a487e22fa3b7e33885}{ENGINE\+\_\+\+FTELL}}(fp)~ftello(fp)
+\item 
+\#define \mbox{\hyperlink{libcnassets_8h_ad0526f0200343da53523020a79cd074f}{ENGINE\+\_\+\+FSEEK}}(fp,  o,  w)~fseeko((fp), (o), (w))
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef off\+\_\+t \mbox{\hyperlink{libcnassets_8h_a9182ea29e999746dfa0887d6f86f0e24}{file\+\_\+off\+\_\+t}}
+\item 
+typedef uint8\+\_\+t(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcnassets_8h_a99e925cd028331cf810aab147f5fb245}{wr8\+\_\+fn}}) (FILE \texorpdfstring{$\ast$}{*}, uint8\+\_\+t)
+\item 
+typedef uint8\+\_\+t(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcnassets_8h_ae61bc8511231d35388d00b9e311a9039}{wr16\+\_\+fn}}) (FILE \texorpdfstring{$\ast$}{*}, uint16\+\_\+t)
+\item 
+typedef uint8\+\_\+t(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcnassets_8h_a232d6219574587019490228dedff1933}{wr32\+\_\+fn}}) (FILE \texorpdfstring{$\ast$}{*}, uint32\+\_\+t)
+\item 
+typedef uint8\+\_\+t(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcnassets_8h_ae282cff5b65567d2b8f4291136f82519}{wr64\+\_\+fn}}) (FILE \texorpdfstring{$\ast$}{*}, uint64\+\_\+t)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{libcnassets_8h_ab6f57059a2b8b8eb3fb281cbea5aab34}{engine\+\_\+obj\+\_\+type}} \{ \mbox{\hyperlink{libcnassets_8h_ab6f57059a2b8b8eb3fb281cbea5aab34ac5eb0006acdeb543b210dd74eb00e505}{ENGINE\+\_\+\+OBJ\+\_\+\+UKN}} = 0x00
+, \mbox{\hyperlink{libcnassets_8h_ab6f57059a2b8b8eb3fb281cbea5aab34a3eb429f414b69b5b3f082b2c0ab0f873}{ENGINE\+\_\+\+OBJ\+\_\+\+GUI}}
+, \mbox{\hyperlink{libcnassets_8h_ab6f57059a2b8b8eb3fb281cbea5aab34a13ec1c8cfa5f5daef529725a46f700f4}{ENGINE\+\_\+\+OBJ\+\_\+\+SCN}}
+, \mbox{\hyperlink{libcnassets_8h_ab6f57059a2b8b8eb3fb281cbea5aab34a62cde0330ca290b277a126bd66c5ab16}{ENGINE\+\_\+\+OBJ\+\_\+\+OBJ}}
+ \}
+\item 
+enum \mbox{\hyperlink{libcnassets_8h_ab1164f59055b40a6fea404d875315464}{engine\+\_\+wrt\+\_\+endian}} \{ \mbox{\hyperlink{libcnassets_8h_ab1164f59055b40a6fea404d875315464a4646cad244125210d8d894087df4004a}{ENGINE\+\_\+\+WRT\+\_\+\+BIG\+\_\+\+ENDIAN}} = 0x00
+, \mbox{\hyperlink{libcnassets_8h_ab1164f59055b40a6fea404d875315464ab24e1f7b1ce44fe2b06321702828c525}{ENGINE\+\_\+\+WRT\+\_\+\+LITTLE\+\_\+\+ENDIAN}}
+ \}
+\item 
+enum \mbox{\hyperlink{libcnassets_8h_a80aea36b56e30038a40d82b823efcf20}{engine\+\_\+wrt\+\_\+flags}} \{ \newline
+\mbox{\hyperlink{libcnassets_8h_a80aea36b56e30038a40d82b823efcf20a93fc6d882240558c74eb3173a685ba98}{ENGINE\+\_\+\+WRT\+\_\+\+NULL\+\_\+\+FLAG}} = 0x00
+, \mbox{\hyperlink{libcnassets_8h_a80aea36b56e30038a40d82b823efcf20a368f2029a8f46205fd70a7a56c04c243}{ENGINE\+\_\+\+WRT\+\_\+\+ALIGN1\+\_\+\+FLAG}} = (1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 0)
+, \mbox{\hyperlink{libcnassets_8h_a80aea36b56e30038a40d82b823efcf20a468d9b9269407dc8b8f7a0c1d0872d3e}{ENGINE\+\_\+\+WRT\+\_\+\+ALIGN4\+\_\+\+FLAG}} = (1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 1)
+, \mbox{\hyperlink{libcnassets_8h_a80aea36b56e30038a40d82b823efcf20aee1ac9cc47dd77451cc252f77e907d89}{ENGINE\+\_\+\+WRT\+\_\+\+ALIGN8\+\_\+\+FLAG}} = (1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 2)
+, \newline
+\mbox{\hyperlink{libcnassets_8h_a80aea36b56e30038a40d82b823efcf20ab582a4309e2ef296279556d93084e59f}{ENGINE\+\_\+\+WRT\+\_\+\+ALIGN16\+\_\+\+FLAG}} = (1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 3)
+, \mbox{\hyperlink{libcnassets_8h_a80aea36b56e30038a40d82b823efcf20ac628740c058f52f0fea36599b0cd74bd}{ENGINE\+\_\+\+WRT\+\_\+\+ALIGN64\+\_\+\+FLAG}} = (1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 4)
+, \mbox{\hyperlink{libcnassets_8h_a80aea36b56e30038a40d82b823efcf20a84135a00642d0e96ebd16e2445897b0e}{ENGINE\+\_\+\+WRT\+\_\+\+ALIGN4096\+\_\+\+FLAG}} = (1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 5)
+ \}
+\item 
+enum \mbox{\hyperlink{libcnassets_8h_a959be715a1657adac70a74c248795869}{engine\+\_\+section\+\_\+type}} \{ \mbox{\hyperlink{libcnassets_8h_a959be715a1657adac70a74c248795869a77c7bcdb8d72538d0b10e5435c93cba6}{ENGINE\+\_\+\+SEC\+\_\+\+UKN}} = 0x00
+, \mbox{\hyperlink{libcnassets_8h_a959be715a1657adac70a74c248795869a0bea8b02b15cf276b9db591d5a7fdf5f}{ENGINE\+\_\+\+SEC\+\_\+\+GUI\+\_\+\+NODES}}
+, \mbox{\hyperlink{libcnassets_8h_a959be715a1657adac70a74c248795869ad1fd9a83161480581c578d882a501ace}{ENGINE\+\_\+\+SEC\+\_\+\+GUI\+\_\+\+STYLE}}
+, \mbox{\hyperlink{libcnassets_8h_a959be715a1657adac70a74c248795869ac2034ea9ebde71027843a1076979a266}{ENGINE\+\_\+\+SEC\+\_\+\+GUI\+\_\+\+CONN}}
+ \}
+\item 
+enum \mbox{\hyperlink{libcnassets_8h_a476d44b2fd664f18b92f351d4f06aaaa}{engine\+\_\+section\+\_\+wrt\+\_\+flags}} \{ \mbox{\hyperlink{libcnassets_8h_a476d44b2fd664f18b92f351d4f06aaaaaba005e807a79d4a40b76ce98e3c718bc}{ENGINE\+\_\+\+SEC\+\_\+\+NULL\+\_\+\+FLAG}} = 0x00
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{libcnassets_8h_a66860af8ef61a90197277713fad011b5}{fpwr\+\_\+u8}} (FILE \texorpdfstring{$\ast$}{*}fp, uint8\+\_\+t v)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{libcnassets_8h_a4d2de7175cfc66cb72cab3bf19961371}{fpwr\+\_\+u16\+\_\+be}} (FILE \texorpdfstring{$\ast$}{*}fp, uint16\+\_\+t v)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{libcnassets_8h_af347d6139313fe701f10a355f623e659}{fpwr\+\_\+u16\+\_\+le}} (FILE \texorpdfstring{$\ast$}{*}fp, uint16\+\_\+t v)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{libcnassets_8h_a7ed6363c82893e3a694ae79f52420249}{fpwr\+\_\+u32\+\_\+be}} (FILE \texorpdfstring{$\ast$}{*}fp, uint32\+\_\+t v)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{libcnassets_8h_a2be86566a54290d951d688a8eb59e0c4}{fpwr\+\_\+u32\+\_\+le}} (FILE \texorpdfstring{$\ast$}{*}fp, uint32\+\_\+t v)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{libcnassets_8h_aabc3b6ecb31ec7caff21ad7071a476d9}{fpwr\+\_\+u64\+\_\+be}} (FILE \texorpdfstring{$\ast$}{*}fp, uint64\+\_\+t v)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{libcnassets_8h_a57b3614243ef77e873a597e90e5962f4}{fpwr\+\_\+u64\+\_\+le}} (FILE \texorpdfstring{$\ast$}{*}fp, uint64\+\_\+t v)
+\item 
+void \mbox{\hyperlink{libcnassets_8h_a85348a309a19546d30c12a416aeb1abe}{bufwr\+\_\+u8}} (char \texorpdfstring{$\ast$}{*}buf, uint8\+\_\+t v)
+\item 
+void \mbox{\hyperlink{libcnassets_8h_a3dcb3c082123e52a066be3695a89b323}{bufwr\+\_\+u16\+\_\+be}} (char \texorpdfstring{$\ast$}{*}buf, uint16\+\_\+t v)
+\item 
+void \mbox{\hyperlink{libcnassets_8h_a88ab3bf57ac4832cae822607eb18321a}{bufwr\+\_\+u16\+\_\+le}} (char \texorpdfstring{$\ast$}{*}buf, uint16\+\_\+t v)
+\item 
+void \mbox{\hyperlink{libcnassets_8h_a9f49e0d3089b862e89c8b407a438063b}{bufwr\+\_\+u32\+\_\+be}} (char \texorpdfstring{$\ast$}{*}buf, uint32\+\_\+t v)
+\item 
+void \mbox{\hyperlink{libcnassets_8h_af369b1a541e04ed45a10460595258cb0}{bufwr\+\_\+u32\+\_\+le}} (char \texorpdfstring{$\ast$}{*}buf, uint32\+\_\+t v)
+\item 
+void \mbox{\hyperlink{libcnassets_8h_a1699fcbbcc24e140c632309ccfaad3be}{bufwr\+\_\+u64\+\_\+be}} (char \texorpdfstring{$\ast$}{*}buf, uint64\+\_\+t v)
+\item 
+void \mbox{\hyperlink{libcnassets_8h_a4691063c5b3e1cf9fa563a0645657867}{bufwr\+\_\+u64\+\_\+le}} (char \texorpdfstring{$\ast$}{*}buf, uint64\+\_\+t v)
+\item 
+\mbox{\hyperlink{structfpio__handler__t}{fpio\+\_\+handler\+\_\+t}} \mbox{\hyperlink{libcnassets_8h_ad04bf40432b928bd98bc5c1e8861742b}{fpio\+\_\+handler\+\_\+from\+\_\+writer}} (const struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}object\+\_\+file\+\_\+write\+\_\+ctx)
+\item 
+struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcnassets_8h_a147441e586c29ce32c689291bb2744b9}{new\+\_\+writer\+\_\+ctx}} (const char \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}})
+\item 
+uint8\+\_\+t \mbox{\hyperlink{libcnassets_8h_a8a2a63e1b596e6529b2484009b8877d6}{writer\+\_\+ctx\+\_\+set\+\_\+object\+\_\+name}} (struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}wctx, const char \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}})
+\item 
+uint8\+\_\+t \mbox{\hyperlink{libcnassets_8h_a8b388339c7e7503ea76cf39cb507aeba}{write\+\_\+object\+\_\+file}} (FILE \texorpdfstring{$\ast$}{*}fp, const struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}object\+\_\+file\+\_\+write\+\_\+ctx)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{libcnassets_8h_a711484cbe40b54ca2b29f4ae0534fa0d}{writer\+\_\+ctx\+\_\+add\+\_\+section}} (struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}wctx, struct \mbox{\hyperlink{structengine__object__file__section__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+section\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}section)
+\item 
+void \mbox{\hyperlink{libcnassets_8h_aa28366e917bbeeea7f8bdd77e842eba3}{delete\+\_\+writer\+\_\+ctx}} (struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}wctx)
+\item 
+struct \mbox{\hyperlink{structengine__object__file__section__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+section\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcnassets_8h_a422854657dc72193e8b853509c7b0826}{new\+\_\+writer\+\_\+section}} (const char \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}}, void \texorpdfstring{$\ast$}{*}content\+\_\+holder)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{libcnassets_8h_ae8f03b75370a07d2bfeb6cb0ac4d2973}{writer\+\_\+section\+\_\+set\+\_\+name}} (struct \mbox{\hyperlink{structengine__object__file__section__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+section\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}section, const char \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}})
+\item 
+void \mbox{\hyperlink{libcnassets_8h_a94f23195c4b372d2f9537a65f97dfb92}{delete\+\_\+writer\+\_\+section}} (struct \mbox{\hyperlink{structengine__object__file__section__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+section\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}section)
+\item 
+uint32\+\_\+t \mbox{\hyperlink{libcnassets_8h_a5ef11e9fb3a608b84a0462590b9c6d58}{add\+\_\+str\+\_\+table}} (const char \texorpdfstring{$\ast$}{*}str, struct \mbox{\hyperlink{structgeneric__map__s}{generic\+\_\+map\+\_\+s}} \texorpdfstring{$\ast$}{*}strndx)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{libcnassets_8h_a44d01ba0a136b8e27ad362f5a823d14e}\label{libcnassets_8h_a44d01ba0a136b8e27ad362f5a823d14e} 
+\index{libcnassets.h@{libcnassets.h}!\_FILE\_OFFSET\_BITS@{\_FILE\_OFFSET\_BITS}}
+\index{\_FILE\_OFFSET\_BITS@{\_FILE\_OFFSET\_BITS}!libcnassets.h@{libcnassets.h}}
+\doxysubsubsection{\texorpdfstring{\_FILE\_OFFSET\_BITS}{\_FILE\_OFFSET\_BITS}}
+{\footnotesize\ttfamily \#define \+\_\+\+FILE\+\_\+\+OFFSET\+\_\+\+BITS~64}
+
+\Hypertarget{libcnassets_8h_ad0526f0200343da53523020a79cd074f}\label{libcnassets_8h_ad0526f0200343da53523020a79cd074f} 
+\index{libcnassets.h@{libcnassets.h}!ENGINE\_FSEEK@{ENGINE\_FSEEK}}
+\index{ENGINE\_FSEEK@{ENGINE\_FSEEK}!libcnassets.h@{libcnassets.h}}
+\doxysubsubsection{\texorpdfstring{ENGINE\_FSEEK}{ENGINE\_FSEEK}}
+{\footnotesize\ttfamily \#define ENGINE\+\_\+\+FSEEK(\begin{DoxyParamCaption}\item[{}]{fp,  }\item[{}]{o,  }\item[{}]{w }\end{DoxyParamCaption})~fseeko((fp), (o), (w))}
+
+\Hypertarget{libcnassets_8h_ac0a50e5589a9b3a487e22fa3b7e33885}\label{libcnassets_8h_ac0a50e5589a9b3a487e22fa3b7e33885} 
+\index{libcnassets.h@{libcnassets.h}!ENGINE\_FTELL@{ENGINE\_FTELL}}
+\index{ENGINE\_FTELL@{ENGINE\_FTELL}!libcnassets.h@{libcnassets.h}}
+\doxysubsubsection{\texorpdfstring{ENGINE\_FTELL}{ENGINE\_FTELL}}
+{\footnotesize\ttfamily \#define ENGINE\+\_\+\+FTELL(\begin{DoxyParamCaption}\item[{}]{fp }\end{DoxyParamCaption})~ftello(fp)}
+
+\Hypertarget{libcnassets_8h_ad444754534842319d2b19ae960dd42d2}\label{libcnassets_8h_ad444754534842319d2b19ae960dd42d2} 
+\index{libcnassets.h@{libcnassets.h}!ENGINE\_MAX\_PAD@{ENGINE\_MAX\_PAD}}
+\index{ENGINE\_MAX\_PAD@{ENGINE\_MAX\_PAD}!libcnassets.h@{libcnassets.h}}
+\doxysubsubsection{\texorpdfstring{ENGINE\_MAX\_PAD}{ENGINE\_MAX\_PAD}}
+{\footnotesize\ttfamily \#define ENGINE\+\_\+\+MAX\+\_\+\+PAD~4096U}
+
+\Hypertarget{libcnassets_8h_a0934f917144c8de44f4c072267b52ac4}\label{libcnassets_8h_a0934f917144c8de44f4c072267b52ac4} 
+\index{libcnassets.h@{libcnassets.h}!ENGINE\_OBJ\_HDR\_SZ@{ENGINE\_OBJ\_HDR\_SZ}}
+\index{ENGINE\_OBJ\_HDR\_SZ@{ENGINE\_OBJ\_HDR\_SZ}!libcnassets.h@{libcnassets.h}}
+\doxysubsubsection{\texorpdfstring{ENGINE\_OBJ\_HDR\_SZ}{ENGINE\_OBJ\_HDR\_SZ}}
+{\footnotesize\ttfamily \#define ENGINE\+\_\+\+OBJ\+\_\+\+HDR\+\_\+\+SZ~33U}
+
+\Hypertarget{libcnassets_8h_aca281cffd077e6fd10f5d338f89e794d}\label{libcnassets_8h_aca281cffd077e6fd10f5d338f89e794d} 
+\index{libcnassets.h@{libcnassets.h}!ENGINE\_OBJ\_MAGIC@{ENGINE\_OBJ\_MAGIC}}
+\index{ENGINE\_OBJ\_MAGIC@{ENGINE\_OBJ\_MAGIC}!libcnassets.h@{libcnassets.h}}
+\doxysubsubsection{\texorpdfstring{ENGINE\_OBJ\_MAGIC}{ENGINE\_OBJ\_MAGIC}}
+{\footnotesize\ttfamily \#define ENGINE\+\_\+\+OBJ\+\_\+\+MAGIC~0x0875\+C4\+E3U}
+
+\Hypertarget{libcnassets_8h_ae357d00db5cf024dace6f54a4b5f8e48}\label{libcnassets_8h_ae357d00db5cf024dace6f54a4b5f8e48} 
+\index{libcnassets.h@{libcnassets.h}!ENGINE\_OBJ\_SECHDR\_ENTRY\_SZ@{ENGINE\_OBJ\_SECHDR\_ENTRY\_SZ}}
+\index{ENGINE\_OBJ\_SECHDR\_ENTRY\_SZ@{ENGINE\_OBJ\_SECHDR\_ENTRY\_SZ}!libcnassets.h@{libcnassets.h}}
+\doxysubsubsection{\texorpdfstring{ENGINE\_OBJ\_SECHDR\_ENTRY\_SZ}{ENGINE\_OBJ\_SECHDR\_ENTRY\_SZ}}
+{\footnotesize\ttfamily \#define ENGINE\+\_\+\+OBJ\+\_\+\+SECHDR\+\_\+\+ENTRY\+\_\+\+SZ~28U}
+
+\Hypertarget{libcnassets_8h_aa6e8bd688a451c2e990753bb10d06845}\label{libcnassets_8h_aa6e8bd688a451c2e990753bb10d06845} 
+\index{libcnassets.h@{libcnassets.h}!ENGINE\_OBJ\_SECHDR\_PREFIX\_SZ@{ENGINE\_OBJ\_SECHDR\_PREFIX\_SZ}}
+\index{ENGINE\_OBJ\_SECHDR\_PREFIX\_SZ@{ENGINE\_OBJ\_SECHDR\_PREFIX\_SZ}!libcnassets.h@{libcnassets.h}}
+\doxysubsubsection{\texorpdfstring{ENGINE\_OBJ\_SECHDR\_PREFIX\_SZ}{ENGINE\_OBJ\_SECHDR\_PREFIX\_SZ}}
+{\footnotesize\ttfamily \#define ENGINE\+\_\+\+OBJ\+\_\+\+SECHDR\+\_\+\+PREFIX\+\_\+\+SZ~16U}
+
+\Hypertarget{libcnassets_8h_a1b39e3e92ee7fe328ba93b1dc18086e2}\label{libcnassets_8h_a1b39e3e92ee7fe328ba93b1dc18086e2} 
+\index{libcnassets.h@{libcnassets.h}!ENGINE\_PAD\_CHAR@{ENGINE\_PAD\_CHAR}}
+\index{ENGINE\_PAD\_CHAR@{ENGINE\_PAD\_CHAR}!libcnassets.h@{libcnassets.h}}
+\doxysubsubsection{\texorpdfstring{ENGINE\_PAD\_CHAR}{ENGINE\_PAD\_CHAR}}
+{\footnotesize\ttfamily \#define ENGINE\+\_\+\+PAD\+\_\+\+CHAR~0x\+CD}
+
+\Hypertarget{libcnassets_8h_ad97361d0513873f8385349db4695d604}\label{libcnassets_8h_ad97361d0513873f8385349db4695d604} 
+\index{libcnassets.h@{libcnassets.h}!ENGINE\_USE\_LARGE\_FILE@{ENGINE\_USE\_LARGE\_FILE}}
+\index{ENGINE\_USE\_LARGE\_FILE@{ENGINE\_USE\_LARGE\_FILE}!libcnassets.h@{libcnassets.h}}
+\doxysubsubsection{\texorpdfstring{ENGINE\_USE\_LARGE\_FILE}{ENGINE\_USE\_LARGE\_FILE}}
+{\footnotesize\ttfamily \#define ENGINE\+\_\+\+USE\+\_\+\+LARGE\+\_\+\+FILE~\mbox{\hyperlink{libcncore_8h_a41f9c5fb8b08eb5dc3edce4dcb37fee7}{true}}}
+
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{libcnassets_8h_a9182ea29e999746dfa0887d6f86f0e24}\label{libcnassets_8h_a9182ea29e999746dfa0887d6f86f0e24} 
+\index{libcnassets.h@{libcnassets.h}!file\_off\_t@{file\_off\_t}}
+\index{file\_off\_t@{file\_off\_t}!libcnassets.h@{libcnassets.h}}
+\doxysubsubsection{\texorpdfstring{file\_off\_t}{file\_off\_t}}
+{\footnotesize\ttfamily typedef off\+\_\+t \mbox{\hyperlink{libcnassets_8h_a9182ea29e999746dfa0887d6f86f0e24}{file\+\_\+off\+\_\+t}}}
+
+\Hypertarget{libcnassets_8h_ae61bc8511231d35388d00b9e311a9039}\label{libcnassets_8h_ae61bc8511231d35388d00b9e311a9039} 
+\index{libcnassets.h@{libcnassets.h}!wr16\_fn@{wr16\_fn}}
+\index{wr16\_fn@{wr16\_fn}!libcnassets.h@{libcnassets.h}}
+\doxysubsubsection{\texorpdfstring{wr16\_fn}{wr16\_fn}}
+{\footnotesize\ttfamily typedef uint8\+\_\+t(\texorpdfstring{$\ast$}{*} wr16\+\_\+fn) (FILE \texorpdfstring{$\ast$}{*}, uint16\+\_\+t)}
+
+\Hypertarget{libcnassets_8h_a232d6219574587019490228dedff1933}\label{libcnassets_8h_a232d6219574587019490228dedff1933} 
+\index{libcnassets.h@{libcnassets.h}!wr32\_fn@{wr32\_fn}}
+\index{wr32\_fn@{wr32\_fn}!libcnassets.h@{libcnassets.h}}
+\doxysubsubsection{\texorpdfstring{wr32\_fn}{wr32\_fn}}
+{\footnotesize\ttfamily typedef uint8\+\_\+t(\texorpdfstring{$\ast$}{*} wr32\+\_\+fn) (FILE \texorpdfstring{$\ast$}{*}, uint32\+\_\+t)}
+
+\Hypertarget{libcnassets_8h_ae282cff5b65567d2b8f4291136f82519}\label{libcnassets_8h_ae282cff5b65567d2b8f4291136f82519} 
+\index{libcnassets.h@{libcnassets.h}!wr64\_fn@{wr64\_fn}}
+\index{wr64\_fn@{wr64\_fn}!libcnassets.h@{libcnassets.h}}
+\doxysubsubsection{\texorpdfstring{wr64\_fn}{wr64\_fn}}
+{\footnotesize\ttfamily typedef uint8\+\_\+t(\texorpdfstring{$\ast$}{*} wr64\+\_\+fn) (FILE \texorpdfstring{$\ast$}{*}, uint64\+\_\+t)}
+
+\Hypertarget{libcnassets_8h_a99e925cd028331cf810aab147f5fb245}\label{libcnassets_8h_a99e925cd028331cf810aab147f5fb245} 
+\index{libcnassets.h@{libcnassets.h}!wr8\_fn@{wr8\_fn}}
+\index{wr8\_fn@{wr8\_fn}!libcnassets.h@{libcnassets.h}}
+\doxysubsubsection{\texorpdfstring{wr8\_fn}{wr8\_fn}}
+{\footnotesize\ttfamily typedef uint8\+\_\+t(\texorpdfstring{$\ast$}{*} wr8\+\_\+fn) (FILE \texorpdfstring{$\ast$}{*}, uint8\+\_\+t)}
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{libcnassets_8h_ab6f57059a2b8b8eb3fb281cbea5aab34}\label{libcnassets_8h_ab6f57059a2b8b8eb3fb281cbea5aab34} 
+\index{libcnassets.h@{libcnassets.h}!engine\_obj\_type@{engine\_obj\_type}}
+\index{engine\_obj\_type@{engine\_obj\_type}!libcnassets.h@{libcnassets.h}}
+\doxysubsubsection{\texorpdfstring{engine\_obj\_type}{engine\_obj\_type}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{libcnassets_8h_ab6f57059a2b8b8eb3fb281cbea5aab34}{engine\+\_\+obj\+\_\+type}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ENGINE\_OBJ\_UKN@{ENGINE\_OBJ\_UKN}!libcnassets.h@{libcnassets.h}}\index{libcnassets.h@{libcnassets.h}!ENGINE\_OBJ\_UKN@{ENGINE\_OBJ\_UKN}}}\Hypertarget{libcnassets_8h_ab6f57059a2b8b8eb3fb281cbea5aab34ac5eb0006acdeb543b210dd74eb00e505}\label{libcnassets_8h_ab6f57059a2b8b8eb3fb281cbea5aab34ac5eb0006acdeb543b210dd74eb00e505} 
+ENGINE\+\_\+\+OBJ\+\_\+\+UKN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ENGINE\_OBJ\_GUI@{ENGINE\_OBJ\_GUI}!libcnassets.h@{libcnassets.h}}\index{libcnassets.h@{libcnassets.h}!ENGINE\_OBJ\_GUI@{ENGINE\_OBJ\_GUI}}}\Hypertarget{libcnassets_8h_ab6f57059a2b8b8eb3fb281cbea5aab34a3eb429f414b69b5b3f082b2c0ab0f873}\label{libcnassets_8h_ab6f57059a2b8b8eb3fb281cbea5aab34a3eb429f414b69b5b3f082b2c0ab0f873} 
+ENGINE\+\_\+\+OBJ\+\_\+\+GUI&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ENGINE\_OBJ\_SCN@{ENGINE\_OBJ\_SCN}!libcnassets.h@{libcnassets.h}}\index{libcnassets.h@{libcnassets.h}!ENGINE\_OBJ\_SCN@{ENGINE\_OBJ\_SCN}}}\Hypertarget{libcnassets_8h_ab6f57059a2b8b8eb3fb281cbea5aab34a13ec1c8cfa5f5daef529725a46f700f4}\label{libcnassets_8h_ab6f57059a2b8b8eb3fb281cbea5aab34a13ec1c8cfa5f5daef529725a46f700f4} 
+ENGINE\+\_\+\+OBJ\+\_\+\+SCN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ENGINE\_OBJ\_OBJ@{ENGINE\_OBJ\_OBJ}!libcnassets.h@{libcnassets.h}}\index{libcnassets.h@{libcnassets.h}!ENGINE\_OBJ\_OBJ@{ENGINE\_OBJ\_OBJ}}}\Hypertarget{libcnassets_8h_ab6f57059a2b8b8eb3fb281cbea5aab34a62cde0330ca290b277a126bd66c5ab16}\label{libcnassets_8h_ab6f57059a2b8b8eb3fb281cbea5aab34a62cde0330ca290b277a126bd66c5ab16} 
+ENGINE\+\_\+\+OBJ\+\_\+\+OBJ&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{libcnassets_8h_a959be715a1657adac70a74c248795869}\label{libcnassets_8h_a959be715a1657adac70a74c248795869} 
+\index{libcnassets.h@{libcnassets.h}!engine\_section\_type@{engine\_section\_type}}
+\index{engine\_section\_type@{engine\_section\_type}!libcnassets.h@{libcnassets.h}}
+\doxysubsubsection{\texorpdfstring{engine\_section\_type}{engine\_section\_type}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{libcnassets_8h_a959be715a1657adac70a74c248795869}{engine\+\_\+section\+\_\+type}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ENGINE\_SEC\_UKN@{ENGINE\_SEC\_UKN}!libcnassets.h@{libcnassets.h}}\index{libcnassets.h@{libcnassets.h}!ENGINE\_SEC\_UKN@{ENGINE\_SEC\_UKN}}}\Hypertarget{libcnassets_8h_a959be715a1657adac70a74c248795869a77c7bcdb8d72538d0b10e5435c93cba6}\label{libcnassets_8h_a959be715a1657adac70a74c248795869a77c7bcdb8d72538d0b10e5435c93cba6} 
+ENGINE\+\_\+\+SEC\+\_\+\+UKN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ENGINE\_SEC\_GUI\_NODES@{ENGINE\_SEC\_GUI\_NODES}!libcnassets.h@{libcnassets.h}}\index{libcnassets.h@{libcnassets.h}!ENGINE\_SEC\_GUI\_NODES@{ENGINE\_SEC\_GUI\_NODES}}}\Hypertarget{libcnassets_8h_a959be715a1657adac70a74c248795869a0bea8b02b15cf276b9db591d5a7fdf5f}\label{libcnassets_8h_a959be715a1657adac70a74c248795869a0bea8b02b15cf276b9db591d5a7fdf5f} 
+ENGINE\+\_\+\+SEC\+\_\+\+GUI\+\_\+\+NODES&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ENGINE\_SEC\_GUI\_STYLE@{ENGINE\_SEC\_GUI\_STYLE}!libcnassets.h@{libcnassets.h}}\index{libcnassets.h@{libcnassets.h}!ENGINE\_SEC\_GUI\_STYLE@{ENGINE\_SEC\_GUI\_STYLE}}}\Hypertarget{libcnassets_8h_a959be715a1657adac70a74c248795869ad1fd9a83161480581c578d882a501ace}\label{libcnassets_8h_a959be715a1657adac70a74c248795869ad1fd9a83161480581c578d882a501ace} 
+ENGINE\+\_\+\+SEC\+\_\+\+GUI\+\_\+\+STYLE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ENGINE\_SEC\_GUI\_CONN@{ENGINE\_SEC\_GUI\_CONN}!libcnassets.h@{libcnassets.h}}\index{libcnassets.h@{libcnassets.h}!ENGINE\_SEC\_GUI\_CONN@{ENGINE\_SEC\_GUI\_CONN}}}\Hypertarget{libcnassets_8h_a959be715a1657adac70a74c248795869ac2034ea9ebde71027843a1076979a266}\label{libcnassets_8h_a959be715a1657adac70a74c248795869ac2034ea9ebde71027843a1076979a266} 
+ENGINE\+\_\+\+SEC\+\_\+\+GUI\+\_\+\+CONN&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{libcnassets_8h_a476d44b2fd664f18b92f351d4f06aaaa}\label{libcnassets_8h_a476d44b2fd664f18b92f351d4f06aaaa} 
+\index{libcnassets.h@{libcnassets.h}!engine\_section\_wrt\_flags@{engine\_section\_wrt\_flags}}
+\index{engine\_section\_wrt\_flags@{engine\_section\_wrt\_flags}!libcnassets.h@{libcnassets.h}}
+\doxysubsubsection{\texorpdfstring{engine\_section\_wrt\_flags}{engine\_section\_wrt\_flags}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{libcnassets_8h_a476d44b2fd664f18b92f351d4f06aaaa}{engine\+\_\+section\+\_\+wrt\+\_\+flags}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ENGINE\_SEC\_NULL\_FLAG@{ENGINE\_SEC\_NULL\_FLAG}!libcnassets.h@{libcnassets.h}}\index{libcnassets.h@{libcnassets.h}!ENGINE\_SEC\_NULL\_FLAG@{ENGINE\_SEC\_NULL\_FLAG}}}\Hypertarget{libcnassets_8h_a476d44b2fd664f18b92f351d4f06aaaaaba005e807a79d4a40b76ce98e3c718bc}\label{libcnassets_8h_a476d44b2fd664f18b92f351d4f06aaaaaba005e807a79d4a40b76ce98e3c718bc} 
+ENGINE\+\_\+\+SEC\+\_\+\+NULL\+\_\+\+FLAG&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{libcnassets_8h_ab1164f59055b40a6fea404d875315464}\label{libcnassets_8h_ab1164f59055b40a6fea404d875315464} 
+\index{libcnassets.h@{libcnassets.h}!engine\_wrt\_endian@{engine\_wrt\_endian}}
+\index{engine\_wrt\_endian@{engine\_wrt\_endian}!libcnassets.h@{libcnassets.h}}
+\doxysubsubsection{\texorpdfstring{engine\_wrt\_endian}{engine\_wrt\_endian}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{libcnassets_8h_ab1164f59055b40a6fea404d875315464}{engine\+\_\+wrt\+\_\+endian}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ENGINE\_WRT\_BIG\_ENDIAN@{ENGINE\_WRT\_BIG\_ENDIAN}!libcnassets.h@{libcnassets.h}}\index{libcnassets.h@{libcnassets.h}!ENGINE\_WRT\_BIG\_ENDIAN@{ENGINE\_WRT\_BIG\_ENDIAN}}}\Hypertarget{libcnassets_8h_ab1164f59055b40a6fea404d875315464a4646cad244125210d8d894087df4004a}\label{libcnassets_8h_ab1164f59055b40a6fea404d875315464a4646cad244125210d8d894087df4004a} 
+ENGINE\+\_\+\+WRT\+\_\+\+BIG\+\_\+\+ENDIAN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ENGINE\_WRT\_LITTLE\_ENDIAN@{ENGINE\_WRT\_LITTLE\_ENDIAN}!libcnassets.h@{libcnassets.h}}\index{libcnassets.h@{libcnassets.h}!ENGINE\_WRT\_LITTLE\_ENDIAN@{ENGINE\_WRT\_LITTLE\_ENDIAN}}}\Hypertarget{libcnassets_8h_ab1164f59055b40a6fea404d875315464ab24e1f7b1ce44fe2b06321702828c525}\label{libcnassets_8h_ab1164f59055b40a6fea404d875315464ab24e1f7b1ce44fe2b06321702828c525} 
+ENGINE\+\_\+\+WRT\+\_\+\+LITTLE\+\_\+\+ENDIAN&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{libcnassets_8h_a80aea36b56e30038a40d82b823efcf20}\label{libcnassets_8h_a80aea36b56e30038a40d82b823efcf20} 
+\index{libcnassets.h@{libcnassets.h}!engine\_wrt\_flags@{engine\_wrt\_flags}}
+\index{engine\_wrt\_flags@{engine\_wrt\_flags}!libcnassets.h@{libcnassets.h}}
+\doxysubsubsection{\texorpdfstring{engine\_wrt\_flags}{engine\_wrt\_flags}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{libcnassets_8h_a80aea36b56e30038a40d82b823efcf20}{engine\+\_\+wrt\+\_\+flags}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ENGINE\_WRT\_NULL\_FLAG@{ENGINE\_WRT\_NULL\_FLAG}!libcnassets.h@{libcnassets.h}}\index{libcnassets.h@{libcnassets.h}!ENGINE\_WRT\_NULL\_FLAG@{ENGINE\_WRT\_NULL\_FLAG}}}\Hypertarget{libcnassets_8h_a80aea36b56e30038a40d82b823efcf20a93fc6d882240558c74eb3173a685ba98}\label{libcnassets_8h_a80aea36b56e30038a40d82b823efcf20a93fc6d882240558c74eb3173a685ba98} 
+ENGINE\+\_\+\+WRT\+\_\+\+NULL\+\_\+\+FLAG&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ENGINE\_WRT\_ALIGN1\_FLAG@{ENGINE\_WRT\_ALIGN1\_FLAG}!libcnassets.h@{libcnassets.h}}\index{libcnassets.h@{libcnassets.h}!ENGINE\_WRT\_ALIGN1\_FLAG@{ENGINE\_WRT\_ALIGN1\_FLAG}}}\Hypertarget{libcnassets_8h_a80aea36b56e30038a40d82b823efcf20a368f2029a8f46205fd70a7a56c04c243}\label{libcnassets_8h_a80aea36b56e30038a40d82b823efcf20a368f2029a8f46205fd70a7a56c04c243} 
+ENGINE\+\_\+\+WRT\+\_\+\+ALIGN1\+\_\+\+FLAG&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ENGINE\_WRT\_ALIGN4\_FLAG@{ENGINE\_WRT\_ALIGN4\_FLAG}!libcnassets.h@{libcnassets.h}}\index{libcnassets.h@{libcnassets.h}!ENGINE\_WRT\_ALIGN4\_FLAG@{ENGINE\_WRT\_ALIGN4\_FLAG}}}\Hypertarget{libcnassets_8h_a80aea36b56e30038a40d82b823efcf20a468d9b9269407dc8b8f7a0c1d0872d3e}\label{libcnassets_8h_a80aea36b56e30038a40d82b823efcf20a468d9b9269407dc8b8f7a0c1d0872d3e} 
+ENGINE\+\_\+\+WRT\+\_\+\+ALIGN4\+\_\+\+FLAG&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ENGINE\_WRT\_ALIGN8\_FLAG@{ENGINE\_WRT\_ALIGN8\_FLAG}!libcnassets.h@{libcnassets.h}}\index{libcnassets.h@{libcnassets.h}!ENGINE\_WRT\_ALIGN8\_FLAG@{ENGINE\_WRT\_ALIGN8\_FLAG}}}\Hypertarget{libcnassets_8h_a80aea36b56e30038a40d82b823efcf20aee1ac9cc47dd77451cc252f77e907d89}\label{libcnassets_8h_a80aea36b56e30038a40d82b823efcf20aee1ac9cc47dd77451cc252f77e907d89} 
+ENGINE\+\_\+\+WRT\+\_\+\+ALIGN8\+\_\+\+FLAG&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ENGINE\_WRT\_ALIGN16\_FLAG@{ENGINE\_WRT\_ALIGN16\_FLAG}!libcnassets.h@{libcnassets.h}}\index{libcnassets.h@{libcnassets.h}!ENGINE\_WRT\_ALIGN16\_FLAG@{ENGINE\_WRT\_ALIGN16\_FLAG}}}\Hypertarget{libcnassets_8h_a80aea36b56e30038a40d82b823efcf20ab582a4309e2ef296279556d93084e59f}\label{libcnassets_8h_a80aea36b56e30038a40d82b823efcf20ab582a4309e2ef296279556d93084e59f} 
+ENGINE\+\_\+\+WRT\+\_\+\+ALIGN16\+\_\+\+FLAG&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ENGINE\_WRT\_ALIGN64\_FLAG@{ENGINE\_WRT\_ALIGN64\_FLAG}!libcnassets.h@{libcnassets.h}}\index{libcnassets.h@{libcnassets.h}!ENGINE\_WRT\_ALIGN64\_FLAG@{ENGINE\_WRT\_ALIGN64\_FLAG}}}\Hypertarget{libcnassets_8h_a80aea36b56e30038a40d82b823efcf20ac628740c058f52f0fea36599b0cd74bd}\label{libcnassets_8h_a80aea36b56e30038a40d82b823efcf20ac628740c058f52f0fea36599b0cd74bd} 
+ENGINE\+\_\+\+WRT\+\_\+\+ALIGN64\+\_\+\+FLAG&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ENGINE\_WRT\_ALIGN4096\_FLAG@{ENGINE\_WRT\_ALIGN4096\_FLAG}!libcnassets.h@{libcnassets.h}}\index{libcnassets.h@{libcnassets.h}!ENGINE\_WRT\_ALIGN4096\_FLAG@{ENGINE\_WRT\_ALIGN4096\_FLAG}}}\Hypertarget{libcnassets_8h_a80aea36b56e30038a40d82b823efcf20a84135a00642d0e96ebd16e2445897b0e}\label{libcnassets_8h_a80aea36b56e30038a40d82b823efcf20a84135a00642d0e96ebd16e2445897b0e} 
+ENGINE\+\_\+\+WRT\+\_\+\+ALIGN4096\+\_\+\+FLAG&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{libcnassets_8h_a5ef11e9fb3a608b84a0462590b9c6d58}\label{libcnassets_8h_a5ef11e9fb3a608b84a0462590b9c6d58} 
+\index{libcnassets.h@{libcnassets.h}!add\_str\_table@{add\_str\_table}}
+\index{add\_str\_table@{add\_str\_table}!libcnassets.h@{libcnassets.h}}
+\doxysubsubsection{\texorpdfstring{add\_str\_table()}{add\_str\_table()}}
+{\footnotesize\ttfamily uint32\+\_\+t add\+\_\+str\+\_\+table (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{str,  }\item[{struct \mbox{\hyperlink{structgeneric__map__s}{generic\+\_\+map\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{strndx }\end{DoxyParamCaption})}
+
+\Hypertarget{libcnassets_8h_a3dcb3c082123e52a066be3695a89b323}\label{libcnassets_8h_a3dcb3c082123e52a066be3695a89b323} 
+\index{libcnassets.h@{libcnassets.h}!bufwr\_u16\_be@{bufwr\_u16\_be}}
+\index{bufwr\_u16\_be@{bufwr\_u16\_be}!libcnassets.h@{libcnassets.h}}
+\doxysubsubsection{\texorpdfstring{bufwr\_u16\_be()}{bufwr\_u16\_be()}}
+{\footnotesize\ttfamily void bufwr\+\_\+u16\+\_\+be (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{buf,  }\item[{uint16\+\_\+t}]{v }\end{DoxyParamCaption})}
+
+\Hypertarget{libcnassets_8h_a88ab3bf57ac4832cae822607eb18321a}\label{libcnassets_8h_a88ab3bf57ac4832cae822607eb18321a} 
+\index{libcnassets.h@{libcnassets.h}!bufwr\_u16\_le@{bufwr\_u16\_le}}
+\index{bufwr\_u16\_le@{bufwr\_u16\_le}!libcnassets.h@{libcnassets.h}}
+\doxysubsubsection{\texorpdfstring{bufwr\_u16\_le()}{bufwr\_u16\_le()}}
+{\footnotesize\ttfamily void bufwr\+\_\+u16\+\_\+le (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{buf,  }\item[{uint16\+\_\+t}]{v }\end{DoxyParamCaption})}
+
+\Hypertarget{libcnassets_8h_a9f49e0d3089b862e89c8b407a438063b}\label{libcnassets_8h_a9f49e0d3089b862e89c8b407a438063b} 
+\index{libcnassets.h@{libcnassets.h}!bufwr\_u32\_be@{bufwr\_u32\_be}}
+\index{bufwr\_u32\_be@{bufwr\_u32\_be}!libcnassets.h@{libcnassets.h}}
+\doxysubsubsection{\texorpdfstring{bufwr\_u32\_be()}{bufwr\_u32\_be()}}
+{\footnotesize\ttfamily void bufwr\+\_\+u32\+\_\+be (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{buf,  }\item[{uint32\+\_\+t}]{v }\end{DoxyParamCaption})}
+
+\Hypertarget{libcnassets_8h_af369b1a541e04ed45a10460595258cb0}\label{libcnassets_8h_af369b1a541e04ed45a10460595258cb0} 
+\index{libcnassets.h@{libcnassets.h}!bufwr\_u32\_le@{bufwr\_u32\_le}}
+\index{bufwr\_u32\_le@{bufwr\_u32\_le}!libcnassets.h@{libcnassets.h}}
+\doxysubsubsection{\texorpdfstring{bufwr\_u32\_le()}{bufwr\_u32\_le()}}
+{\footnotesize\ttfamily void bufwr\+\_\+u32\+\_\+le (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{buf,  }\item[{uint32\+\_\+t}]{v }\end{DoxyParamCaption})}
+
+\Hypertarget{libcnassets_8h_a1699fcbbcc24e140c632309ccfaad3be}\label{libcnassets_8h_a1699fcbbcc24e140c632309ccfaad3be} 
+\index{libcnassets.h@{libcnassets.h}!bufwr\_u64\_be@{bufwr\_u64\_be}}
+\index{bufwr\_u64\_be@{bufwr\_u64\_be}!libcnassets.h@{libcnassets.h}}
+\doxysubsubsection{\texorpdfstring{bufwr\_u64\_be()}{bufwr\_u64\_be()}}
+{\footnotesize\ttfamily void bufwr\+\_\+u64\+\_\+be (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{buf,  }\item[{uint64\+\_\+t}]{v }\end{DoxyParamCaption})}
+
+\Hypertarget{libcnassets_8h_a4691063c5b3e1cf9fa563a0645657867}\label{libcnassets_8h_a4691063c5b3e1cf9fa563a0645657867} 
+\index{libcnassets.h@{libcnassets.h}!bufwr\_u64\_le@{bufwr\_u64\_le}}
+\index{bufwr\_u64\_le@{bufwr\_u64\_le}!libcnassets.h@{libcnassets.h}}
+\doxysubsubsection{\texorpdfstring{bufwr\_u64\_le()}{bufwr\_u64\_le()}}
+{\footnotesize\ttfamily void bufwr\+\_\+u64\+\_\+le (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{buf,  }\item[{uint64\+\_\+t}]{v }\end{DoxyParamCaption})}
+
+\Hypertarget{libcnassets_8h_a85348a309a19546d30c12a416aeb1abe}\label{libcnassets_8h_a85348a309a19546d30c12a416aeb1abe} 
+\index{libcnassets.h@{libcnassets.h}!bufwr\_u8@{bufwr\_u8}}
+\index{bufwr\_u8@{bufwr\_u8}!libcnassets.h@{libcnassets.h}}
+\doxysubsubsection{\texorpdfstring{bufwr\_u8()}{bufwr\_u8()}}
+{\footnotesize\ttfamily void bufwr\+\_\+u8 (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{buf,  }\item[{uint8\+\_\+t}]{v }\end{DoxyParamCaption})}
+
+\Hypertarget{libcnassets_8h_aa28366e917bbeeea7f8bdd77e842eba3}\label{libcnassets_8h_aa28366e917bbeeea7f8bdd77e842eba3} 
+\index{libcnassets.h@{libcnassets.h}!delete\_writer\_ctx@{delete\_writer\_ctx}}
+\index{delete\_writer\_ctx@{delete\_writer\_ctx}!libcnassets.h@{libcnassets.h}}
+\doxysubsubsection{\texorpdfstring{delete\_writer\_ctx()}{delete\_writer\_ctx()}}
+{\footnotesize\ttfamily void delete\+\_\+writer\+\_\+ctx (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{wctx }\end{DoxyParamCaption})}
+
+\Hypertarget{libcnassets_8h_a94f23195c4b372d2f9537a65f97dfb92}\label{libcnassets_8h_a94f23195c4b372d2f9537a65f97dfb92} 
+\index{libcnassets.h@{libcnassets.h}!delete\_writer\_section@{delete\_writer\_section}}
+\index{delete\_writer\_section@{delete\_writer\_section}!libcnassets.h@{libcnassets.h}}
+\doxysubsubsection{\texorpdfstring{delete\_writer\_section()}{delete\_writer\_section()}}
+{\footnotesize\ttfamily void delete\+\_\+writer\+\_\+section (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structengine__object__file__section__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+section\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{section }\end{DoxyParamCaption})}
+
+\Hypertarget{libcnassets_8h_ad04bf40432b928bd98bc5c1e8861742b}\label{libcnassets_8h_ad04bf40432b928bd98bc5c1e8861742b} 
+\index{libcnassets.h@{libcnassets.h}!fpio\_handler\_from\_writer@{fpio\_handler\_from\_writer}}
+\index{fpio\_handler\_from\_writer@{fpio\_handler\_from\_writer}!libcnassets.h@{libcnassets.h}}
+\doxysubsubsection{\texorpdfstring{fpio\_handler\_from\_writer()}{fpio\_handler\_from\_writer()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structfpio__handler__t}{fpio\+\_\+handler\+\_\+t}} fpio\+\_\+handler\+\_\+from\+\_\+writer (\begin{DoxyParamCaption}\item[{const struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{object\+\_\+file\+\_\+write\+\_\+ctx }\end{DoxyParamCaption})}
+
+\Hypertarget{libcnassets_8h_a4d2de7175cfc66cb72cab3bf19961371}\label{libcnassets_8h_a4d2de7175cfc66cb72cab3bf19961371} 
+\index{libcnassets.h@{libcnassets.h}!fpwr\_u16\_be@{fpwr\_u16\_be}}
+\index{fpwr\_u16\_be@{fpwr\_u16\_be}!libcnassets.h@{libcnassets.h}}
+\doxysubsubsection{\texorpdfstring{fpwr\_u16\_be()}{fpwr\_u16\_be()}}
+{\footnotesize\ttfamily uint8\+\_\+t fpwr\+\_\+u16\+\_\+be (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{fp,  }\item[{uint16\+\_\+t}]{v }\end{DoxyParamCaption})}
+
+\Hypertarget{libcnassets_8h_af347d6139313fe701f10a355f623e659}\label{libcnassets_8h_af347d6139313fe701f10a355f623e659} 
+\index{libcnassets.h@{libcnassets.h}!fpwr\_u16\_le@{fpwr\_u16\_le}}
+\index{fpwr\_u16\_le@{fpwr\_u16\_le}!libcnassets.h@{libcnassets.h}}
+\doxysubsubsection{\texorpdfstring{fpwr\_u16\_le()}{fpwr\_u16\_le()}}
+{\footnotesize\ttfamily uint8\+\_\+t fpwr\+\_\+u16\+\_\+le (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{fp,  }\item[{uint16\+\_\+t}]{v }\end{DoxyParamCaption})}
+
+\Hypertarget{libcnassets_8h_a7ed6363c82893e3a694ae79f52420249}\label{libcnassets_8h_a7ed6363c82893e3a694ae79f52420249} 
+\index{libcnassets.h@{libcnassets.h}!fpwr\_u32\_be@{fpwr\_u32\_be}}
+\index{fpwr\_u32\_be@{fpwr\_u32\_be}!libcnassets.h@{libcnassets.h}}
+\doxysubsubsection{\texorpdfstring{fpwr\_u32\_be()}{fpwr\_u32\_be()}}
+{\footnotesize\ttfamily uint8\+\_\+t fpwr\+\_\+u32\+\_\+be (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{fp,  }\item[{uint32\+\_\+t}]{v }\end{DoxyParamCaption})}
+
+\Hypertarget{libcnassets_8h_a2be86566a54290d951d688a8eb59e0c4}\label{libcnassets_8h_a2be86566a54290d951d688a8eb59e0c4} 
+\index{libcnassets.h@{libcnassets.h}!fpwr\_u32\_le@{fpwr\_u32\_le}}
+\index{fpwr\_u32\_le@{fpwr\_u32\_le}!libcnassets.h@{libcnassets.h}}
+\doxysubsubsection{\texorpdfstring{fpwr\_u32\_le()}{fpwr\_u32\_le()}}
+{\footnotesize\ttfamily uint8\+\_\+t fpwr\+\_\+u32\+\_\+le (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{fp,  }\item[{uint32\+\_\+t}]{v }\end{DoxyParamCaption})}
+
+\Hypertarget{libcnassets_8h_aabc3b6ecb31ec7caff21ad7071a476d9}\label{libcnassets_8h_aabc3b6ecb31ec7caff21ad7071a476d9} 
+\index{libcnassets.h@{libcnassets.h}!fpwr\_u64\_be@{fpwr\_u64\_be}}
+\index{fpwr\_u64\_be@{fpwr\_u64\_be}!libcnassets.h@{libcnassets.h}}
+\doxysubsubsection{\texorpdfstring{fpwr\_u64\_be()}{fpwr\_u64\_be()}}
+{\footnotesize\ttfamily uint8\+\_\+t fpwr\+\_\+u64\+\_\+be (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{fp,  }\item[{uint64\+\_\+t}]{v }\end{DoxyParamCaption})}
+
+\Hypertarget{libcnassets_8h_a57b3614243ef77e873a597e90e5962f4}\label{libcnassets_8h_a57b3614243ef77e873a597e90e5962f4} 
+\index{libcnassets.h@{libcnassets.h}!fpwr\_u64\_le@{fpwr\_u64\_le}}
+\index{fpwr\_u64\_le@{fpwr\_u64\_le}!libcnassets.h@{libcnassets.h}}
+\doxysubsubsection{\texorpdfstring{fpwr\_u64\_le()}{fpwr\_u64\_le()}}
+{\footnotesize\ttfamily uint8\+\_\+t fpwr\+\_\+u64\+\_\+le (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{fp,  }\item[{uint64\+\_\+t}]{v }\end{DoxyParamCaption})}
+
+\Hypertarget{libcnassets_8h_a66860af8ef61a90197277713fad011b5}\label{libcnassets_8h_a66860af8ef61a90197277713fad011b5} 
+\index{libcnassets.h@{libcnassets.h}!fpwr\_u8@{fpwr\_u8}}
+\index{fpwr\_u8@{fpwr\_u8}!libcnassets.h@{libcnassets.h}}
+\doxysubsubsection{\texorpdfstring{fpwr\_u8()}{fpwr\_u8()}}
+{\footnotesize\ttfamily uint8\+\_\+t fpwr\+\_\+u8 (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{fp,  }\item[{uint8\+\_\+t}]{v }\end{DoxyParamCaption})}
+
+\Hypertarget{libcnassets_8h_a147441e586c29ce32c689291bb2744b9}\label{libcnassets_8h_a147441e586c29ce32c689291bb2744b9} 
+\index{libcnassets.h@{libcnassets.h}!new\_writer\_ctx@{new\_writer\_ctx}}
+\index{new\_writer\_ctx@{new\_writer\_ctx}!libcnassets.h@{libcnassets.h}}
+\doxysubsubsection{\texorpdfstring{new\_writer\_ctx()}{new\_writer\_ctx()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*} new\+\_\+writer\+\_\+ctx (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name }\end{DoxyParamCaption})}
+
+\Hypertarget{libcnassets_8h_a422854657dc72193e8b853509c7b0826}\label{libcnassets_8h_a422854657dc72193e8b853509c7b0826} 
+\index{libcnassets.h@{libcnassets.h}!new\_writer\_section@{new\_writer\_section}}
+\index{new\_writer\_section@{new\_writer\_section}!libcnassets.h@{libcnassets.h}}
+\doxysubsubsection{\texorpdfstring{new\_writer\_section()}{new\_writer\_section()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structengine__object__file__section__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+section\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*} new\+\_\+writer\+\_\+section (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{name,  }\item[{void \texorpdfstring{$\ast$}{*}}]{content\+\_\+holder }\end{DoxyParamCaption})}
+
+\Hypertarget{libcnassets_8h_a8b388339c7e7503ea76cf39cb507aeba}\label{libcnassets_8h_a8b388339c7e7503ea76cf39cb507aeba} 
+\index{libcnassets.h@{libcnassets.h}!write\_object\_file@{write\_object\_file}}
+\index{write\_object\_file@{write\_object\_file}!libcnassets.h@{libcnassets.h}}
+\doxysubsubsection{\texorpdfstring{write\_object\_file()}{write\_object\_file()}}
+{\footnotesize\ttfamily uint8\+\_\+t write\+\_\+object\+\_\+file (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{fp,  }\item[{const struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{object\+\_\+file\+\_\+write\+\_\+ctx }\end{DoxyParamCaption})}
+
+\Hypertarget{libcnassets_8h_a711484cbe40b54ca2b29f4ae0534fa0d}\label{libcnassets_8h_a711484cbe40b54ca2b29f4ae0534fa0d} 
+\index{libcnassets.h@{libcnassets.h}!writer\_ctx\_add\_section@{writer\_ctx\_add\_section}}
+\index{writer\_ctx\_add\_section@{writer\_ctx\_add\_section}!libcnassets.h@{libcnassets.h}}
+\doxysubsubsection{\texorpdfstring{writer\_ctx\_add\_section()}{writer\_ctx\_add\_section()}}
+{\footnotesize\ttfamily uint8\+\_\+t writer\+\_\+ctx\+\_\+add\+\_\+section (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{wctx,  }\item[{struct \mbox{\hyperlink{structengine__object__file__section__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+section\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{section }\end{DoxyParamCaption})}
+
+\Hypertarget{libcnassets_8h_a8a2a63e1b596e6529b2484009b8877d6}\label{libcnassets_8h_a8a2a63e1b596e6529b2484009b8877d6} 
+\index{libcnassets.h@{libcnassets.h}!writer\_ctx\_set\_object\_name@{writer\_ctx\_set\_object\_name}}
+\index{writer\_ctx\_set\_object\_name@{writer\_ctx\_set\_object\_name}!libcnassets.h@{libcnassets.h}}
+\doxysubsubsection{\texorpdfstring{writer\_ctx\_set\_object\_name()}{writer\_ctx\_set\_object\_name()}}
+{\footnotesize\ttfamily uint8\+\_\+t writer\+\_\+ctx\+\_\+set\+\_\+object\+\_\+name (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{wctx,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{name }\end{DoxyParamCaption})}
+
+\Hypertarget{libcnassets_8h_ae8f03b75370a07d2bfeb6cb0ac4d2973}\label{libcnassets_8h_ae8f03b75370a07d2bfeb6cb0ac4d2973} 
+\index{libcnassets.h@{libcnassets.h}!writer\_section\_set\_name@{writer\_section\_set\_name}}
+\index{writer\_section\_set\_name@{writer\_section\_set\_name}!libcnassets.h@{libcnassets.h}}
+\doxysubsubsection{\texorpdfstring{writer\_section\_set\_name()}{writer\_section\_set\_name()}}
+{\footnotesize\ttfamily uint8\+\_\+t writer\+\_\+section\+\_\+set\+\_\+name (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structengine__object__file__section__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+section\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{section,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{name }\end{DoxyParamCaption})}
+

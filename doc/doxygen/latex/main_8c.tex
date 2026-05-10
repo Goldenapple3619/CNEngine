@@ -1,14 +1,5 @@
 \doxysection{src/main.c File Reference}
 \hypertarget{main_8c}{}\label{main_8c}\index{src/main.c@{src/main.c}}
-{\ttfamily \#include $<$stdio.\+h$>$}\newline
-{\ttfamily \#include $<$signal.\+h$>$}\newline
-{\ttfamily \#include "{}libcncore.\+h"{}}\newline
-{\ttfamily \#include "{}libcnaudio.\+h"{}}\newline
-{\ttfamily \#include "{}libcninput.\+h"{}}\newline
-{\ttfamily \#include "{}libcngraphic.\+h"{}}\newline
-{\ttfamily \#include "{}librgui.\+h"{}}\newline
-{\ttfamily \#include "{}libr2d.\+h"{}}\newline
-{\ttfamily \#include "{}libr3d.\+h"{}}\newline
 {\ttfamily \#include "{}engine.\+h"{}}\newline
 \doxysubsubsection*{Macros}
 \begin{DoxyCompactItemize}
@@ -18,16 +9,7 @@
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-static void \mbox{\hyperlink{main_8c_a39700da94d4f9ed72d839a039a412170}{sigint\+\_\+handler}} (int signum)
-\item 
-\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{main_8c_a4be324597e2372d6f67cb914e21176ba}{build\+\_\+engine}} (void)
-\item 
 int \mbox{\hyperlink{main_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]})
-\end{DoxyCompactItemize}
-\doxysubsubsection*{Variables}
-\begin{DoxyCompactItemize}
-\item 
-static \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{main_8c_a62dd93a8c79fccf98a73494c39e8fcba}{global\+\_\+ctx}} = NULL
 \end{DoxyCompactItemize}
 
 
@@ -41,30 +23,9 @@ static \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}}
 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{main_8c_a4be324597e2372d6f67cb914e21176ba}\label{main_8c_a4be324597e2372d6f67cb914e21176ba} 
-\index{main.c@{main.c}!build\_engine@{build\_engine}}
-\index{build\_engine@{build\_engine}!main.c@{main.c}}
-\doxysubsubsection{\texorpdfstring{build\_engine()}{build\_engine()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*} build\+\_\+engine (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
-
 \Hypertarget{main_8c_a0ddf1224851353fc92bfbff6f499fa97}\label{main_8c_a0ddf1224851353fc92bfbff6f499fa97} 
 \index{main.c@{main.c}!main@{main}}
 \index{main@{main}!main.c@{main.c}}
 \doxysubsubsection{\texorpdfstring{main()}{main()}}
 {\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
-
-\Hypertarget{main_8c_a39700da94d4f9ed72d839a039a412170}\label{main_8c_a39700da94d4f9ed72d839a039a412170} 
-\index{main.c@{main.c}!sigint\_handler@{sigint\_handler}}
-\index{sigint\_handler@{sigint\_handler}!main.c@{main.c}}
-\doxysubsubsection{\texorpdfstring{sigint\_handler()}{sigint\_handler()}}
-{\footnotesize\ttfamily static void sigint\+\_\+handler (\begin{DoxyParamCaption}\item[{int}]{signum }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
-
-
-
-\doxysubsection{Variable Documentation}
-\Hypertarget{main_8c_a62dd93a8c79fccf98a73494c39e8fcba}\label{main_8c_a62dd93a8c79fccf98a73494c39e8fcba} 
-\index{main.c@{main.c}!global\_ctx@{global\_ctx}}
-\index{global\_ctx@{global\_ctx}!main.c@{main.c}}
-\doxysubsubsection{\texorpdfstring{global\_ctx}{global\_ctx}}
-{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}}\texorpdfstring{$\ast$}{*} global\+\_\+ctx = NULL\hspace{0.3cm}{\ttfamily [static]}}
 

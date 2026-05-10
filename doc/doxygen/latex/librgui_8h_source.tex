@@ -20,32 +20,87 @@
 \DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{librgui_8h_af5248c59aaa117d11d85f0dcb78a3951a468bf718dab62222fa7c7c135e1a63b6}{GUI\_ALIGN\_RIGHT}}}
 \DoxyCodeLine{00017\ \ \ \ \ \}\ \mbox{\hyperlink{librgui_8h_af5248c59aaa117d11d85f0dcb78a3951}{cnrgui\_alignement}};}
 \DoxyCodeLine{00018\ }
-\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtext__mode__s}{text\_mode\_s}}\ \{}
-\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structvector2__s}{Vector2}}\ \mbox{\hyperlink{structtext__mode__s_a9473e2934151fefddb56a4d250c2afcb}{position}};}
-\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcngraphic_8h_a0b2773fdce5fa81de32a2e7a552ff37d}{cncolor}}\ \mbox{\hyperlink{structtext__mode__s_ae0251c8d544d35f880565d5ef7fce66d}{color}};}
-\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ int32\_t\ \mbox{\hyperlink{structtext__mode__s_a0a928ad148edce2ef53d857e45ef67c3}{size}};}
-\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{librgui_8h_af5248c59aaa117d11d85f0dcb78a3951}{cnrgui\_alignement}}\ \mbox{\hyperlink{structtext__mode__s_a00a5a0b98520500590f53dd76a11693d}{align}};}
-\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structtext__mode__s_afe24c21256c5484d8b1ab2b5faa31ec2}{text}};}
-\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structtext__mode__s_a66c787e93fa85c0772f4bfb3e669ef65}{font\_location}};}
-\DoxyCodeLine{00026\ \ \ \ \ \};}
-\DoxyCodeLine{00027\ }
-\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgui__board__mode__s}{gui\_board\_mode\_s}}\ \{}
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structvector2__s}{Vector2}}\ \mbox{\hyperlink{structgui__board__mode__s_a01014a4e124f01002d246f7b925045f8}{position}};}
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structvector2__s}{Vector2}}\ \mbox{\hyperlink{structgui__board__mode__s_a0f33295f5711bab42765bbbd06245271}{resolution}};}
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structvector2__s}{Vector2}}\ \mbox{\hyperlink{structgui__board__mode__s_abf428ec383eff58b394e69deff9abdb7}{upscale}};}
-\DoxyCodeLine{00032\ }
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{librgui_8h_ab685ffe290d85089a981203d90e3eb59}{cnrgui\_flags}}\ \mbox{\hyperlink{structgui__board__mode__s_a86c1919b01e19ba541fd2b31fc8216c5}{flags}};}
-\DoxyCodeLine{00034\ \ \ \ \ \};}
-\DoxyCodeLine{00035\ }
-\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{librgui_8h_a2d9d632d07e06bf055899f64e42c2a4b}{start\_gui}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{librgui_8h_a0f47c4c5d7f3f37481f8c2a53be14bb8}{end\_gui}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{librgui_8h_a08b612612b0cb29c70cfef741b0c6e66affb9806e0874212ce9ba7255244bdba6}{GUI\_POS\_REL}}\ =\ 0x00,}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{librgui_8h_a08b612612b0cb29c70cfef741b0c6e66ac00e96b4c354b82e1593bdcf29ce998d}{GUI\_POS\_ABS}},}
+\DoxyCodeLine{00022\ \ \ \ \ \}\ \mbox{\hyperlink{librgui_8h_a08b612612b0cb29c70cfef741b0c6e66}{cnrgui\_positionning}};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{librgui_8h_ae7bc6b993157daaef96e6975e3863bbfaf372d55ba52297fb7d1f568c66afa1b2}{GUI\_BG\_NONE}}\ =\ 0x00,}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{librgui_8h_ae7bc6b993157daaef96e6975e3863bbfa07a055ef06d65c3c0b4560626f08c2ed}{GUI\_BG\_COLOR}},}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{librgui_8h_ae7bc6b993157daaef96e6975e3863bbfa570099e23c3d559304dadab5cd532f39}{GUI\_BG\_IMAGE}}}
+\DoxyCodeLine{00028\ \ \ \ \ \}\ \mbox{\hyperlink{librgui_8h_ae7bc6b993157daaef96e6975e3863bbf}{cnrgui\_background\_type}};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgui__object__mode__s}{gui\_object\_mode\_s}}\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structvector2__s}{Vector2}}\ \mbox{\hyperlink{structgui__object__mode__s_a5b7ada02cd1cd14ac7a0672aafb3594a}{position}};}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structvector2__s}{Vector2}}\ \mbox{\hyperlink{structgui__object__mode__s_a3d3c62850d56501a4c48a87f66de3d45}{scale}};}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}\ \mbox{\hyperlink{structgui__object__mode__s_abebd7735c104db3cb3eb8853b6217d14}{rotation}};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ int64\_t\ \mbox{\hyperlink{structgui__object__mode__s_a533694ae8bcb411f71c34139cdbd6701}{zindex}};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{librgui_8h_a08b612612b0cb29c70cfef741b0c6e66}{cnrgui\_positionning}}\ \mbox{\hyperlink{structgui__object__mode__s_a54a51b200de6cb624c0b51cd7dbf6b7c}{positionning}};}
 \DoxyCodeLine{00038\ }
-\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\mbox{\hyperlink{librgui_8h_a2e6137b71a9db5f6250a5f38591b50ba}{new\_guiboard}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00040\ }
-\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\mbox{\hyperlink{librgui_8h_a0e8300f95083353df13219082e801440}{new\_guiobject}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\mbox{\hyperlink{librgui_8h_aba5d1bc879083eaf34b53409b1abaacc}{new\_text}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00043\ }
-\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\mbox{\hyperlink{librgui_8h_aff5cc70651aac69e1aedd53537c2f125}{new\_gui\_submodule}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{librgui_8h_af5248c59aaa117d11d85f0dcb78a3951}{cnrgui\_alignement}}\ \mbox{\hyperlink{structgui__object__mode__s_a7b33661998ba2872c638aba01b236ab1}{align}};}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{librgui_8h_af5248c59aaa117d11d85f0dcb78a3951}{cnrgui\_alignement}}\ \mbox{\hyperlink{structgui__object__mode__s_abe43abcea0ed984464d568c649e70cad}{justify}};}
+\DoxyCodeLine{00041\ \ \ \ \ \};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structtext__mode__s}{text\_mode\_s}}\ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgui__object__mode__s}{gui\_object\_mode\_s}}\ \mbox{\hyperlink{structtext__mode__s_a28b3fca515b90834c47a711069b4d32b}{parent\_mode}};}
+\DoxyCodeLine{00045\ \ \ \ \ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcngraphic_8h_a0b2773fdce5fa81de32a2e7a552ff37d}{cncolor}}\ \mbox{\hyperlink{structtext__mode__s_ae0251c8d544d35f880565d5ef7fce66d}{color}};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ int32\_t\ \mbox{\hyperlink{structtext__mode__s_a0700b1d0a25fbe0f42228203d825bdf6}{font\_size}};}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structtext__mode__s_a66c787e93fa85c0772f4bfb3e669ef65}{font\_location}};}
+\DoxyCodeLine{00050\ \ \ \ \ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structtext__mode__s_afe24c21256c5484d8b1ab2b5faa31ec2}{text}};}
+\DoxyCodeLine{00052\ \ \ \ \ \};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structcontainer__mode__s}{container\_mode\_s}}\ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgui__object__mode__s}{gui\_object\_mode\_s}}\ \mbox{\hyperlink{structcontainer__mode__s_a1eaf8a6116988497a698c6f4f21d239b}{parent\_mode}};}
+\DoxyCodeLine{00056\ \ \ \ \ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keyword}{union\ }\{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcngraphic_8h_a0b2773fdce5fa81de32a2e7a552ff37d}{cncolor}}\ \mbox{\hyperlink{structcontainer__mode__s_aefb84f2e45d66d4e53c4fbb3b3f97524}{background\_color}};}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structtexture__s}{Texture}}\ *\mbox{\hyperlink{structcontainer__mode__s_ac24e783c752132e6b8764752156538dd}{background\_image}};}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \}\ \mbox{\hyperlink{structcontainer__mode__s_af40c6e10feb3b045102a1fcd5e283db8}{background}};}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{librgui_8h_ae7bc6b993157daaef96e6975e3863bbf}{cnrgui\_background\_type}}\ \mbox{\hyperlink{structcontainer__mode__s_aaf3613483e420c1df3997ab34dc3223b}{background\_type}};}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structvector2__s}{Vector2}}\ \mbox{\hyperlink{structcontainer__mode__s_a60f615df41932f7a9603d85452a4fd95}{size}};}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{structcontainer__mode__s_a49475a1ab6772b80703e4e8810e064bf}{overflow}};}
+\DoxyCodeLine{00065\ \ \ \ \ \};}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgui__board__mode__s}{gui\_board\_mode\_s}}\ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structvector2__s}{Vector2}}\ \mbox{\hyperlink{structgui__board__mode__s_a01014a4e124f01002d246f7b925045f8}{position}};}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structvector2__s}{Vector2}}\ \mbox{\hyperlink{structgui__board__mode__s_a0f33295f5711bab42765bbbd06245271}{resolution}};}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structvector2__s}{Vector2}}\ \mbox{\hyperlink{structgui__board__mode__s_abf428ec383eff58b394e69deff9abdb7}{upscale}};}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{librgui_8h_ab685ffe290d85089a981203d90e3eb59}{cnrgui\_flags}}\ \mbox{\hyperlink{structgui__board__mode__s_a86c1919b01e19ba541fd2b31fc8216c5}{flags}};}
+\DoxyCodeLine{00073\ \ \ \ \ \};}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structobject__s}{Object}}\ *\mbox{\hyperlink{structgui__render__stack_ae4943ef7bb276f937434eee36e3c1bb4}{obj}};}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structwindow__s}{Window}}\ *\mbox{\hyperlink{structgui__render__stack_ae354be2ce2fb232de5783f3c0f356268}{window}};}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structtexture__s}{Texture}}\ *\mbox{\hyperlink{structgui__render__stack_a77b007254ee9bfbd4bc004f076054155}{cpu\_texture}};}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structQuad}{Quad}}\ *\mbox{\hyperlink{structgui__render__stack_ae9e303c507c526c8c36cc6493c0dea29}{gl\_quad}};}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structvector2__s}{Vector2}}\ \mbox{\hyperlink{structgui__render__stack_a7b5c656919bcf09d2e0ebd6f1ce53bd2}{canva\_position}};}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structvector2__s}{Vector2}}\ \mbox{\hyperlink{structgui__render__stack_a0337bacbbbab2359ab606f9506f0c3a6}{canva\_size}};}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structvector2__s}{Vector2}}\ \mbox{\hyperlink{structgui__render__stack_ab52f37baefe2d253e6e6c42e87d2aab4}{canva\_scale}};}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structvector2__s}{Vector2}}\ \mbox{\hyperlink{structgui__render__stack_a2c16415a42edcf3a098c0ee4ab96b3cb}{canva\_ratio}};}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structvector2__s}{Vector2}}\ \mbox{\hyperlink{structgui__render__stack_a79f230156e25e8c72ad9eb16f907d0d3}{offset}};}
+\DoxyCodeLine{00088\ \ \ \ \ \}\ \mbox{\hyperlink{structgui__render__stack}{gui\_render\_stack}};}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{librgui_8h_a2d9d632d07e06bf055899f64e42c2a4b}{start\_gui}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00091\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{librgui_8h_a0f47c4c5d7f3f37481f8c2a53be14bb8}{end\_gui}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\mbox{\hyperlink{librgui_8h_a2e6137b71a9db5f6250a5f38591b50ba}{new\_guiboard}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\mbox{\hyperlink{librgui_8h_a0e8300f95083353df13219082e801440}{new\_guiobject}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00096\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\mbox{\hyperlink{librgui_8h_aba5d1bc879083eaf34b53409b1abaacc}{new\_text}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00097\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\mbox{\hyperlink{librgui_8h_aea8b4a65167c9057985d961612ecb18b}{new\_container}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\mbox{\hyperlink{librgui_8h_aff5cc70651aac69e1aedd53537c2f125}{new\_gui\_submodule}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00100\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

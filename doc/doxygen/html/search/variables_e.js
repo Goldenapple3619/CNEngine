@@ -1,9 +1,9 @@
 var searchData=
 [
-  ['obj_0',['obj',['../structObjMethodPair.html#a97419867d0fa9bfe2fa839e440cfaa2f',1,'ObjMethodPair::obj'],['../structtwod__render__stack.html#af758d119c9787133c93e6675bc477618',1,'twod_render_stack::obj'],['../structthreed__render__stack.html#a8480049ed488a627b5993b810b2f92c2',1,'threed_render_stack::obj']]],
-  ['objects_1',['objects',['../structobject__vector__s.html#a3c7d0680d641d853e3d6d68472536c89',1,'object_vector_s']]],
-  ['offset_2',['offset',['../structtwod__render__stack.html#a80b22407c63d920a7dc167a594566cca',1,'twod_render_stack']]],
-  ['old_5ftime_3',['old_time',['../structclock__s.html#a1fff5347ebbaa031a53aff8d2ba95cdd',1,'clock_s']]],
-  ['on_5fend_4',['on_end',['../structaudio__s.html#a361d481856aca855362dbe27b1c6740a',1,'audio_s']]],
-  ['on_5fend_5fobj_5',['on_end_obj',['../structaudio__s.html#ad985560c3cae0ce5d247032be2875eb9',1,'audio_s']]]
+  ['name_0',['name',['../structengine__obj__header__s.html#a743aa2854a6aa8613cfc03067773cf86',1,'engine_obj_header_s::name'],['../structobject__attribute__s.html#a2decd404b6fa8439e0564ec1359c71d0',1,'object_attribute_s::name'],['../structInputEntry.html#ada4b00c5823e2b7f9aab997d1d7a44ab',1,'InputEntry::name'],['../build_8h.html#a8f8f80d37794cde9472343e4487ba3eb',1,'name:&#160;build.h'],['../engine_8h.html#a8f8f80d37794cde9472343e4487ba3eb',1,'name:&#160;engine.h']]],
+  ['native_5fflags_1',['native_flags',['../structvideomode__s.html#a7921103ce24493f3c87d10c994b01355',1,'videomode_s']]],
+  ['num_2',['num',['../structcn__value.html#a94cda7dac494346639ec6d2d75ea776d',1,'cn_value']]],
+  ['nx_3',['nx',['../structVertex.html#ae24084861e5555fcca7a7c98c5cb879d',1,'Vertex']]],
+  ['ny_4',['ny',['../structVertex.html#a1725ebdaaf85dce7b6cb929468ec731f',1,'Vertex']]],
+  ['nz_5',['nz',['../structVertex.html#a990ad4bceb497fcaf2b4a47229b3b052',1,'Vertex']]]
 ];

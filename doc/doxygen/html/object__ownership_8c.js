@@ -5,5 +5,6 @@ var object__ownership_8c =
     [ "run_gc", "object__ownership_8c.html#a9c22fad07837480ca5c03cf06b489cea", null ],
     [ "share_object", "object__ownership_8c.html#aa657a671bc4f2e222a1174ebde0ae963", null ],
     [ "gc", "object__ownership_8c.html#a0fa18b7b2624022c0f835b1dc0d4e22c", null ],
+    [ "gc_running", "object__ownership_8c.html#afa8d82552934f4a1266f930f11c0e1d4", null ],
     [ "gc_size", "object__ownership_8c.html#a971ba5fb608eb3efb7baccdf44a0ecbb", null ]
 ];

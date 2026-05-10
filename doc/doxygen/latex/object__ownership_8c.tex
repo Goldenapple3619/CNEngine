@@ -18,6 +18,8 @@ void \mbox{\hyperlink{object__ownership_8c_a10a06d8ee21916088494a5ce0188e397}{co
 static volatile \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{object__ownership_8c_a0fa18b7b2624022c0f835b1dc0d4e22c}{gc}} \mbox{[}\mbox{\hyperlink{libcncore_8h_a58d32765d53c109fc2f386946d977219}{GC\+\_\+\+MAX\+\_\+\+SIZE}}\mbox{]} = \{0\}
 \item 
 static volatile size\+\_\+t \mbox{\hyperlink{object__ownership_8c_a971ba5fb608eb3efb7baccdf44a0ecbb}{gc\+\_\+size}} = 0
+\item 
+static volatile \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} \mbox{\hyperlink{object__ownership_8c_afa8d82552934f4a1266f930f11c0e1d4}{gc\+\_\+running}} = \mbox{\hyperlink{libcncore_8h_a65e9886d74aaee76545e83dd09011727}{false}}
 \end{DoxyCompactItemize}
 
 
@@ -54,6 +56,12 @@ static volatile size\+\_\+t \mbox{\hyperlink{object__ownership_8c_a971ba5fb608eb
 \index{gc@{gc}!object\_ownership.c@{object\_ownership.c}}
 \doxysubsubsection{\texorpdfstring{gc}{gc}}
 {\footnotesize\ttfamily volatile \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}}\texorpdfstring{$\ast$}{*} gc\mbox{[}\mbox{\hyperlink{libcncore_8h_a58d32765d53c109fc2f386946d977219}{GC\+\_\+\+MAX\+\_\+\+SIZE}}\mbox{]} = \{0\}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{object__ownership_8c_afa8d82552934f4a1266f930f11c0e1d4}\label{object__ownership_8c_afa8d82552934f4a1266f930f11c0e1d4} 
+\index{object\_ownership.c@{object\_ownership.c}!gc\_running@{gc\_running}}
+\index{gc\_running@{gc\_running}!object\_ownership.c@{object\_ownership.c}}
+\doxysubsubsection{\texorpdfstring{gc\_running}{gc\_running}}
+{\footnotesize\ttfamily volatile \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} gc\+\_\+running = \mbox{\hyperlink{libcncore_8h_a65e9886d74aaee76545e83dd09011727}{false}}\hspace{0.3cm}{\ttfamily [static]}}
 
 \Hypertarget{object__ownership_8c_a971ba5fb608eb3efb7baccdf44a0ecbb}\label{object__ownership_8c_a971ba5fb608eb3efb7baccdf44a0ecbb} 
 \index{object\_ownership.c@{object\_ownership.c}!gc\_size@{gc\_size}}
