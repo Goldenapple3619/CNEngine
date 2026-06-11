@@ -2,6 +2,7 @@ project(cnassets C)
 
 add_library(cnassets SHARED
     src/engine_object_writer.c
+    src/engine_object_reader.c
     src/io_handler.c
 )
 

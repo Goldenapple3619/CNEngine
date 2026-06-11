@@ -30,7 +30,9 @@
         ENGINE_OBJ_UKN = 0x00,
         ENGINE_OBJ_GUI,
         ENGINE_OBJ_SCN,
-        ENGINE_OBJ_OBJ
+        ENGINE_OBJ_OBJ,
+        ENGINE_OBJ_ASSET_PACK,
+        ENGINE_OBJ_RAW_RESSOURCES
     } engine_obj_type;
 
     typedef enum {
@@ -118,6 +120,16 @@
         uint32_t addr;
     };
 
+    typedef struct {
+        struct {
+            const void *mapped_area;
+            size_t size;
+
+            int fd;
+            cnbool ready;
+        } _content;
+    } CNAssetReader;
+
     typedef uint8_t (*wr8_fn)(FILE *, uint8_t);
     typedef uint8_t (*wr16_fn)(FILE *, uint16_t);
     typedef uint8_t (*wr32_fn)(FILE *, uint32_t);
@@ -145,6 +157,14 @@
     void bufwr_u64_be(char *buf, uint64_t v);
     void bufwr_u64_le(char *buf, uint64_t v);
 
+    uint8_t bufrd_u8(const void *p);
+    uint16_t bufrd_u16_be(const void *p);
+    uint16_t bufrd_u16_le(const void *p);
+    uint32_t bufrd_u32_be(const void *p);
+    uint32_t bufrd_u32_le(const void *p);
+    uint64_t bufrd_u64_be(const void *p);
+    uint64_t bufrd_u64_le(const void *p);
+
     fpio_handler_t fpio_handler_from_writer(const struct engine_object_file_writer_ctx_s *object_file_write_ctx);
 
     struct engine_object_file_writer_ctx_s *new_writer_ctx(const char *name);
@@ -158,5 +178,10 @@
     void delete_writer_section(struct engine_object_file_section_writer_ctx_s *section);
 
     uint32_t add_str_table(const char *str, struct generic_map_s *strndx);
+
+    CNAssetReader *new_object_file_reader(void);
+    uint8_t init_object_file_reader(CNAssetReader *reader, char *file_path);
+    void uninit_object_file_reader(CNAssetReader *reader);
+    void delete_object_file_reader(CNAssetReader *reader);
 
 #endif

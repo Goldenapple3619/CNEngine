@@ -371,11 +371,15 @@ uint8_t write_object_file(FILE *fp, const struct engine_object_file_writer_ctx_s
             if (fwrite(content, 1, content_size, fp) != content_size) {
                 delete_generic_map(strndx, (void(*)(void *))&delete_strndx_entry);
                 delete_generic_vector(section_header_entries, &free);
+                free(content);
                 return (1);
             }
         } else {
             fprintf(stderr, "warning: empty section written at %lx\n", (long unsigned int)ENGINE_FTELL(fp));
         }
+
+        if (content)
+            (void)free(content);
     }
 
     if ((x = ENGINE_FTELL(fp)) < 0 || write_pad(fp, (uint64_t)x, align) || (x = ENGINE_FTELL(fp)) < 0) {

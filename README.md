@@ -64,6 +64,8 @@ Higly configurable on the back technology allow the usage of multiple graphics a
 - LIBC
 - LIBM
 - python-jinja (jinja2)
+- LibXml2
+- libuuid (linux only)
 
 ## How to build
 

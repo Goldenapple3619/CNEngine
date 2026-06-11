@@ -29,7 +29,6 @@ foreach(dep ${xml2_deps})
 
     if(NOT _skip)
         get_filename_component(dep_name "${dep}" NAME)
-        message(STATUS "Packing xml2 dep: ${dep_name}")
         file(COPY "${dep}" DESTINATION "${DIST_DIR}/lib")
     endif()
 endforeach()

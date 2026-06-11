@@ -172,6 +172,20 @@ if(CN_BUILD_ENGINE)
         src/init/route.c
 
         src/cnbuild/route.c
+        src/cnbuild/text.c
+    
+        src/cnbuild/scene_toolchain/route.c
+    
+        src/cnbuild/asset_toolchain/route.c
+    
+        src/cnbuild/object_toolchain/route.c
+    
+        src/cnbuild/project_toolchain/route.c
+    
+        src/cnbuild/gui_toolchain/route.c
+        src/cnbuild/gui_toolchain/gui.c
+
+        src/cnbuild/linker_toolchain/route.c
 
         src/help/route.c
 
