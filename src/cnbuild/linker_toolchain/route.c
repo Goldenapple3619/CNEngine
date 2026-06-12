@@ -1,7 +1,5 @@
 #include "linker_toolchain.h"
 
-#include <sys/mman.h>
-
 static void delete_parsed_data(struct engine_object_file_writer_ctx_s *wctx)
 {
     (void)wctx;

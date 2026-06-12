@@ -7,6 +7,9 @@
     #include "libcncore.h"
     #include <stdlib.h>
     #include <string.h>
+    #ifdef _WIN32
+        #include <windows.h>
+    #endif
 
     #define ENGINE_OBJ_MAGIC 0x0875C4E3U
     
@@ -125,7 +128,12 @@
             const void *mapped_area;
             size_t size;
 
-            int fd;
+            #ifdef _WIN32
+                HANDLE file;
+                HANDLE mapping;
+            #else
+                int fd;
+            #endif
             cnbool ready;
         } _content;
     } CNAssetReader;

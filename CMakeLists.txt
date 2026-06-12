@@ -144,6 +144,21 @@ glad_add_library(glad_gl STATIC
 
 FetchContent_MakeAvailable(glad)
 
+set(LIBXML2_WITH_PYTHON OFF CACHE BOOL "" FORCE)
+set(LIBXML2_WITH_TESTS OFF CACHE BOOL "" FORCE)
+set(LIBXML2_WITH_PROGRAMS OFF CACHE BOOL "" FORCE)
+set(LIBXML2_WITH_LZMA OFF CACHE BOOL "" FORCE)
+set(LIBXML2_WITH_ZLIB OFF CACHE BOOL "" FORCE)
+set(LIBXML2_WITH_ICONV OFF CACHE BOOL "" FORCE)
+
+FetchContent_Declare(
+    libxml2
+    GIT_REPOSITORY https://gitlab.gnome.org/GNOME/libxml2.git
+    GIT_TAG v2.14.5
+)
+
+FetchContent_MakeAvailable(libxml2)
+
 find_package(OpenGL REQUIRED)
 
 # ========= Modules =========
@@ -161,8 +176,6 @@ add_custom_target(cn_dist ALL)
 
 # ========= engine executable =========
 if(CN_BUILD_ENGINE)
-    find_package(LibXml2 REQUIRED)
-
     add_dependencies(cn_dist cn_engine)
 
     add_executable(cn_engine
@@ -215,11 +228,11 @@ if(CN_BUILD_ENGINE)
 
             m
 
-            LibXml2::LibXml2
+            LibXml2
     )
 
     if(WIN32)
-        target_link_libraries(cn_engine PRIVATE Rpcrt4)
+        target_link_libraries(cn_engine PRIVATE rpcrt4)
     elseif(APPLE)
         target_link_libraries(cn_engine PRIVATE "-framework CoreFoundation")
     else()
@@ -287,52 +300,20 @@ foreach(lib glad_gl)
     )
 endforeach()
 
-if(WIN32)
-    get_filename_component(MINGW_BIN_DIR ${CMAKE_C_COMPILER} DIRECTORY)
-
-    # Use glob instead of hardcoded names
-    file(GLOB XML2_DLL_CANDIDATES
-        "${MINGW_BIN_DIR}/libxml2*.dll"
-    )
-
-    if(NOT XML2_DLL_CANDIDATES)
-        message(FATAL_ERROR "Could not find libxml2*.dll in ${MINGW_BIN_DIR}")
-    endif()
-
-    list(GET XML2_DLL_CANDIDATES 0 XML2_DLL)
-    message(STATUS "Found xml2 dll: ${XML2_DLL}")
-
-    add_custom_command(TARGET cn_dist POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/lib"
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different
-            "${XML2_DLL}" "${DIST_DIR}/lib/"
-    )
-
-    foreach(dep_dll libiconv-2.dll zlib1.dll)
-        if(EXISTS "${MINGW_BIN_DIR}/${dep_dll}")
+#libxml2
+foreach(lib LibXml2)
+    if(TARGET ${lib})
+        get_target_property(lib_type ${lib} TYPE)
+        if(lib_type STREQUAL "SHARED_LIBRARY")
             add_custom_command(TARGET cn_dist POST_BUILD
+                COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/lib"
                 COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                    "${MINGW_BIN_DIR}/${dep_dll}" "${DIST_DIR}/lib/"
+                    $<TARGET_FILE:${lib}>
+                    "${DIST_DIR}/lib/"
             )
         endif()
-    endforeach()
-elseif(UNIX AND NOT APPLE)
-    get_target_property(XML2_LIB LibXml2::LibXml2 LOCATION)
-    get_filename_component(XML2_REAL "${XML2_LIB}" REALPATH)
-    get_filename_component(XML2_NAME "${XML2_REAL}" NAME)
-
-    add_custom_command(TARGET cn_dist POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/lib"
-
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different
-            "${XML2_REAL}" "${DIST_DIR}/lib/${XML2_NAME}"
-
-        COMMAND ${CMAKE_COMMAND}
-            -DXML2_LIB="${XML2_REAL}"
-            -DDIST_DIR="${DIST_DIR}"
-            -P "${CMAKE_SOURCE_DIR}/toolchain/copy_xml2_deps.cmake"
-    )
-endif()
+    endif()
+endforeach()
 
 # vendored
 foreach(lib freetype harfbuzz ogg opus opusfile xmp tiff)
@@ -441,7 +422,7 @@ endforeach()
 
 # machine specific libs
 if(WIN32)
-    get_filename_component(MINGW_BIN_DIR ${CMAKE_C_COMPILER} DIRECTORY)
+    set(MINGW_BIN_DIR "${CMAKE_FIND_ROOT_PATH}/bin")
 
     if(TARGET_ARCH STREQUAL "i386")
         set(MINGW_RUNTIME_DLLS libwinpthread-1.dll libgcc_s_dw2-1.dll)

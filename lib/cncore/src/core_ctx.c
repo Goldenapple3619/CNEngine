@@ -20,7 +20,7 @@ static cn_value _init(Object *__this, void **args)
 
     INIT_STRING(__this, "ctx", "name");
     INIT_INT(__this, 0, "is_running");
-    INIT_INT(__this, 60, "tps");
+    INIT_INT(__this, -1, "tps");
     INIT_FLOAT(__this, 0.0, "dt");
     INIT_NUMBER(__this, 1.0, "time_scale");
     INIT_CUSTOM_ALLOCATION(__this, new_clock(), delete_clock, "clock");

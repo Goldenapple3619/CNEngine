@@ -59,7 +59,7 @@ Object *add_test_window(Object *ctx)
     Videomode v = (Videomode){
         .size.x = 800, .size.y = 600,
         .position.x = (SDL_WINDOWPOS_CENTERED), .position.y = (SDL_WINDOWPOS_CENTERED),
-        .flags = VDM_CLOSABLE | VDM_OPENGL | VDM_ACCELERATION | VDM_VSYNC,
+        .flags = VDM_CLOSABLE | VDM_OPENGL | VDM_ACCELERATION,
         .native_flags = VDM_N_SHWN | VDM_N_RSZL | VDM_N_OPENGL
     };
     Texture *tex = new_texture_from_file("./assets/images/logo_XL.png");
