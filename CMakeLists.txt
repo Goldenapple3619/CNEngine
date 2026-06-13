@@ -12,6 +12,7 @@ set(CMAKE_REQUIRED_LIBRARIES m CACHE BOOL "" FORCE)
 
 # ========= Options =========
 option(CN_BUILD_ENGINE "Build engine executable" ON)
+option(CN_SANITIZE     "Build with AddressSanitizer + UBSan" OFF)
 
 if(NOT DEFINED DIST_DIR)
     get_filename_component(CWD_NAME ${CMAKE_SOURCE_DIR} NAME)
@@ -161,6 +162,21 @@ FetchContent_MakeAvailable(libxml2)
 
 find_package(OpenGL REQUIRED)
 
+# ========= Sanitizer =========
+
+if(CN_SANITIZE)
+    message(STATUS "[CNEngine] Sanitizers ON: ASan + UBSan")
+    add_compile_options(
+        -fsanitize=address,undefined
+        -fno-omit-frame-pointer
+        -fno-common
+        -fstack-protector-all
+        -fstack-check
+        -g
+    )
+    add_link_options(-fsanitize=address,undefined)
+endif()
+
 # ========= Modules =========
 add_subdirectory(lib/cncore)
 add_subdirectory(lib/cngraphic)
@@ -213,7 +229,8 @@ if(CN_BUILD_ENGINE)
 
     target_compile_options(cn_engine
         PRIVATE
-            -Wall -Wextra -Wshadow -Werror -O2
+            -Wall -Wextra -Wshadow -Werror
+            $<IF:$<BOOL:${CN_SANITIZE}>,-O1,-O2>
     )
 
     target_link_libraries(cn_engine

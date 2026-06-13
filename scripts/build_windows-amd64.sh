@@ -13,6 +13,7 @@ cmake ../.. -DCMAKE_TOOLCHAIN_FILE=../../toolchain/mingw_toolchain-amd64.cmake \
     -DCMAKE_CXX_FLAGS="-m64" \
     -DTARGET_ARCH="amd64" \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+    -DCN_SANITIZE=OFF
 
 cmake --build . -- -j8

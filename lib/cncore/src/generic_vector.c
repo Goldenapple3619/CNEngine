@@ -33,6 +33,25 @@ CN_API void delete_generic_vector(struct generic_vector_s *vec, void (*_delete_o
     (void)free(vec);
 }
 
+CN_API void empty_generic_vector(struct generic_vector_s *vec, void (*_delete_obj)(void *))
+{
+    if (!vec)
+        return;
+
+    if (_delete_obj) {
+        for (size_t i = 0; i < vec->size; ++i)
+            (void)_delete_obj(vec->content[i]);
+    }
+
+    if (vec->content) {
+        (void)free(vec->content);
+        vec->content = NULL;
+    }
+
+    vec->capacity = 0;
+    vec->size = 0;
+}
+
 CN_API uint8_t resize_generic_vector(struct generic_vector_s *vec, size_t new_capacity)
 {
     if (!vec)

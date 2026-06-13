@@ -216,7 +216,8 @@
     const char *object_file_reader_get_string(CNAssetReader *reader, uint32_t off);
     uint8_t object_file_reader_read_header(CNAssetReader *reader);
     uint8_t object_file_reader_read_section_header(CNAssetReader *reader);
-    uint8_t init_object_file_reader(CNAssetReader *reader, char *file_path);
+    void object_file_reader_get_section(CNAssetReader *reader, struct section_blk *section_block, uint64_t section_index);
+    uint8_t init_object_file_reader(CNAssetReader *reader, const char *file_path);
     void uninit_object_file_reader(CNAssetReader *reader);
     void delete_object_file_reader(CNAssetReader *reader);
     void print_object_file(CNAssetReader *reader);

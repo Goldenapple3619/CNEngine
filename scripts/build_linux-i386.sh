@@ -20,6 +20,7 @@ cmake ../.. \
     -DCMAKE_LIBRARY_PATH="/usr/lib/i386-linux-gnu" \
     -DTARGET_ARCH="i386" \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+    -DCN_SANITIZE=OFF
 
 cmake --build . -- -j$(nproc)

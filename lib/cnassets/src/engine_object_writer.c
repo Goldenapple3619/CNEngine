@@ -234,16 +234,23 @@ uint32_t add_str_table(const char *str, struct generic_map_s *strndx)
     struct strndx_entry_s *found = get_generic_map(strndx, str, NULL, NULL);
 
     if (!found) {
-        if (add_generic_map(strndx, new_strndx_entry(str), str, (void (*)(void *))&delete_strndx_entry)) {
+        found = new_strndx_entry(str);
+
+        if (!found) {
             fprintf(stderr, "error allocating strndx entry.");
             return (0xFFFFFFFFu);
         }
 
-        found = get_generic_map(strndx, str, NULL, NULL);
-        if (strndx->size == 1)
+        if (add_generic_map(strndx, found, str, (void (*)(void *))&delete_strndx_entry)) {
+            fprintf(stderr, "error extending strndx.");
+            (void)delete_strndx_entry(found);
+            return (0xFFFFFFFFu);
+        }
+
+        if (strndx->size <= 1)
             found->addr = 0;
         else
-            found->addr = ((struct strndx_entry_s *)strndx->content[strndx->size - 1])->addr + strlen(((struct strndx_entry_s *)strndx->content[strndx->size - 1])->string) + 1;
+            found->addr = ((struct strndx_entry_s *)strndx->content[strndx->size - 2])->addr + strlen(((struct strndx_entry_s *)strndx->content[strndx->size - 2])->string) + 1;
     }
 
     return (found->addr);

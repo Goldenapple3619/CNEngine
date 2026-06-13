@@ -181,7 +181,7 @@ uint8_t object_file_reader_read_section_header(CNAssetReader *reader)
     return (0);
 }
 
-uint8_t init_object_file_reader(CNAssetReader *reader, char *file_path)
+uint8_t init_object_file_reader(CNAssetReader *reader, const char *file_path)
 {
     if (!reader || !file_path)
         return (1);

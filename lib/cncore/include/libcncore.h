@@ -352,6 +352,7 @@
     CN_API void remove_generic_vector(struct generic_vector_s *vec, size_t i, void (*_delete_obj)(void *));
     CN_API void remove_generic_ordered_vector(struct generic_vector_s *vec, size_t i, void (*_delete_obj)(void *));
     CN_API void delete_generic_vector(struct generic_vector_s *vec, void (*_delete_obj)(void *));
+    CN_API void empty_generic_vector(struct generic_vector_s *vec, void (*_delete_obj)(void *));
 
     CN_API Object *new_ctx(void);
     CN_API cnbool submodule_ctx(Object *ctx, Object *module);

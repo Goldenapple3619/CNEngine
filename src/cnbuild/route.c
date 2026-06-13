@@ -59,6 +59,8 @@ uint8_t build_get_args(size_t argc, char **argv, struct build_args_s *args)
 
         if (!strcmp(argv[i], "-o")) {
             ++i;
+            if (args->output_file)
+                (void)free(args->output_file);
             args->output_file = strdup(argv[i]);
 
             if (!args->output_file) {
