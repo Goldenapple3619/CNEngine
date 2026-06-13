@@ -202,6 +202,8 @@ if(CN_BUILD_ENGINE)
 
         src/help/route.c
 
+        src/dump/route.c
+
         src/test/camera.c
         src/test/fps.c
         src/test/inputs.c

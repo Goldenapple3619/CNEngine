@@ -10,7 +10,7 @@ uint8_t fpwr_u16_be(FILE *fp, uint16_t v)
     uint8_t b[2] = {
         (uint8_t)(v >>  8), (uint8_t)(v)
     };
-    return (fwrite(b, 1, 2, fp) == 4) ? 0 : 1;
+    return (fwrite(b, 1, 2, fp) == 2) ? 0 : 1;
 }
 
 uint8_t fpwr_u16_le(FILE *fp, uint16_t v)
@@ -18,7 +18,7 @@ uint8_t fpwr_u16_le(FILE *fp, uint16_t v)
     uint8_t b[2] = {
         (uint8_t)(v), (uint8_t)(v >>  8),
     };
-    return (fwrite(b, 1, 2, fp) == 4) ? 0 : 1;
+    return (fwrite(b, 1, 2, fp) == 2) ? 0 : 1;
 }
 
 uint8_t fpwr_u32_be(FILE *fp, uint32_t v)

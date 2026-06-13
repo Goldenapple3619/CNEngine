@@ -28,7 +28,157 @@ CNAssetReader *new_object_file_reader(void)
     #endif
     reader->_content.mapped_area = NULL;
     reader->_content.size = 0;
+
+    (void)memset(&reader->header, 0, sizeof(reader->header));
+    (void)memset(&reader->section_header, 0, sizeof(reader->section_header));
+    (void)memset(&reader->read_handler, 0, sizeof(reader->read_handler));
+
     return (reader);
+}
+
+uint8_t object_file_reader_read_header(CNAssetReader *reader)
+{
+    if (!reader || !reader->_content.ready)
+        return (1);
+    uint8_t *res = (uint8_t *)reader->_content.mapped_area;
+
+    if (reader->_content.size < ENGINE_OBJ_HDR_SZ)
+        return (1);
+
+    reader->header.magic = bufrd_u32_be(res);
+    res += 4;
+
+    if (reader->header.magic != ENGINE_OBJ_MAGIC)
+        return (1);
+
+    reader->header.endian = bufrd_u8(res);
+    res += 1;
+
+    reader->read_handler.u8 = &bufrd_u8;
+    if (reader->header.endian == ENGINE_WRT_BIG_ENDIAN) {
+        reader->read_handler.u16 = &bufrd_u16_be;
+        reader->read_handler.u32 = &bufrd_u32_be;
+        reader->read_handler.u64 = &bufrd_u64_be;
+    } else {
+        reader->read_handler.u16 = &bufrd_u16_le;
+        reader->read_handler.u32 = &bufrd_u32_le;
+        reader->read_handler.u64 = &bufrd_u64_le;
+    }
+
+    reader->header.flags = reader->read_handler.u32(res);
+    res += 4;
+
+    reader->header.type = reader->read_handler.u16(res);
+    res += 2;
+
+    reader->header.section_header_off = reader->read_handler.u64(res);
+    res += 8;
+
+    reader->header.strndx_off = reader->read_handler.u64(res);
+    res += 8;
+
+    reader->header.name = reader->read_handler.u32(res);
+    res += 4;
+
+    return (0);
+}
+
+const char *object_file_reader_get_string(CNAssetReader *reader, uint32_t off)
+{
+    if (!reader || !reader->_content.ready)
+        return (NULL);
+    if (reader->_content.size < reader->header.strndx_off + off)
+        return (NULL);
+
+    uint8_t *res = (uint8_t *)reader->_content.mapped_area;
+
+    return ((char *)(res + reader->header.strndx_off + off));
+}
+
+void object_file_reader_get_section(CNAssetReader *reader, struct section_blk *section_block, uint64_t section_index)
+{
+    if (!reader || !reader->_content.ready) {
+        section_block->section_blk_ptr = NULL;
+        section_block->blk_size = 0;
+        return;
+    }
+    if (section_index >= reader->section_header.section_count) {
+        section_block->section_blk_ptr = NULL;
+        section_block->blk_size = 0;
+        return;
+    }
+
+    uint8_t *res = (uint8_t *)reader->_content.mapped_area;
+
+    if (reader->_content.size < reader->section_header.entries[section_index].section_off) {
+        section_block->section_blk_ptr = NULL;
+        section_block->blk_size = 0;
+        return;
+    }
+
+    section_block->section_blk_ptr = (const uint8_t *)(res + reader->section_header.entries[section_index].section_off);
+    section_block->blk_size = reader->section_header.entries[section_index].section_size;
+}
+
+uint8_t object_file_reader_read_section_header(CNAssetReader *reader)
+{
+    if (!reader || !reader->_content.ready)
+        return (1);
+    
+    if (reader->header.magic != ENGINE_OBJ_MAGIC)
+        return (1);
+
+    if (reader->section_header.entries) {
+        (void)free(reader->section_header.entries);
+        reader->section_header.entries = NULL;
+    }
+
+    uint8_t *res = (uint8_t *)reader->_content.mapped_area;
+
+    if (reader->_content.size < reader->header.section_header_off || ENGINE_OBJ_HDR_SZ > reader->header.section_header_off)
+        return (1);
+
+    res += reader->header.section_header_off;
+
+    if (!reader->read_handler.u16 || !reader->read_handler.u32 || !reader->read_handler.u64 || !reader->read_handler.u8)
+        return (1);
+
+    reader->section_header.size = reader->read_handler.u64(res);
+    res += 8;
+
+    reader->section_header.section_count = reader->read_handler.u64(res);
+    res += 8;
+
+    if (reader->_content.size < reader->header.section_header_off + ENGINE_OBJ_SECHDR_PREFIX_SZ + ENGINE_OBJ_SECHDR_ENTRY_SZ * reader->section_header.section_count) {
+        reader->section_header.section_count = 0;
+        return (1);
+    }
+
+    reader->section_header.entries = malloc(sizeof(struct engine_obj_section_header_entry_s) * reader->section_header.section_count);
+
+    if (!reader->section_header.entries) {
+        reader->section_header.section_count = 0;
+        return (1);
+    }
+
+    for (uint64_t i = 0; i < reader->section_header.section_count; ++i) {
+        reader->section_header.entries[i].section_name = reader->read_handler.u32(res);
+        res += 4;
+
+        reader->section_header.entries[i].section_type = reader->read_handler.u16(res);
+        res += 2;
+
+        reader->section_header.entries[i].section_flags = reader->read_handler.u32(res);
+        res += 4;
+
+        reader->section_header.entries[i].section_size = reader->read_handler.u64(res);
+        res += 8;
+
+        reader->section_header.entries[i].section_off = reader->read_handler.u64(res);
+        res += 8;
+    }
+
+    return (0);
 }
 
 uint8_t init_object_file_reader(CNAssetReader *reader, char *file_path)
@@ -122,5 +272,17 @@ void delete_object_file_reader(CNAssetReader *reader)
     if (!reader)
         return;
     (void)uninit_object_file_reader(reader);
+    if (reader->section_header.entries) {
+        (void)free(reader->section_header.entries);
+        reader->section_header.entries = NULL;
+    }
     (void)free(reader);
+}
+
+void print_object_file(CNAssetReader *reader)
+{
+    printf("<asset[%s]:%d\n", object_file_reader_get_string(reader, reader->header.name), reader->header.type);
+    for (uint64_t i = 0; i < reader->section_header.section_count; ++i)
+        printf("  <section[%s]:%d@(%lx-%lx)>\n", object_file_reader_get_string(reader, reader->section_header.entries[i].section_name), reader->section_header.entries[i].section_type, reader->section_header.entries[i].section_off, reader->section_header.entries[i].section_off + reader->section_header.entries[i].section_size);
+    printf(">\n");
 }

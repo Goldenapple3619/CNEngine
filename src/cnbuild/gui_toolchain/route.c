@@ -50,6 +50,7 @@ int build_gui(size_t argc, char **argv)
 
     wctx->write_infos.endian = build_args.endian;
     wctx->write_infos.flags = build_args.padding;
+    wctx->write_infos.type = ENGINE_OBJ_GUI;
 
     if (parse_gui(build_args.input_files.content[0], wctx)) {
         (void)delete_parsed_data(wctx);

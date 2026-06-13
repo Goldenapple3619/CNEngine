@@ -134,6 +134,7 @@ uint8_t element_gui_to_wctx(struct generic_vector_s *element, struct engine_obje
     // struct engine_object_file_section_writer_ctx_s *style_section;
 
     node_section = new_writer_section("gui_nodes", element);
+    node_section->write_infos.type = ENGINE_SEC_GUI_NODES;
     if (!node_section)
         return (1);
     if (writer_ctx_add_section(wctx, node_section)) {

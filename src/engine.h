@@ -18,6 +18,7 @@
     int test(size_t argc, char **argv);
     int help(size_t argc, char **argv);
     int build(size_t argc, char **argv);
+    int dump(size_t argc, char **argv);
 
     typedef int (*route_callback)(size_t, char **);
 
@@ -29,6 +30,7 @@
         {"help", &help},
         {"test", &test},
         {"build", &build},
+        {"dump", &dump},
         {NULL, NULL}
     };
 

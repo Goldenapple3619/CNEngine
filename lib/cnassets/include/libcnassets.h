@@ -13,9 +13,9 @@
 
     #define ENGINE_OBJ_MAGIC 0x0875C4E3U
     
-    #define ENGINE_OBJ_HDR_SZ 33U
+    #define ENGINE_OBJ_HDR_SZ 31U
     #define ENGINE_OBJ_SECHDR_PREFIX_SZ 16U
-    #define ENGINE_OBJ_SECHDR_ENTRY_SZ 28U
+    #define ENGINE_OBJ_SECHDR_ENTRY_SZ 26U
 
     #define ENGINE_MAX_PAD 4096U
     #define ENGINE_PAD_CHAR 0xCD
@@ -70,7 +70,7 @@
         char *section_name;
     
         struct {
-            uint32_t type;
+            uint16_t type;
             uint32_t flags;
         } write_infos;
 
@@ -85,7 +85,7 @@
     
         struct {
             uint8_t endian;
-            uint32_t type;
+            uint16_t type;
             uint32_t flags;
         } write_infos;
     
@@ -96,7 +96,7 @@
         uint32_t magic;
         uint8_t endian;
         uint32_t flags;
-        uint32_t type;
+        uint16_t type;
         uint64_t section_header_off;
         uint64_t strndx_off;
         uint32_t name;
@@ -104,7 +104,7 @@
 
     struct engine_obj_section_header_entry_s {
         uint32_t section_name;
-        uint32_t section_type;
+        uint16_t section_type;
         uint32_t section_flags;
         uint64_t section_size;
 
@@ -123,6 +123,30 @@
         uint32_t addr;
     };
 
+    typedef uint8_t (*wr8_fn)(FILE *, uint8_t);
+    typedef uint8_t (*wr16_fn)(FILE *, uint16_t);
+    typedef uint8_t (*wr32_fn)(FILE *, uint32_t);
+    typedef uint8_t (*wr64_fn)(FILE *, uint64_t);
+
+    typedef uint8_t (*rd8_fn)(const void *p);
+    typedef uint16_t (*rd16_fn)(const void *p);
+    typedef uint32_t (*rd32_fn)(const void *p);
+    typedef uint64_t (*rd64_fn)(const void *p);
+
+    typedef struct {
+        wr8_fn u8;
+        wr16_fn u16;
+        wr32_fn u32;
+        wr64_fn u64;
+    } fpio_handler_t;
+
+    typedef struct {
+        rd8_fn u8;
+        rd16_fn u16;
+        rd32_fn u32;
+        rd64_fn u64;
+    } mapio_reader_t;
+
     typedef struct {
         struct {
             const void *mapped_area;
@@ -136,18 +160,18 @@
             #endif
             cnbool ready;
         } _content;
+
+        struct engine_obj_header_s header;
+        struct engine_obj_section_header_s section_header;
+
+        mapio_reader_t read_handler;
     } CNAssetReader;
 
-    typedef uint8_t (*wr8_fn)(FILE *, uint8_t);
-    typedef uint8_t (*wr16_fn)(FILE *, uint16_t);
-    typedef uint8_t (*wr32_fn)(FILE *, uint32_t);
-    typedef uint8_t (*wr64_fn)(FILE *, uint64_t);
-    typedef struct {
-        wr8_fn u8;
-        wr16_fn u16;
-        wr32_fn u32;
-        wr64_fn u64;
-    } fpio_handler_t;
+    struct section_blk {
+        const uint8_t *section_blk_ptr;
+
+        uint64_t blk_size;
+    };
 
     uint8_t fpwr_u8(FILE *fp, uint8_t v);
     uint8_t fpwr_u16_be(FILE *fp, uint16_t v);
@@ -159,7 +183,7 @@
 
     void bufwr_u8(char *buf, uint8_t v);
     void bufwr_u16_be(char *buf, uint16_t v);
-    ;void bufwr_u16_le(char *buf, uint16_t v);
+    void bufwr_u16_le(char *buf, uint16_t v);
     void bufwr_u32_be(char *buf, uint32_t v);
     void bufwr_u32_le(char *buf, uint32_t v);
     void bufwr_u64_be(char *buf, uint64_t v);
@@ -184,12 +208,17 @@
     struct engine_object_file_section_writer_ctx_s *new_writer_section(const char *name, void *content_holder);
     uint8_t writer_section_set_name(struct engine_object_file_section_writer_ctx_s *section, const char *name);
     void delete_writer_section(struct engine_object_file_section_writer_ctx_s *section);
+    uint32_t flags_to_align(uint32_t flags);
 
     uint32_t add_str_table(const char *str, struct generic_map_s *strndx);
 
     CNAssetReader *new_object_file_reader(void);
+    const char *object_file_reader_get_string(CNAssetReader *reader, uint32_t off);
+    uint8_t object_file_reader_read_header(CNAssetReader *reader);
+    uint8_t object_file_reader_read_section_header(CNAssetReader *reader);
     uint8_t init_object_file_reader(CNAssetReader *reader, char *file_path);
     void uninit_object_file_reader(CNAssetReader *reader);
     void delete_object_file_reader(CNAssetReader *reader);
+    void print_object_file(CNAssetReader *reader);
 
 #endif

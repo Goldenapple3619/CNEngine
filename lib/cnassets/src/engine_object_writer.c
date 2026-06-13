@@ -102,7 +102,7 @@ void delete_writer_section(struct engine_object_file_section_writer_ctx_s *secti
     (void)free(section);
 }
 
-static uint32_t flags_to_align(uint32_t flags)
+uint32_t flags_to_align(uint32_t flags)
 {
     if ((flags & ENGINE_WRT_ALIGN64_FLAG) > 0)
         return (64);
@@ -146,7 +146,7 @@ static uint8_t write_object_file_header(FILE *fp, const fpio_handler_t *io, cons
         return 1;
     if (io->u32(fp, header->flags))
         return 1;
-    if (io->u32(fp, header->type))
+    if (io->u16(fp, header->type))
         return 1;
     if (io->u64(fp, header->section_header_off))
         return 1;
@@ -171,7 +171,7 @@ static uint8_t write_object_file_section_header(FILE *fp, const fpio_handler_t *
 
         if (io->u32(fp, temp_entry->section_name))
             return 1;
-        if (io->u32(fp, temp_entry->section_type))
+        if (io->u16(fp, temp_entry->section_type))
             return 1;
         if (io->u32(fp, temp_entry->section_flags))
             return 1;
@@ -410,7 +410,7 @@ uint8_t write_object_file(FILE *fp, const struct engine_object_file_writer_ctx_s
     if (ENGINE_FSEEK(fp, header.section_header_off, SEEK_SET) != 0) {
         delete_generic_vector(section_header_entries, &free);
         return (1);
-    };
+    }
 
     if (write_object_file_section_header(fp, &io_handler, &section_header, section_header_entries)) {
         delete_generic_vector(section_header_entries, &free);
