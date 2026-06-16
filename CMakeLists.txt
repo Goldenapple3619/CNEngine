@@ -187,6 +187,8 @@ add_subdirectory(lib/rgui)
 add_subdirectory(lib/r2d)
 add_subdirectory(lib/r3d)
 
+add_subdirectory(lib/formats/cnguiobj)
+
 # dist deploy
 add_custom_target(cn_dist ALL)
 
@@ -272,6 +274,8 @@ if(CN_BUILD_ENGINE)
             lib/rgui/include
             lib/r2d/include
             lib/r3d/include
+
+            lib/formats/cnguiobj/include
     )
 
     # main
@@ -358,6 +362,15 @@ foreach(lib cncore cngraphic cnaudio cninput cnassets rgui r2d r3d)
     )
 endforeach()
 
+#includes formats
+foreach(cnguiobj)
+    add_custom_command(TARGET cn_dist POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+            "${CMAKE_SOURCE_DIR}/lib/formats/${lib}/include"
+            "${DIST_DIR}/include/"
+    )
+endforeach()
+
 # vendored includes
 
 foreach(pair
@@ -431,7 +444,7 @@ foreach(lib glad_gl)
 endforeach()
 
 # modules libraries
-foreach(lib cncore cngraphic cnaudio cninput cnassets rgui r2d r3d)
+foreach(lib cncore cngraphic cnaudio cninput cnassets rgui r2d r3d cnguiobj)
     add_custom_command(TARGET cn_dist POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
             $<TARGET_FILE:${lib}>

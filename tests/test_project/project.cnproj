@@ -15,18 +15,6 @@
                 main
             </entry>
         </binary>
-        <binary type="server" os="win" arch="amd64">
-            <dependencies>
-                <module>core</module>
-                <module>graphic-headless</module>
-                <module>audio</module>
-                <module>network</module>
-            </dependencies>
-            <name>${project_name}-server-windows-64bits.exe</name>
-            <entry>
-                main
-            </entry>
-        </binary>
     </builds>
 
     <ressources>

@@ -114,6 +114,29 @@ CN_API void *get_generic_map(struct generic_map_s *gen_map, const char *key, voi
     return (obj);
 }
 
+CN_API void empty_generic_map(struct generic_map_s *gen_map, void (*_delete_obj)(void *))
+{
+    if (!gen_map)
+        return;
+
+    if (_delete_obj) {
+        for (size_t i = 0; i < gen_map->size; ++i) {
+            if (gen_map->content[i])
+                (void)_delete_obj(gen_map->content[i]);
+        }
+    }
+    if (gen_map->keys) {
+        (void)free(gen_map->keys);
+        gen_map->keys = NULL;
+    }
+    if (gen_map->content) {
+        (void)free(gen_map->content);
+        gen_map->content = NULL;
+    }
+    gen_map->capacity = 0;
+    gen_map->keys = 0;
+}
+
 CN_API void delete_generic_map(struct generic_map_s *gen_map, void (*_delete_obj)(void *))
 {
     if (!gen_map)

@@ -1,0 +1,201 @@
+#include "libcnassets.h"
+#include "libcncore.h"
+
+static cn_value _register_fmt(Object *__this, void **args)
+{
+    if (!args || !args[0])
+        return (VALUE_ERR);
+
+    if (!has_attr(__this, "assets_fmts"))
+        return (VALUE_ERR);
+
+    char *dl_path = args[0];
+    Object *assets_fmts = get_attr(__this, "assets_fmts")->as.ptr;
+
+    if (!assets_fmts)
+        return (VALUE_ERR);
+
+    struct asset_loader_s *loader = new_asset_loader();
+
+    if (!loader)
+        return (VALUE_ERR);
+
+    if (asset_loader_init(loader, dl_path)) {
+        delete_asset_loader(loader);
+        return (VALUE_ERR);
+    }
+    
+    if (call_method(assets_fmts, "push", PACK_ARG(loader, NULL)).as.i == VALUE_ERR.as.i) {
+        delete_asset_loader(loader);
+        return (VALUE_ERR);
+    }
+
+    return (VALUE_OK);
+}
+
+static cn_value _find_asset_type(Object *__this, void **args)
+{
+    if (!args || !args[0])
+        return (null_value);
+
+    if (!has_attr(__this, "assets_fmts"))
+        return (VALUE_ERR);
+
+    Object *assets_fmts = get_attr(__this, "assets_fmts")->as.ptr;
+    struct asset_loader_s *loader;
+
+    if (!assets_fmts)
+        return (null_value);
+    
+    for (struct list_iterator_s it = list_get_iterator(assets_fmts); !list_iterator_isend(&it); list_iterator_next(&it)) {
+        if (list_iterator_value_isnull(&it))
+            continue;
+        
+        loader = it.val.as.ptr;
+
+        if (loader->registry && loader->registry->asset_type == *(uint16_t *)args[0])
+            return ((cn_value){.type = CN_TYPE_GENERIC_UNIQ_PTR, .as.ptr = loader->registry});
+    }
+
+    return (null_value);
+}
+
+static cn_value _find_asset_name(Object *__this, void **args)
+{
+    if (!args || !args[0])
+        return (null_value);
+
+    if (!has_attr(__this, "assets_fmts"))
+        return (VALUE_ERR);
+
+    Object *assets_fmts = get_attr(__this, "assets_fmts")->as.ptr;
+    struct asset_loader_s *loader;
+
+    if (!assets_fmts)
+        return (null_value);
+    
+    for (struct list_iterator_s it = list_get_iterator(assets_fmts); !list_iterator_isend(&it); list_iterator_next(&it)) {
+        if (list_iterator_value_isnull(&it))
+            continue;
+        
+        loader = it.val.as.ptr;
+
+        if (loader->registry && loader->registry->name && !strcmp(loader->registry->name, (const char *)args[0]))
+            return ((cn_value){.type = CN_TYPE_GENERIC_UNIQ_PTR, .as.ptr = loader->registry});
+    }
+
+    return (null_value);
+}
+
+static cn_value _find_section_type(Object *__this, void **args)
+{
+    if (!args || !args[0])
+        return (null_value);
+
+    if (!has_attr(__this, "assets_fmts"))
+        return (VALUE_ERR);
+
+    Object *assets_fmts = get_attr(__this, "assets_fmts")->as.ptr;
+    struct asset_loader_s *loader;
+
+    if (!assets_fmts)
+        return (null_value);
+    
+    for (struct list_iterator_s it = list_get_iterator(assets_fmts); !list_iterator_isend(&it); list_iterator_next(&it)) {
+        if (list_iterator_value_isnull(&it))
+            continue;
+        
+        loader = it.val.as.ptr;
+
+        if (!loader->registry)
+            continue;
+
+        for (size_t i = 0; i < loader->registry->registered_sections.size; ++i) {
+            if (loader->registry->registered_sections.content[i] && ((struct section_registry *)loader->registry->registered_sections.content[i])->section_type == *(uint16_t *)args[0])
+                return ((cn_value){.type = CN_TYPE_GENERIC_UNIQ_PTR, .as.ptr = loader->registry});
+        }
+    }
+
+    return (null_value);
+}
+
+static cn_value _find_section_name(Object *__this, void **args)
+{
+    if (!args || !args[0])
+        return (null_value);
+
+    if (!has_attr(__this, "assets_fmts"))
+        return (VALUE_ERR);
+
+    Object *assets_fmts = get_attr(__this, "assets_fmts")->as.ptr;
+    struct asset_loader_s *loader;
+
+    if (!assets_fmts)
+        return (null_value);
+    
+    for (struct list_iterator_s it = list_get_iterator(assets_fmts); !list_iterator_isend(&it); list_iterator_next(&it)) {
+        if (list_iterator_value_isnull(&it))
+            continue;
+        
+        loader = it.val.as.ptr;
+
+        if (!loader->registry)
+            continue;
+
+        for (size_t i = 0; i < loader->registry->registered_sections.size; ++i) {
+            if (loader->registry->registered_sections.content[i] && ((struct section_registry *)loader->registry->registered_sections.content[i])->name && !strcmp(((struct section_registry *)loader->registry->registered_sections.content[i])->name, (const char *)args[0]))
+                return ((cn_value){.type = CN_TYPE_GENERIC_UNIQ_PTR, .as.ptr = loader->registry});
+        }
+    }
+
+    return (null_value);
+}
+
+static cn_value _init(Object *__this, void **args)
+{
+    (void)__this;
+
+    PREP_INIT()
+
+    if (!args || !(args[0]))
+        return (VALUE_ERR);
+    
+    Object *ctx = (Object *)(args[0]);
+
+    INIT_OBJECT_STATIC(ctx, new_list((expr_free)&delete_asset_loader), NULL, "assets_fmts");
+
+    return (VALUE_OK);
+}
+
+static cn_value _del(Object *__this, void **args)
+{
+    (void)__this;
+
+    if (!args || !(args[0]))
+        return (VALUE_ERR);
+    
+    Object *ctx = (Object *)(args[0]);
+
+    (void)ctx;
+    
+    return (VALUE_OK);
+}
+
+CN_API Object *new_asset_submodule(void)
+{
+    Object *obj = new_object();
+
+    if (!obj)
+        return (NULL);
+
+    SET_PARENT_CLASS_BUILD(obj, create_default_object());
+
+    CREATE_METHOD_CLASS_BUILD(obj, "_init", &_init);
+    CREATE_METHOD_CLASS_BUILD(obj, "_del", &_del);
+    CREATE_METHOD_CLASS_BUILD(obj, "register_fmt", &_register_fmt);
+    CREATE_METHOD_CLASS_BUILD(obj, "find_asset_by_type", &_find_asset_type);
+    CREATE_METHOD_CLASS_BUILD(obj, "find_asset_by_name", &_find_asset_name);
+    CREATE_METHOD_CLASS_BUILD(obj, "find_section_by_type", &_find_section_type);
+    CREATE_METHOD_CLASS_BUILD(obj, "find_section_by_name", &_find_section_name);
+    return (obj);
+}

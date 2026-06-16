@@ -4,7 +4,15 @@ static cn_value _init(Object *__this, void **args)
 {
     PREP_INIT()
 
-    INIT_CUSTOM_ALLOCATION(__this, new_object_vector(), delete_object_vector, "_vec");
+    void (*_delobj_cb)(void *) = get_attr(__this, "_delobj_cb")->as.ptr;
+
+    __temp_alloc = (void *)new_generic_vector(); \
+    if (!__temp_alloc) \
+        return (VALUE_ERR); \
+    if (!set_attr(__this, "_vec", CN_TYPE_GENERIC_UNIQ_PTR, (cnany)__temp_alloc)) { \
+        (void)_delobj_cb(__temp_alloc); \
+        return (VALUE_ERR); \
+    }
 
     if (args)
         (void)call_method(__this, "push", args);
@@ -17,10 +25,10 @@ static cn_value _push(Object *__this, void **args)
     if (!args)
         return (VALUE_ERR);
 
-    ObjectVector *vec = get_attr(__this, "_vec")->as.ptr;
+    struct generic_vector_s *vec = get_attr(__this, "_vec")->as.ptr;
 
     for (size_t i = 0; args[i]; ++i) {
-        if (insert_object_vector(vec, (Object *)args[i]))
+        if (insert_generic_vector(vec, args[i]))
             return (VALUE_ERR);
     }
     return (VALUE_OK);
@@ -31,20 +39,20 @@ static cn_value _at(Object *__this, void **args)
     if (!args || !args[0])
         return (null_value);
     
-    ObjectVector *vec = get_attr(__this, "_vec")->as.ptr;
+    struct generic_vector_s *vec = get_attr(__this, "_vec")->as.ptr;
     size_t index = *(size_t *)args[0];
 
     if (vec->size <= index)
         return (null_value);
 
-    return ((cn_value){.type=CN_TYPE_WEAK_OBJECT, .as.ptr=vec->objects[index]});
+    return ((cn_value){.type=CN_TYPE_GENERIC_UNIQ_PTR, .as.ptr=vec->content[index]});
 }
 
 static cn_value _len(Object *__this, void **args)
 {
     (void)args;
 
-    ObjectVector *vec = get_attr(__this, "_vec")->as.ptr;
+    struct generic_vector_s *vec = get_attr(__this, "_vec")->as.ptr;
 
     return ((cn_value){.type=CN_TYPE_INT, .as.i=vec->size});
 }
@@ -54,9 +62,10 @@ static cn_value _remove(Object *__this, void **args)
     if (!args || !(args[0]))
         return (VALUE_ERR);
     
-    ObjectVector *vec = get_attr(__this, "_vec")->as.ptr;
+    struct generic_vector_s *vec = get_attr(__this, "_vec")->as.ptr;
+    void (*_delobj_cb)(void *) = get_attr(__this, "_delobj_cb")->as.ptr;
     
-    (void)remove_object_ordered_vector(vec, *((size_t *)args[0]));
+    (void)remove_generic_ordered_vector(vec, *((size_t *)args[0]), _delobj_cb);
     return (VALUE_OK);
 }
 
@@ -66,7 +75,13 @@ static cn_value _del(Object *__this, void **args)
 
     PREP_DEL()
 
-    DEL_CUSTOM_ALLOCAION(__this, delete_object_vector, "_vec");
+    void (*_delobj_cb)(void *) = get_attr(__this, "_delobj_cb")->as.ptr;
+
+    __temp_alloc = get_attr(__this, "_vec"); \
+    if (__temp_alloc && __temp_alloc->as.ptr) { \
+        delete_generic_vector(__temp_alloc->as.ptr, _delobj_cb); \
+        __temp_alloc->as.ptr = NULL; \
+    }
 
     return (null_value);
 }
@@ -111,7 +126,7 @@ CN_API cnbool list_iterator_isend(const struct list_iterator_s *iterator)
     return (false);
 }
 
-CN_API Object *new_list()
+CN_API Object *new_list(void (*_delete_obj)(void *))
 {
     Object *obj = new_object();
 
@@ -119,6 +134,12 @@ CN_API Object *new_list()
         return (NULL);
 
     SET_PARENT_CLASS_BUILD(obj, create_default_object());
+
+    if (!set_attr(obj, "_delobj_cb", CN_TYPE_GENERIC_UNIQ_PTR, (cnany)_delete_obj)) {
+        (void)delete_object(obj);
+        return (NULL);
+    }
+
     CREATE_METHOD_CLASS_BUILD(obj, "_init", &_init);
     CREATE_METHOD_CLASS_BUILD(obj, "push", &_push);
     CREATE_METHOD_CLASS_BUILD(obj, "len", &_len);

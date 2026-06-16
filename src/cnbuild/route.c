@@ -94,9 +94,34 @@ void reset_args(struct build_args_s *args)
     args->input_files.size = 0;
 }
 
+Object *init_asset_ctx(void)
+{
+    Object *asset_ctx = new_asset_submodule();
+
+    asset_ctx = build_object(asset_ctx, PACK_ARG(asset_ctx));
+
+    if (!asset_ctx) {
+        (void)run_gc();
+        return (NULL);
+    }
+
+    if (call_method(asset_ctx, "register_fmt", PACK_ARG("./cnguiobj.so")).as.i == VALUE_ERR.as.i) {
+        fprintf(stderr, "failed to open format library %s.\n", "./cnguiobj.so");
+        DELOC(asset_ctx);
+        return (NULL);
+    }
+
+    return (asset_ctx);
+}
+
 int build(size_t argc, char **argv)
 {
+    Object *asset_ctx = init_asset_ctx();
     size_t i = 0;
+    int ret;
+
+    if (!asset_ctx)
+        return (1);
 
     if (argc < 3) {
         fprintf(stderr, "%s: asset build toolchain missing.", argv[0]);
@@ -104,12 +129,16 @@ int build(size_t argc, char **argv)
     }
 
     while ((*(build_types + i)).name) {
-        if (!strcmp((*(build_types + i)).name, argv[2]))
-            return ((*(build_types + i)).callback(argc, argv));
+        if (!strcmp((*(build_types + i)).name, argv[2])) {
+            ret = ((*(build_types + i)).callback(argc, argv, asset_ctx));
+            DELOC(asset_ctx);
+            return (ret);
+        }
         ++i;
     };
 
     fprintf(stderr, "%s: invalid build toolchain '%s'.", argv[0], argv[2]);
+    DELOC(asset_ctx);
 
     return (1);
 }

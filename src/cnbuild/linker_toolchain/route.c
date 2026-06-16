@@ -98,13 +98,15 @@ uint8_t parse_cnasset(CNAssetReader *reader, const char *file_path, struct engin
     return (0);
 }
 
-int build_asset_pack(size_t argc, char **argv)
+int build_asset_pack(size_t argc, char **argv, Object *asset_ctx)
 {
     struct engine_object_file_writer_ctx_s *wctx;
     struct build_args_s build_args = {0};
     struct generic_vector_s vec = {.capacity = 0, .size = 0, .content = NULL};
     CNAssetReader *reader;
     FILE *fp;
+
+    (void)asset_ctx;
 
     if (build_get_args(argc - 3, argv + 3, &build_args)) {
         (void)reset_args(&build_args);
@@ -136,7 +138,7 @@ int build_asset_pack(size_t argc, char **argv)
             fprintf(stderr, "%s: failed to allocate reader.", argv[0]);
             (void)delete_parsed_data(wctx);
             (void)delete_writer_ctx(wctx);
-            (void)empty_generic_vector(&vec, (void (*)(void *))&delete_object_file_reader);
+            (void)empty_generic_vector(&vec, (expr_free)&delete_object_file_reader);
             (void)reset_args(&build_args);
             return (1);
         }
@@ -145,7 +147,7 @@ int build_asset_pack(size_t argc, char **argv)
             (void)delete_object_file_reader(reader);
             (void)delete_parsed_data(wctx);
             (void)delete_writer_ctx(wctx);
-            (void)empty_generic_vector(&vec, (void (*)(void *))&delete_object_file_reader);
+            (void)empty_generic_vector(&vec, (expr_free)&delete_object_file_reader);
             (void)reset_args(&build_args);
             return (1);
         }
@@ -154,7 +156,7 @@ int build_asset_pack(size_t argc, char **argv)
             (void)delete_object_file_reader(reader);
             (void)delete_parsed_data(wctx);
             (void)delete_writer_ctx(wctx);
-            (void)empty_generic_vector(&vec, (void (*)(void *))&delete_object_file_reader);
+            (void)empty_generic_vector(&vec, (expr_free)&delete_object_file_reader);
             (void)reset_args(&build_args);
             return (1);
         }
@@ -166,7 +168,7 @@ int build_asset_pack(size_t argc, char **argv)
         fprintf(stderr, "%s: failed to open output file.\n", build_args.output_file);
         (void)delete_parsed_data(wctx);
         (void)delete_writer_ctx(wctx);
-        (void)empty_generic_vector(&vec, (void (*)(void *))&delete_object_file_reader);
+        (void)empty_generic_vector(&vec, (expr_free)&delete_object_file_reader);
         (void)reset_args(&build_args);
         return (1);
     }
@@ -175,7 +177,7 @@ int build_asset_pack(size_t argc, char **argv)
         fprintf(stderr, "%s: failed to write output file.\n", build_args.output_file);
         (void)delete_parsed_data(wctx);
         (void)delete_writer_ctx(wctx);
-        (void)empty_generic_vector(&vec, (void (*)(void *))&delete_object_file_reader);
+        (void)empty_generic_vector(&vec, (expr_free)&delete_object_file_reader);
         (void)fclose(fp);
         (void)reset_args(&build_args);
         return (1);
@@ -184,7 +186,7 @@ int build_asset_pack(size_t argc, char **argv)
     (void)fclose(fp);
     (void)delete_parsed_data(wctx);
     (void)delete_writer_ctx(wctx);
-    (void)empty_generic_vector(&vec, (void (*)(void *))&delete_object_file_reader);
+    (void)empty_generic_vector(&vec, (expr_free)&delete_object_file_reader);
     (void)reset_args(&build_args);
 
     return (0);

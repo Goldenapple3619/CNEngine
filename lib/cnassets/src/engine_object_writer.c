@@ -1,6 +1,6 @@
 #include "libcnassets.h"
 
-struct engine_object_file_writer_ctx_s *new_writer_ctx(const char *name)
+CN_API struct engine_object_file_writer_ctx_s *new_writer_ctx(const char *name)
 {
     struct engine_object_file_writer_ctx_s *wctx = malloc(sizeof(struct engine_object_file_writer_ctx_s));
 
@@ -22,7 +22,7 @@ struct engine_object_file_writer_ctx_s *new_writer_ctx(const char *name)
     return (wctx);
 }
 
-uint8_t writer_ctx_set_object_name(struct engine_object_file_writer_ctx_s *wctx, const char *name)
+CN_API uint8_t writer_ctx_set_object_name(struct engine_object_file_writer_ctx_s *wctx, const char *name)
 {
     if (!wctx)
         return (1);
@@ -34,14 +34,14 @@ uint8_t writer_ctx_set_object_name(struct engine_object_file_writer_ctx_s *wctx,
     return (0);
 }
 
-uint8_t writer_ctx_add_section(struct engine_object_file_writer_ctx_s *wctx, struct engine_object_file_section_writer_ctx_s *section)
+CN_API uint8_t writer_ctx_add_section(struct engine_object_file_writer_ctx_s *wctx, struct engine_object_file_section_writer_ctx_s *section)
 {
     if (!wctx || !section)
         return (1);
     return (insert_generic_vector(&wctx->sections, section));
 }
 
-void delete_writer_ctx(struct engine_object_file_writer_ctx_s *wctx)
+CN_API void delete_writer_ctx(struct engine_object_file_writer_ctx_s *wctx)
 {
     if (!wctx)
         return;
@@ -57,7 +57,7 @@ void delete_writer_ctx(struct engine_object_file_writer_ctx_s *wctx)
     (void)free(wctx);
 }
 
-struct engine_object_file_section_writer_ctx_s *new_writer_section(const char *name, void *content_holder)
+CN_API struct engine_object_file_section_writer_ctx_s *new_writer_section(const char *name, void *content_holder)
 {
     struct engine_object_file_section_writer_ctx_s *section = malloc(sizeof(struct engine_object_file_section_writer_ctx_s));
 
@@ -78,7 +78,7 @@ struct engine_object_file_section_writer_ctx_s *new_writer_section(const char *n
     return (section);
 }
 
-uint8_t writer_section_set_name(struct engine_object_file_section_writer_ctx_s *section, const char *name)
+CN_API uint8_t writer_section_set_name(struct engine_object_file_section_writer_ctx_s *section, const char *name)
 {
     if (!section)
         return (1);
@@ -90,7 +90,7 @@ uint8_t writer_section_set_name(struct engine_object_file_section_writer_ctx_s *
     return (0);
 }
 
-void delete_writer_section(struct engine_object_file_section_writer_ctx_s *section)
+CN_API void delete_writer_section(struct engine_object_file_section_writer_ctx_s *section)
 {
     if (!section)
         return;
@@ -102,7 +102,7 @@ void delete_writer_section(struct engine_object_file_section_writer_ctx_s *secti
     (void)free(section);
 }
 
-uint32_t flags_to_align(uint32_t flags)
+CN_API uint32_t flags_to_align(uint32_t flags)
 {
     if ((flags & ENGINE_WRT_ALIGN64_FLAG) > 0)
         return (64);
@@ -226,10 +226,12 @@ static void delete_strndx_entry(struct strndx_entry_s *entry)
     (void)free(entry);
 }
 
-uint32_t add_str_table(const char *str, struct generic_map_s *strndx)
+CN_API uint32_t add_str_table(const char *str, struct generic_map_s *strndx)
 {
     if (!strndx)
         return (0xFFFFFFFFu);
+    if (!str)
+        str = "<null>";
 
     struct strndx_entry_s *found = get_generic_map(strndx, str, NULL, NULL);
 
@@ -241,7 +243,7 @@ uint32_t add_str_table(const char *str, struct generic_map_s *strndx)
             return (0xFFFFFFFFu);
         }
 
-        if (add_generic_map(strndx, found, str, (void (*)(void *))&delete_strndx_entry)) {
+        if (add_generic_map(strndx, found, str, (expr_free)&delete_strndx_entry)) {
             fprintf(stderr, "error extending strndx.");
             (void)delete_strndx_entry(found);
             return (0xFFFFFFFFu);
@@ -256,7 +258,7 @@ uint32_t add_str_table(const char *str, struct generic_map_s *strndx)
     return (found->addr);
 }
 
-uint8_t write_object_file(FILE *fp, const struct engine_object_file_writer_ctx_s *object_file_write_ctx)
+CN_API uint8_t write_object_file(FILE *fp, const struct engine_object_file_writer_ctx_s *object_file_write_ctx)
 {
     struct engine_obj_header_s header;
     struct engine_obj_section_header_s section_header;
@@ -287,7 +289,7 @@ uint8_t write_object_file(FILE *fp, const struct engine_object_file_writer_ctx_s
     section_header_entries = new_generic_vector();
 
     if (!section_header_entries) {
-        delete_generic_map(strndx, (void(*)(void *))&delete_strndx_entry);
+        delete_generic_map(strndx, (expr_free)&delete_strndx_entry);
         return (1);
     }
 
@@ -300,7 +302,7 @@ uint8_t write_object_file(FILE *fp, const struct engine_object_file_writer_ctx_s
     header.name = add_str_table(object_file_write_ctx->object_name ? object_file_write_ctx->object_name : "unnamed_object", strndx);
 
     if (header.name == 0xFFFFFFFFu) {
-        delete_generic_map(strndx, (void(*)(void *))&delete_strndx_entry);
+        delete_generic_map(strndx, (expr_free)&delete_strndx_entry);
         delete_generic_vector(section_header_entries, &free);
         return (1);
     }
@@ -315,7 +317,7 @@ uint8_t write_object_file(FILE *fp, const struct engine_object_file_writer_ctx_s
         if (!temp_entry || insert_generic_vector(section_header_entries, temp_entry)) {
             if (temp_entry)
                 (void)free(temp_entry);
-            delete_generic_map(strndx, (void(*)(void *))&delete_strndx_entry);
+            delete_generic_map(strndx, (expr_free)&delete_strndx_entry);
             delete_generic_vector(section_header_entries, &free);
             return (1);
         }
@@ -327,27 +329,27 @@ uint8_t write_object_file(FILE *fp, const struct engine_object_file_writer_ctx_s
         temp_entry->section_off = 0;
 
         if (temp_entry->section_name == 0xFFFFFFFFu) {
-            delete_generic_map(strndx, (void(*)(void *))&delete_strndx_entry);
+            delete_generic_map(strndx, (expr_free)&delete_strndx_entry);
             delete_generic_vector(section_header_entries, &free);
             return (1);
         }
     }
 
     if (write_object_file_header(fp, &io_handler, &header)) {
-        delete_generic_map(strndx, (void(*)(void *))&delete_strndx_entry);
+        delete_generic_map(strndx, (expr_free)&delete_strndx_entry);
         delete_generic_vector(section_header_entries, &free);
         return (1);
     }
 
     if ((x = ENGINE_FTELL(fp)) < 0 || write_pad(fp, (uint64_t)x, align) || (x = ENGINE_FTELL(fp)) < 0) {
-        delete_generic_map(strndx, (void(*)(void *))&delete_strndx_entry);
+        delete_generic_map(strndx, (expr_free)&delete_strndx_entry);
         delete_generic_vector(section_header_entries, &free);
         return (1);
     };
     header.section_header_off = (uint64_t)x;
 
     if (write_object_file_section_header(fp, &io_handler, &section_header, section_header_entries)) {
-        delete_generic_map(strndx, (void(*)(void *))&delete_strndx_entry);
+        delete_generic_map(strndx, (expr_free)&delete_strndx_entry);
         delete_generic_vector(section_header_entries, &free);
         return (1);
     }
@@ -357,14 +359,14 @@ uint8_t write_object_file(FILE *fp, const struct engine_object_file_writer_ctx_s
 
         if (object_file_write_ctx->sections.size - 1 != i || i == 0) {
             if ((x = ENGINE_FTELL(fp)) < 0 || write_pad(fp, (uint64_t)x, align) || (x = ENGINE_FTELL(fp)) < 0) {
-                delete_generic_map(strndx, (void(*)(void *))&delete_strndx_entry);
+                delete_generic_map(strndx, (expr_free)&delete_strndx_entry);
                 delete_generic_vector(section_header_entries, &free);
                 return (1);
             };
             ((struct engine_obj_section_header_entry_s *)section_header_entries->content[i])->section_off = (uint64_t)x;
         } else {
             if ((x = ENGINE_FTELL(fp)) < 0) {
-                delete_generic_map(strndx, (void(*)(void *))&delete_strndx_entry);
+                delete_generic_map(strndx, (expr_free)&delete_strndx_entry);
                 delete_generic_vector(section_header_entries, &free);
                 return (1);
             }
@@ -376,7 +378,7 @@ uint8_t write_object_file(FILE *fp, const struct engine_object_file_writer_ctx_s
 
         if (content_size && content) {
             if (fwrite(content, 1, content_size, fp) != content_size) {
-                delete_generic_map(strndx, (void(*)(void *))&delete_strndx_entry);
+                delete_generic_map(strndx, (expr_free)&delete_strndx_entry);
                 delete_generic_vector(section_header_entries, &free);
                 free(content);
                 return (1);
@@ -390,19 +392,19 @@ uint8_t write_object_file(FILE *fp, const struct engine_object_file_writer_ctx_s
     }
 
     if ((x = ENGINE_FTELL(fp)) < 0 || write_pad(fp, (uint64_t)x, align) || (x = ENGINE_FTELL(fp)) < 0) {
-        delete_generic_map(strndx, (void(*)(void *))&delete_strndx_entry);
+        delete_generic_map(strndx, (expr_free)&delete_strndx_entry);
         delete_generic_vector(section_header_entries, &free);
         return (1);
     };
     header.strndx_off = (uint64_t)x;
 
     if (write_object_file_strndx(fp, &io_handler, strndx)) {
-        delete_generic_map(strndx, (void(*)(void *))&delete_strndx_entry);
+        delete_generic_map(strndx, (expr_free)&delete_strndx_entry);
         delete_generic_vector(section_header_entries, &free);
         return (1);
     }
 
-    delete_generic_map(strndx, (void(*)(void *))&delete_strndx_entry);
+    delete_generic_map(strndx, (expr_free)&delete_strndx_entry);
 
     if (ENGINE_FSEEK(fp, 0, SEEK_SET) != 0) {
         delete_generic_vector(section_header_entries, &free);

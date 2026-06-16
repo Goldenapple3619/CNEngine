@@ -64,9 +64,7 @@ int test(size_t argc, char **argv)
     add_test_window(ctx);
 
     call_method(ctx, "_run", NULL);
-    delete_object(ctx);
-
-    run_gc();
+    DELOC(ctx);
 
     return (0);
 }

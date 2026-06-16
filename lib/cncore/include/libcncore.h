@@ -104,6 +104,8 @@
     #define INLNE_PRIM_T_ARG(number) ((typeof((number)) [1]){(number)})
     #define INLN_STRCT_T_ARG(constructor) (&(constructor))
 
+    #define DELOC(object) delete_object(object); run_gc();
+
     typedef float cnnumber; // less memory, more performance but less accuracy and capacity
     // typedef double cnnumber;
     
@@ -182,6 +184,7 @@
     #define VALUE_ERR (cn_value){CN_TYPE_INT, .as.i = 1}
     #define VALUE_OK (cn_value){CN_TYPE_INT, .as.i = 0}
     typedef cn_value (*cn_method)(struct object_s *self, void **args);
+    typedef void (*expr_free)(void *obj);
 
     struct object_attribute_s {
         #ifdef STRING_INDIVIDUAL_ALLOCATION
@@ -345,6 +348,7 @@
     CN_API void remove_generic_map(struct generic_map_s *gen_map, const char *key, void (*_delete_obj)(void *));
     CN_API void *get_generic_map(struct generic_map_s *gen_map, const char *key, void *(*_obj_from_key_default)(const char *), void (*_delete_obj)(void *));
     CN_API void delete_generic_map(struct generic_map_s *gen_map, void (*_delete_obj)(void *));
+    CN_API void empty_generic_map(struct generic_map_s *gen_map, void (*_delete_obj)(void *));
 
     CN_API struct generic_vector_s *new_generic_vector(void);
     CN_API uint8_t resize_generic_vector(struct generic_vector_s *vec, size_t new_capacity);
@@ -362,12 +366,13 @@
     void *_attribute_value_extract(const cn_value *src);
 
     void _init_object_attrs(struct attr_map_s *attribute_map);
-    CN_API uint64_t _get_attrs_hash(const char *str);
     OBJAttrib *_find_object_attrs(const struct attr_map_s *attribute_map, uint64_t k);
     void _remove_object_attrs(struct attr_map_s *attribute_map, uint64_t k);
     uint8_t _insert_object_attrs(struct attr_map_s *attribute_map, uint64_t k, OBJAttrib *attr);
     uint8_t _attr_map_resize(struct attr_map_s *map, size_t new_capacity);
     void _delete_object_attrs(struct attr_map_s *attribute_map);
+
+    CN_API uint64_t _get_attrs_hash(const char *str);
 
     CN_API struct cn_value_vector_s *new_value_vector(void);
     CN_API uint8_t resize_value_vector(struct cn_value_vector_s *vec, size_t new_capacity);
@@ -391,12 +396,16 @@
     CN_API void delete_object_method_pair(ObjMethodPair *pair);
     CN_API void delete_weak_object_method_pair(ObjMethodPair *pair);
 
-    CN_API Object *new_list(void);
+    CN_API Object *new_list(void (*_delete_obj)(void *));
     CN_API Object *new_scene(void);
     CN_API Object *new_scene_object(void);
     CN_API Object *new_atlas(void *(*_fetch_default)(const char *), void (*_delete_obj)(void *));
 
     CN_API cnbool start_core(void);
     CN_API void end_core(void);
+
+    CN_API void *cnopen_library(const char *path);
+    CN_API void *cnget_symbol(void *handle, const char *name);
+    CN_API void cnclose_library(void *handle);
 
 #endif

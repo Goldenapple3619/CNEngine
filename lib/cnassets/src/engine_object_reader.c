@@ -2,6 +2,7 @@
 
 #include <unistd.h>
 #include <stdio.h>
+#include <inttypes.h>
 
 #ifdef _WIN32
     #include <windows.h>
@@ -11,7 +12,7 @@
     #include <sys/mman.h>
 #endif
 
-CNAssetReader *new_object_file_reader(void)
+CN_API CNAssetReader *new_object_file_reader(void)
 {
     CNAssetReader *reader = (CNAssetReader *)malloc(sizeof(CNAssetReader));
 
@@ -36,7 +37,7 @@ CNAssetReader *new_object_file_reader(void)
     return (reader);
 }
 
-uint8_t object_file_reader_read_header(CNAssetReader *reader)
+CN_API uint8_t object_file_reader_read_header(CNAssetReader *reader)
 {
     if (!reader || !reader->_content.ready)
         return (1);
@@ -83,7 +84,7 @@ uint8_t object_file_reader_read_header(CNAssetReader *reader)
     return (0);
 }
 
-const char *object_file_reader_get_string(CNAssetReader *reader, uint32_t off)
+CN_API const char *object_file_reader_get_string(const CNAssetReader *reader, uint32_t off)
 {
     if (!reader || !reader->_content.ready)
         return (NULL);
@@ -95,7 +96,7 @@ const char *object_file_reader_get_string(CNAssetReader *reader, uint32_t off)
     return ((char *)(res + reader->header.strndx_off + off));
 }
 
-void object_file_reader_get_section(CNAssetReader *reader, struct section_blk *section_block, uint64_t section_index)
+CN_API void object_file_reader_get_section(const CNAssetReader *reader, struct section_blk *section_block, uint64_t section_index)
 {
     if (!reader || !reader->_content.ready) {
         section_block->section_blk_ptr = NULL;
@@ -120,7 +121,7 @@ void object_file_reader_get_section(CNAssetReader *reader, struct section_blk *s
     section_block->blk_size = reader->section_header.entries[section_index].section_size;
 }
 
-uint8_t object_file_reader_read_section_header(CNAssetReader *reader)
+CN_API uint8_t object_file_reader_read_section_header(CNAssetReader *reader)
 {
     if (!reader || !reader->_content.ready)
         return (1);
@@ -181,7 +182,7 @@ uint8_t object_file_reader_read_section_header(CNAssetReader *reader)
     return (0);
 }
 
-uint8_t init_object_file_reader(CNAssetReader *reader, const char *file_path)
+CN_API uint8_t init_object_file_reader(CNAssetReader *reader, const char *file_path)
 {
     if (!reader || !file_path)
         return (1);
@@ -247,7 +248,7 @@ uint8_t init_object_file_reader(CNAssetReader *reader, const char *file_path)
     return (0);
 }
 
-void uninit_object_file_reader(CNAssetReader *reader)
+CN_API void uninit_object_file_reader(CNAssetReader *reader)
 {
     if (!reader || !reader->_content.ready)
         return;
@@ -267,7 +268,7 @@ void uninit_object_file_reader(CNAssetReader *reader)
     reader->_content.ready = false;
 }
 
-void delete_object_file_reader(CNAssetReader *reader)
+CN_API void delete_object_file_reader(CNAssetReader *reader)
 {
     if (!reader)
         return;
@@ -279,10 +280,10 @@ void delete_object_file_reader(CNAssetReader *reader)
     (void)free(reader);
 }
 
-void print_object_file(CNAssetReader *reader)
+CN_API void print_object_file(CNAssetReader *reader)
 {
     printf("<asset[%s]:%d\n", object_file_reader_get_string(reader, reader->header.name), reader->header.type);
     for (uint64_t i = 0; i < reader->section_header.section_count; ++i)
-        printf("  <section[%s]:%d@(%lx-%lx)>\n", object_file_reader_get_string(reader, reader->section_header.entries[i].section_name), reader->section_header.entries[i].section_type, reader->section_header.entries[i].section_off, reader->section_header.entries[i].section_off + reader->section_header.entries[i].section_size);
+        printf("  <section[%s]:%d@(%" PRIx64 "-%" PRIx64 ")>\n", object_file_reader_get_string(reader, reader->section_header.entries[i].section_name), reader->section_header.entries[i].section_type, reader->section_header.entries[i].section_off, reader->section_header.entries[i].section_off + reader->section_header.entries[i].section_size);
     printf(">\n");
 }

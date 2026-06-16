@@ -173,53 +173,88 @@
         uint64_t blk_size;
     };
 
-    uint8_t fpwr_u8(FILE *fp, uint8_t v);
-    uint8_t fpwr_u16_be(FILE *fp, uint16_t v);
-    uint8_t fpwr_u16_le(FILE *fp, uint16_t v);
-    uint8_t fpwr_u32_be(FILE *fp, uint32_t v);
-    uint8_t fpwr_u32_le(FILE *fp, uint32_t v);
-    uint8_t fpwr_u64_be(FILE *fp, uint64_t v);
-    uint8_t fpwr_u64_le(FILE *fp, uint64_t v);
+    struct section_registry {
+        const char *name;
 
-    void bufwr_u8(char *buf, uint8_t v);
-    void bufwr_u16_be(char *buf, uint16_t v);
-    void bufwr_u16_le(char *buf, uint16_t v);
-    void bufwr_u32_be(char *buf, uint32_t v);
-    void bufwr_u32_le(char *buf, uint32_t v);
-    void bufwr_u64_be(char *buf, uint64_t v);
-    void bufwr_u64_le(char *buf, uint64_t v);
+        uint16_t section_type;
 
-    uint8_t bufrd_u8(const void *p);
-    uint16_t bufrd_u16_be(const void *p);
-    uint16_t bufrd_u16_le(const void *p);
-    uint32_t bufrd_u32_be(const void *p);
-    uint32_t bufrd_u32_le(const void *p);
-    uint64_t bufrd_u64_be(const void *p);
-    uint64_t bufrd_u64_le(const void *p);
+        char *(*data_builder)(struct engine_object_file_section_writer_ctx_s *self, const struct engine_object_file_writer_ctx_s *wctx, struct generic_map_s *strndx);
+        uint64_t (*size_compute)(struct engine_object_file_section_writer_ctx_s *self);
+        char *(*strndx_reconstructor)(char *rw_content, uint64_t content_size, const CNAssetReader *reader, struct generic_map_s *new_strndx);
+    };
 
-    fpio_handler_t fpio_handler_from_writer(const struct engine_object_file_writer_ctx_s *object_file_write_ctx);
+    struct asset_registry {
+        const char *name;
 
-    struct engine_object_file_writer_ctx_s *new_writer_ctx(const char *name);
-    uint8_t writer_ctx_set_object_name(struct engine_object_file_writer_ctx_s *wctx, const char *name);
-    uint8_t write_object_file(FILE *fp, const struct engine_object_file_writer_ctx_s *object_file_write_ctx);
-    uint8_t writer_ctx_add_section(struct engine_object_file_writer_ctx_s *wctx, struct engine_object_file_section_writer_ctx_s *section);
-    void delete_writer_ctx(struct engine_object_file_writer_ctx_s *wctx);
+        uint16_t asset_type;
 
-    struct engine_object_file_section_writer_ctx_s *new_writer_section(const char *name, void *content_holder);
-    uint8_t writer_section_set_name(struct engine_object_file_section_writer_ctx_s *section, const char *name);
-    void delete_writer_section(struct engine_object_file_section_writer_ctx_s *section);
-    uint32_t flags_to_align(uint32_t flags);
+        struct generic_vector_s registered_sections;
+    };
 
-    uint32_t add_str_table(const char *str, struct generic_map_s *strndx);
+    struct asset_loader_s {
+        void *dl_handle;
+        struct asset_registry *registry;
 
-    CNAssetReader *new_object_file_reader(void);
-    const char *object_file_reader_get_string(CNAssetReader *reader, uint32_t off);
-    uint8_t object_file_reader_read_header(CNAssetReader *reader);
-    uint8_t object_file_reader_read_section_header(CNAssetReader *reader);
-    void object_file_reader_get_section(CNAssetReader *reader, struct section_blk *section_block, uint64_t section_index);
-    uint8_t init_object_file_reader(CNAssetReader *reader, const char *file_path);
-    void uninit_object_file_reader(CNAssetReader *reader);
-    void delete_object_file_reader(CNAssetReader *reader);
-    void print_object_file(CNAssetReader *reader);
+        struct asset_registry *(*register_asset)(void);
+        void (*unregister_asset)(struct asset_registry *);
+    };
+
+    CN_API uint8_t fpwr_u8(FILE *fp, uint8_t v);
+    CN_API uint8_t fpwr_u16_be(FILE *fp, uint16_t v);
+    CN_API uint8_t fpwr_u16_le(FILE *fp, uint16_t v);
+    CN_API uint8_t fpwr_u32_be(FILE *fp, uint32_t v);
+    CN_API uint8_t fpwr_u32_le(FILE *fp, uint32_t v);
+    CN_API uint8_t fpwr_u64_be(FILE *fp, uint64_t v);
+    CN_API uint8_t fpwr_u64_le(FILE *fp, uint64_t v);
+
+    CN_API void bufwr_u8(char *buf, uint8_t v);
+    CN_API void bufwr_u16_be(char *buf, uint16_t v);
+    CN_API void bufwr_u16_le(char *buf, uint16_t v);
+    CN_API void bufwr_u32_be(char *buf, uint32_t v);
+    CN_API void bufwr_u32_le(char *buf, uint32_t v);
+    CN_API void bufwr_u64_be(char *buf, uint64_t v);
+    CN_API void bufwr_u64_le(char *buf, uint64_t v);
+
+    CN_API uint8_t bufrd_u8(const void *p);
+    CN_API uint16_t bufrd_u16_be(const void *p);
+    CN_API uint16_t bufrd_u16_le(const void *p);
+    CN_API uint32_t bufrd_u32_be(const void *p);
+    CN_API uint32_t bufrd_u32_le(const void *p);
+    CN_API uint64_t bufrd_u64_be(const void *p);
+    CN_API uint64_t bufrd_u64_le(const void *p);
+
+    CN_API fpio_handler_t fpio_handler_from_writer(const struct engine_object_file_writer_ctx_s *object_file_write_ctx);
+
+    CN_API struct engine_object_file_writer_ctx_s *new_writer_ctx(const char *name);
+    CN_API uint8_t writer_ctx_set_object_name(struct engine_object_file_writer_ctx_s *wctx, const char *name);
+    CN_API uint8_t write_object_file(FILE *fp, const struct engine_object_file_writer_ctx_s *object_file_write_ctx);
+    CN_API uint8_t writer_ctx_add_section(struct engine_object_file_writer_ctx_s *wctx, struct engine_object_file_section_writer_ctx_s *section);
+    CN_API void delete_writer_ctx(struct engine_object_file_writer_ctx_s *wctx);
+
+    CN_API struct engine_object_file_section_writer_ctx_s *new_writer_section(const char *name, void *content_holder);
+    CN_API uint8_t writer_section_set_name(struct engine_object_file_section_writer_ctx_s *section, const char *name);
+    CN_API void delete_writer_section(struct engine_object_file_section_writer_ctx_s *section);
+    CN_API uint32_t flags_to_align(uint32_t flags);
+
+    CN_API uint32_t add_str_table(const char *str, struct generic_map_s *strndx);
+
+    CN_API CNAssetReader *new_object_file_reader(void);
+    CN_API const char *object_file_reader_get_string(const CNAssetReader *reader, uint32_t off);
+    CN_API void object_file_reader_get_section(const CNAssetReader *reader, struct section_blk *section_block, uint64_t section_index);
+    CN_API uint8_t object_file_reader_read_header(CNAssetReader *reader);
+    CN_API uint8_t object_file_reader_read_section_header(CNAssetReader *reader);
+    CN_API uint8_t init_object_file_reader(CNAssetReader *reader, const char *file_path);
+    CN_API void uninit_object_file_reader(CNAssetReader *reader);
+    CN_API void delete_object_file_reader(CNAssetReader *reader);
+    CN_API void print_object_file(CNAssetReader *reader);
+
+    CN_API Object *new_asset_submodule(void);
+
+    CN_API struct asset_loader_s *new_asset_loader(void);
+    CN_API uint8_t asset_loader_init(struct asset_loader_s *loader, const char *path);
+    CN_API void asset_loader_uninit(struct asset_loader_s *loader);
+    CN_API void delete_asset_loader(struct asset_loader_s *loader);
+
+    CN_API uint8_t section_registry_to_wctx_section(const char *section_name, void *content, struct section_registry *reg, struct engine_object_file_writer_ctx_s *wctx);
 
 #endif

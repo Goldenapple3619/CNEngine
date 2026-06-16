@@ -137,7 +137,7 @@ static cn_value _init(Object *__this, void **args)
     if (!has_attr(ctx, "_main_window_id") || !has_attr(ctx, "all_window"))
         return (VALUE_ERR);
 
-    INIT_OBJECT_STATIC(ctx, new_atlas(NULL, (void (*)(void *))(&delete_input_entry)), NULL, "inputs");
+    INIT_OBJECT_STATIC(ctx, new_atlas(NULL, (expr_free)(&delete_input_entry)), NULL, "inputs");
 
     if (call_method(ctx, "register_event", PACK_ARG(&_events)).as.i == VALUE_ERR.as.i)
         return (VALUE_ERR);

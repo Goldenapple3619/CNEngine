@@ -16,7 +16,7 @@ static cn_value _init(Object *__this, void **args)
 
     INIT_INT(__this, mode->flags, "_flags");
 
-    INIT_OBJECT_STATIC(__this, new_list(), NULL, "childs");
+    INIT_OBJECT_STATIC(__this, new_list((expr_free)&collect_object), NULL, "childs");
 
     return (VALUE_OK);
 }

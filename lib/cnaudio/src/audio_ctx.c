@@ -54,7 +54,7 @@ static cn_value _init(Object *__this, void **args)
     // if (call_method(ctx, "register_event", PACK_ARG(_events, NULL)).as.i == VALUE_ERR.as.i)
     //     return (VALUE_ERR);
 
-    INIT_OBJECT_STATIC(ctx, new_atlas(NULL, (void (*)(void *))Mix_FreeChunk), NULL, "audio_atlas");
+    INIT_OBJECT_STATIC(ctx, new_atlas(NULL, (expr_free)&Mix_FreeChunk), NULL, "audio_atlas");
     INIT_CUSTOM_ALLOCATION(ctx, new_audio_vector(), delete_audio_vector, "audio_queue");
 
     INIT_METHOD(ctx, "get_free_audio_channels", _get_free_channels)

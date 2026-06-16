@@ -6,7 +6,7 @@ static cn_value _init(Object *__this, void **args)
 
     PREP_INIT()
 
-    INIT_OBJECT_STATIC(__this, new_list(), NULL, "objects");
+    INIT_OBJECT_STATIC(__this, new_list((expr_free)&collect_object), NULL, "objects");
 
     return (VALUE_OK);
 }

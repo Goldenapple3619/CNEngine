@@ -11,5 +11,10 @@
             
             </childs>
         </object>
+        <object type="__builtin_camera3d">
+            <name>main_camera</name>
+        </object>
     </content>
+
+    <default_camera>main_camera</default_camera>
 </scene>

@@ -19,7 +19,7 @@ static cn_value _init(Object *__this, void **args)
     INIT_VEC2(__this, upscale, "upscale");
     INIT_INT(__this, mode->flags, "_flags");
 
-    INIT_OBJECT_STATIC(__this, new_list(), NULL, "elements");
+    INIT_OBJECT_STATIC(__this, new_list((expr_free)&collect_object), NULL, "elements");
 
     INIT_STRING(__this, "name", "guiboard");
 
