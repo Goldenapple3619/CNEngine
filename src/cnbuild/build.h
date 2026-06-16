@@ -8,6 +8,15 @@
 
     #include "../engine.h"
 
+    #ifdef _WIN32
+        #include <direct.h>
+        #define MKDIR(path) _mkdir(path)
+    #else
+        #include <sys/stat.h>
+        #include <sys/types.h>
+        #define MKDIR(path) mkdir(path, 0755)
+    #endif
+
     struct build_args_s {
         char *output_file;
         struct generic_vector_s input_files;
@@ -17,6 +26,7 @@
     };
 
     char *strip_whitespace(const char *str);
+    char *string_from_node(xmlNode *node);
 
     uint8_t build_get_args(size_t argc, char **argv, struct build_args_s *args);
     void reset_args(struct build_args_s *args);

@@ -3,14 +3,15 @@
     <version>1.0.0</version>
 
     <builds>
-        <binary type="client" os="win" arch="amd64">
+        <binary os="linux" arch="amd64">
             <dependencies>
                 <module>core</module>
+                <module>assets</module>
                 <module>graphic</module>
                 <module>audio</module>
                 <module>network</module>
             </dependencies>
-            <name>${project_name}-client-windows-64bits.exe</name>
+            <name>${project_name}-client-windows-64bits</name>
             <entry>
                 main
             </entry>
@@ -18,7 +19,10 @@
     </builds>
 
     <ressources>
-        <path type="objects">${project_root}/objects</path>
-        <path type="scenes">${project_root}/scenes</path>
+        <dir type="objects">${project_root}/objects</dir>
+        <dir type="scenes">${project_root}/scenes</dir>
+        <dir type="assets">${project_root}/assets</dir>
+        <dir type="guis">${project_root}/guis</dir>
+        <file type="srcs">${project_root}/src/block.c</file>
     </ressources>
 </project>

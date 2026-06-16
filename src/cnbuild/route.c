@@ -105,8 +105,8 @@ Object *init_asset_ctx(void)
         return (NULL);
     }
 
-    if (call_method(asset_ctx, "register_fmt", PACK_ARG("./cnguiobj.so")).as.i == VALUE_ERR.as.i) {
-        fprintf(stderr, "failed to open format library %s.\n", "./cnguiobj.so");
+    if (call_method(asset_ctx, "register_fmt", PACK_ARG("./libcnguiobj.so")).as.i == VALUE_ERR.as.i) {
+        fprintf(stderr, "failed to open format library %s.\n", "./libcnguiobj.so");
         DELOC(asset_ctx);
         return (NULL);
     }

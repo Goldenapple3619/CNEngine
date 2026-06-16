@@ -24,9 +24,6 @@ void delete_parsed_gui(struct gui_element_s *parsed_gui)
 
 uint8_t fill_gui_element(xmlNode *node, struct gui_element_s *element)
 {
-    xmlChar *content;
-    char *striped;
-    size_t old_len = 0;
     uuid_t uuid;
 
     if (!element)
@@ -60,38 +57,11 @@ uint8_t fill_gui_element(xmlNode *node, struct gui_element_s *element)
     (void)uuid_generate_random(uuid);
     (void)uuid_unparse_lower(uuid, element->id);
 
-    for (xmlNode *node_child = node->children; node_child; node_child = node_child->next) {
-        if (node_child->type == XML_TEXT_NODE) {
-            content = xmlNodeGetContent(node_child);
-            striped = strip_whitespace((const char *)content);
-            if (!striped) {
-                if (content)
-                    (void)xmlFree(content);
-                (void)delete_parsed_gui(element);
-                return (1);
-            }
-            if (!strlen(striped)) {
-                (void)free(striped);
-                (void)xmlFree(content);
-                continue;
-            }
-            if (element->text_content)
-                old_len = strlen(element->text_content);
-            else
-                old_len = 0;
-            element->text_content = realloc(element->text_content, sizeof(char) * (old_len + strlen((const char *)striped) + 1));
+    element->text_content = string_from_node(node);
 
-            if (!element->text_content) {
-                (void)free(striped);
-                (void)xmlFree(content);
-                (void)delete_parsed_gui(element);
-                return (1);
-            }
-
-            memcpy(element->text_content + old_len, striped, sizeof(char) * (strlen(striped) + 1));
-            (void)free(striped);
-            (void)xmlFree(content);
-        }
+    if (!element->text_content) {
+        (void)delete_parsed_gui(element);
+        return (1);
     }
 
     return (0);
@@ -137,20 +107,27 @@ struct generic_vector_s *parse_xml_gui(const char *file_path, struct engine_obje
 
     if (strcmp((const char *)root->name, "gui")) {
         fprintf(stderr, "%s: invalid root element '%s', expecting 'gui'.\n", file_path, root->name);
+        (void)xmlFreeDoc(doc);
+        (void)xmlCleanupParser();
         return (NULL);
     }
 
     temp_s = xmlGetProp(root, (xmlChar *)"name");
     if (writer_ctx_set_object_name(wctx, (const char *)temp_s)) {
         fprintf(stderr, "string allocation failed.\n");
+        (void)xmlFreeDoc(doc);
+        (void)xmlCleanupParser();
         return (NULL);
     }
     xmlFree(temp_s);
 
     parsed_data = new_generic_vector();
 
-    if (!parsed_data)
+    if (!parsed_data) {
+        (void)xmlFreeDoc(doc);
+        (void)xmlCleanupParser();
         return (NULL);
+    }
 
     for (xmlNode *node = root->children; node; node = node->next) {
         if (node->type != XML_ELEMENT_NODE)
@@ -161,6 +138,8 @@ struct generic_vector_s *parse_xml_gui(const char *file_path, struct engine_obje
                     continue;
                 if (build_gui_element(node_child, parsed_data, NULL)) {
                     delete_generic_vector(parsed_data, (expr_free)&delete_parsed_gui);
+                    (void)xmlFreeDoc(doc);
+                    (void)xmlCleanupParser();
                     return (NULL);
                 }
             }
@@ -172,6 +151,8 @@ struct generic_vector_s *parse_xml_gui(const char *file_path, struct engine_obje
         } else {
             fprintf(stderr, "%s: invalid element '%s'.\n", file_path, root->name);
             delete_generic_vector(parsed_data, (expr_free)&delete_parsed_gui);
+            (void)xmlFreeDoc(doc);
+            (void)xmlCleanupParser();
             return (NULL);
         }
     }
