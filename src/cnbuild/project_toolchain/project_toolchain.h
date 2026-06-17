@@ -3,17 +3,6 @@
 
     #include "../build.h"
 
-    #ifdef _WIN32
-        #include <windows.h>
-        #define PATH_SEP '\\'
-    #else
-        #include <sys/stat.h>
-        #include <unistd.h>
-        #include <sys/wait.h>
-        #define PATH_SEP '/'
-    #endif
-
-
     typedef enum {
         CNBUILD_ARCH_HOST = 0x00,
         CNBUILD_ARCH_AMD64,
@@ -61,4 +50,32 @@
         struct generic_vector_s content;
     } CNProject;
 
+    typedef struct {
+        char *output_path;
+        
+        char *compiler_path;
+        
+        char *includes_path;
+        char *build_path;
+        struct generic_vector_s srcs;
+        struct generic_vector_s objs;
+    } LibraryCompiler;
+
+
+    CNProject *new_cnproject(void);
+    void delete_cnproject(CNProject *ptr);
+
+    CNAsset *new_cnasset(const char *asset_location, cnasset_type tp);
+    void delete_cnasset(CNAsset *ptr);
+
+    cnasset_type tp_from_string(const char *str);
+    uint8_t cnressources_walk_path(CNProject *project, char *path, cnasset_type tp);
+
+    char *resolve_path(char *base_path, const char *project_root);
+
+    CNProject *parse_project_xml(const char *file_path, const char *project_root);
+    uint8_t parse_cnressources_xml(CNProject *project, xmlNode *node, const char *project_root);
+    uint8_t parse_cnbuilds_xml(CNProject *project, xmlNode *node);
+
+    uint8_t compile_library(const CNProject *project, const char *build_path, const char *include_path);
 #endif

@@ -199,7 +199,8 @@ if(CN_BUILD_ENGINE)
     add_executable(cn_engine
         src/main.c
         src/argparser.c
-
+        src/fs.c
+        
         src/init/route.c
 
         src/cnbuild/route.c
@@ -212,6 +213,14 @@ if(CN_BUILD_ENGINE)
         src/cnbuild/object_toolchain/route.c
     
         src/cnbuild/project_toolchain/route.c
+        src/cnbuild/project_toolchain/utils.c
+        src/cnbuild/project_toolchain/ressources.c
+        src/cnbuild/project_toolchain/cnasset.c
+        src/cnbuild/project_toolchain/cnproject.c
+        src/cnbuild/project_toolchain/parsers/builds.c
+        src/cnbuild/project_toolchain/parsers/ressources.c
+        src/cnbuild/project_toolchain/parsers/project.c
+        src/cnbuild/project_toolchain/generation/library_compiler.c
     
         src/cnbuild/gui_toolchain/route.c
         src/cnbuild/gui_toolchain/gui.c

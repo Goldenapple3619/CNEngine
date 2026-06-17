@@ -16,4 +16,4 @@ cmake ../.. \
     -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DCN_SANITIZE=OFF
 
-cmake --build . -- -j8
+cmake --build . -- -j$(nproc)

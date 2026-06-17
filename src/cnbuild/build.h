@@ -8,15 +8,6 @@
 
     #include "../engine.h"
 
-    #ifdef _WIN32
-        #include <direct.h>
-        #define MKDIR(path) _mkdir(path)
-    #else
-        #include <sys/stat.h>
-        #include <sys/types.h>
-        #define MKDIR(path) mkdir(path, 0755)
-    #endif
-
     struct build_args_s {
         char *output_file;
         struct generic_vector_s input_files;
