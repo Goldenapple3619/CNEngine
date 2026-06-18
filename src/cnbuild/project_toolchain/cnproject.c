@@ -26,9 +26,9 @@ void delete_cnproject(CNProject *ptr)
     if (!ptr)
         return;
     if (ptr->builds.content)
-        (void)empty_generic_vector(&ptr->builds, &free);
+        (void)empty_generic_vector(&ptr->builds, (expr_free)&delete_build);
     if (ptr->content.content)
-        (void)empty_generic_vector(&ptr->content, &free);
+        (void)empty_generic_vector(&ptr->content, (expr_free)&delete_cnasset);
     if (ptr->name)
         (void)free(ptr->name);
     if (ptr->version_name)

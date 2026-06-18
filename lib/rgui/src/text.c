@@ -75,7 +75,7 @@ CN_API Object *new_text(void)
     if (!obj)
         return (NULL);
 
-    SET_PARENT_CLASS_BUILD(obj, new_guiobject());
+    SET_PARENT_CLASS_BUILD_STATIC(obj, new_guiobject());
     CREATE_METHOD_CLASS_BUILD(obj, "_init", &_init);
     CREATE_METHOD_CLASS_BUILD(obj, "set_text", &_set_text);
     CREATE_METHOD_CLASS_BUILD(obj, "_del", &_del);

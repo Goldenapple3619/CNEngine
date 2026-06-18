@@ -6,16 +6,20 @@ static volatile cnbool gc_running = false;
 
 CN_API Object *share_object(Object *object)
 {
-    if (!object)
+    if (!object) {
+        RAISE(ERR_INVALID_POINTER, "can't share empty obj.");
         return (NULL);
+    }
     object->ref_count++;
     return (object);
 }
 
 CN_API Object *release_object(Object *object)
 {
-    if (!object)
+    if (!object) {
+        RAISE(ERR_INVALID_POINTER, "can't release empty obj.");
         return (NULL);
+    }
     object->ref_count--;
     return (object);
 }
@@ -40,8 +44,10 @@ CN_API void run_gc(void)
 
 CN_API void collect_object(Object *object)
 {
-    if (!object)
+    if (!object) {
+        RAISE(ERR_INVALID_POINTER, "can't collect empty obj.");
         return;
+    }
 
     (void)release_object(object);
 

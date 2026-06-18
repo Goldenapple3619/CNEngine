@@ -2,8 +2,10 @@
 
 void _delete_object_attribute_value(cn_value *val)
 {
-    if (!val)
+    if (!val) {
+        RAISE(ERR_INVALID_POINTER, "can't delete value from invalid ptr.");
         return;
+    }
     switch (val->type) {
         case (CN_TYPE_INT):
         case (CN_TYPE_NUMBER):
@@ -21,29 +23,31 @@ void _delete_object_attribute_value(cn_value *val)
         case (CN_TYPE_STRING):
             if (val->as.str)
                 (void)free(val->as.str);
+            else
+                RAISE(ERR_INVALID_TYPE, "can't delete empty str.");
             val->as.str = NULL;
             break;
 
         case (CN_TYPE_OBJECT):
-            if (val->as.ptr) {
-                // (void)release_object(val->as.ptr);
-
-                // if (((Object *)val->as.ptr)->ref_count <= 0)
-                //     (void)delete_object(val->as.ptr);
+            if (val->as.ptr)
                 (void)collect_object(val->as.ptr);
-            }
+            else
+                RAISE(ERR_INVALID_TYPE, "can't delete empty object.");
             val->as.ptr = NULL;
             break;
 
         default:
+            RAISE(ERR_INVALID_TYPE, "value has invalid type.");
             break;
     }
 }
 
 void _init_attribute_value(cn_value *dest, cnany value)
 {
-    if (!dest)
+    if (!dest) {
+        RAISE(ERR_INVALID_POINTER, "can't init value on invalid ptr.");
         return;
+    }
     switch (dest->type) {
         case (CN_TYPE_NULL):
             dest->as.i = 0;
@@ -82,17 +86,22 @@ void _init_attribute_value(cn_value *dest, cnany value)
             dest->as.ptr = value;
             break;
         case (CN_TYPE_STRING):
-            dest->as.str = value ? strdup((char *)value) : NULL;;
+            dest->as.str = value ? strdup((char *)value) : NULL;
+            if (value && !dest->as.str)
+                RAISE(ERR_OUT_OF_MEMORY, "failed to allocate string value.");
             break;
         default:
+            RAISE(ERR_INVALID_TYPE, "value has invalid type.");
             break;
     }
 }
 
 void *_attribute_value_extract(const cn_value *src)
 {
-    if (!src)
+    if (!src) {
+        RAISE(ERR_INVALID_POINTER, "can't extract value from invalid ptr.");
         return (NULL);
+    }
     switch (src->type) {
         case (CN_TYPE_NULL):
             return (void *)&src->as.i;
@@ -134,6 +143,7 @@ void *_attribute_value_extract(const cn_value *src)
             return src->as.str;
             break;
         default:
+            RAISE(ERR_INVALID_TYPE, "value has invalid type.");
             break;
     }
     return (NULL);

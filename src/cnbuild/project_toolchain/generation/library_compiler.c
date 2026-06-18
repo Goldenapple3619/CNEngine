@@ -179,7 +179,10 @@ uint8_t compile_library(const CNProject *project, const char *build_path, const 
         temp_asset = project->content.content[i];
 
         if (temp_asset->type == CNASSET_TP_SRC) {
-            library_compiler_add_src(compiler, temp_asset->location);
+            if (library_compiler_add_src(compiler, temp_asset->location)) {
+                (void)delete_library_compiler(compiler);
+                return (1);
+            }
         }
     }
 
@@ -192,6 +195,8 @@ uint8_t compile_library(const CNProject *project, const char *build_path, const 
         delete_library_compiler(compiler);
         return (1);
     }
+
+    (void)delete_library_compiler(compiler);
 
     return (0);
 }

@@ -29,7 +29,7 @@ CN_API Object *new_object2d(void)
     if (!obj)
         return (NULL);
 
-    SET_PARENT_CLASS_BUILD(obj, new_scene_object());
+    SET_PARENT_CLASS_BUILD_STATIC(obj, new_scene_object());
     CREATE_METHOD_CLASS_BUILD(obj, "_init", &_init);
     CREATE_METHOD_CLASS_BUILD(obj, "_del", &_del);
     return (obj);

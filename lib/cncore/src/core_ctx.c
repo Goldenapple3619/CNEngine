@@ -179,10 +179,12 @@ CN_API Object *new_ctx()
 
     Object *obj = new_object();
 
-    if (!obj)
+    if (!obj) {
+        PROPAGATE_ERR();
         return (NULL);
+    }
 
-    SET_PARENT_CLASS_BUILD(obj, create_default_object());
+    SET_PARENT_CLASS_BUILD_STATIC(obj, create_default_object());
     CREATE_CUSTOM_ALLOCATION_CLASS_BUILD(obj, new_object_vector(), delete_object_vector, "submodules");
 
     CREATE_METHOD_CLASS_BUILD(obj, "_init", &_init);

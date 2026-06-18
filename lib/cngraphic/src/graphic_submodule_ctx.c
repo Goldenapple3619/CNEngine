@@ -213,7 +213,7 @@ CN_API Object *new_graphic_submodule(void)
     if (!obj)
         return (NULL);
 
-    SET_PARENT_CLASS_BUILD(obj, create_default_object());
+    SET_PARENT_CLASS_BUILD_STATIC(obj, create_default_object());
     CREATE_METHOD_CLASS_BUILD(obj, "_init", &_init);
     CREATE_METHOD_CLASS_BUILD(obj, "_del", &_del);
     return (obj);

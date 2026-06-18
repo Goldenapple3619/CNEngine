@@ -10,40 +10,60 @@
     #endif
 
     #define GC_MAX_SIZE 256
+    #define ERR_MAX_FRAMES 32
+    #define ERR_MSG_SIZE 128
+    #define ERR_HISTORY 128
+
+    #define ERR_FULL_TRACE 1
 
     #define true ~(0 << 1)
     #define false 0
 
     #define STRING_INDIVIDUAL_ALLOCATION 1 // are we duping every string ? or are they handled with an atlas
 
+    #define RAISE(c, msg) raise_error(c, msg, __FILE__, __func__, __LINE__);
+    #define PROPAGATE_ERR() push_error(__FILE__, __func__, __LINE__);
+
     #define PREP_INIT() void *__temp_alloc;
     #define PREP_CLASS_BUILD() PREP_INIT()
     #define INIT_CUSTOM_ALLOCATION(__this, expr_alloc, expr_free, name) \
         __temp_alloc = (void *)expr_alloc; \
-        if (!__temp_alloc) \
+        if (!__temp_alloc) { \
+            PROPAGATE_ERR(); \
             return (VALUE_ERR); \
+        } \
         if (!set_attr(__this, name, CN_TYPE_GENERIC_UNIQ_PTR, (cnany)__temp_alloc)) { \
+            PROPAGATE_ERR(); \
             (void)expr_free(__temp_alloc); \
             return (VALUE_ERR); \
         }
     #define INIT_OBJECT_STATIC(__this, expr_alloc, args, name) \
         __temp_alloc = (void *)build_object(expr_alloc, args); \
-        if (!__temp_alloc) \
+        if (!__temp_alloc) { \
+            PROPAGATE_ERR(); \
             return (VALUE_ERR); \
+        } \
         if (!set_attr(__this, name, CN_TYPE_OBJECT, (cnany)__temp_alloc)) { \
+            PROPAGATE_ERR(); \
             (void)delete_object(__temp_alloc); \
             return (VALUE_ERR); \
         }
     #define INIT_OBJECT_SHR(__this, obj, name) \
-        if (!obj) \
+        if (!obj) { \
+            RAISE(ERR_INVALID_POINTER, "can't init share object with empty object."); \
             return (VALUE_ERR); \
+        } \
         if (!set_attr(__this, name, CN_TYPE_OBJECT, (cnany)obj)) { \
+            PROPAGATE_ERR(); \
             return (VALUE_ERR); \
         }
     #define INIT_OBJECT_SHR_WEAK(__this, obj, name) \
-        if (!obj) \
+        if (!obj) { \
+            RAISE(ERR_INVALID_POINTER, "can't init share weak object with empty object."); \
             return (VALUE_ERR); \
+        } \
         if (!set_attr(__this, name, CN_TYPE_WEAK_OBJECT, (cnany)obj)) { \
+            PROPAGATE_ERR(); \
             return (VALUE_ERR); \
         }
     #define PREP_DEL() cn_value *__temp_alloc;
@@ -54,47 +74,67 @@
             __temp_alloc->as.ptr = NULL; \
         }
     #define INIT_STRING(__this, string, name) \
-        if (!set_attr(__this, name, CN_TYPE_STRING, (cnany)string)) \
-            return (VALUE_ERR);
+        if (!set_attr(__this, name, CN_TYPE_STRING, (cnany)string)) { \
+            PROPAGATE_ERR(); \
+            return (VALUE_ERR); \
+        }
     #define INIT_INT(__this, number, name) \
-        if (!set_attr(__this, name, CN_TYPE_INT, (cnany)((int64_t [1]){number}))) \
-            return (VALUE_ERR);
+        if (!set_attr(__this, name, CN_TYPE_INT, (cnany)((int64_t [1]){number}))) { \
+            PROPAGATE_ERR(); \
+            return (VALUE_ERR); \
+        }
     #define INIT_NUMBER(__this, number, name) \
-        if (!set_attr(__this, name, CN_TYPE_NUMBER, (cnany)((cnnumber [1]){number}))) \
-            return (VALUE_ERR);
+        if (!set_attr(__this, name, CN_TYPE_NUMBER, (cnany)((cnnumber [1]){number}))) { \
+            PROPAGATE_ERR(); \
+            return (VALUE_ERR); \
+        }
     #define INIT_VEC2(__this, vec2, name) \
-        if (!set_attr(__this, name, CN_TYPE_VEC2, (cnany)(&vec2))) \
-            return (VALUE_ERR);
+        if (!set_attr(__this, name, CN_TYPE_VEC2, (cnany)(&vec2))) { \
+            PROPAGATE_ERR(); \
+            return (VALUE_ERR); \
+        }
     #define INIT_VEC3(__this, vec3, name) \
-        if (!set_attr(__this, name, CN_TYPE_VEC3, (cnany)(&vec3))) \
-            return (VALUE_ERR);
+        if (!set_attr(__this, name, CN_TYPE_VEC3, (cnany)(&vec3))) { \
+            PROPAGATE_ERR(); \
+            return (VALUE_ERR); \
+        }
     #define INIT_RECT(__this, rect, name) \
-        if (!set_attr(__this, name, CN_TYPE_RECT, (cnany)(&rect))) \
-            return (VALUE_ERR);
+        if (!set_attr(__this, name, CN_TYPE_RECT, (cnany)(&rect))) { \
+            PROPAGATE_ERR(); \
+            return (VALUE_ERR); \
+        }
     #define INIT_FLOAT(__this, number, name) \
-        if (!set_attr(__this, name, CN_TYPE_FLOAT, (cnany)((double [1]){number}))) \
-            return (VALUE_ERR);
+        if (!set_attr(__this, name, CN_TYPE_FLOAT, (cnany)((double [1]){number}))) { \
+            PROPAGATE_ERR(); \
+            return (VALUE_ERR); \
+        }
     #define INIT_METHOD(__this, name, callback) \
-        if (!set_method(__this, name, callback)) \
-            return (VALUE_ERR);
+        if (!set_method(__this, name, callback)) { \
+            PROPAGATE_ERR(); \
+            return (VALUE_ERR); \
+        }
     #define CREATE_METHOD_CLASS_BUILD(__class, name, callback) \
         if (!set_method(__class, name, callback)) { \
+            PROPAGATE_ERR(); \
             (void)delete_object(__class); \
             return (NULL); \
         }
-    #define SET_PARENT_CLASS_BUILD(__class, __parent) \
+    #define SET_PARENT_CLASS_BUILD_STATIC(__class, __parent) \
         __class->base = __parent; \
         if (!__class->base) { \
+            PROPAGATE_ERR(); \
             (void)delete_object(__class); \
             return (NULL); \
         }
     #define CREATE_CUSTOM_ALLOCATION_CLASS_BUILD(__class, expr_alloc, expr_free, name) \
         __temp_alloc = expr_alloc; \
         if (!__temp_alloc) { \
+            PROPAGATE_ERR(); \
             (void)delete_object(__class); \
             return (NULL); \
         } \
         if (!set_attr(__class, name, CN_TYPE_GENERIC_UNIQ_PTR, (cnany)__temp_alloc)) { \
+            PROPAGATE_ERR(); \
             (void)expr_free(__temp_alloc); \
             (void)delete_object(__class); \
             return (NULL); \
@@ -256,10 +296,37 @@
         size_t capacity;
     };
 
+    typedef enum {
+        ERR_OK = 0,
+        ERR_OUT_OF_MEMORY,
+        ERR_INVALID_POINTER,
+        ERR_OS,
+        ERR_OUT_OF_BOUND,
+        ERR_INVALID_TYPE,
+        ERR_NOT_COMPATIBLE,
+        ERR_RUNTIME
+    } ErrorCode;
+
     typedef struct {
         struct object_s *obj;
         cn_method method;
     } ObjMethodPair;
+
+    typedef struct {
+        const char *file;
+        const char *function;
+        uint32_t line;
+    } ErrorFrame;
+
+    typedef struct {
+        ErrorCode code;
+
+        char message[ERR_MSG_SIZE];
+
+        uint32_t frame_count;
+
+        ErrorFrame frames[ERR_MAX_FRAMES];
+    } ErrorContext;
 
     typedef struct vector2_s Vector2;
     typedef struct vector3_s Vector3;
@@ -407,5 +474,12 @@
     CN_API void *cnopen_library(const char *path);
     CN_API void *cnget_symbol(void *handle, const char *name);
     CN_API void cnclose_library(void *handle);
+    
+    CN_API void raise_error(ErrorCode c, const char *message, const char *file, const char *function, uint32_t line);
+    CN_API void push_error(const char *file, const char *function, uint32_t line);
+    CN_API const ErrorContext *get_error(void);
+    CN_API cnbool has_error(void);
+    CN_API void print_error(const ErrorContext *err, FILE *output);
+    CN_API const char *error_type_to_text(ErrorCode c);
 
 #endif

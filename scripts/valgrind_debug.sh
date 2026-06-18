@@ -3,4 +3,4 @@
 valgrind \
   --leak-check=full \
   --show-leak-kinds=definite,indirect \
-  --errors-for-leak-kinds=definite,indirect --suppressions=./configs/valgrind.supp $1
+  --errors-for-leak-kinds=definite,indirect --suppressions=./configs/valgrind.supp "$@"

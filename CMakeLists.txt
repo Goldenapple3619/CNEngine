@@ -177,6 +177,10 @@ if(CN_SANITIZE)
     add_link_options(-fsanitize=address,undefined)
 endif()
 
+add_compile_options(
+    -ffile-prefix-map=${CMAKE_SOURCE_DIR}=.
+)
+
 # ========= Modules =========
 add_subdirectory(lib/cncore)
 add_subdirectory(lib/cngraphic)
@@ -217,6 +221,7 @@ if(CN_BUILD_ENGINE)
         src/cnbuild/project_toolchain/ressources.c
         src/cnbuild/project_toolchain/cnasset.c
         src/cnbuild/project_toolchain/cnproject.c
+        src/cnbuild/project_toolchain/cnbuild.c
         src/cnbuild/project_toolchain/parsers/builds.c
         src/cnbuild/project_toolchain/parsers/ressources.c
         src/cnbuild/project_toolchain/parsers/project.c

@@ -34,5 +34,9 @@ CN_API struct asset_registry *register_asset(void)
 
 CN_API void unregister_asset(struct asset_registry *registered_asset)
 {
-    (void)registered_asset;
+    if (!registered_asset)
+        return;
+    if (registered_asset->registered_sections.content)
+        (void)empty_generic_vector(&registered_asset->registered_sections, &free);
+    (void)free(registered_asset);
 }

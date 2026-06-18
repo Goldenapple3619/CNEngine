@@ -279,7 +279,7 @@ CN_API Object *new_guiboard(void)
     if (!obj)
         return (NULL);
 
-    SET_PARENT_CLASS_BUILD(obj, create_default_object());
+    SET_PARENT_CLASS_BUILD_STATIC(obj, create_default_object());
     CREATE_METHOD_CLASS_BUILD(obj, "_init", &_init);
     CREATE_METHOD_CLASS_BUILD(obj, "_events", &_events);
     CREATE_METHOD_CLASS_BUILD(obj, "_update", &_update);

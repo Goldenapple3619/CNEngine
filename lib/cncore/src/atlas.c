@@ -8,12 +8,15 @@ static cn_value _init(Object *__this, void **args)
 
     void (*_delobj_cb)(void *) = get_attr(__this, "_delobj_cb")->as.ptr;
 
-    __temp_alloc = (void *)new_generic_map(); \
-    if (!__temp_alloc) \
-        return (VALUE_ERR); \
-    if (!set_attr(__this, "_map", CN_TYPE_GENERIC_UNIQ_PTR, (cnany)__temp_alloc)) { \
-        (void)delete_generic_map(__temp_alloc, _delobj_cb); \
-        return (VALUE_ERR); \
+    __temp_alloc = (void *)new_generic_map();
+    if (!__temp_alloc) {
+        PROPAGATE_ERR();
+        return (VALUE_ERR);
+    }
+    if (!set_attr(__this, "_map", CN_TYPE_GENERIC_UNIQ_PTR, (cnany)__temp_alloc)) {
+        PROPAGATE_ERR();
+        (void)delete_generic_map(__temp_alloc, _delobj_cb);
+        return (VALUE_ERR);
     }
 
     return (VALUE_OK);
@@ -21,22 +24,28 @@ static cn_value _init(Object *__this, void **args)
 
 static cn_value _push(Object *__this, void **args)
 {
-    if (!args || !args[0] || !args[1])
+    if (!args || !args[0] || !args[1]) {
+        RAISE(ERR_INVALID_POINTER, "can't push with no key, values args.")
         return (VALUE_ERR);
+    }
 
     struct generic_map_s *gen_map = get_attr(__this, "_map")->as.ptr;
     void (*_delobj_cb)(void *) = get_attr(__this, "_delobj_cb")->as.ptr;
     
-    if (add_generic_map(gen_map, args[0], (char *)(args[1]), _delobj_cb))
+    if (add_generic_map(gen_map, args[0], (char *)(args[1]), _delobj_cb)) {
+        PROPAGATE_ERR();
         return (VALUE_ERR);
+    }
 
     return (VALUE_OK);
 }
 
 static cn_value _at(Object *__this, void **args)
 {
-    if (!args || !args[0])
+    if (!args || !args[0]) {
+        RAISE(ERR_INVALID_POINTER, "can't get with no key arg.")
         return (null_value);
+    }
     
     struct generic_map_s *gen_map = get_attr(__this, "_map")->as.ptr;
     void (*_delobj_cb)(void *) = get_attr(__this, "_delobj_cb")->as.ptr;
@@ -46,34 +55,44 @@ static cn_value _at(Object *__this, void **args)
 
     if (item)
         return ((cn_value){.type=CN_TYPE_GENERIC_UNIQ_PTR, .as.ptr=(void *)item});
-    else
+    else {
+        PROPAGATE_ERR();
         return (null_value);
+    }
 }
 
 static cn_value _at_value(Object *__this, void **args)
 {
-    if (!args || !args[0])
+    if (!args || !args[0]) {
+        RAISE(ERR_INVALID_POINTER, "can't get with no index arg.")
         return (null_value);
+    }
     
     struct generic_map_s *gen_map = get_attr(__this, "_map")->as.ptr;
     size_t index = *(size_t *)args[0];
 
-    if (gen_map->size <= index)
+    if (gen_map->size <= index) {
+        RAISE(ERR_OUT_OF_BOUND, "get at invalid index.")
         return (null_value);
+    }
 
     return ((cn_value){.type=CN_TYPE_GENERIC_UNIQ_PTR, .as.ptr=gen_map->content[index]});
 }
 
 static cn_value _at_key(Object *__this, void **args)
 {
-    if (!args || !args[0])
+    if (!args || !args[0]) {
+        RAISE(ERR_INVALID_POINTER, "can't get with no index arg.")
         return (null_value);
+    }
     
     struct generic_map_s *gen_map = get_attr(__this, "_map")->as.ptr;
     size_t index = *(size_t *)args[0];
 
-    if (gen_map->size <= index)
+    if (gen_map->size <= index) {
+        RAISE(ERR_OUT_OF_BOUND, "get at invalid index.")
         return (null_value);
+    }
 
     return ((cn_value){.type=CN_TYPE_INT, .as.i=gen_map->keys[index]});
 }
@@ -89,8 +108,10 @@ static cn_value _len(Object *__this, void **args)
 
 static cn_value _remove(Object *__this, void **args)
 {
-    if (!args || !(args[0]))
+    if (!args || !(args[0])) {
+        RAISE(ERR_INVALID_POINTER, "can't remove with no key arg.")
         return (VALUE_ERR);
+    }
     
     struct generic_map_s *gen_map = get_attr(__this, "_map")->as.ptr;
     void (*_delobj_cb)(void *) = get_attr(__this, "_delobj_cb")->as.ptr;
@@ -146,9 +167,8 @@ CN_API void atlas_iterator_next(struct list_iterator_s *iterator)
 
 CN_API cnbool atlas_iterator_value_isnull(const struct list_iterator_s *iterator)
 {
-    if (!iterator || iterator->val.type == CN_TYPE_NULL) {
+    if (!iterator || iterator->val.type == CN_TYPE_NULL)
         return (true);
-    }
     return (false);
 }
 
@@ -163,16 +183,20 @@ CN_API Object *new_atlas(void *(*_fetch_default)(const char *), void (*_delete_o
 {
     Object *obj = new_object();
 
-    if (!obj)
+    if (!obj) {
+        PROPAGATE_ERR();
         return (NULL);
+    }
 
-    SET_PARENT_CLASS_BUILD(obj, create_default_object());
+    SET_PARENT_CLASS_BUILD_STATIC(obj, create_default_object());
 
     if (!set_attr(obj, "_delobj_cb", CN_TYPE_GENERIC_UNIQ_PTR, (cnany)_delete_obj)) {
+        PROPAGATE_ERR()
         (void)delete_object(obj);
         return (NULL);
     }
     if (!set_attr(obj, "_fetchobj_cb", CN_TYPE_GENERIC_UNIQ_PTR, (cnany)_fetch_default)) {
+        PROPAGATE_ERR()
         (void)delete_object(obj);
         return (NULL);
     }

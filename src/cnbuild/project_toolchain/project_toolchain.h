@@ -68,6 +68,11 @@
     CNAsset *new_cnasset(const char *asset_location, cnasset_type tp);
     void delete_cnasset(CNAsset *ptr);
 
+    CNBuild *new_build(void);
+    uint8_t build_set_entry_point(CNBuild *build, const char *entry_point);
+    uint8_t build_set_name(CNBuild *build, const char *name);
+    void delete_build(CNBuild *build);
+
     cnasset_type tp_from_string(const char *str);
     uint8_t cnressources_walk_path(CNProject *project, char *path, cnasset_type tp);
 

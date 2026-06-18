@@ -5,22 +5,50 @@
 
     CN_API void *cnopen_library(const char *path)
     {
+        if (!path) {
+            RAISE(ERR_INVALID_POINTER, "openlibrary with empty name argument.");
+            return (NULL);
+        }
+    
         HMODULE h = LoadLibraryA(path);
+
+        if (!h) {
+            RAISE(ERR_OS, "failed to open library.");
+            return (NULL);
+        }
 
         return ((void *)h);
     }
 
     CN_API void *cnget_symbol(void *handle, const char *name)
     {
+        if (!handle) {
+            RAISE(ERR_INVALID_POINTER, "getsymbol on empty library pointer.");
+            return (NULL);
+        }
+
+        if (!name) {
+            RAISE(ERR_INVALID_POINTER, "getsymbol with empty name argument.");
+            return (NULL);
+        }
+    
         FARPROC sym = GetProcAddress((HMODULE)handle, name);
+
+        if (!sym) {
+            RAISE(ERR_OS, "failed to extract symbol.");
+            return (NULL);
+        }
 
         return ((void *)sym);
     }
 
     CN_API void cnclose_library(void *handle)
     {
-        if (handle)
-            (void)FreeLibrary((HMODULE)handle);
+        if (!handle) {
+            RAISE(ERR_INVALID_POINTER, "close on empty library pointer.");
+            return;
+        }
+        (void)FreeLibrary((HMODULE)handle);
     }
 
 #else
@@ -28,22 +56,43 @@
 
     CN_API void *cnopen_library(const char *path)
     {
+        if (!path) {
+            RAISE(ERR_INVALID_POINTER, "openlibrary with empty name argument.");
+            return (NULL);
+        }
         dlerror();
 
         void *h = dlopen(path, RTLD_NOW | RTLD_LOCAL);
+
+        if (!h) {
+            const char *err = dlerror();
+    
+            RAISE(ERR_OS, err);
+            return (NULL);
+        }
 
         return (h);
     }
 
     CN_API void *cnget_symbol(void *handle, const char *name)
     {
+        if (!handle) {
+            RAISE(ERR_INVALID_POINTER, "getsymbol on empty library pointer.");
+            return (NULL);
+        }
+
+        if (!name) {
+            RAISE(ERR_INVALID_POINTER, "getsymbol with empty name argument.");
+            return (NULL);
+        }
+
         dlerror();
 
         void *sym = dlsym(handle, name);
 
         const char *err = dlerror();
-        if (err)
-        {
+        if (!sym || err) {
+            RAISE(ERR_OS, err);
             return (NULL);
         }
 
@@ -52,7 +101,11 @@
 
     CN_API void cnclose_library(void *handle)
     {
-        if (handle)
-            dlclose(handle);
+        if (!handle) {
+            RAISE(ERR_INVALID_POINTER, "close on empty library pointer.");
+            return;
+        }
+
+        (void)dlclose(handle);
     }
 #endif

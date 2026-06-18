@@ -22,6 +22,7 @@ add_library(cncore SHARED
     src/generic_map.c
     src/generic_vector.c
     src/library.c
+    src/error.c
 )
 
 target_compile_options(cncore

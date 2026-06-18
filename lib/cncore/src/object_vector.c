@@ -4,8 +4,10 @@ CN_API ObjectVector *new_object_vector(void)
 {
     ObjectVector *vec = (ObjectVector *)malloc(sizeof(ObjectVector));
 
-    if (!vec)
+    if (!vec) {
+        RAISE(ERR_OUT_OF_MEMORY, "failed to allocate object vector.");
         return (NULL);
+    }
     vec->capacity = 0;
     vec->size = 0;
     vec->objects = NULL;
@@ -14,13 +16,11 @@ CN_API ObjectVector *new_object_vector(void)
 
 CN_API void delete_object_vector(ObjectVector *vec)
 {
-    if (!vec)
+    if (!vec) {
+        RAISE(ERR_INVALID_POINTER, "can't delete empty object vector.");
         return;
+    }
     for (size_t i = 0; i < vec->size; ++i) {
-        // (void)release_object(vec->objects[i]);
-
-        // if (((Object *)vec->objects[i])->ref_count <= 0)
-        //     (void)delete_object(vec->objects[i]);
         (void)collect_object(vec->objects[i]);
     }
     if (vec->objects) {
@@ -34,12 +34,16 @@ CN_API void delete_object_vector(ObjectVector *vec)
 
 CN_API uint8_t resize_object_vector(ObjectVector *vec, size_t new_capacity)
 {
-    if (!vec)
+    if (!vec) {
+        RAISE(ERR_INVALID_POINTER, "can't resize empty object vector.");
         return (1);
+    }
 
     vec->objects = realloc(vec->objects, new_capacity * sizeof(Object *));
 
     if (!vec->objects) {
+        RAISE(ERR_OUT_OF_MEMORY, "failed to resize object vector.");
+        vec->size = 0;
         vec->capacity = 0;
         return (1);
     }
@@ -51,13 +55,22 @@ CN_API uint8_t resize_object_vector(ObjectVector *vec, size_t new_capacity)
 
 CN_API uint8_t insert_object_vector(ObjectVector *vec, Object *obj)
 {
-    if (!vec || !obj)
+    if (!vec) {
+        RAISE(ERR_INVALID_POINTER, "can't insert in empty object vector.");
         return (1);
+    }
+
+    if (!obj) {
+        RAISE(ERR_INVALID_POINTER, "can't insert empty object.");
+        return (1);
+    }
 
     if (vec->size >= vec->capacity) {
         size_t new_capacity = vec->capacity == 0 ? 8 : vec->capacity * 2;
-        if (resize_object_vector(vec, new_capacity))
+        if (resize_object_vector(vec, new_capacity)) {
+            PROPAGATE_ERR()
             return (1);
+        }
     }
 
     vec->objects[vec->size] = obj;
@@ -68,15 +81,18 @@ CN_API uint8_t insert_object_vector(ObjectVector *vec, Object *obj)
 
 CN_API void remove_object_vector(ObjectVector *vec, size_t i)
 {
-    if (!vec || vec->size == 0 || i >= vec->size)
+    if (!vec) {
+        RAISE(ERR_INVALID_POINTER, "can't remove in empty object vector.");
         return;
+    }
+
+    if (vec->size == 0 || i >= vec->size) {
+        RAISE(ERR_OUT_OF_BOUND, "can't remove at invalid position.");
+        return;
+    }
 
     size_t last = vec->size - 1;
 
-    // (void)release_object(vec->objects[i]);
-
-    // if (((Object *)vec->objects[i])->ref_count <= 0)
-    //     (void)delete_object(vec->objects[i]);
     (void)collect_object(vec->objects[i]);
 
     vec->objects[i]  = vec->objects[last];
@@ -85,13 +101,16 @@ CN_API void remove_object_vector(ObjectVector *vec, size_t i)
 
 CN_API void remove_object_ordered_vector(ObjectVector *vec, size_t i)
 {
-    if (!vec || vec->size == 0 || i >= vec->size)
+    if (!vec || vec->size == 0) {
+        RAISE(ERR_INVALID_POINTER, "can't remove in empty object vector.");
         return;
+    }
 
-    // (void)release_object(vec->objects[i]);
+    if (i >= vec->size) {
+        RAISE(ERR_OUT_OF_BOUND, "can't remove at invalid position.");
+        return;
+    }
 
-    // if (((Object *)vec->objects[i])->ref_count <= 0)
-    //     (void)delete_object(vec->objects[i]);
     (void)collect_object(vec->objects[i]);
 
     for (size_t j = i; j < vec->size - 1; ++j)

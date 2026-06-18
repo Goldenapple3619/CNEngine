@@ -2,9 +2,10 @@
 
 static cn_value _init(Object *__this, void **args)
 {
-
-    if (!args || !args[0])
+    if (!args || !args[0]) {
+        RAISE(ERR_INVALID_POINTER, "can't init scene without scene_object_mode arg.");
         return (VALUE_ERR);
+    }
 
     PREP_INIT()
 
@@ -23,8 +24,10 @@ static cn_value _init(Object *__this, void **args)
 
 static cn_value _add_child(Object *__this, void **args)
 {
-    if (!args || !args[0])
+    if (!args || !args[0]) {
+        RAISE(ERR_INVALID_POINTER, "can't add empty child to scene.");
         return (VALUE_ERR);
+    }
 
     Object *childs = get_attr(__this, "childs")->as.ptr;
 
@@ -46,10 +49,12 @@ CN_API Object *new_scene_object(void)
 {
     Object *obj = new_object();
 
-    if (!obj)
+    if (!obj) {
+        PROPAGATE_ERR()
         return (NULL);
+    }
 
-    SET_PARENT_CLASS_BUILD(obj, create_default_object());
+    SET_PARENT_CLASS_BUILD_STATIC(obj, create_default_object());
 
     CREATE_METHOD_CLASS_BUILD(obj, "_init", &_init);
     CREATE_METHOD_CLASS_BUILD(obj, "add_child", &_add_child);
