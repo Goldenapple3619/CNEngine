@@ -4,8 +4,10 @@ CN_API Quad *new_quad(void)
 {
     Quad *quad = malloc(sizeof(Quad));
 
-    if (!quad)
+    if (!quad) {
+        RAISE(ERR_OUT_OF_MEMORY, "failed to create quad.");
         return (NULL);
+    }
 
     quad->shader.api = R_API_NONE;
 
@@ -44,6 +46,7 @@ CN_API Quad *new_quad(void)
         "void main() { frag_color = texture(u_screen, v_uv); }\n";
 
     if (gl_shader_compile(&quad->shader, vert, frag)) {
+        PROPAGATE_ERR();
         (void)delete_quad(quad);
         return (NULL);
     }
@@ -55,8 +58,10 @@ CN_API Quad *new_quad2d(void)
 {
     Quad *quad2d = malloc(sizeof(Quad));
 
-    if (!quad2d)
+    if (!quad2d) {
+        RAISE(ERR_OUT_OF_MEMORY, "failed to create quad2d.");
         return (NULL);
+    }
 
     quad2d->shader.api = R_API_NONE;
 
@@ -115,6 +120,7 @@ CN_API Quad *new_quad2d(void)
         "}\n";
 
     if (gl_shader_compile(&quad2d->shader, vert, frag)) {
+        PROPAGATE_ERR();
         (void)delete_quad(quad2d);
         return (NULL);
     }
@@ -124,8 +130,10 @@ CN_API Quad *new_quad2d(void)
 
 CN_API void delete_quad(Quad *quad)
 {
-    if (!quad)
+    if (!quad) {
+        RAISE(ERR_INVALID_POINTER, "can't delete empty quad.");
         return;
+    }
     if (quad->vao)
         (void)glDeleteVertexArrays(1, &quad->vao);
     if (quad->vbo)

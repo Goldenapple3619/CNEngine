@@ -36,7 +36,15 @@ static cn_value _update(Object *__this, void **args)
 
 static cn_value _add_element(Object *__this, void **args)
 {
-    return (call_method(get_attr(__this, "objects")->as.ptr, "push", args));
+    if (!args || !args[0]) {
+        RAISE(ERR_INVALID_POINTER, "can't add empty element to scene.");
+        return (VALUE_ERR);
+    }
+    if (call_method(get_attr(__this, "objects")->as.ptr, "push", PACK_ARG(share_object(args[0]), NULL)).as.i == VALUE_ERR.as.i) {
+        PROPAGATE_ERR()
+        return (VALUE_ERR);
+    }
+    return (VALUE_OK);
 }
 
 static cn_value _del(Object *__this, void **args)

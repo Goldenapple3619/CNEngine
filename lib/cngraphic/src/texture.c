@@ -3,17 +3,26 @@
 
 CN_API Texture *new_texture(const Vector2 *size, cnbool alpha)
 {
-    if (!size || size->x <= 0 || size->y <= 0)
+    if (!size) {
+        RAISE(ERR_INVALID_POINTER, "can't create texture with no size.");
         return (NULL);
+    }
+    if (size->x <= 0 || size->y <= 0) {
+        RAISE(ERR_OUT_OF_BOUND, "can't create texture with invalid sizes.");
+        return (NULL);
+    }
 
     Texture *texture = (Texture *)malloc(sizeof(Texture));
 
-    if (!texture)
+    if (!texture) {
+        RAISE(ERR_OUT_OF_MEMORY, "failed to allocate new texture.");
         return (NULL);
+    }
 
     texture->surface = SDL_CreateRGBSurfaceWithFormat(SDL_SWSURFACE, (int)size->x, (int)size->y, alpha ? 32 : 24,  alpha ? SDL_PIXELFORMAT_RGBA32 : SDL_PIXELFORMAT_RGB24);
     
     if (!texture->surface) {
+        RAISE(ERR_OUT_OF_MEMORY, "failed to allocate new sdl_surface.");
         (void)free((void *)texture);
         return (NULL);
     }
@@ -27,8 +36,19 @@ CN_API Texture *new_texture(const Vector2 *size, cnbool alpha)
 
 CN_API uint8_t resize_texture(Texture *texture, const Vector2 *new_size)
 {
-    if (!texture || !new_size || new_size->x <= 0 || new_size->y <= 0)
+    if (!texture) {
+        RAISE(ERR_INVALID_POINTER, "can't resize an empty texture.");
         return (1);
+    }
+
+    if (!new_size) {
+        RAISE(ERR_INVALID_POINTER, "can't resize texture with no size.");
+        return (1);
+    }
+    if (new_size->x <= 0 || new_size->y <= 0) {
+        RAISE(ERR_OUT_OF_BOUND, "can't resize texture with invalid sizes.");
+        return (1);
+    }
 
     cnbool alpha = texture->surface->format->BytesPerPixel == 4;
 
@@ -38,8 +58,10 @@ CN_API uint8_t resize_texture(Texture *texture, const Vector2 *new_size)
         alpha ? 32 : 24,
         alpha ? SDL_PIXELFORMAT_RGBA32 : SDL_PIXELFORMAT_RGB24);
 
-    if (!new_surface)
+    if (!new_surface) {
+        RAISE(ERR_OUT_OF_MEMORY, "failed to resize texture by allocating a new one.");
         return (1);
+    }
 
     INVALIDATE_GPU(texture);
 
@@ -52,14 +74,23 @@ CN_API uint8_t resize_texture(Texture *texture, const Vector2 *new_size)
 
 CN_API void draw_texture(Texture *__src_texture, SDL_Renderer *__dest_renderer, const Rect *__src_rect, const Vector2 *__dest_at, const Vector2 *__ratios, double __angle)
 {
-    if (!__src_texture || !__dest_renderer || __src_texture->api != R_API_SDL)
+    if (!__src_texture || !__dest_renderer) {
+        RAISE(ERR_INVALID_POINTER, "can't draw a texture with no source / destination.");
         return;
+    }
+
+    if (__src_texture->api != R_API_SDL) {
+        RAISE(ERR_NOT_COMPATIBLE, "can't draw a texture not made for SDL renderer.");
+        return;
+    }
 
     if (!__src_texture->gpu_handler.sdl_texture.gpu_texture || __src_texture->gpu_handler.sdl_texture.renderer != __dest_renderer) {
         __src_texture->gpu_handler.sdl_texture.renderer = __dest_renderer;
         __src_texture->gpu_handler.sdl_texture.gpu_texture = SDL_CreateTextureFromSurface(__dest_renderer, __src_texture->surface);
-        if (!__src_texture->gpu_handler.sdl_texture.gpu_texture)
+        if (!__src_texture->gpu_handler.sdl_texture.gpu_texture) {
+            RAISE(ERR_OS, SDL_GetError());
             return;
+        }
     }
 
     Rect r = {0, 0, 0, 0};
@@ -92,12 +123,33 @@ CN_API void draw_texture(Texture *__src_texture, SDL_Renderer *__dest_renderer, 
 
 CN_API void draw_texture_gl(Texture *__src_texture, Quad *__dst_quad, const Vector2 *__at, const Vector2 *__size, cncolor __tint, const Vector2 *__view_port)
 {
-    if (!__src_texture || !__dst_quad || __src_texture->api != R_API_GL || __dst_quad->shader.api != R_API_GL)
+    if (!__src_texture || !__dst_quad) {
+        RAISE(ERR_INVALID_POINTER, "can't draw a texture with no source / destination.");
         return;
+    }
 
-    if (!__src_texture->gpu_handler.gl_texture.gl_id || __src_texture->gpu_handler.gl_texture.gl_ctx != SDL_GL_GetCurrentContext())
-        if (!texture_upload_gl(__src_texture))
+    if (__src_texture->api != R_API_GL || __dst_quad->shader.api != R_API_GL) {
+        RAISE(ERR_NOT_COMPATIBLE, "can't draw a texture on opengl with src/dest not being made for opengl.");
+        return;
+    };
+
+    if (!__src_texture->gpu_handler.gl_texture.gl_id || __src_texture->gpu_handler.gl_texture.gl_ctx != SDL_GL_GetCurrentContext()) {
+        if (!texture_upload_gl(__src_texture)) {
+            PROPAGATE_ERR();
             return;
+        }
+    }
+
+    if (!__dst_quad->shader.gpu_handler.gl.gl_shader) {
+        RAISE(ERR_INVALID_POINTER, "can't draw a texture using quad that has an invalid shader.");
+        return;
+    }
+
+    if (__dst_quad->shader.gpu_handler.gl.gl_ctx != SDL_GL_GetCurrentContext()) {
+        RAISE(ERR_INVALID_POINTER, "can't draw a texture that has a quad that has a shader made by ctx different than the actual one.");
+        return;
+    }
+
 
     Vector2 size = *__size;
 
@@ -113,12 +165,12 @@ CN_API void draw_texture_gl(Texture *__src_texture, Quad *__dst_quad, const Vect
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-    glUseProgram(__dst_quad->shader.gpu_handler.gl_shader);
+    glUseProgram(__dst_quad->shader.gpu_handler.gl.gl_shader);
 
-    glUniform2f(glGetUniformLocation(__dst_quad->shader.gpu_handler.gl_shader, "u_position"),   __at->x, __at->y);
-    glUniform2f(glGetUniformLocation(__dst_quad->shader.gpu_handler.gl_shader, "u_size"),       size.x, size.y);
-    glUniform2f(glGetUniformLocation(__dst_quad->shader.gpu_handler.gl_shader, "u_resolution"), __view_port->x, __view_port->y);
-    glUniform4f(glGetUniformLocation(__dst_quad->shader.gpu_handler.gl_shader, "u_color"),
+    glUniform2f(glGetUniformLocation(__dst_quad->shader.gpu_handler.gl.gl_shader, "u_position"),   __at->x, __at->y);
+    glUniform2f(glGetUniformLocation(__dst_quad->shader.gpu_handler.gl.gl_shader, "u_size"),       size.x, size.y);
+    glUniform2f(glGetUniformLocation(__dst_quad->shader.gpu_handler.gl.gl_shader, "u_resolution"), __view_port->x, __view_port->y);
+    glUniform4f(glGetUniformLocation(__dst_quad->shader.gpu_handler.gl.gl_shader, "u_color"),
             ((__tint & 0xff000000) >> 24) / 255.0f,
             ((__tint & 0x00ff0000) >> 16) / 255.0f,
             ((__tint & 0x0000ff00) >> 8) / 255.0f,
@@ -127,8 +179,8 @@ CN_API void draw_texture_gl(Texture *__src_texture, Quad *__dst_quad, const Vect
 
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, __src_texture->gpu_handler.gl_texture.gl_id);
-    glUniform1i(glGetUniformLocation(__dst_quad->shader.gpu_handler.gl_shader, "u_texture"), 0);
-    glUniform1i(glGetUniformLocation(__dst_quad->shader.gpu_handler.gl_shader, "u_has_texture"), 1);
+    glUniform1i(glGetUniformLocation(__dst_quad->shader.gpu_handler.gl.gl_shader, "u_texture"), 0);
+    glUniform1i(glGetUniformLocation(__dst_quad->shader.gpu_handler.gl.gl_shader, "u_has_texture"), 1);
 
     glBindVertexArray(__dst_quad->vao);
     glDrawArrays(GL_TRIANGLES, 0, 6);
@@ -142,18 +194,23 @@ CN_API void draw_texture_gl(Texture *__src_texture, Quad *__dst_quad, const Vect
 
 CN_API Texture *copy_texture(Texture *texture)
 {
-    if (!texture)
+    if (!texture) {
+        RAISE(ERR_INVALID_POINTER, "can't copy empty texture.");
         return (NULL);
+    }
 
     SDL_Surface *surface = SDL_ConvertSurface(texture->surface, texture->surface->format, SDL_SWSURFACE);
     Texture *temp;
 
-    if (!surface)
+    if (!surface) {
+        RAISE(ERR_OUT_OF_MEMORY, "failed to allocate new surface.");
         return (NULL);
+    }
 
     temp = new_texture_from_surface(surface);
 
     if (!temp) {
+        PROPAGATE_ERR();
         (void)SDL_FreeSurface(surface);
         return (NULL);
     }
@@ -163,20 +220,26 @@ CN_API Texture *copy_texture(Texture *texture)
 
 CN_API Texture *new_texture_from_file(const char *path)
 {
-    if (!path)
+    if (!path) {
+        RAISE(ERR_INVALID_POINTER, "can't create a texture from file if the path is empty.");
         return (NULL);
+    }
 
     Texture *texture = (Texture *)malloc(sizeof(Texture));
 
-    if (!texture)
+    if (!texture) {
+        RAISE(ERR_OUT_OF_MEMORY, "failed to allocate texture.");
         return (NULL);
+    }
 
     texture->surface = IMG_Load(path);
 
     if (!texture->surface) {
+        RAISE(ERR_OS, "failed to load texture from image, missing texture is being created instead.");
         texture->surface = SDL_CreateRGBSurfaceWithFormat(SDL_SWSURFACE, 100, 100, 32, SDL_PIXELFORMAT_RGBA32);
 
         if (!texture->surface) {
+            RAISE(ERR_OUT_OF_MEMORY, "failed to allocate missing texture.");
             (void)free(texture);
             return (NULL);
         }
@@ -197,13 +260,15 @@ CN_API Texture *new_texture_from_file(const char *path)
 
 CN_API Texture *new_texture_from_surface(SDL_Surface *surface)
 {
-    if (!surface)
+    if (!surface) {
+        RAISE(ERR_INVALID_POINTER, "can't create texture from empty surface.");
         return (NULL);
+    }
 
     Texture *texture = (Texture *)malloc(sizeof(Texture));
 
     if (!texture) {
-        (void)SDL_FreeSurface(surface);
+        RAISE(ERR_OUT_OF_MEMORY, "failed to allocate texture.");
         return (NULL);
     }
 
@@ -217,8 +282,10 @@ CN_API Texture *new_texture_from_surface(SDL_Surface *surface)
 
 CN_API void delete_texture(Texture *texture)
 {
-    if (!texture)
+    if (!texture) {
+        RAISE(ERR_INVALID_POINTER, "can't delete empty texture.");
         return;
+    }
     switch (texture->api) {
         case R_API_SDL:
             if (texture->gpu_handler.sdl_texture.gpu_texture)
@@ -242,8 +309,10 @@ CN_API void delete_texture(Texture *texture)
 
 CN_API void blit(const Texture *__src, Texture *__dst, const Rect *__src_rect, const Vector2 *__dest_at)
 {
-    if (!__src || !__dst)
+    if (!__src || !__dst) {
+        RAISE(ERR_INVALID_POINTER, "can't blit empty src/dst texture.");
         return;
+    }
     Rect r = {0, 0, 0, 0};
     Vector2 dst_vec = {0, 0};
 
@@ -271,8 +340,10 @@ CN_API void blit(const Texture *__src, Texture *__dst, const Rect *__src_rect, c
 
 CN_API void blit_ratio(const Texture *__src, Texture *__dst, const Rect *__src_rect, const Vector2 *__dest_at, const Vector2 *__ratios)
 {
-    if (!__src || !__dst)
+    if (!__src || !__dst) {
+        RAISE(ERR_INVALID_POINTER, "can't blit empty src/dst texture.");
         return;
+    }
     Rect r = {0, 0, 0, 0};
     Vector2 dst_vec = {0, 0};
     Vector2 ratio_vec = {1, 1};
@@ -304,16 +375,20 @@ CN_API void blit_ratio(const Texture *__src, Texture *__dst, const Rect *__src_r
 
 CN_API void set_opacity_texture(Texture *texture, uint8_t opacity)
 {
-    if (!texture)
+    if (!texture) {
+        RAISE(ERR_INVALID_POINTER, "can't set opacity of empty texture.");
         return;
+    }
     (void)SDL_SetSurfaceAlphaMod(texture->surface, (uint8_t)fmax(0, fmin(255, opacity)));
     INVALIDATE_GPU(texture);
 }
 
 CN_API uint8_t get_opacity_texture(const Texture *texture)
 {
-    if (!texture)
+    if (!texture) {
+        RAISE(ERR_INVALID_POINTER, "can't get opacity of empty texture.");
         return (0);
+    }
 
     uint8_t a;
 
@@ -323,8 +398,10 @@ CN_API uint8_t get_opacity_texture(const Texture *texture)
 
 CN_API void draw_rect(Texture *texture, const Rect *rect, cncolor color)
 {
-    if (!texture)
+    if (!texture) {
+        RAISE(ERR_INVALID_POINTER, "can't draw on empty texture.");
         return;
+    }
     SDL_FillRect(texture->surface,
         &(SDL_Rect){(int)rect->x, (int)rect->y, (int)rect->w, (int)rect->h},
         SDL_MapRGBA(texture->surface->format,
@@ -337,8 +414,10 @@ CN_API void draw_rect(Texture *texture, const Rect *rect, cncolor color)
 
 CN_API void clear_texture(Texture *texture, cncolor color)
 {
-    if (!texture)
+    if (!texture) {
+        RAISE(ERR_INVALID_POINTER, "can't clear empty texture.");
         return;
+    }
     (void)SDL_FillRect(texture->surface,
         NULL,
         SDL_MapRGBA(texture->surface->format,
@@ -351,16 +430,25 @@ CN_API void clear_texture(Texture *texture, cncolor color)
 
 CN_API cnbool texture_upload_gl(Texture *texture)
 {
-    if (!texture || !texture->surface || texture->api != R_API_GL)
+    if (!texture || !texture->surface) {
+        RAISE(ERR_INVALID_POINTER, "can't upload empty texture.");
         return false;
+    }
+
+    if (texture->api != R_API_GL) {
+        RAISE(ERR_INVALID_POINTER, "can't upload to opengl texture not made for opengl.");
+        return (false);
+    }
 
     if (texture->gpu_handler.gl_texture.gl_id)
         glDeleteTextures(1, &texture->gpu_handler.gl_texture.gl_id);
 
     SDL_Surface *rgba = SDL_ConvertSurfaceFormat(texture->surface,
                             SDL_PIXELFORMAT_RGBA32, 0);
-    if (!rgba)
+    if (!rgba) {
+        RAISE(ERR_OUT_OF_MEMORY, "failed to allocate new suface.");
         return false;
+    }
 
     glGenTextures(1, &texture->gpu_handler.gl_texture.gl_id);
     glBindTexture(GL_TEXTURE_2D, texture->gpu_handler.gl_texture.gl_id);

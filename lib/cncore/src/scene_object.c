@@ -31,7 +31,10 @@ static cn_value _add_child(Object *__this, void **args)
 
     Object *childs = get_attr(__this, "childs")->as.ptr;
 
-    call_method(childs, "push", args);
+    if (call_method(childs, "push", PACK_ARG(share_object(args[0]), NULL)).as.i == VALUE_ERR.as.i) {
+        PROPAGATE_ERR()
+        return (VALUE_ERR);
+    }
 
     return (VALUE_OK);
 }
@@ -43,7 +46,6 @@ static cn_value _del(Object *__this, void **args)
 
     return (null_value);
 }
-
 
 CN_API Object *new_scene_object(void)
 {

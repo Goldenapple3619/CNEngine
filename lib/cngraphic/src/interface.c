@@ -6,29 +6,43 @@ static cn_value _init(Object *__this, void **args)
     INIT_CUSTOM_ALLOCATION(__this, new_window(args[0], args[1], args[2]), delete_window, "window");
     INIT_CUSTOM_ALLOCATION(__this, new_object_vector(), delete_object_vector, "elements");
 
-    if (allow_event(get_attr(__this, "window")->as.ptr, EV_CLOSE))
+    if (allow_event(get_attr(__this, "window")->as.ptr, EV_CLOSE)) {
+        PROPAGATE_ERR();
         return (VALUE_ERR);
-    if (allow_event(get_attr(__this, "window")->as.ptr, EV_RESIZE))
+    }
+    if (allow_event(get_attr(__this, "window")->as.ptr, EV_RESIZE)) {
+        PROPAGATE_ERR();
         return (VALUE_ERR);
-    if (allow_event(get_attr(__this, "window")->as.ptr, EV_MOVE))
+    }
+    if (allow_event(get_attr(__this, "window")->as.ptr, EV_MOVE)) {
+        PROPAGATE_ERR();
         return (VALUE_ERR);
-    if (allow_event(get_attr(__this, "window")->as.ptr, EV_KEYDOWN))
+    }
+    if (allow_event(get_attr(__this, "window")->as.ptr, EV_KEYDOWN)) {
+        PROPAGATE_ERR();
         return (VALUE_ERR);
-    if (allow_event(get_attr(__this, "window")->as.ptr, EV_KEYUP))
+    }
+    if (allow_event(get_attr(__this, "window")->as.ptr, EV_KEYUP)) {
+        PROPAGATE_ERR();
         return (VALUE_ERR);
+    }
 
     return (VALUE_OK);
 }
 
 static cn_value _add_element(Object *__this, void **args)
 {
-    if (!args || !args[0])
+    if (!args || !args[0]) {
+        RAISE(ERR_INVALID_POINTER, "can't add element without an element.");
         return (VALUE_ERR);
+    }
 
     ObjectVector *vec = get_attr(__this, "elements")->as.ptr;
 
-    if (insert_object_vector(vec, args[0]))
+    if (insert_object_vector(vec, args[0])) {
+        PROPAGATE_ERR();
         return (VALUE_ERR);
+    }
     return (VALUE_OK);
 }
 
@@ -40,7 +54,8 @@ static cn_value _events(Object *__this, void **args)
     ObjectVector *elements = get_attr(__this, "elements")->as.ptr;
 
     for (size_t i = 0; i < elements->size; ++i)
-        (void)call_method(elements->objects[i], "_events", PACK_ARG((cnany)w));
+        if (has_method(elements->objects[i], "_events"))
+            (void)call_method(elements->objects[i], "_events", PACK_ARG((cnany)w));
 
     return (null_value);
 }
@@ -53,7 +68,8 @@ static cn_value _update(Object *__this, void **args)
     ObjectVector *elements = get_attr(__this, "elements")->as.ptr;
 
     for (size_t i = 0; i < elements->size; ++i)
-        (void)call_method(elements->objects[i], "_update", args);
+        if (has_method(elements->objects[i], "_update"))
+            (void)call_method(elements->objects[i], "_update", args);
 
     return (null_value);
 }
@@ -68,7 +84,8 @@ static cn_value _draw(Object *__this, void **args)
     (void)clear_window(w, 0x000000ff);
 
     for (size_t i = 0; i < elements->size; ++i)
-        (void)call_method(elements->objects[i], "_draw", PACK_ARG((cnany)w));
+        if (has_method(elements->objects[i], "_draw"))
+            (void)call_method(elements->objects[i], "_draw", PACK_ARG((cnany)w));
 
     (void)draw_window(w);
 
@@ -91,8 +108,10 @@ CN_API Object *new_interface(void)
 {
     Object *obj = new_object();
 
-    if (!obj)
+    if (!obj) {
+        PROPAGATE_ERR();
         return (NULL);
+    }
 
     SET_PARENT_CLASS_BUILD_STATIC(obj, create_default_object());
     CREATE_METHOD_CLASS_BUILD(obj, "_init", &_init);

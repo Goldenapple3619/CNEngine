@@ -4,8 +4,10 @@ CN_API WindowUniverse *new_window_universe(void)
 {
     WindowUniverse *wu = (WindowUniverse *)malloc(sizeof(WindowUniverse));
 
-    if (!wu)
+    if (!wu) {
+        RAISE(ERR_OUT_OF_MEMORY, "failed to allocate window universe.");
         return (NULL);
+    }
     wu->capacity = 0;
     wu->size = 0;
     wu->windows = NULL;
@@ -14,15 +16,19 @@ CN_API WindowUniverse *new_window_universe(void)
 
 CN_API cnbool are_all_window_closed(const WindowUniverse *universe)
 {
-    if (!universe)
+    if (!universe) {
+        RAISE(ERR_INVALID_POINTER, "can't check if all window close on empty universe.");
         return (true);
+    }
     return (universe->size ? false : true);
 }
 
 CN_API cnbool is_window_closed(const WindowUniverse *universe, uint32_t window_id)
 {
-    if (!universe)
+    if (!universe) {
+        RAISE(ERR_INVALID_POINTER, "can't check if window is close on empty universe.");
         return (true);
+    }
 
     for (size_t i = 0; i < universe->size; ++i) {
         if (universe->windows[i]->id == window_id)
@@ -33,21 +39,26 @@ CN_API cnbool is_window_closed(const WindowUniverse *universe, uint32_t window_i
 
 CN_API Window *get_window_in_universe(const WindowUniverse *universe, uint32_t window_id)
 {
-    if (!universe)
+    if (!universe) {
+        RAISE(ERR_INVALID_POINTER, "can't get window in empty universe.");
         return (NULL);
+    }
 
     for (size_t i = 0; i < universe->size; ++i) {
         if (universe->windows[i]->id == window_id)
             return (universe->windows[i]);
     }
 
+    RAISE(ERR_OUT_OF_BOUND, "can't get non existent window in universe.");
     return (NULL);
 }
 
 CN_API cnbool is_window_closed_addr(const WindowUniverse *universe, void *p)
 {
-    if (!universe)
+    if (!universe) {
+        RAISE(ERR_INVALID_POINTER, "can't check if window is close on empty universe.");
         return (true);
+    }
 
     for (size_t i = 0; i < universe->size; ++i) {
         if (universe->windows[i] == p)
@@ -60,8 +71,10 @@ CN_API void clear_events_all_window(WindowUniverse *universe)
 {
     struct event_map_entry_s **evm;
 
-    if (!universe)
+    if (!universe) {
+        RAISE(ERR_INVALID_POINTER, "can't clear events on empty universe.");
         return;
+    }
 
     for (size_t i = 0; i < universe->size; ++i) {
         evm = universe->windows[i]->event_map;
@@ -78,8 +91,10 @@ CN_API void clear_events_all_window(WindowUniverse *universe)
 
 static void sdl_window_ev_to_cnev(const SDL_Event *ev, Event *cnev)
 {
-    if (!ev || !cnev)
+    if (!ev || !cnev) {
+        RAISE(ERR_INVALID_POINTER, "can't do window sdl event to engine event conversion if src/dest is empty.");
         return;
+    }
 
     switch (ev->window.event) {
         case SDL_WINDOWEVENT_CLOSE:
@@ -102,8 +117,10 @@ static void sdl_window_ev_to_cnev(const SDL_Event *ev, Event *cnev)
 
 static void sdl_ev_to_cnev(const SDL_Event *ev, Event *cnev)
 {
-    if (!ev || !cnev)
+    if (!ev || !cnev) {
+        RAISE(ERR_INVALID_POINTER, "can't do sdl event to engine event conversion if src/dest is empty.");
         return;
+    }
     switch (ev->type) {
         case SDL_WINDOWEVENT:
             (void)sdl_window_ev_to_cnev(ev, cnev);
@@ -172,27 +189,38 @@ static cnbool filter_is_repeat_event(const SDL_Event *ev)
 
 CN_API void fetch_events_all_window(WindowUniverse *universe)
 {
-    if (!universe)
+    if (!universe) {
+        RAISE(ERR_INVALID_POINTER, "can't fetch events on empty universe.");
         return;
+    }
 
     SDL_Event ev;
     Event cnev;
+    uint32_t window_id;
+    Window *window;
 
     while (SDL_PollEvent(&ev)) {
         if (filter_is_repeat_event(&ev))
             continue;
 
-        Window *window = get_window_in_universe(universe, get_video_id_from_event(&ev));
+        window_id = get_video_id_from_event(&ev);
 
-        if (window) {
+        if (window_id) {
+            if (is_window_closed(universe, window_id))
+                continue;
+
+            window = get_window_in_universe(universe, window_id);
+
             (void)sdl_ev_to_cnev(&ev, &cnev);
-            push_event_window(window, cnev.type, cnev.x, cnev.y, cnev.v); // todo: handle failure
+            if (push_event_window(window, cnev.type, cnev.x, cnev.y, cnev.v))
+                PROPAGATE_ERR()
         } else {
             for (size_t i = 0; i < universe->size; ++i) {
                 window = universe->windows[i];
 
                 (void)sdl_ev_to_cnev(&ev, &cnev);
-                push_event_window(window, cnev.type, cnev.x, cnev.y, cnev.v); // todo: handle failure
+                if (push_event_window(window, cnev.type, cnev.x, cnev.y, cnev.v))
+                    PROPAGATE_ERR()
             }
         }
     }
@@ -200,12 +228,16 @@ CN_API void fetch_events_all_window(WindowUniverse *universe)
 
 CN_API uint8_t resize_window_universe(WindowUniverse *universe, size_t new_capacity)
 {
-    if (!universe)
+    if (!universe) {
+        RAISE(ERR_INVALID_POINTER, "can't resize empty universe.");
         return (1);
+    }
 
     universe->windows = realloc(universe->windows, new_capacity * sizeof(Window *));
 
     if (!universe->windows) {
+        RAISE(ERR_OUT_OF_MEMORY, "failed to resize universe.");
+        universe->size = 0;
         universe->capacity = 0;
         return (1);
     }
@@ -217,7 +249,12 @@ CN_API uint8_t resize_window_universe(WindowUniverse *universe, size_t new_capac
 
 CN_API void remove_window_from_universe(WindowUniverse *universe, uint32_t id)
 {
-    if (!universe || universe->size == 0)
+    if (!universe) {
+        RAISE(ERR_INVALID_POINTER, "can't remove window in empty universe.");
+        return;
+    }
+
+    if (universe->size == 0)
         return;
 
     size_t last = universe->size - 1;
@@ -225,8 +262,10 @@ CN_API void remove_window_from_universe(WindowUniverse *universe, uint32_t id)
 
     for (; i < universe->size && (universe->windows[i])->id != id; ++i);
 
-    if (i >= universe->size)
+    if (i >= universe->size) {
+        RAISE(ERR_OUT_OF_BOUND, "can't remove a window not in universe.")
         return;
+    }
 
     universe->windows[i]  = universe->windows[last];
     universe->size--;
@@ -234,13 +273,20 @@ CN_API void remove_window_from_universe(WindowUniverse *universe, uint32_t id)
 
 CN_API uint8_t add_window_in_universe(WindowUniverse *universe, Window *window)
 {
-    if (!universe || !window)
+    if (!universe) {
+        RAISE(ERR_INVALID_POINTER, "can't add window to empty universe.");
         return (1);
+    }
+
+    if (!window) {
+        RAISE(ERR_INVALID_POINTER, "can't add empty window to universe.");
+        return (1);
+    }
 
     if (universe->size >= universe->capacity) {
         size_t new_capacity = universe->capacity == 0 ? 8 : universe->capacity * 2;
         if (resize_window_universe(universe, new_capacity)) {
-            universe->size = 0;
+            PROPAGATE_ERR();
             return (1);
         }
     }
@@ -252,8 +298,10 @@ CN_API uint8_t add_window_in_universe(WindowUniverse *universe, Window *window)
 
 CN_API void update_all_window(WindowUniverse *universe)
 {
-    if (!universe)
+    if (!universe) {
+        RAISE(ERR_INVALID_POINTER, "can't update empty universe.");
         return;
+    }
     for (size_t i = 0; i < universe->size; ++i) {
         (void)update_window(universe->windows[i]);
 
@@ -268,8 +316,10 @@ CN_API void draw_all_window(WindowUniverse *universe)
 {
     // this is now legacy and shouldn't be used
 
-    if (!universe)
+    if (!universe) {
+        RAISE(ERR_INVALID_POINTER, "can't draw empty universe.");
         return;
+    }
     for (size_t i = 0; i < universe->size; ++i) {
         (void)draw_window(universe->windows[i]);
     }
@@ -277,8 +327,10 @@ CN_API void draw_all_window(WindowUniverse *universe)
 
 CN_API void delete_window_universe(WindowUniverse *universe)
 {
-    if (!universe)
+    if (!universe) {
+        RAISE(ERR_INVALID_POINTER, "can't delete empty universe.");
         return;
+    }
     if (universe->windows)
         (void)free(universe->windows);
     universe->size = 0;

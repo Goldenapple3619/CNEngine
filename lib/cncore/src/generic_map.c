@@ -108,6 +108,27 @@ CN_API void remove_generic_map(struct generic_map_s *gen_map, const char *key, v
     RAISE(ERR_OUT_OF_BOUND, "remove at invalid key.");
 }
 
+CN_API cnbool has_generic_map(struct generic_map_s *gen_map, const char *key)
+{
+    if (!gen_map) {
+        RAISE(ERR_INVALID_POINTER, "can't has empty map.");
+        return (false);
+    }
+
+    if (!key) {
+        RAISE(ERR_INVALID_POINTER, "can't has with empty key.");
+        return (false);
+    }
+
+    uint64_t k = _get_attrs_hash(key);
+    
+    for (size_t i = 0; i < gen_map->size; ++i) {
+        if (gen_map->keys[i] == k)
+            return (true);
+    }
+    return (false);
+}
+
 CN_API void *get_generic_map(struct generic_map_s *gen_map, const char *key, void *(*_obj_from_key_default)(const char *), void (*_delete_obj)(void *))
 {
     if (!gen_map) {
@@ -132,7 +153,7 @@ CN_API void *get_generic_map(struct generic_map_s *gen_map, const char *key, voi
     if (_obj_from_key_default)
         obj = _obj_from_key_default(key);
     else {
-        RAISE(ERR_OUT_OF_BOUND, "get map on invalid key with no default.")
+        RAISE_FMT(ERR_OUT_OF_BOUND, "get map on invalid key '%s' with no default.", key);
         return (NULL);
     }
 

@@ -96,8 +96,10 @@ static cn_value _events(Object *__this, void **args)
 
 static cn_value _set_main_window(Object *__this, void **args)
 {
-    if (!args || !args[0])
+    if (!args || !args[0]) {
+        RAISE(ERR_INVALID_POINTER, "can't set main window without window id.");
         return (VALUE_ERR);
+    }
 
     ObjectVector *interfaces = get_attr(__this, "interfaces")->as.ptr;
     cnbool found = false;
@@ -109,8 +111,10 @@ static cn_value _set_main_window(Object *__this, void **args)
         break;
     }
 
-    if (!found)
+    if (!found) {
+        RAISE(ERR_OUT_OF_BOUND, "can't set main window from an id that don't match any window in universe.");
         return (VALUE_ERR);
+    }
 
     INIT_INT(__this, (int64_t)*(int32_t *)args[0], "_main_window_id");
 
@@ -119,21 +123,27 @@ static cn_value _set_main_window(Object *__this, void **args)
 
 static cn_value _spawn_interface(Object *__this, void **args)
 {
-    if (!args)
+    if (!args) {
+        RAISE(ERR_INVALID_POINTER, "missing arguments required to create an interface.");
         return (null_value);
+    }
 
     Object *interface = build_object(new_interface(), (void *[]){args[0], args[1], args[2], NULL});
     ObjectVector *vec = get_attr(__this, "interfaces")->as.ptr;
 
-    if (!interface)
+    if (!interface) {
+        PROPAGATE_ERR();
         return (null_value);
+    }
 
     if (insert_object_vector(vec, interface)) {
+        PROPAGATE_ERR();
         (void)delete_object(interface);
         return (null_value);
     }
 
     if (add_window_in_universe(get_attr(__this, "all_window")->as.ptr, get_attr(interface, "window")->as.ptr)) {        
+        PROPAGATE_ERR();
         (void)remove_object_vector(vec, vec->size - 1);
         return (null_value);
     }
@@ -147,13 +157,17 @@ static cn_value _init(Object *__this, void **args)
 
     PREP_INIT()
 
-    if (!args || !(args[0]))
+    if (!args || !(args[0])) {
+        RAISE(ERR_INVALID_POINTER, "can't init graphic submodules without core ctx as arg.");
         return (VALUE_ERR);
+    }
     
     Object *ctx = (Object *)(args[0]);
     
-    if (!start_graphics())
+    if (!start_graphics()) {
+        PROPAGATE_ERR()
         return (VALUE_ERR);
+    }
 
     INIT_INT(ctx, -1, "_main_window_id");
     INIT_CUSTOM_ALLOCATION(ctx, new_object_vector(), delete_object_vector, "interfaces");
@@ -162,12 +176,18 @@ static cn_value _init(Object *__this, void **args)
     INIT_OBJECT_STATIC(ctx, new_atlas(NULL, (expr_free)&delete_mesh), NULL, "mesh_atlas");
     INIT_OBJECT_STATIC(ctx, new_atlas(NULL, (expr_free)&delete_material), NULL, "material_atlas");
 
-    if (call_method(ctx, "register_draw", PACK_ARG(_draw)).as.i == VALUE_ERR.as.i)
+    if (call_method(ctx, "register_draw", PACK_ARG(_draw)).as.i == VALUE_ERR.as.i) {
+        PROPAGATE_ERR();
         return (VALUE_ERR);
-    if (call_method(ctx, "register_update", PACK_ARG(_update)).as.i == VALUE_ERR.as.i)
+    }
+    if (call_method(ctx, "register_update", PACK_ARG(_update)).as.i == VALUE_ERR.as.i) {
+        PROPAGATE_ERR();
         return (VALUE_ERR);
-    if (call_method(ctx, "register_event", PACK_ARG(_events)).as.i == VALUE_ERR.as.i)
+    }
+    if (call_method(ctx, "register_event", PACK_ARG(_events)).as.i == VALUE_ERR.as.i) {
+        PROPAGATE_ERR();
         return (VALUE_ERR);
+    }
 
     INIT_METHOD(ctx, "spawn_interface", _spawn_interface)
     INIT_METHOD(ctx, "set_main_window", _set_main_window)
@@ -210,8 +230,10 @@ CN_API Object *new_graphic_submodule(void)
 {
     Object *obj = new_object();
 
-    if (!obj)
+    if (!obj) {
+        PROPAGATE_ERR();
         return (NULL);
+    }
 
     SET_PARENT_CLASS_BUILD_STATIC(obj, create_default_object());
     CREATE_METHOD_CLASS_BUILD(obj, "_init", &_init);

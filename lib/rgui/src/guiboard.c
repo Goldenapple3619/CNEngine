@@ -255,8 +255,10 @@ static cn_value _add_element(Object *__this, void **args)
     if (!args || !args[0])
         return (VALUE_ERR);
 
-    if (call_method(get_attr(__this, "elements")->as.ptr, "push", args).as.i == VALUE_ERR.as.i)
+    if (call_method(get_attr(__this, "elements")->as.ptr, "push", PACK_ARG(share_object(args[0]), NULL)).as.i == VALUE_ERR.as.i) {
+        PROPAGATE_ERR();
         return (VALUE_ERR);
+    }
     return (VALUE_OK);
 }
 

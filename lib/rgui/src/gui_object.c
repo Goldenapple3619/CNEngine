@@ -25,7 +25,6 @@ static cn_value _init(Object *__this, void **args)
     return (VALUE_OK);
 }
 
-
 static cn_value _del(Object *__this, void **args)
 {
     (void)args;

@@ -17,8 +17,12 @@ static cn_value _init(Object *__this, void **args)
         return (VALUE_ERR);
     }
 
-    if (args)
-        (void)call_method(__this, "push", args);
+    if (args) {
+        if (call_method(__this, "push", args).as.i == VALUE_ERR.as.i) {
+            PROPAGATE_ERR();
+            return (VALUE_ERR);
+        }
+    }
 
     return (VALUE_OK);
 }
@@ -110,17 +114,23 @@ CN_API struct list_iterator_s list_get_iterator(Object *__list)
     if (!__at)
         return ((struct list_iterator_s){0});
 
-    return ((struct list_iterator_s){.get_element = __at, .size = __len, .pos = 0, ._obj = __list, .val = __at(__list, PACK_ARG(INLNE_PRIM_T_ARG((size_t)0)))});
+    return ((struct list_iterator_s){.get_element = __at, .size = __len, .pos = 0, ._obj = __list, .val = __len ? __at(__list, PACK_ARG(INLNE_PRIM_T_ARG((size_t)0))) : (cn_value){.type=CN_TYPE_NULL, .as.ptr = NULL}});
 }
 
 CN_API void list_iterator_next(struct list_iterator_s *iterator)
 {
-    if (!iterator || !iterator->get_element || iterator->pos >= iterator->size) {
+    if (!iterator || !iterator->get_element) {
         iterator->val = null_value;
         return;
     }
 
     ++iterator->pos;
+
+    if (iterator->pos >= iterator->size) {
+        iterator->val = null_value;
+        return;
+    }
+
     iterator->val = (iterator->get_element(iterator->_obj, PACK_ARG(&iterator->pos)));
 }
 

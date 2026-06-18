@@ -40,6 +40,19 @@ static cn_value _push(Object *__this, void **args)
     return (VALUE_OK);
 }
 
+static cn_value _has(Object *__this, void **args)
+{
+    if (!args || !args[0]) {
+        RAISE(ERR_INVALID_POINTER, "can't has with no key arg.")
+        return (null_value);
+    }
+    
+    struct generic_map_s *gen_map = get_attr(__this, "_map")->as.ptr;
+    const char *entry = args[0];
+
+    return ((cn_value){.type=CN_TYPE_BOOL, .as.b=has_generic_map(gen_map, entry)});
+}
+
 static cn_value _at(Object *__this, void **args)
 {
     if (!args || !args[0]) {
@@ -151,17 +164,23 @@ CN_API struct list_iterator_s atlas_get_iterator(Object *__atlas, cnbool get_val
     if (!__at)
         return ((struct list_iterator_s){0});
 
-    return ((struct list_iterator_s){.get_element = __at, .size = __len, .pos = 0, ._obj = __atlas, .val = __at(__atlas, PACK_ARG(INLNE_PRIM_T_ARG((size_t)0)))});
+    return ((struct list_iterator_s){.get_element = __at, .size = __len, .pos = 0, ._obj = __atlas, .val = __len ? __at(__atlas, PACK_ARG(INLNE_PRIM_T_ARG((size_t)0))) : (cn_value){.type=CN_TYPE_NULL, .as.ptr=NULL}});
 }
 
 CN_API void atlas_iterator_next(struct list_iterator_s *iterator)
 {
-    if (!iterator || !iterator->get_element || iterator->pos >= iterator->size) {
+    if (!iterator || !iterator->get_element) {
         iterator->val = null_value;
         return;
     }
 
     ++iterator->pos;
+
+    if (iterator->pos >= iterator->size) {
+        iterator->val = null_value;
+        return;
+    }
+
     iterator->val = (iterator->get_element(iterator->_obj, PACK_ARG(&iterator->pos)));
 }
 
@@ -206,6 +225,7 @@ CN_API Object *new_atlas(void *(*_fetch_default)(const char *), void (*_delete_o
     CREATE_METHOD_CLASS_BUILD(obj, "len", &_len);
     CREATE_METHOD_CLASS_BUILD(obj, "remove", &_remove);
     CREATE_METHOD_CLASS_BUILD(obj, "at", &_at);
+    CREATE_METHOD_CLASS_BUILD(obj, "has", &_has);
     CREATE_METHOD_CLASS_BUILD(obj, "at_value", &_at_value);
     CREATE_METHOD_CLASS_BUILD(obj, "at_key", &_at_key);
     CREATE_METHOD_CLASS_BUILD(obj, "_del", &_del);

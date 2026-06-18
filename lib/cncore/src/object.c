@@ -242,7 +242,7 @@ CN_API cn_value call_method(Object *object, const char *name, void **args)
     }
 
     if (!has_method(object, name)) {
-        RAISE(ERR_OUT_OF_BOUND, "can't call non existent method.");
+        RAISE_FMT(ERR_OUT_OF_BOUND, "can't call non existent method '%s'.", name);
         return  (null_value);
     }
     return (get_method(object, name))(object, args);

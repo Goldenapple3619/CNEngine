@@ -36,6 +36,40 @@ CN_API void raise_error(ErrorCode c, const char *message, const char *file, cons
     ++g_error_history_index;
 }
 
+CN_API void raise_error_fmt(ErrorCode c, const char *file, const char *function, uint32_t line, const char *fmt, ...)
+{
+    if (g_error_history_index >= ERR_HISTORY) {
+        (void)fprintf(stderr, "out of error history, direct printing to stderr: %d: %s: %s %s %" PRIu32 "\n", c, fmt ? fmt : "null", file, function, line);
+        return;
+    }
+
+    g_error_history[g_error_history_index].code = c;
+    g_error_history[g_error_history_index].frame_count = 0;
+
+    if (g_error_history[g_error_history_index].frame_count >= ERR_MAX_FRAMES) {
+        (void)fprintf(stderr, "out of error frames, direct printing to stderr: %s %s %" PRIu32 "\n", file, function, line);
+        return;
+    }
+
+    if (fmt) {
+        va_list args;
+        va_start(args, fmt);
+
+        vsnprintf(g_error_history[g_error_history_index].message, ERR_MSG_SIZE, fmt, args);
+
+        va_end(args);
+    } else {
+        (void)memset((void *)g_error_history[g_error_history_index].message, 0, sizeof(char) * ERR_MSG_SIZE);
+    }
+
+    g_error_history[g_error_history_index].frames[g_error_history[g_error_history_index].frame_count].line = line;
+    g_error_history[g_error_history_index].frames[g_error_history[g_error_history_index].frame_count].file = file;
+    g_error_history[g_error_history_index].frames[g_error_history[g_error_history_index].frame_count].function = function;
+    g_error_history[g_error_history_index].frame_count += 1;
+
+    ++g_error_history_index;
+}
+
 CN_API void push_error(const char *file, const char *function, uint32_t line)
 {
     if (g_error_history_index == 0) {

@@ -9,6 +9,10 @@ static cn_value _events(Object *__this, void **args)
 
     WindowUniverse *wu = get_attr(__this, "all_window")->as.ptr;
     int64_t main_window = get_attr(__this, "_main_window_id")->as.i;
+
+    if (is_window_closed(wu, main_window))
+        return (null_value);
+
     Window *temp = get_window_in_universe(wu, main_window);
     Object *atlas = get_attr(__this, "inputs")->as.ptr;
     const struct event_map_entry_s *ev_map;
@@ -50,9 +54,9 @@ static cn_value _register_input_callback(Object *__this, void **args)
 
     Object *atlas = get_attr(__this, "inputs")->as.ptr;
     InputEntry *ie;
-    cn_value temp = call_method(atlas, "at", PACK_ARG(args[0]));
+    cn_value temp;
 
-    if (temp.type == CN_TYPE_NULL) {
+    if (!call_method(atlas, "has", PACK_ARG(args[0])).as.b) {
         ie = new_input_entry(args[0]);
 
         if (!ie)
@@ -61,6 +65,7 @@ static cn_value _register_input_callback(Object *__this, void **args)
         if (call_method(atlas, "push", PACK_ARG(ie, args[0])).as.i == VALUE_ERR.as.i)
             return (VALUE_ERR);
     } else {
+        temp = call_method(atlas, "at", PACK_ARG(args[0]));
         ie = temp.as.ptr;
     }
 
@@ -77,9 +82,9 @@ static cn_value _register_input_controller(Object *__this, void **args)
 
     Object *atlas = get_attr(__this, "inputs")->as.ptr;
     InputEntry *ie;
-    cn_value temp = call_method(atlas, "at", PACK_ARG(args[0]));
+    cn_value temp;
 
-    if (temp.type == CN_TYPE_NULL) {
+    if (!call_method(atlas, "has", PACK_ARG(args[0])).as.b) {
         ie = new_input_entry(args[0]);
 
         if (!ie)
@@ -88,6 +93,7 @@ static cn_value _register_input_controller(Object *__this, void **args)
         if (call_method(atlas, "push", PACK_ARG(ie, args[0])).as.i == VALUE_ERR.as.i)
             return (VALUE_ERR);
     } else {
+        temp = call_method(atlas, "at", PACK_ARG(args[0]));
         ie = temp.as.ptr;
     }
 
@@ -107,6 +113,7 @@ static cn_value _unregister_input_callback(Object *__this, void **args)
     cn_value temp = call_method(atlas, "at", PACK_ARG(args[0]));
 
     if (temp.type == CN_TYPE_NULL) {
+        PROPAGATE_ERR();
         return (null_value);
     } else {
         ie = temp.as.ptr;

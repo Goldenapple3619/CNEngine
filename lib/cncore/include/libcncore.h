@@ -22,6 +22,7 @@
     #define STRING_INDIVIDUAL_ALLOCATION 1 // are we duping every string ? or are they handled with an atlas
 
     #define RAISE(c, msg) raise_error(c, msg, __FILE__, __func__, __LINE__);
+    #define RAISE_FMT(c, ...) raise_error_fmt(c, __FILE__, __func__, __LINE__, __VA_ARGS__);
     #define PROPAGATE_ERR() push_error(__FILE__, __func__, __LINE__);
 
     #define PREP_INIT() void *__temp_alloc;
@@ -416,6 +417,7 @@
     CN_API void *get_generic_map(struct generic_map_s *gen_map, const char *key, void *(*_obj_from_key_default)(const char *), void (*_delete_obj)(void *));
     CN_API void delete_generic_map(struct generic_map_s *gen_map, void (*_delete_obj)(void *));
     CN_API void empty_generic_map(struct generic_map_s *gen_map, void (*_delete_obj)(void *));
+    CN_API cnbool has_generic_map(struct generic_map_s *gen_map, const char *key);
 
     CN_API struct generic_vector_s *new_generic_vector(void);
     CN_API uint8_t resize_generic_vector(struct generic_vector_s *vec, size_t new_capacity);
@@ -482,4 +484,9 @@
     CN_API void print_error(const ErrorContext *err, FILE *output);
     CN_API const char *error_type_to_text(ErrorCode c);
 
+    #if defined(__GNUC__) || defined(__clang__)
+        CN_API void raise_error_fmt(ErrorCode c, const char *file, const char *function, uint32_t line, const char *fmt, ...) __attribute__((format(printf, 5, 6)));
+    #else
+        CN_API void raise_error_fmt(ErrorCode c, const char *file, const char *function, uint32_t line, const char *fmt, ...);
+    #endif
 #endif

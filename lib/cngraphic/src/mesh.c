@@ -4,8 +4,10 @@ CN_API Mesh *new_mesh(void)
 {
     Mesh *mesh = malloc(sizeof(Mesh));
 
-    if (!mesh)
+    if (!mesh) {
+        RAISE(ERR_OUT_OF_MEMORY, "failed to allocate mesh.");
         return (NULL);
+    }
     mesh->vertex_count = 0;
     mesh->index_count = 0;
     (void)memset(&mesh->gpu_handler, 0, sizeof(mesh->gpu_handler));
@@ -18,8 +20,15 @@ CN_API Mesh *new_mesh(void)
 
 cnbool mesh_upload_gl(Mesh *m)
 {
-    if (!m || !m->vertices || !m->vertex_count)
+    if (!m || !m->vertices || !m->vertex_count) {
+        RAISE(ERR_INVALID_POINTER, "can't upload empty mesh to opengl.");
         return (false);
+    }
+
+    if (m->api != R_API_GL) {
+        RAISE(ERR_INVALID_POINTER, "can't upload a mesh not made for opengl to opengl.");
+        return (false);
+    }
 
     if (m->uploaded) {
         glDeleteVertexArrays(1, &m->gpu_handler.gl.vao);
@@ -61,14 +70,29 @@ cnbool mesh_upload_gl(Mesh *m)
     }
 
     glBindVertexArray(0);
+    m->gpu_handler.gl.gl_ctx = SDL_GL_GetCurrentContext();
     m->uploaded = true;
-    return true;
+    return (true);
 }
 
-void mesh_draw_gl(const Mesh *m)
+void mesh_draw_gl(Mesh *m)
 {
-    if (!m || !m->uploaded)
+    if (!m || !m->uploaded) {
+        RAISE(ERR_INVALID_POINTER, "can't draw an invalid mesh.");
         return;
+    }
+
+    if (m->api != R_API_GL) {
+        RAISE(ERR_INVALID_POINTER, "can't draw to opengl a mesh that has not been made for opengl.");
+        return;
+    }
+
+    if (m->gpu_handler.gl.gl_ctx != SDL_GL_GetCurrentContext()) {
+        if (!mesh_upload_gl(m)) {
+            PROPAGATE_ERR();
+            return;
+        }
+    }
 
     glBindVertexArray(m->gpu_handler.gl.vao);
 
@@ -83,8 +107,10 @@ void mesh_draw_gl(const Mesh *m)
 
 CN_API void delete_mesh(Mesh *mesh)
 {
-    if (!mesh)
+    if (!mesh) {
+        RAISE(ERR_INVALID_POINTER, "can't delete empty mesh.");
         return;
+    }
     
     if (mesh->uploaded) {
         if (mesh->api == R_API_GL) {
