@@ -13,7 +13,7 @@
         HMODULE h = LoadLibraryA(path);
 
         if (!h) {
-            RAISE(ERR_OS, "failed to open library.");
+            RAISE_FMT(ERR_OS, "failed to open library '%s'.", path);
             return (NULL);
         }
 
@@ -35,7 +35,7 @@
         FARPROC sym = GetProcAddress((HMODULE)handle, name);
 
         if (!sym) {
-            RAISE(ERR_OS, "failed to extract symbol.");
+            RAISE_FMT(ERR_OS, "failed to extract symbol '%s'.", name);
             return (NULL);
         }
 
@@ -67,7 +67,7 @@
         if (!h) {
             const char *err = dlerror();
     
-            RAISE(ERR_OS, err);
+            RAISE_FMT(ERR_OS, "failed to openlibrary '%s' (%s).", path, err);
             return (NULL);
         }
 
@@ -92,7 +92,7 @@
 
         const char *err = dlerror();
         if (!sym || err) {
-            RAISE(ERR_OS, err);
+            RAISE_FMT(ERR_OS, "failed to getsymbol '%s' (%s).", name, err);
             return (NULL);
         }
 

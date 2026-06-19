@@ -4,7 +4,10 @@ static cn_value _init(Object *__this, void **args)
 {
     PREP_INIT()
 
-    call_method(__this->base, "_init", args);
+    if (call_method(__this->base, "_init", args).as.i == VALUE_ERR.as.i) {
+        PROPAGATE_ERR();
+        return (VALUE_ERR);
+    }
 
     INIT_CUSTOM_ALLOCATION(__this, new_texture_from_file("./assets/dirt.png"), delete_texture, "texture");
 
@@ -26,8 +29,10 @@ CN_API Object *new_object2d(void)
 {
     Object *obj = new_object();
 
-    if (!obj)
+    if (!obj) {
+        PROPAGATE_ERR();
         return (NULL);
+    }
 
     SET_PARENT_CLASS_BUILD_STATIC(obj, new_scene_object());
     CREATE_METHOD_CLASS_BUILD(obj, "_init", &_init);

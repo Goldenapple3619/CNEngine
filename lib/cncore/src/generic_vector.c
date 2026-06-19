@@ -68,7 +68,7 @@ CN_API uint8_t resize_generic_vector(struct generic_vector_s *vec, size_t new_ca
     vec->content = realloc(vec->content, new_capacity * sizeof(void *));
 
     if (!vec->content) {
-        RAISE(ERR_OUT_OF_MEMORY, "failed to resize generic vector.");
+        RAISE_FMT(ERR_OUT_OF_MEMORY, "failed to resize generic vector (%zu -> %zu).", vec->capacity, new_capacity);
         vec->capacity = 0;
         vec->size = 0;
         return (1);
@@ -112,7 +112,7 @@ CN_API void remove_generic_vector(struct generic_vector_s *vec, size_t i, void (
     }
 
     if (vec->size == 0 || i >= vec->size) {
-        RAISE(ERR_INVALID_POINTER, "can't remove at invalid position.");
+        RAISE_FMT(ERR_INVALID_POINTER, "can't remove at invalid position (%zu >= %zu).", i, vec->size);
         return;
     }
 
@@ -133,7 +133,7 @@ CN_API void remove_generic_ordered_vector(struct generic_vector_s *vec, size_t i
     }
 
     if (vec->size == 0 || i >= vec->size) {
-        RAISE(ERR_INVALID_POINTER, "can't remove at invalid position.");
+        RAISE_FMT(ERR_INVALID_POINTER, "can't remove at invalid position (%zu >= %zu).", i, vec->size);
         return;
     }
 

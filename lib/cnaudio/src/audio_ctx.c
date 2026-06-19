@@ -15,6 +15,7 @@ static cn_value _get_free_channels(Object *__this, void **args)
     free_channels->size = 0;
 
     if (!free_channels->free_channels_arr) {
+        RAISE_FMT(ERR_OUT_OF_MEMORY, "failed to allocate array of audio channels of size %" PRIi32 ".", max_channels);
         (void)free(free_channels);
         return (null_value);
     }
@@ -41,18 +42,23 @@ static cn_value _init(Object *__this, void **args)
 {
     PREP_INIT()
 
-    if (!args || !(args[0]))
+    if (!args || !(args[0])) {
+        RAISE(ERR_INVALID_POINTER, "can't init audio submodule with no ctx.");
         return (VALUE_ERR);
+    }
     
     Object *ctx = (Object *)(args[0]);
     
-    if (!start_audio() && get_attr(__this, "init_errors")->as.b)
-        return (VALUE_ERR);
+    if (!start_audio()) {
+        PROPAGATE_ERR();
+        if (get_attr(__this, "init_errors")->as.b)
+            return (VALUE_ERR);
+    }
 
-    if (call_method(ctx, "register_update", PACK_ARG(_update)).as.i == VALUE_ERR.as.i)
+    if (call_method(ctx, "register_update", PACK_ARG(_update)).as.i == VALUE_ERR.as.i) {
+        PROPAGATE_ERR();
         return (VALUE_ERR);
-    // if (call_method(ctx, "register_event", PACK_ARG(_events, NULL)).as.i == VALUE_ERR.as.i)
-    //     return (VALUE_ERR);
+    }
 
     INIT_OBJECT_STATIC(ctx, new_atlas(NULL, (expr_free)&Mix_FreeChunk), NULL, "audio_atlas");
     INIT_CUSTOM_ALLOCATION(ctx, new_audio_vector(), delete_audio_vector, "audio_queue");
@@ -85,14 +91,17 @@ CN_API Object *new_audio_ctx(cnbool skip_init_error)
     Object *obj = new_object();
     cnbool init_error = !skip_init_error;
 
-    if (!obj)
+    if (!obj) {
+        PROPAGATE_ERR();
         return (NULL);
+    }
 
     SET_PARENT_CLASS_BUILD_STATIC(obj, create_default_object());
     CREATE_METHOD_CLASS_BUILD(obj, "_init", &_init);
     CREATE_METHOD_CLASS_BUILD(obj, "_del", &_del);
 
     if (!set_attr(obj, "init_errors", CN_TYPE_BOOL, &init_error)) {
+        PROPAGATE_ERR();
         delete_object(obj);
         return (NULL);
     }

@@ -105,18 +105,18 @@ static cn_value _set_main_window(Object *__this, void **args)
     cnbool found = false;
 
     for (size_t i = 0; i < interfaces->size; ++i) {
-        if (((Window *)(get_attr(interfaces->objects[i], "window")->as.ptr))->id != (int64_t)*(int32_t *)args[0])
+        if (((Window *)(get_attr(interfaces->objects[i], "window")->as.ptr))->id != (uint32_t)*(uint32_t *)args[0])
             continue;
         found = true;
         break;
     }
 
     if (!found) {
-        RAISE(ERR_OUT_OF_BOUND, "can't set main window from an id that don't match any window in universe.");
+        RAISE_FMT(ERR_OUT_OF_BOUND, "can't set main window from an id that don't match any window in universe '%" PRIu32 "'.", (uint32_t)*(uint32_t *)args[0]);
         return (VALUE_ERR);
     }
 
-    INIT_INT(__this, (int64_t)*(int32_t *)args[0], "_main_window_id");
+    INIT_INT(__this, (int64_t)*(uint32_t *)args[0], "_main_window_id");
 
     return (VALUE_OK);
 }

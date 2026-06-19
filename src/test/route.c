@@ -14,27 +14,33 @@ Object *build_engine(void)
 {
     Object *ctx = new_ctx();
 
-    if (!ctx)
+    if (!ctx) {
+        PROPAGATE_ERR();
         return (NULL);
+    }
 
     global_ctx = ctx;
 
     if (!submodule_ctx(ctx, new_graphic_submodule())) {
+        PROPAGATE_ERR();
         (void)delete_object(ctx);
         return (NULL);
     }
 
     if (!submodule_ctx(ctx, new_audio_ctx(true))) {
+        PROPAGATE_ERR();
         (void)delete_object(ctx);
         return (NULL);
     }
 
     if (!submodule_ctx(ctx, new_gui_submodule())) {
+        PROPAGATE_ERR();
         (void)delete_object(ctx);
         return (NULL);
     }
 
     if (!submodule_ctx(ctx, new_input_submodule())) {
+        PROPAGATE_ERR();
         (void)delete_object(ctx);
         return (NULL);
     }
@@ -42,6 +48,7 @@ Object *build_engine(void)
     cn_value val = call_method(ctx, "_init", NULL);
 
     if (val.type == CN_TYPE_NULL || val.as.i == VALUE_ERR.as.i) {
+        PROPAGATE_ERR();
         delete_object(ctx);
         return (NULL);
     }
@@ -58,10 +65,16 @@ int test(size_t argc, char **argv)
 
     Object *ctx = build_engine();
 
-    if (!ctx)
+    if (!ctx) {
+        PROPAGATE_ERR();
         return (1);
+    }
 
-    add_test_window(ctx);
+    if (!add_test_window(ctx)) {
+        PROPAGATE_ERR();
+        DELOC(ctx);
+        return (1);
+    }
 
     call_method(ctx, "_run", NULL);
     DELOC(ctx);

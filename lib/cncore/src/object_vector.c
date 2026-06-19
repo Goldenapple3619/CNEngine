@@ -42,7 +42,7 @@ CN_API uint8_t resize_object_vector(ObjectVector *vec, size_t new_capacity)
     vec->objects = realloc(vec->objects, new_capacity * sizeof(Object *));
 
     if (!vec->objects) {
-        RAISE(ERR_OUT_OF_MEMORY, "failed to resize object vector.");
+        RAISE_FMT(ERR_OUT_OF_MEMORY, "failed to resize object vector (%zu -> %zu).", vec->capacity, new_capacity);
         vec->size = 0;
         vec->capacity = 0;
         return (1);
@@ -87,7 +87,7 @@ CN_API void remove_object_vector(ObjectVector *vec, size_t i)
     }
 
     if (vec->size == 0 || i >= vec->size) {
-        RAISE(ERR_OUT_OF_BOUND, "can't remove at invalid position.");
+        RAISE_FMT(ERR_OUT_OF_BOUND, "can't remove value at invalid position (%zu >= %zu).", i, vec->size);
         return;
     }
 
@@ -107,7 +107,7 @@ CN_API void remove_object_ordered_vector(ObjectVector *vec, size_t i)
     }
 
     if (i >= vec->size) {
-        RAISE(ERR_OUT_OF_BOUND, "can't remove at invalid position.");
+        RAISE_FMT(ERR_OUT_OF_BOUND, "can't remove value at invalid position (%zu >= %zu).", i, vec->size);
         return;
     }
 

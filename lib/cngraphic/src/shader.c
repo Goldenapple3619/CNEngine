@@ -16,7 +16,7 @@ static GLuint _compile_stage_gl(GLenum type, const char *src)
         char log[ERR_MSG_SIZE];
 
         glGetShaderInfoLog(s, sizeof(log), NULL, log);
-        RAISE(ERR_OS, log);
+        RAISE_FMT(ERR_OS, "failed to compile glShader (%s).", log);
         glDeleteShader(s);
         return (0);
     }
@@ -32,8 +32,7 @@ static char *_read_file(const char *path)
     size_t _;
 
     if (!f) {
-        RAISE(ERR_OS, "failed to open shader file.");
-        fprintf(stderr, "shader: cannot open %s\n", path);
+        RAISE_FMT(ERR_OS, "failed to open shader file '%s'.", path);
         return (NULL);
     }
     (void)fseek(f, 0, SEEK_END);
@@ -43,7 +42,7 @@ static char *_read_file(const char *path)
     buf = malloc(len + 1);
 
     if (!buf) {
-        RAISE(ERR_OUT_OF_MEMORY, "failed to allocate buffer.");
+        RAISE_FMT(ERR_OUT_OF_MEMORY, "failed to allocate buffer of size %zu for '%s'.", len + 1, path);
         (void)fclose(f);
         return (NULL);
     }
@@ -89,7 +88,7 @@ CN_API uint8_t gl_shader_compile(Shader *shader, const char *vert_src, const cha
         char log[ERR_MSG_SIZE];
 
         glGetProgramInfoLog(program, sizeof(log), NULL, log);
-        RAISE(ERR_OS, log);
+        RAISE_FMT(ERR_OS, "failed to create glShader program (%s).", log);
         glDeleteProgram(program);
         program = 0;
     }

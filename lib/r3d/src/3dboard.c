@@ -3,8 +3,10 @@
 
 static cn_value _init(Object *__this, void **args)
 {
-    if (!args || !args[0])
+    if (!args || !args[0]) {
+        RAISE(ERR_INVALID_POINTER, "can't init 3d board with no 3d board mode.")
         return (VALUE_ERR);
+    }
 
     PREP_INIT()
 
@@ -55,8 +57,10 @@ static void _opengl_rendering(Mesh *mesh, Material *material, const Vector3 *pos
 
 static cn_value _render_object(Object *__this, void **args)
 {
-    if (!args && !args[0])
+    if (!args || !args[0]) {
+        RAISE(ERR_INVALID_POINTER, "can't draw with no object.");
         return (null_value);
+    }
 
     threed_render_stack *render_stack = args[0]; 
     int64_t flags = get_attr(render_stack->obj, "_flags")->as.i;
@@ -99,6 +103,11 @@ static cn_value _render_object(Object *__this, void **args)
 
 static cn_value _draw(Object *__this, void **args)
 {
+    if (!args || !args[0]) {
+        RAISE(ERR_INVALID_POINTER, "can't draw with no window.");
+        return (null_value);
+    }
+
     threed_render_stack render_stack;
 
     Object *scene = get_attr(__this, "scene")->as.ptr;
@@ -154,8 +163,10 @@ CN_API Object *new_3dboard(void)
 {
     Object *obj = new_object();
 
-    if (!obj)
+    if (!obj) {
+        PROPAGATE_ERR();
         return (NULL);
+    }
 
     SET_PARENT_CLASS_BUILD_STATIC(obj, create_default_object());
     CREATE_METHOD_CLASS_BUILD(obj, "_init", &_init);

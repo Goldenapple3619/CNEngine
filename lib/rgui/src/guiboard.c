@@ -143,8 +143,10 @@ static Vector2 _compute_object_position(const gui_render_stack *render_stack)
 
 static cn_value _render_object(Object *__this, void **args)
 {
-    if (!args && !args[0])
+    if (!args || !args[0]) {
+        RAISE(ERR_INVALID_POINTER, "can't draw with no object.");
         return (null_value);
+    }
 
     gui_render_stack *render_stack = args[0]; 
     Texture *object_texture = (has_attr(render_stack->obj, "texture") ? get_attr(render_stack->obj, "texture")->as.ptr : NULL);
@@ -202,8 +204,10 @@ static cn_value _render_object(Object *__this, void **args)
 
 static cn_value _draw(Object *__this, void **args)
 {
-    if (!args || !args[0])
+    if (!args || !args[0]) {
+        RAISE(ERR_INVALID_POINTER, "can't draw with no window.");
         return (null_value);
+    }
 
     gui_render_stack render_stack;
     Object *elements = get_attr(__this, "elements")->as.ptr;
@@ -252,8 +256,10 @@ static cn_value _draw(Object *__this, void **args)
 
 static cn_value _add_element(Object *__this, void **args)
 {
-    if (!args || !args[0])
+    if (!args || !args[0]) {
+        RAISE(ERR_INVALID_POINTER, "can't add empty element to gui board.");
         return (VALUE_ERR);
+    }
 
     if (call_method(get_attr(__this, "elements")->as.ptr, "push", PACK_ARG(share_object(args[0]), NULL)).as.i == VALUE_ERR.as.i) {
         PROPAGATE_ERR();
@@ -278,8 +284,10 @@ CN_API Object *new_guiboard(void)
 {
     Object *obj = new_object();
 
-    if (!obj)
+    if (!obj) {
+        PROPAGATE_ERR();
         return (NULL);
+    }
 
     SET_PARENT_CLASS_BUILD_STATIC(obj, create_default_object());
     CREATE_METHOD_CLASS_BUILD(obj, "_init", &_init);

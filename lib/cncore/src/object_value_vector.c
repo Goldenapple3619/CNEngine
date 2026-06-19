@@ -43,7 +43,7 @@ CN_API uint8_t resize_value_vector(struct cn_value_vector_s *vec, size_t new_cap
     vec->values = realloc(vec->values, new_capacity * sizeof(cn_value *));
 
     if (!vec->values) {
-        RAISE(ERR_OUT_OF_MEMORY, "failed to resize value vector.");
+        RAISE_FMT(ERR_OUT_OF_MEMORY, "failed to resize value vector (%zu -> %zu).", vec->capacity, new_capacity);
         vec->size = 0;
         vec->capacity = 0;
         return (1);
@@ -94,7 +94,7 @@ CN_API void remove_value_vector(struct cn_value_vector_s *vec, size_t i)
         return;
     }
     if (vec->size == 0 || i >= vec->size) {
-        RAISE(ERR_OUT_OF_BOUND, "can't remove value at invalid position.");
+        RAISE_FMT(ERR_OUT_OF_BOUND, "can't remove value at invalid position (%zu >= %zu).", i, vec->size);
         return;
     }
 
@@ -115,7 +115,7 @@ CN_API void remove_value_ordered_vector(struct cn_value_vector_s *vec, size_t i)
     }
 
     if (vec->size == 0 || i >= vec->size) {
-        RAISE(ERR_OUT_OF_BOUND, "can't remove value at invalid position.");
+        RAISE_FMT(ERR_OUT_OF_BOUND, "can't remove value at invalid position (%zu >= %zu).", i, vec->size);
         return;
     }
 

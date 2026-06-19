@@ -2,8 +2,10 @@
 
 static cn_value _init(Object *__this, void **args)
 {
-    if (!args || !args[0])
+    if (!args || !args[0]) {
+        RAISE(ERR_INVALID_POINTER, "can't init gui object with no gui object mode.");
         return (VALUE_ERR);
+    }
 
     PREP_INIT()
 

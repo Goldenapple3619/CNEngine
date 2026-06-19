@@ -85,7 +85,7 @@ static cn_value _at_value(Object *__this, void **args)
     size_t index = *(size_t *)args[0];
 
     if (gen_map->size <= index) {
-        RAISE(ERR_OUT_OF_BOUND, "get at invalid index.")
+        RAISE_FMT(ERR_OUT_OF_BOUND, "get at invalid index (%zu >= %zu).", index, gen_map->size);
         return (null_value);
     }
 
@@ -103,7 +103,7 @@ static cn_value _at_key(Object *__this, void **args)
     size_t index = *(size_t *)args[0];
 
     if (gen_map->size <= index) {
-        RAISE(ERR_OUT_OF_BOUND, "get at invalid index.")
+        RAISE_FMT(ERR_OUT_OF_BOUND, "get at invalid index (%zu >= %zu).", index, gen_map->size);
         return (null_value);
     }
 

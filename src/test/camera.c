@@ -17,8 +17,10 @@ Object *set_up_camera(Object *ctx, Object *board)
         call_method(ctx, "register_input_controller", PACK_ARG(
             "backward", &(InputController){.ignore_value = false, .target_type = INPUT_KEY_PRESS, .target_value = SDLK_s}
         )).as.i == VALUE_ERR.as.i
-        )
+        ) {
+        PROPAGATE_ERR();
         return (NULL);
+    }
 
     if (
         call_method(ctx, "register_input_callback", PACK_ARG(
@@ -33,8 +35,10 @@ Object *set_up_camera(Object *ctx, Object *board)
         call_method(ctx, "register_input_callback", PACK_ARG(
             "backward", &(ObjMethodPair){.obj = camera, .method = &_move_backward}
         )).as.i == VALUE_ERR.as.i
-        )
+        ) {
+        PROPAGATE_ERR();
         return (NULL);
+    }
 
     return (camera);
 }

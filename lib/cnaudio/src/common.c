@@ -2,10 +2,14 @@
 
 CN_API cnbool start_audio(void)
 {
-    if (SDL_Init(SDL_INIT_AUDIO) != 0)
+    if (SDL_Init(SDL_INIT_AUDIO) != 0) {
+        RAISE(ERR_OS, "failed to init audio sdl module.");
         return (false);
-    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
+    }
+    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
+        RAISE(ERR_OS, "failed to open audio device.");
         return (false);
+    }
 
     return (true);
 };

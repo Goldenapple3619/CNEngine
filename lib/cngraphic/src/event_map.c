@@ -26,7 +26,7 @@ CN_API uint8_t resize_event_map(struct event_map_entry_s *event_map, size_t new_
     event_map->events = realloc(event_map->events, new_capacity * sizeof(Event *));
 
     if (!event_map->events) {
-        RAISE(ERR_OUT_OF_MEMORY, "failed to resize event map.");
+        RAISE_FMT(ERR_OUT_OF_MEMORY, "failed to resize event map (%zu -> %zu).", event_map->capacity, new_capacity);
         event_map->capacity = 0;
         event_map->size = 0;
         return (1);

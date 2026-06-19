@@ -49,7 +49,7 @@ CN_API Window *get_window_in_universe(const WindowUniverse *universe, uint32_t w
             return (universe->windows[i]);
     }
 
-    RAISE(ERR_OUT_OF_BOUND, "can't get non existent window in universe.");
+    RAISE_FMT(ERR_OUT_OF_BOUND, "can't get non existent window in universe '%" PRIu32 "'.", window_id);
     return (NULL);
 }
 
@@ -236,7 +236,7 @@ CN_API uint8_t resize_window_universe(WindowUniverse *universe, size_t new_capac
     universe->windows = realloc(universe->windows, new_capacity * sizeof(Window *));
 
     if (!universe->windows) {
-        RAISE(ERR_OUT_OF_MEMORY, "failed to resize universe.");
+        RAISE_FMT(ERR_OUT_OF_MEMORY, "failed to resize universe (%zu -> %zu).", universe->capacity, new_capacity);
         universe->size = 0;
         universe->capacity = 0;
         return (1);
@@ -263,7 +263,7 @@ CN_API void remove_window_from_universe(WindowUniverse *universe, uint32_t id)
     for (; i < universe->size && (universe->windows[i])->id != id; ++i);
 
     if (i >= universe->size) {
-        RAISE(ERR_OUT_OF_BOUND, "can't remove a window not in universe.")
+        RAISE_FMT(ERR_OUT_OF_BOUND, "can't remove non existent window in universe '%" PRIu32 "'.", id);
         return;
     }
 

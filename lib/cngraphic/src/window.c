@@ -146,7 +146,7 @@ CN_API uint8_t allow_event(Window *window, cn_event ev)
     window->event_map = realloc(window->event_map, base_size == 0 ? (2 * sizeof(struct event_map_entry_s *)) : ((base_size + 2) * sizeof(struct event_map_entry_s *)));
     
     if (!window->event_map) {
-        RAISE(ERR_OUT_OF_MEMORY, "failed to resize window event_map.");
+        RAISE_FMT(ERR_OUT_OF_MEMORY, "failed to resize window event_map (%zu -> %zu).", base_size, (base_size + 2));
         return (1);
     }
 

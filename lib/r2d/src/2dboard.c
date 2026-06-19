@@ -8,8 +8,10 @@ static cn_value _init(Object *__this, void **args)
 {
     PREP_INIT()
 
-    if (!args || !args[0])
+    if (!args || !args[0]) {
+        RAISE(ERR_INVALID_POINTER, "can't init 2d board with no board mode.")
         return (VALUE_ERR);
+    }
 
     struct twod_board_mode_s *mode = args[0];
 
@@ -84,8 +86,10 @@ static void _opengl_rendering(const Vector2 *position,
 
 static cn_value _render_object(Object *__this, void **args)
 {
-    if (!args && !args[0])
+    if (!args || !args[0]) {
+        RAISE(ERR_INVALID_POINTER, "can't draw with no object.");
         return (null_value);
+    }
 
     twod_render_stack *render_stack = args[0]; 
     int64_t flags = get_attr(render_stack->obj, "_flags")->as.i;
@@ -146,9 +150,11 @@ static cn_value _render_object(Object *__this, void **args)
 }
 
 static cn_value _draw(Object *__this, void **args)
-{
-    (void)__this;
-    (void)args;
+{   
+    if (!args || !args[0]) {
+        RAISE(ERR_INVALID_POINTER, "can't draw with no window.");
+        return (null_value);
+    }
 
     twod_render_stack render_stack;
     Object *camera = NULL;
@@ -226,8 +232,10 @@ CN_API Object *new_2dboard(void)
 {
     Object *obj = new_object();
 
-    if (!obj)
+    if (!obj) {
+        PROPAGATE_ERR();
         return (NULL);
+    }
 
     SET_PARENT_CLASS_BUILD_STATIC(obj, create_default_object());
     CREATE_METHOD_CLASS_BUILD(obj, "_init", &_init);

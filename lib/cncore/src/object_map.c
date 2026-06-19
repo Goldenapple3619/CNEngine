@@ -45,7 +45,7 @@ uint8_t _attr_map_resize(struct attr_map_s *map, size_t new_capacity)
     map->keys  = realloc(map->keys,  new_capacity * sizeof(uint64_t));
 
     if (!map->attrs || !map->keys) {
-        RAISE(ERR_OUT_OF_MEMORY, "failed to resize attribute map.");
+        RAISE_FMT(ERR_OUT_OF_MEMORY, "failed to resize attribute map (%zu -> %zu).", map->capacity, new_capacity);
         map->size = 0;
         map->capacity = 0;
         return (1);

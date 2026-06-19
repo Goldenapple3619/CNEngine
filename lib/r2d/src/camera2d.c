@@ -4,7 +4,10 @@ static cn_value _init(Object *__this, void **args)
 {
     (void)args;
 
-    call_method(__this->base, "_init", args);
+    if (call_method(__this->base, "_init", args).as.i == VALUE_ERR.as.i) {
+        PROPAGATE_ERR();
+        return (VALUE_ERR);
+    }
 
     INIT_VEC2(__this, ((Vector2){.x = 0, .y = 0}), "velocity");
 
@@ -13,8 +16,10 @@ static cn_value _init(Object *__this, void **args)
 
 static cn_value _update(Object *__this, void **args)
 {
-    if (!args || !args[0])
+    if (!args || !args[0]) {
+        RAISE(ERR_INVALID_POINTER, "can't update camera with no set delta time.")
         return (null_value);
+    }
 
     double delta_time = *(double *)args[0];
     Vector2 *velocity = &get_attr(__this, "velocity")->as.vec2;
@@ -42,8 +47,10 @@ CN_API Object *new_camera2d(void)
 {
     Object *obj = new_object();
 
-    if (!obj)
+    if (!obj) {
+        PROPAGATE_ERR();
         return (NULL);
+    }
 
     SET_PARENT_CLASS_BUILD_STATIC(obj, new_scene_object());
     CREATE_METHOD_CLASS_BUILD(obj, "_init", &_init);

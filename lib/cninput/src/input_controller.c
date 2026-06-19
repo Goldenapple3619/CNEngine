@@ -4,8 +4,10 @@ InputController *new_input_controller(input_type target_type, int64_t target_val
 {
     InputController *controller = (InputController *)malloc(sizeof(InputController));
 
-    if (!controller)
+    if (!controller) {
+        RAISE(ERR_OUT_OF_MEMORY, "failed to allocate InputController.");
         return (NULL);
+    }
     controller->target_type = target_type;
     controller->target_value = target_value;
     controller->ignore_value = value_ignored;
@@ -26,6 +28,14 @@ input_type input_type_from_event(cn_event ev)
 
 cnbool input_controller_cmp(const InputController *ic, const Event *ev)
 {
+    if (!ic) {
+        RAISE(ERR_INVALID_POINTER, "can't cmp empty input controller.");
+        return (false);
+    }
+    if (!ev) {
+        RAISE(ERR_INVALID_POINTER, "can't cmp empty event with input controller.");
+        return (false);
+    }
     if (input_type_from_event(ev->type) != ic->target_type)
         return (false);
 
@@ -37,7 +47,9 @@ cnbool input_controller_cmp(const InputController *ic, const Event *ev)
 
 void delete_input_controller(InputController *ic)
 {
-    if (!ic)
+    if (!ic) {
+        RAISE(ERR_INVALID_POINTER, "can't delete empty input controller.");
         return;
+    }
     (void)free(ic);
 }

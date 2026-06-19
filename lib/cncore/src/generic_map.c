@@ -29,7 +29,7 @@ CN_API uint8_t generic_map_resize(struct generic_map_s *gen_map, size_t new_capa
     gen_map->keys = realloc(gen_map->keys,  new_capacity * sizeof(uint64_t));
 
     if (!gen_map->content || !gen_map->keys) {
-        RAISE(ERR_OUT_OF_MEMORY, "failed to resize generic map.");
+        RAISE_FMT(ERR_OUT_OF_MEMORY, "failed to resize generic map (%zu -> %zu).", gen_map->capacity, new_capacity);
         gen_map->size = 0;
         gen_map->capacity = 0;
         return (1);
@@ -84,7 +84,7 @@ CN_API void remove_generic_map(struct generic_map_s *gen_map, const char *key, v
     }
 
     if (!key || gen_map->size == 0) {
-        RAISE(ERR_OUT_OF_BOUND, "remove at invalid key.");
+        RAISE_FMT(ERR_OUT_OF_BOUND, "remove at invalid key '%s'.", key);
         return;
     }
 
@@ -105,7 +105,7 @@ CN_API void remove_generic_map(struct generic_map_s *gen_map, const char *key, v
         }
     }
 
-    RAISE(ERR_OUT_OF_BOUND, "remove at invalid key.");
+    RAISE_FMT(ERR_OUT_OF_BOUND, "remove at invalid key '%s'.", key);
 }
 
 CN_API cnbool has_generic_map(struct generic_map_s *gen_map, const char *key)
@@ -158,7 +158,7 @@ CN_API void *get_generic_map(struct generic_map_s *gen_map, const char *key, voi
     }
 
     if (!obj) {
-        RAISE(ERR_OUT_OF_BOUND, "default object builder returned empty object.")
+        RAISE_FMT(ERR_OUT_OF_BOUND, "default object builder for '%s' returned empty object.", key)
         return (NULL);
     }
 

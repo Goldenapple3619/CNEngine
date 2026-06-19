@@ -18,7 +18,7 @@ CN_API OBJAttrib *create_object_attribute(const char *name, cn_type type, cnany 
         attribute->name = (char *)strdup(name);
 
         if (!attribute->name) {
-            RAISE(ERR_OUT_OF_MEMORY, "failed to allocate attribute name.");
+            RAISE_FMT(ERR_OUT_OF_MEMORY, "failed to allocate attribute name '%s'.", name);
             (void)free(attribute);
             return (NULL);
         }
@@ -55,7 +55,7 @@ CN_API OBJAttrib *create_object_attribute_from_cnvalue(const char *name, const c
         attribute->name = (char *)strdup(name);
 
         if (!attribute->name) {
-            RAISE(ERR_OUT_OF_MEMORY, "failed to allocate attribute name.");
+            RAISE_FMT(ERR_OUT_OF_MEMORY, "failed to allocate attribute name '%s'.", name);
             (void)free(attribute);
             return (NULL);
         }

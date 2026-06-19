@@ -8,7 +8,7 @@ CN_API Texture *new_texture(const Vector2 *size, cnbool alpha)
         return (NULL);
     }
     if (size->x <= 0 || size->y <= 0) {
-        RAISE(ERR_OUT_OF_BOUND, "can't create texture with invalid sizes.");
+        RAISE_FMT(ERR_OUT_OF_BOUND, "can't create texture with invalid sizes (%f x %f).", size->x, size->y);
         return (NULL);
     }
 
@@ -22,7 +22,7 @@ CN_API Texture *new_texture(const Vector2 *size, cnbool alpha)
     texture->surface = SDL_CreateRGBSurfaceWithFormat(SDL_SWSURFACE, (int)size->x, (int)size->y, alpha ? 32 : 24,  alpha ? SDL_PIXELFORMAT_RGBA32 : SDL_PIXELFORMAT_RGB24);
     
     if (!texture->surface) {
-        RAISE(ERR_OUT_OF_MEMORY, "failed to allocate new sdl_surface.");
+        RAISE_FMT(ERR_OUT_OF_MEMORY, "failed to allocate new sdl_surface of size (%f x %f).", size->x, size->y);
         (void)free((void *)texture);
         return (NULL);
     }
@@ -46,7 +46,7 @@ CN_API uint8_t resize_texture(Texture *texture, const Vector2 *new_size)
         return (1);
     }
     if (new_size->x <= 0 || new_size->y <= 0) {
-        RAISE(ERR_OUT_OF_BOUND, "can't resize texture with invalid sizes.");
+        RAISE_FMT(ERR_OUT_OF_BOUND, "can't resize texture with invalid sizes (%f x %f).", new_size->x, new_size->y);
         return (1);
     }
 
@@ -59,7 +59,7 @@ CN_API uint8_t resize_texture(Texture *texture, const Vector2 *new_size)
         alpha ? SDL_PIXELFORMAT_RGBA32 : SDL_PIXELFORMAT_RGB24);
 
     if (!new_surface) {
-        RAISE(ERR_OUT_OF_MEMORY, "failed to resize texture by allocating a new one.");
+        RAISE_FMT(ERR_OUT_OF_MEMORY, "failed to resize texture by allocating a new one (%f x %f -> %f x %f).", texture->size.x, texture->size.y, new_size->x, new_size->y);
         return (1);
     }
 
@@ -88,7 +88,7 @@ CN_API void draw_texture(Texture *__src_texture, SDL_Renderer *__dest_renderer, 
         __src_texture->gpu_handler.sdl_texture.renderer = __dest_renderer;
         __src_texture->gpu_handler.sdl_texture.gpu_texture = SDL_CreateTextureFromSurface(__dest_renderer, __src_texture->surface);
         if (!__src_texture->gpu_handler.sdl_texture.gpu_texture) {
-            RAISE(ERR_OS, SDL_GetError());
+            RAISE_FMT(ERR_OS, "failed to create new sdl texture (%s).", SDL_GetError());
             return;
         }
     }
@@ -235,7 +235,7 @@ CN_API Texture *new_texture_from_file(const char *path)
     texture->surface = IMG_Load(path);
 
     if (!texture->surface) {
-        RAISE(ERR_OS, "failed to load texture from image, missing texture is being created instead.");
+        RAISE_FMT(ERR_OS, "failed to load texture from image '%s', missing texture is being created instead.", path);
         texture->surface = SDL_CreateRGBSurfaceWithFormat(SDL_SWSURFACE, 100, 100, 32, SDL_PIXELFORMAT_RGBA32);
 
         if (!texture->surface) {
