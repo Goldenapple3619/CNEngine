@@ -8,7 +8,7 @@ int build_assets(size_t argc, char **argv, Object *asset_ctx)
 
     (void)asset_ctx;
 
-    if (build_get_args(argc - 3, argv + 3, &build_args)) {
+    if (build_get_args(argc - 3, argv + 3, "asset", &build_args)) {
         (void)reset_args(&build_args);
         return (1);
     }

@@ -108,7 +108,7 @@ int build_asset_pack(size_t argc, char **argv, Object *asset_ctx)
 
     (void)asset_ctx;
 
-    if (build_get_args(argc - 3, argv + 3, &build_args)) {
+    if (build_get_args(argc - 3, argv + 3, "pack", &build_args)) {
         (void)reset_args(&build_args);
         return (1);
     }

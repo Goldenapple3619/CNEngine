@@ -1,10 +1,16 @@
 #include "build.h"
 
-uint8_t build_get_args(size_t argc, char **argv, struct build_args_s *args)
+uint8_t build_get_args(size_t argc, char **argv, const char *toolchain, struct build_args_s *args)
 {
     if (!args)
         return (0);
-    args->output_file = strdup("output.cno");
+
+    if (!strcmp(toolchain, "project"))
+        args->output_file = strdup("./");
+    else
+        args->output_file = strdup("output.cno");
+
+
     if (!args->output_file) {
         fprintf(stderr, "failed to allocate string while parsing args.\n");
         return (1);

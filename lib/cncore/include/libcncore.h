@@ -329,6 +329,12 @@
         ErrorFrame frames[ERR_MAX_FRAMES];
     } ErrorContext;
 
+    typedef struct {
+        char *c_str;
+
+        size_t size;
+    } String;
+
     typedef struct vector2_s Vector2;
     typedef struct vector3_s Vector3;
     #if !defined(__APPLE__)
@@ -483,6 +489,15 @@
     CN_API cnbool has_error(void);
     CN_API void print_error(const ErrorContext *err, FILE *output);
     CN_API const char *error_type_to_text(ErrorCode c);
+
+    CN_API String *new_str_from_const(const char *c_str);
+    CN_API String *new_str(char *c_str);
+    CN_API cnbool str_is_empty(const String *str);
+    CN_API cnbool str_is_null(const String *str);
+    CN_API void str_override(String *str, char *c_str);
+    CN_API uint8_t str_rcadd_mv(String *str, char *c_str);
+    CN_API uint8_t str_rcadd_cp(String *str, const char *c_str);
+    CN_API void delete_str(String *str);
 
     #if defined(__GNUC__) || defined(__clang__)
         CN_API void raise_error_fmt(ErrorCode c, const char *file, const char *function, uint32_t line, const char *fmt, ...) __attribute__((format(printf, 5, 6)));

@@ -82,5 +82,5 @@
     uint8_t parse_cnressources_xml(CNProject *project, xmlNode *node, const char *project_root);
     uint8_t parse_cnbuilds_xml(CNProject *project, xmlNode *node);
 
-    uint8_t compile_library(const CNProject *project, const char *build_path, const char *include_path);
+    uint8_t compile_library(const CNProject *project, const CNBuild *build_info, const char *output_path, const char *build_path, const char *include_path);
 #endif

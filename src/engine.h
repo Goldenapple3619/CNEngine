@@ -42,6 +42,7 @@
     char *replace_extension(const char *path, const char *ext);
     const char *path_basename(const char *path);
     uint8_t copy_file(const char *src, const char *dst);
+    uint8_t copytree(const char *src, const char *dst);
     
     int argument_route(size_t argc, char **argv);
 

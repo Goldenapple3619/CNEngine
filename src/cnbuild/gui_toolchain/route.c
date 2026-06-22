@@ -7,7 +7,7 @@ int build_gui(size_t argc, char **argv, Object *asset_ctx)
     struct generic_vector_s *left_overs;
     FILE *fp;
 
-    if (build_get_args(argc - 3, argv + 3, &build_args)) {
+    if (build_get_args(argc - 3, argv + 3, "gui", &build_args)) {
         (void)reset_args(&build_args);
         return (1);
     }

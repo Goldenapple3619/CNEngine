@@ -23,6 +23,7 @@ add_library(cncore SHARED
     src/generic_vector.c
     src/library.c
     src/error.c
+    src/string.c
 )
 
 target_compile_options(cncore

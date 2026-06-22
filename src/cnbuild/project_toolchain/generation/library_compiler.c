@@ -156,15 +156,17 @@ void delete_library_compiler(LibraryCompiler *compiler)
     (void)free(compiler);
 }
 
-uint8_t compile_library(const CNProject *project, const char *build_path, const char *include_path)
+uint8_t compile_library(const CNProject *project, const CNBuild *build_info, const char *output_path, const char *build_path, const char *include_path)
 {
+    (void)build_info;
+
     if (!project)
         return (1);
     
     LibraryCompiler *compiler;
     CNAsset *temp_asset;
 
-    compiler = new_library_compiler("./game.so", "gcc", build_path);
+    compiler = new_library_compiler(output_path, "gcc", build_path);
 
     if (!compiler) {
         return (1);

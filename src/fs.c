@@ -271,32 +271,145 @@ uint8_t copy_file(const char *src, const char *dst)
     FILE *in = fopen(src, "rb");
     FILE *out;
     size_t bytes;
-    
-    if (!in)
-        return (2);
+    char *new_dst;
 
-    out = fopen(dst, "wb");
+    if (!in)
+        return (1);
+
+    if (is_dir(dst)) {
+        new_dst = join_path(dst, path_basename(src));
+    } else {
+        new_dst = strdup(dst);
+    }
+
+    if (!new_dst) {
+        (void)fclose(in);
+    }
+
+    out = fopen(new_dst, "wb");
 
     if (!out) {
-        fclose(in);
+        (void)free(new_dst);
+        (void)fclose(in);
         return (1);
     }
 
     while ((bytes = fread(buffer, 1, sizeof(buffer), in)) > 0) {
         if (fwrite(buffer, 1, bytes, out) != bytes) {
-            fclose(in);
-            fclose(out);
+            (void)free(new_dst);
+            (void)fclose(in);
+            (void)fclose(out);
             return (1);
         }
     }
 
+    (void)free(new_dst);
+    (void)fclose(out);
+
     if (ferror(in)) {
-        fclose(in);
-        fclose(out);
+        (void)fclose(in);
         return (1);
     }
 
-    fclose(in);
-    fclose(out);
+    (void)fclose(in);
     return (0);
+}
+
+uint8_t copytree(const char *src, const char *dst)
+{
+    #ifdef _WIN32
+        WIN32_FIND_DATAA fd;
+        HANDLE h;
+
+        char pattern[MAX_PATH];
+        char *src_path;
+        char *dst_path;
+
+        if (!is_dir(dst)) {
+            if (MKDIR(dst) != 0)
+                return (1);
+        }
+
+        snprintf(pattern, sizeof(pattern), "%s\\*", src);
+
+        h = FindFirstFileA(pattern, &fd);
+
+        if (h == INVALID_HANDLE_VALUE)
+            return (1);
+
+        do {
+            if (!strcmp(fd.cFileName, ".") || !strcmp(fd.cFileName, ".."))
+                continue;
+
+            src_path = join_path(src, fd.cFileName);
+            dst_path = join_path(dst, fd.cFileName);
+
+            if (fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) {
+                if (copytree(src_path, dst_path) != 0) {
+                    FindClose(h);
+                    free(src_path);
+                    free(dst_path);
+                    return (1);
+                }
+            } else {
+                if (copy_file(src_path, dst_path) != 0) {
+                    FindClose(h);
+                    free(src_path);
+                    free(dst_path);
+                    return (1);
+                }
+            }
+
+            free(src_path);
+            free(dst_path);
+        } while (FindNextFileA(h, &fd));
+
+        FindClose(h);
+        return (0);
+    #else
+        DIR *dir;
+        struct dirent *entry;
+
+        char *src_path;
+        char *dst_path;
+
+        if (!is_dir(dst)) {
+            if (MKDIR(dst) != 0)
+                return (1);
+        }
+
+        dir = opendir(src);
+    
+        if (!dir)
+            return (1);
+
+        while ((entry = readdir(dir)) != NULL) {
+            if (!strcmp(entry->d_name, ".") || !strcmp(entry->d_name, ".."))
+                continue;
+
+            src_path = join_path(src, entry->d_name);
+            dst_path = join_path(dst, entry->d_name);
+
+            if (is_dir(src_path)) {
+                if (copytree(src_path, dst_path) != 0) {
+                    closedir(dir);
+                    free(src_path);
+                    free(dst_path);
+                    return (1);
+                }
+            } else {
+                if (copy_file(src_path, dst_path) != 0) {
+                    closedir(dir);
+                    free(src_path);
+                    free(dst_path);
+                    return (1);
+                }
+            }
+            free(src_path);
+            free(dst_path);
+        }
+
+        closedir(dir);
+        return (0);
+    #endif
 }

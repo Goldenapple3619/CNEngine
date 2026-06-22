@@ -19,7 +19,7 @@
     char *strip_whitespace(const char *str);
     char *string_from_node(xmlNode *node);
 
-    uint8_t build_get_args(size_t argc, char **argv, struct build_args_s *args);
+    uint8_t build_get_args(size_t argc, char **argv, const char *toolchain, struct build_args_s *args);
     void reset_args(struct build_args_s *args);
 
     int build_gui(size_t argc, char **argv, Object *asset_ctx);
