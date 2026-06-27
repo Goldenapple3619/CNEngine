@@ -4,8 +4,8 @@ int build_scene(size_t argc, char **argv, Object *asset_ctx)
 {
     struct engine_object_file_writer_ctx_s *wctx;
     struct build_args_s build_args = {0};
+    struct generic_vector_s *left_overs;
     FILE *fp;
-    (void)asset_ctx;
 
     if (build_get_args(argc - 3, argv + 3, "scene", &build_args)) {
         (void)reset_args(&build_args);
@@ -34,11 +34,21 @@ int build_scene(size_t argc, char **argv, Object *asset_ctx)
 
     wctx->write_infos.endian = build_args.endian;
     wctx->write_infos.flags = build_args.padding;
+    wctx->write_infos.type = ENGINE_OBJ_SCN;
+
+    left_overs = parse_scene(build_args.input_files.content[0], wctx, asset_ctx);
+
+    if (!left_overs) {
+        (void)delete_writer_ctx(wctx);
+        (void)reset_args(&build_args);
+        return (1);
+    }
 
     fp = fopen(build_args.output_file, "w");
 
     if (!fp) {
         fprintf(stderr, "%s: failed to open output file.\n", build_args.output_file);
+        (void)delete_generic_vector(left_overs, (expr_free)&delete_parsed_scene);
         (void)delete_writer_ctx(wctx);
         (void)reset_args(&build_args);
         return (1);
@@ -46,6 +56,7 @@ int build_scene(size_t argc, char **argv, Object *asset_ctx)
     
     if (write_object_file(fp, wctx)) {
         fprintf(stderr, "%s: failed to write output file.\n", build_args.output_file);
+        (void)delete_generic_vector(left_overs, (expr_free)&delete_parsed_scene);
         (void)delete_writer_ctx(wctx);
         (void)reset_args(&build_args);
         (void)fclose(fp);
@@ -53,6 +64,7 @@ int build_scene(size_t argc, char **argv, Object *asset_ctx)
     }
 
     (void)fclose(fp);
+    (void)delete_generic_vector(left_overs, (expr_free)&delete_parsed_scene);
     (void)delete_writer_ctx(wctx);
     (void)reset_args(&build_args);
 

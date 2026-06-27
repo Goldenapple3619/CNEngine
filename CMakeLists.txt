@@ -192,6 +192,7 @@ add_subdirectory(lib/r2d)
 add_subdirectory(lib/r3d)
 
 add_subdirectory(lib/formats/cnguiobj)
+add_subdirectory(lib/formats/cnsceneobj)
 
 # dist deploy
 add_custom_target(cn_dist ALL)
@@ -211,6 +212,7 @@ if(CN_BUILD_ENGINE)
         src/cnbuild/text.c
     
         src/cnbuild/scene_toolchain/route.c
+        src/cnbuild/scene_toolchain/scene.c
     
         src/cnbuild/asset_toolchain/route.c
     
@@ -289,7 +291,10 @@ if(CN_BUILD_ENGINE)
             lib/r2d/include
             lib/r3d/include
 
+            lib/cnapi/include
+
             lib/formats/cnguiobj/include
+            lib/formats/cnsceneobj/include
     )
 
     # main
@@ -377,7 +382,7 @@ foreach(lib cncore cngraphic cnaudio cninput cnassets rgui r2d r3d)
 endforeach()
 
 #includes formats
-foreach(cnguiobj)
+foreach(lib cnguiobj cnsceneobj)
     add_custom_command(TARGET cn_dist POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory
             "${CMAKE_SOURCE_DIR}/lib/formats/${lib}/include"
@@ -458,7 +463,7 @@ foreach(lib glad_gl)
 endforeach()
 
 # modules libraries
-foreach(lib cncore cngraphic cnaudio cninput cnassets rgui r2d r3d cnguiobj)
+foreach(lib cncore cngraphic cnaudio cninput cnassets rgui r2d r3d cnguiobj cnsceneobj)
     add_custom_command(TARGET cn_dist POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
             $<TARGET_FILE:${lib}>

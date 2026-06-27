@@ -117,6 +117,12 @@ Object *init_asset_ctx(void)
         return (NULL);
     }
 
+    if (call_method(asset_ctx, "register_fmt", PACK_ARG("./dist/linux-amd64/lib/libcnsceneobj.so")).as.i == VALUE_ERR.as.i) {
+        fprintf(stderr, "failed to open format library %s.\n", "./dist/linux-amd64/lib/libcnsceneobj.so");
+        DELOC(asset_ctx);
+        return (NULL);
+    }
+
     return (asset_ctx);
 }
 

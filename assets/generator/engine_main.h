@@ -1,6 +1,8 @@
 #ifndef _ENGINE_MAIN_H_
     #define _ENGINE_MAIN_H_
 
+    #define $template(name) ;
+
     #if defined(_ENGINE_HAS_GRAPHICS) && (_ENGINE_HAS_GRAPHICS == 1)
         #include "libcngraphic.h"
 

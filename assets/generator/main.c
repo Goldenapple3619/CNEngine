@@ -20,6 +20,7 @@ int main(size_t argc, char **argv)
 
     if (!ctx) {
         PROPAGATE_ERR();
+        (void)run_gc();
         return (1);
     }
 

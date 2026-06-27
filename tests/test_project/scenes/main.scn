@@ -1,6 +1,4 @@
-<scene>
-    <name>main</name>
-
+<scene name="main">
     <content>
         <object type="block">
             <name>block 0</name>
@@ -16,5 +14,7 @@
         </object>
     </content>
 
-    <default_camera>main_camera</default_camera>
+    <detail>
+        <camera>main_camera</camera>
+    </detail>
 </scene>

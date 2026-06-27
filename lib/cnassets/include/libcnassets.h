@@ -57,7 +57,9 @@
         ENGINE_SEC_UKN = 0x00,
         ENGINE_SEC_GUI_NODES,
         ENGINE_SEC_GUI_STYLE,
-        ENGINE_SEC_GUI_CONN
+        ENGINE_SEC_GUI_CONN,
+
+        ENGINE_SEC_SCENE_TREE
     } engine_section_type;
 
     typedef enum {

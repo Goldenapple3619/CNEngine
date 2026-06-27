@@ -233,9 +233,9 @@ CN_API uint32_t add_str_table(const char *str, struct generic_map_s *strndx)
     if (!str)
         str = "<null>";
 
-    struct strndx_entry_s *found = get_generic_map(strndx, str, NULL, NULL);
+    struct strndx_entry_s *found;
 
-    if (!found) {
+    if (!has_generic_map(strndx, str)) {
         found = new_strndx_entry(str);
 
         if (!found) {
@@ -253,6 +253,8 @@ CN_API uint32_t add_str_table(const char *str, struct generic_map_s *strndx)
             found->addr = 0;
         else
             found->addr = ((struct strndx_entry_s *)strndx->content[strndx->size - 2])->addr + strlen(((struct strndx_entry_s *)strndx->content[strndx->size - 2])->string) + 1;
+    } else {
+        found = get_generic_map(strndx, str, NULL, NULL);
     }
 
     return (found->addr);
