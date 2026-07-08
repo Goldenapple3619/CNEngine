@@ -22,6 +22,11 @@ static char *generate_section_content(struct engine_object_file_section_writer_c
     uint64_t size = generate_section_size(self);
     char *section_content = malloc(sizeof(char) * size);
 
+    if (!section_content) {
+        RAISE_FMT(ERR_OUT_OF_MEMORY, "failed to allocate new section content of size %" PRIu64 ".", size);
+        return (NULL);
+    }
+
     (void)memcpy(section_content, ((struct section_blk *)self->_v)->section_blk_ptr, size);
     return (section_content);
 }
@@ -70,19 +75,27 @@ uint8_t parse_cnasset(CNAssetReader *reader, const char *file_path, struct engin
 
         new_section_name = malloc(sizeof(char) * (strlen(base_obj_name) + strlen(base_section_name) + 1 + 1));
 
-        if (!new_section_name)
+        if (!new_section_name) {
+            RAISE(ERR_OUT_OF_MEMORY, "failed to allocate new section name.");
             return (1);
+        }
 
         (void)snprintf(new_section_name, strlen(base_obj_name) + strlen(base_section_name) + 1 + 1, "%s.%s", base_obj_name, base_section_name);
 
         temp_blk = malloc(sizeof(struct section_blk));
 
         if (!temp_blk) {
+            RAISE(ERR_OUT_OF_MEMORY, "failed to allocate new section_blk.");
             (void)free(new_section_name);
             return (1);
         }
     
-        (void)object_file_reader_get_section(reader, temp_blk, i);
+        if (object_file_reader_get_section(reader, temp_blk, i)) {
+            PROPAGATE_ERR();
+            (void)free(new_section_name);
+            (void)free(temp_blk);
+            return (1);
+        }
 
         temp_section = new_writer_section(new_section_name, temp_blk);
         (void)free(new_section_name);

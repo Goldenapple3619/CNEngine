@@ -4,11 +4,14 @@ char *init_build_path(const char *project_root)
 {
     char *build_path = join_path(project_root, "build");
 
-    if (!build_path)
+    if (!build_path) {
+        PROPAGATE_ERR();
         return (NULL);
+    }
 
     if (!is_dir(build_path)) {
-        if (MKDIR(build_path)) {
+        if (make_dir(build_path)) {
+            PROPAGATE_ERR();
             (void)free(build_path);
             return (NULL);
         }
@@ -21,11 +24,14 @@ char *init_dist_path(const char *output_path)
 {
     char *dist_path = join_path(output_path, "dist");
 
-    if (!dist_path)
+    if (!dist_path) {
+        PROPAGATE_ERR();
         return (NULL);
+    }
 
     if (!is_dir(dist_path)) {
-        if (MKDIR(dist_path)) {
+        if (make_dir(dist_path)) {
+            PROPAGATE_ERR();
             (void)free(dist_path);
             return (NULL);
         }
@@ -38,11 +44,14 @@ char *init_subdist_path(const char *dist_path, const char *project_name)
 {
     char *subdist_path = join_path(dist_path, project_name);
 
-    if (!subdist_path)
+    if (!subdist_path) {
+        PROPAGATE_ERR();
         return (NULL);
+    }
 
     if (!is_dir(subdist_path)) {
-        if (MKDIR(subdist_path)) {
+        if (make_dir(subdist_path)) {
+            PROPAGATE_ERR();
             (void)free(subdist_path);
             return (NULL);
         }
@@ -55,11 +64,14 @@ char *init_subbuild_path(const char *build_path, const char *project_name)
 {
     char *subbuild_path = join_path(build_path, project_name);
 
-    if (!subbuild_path)
+    if (!subbuild_path) {
+        PROPAGATE_ERR();
         return (NULL);
+    }
 
     if (!is_dir(subbuild_path)) {
-        if (MKDIR(subbuild_path)) {
+        if (make_dir(subbuild_path)) {
+            PROPAGATE_ERR();
             (void)free(subbuild_path);
             return (NULL);
         }
@@ -74,11 +86,14 @@ char *init_subinclude_path(const char *build_path, const char *base_include_path
     char *temp;
     char *temp_d;
 
-    if (!subinclude_path)
+    if (!subinclude_path) {
+        PROPAGATE_ERR();
         return (NULL);
+    }
 
     if (!is_dir(subinclude_path)) {
-        if (MKDIR(subinclude_path)) {
+        if (make_dir(subinclude_path)) {
+            PROPAGATE_ERR();
             (void)free(subinclude_path);
             return (NULL);
         }
@@ -255,8 +270,10 @@ char *build_name_from_cnbuild(const CNBuild *build)
     size_t len = strlen(build->name) + 1 + strlen(sysname_from_system(build->machine)) + 1 + strlen(archname_from_arch(build->arch));
     char *name = malloc(sizeof(char) * (len + 1));
 
-    if (!name)
+    if (!name) {
+        RAISE_FMT(ERR_OUT_OF_MEMORY, "failed to allocate new string of size %zu.", len + 1);
         return (NULL);
+    }
 
     (void)snprintf(name, len, "%s_%s_%s", build->name, sysname_from_system(build->machine), archname_from_arch(build->arch));
     return (name);
@@ -268,6 +285,7 @@ uint8_t construct_build(const CNProject *project, const CNBuild *build, const ch
     char *temp_build_path = init_subbuild_path(build_path, build->name);
 
     if (!temp_build_path) {
+        PROPAGATE_ERR();
         return (1);
     }
 
@@ -275,6 +293,7 @@ uint8_t construct_build(const CNProject *project, const CNBuild *build, const ch
     char *temp_dist_path = init_subdist_path(dist_path, build->name);
 
     if (!temp_dist_path) {
+        PROPAGATE_ERR();
         (void)free(temp_build_path);
         return (1);
     }
@@ -283,6 +302,7 @@ uint8_t construct_build(const CNProject *project, const CNBuild *build, const ch
     char *include_path = init_subinclude_path(temp_build_path, "dist/linux-amd64/include", build);
 
     if (!include_path) {
+        PROPAGATE_ERR();
         (void)free(temp_build_path);
         (void)free(temp_dist_path);
         return (1);
@@ -291,6 +311,7 @@ uint8_t construct_build(const CNProject *project, const CNBuild *build, const ch
     String *library_output_name = new_str(join_path(temp_dist_path, "game"));
 
     if (!library_output_name || str_is_null(library_output_name)) {
+        PROPAGATE_ERR();
         if (library_output_name)
             (void)delete_str(library_output_name);
         (void)free(temp_build_path);
@@ -302,6 +323,7 @@ uint8_t construct_build(const CNProject *project, const CNBuild *build, const ch
     str_override(library_output_name, replace_extension(library_output_name->c_str, extension_from_system(build->machine)));
 
     if (str_is_null(library_output_name)) {
+        RAISE(ERR_RUNTIME, "");
         (void)delete_str(library_output_name);
         (void)free(temp_build_path);
         (void)free(temp_dist_path);
@@ -310,6 +332,7 @@ uint8_t construct_build(const CNProject *project, const CNBuild *build, const ch
     }
 
     if (compile_library(project, build, library_output_name->c_str, temp_build_path, include_path)) {
+        PROPAGATE_ERR();
         (void)delete_str(library_output_name);
         (void)free(temp_build_path);
         (void)free(temp_dist_path);
@@ -333,12 +356,15 @@ CNProject *parse_project(const char *output_path, const char *file_path, Object 
     
     (void)asset_ctx;
 
-    if (!project_root)
+    if (!project_root) {
+        PROPAGATE_ERR();
         return (NULL);
+    }
 
     build_path = init_build_path(project_root);
 
     if (!build_path) {
+        PROPAGATE_ERR();
         (void)free(project_root);
         return (NULL);
     }
@@ -346,6 +372,7 @@ CNProject *parse_project(const char *output_path, const char *file_path, Object 
     dist_path = init_dist_path(output_path);
 
     if (!dist_path) {
+        PROPAGATE_ERR();
         (void)free(project_root);
         (void)free(build_path);
         return (NULL);
@@ -354,6 +381,7 @@ CNProject *parse_project(const char *output_path, const char *file_path, Object 
     project = parse_project_xml(file_path, project_root);
 
     if (!project) {
+        PROPAGATE_ERR();
         (void)free(dist_path);
         (void)free(build_path);
         (void)free(project_root);
@@ -362,6 +390,7 @@ CNProject *parse_project(const char *output_path, const char *file_path, Object 
 
     for (size_t i = 0; i < project->builds.size; ++i) {
         if (construct_build(project, project->builds.content[i], build_path, dist_path)) {
+            PROPAGATE_ERR();
             (void)free(dist_path);
             (void)free(build_path);
             (void)free(project_root);
@@ -403,6 +432,7 @@ int build_project(size_t argc, char **argv, Object *asset_ctx)
     left_overs = parse_project(build_args.output_file, build_args.input_files.content[0], asset_ctx);
 
     if (!left_overs) {
+        PROPAGATE_ERR();
         (void)reset_args(&build_args);
         return (1);
     }

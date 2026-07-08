@@ -3,13 +3,17 @@
 LibraryCompiler *new_library_compiler(const char *libname, const char *toolchain, const char *build_path)
 {
 
-    if (!libname || !toolchain)
+    if (!libname || !toolchain) {
+        RAISE(ERR_INVALID_POINTER, "can't allocate new library compiler from empty libname / toolchain.")
         return (NULL);
+    }
 
     LibraryCompiler *compiler = (LibraryCompiler *)malloc(sizeof(LibraryCompiler));
 
-    if (!compiler)
+    if (!compiler) {
+        RAISE(ERR_OUT_OF_MEMORY, "failed to allocate new library compiler.")
         return (NULL);
+    }
     compiler->output_path = strdup(libname);
     compiler->compiler_path = strdup(toolchain);
     compiler->build_path = strdup(build_path);
@@ -26,15 +30,24 @@ LibraryCompiler *new_library_compiler(const char *libname, const char *toolchain
 
 uint8_t library_compiler_add_src(LibraryCompiler *compiler, const char *srcname)
 {
-    if (!compiler || !srcname)
+    if (!compiler) {
+        RAISE(ERR_INVALID_POINTER, "can't add src to empty library compiler.");
         return (1);
+    }
+    if (!srcname) {
+        RAISE(ERR_INVALID_POINTER, "can't add src to library compiler with empty srcname.");
+        return (1);
+    }
 
     char *temp = strdup(srcname);
 
-    if (!temp)
+    if (!temp) {
+        RAISE(ERR_OUT_OF_MEMORY, "failed to allocate new srcname.");
         return (1);
+    }
 
     if (insert_generic_vector(&compiler->srcs, temp)) {
+        PROPAGATE_ERR();
         (void)free(temp);
         return (1);
     }
@@ -44,20 +57,30 @@ uint8_t library_compiler_add_src(LibraryCompiler *compiler, const char *srcname)
 
 uint8_t library_compiler_set_include_path(LibraryCompiler *compiler, const char *include_path)
 {
-    if (!compiler || !include_path)
+    if (!compiler) {
+        RAISE(ERR_INVALID_POINTER, "can't set include path to empty library compiler.");
         return (1);
+    }
+    if (!include_path) {
+        RAISE(ERR_INVALID_POINTER, "can't set include path to library compiler with empty path.");
+        return (1);
+    }
 
     compiler->includes_path = strdup(include_path);
 
-    if (!compiler->includes_path)
+    if (!compiler->includes_path) {
+        RAISE(ERR_OUT_OF_MEMORY, "failed to allocate new include path.");
         return (1);
+    }
     return (0);
 }
 
 uint8_t library_compiler_build_objects(LibraryCompiler *compiler)
 {
-    if (!compiler)
+    if (!compiler) {
+        RAISE(ERR_INVALID_POINTER, "can't build object of empty library compiler.");
         return (1);
+    }
 
     char *temp_path;
     char *obj_path;
@@ -78,16 +101,21 @@ uint8_t library_compiler_build_objects(LibraryCompiler *compiler)
 
         temp_path = join_path(compiler->build_path, path_basename(compiler->srcs.content[i]));
 
-        if (!temp_path)
+        if (!temp_path) {
+            PROPAGATE_ERR();
             return (1);
+        }
 
         obj_path = replace_extension(temp_path, "o");
         (void)free(temp_path);
 
-        if (!obj_path)
+        if (!obj_path) {
+            PROPAGATE_ERR();
             return (1);
+        }
 
         if (insert_generic_vector(&compiler->objs, obj_path)) {
+            PROPAGATE_ERR();
             free(obj_path);
             return (1);
         }
@@ -97,8 +125,10 @@ uint8_t library_compiler_build_objects(LibraryCompiler *compiler)
         for (size_t v = 0; argv[v]; ++v)
             printf(argv[v + 1] ? "%s " : "%s\n", argv[v]);
 
-        if (run_program(compiler->compiler_path, (const char * const*)argv))
+        if (run_program(compiler->compiler_path, (const char * const*)argv)) {
+            RAISE_FMT(ERR_OS, "compiler '%s' returned failure.", compiler->compiler_path);
             return (1);
+        }
     }
 
     return (0);
@@ -106,14 +136,18 @@ uint8_t library_compiler_build_objects(LibraryCompiler *compiler)
 
 uint8_t library_compiler_build_dynlib(LibraryCompiler *compiler)
 {
-    if (!compiler)
+    if (!compiler) {
+        RAISE(ERR_INVALID_POINTER, "can't build dynlib of empty library compiler.");
         return (1);
+    }
 
     char **argv = malloc(sizeof(char *) * (4 + compiler->objs.size + 1));
     size_t i = 0;
     
-    if (!argv)
+    if (!argv) {
+        RAISE_FMT(ERR_OUT_OF_MEMORY, "failed to allocate new argv of size %zu.", (4 + compiler->objs.size + 1));
         return (1);
+    }
 
     argv[0] = compiler->compiler_path;
     argv[1] = "-shared";
@@ -129,6 +163,7 @@ uint8_t library_compiler_build_dynlib(LibraryCompiler *compiler)
         printf(argv[v + 1] ? "%s " : "%s\n", argv[v]);
 
     if (run_program(compiler->compiler_path, (const char * const*)argv)) {
+        RAISE_FMT(ERR_OS, "compiler '%s' returned failure.", compiler->compiler_path);
         (void)free(argv);
         return (1);
     }
@@ -138,8 +173,10 @@ uint8_t library_compiler_build_dynlib(LibraryCompiler *compiler)
 
 void delete_library_compiler(LibraryCompiler *compiler)
 {
-    if (!compiler)
+    if (!compiler) {
+        RAISE(ERR_INVALID_POINTER, "can't delete empty library compiler.");
         return;
+    }
 
     if (compiler->output_path)
         (void)free(compiler->output_path);
@@ -160,8 +197,10 @@ uint8_t compile_library(const CNProject *project, const CNBuild *build_info, con
 {
     (void)build_info;
 
-    if (!project)
+    if (!project) {
+        RAISE(ERR_INVALID_POINTER, "can't compile library for empty project.");
         return (1);
+    }
     
     LibraryCompiler *compiler;
     CNAsset *temp_asset;
@@ -169,10 +208,12 @@ uint8_t compile_library(const CNProject *project, const CNBuild *build_info, con
     compiler = new_library_compiler(output_path, "gcc", build_path);
 
     if (!compiler) {
+        PROPAGATE_ERR();
         return (1);
     }
 
     if (library_compiler_set_include_path(compiler, include_path)) {
+        PROPAGATE_ERR();
         (void)delete_library_compiler(compiler);
         return (1);
     }
@@ -182,6 +223,7 @@ uint8_t compile_library(const CNProject *project, const CNBuild *build_info, con
 
         if (temp_asset->type == CNASSET_TP_SRC) {
             if (library_compiler_add_src(compiler, temp_asset->location)) {
+                PROPAGATE_ERR();
                 (void)delete_library_compiler(compiler);
                 return (1);
             }
@@ -189,11 +231,13 @@ uint8_t compile_library(const CNProject *project, const CNBuild *build_info, con
     }
 
     if (library_compiler_build_objects(compiler)) {
+        PROPAGATE_ERR();
         delete_library_compiler(compiler);
         return (1);
     }
 
     if (library_compiler_build_dynlib(compiler)) {
+        PROPAGATE_ERR();
         delete_library_compiler(compiler);
         return (1);
     }

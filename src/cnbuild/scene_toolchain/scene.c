@@ -180,7 +180,7 @@ uint8_t build_scene_element(xmlNode *node, struct generic_vector_s *parsed_data,
                 }
             }
         } else {
-            RAISE_FMT(ERR_INVALID_TYPE, "invalid node type for: '%s', got: '%s'.", node_child->name, node->name);
+            RAISE_FMT(ERR_INVALID_TYPE, "invalid node type for: '%s', got: '%s'.", node->name, node_child->name);
             return (1);
         }
     }
@@ -238,7 +238,7 @@ struct generic_vector_s *parse_xml_scene(const char *file_path, struct engine_ob
         } else if (!strcmp((const char *)node->name, "details")) {
 
         } else {
-            RAISE_FMT(ERR_INVALID_TYPE, "invalid node type for: '%s', got: '%s'.", root->name, node->name);
+            RAISE_FMT(ERR_INVALID_TYPE, "invalid node type for: '%s', got: '%s'.", node->name, root->name);
             delete_generic_vector(parsed_data, (expr_free)&delete_parsed_scene);
             (void)xmlFreeDoc(doc);
             (void)xmlCleanupParser();
@@ -259,7 +259,7 @@ struct generic_vector_s *parse_scene(const char *file_path, struct engine_object
     reg = call_method(asset_ctx, "find_asset_by_name", PACK_ARG("scene")).as.ptr;
 
     if (!reg) {
-        fprintf(stderr, "failed to fetch asset '%s'.\n", "scene");
+        PROPAGATE_ERR();
         return (NULL);
     }
 

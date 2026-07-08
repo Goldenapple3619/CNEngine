@@ -40,6 +40,7 @@ int build_gui(size_t argc, char **argv, Object *asset_ctx)
     left_overs = parse_gui(build_args.input_files.content[0], wctx, asset_ctx);
 
     if (!left_overs) {
+        PROPAGATE_ERR();
         (void)delete_writer_ctx(wctx);
         (void)reset_args(&build_args);
         return (1);

@@ -2,8 +2,10 @@
 
 cnasset_type tp_from_string(const char *str)
 {
-    if (!str)
+    if (!str) {
+        RAISE(ERR_INVALID_POINTER, "can't get asset type from empty string.");
         return (-1);
+    }
     if (!strcmp(str, "objects"))
         return (CNASSET_TP_OBJ);
     if (!strcmp(str, "scenes"))
@@ -16,6 +18,7 @@ cnasset_type tp_from_string(const char *str)
         return (CNASSET_TP_SRC);
     if (!strcmp(str, "pcasset"))
         return (CNASSET_TP_PCA);
+    RAISE_FMT(ERR_INVALID_TYPE, "invalid type string '%s'.", str);
     return (-1);
 }
 
@@ -25,8 +28,15 @@ uint8_t cnressources_walk_path(CNProject *project, char *path, cnasset_type tp)
     size_t len;
     char *the_path;
 
-    if (!project || !path)
+    if (!project) {
+        RAISE(ERR_INVALID_POINTER, "can't walk path on empty project.");
         return (1);
+    }
+
+    if (!path) {
+        RAISE(ERR_INVALID_POINTER, "can't walk empty path.");
+        return (1);
+    }
 
     #ifdef _WIN32
         char search_path[MAX_PATH];
@@ -36,8 +46,10 @@ uint8_t cnressources_walk_path(CNProject *project, char *path, cnasset_type tp)
         (void)snprintf(search_path, sizeof(search_path), "%s\\*", path);
 
         hfind = FindFirstFileA(search_path, &find_data);
-        if (hfind == INVALID_HANDLE_VALUE)
+        if (hfind == INVALID_HANDLE_VALUE) {
+            RAISE_FMT(ERR_OS, "failed to FindFirstFileA in '%s' for '%s'.", search_path, path);
             return (1);
+        }
 
         do {
             if (!strcmp(find_data.cFileName, ".") || !strcmp(find_data.cFileName, ".."))
@@ -50,6 +62,7 @@ uint8_t cnressources_walk_path(CNProject *project, char *path, cnasset_type tp)
             the_path = malloc(len);
 
             if (!the_path) {
+                RAISE_FMT(ERR_OUT_OF_MEMORY, "failed to allocate new path string of size %zu.", len);
                 (void)FindClose(hfind);
                 return 1;
             }
@@ -61,11 +74,13 @@ uint8_t cnressources_walk_path(CNProject *project, char *path, cnasset_type tp)
             (void)free(the_path);
 
             if (!temp_res) {
+                PROPAGATE_ERR();
                 (void)FindClose(hfind);
                 return (1);
             }
 
             if (insert_generic_vector(&project->content, temp_res)) {
+                PROPAGATE_ERR();
                 (void)delete_cnasset(temp_res);
                 (void)FindClose(hfind);
                 return 1;
@@ -90,6 +105,7 @@ uint8_t cnressources_walk_path(CNProject *project, char *path, cnasset_type tp)
             the_path = malloc(len);
 
             if (!the_path) {
+                RAISE_FMT(ERR_OUT_OF_MEMORY, "failed to allocate new path string of size %zu.", len);
                 (void)closedir(dir);
                 return 1;
             }
@@ -97,6 +113,7 @@ uint8_t cnressources_walk_path(CNProject *project, char *path, cnasset_type tp)
             (void)snprintf(the_path, len, "%s/%s", path, entry->d_name);
 
             if (stat(the_path, &st) != 0 || !S_ISREG(st.st_mode)) {
+                RAISE_FMT(ERR_OS, "failed to stat path '%s'.", the_path);
                 (void)free(the_path);
                 continue;
             }
@@ -106,11 +123,13 @@ uint8_t cnressources_walk_path(CNProject *project, char *path, cnasset_type tp)
             (void)free(the_path);
 
             if (!temp_res) {
+                PROPAGATE_ERR();
                 (void)closedir(dir);
                 return (1);
             }
 
             if (insert_generic_vector(&project->content, temp_res)) {
+                PROPAGATE_ERR();
                 (void)delete_cnasset(temp_res);
                 (void)closedir(dir);
                 return 1;

@@ -6,6 +6,11 @@ char *get_dirname(const char *path)
     char *out;
     size_t len;
 
+    if (!path) {
+        RAISE(ERR_INVALID_POINTER, "can't get dirname from empty string.");
+        return (NULL);
+    }
+
     for (const char *p = path; *p; p++) {
         if (*p == '/' || *p == '\\')
             last_slash = p;
@@ -14,8 +19,10 @@ char *get_dirname(const char *path)
     if (!last_slash) {
         out = malloc(2);
 
-        if (!out)
+        if (!out) {
+            RAISE_FMT(ERR_OUT_OF_MEMORY, "failed to allocate string to get dirname of '%s'.", path);
             return (NULL);
+        }
 
         out[0] = '.';
         out[1] = '\0';
@@ -27,8 +34,10 @@ char *get_dirname(const char *path)
 
     out = malloc(len + 1);
 
-    if (!out)
+    if (!out) {
+        RAISE_FMT(ERR_OUT_OF_MEMORY, "failed to allocate string to get dirname of '%s'.", path);
         return (NULL);
+    }
 
     (void)memcpy(out, path, len);
     out[len] = '\0';
@@ -38,8 +47,10 @@ char *get_dirname(const char *path)
 
 char *join_path(const char *a, const char *b)
 {
-    if (!a || !b)
+    if (!a || !b) {
+        RAISE(ERR_INVALID_POINTER, "can't join null string.");
         return (NULL);
+    }
 
     size_t len;
     size_t len_a = strlen(a);
@@ -47,8 +58,10 @@ char *join_path(const char *a, const char *b)
     size_t total = len_a + len_b + 2;
     char *result = (char *)malloc(total);
 
-    if (!result)
+    if (!result) {
+        RAISE_FMT(ERR_OUT_OF_MEMORY, "failed to allocate string to join '%s' & '%s'.", a, b);
         return (NULL);
+    }
 
     result[0] = '\0';
     strcpy(result, a);
@@ -120,8 +133,10 @@ cnbool is_dir(const char *path)
 
 int run_program(const char *program, const char *const argv[])
 {
-    if (!program || !argv)
+    if (!program || !argv) {
+        RAISE(ERR_INVALID_POINTER, "can't run program with no argv/program.");
         return (-1);
+    }
     #ifdef _WIN32
         char cmd[WIN_MAX_COMMAND_SIZE];
         char *quoted;
@@ -217,6 +232,9 @@ const char *get_extension(const char *path)
     const char *last_slash = path;
     const char *last_dot = NULL;
 
+    if (!path)
+        return (NULL);
+
     for (const char *p = path; *p; p++) {
         if (*p == '/' || *p == '\\') {
             last_slash = p;
@@ -234,6 +252,11 @@ const char *get_extension(const char *path)
 
 char *replace_extension(const char *path, const char *ext)
 {
+    if (!path || !ext) {
+        RAISE(ERR_INVALID_POINTER, "can't replace extension with empty ext/path.");
+        return (NULL);
+    }
+
     const char *dot = get_extension(path);
     size_t base_len = dot ? (size_t)(dot - path) : strlen(path);
     int add_dot = (ext[0] != '.');
@@ -247,8 +270,10 @@ char *replace_extension(const char *path, const char *ext)
     ext_len = strlen(ext);
     out = malloc(base_len + ext_len + add_dot + 1);
 
-    if (!out)
+    if (!out) {
+        RAISE_FMT(ERR_OUT_OF_MEMORY, "failed to allocate new string of size %zu.", base_len + ext_len + add_dot + 1);
         return (NULL);
+    }
 
     memcpy(out, path, base_len);
 
@@ -412,4 +437,19 @@ uint8_t copytree(const char *src, const char *dst)
         closedir(dir);
         return (0);
     #endif
+}
+
+uint8_t make_dir(const char *path)
+{
+    if (!path) {
+        RAISE(ERR_INVALID_POINTER, "can't make empty dir.");
+        return (1);
+    }
+
+    if (MKDIR(path)) {
+        RAISE_FMT(ERR_OS, "failed to create directory '%s'.", path);
+        return (1);
+    }
+
+    return (0);
 }

@@ -242,7 +242,7 @@
 
     CN_API CNAssetReader *new_object_file_reader(void);
     CN_API const char *object_file_reader_get_string(const CNAssetReader *reader, uint32_t off);
-    CN_API void object_file_reader_get_section(const CNAssetReader *reader, struct section_blk *section_block, uint64_t section_index);
+    CN_API uint8_t object_file_reader_get_section(const CNAssetReader *reader, struct section_blk *section_block, uint64_t section_index);
     CN_API uint8_t object_file_reader_read_header(CNAssetReader *reader);
     CN_API uint8_t object_file_reader_read_section_header(CNAssetReader *reader);
     CN_API uint8_t init_object_file_reader(CNAssetReader *reader, const char *file_path);

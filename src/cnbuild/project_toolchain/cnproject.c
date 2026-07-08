@@ -4,8 +4,10 @@ CNProject *new_cnproject(void)
 {
     CNProject *proj = malloc(sizeof(CNProject));
 
-    if (!proj)
+    if (!proj) {
+        RAISE(ERR_OUT_OF_MEMORY, "failed to allocate project.");
         return (NULL);
+    }
 
     proj->builds.capacity = 0;
     proj->builds.size = 0;
@@ -23,8 +25,10 @@ CNProject *new_cnproject(void)
 
 void delete_cnproject(CNProject *ptr)
 {
-    if (!ptr)
+    if (!ptr) {
+        RAISE(ERR_INVALID_POINTER, "can't delete empty project.");
         return;
+    }
     if (ptr->builds.content)
         (void)empty_generic_vector(&ptr->builds, (expr_free)&delete_build);
     if (ptr->content.content)

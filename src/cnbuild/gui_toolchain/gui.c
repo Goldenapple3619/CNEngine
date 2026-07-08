@@ -2,8 +2,10 @@
 
 void delete_parsed_gui(struct gui_element_s *parsed_gui)
 {
-    if (!parsed_gui)
+    if (!parsed_gui) {
+        RAISE(ERR_INVALID_POINTER, "can't delete empty gui element.");
         return;
+    }
     if (parsed_gui->id)
         (void)free(parsed_gui->id);
     if (parsed_gui->object_type)
@@ -26,8 +28,10 @@ uint8_t fill_gui_element(xmlNode *node, struct gui_element_s *element)
 {
     uuid_t uuid;
 
-    if (!element)
+    if (!element) {
+        RAISE(ERR_INVALID_POINTER, "can't fill empty gui element.");
         return (1);
+    }
     
     element->id = malloc(37);
     element->object_type = NULL;
@@ -43,6 +47,7 @@ uint8_t fill_gui_element(xmlNode *node, struct gui_element_s *element)
     element->connectors.size = 0;
 
     if (!element->id) {
+        RAISE(ERR_OUT_OF_MEMORY, "failed to allocate uuid.");
         (void)delete_parsed_gui(element);
         return (1);
     }
@@ -50,6 +55,7 @@ uint8_t fill_gui_element(xmlNode *node, struct gui_element_s *element)
     element->object_type = strdup((const char *)node->name);
 
     if (!element->object_type) {
+        RAISE(ERR_OUT_OF_MEMORY, "failed to allocate str object_type.");
         (void)delete_parsed_gui(element);
         return (1);
     }
@@ -60,6 +66,7 @@ uint8_t fill_gui_element(xmlNode *node, struct gui_element_s *element)
     element->text_content = string_from_node(node);
 
     if (!element->text_content) {
+        PROPAGATE_ERR();
         (void)delete_parsed_gui(element);
         return (1);
     }
@@ -71,9 +78,14 @@ uint8_t build_gui_element(xmlNode *node, struct generic_vector_s *parsed_data, s
 {
     struct gui_element_s *temp = malloc(sizeof(struct gui_element_s));
 
+    if (!temp) {
+        RAISE(ERR_OUT_OF_MEMORY, "failed to allocate gui element.");
+        return (1);
+    }
+
     if (fill_gui_element(node, temp) || insert_generic_vector(parsed_data, temp)) {
-        if (temp)
-            (void)delete_parsed_gui(temp);
+        PROPAGATE_ERR();
+        (void)delete_parsed_gui(temp);
         return (1);
     }
 
@@ -83,8 +95,10 @@ uint8_t build_gui_element(xmlNode *node, struct generic_vector_s *parsed_data, s
     for (xmlNode *node_child = node->children; node_child; node_child = node_child->next) {
         if (node_child->type != XML_ELEMENT_NODE)
             continue;
-        if (build_gui_element(node_child, parsed_data, temp))
+        if (build_gui_element(node_child, parsed_data, temp)) {
+            PROPAGATE_ERR();
             return (1);
+        }
     }
 
     return (0);
@@ -100,14 +114,14 @@ struct generic_vector_s *parse_xml_gui(const char *file_path, struct engine_obje
     doc = xmlReadFile(file_path, NULL, 0);
 
     if (!doc) {
-        fprintf(stderr, "%s: failed to open and parse file.\n", file_path);
+        RAISE_FMT(ERR_OS, "failed to open and parse file '%s'.", file_path);
         return (NULL);
     }
 
     root = xmlDocGetRootElement(doc);
 
     if (strcmp((const char *)root->name, "gui")) {
-        fprintf(stderr, "%s: invalid root element '%s', expecting 'gui'.\n", file_path, root->name);
+        RAISE_FMT(ERR_INVALID_TYPE, "invalid root type, expected: 'gui', got: '%s' in '%s'.", root->name, file_path);
         (void)xmlFreeDoc(doc);
         (void)xmlCleanupParser();
         return (NULL);
@@ -115,7 +129,7 @@ struct generic_vector_s *parse_xml_gui(const char *file_path, struct engine_obje
 
     temp_s = xmlGetProp(root, (xmlChar *)"name");
     if (writer_ctx_set_object_name(wctx, (const char *)temp_s)) {
-        fprintf(stderr, "string allocation failed.\n");
+        PROPAGATE_ERR();
         (void)xmlFreeDoc(doc);
         (void)xmlCleanupParser();
         return (NULL);
@@ -125,6 +139,7 @@ struct generic_vector_s *parse_xml_gui(const char *file_path, struct engine_obje
     parsed_data = new_generic_vector();
 
     if (!parsed_data) {
+        PROPAGATE_ERR();
         (void)xmlFreeDoc(doc);
         (void)xmlCleanupParser();
         return (NULL);
@@ -138,6 +153,7 @@ struct generic_vector_s *parse_xml_gui(const char *file_path, struct engine_obje
                 if (node_child->type != XML_ELEMENT_NODE)
                     continue;
                 if (build_gui_element(node_child, parsed_data, NULL)) {
+                    PROPAGATE_ERR();
                     delete_generic_vector(parsed_data, (expr_free)&delete_parsed_gui);
                     (void)xmlFreeDoc(doc);
                     (void)xmlCleanupParser();
@@ -150,7 +166,7 @@ struct generic_vector_s *parse_xml_gui(const char *file_path, struct engine_obje
                     continue;
             }
         } else {
-            fprintf(stderr, "%s: invalid element '%s'.\n", file_path, root->name);
+            RAISE_FMT(ERR_INVALID_TYPE, "invalid node type for: '%s', got: '%s'.", node->name, root->name);
             delete_generic_vector(parsed_data, (expr_free)&delete_parsed_gui);
             (void)xmlFreeDoc(doc);
             (void)xmlCleanupParser();
@@ -172,18 +188,20 @@ struct generic_vector_s *parse_gui(const char *file_path, struct engine_object_f
     reg = call_method(asset_ctx, "find_asset_by_name", PACK_ARG("gui")).as.ptr;
 
     if (!reg) {
-        fprintf(stderr, "failed to fetch asset %s.\n", "gui");
+        PROPAGATE_ERR();
         return (NULL);
     }
 
     parsed_data = parse_xml_gui(file_path, wctx);
 
     if (!parsed_data) {
+        PROPAGATE_ERR();
         return (NULL);
     }
 
     for (size_t i = 0; i < reg->registered_sections.size; ++i) {
         if (section_registry_to_wctx_section(((struct section_registry *)reg->registered_sections.content[i])->name, parsed_data, reg->registered_sections.content[i], wctx)) {
+            PROPAGATE_ERR();
             (void)delete_generic_vector(parsed_data, (expr_free)&delete_parsed_gui);
             return (NULL);
         }

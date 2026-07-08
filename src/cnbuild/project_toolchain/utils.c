@@ -10,6 +10,7 @@ char *resolve_path(char *base_path, const char *project_root)
     size_t root_len;
 
     if (!base_path || !project_root) {
+        RAISE(ERR_INVALID_POINTER, "can't resolve empty path/empty project root.");
         return (NULL);
     }
 
@@ -25,6 +26,7 @@ char *resolve_path(char *base_path, const char *project_root)
     new_path = malloc(prefix_len + root_len + suffix_len + 1);
 
     if (!new_path) {
+        RAISE_FMT(ERR_OUT_OF_MEMORY, "failed to allocate new resolved path with '%s' & '%s'.", base_path, project_root);
         (void)free(base_path);
         return (NULL);
     }
