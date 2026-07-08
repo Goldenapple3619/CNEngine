@@ -5,14 +5,22 @@ char *strip_whitespace(const char *str)
     char *result;
     size_t len;
 
-    if (!str)
+    if (!str) {
+        RAISE(ERR_INVALID_POINTER, "can't strip empty string.");
         return NULL;
+    }
 
     while (isspace((unsigned char)*str))
         str++;
 
-    if (*str == '\0')
-        return (strdup(""));
+    if (*str == '\0') {
+        result = strdup("");
+        if (!result) {
+            RAISE(ERR_OUT_OF_MEMORY, "failed to allocate empty stripped string.");
+            return (NULL);
+        }
+        return (result);
+    }
 
     const char *end = str + strlen(str) - 1;
     while (end > str && isspace((unsigned char)*end))
@@ -20,8 +28,10 @@ char *strip_whitespace(const char *str)
 
     len = end - str + 1;
     result = malloc(len + 1);
-    if (!result)
+    if (!result) {
+        RAISE_FMT(ERR_OUT_OF_MEMORY, "failed to allocate stripped result of size %zu.", len + 1);
         return (NULL);
+    }
 
     memcpy(result, str, len);
     result[len] = '\0';
@@ -35,14 +45,17 @@ char *string_from_node(xmlNode *node)
     size_t old_len = 0;
     char *text_content = strdup("");
 
-    if (!text_content)
+    if (!text_content) {
+        RAISE(ERR_OUT_OF_MEMORY, "failed to allocate initial string from node.");
         return (NULL);
+    }
 
     for (xmlNode *node_child = node->children; node_child; node_child = node_child->next) {
         if (node_child->type == XML_TEXT_NODE) {
             content = xmlNodeGetContent(node_child);
             striped = strip_whitespace((const char *)content);
             if (!striped) {
+                PROPAGATE_ERR();
                 if (content)
                     (void)xmlFree(content);
                 (void)free(text_content);
@@ -61,6 +74,7 @@ char *string_from_node(xmlNode *node)
             text_content = realloc(text_content, sizeof(char) * (old_len + strlen((const char *)striped) + 1));
 
             if (!text_content) {
+                RAISE_FMT(ERR_OUT_OF_MEMORY, "failed to resize string from node of new size %zu.", (old_len + strlen((const char *)striped) + 1));
                 (void)free(striped);
                 (void)xmlFree(content);
                 return (NULL);

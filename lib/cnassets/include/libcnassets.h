@@ -31,11 +31,11 @@
     #endif
     typedef enum {
         ENGINE_OBJ_UKN = 0x00,
+        ENGINE_OBJ_RAW_RESSOURCES,
+        ENGINE_OBJ_ASSET_PACK,
         ENGINE_OBJ_GUI,
         ENGINE_OBJ_SCN,
         ENGINE_OBJ_OBJ,
-        ENGINE_OBJ_ASSET_PACK,
-        ENGINE_OBJ_RAW_RESSOURCES
     } engine_obj_type;
 
     typedef enum {
@@ -259,4 +259,6 @@
 
     CN_API uint8_t section_registry_to_wctx_section(const char *section_name, void *content, struct section_registry *reg, struct engine_object_file_writer_ctx_s *wctx);
 
+    CN_API cn_type typename_from_string(const char *str);
+    CN_API uint8_t value_from_string(const char *str, cn_type type, cn_value *val);
 #endif

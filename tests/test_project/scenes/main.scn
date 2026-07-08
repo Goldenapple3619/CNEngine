@@ -2,6 +2,11 @@
     <content>
         <object type="block">
             <name>block 0</name>
+            <instanciation>
+                <str>test block</str>
+                <material>dirt</material>
+                <mesh>cube</mesh>
+            </instanciation>
             <attrs>
                 <vec3 as="position">0,0,0</vec3>
             </attrs>
@@ -14,7 +19,7 @@
         </object>
     </content>
 
-    <detail>
+    <details>
         <camera>main_camera</camera>
-    </detail>
+    </details>
 </scene>

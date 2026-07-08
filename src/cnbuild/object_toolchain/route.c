@@ -9,6 +9,7 @@ int build_obj(size_t argc, char **argv, Object *asset_ctx)
     (void)asset_ctx;
 
     if (build_get_args(argc - 3, argv + 3, "object", &build_args)) {
+        PROPAGATE_ERR();
         (void)reset_args(&build_args);
         return (1);
     }
@@ -28,7 +29,7 @@ int build_obj(size_t argc, char **argv, Object *asset_ctx)
     wctx = new_writer_ctx(NULL);
 
     if (!wctx) {
-        fprintf(stderr, "writter ctx allocation failed.\n");
+        PROPAGATE_ERR();
         (void)reset_args(&build_args);
         return (1);
     }
@@ -36,17 +37,17 @@ int build_obj(size_t argc, char **argv, Object *asset_ctx)
     wctx->write_infos.endian = build_args.endian;
     wctx->write_infos.flags = build_args.padding;
 
-    fp = fopen(build_args.output_file, "w");
+    fp = fopen(build_args.output_file, "wb");
 
     if (!fp) {
-        fprintf(stderr, "%s: failed to open output file.\n", build_args.output_file);
+        RAISE_FMT(ERR_OS, "failed to open output file '%s'.", build_args.output_file);
         (void)delete_writer_ctx(wctx);
         (void)reset_args(&build_args);
         return (1);
     }
     
     if (write_object_file(fp, wctx)) {
-        fprintf(stderr, "%s: failed to write output file.\n", build_args.output_file);
+        PROPAGATE_ERR();
         (void)delete_writer_ctx(wctx);
         (void)reset_args(&build_args);
         (void)fclose(fp);

@@ -36,27 +36,35 @@ uint8_t parse_cnasset(CNAssetReader *reader, const char *file_path, struct engin
     const char *base_obj_name;
 
     if (init_object_file_reader(reader, file_path)) {
-        fprintf(stderr, "%s: failed open and map file.", file_path);
+        PROPAGATE_ERR();
         return (1);
     }
 
     if (object_file_reader_read_header(reader)) {
-        fprintf(stderr, "%s: failed to parse header.", file_path);
+        PROPAGATE_ERR();
         return (1);
     }
     if (object_file_reader_read_section_header(reader)) {
-        fprintf(stderr, "%s: failed to parse section header.", file_path);
+        PROPAGATE_ERR();
         return (1);
     }
 
-    if (!reader->section_header.section_count)
-        fprintf(stderr, "%s: warning: no sections in file.", file_path);
+    if (!reader->section_header.section_count) {
+        RAISE_FMT(WAR_IMPORTANT, "no sections in file '%s'.", file_path);
+    }
 
     for (uint64_t i = 0; i < reader->section_header.section_count; ++i) {
         base_obj_name = object_file_reader_get_string(reader, reader->header.name);
+        
+        if (!base_obj_name) {
+            PROPAGATE_ERR();
+            return (1);
+        }
+
         base_section_name = object_file_reader_get_string(reader, reader->section_header.entries[i].section_name);
 
-        if (!base_obj_name || !base_section_name) {
+        if (!base_section_name) {
+            PROPAGATE_ERR();
             return (1);
         }
 
@@ -80,6 +88,7 @@ uint8_t parse_cnasset(CNAssetReader *reader, const char *file_path, struct engin
         (void)free(new_section_name);
 
         if (!temp_section) {
+            PROPAGATE_ERR();
             (void)free(temp_blk);
             return (1);
         }
@@ -90,6 +99,7 @@ uint8_t parse_cnasset(CNAssetReader *reader, const char *file_path, struct engin
         temp_section->content_size_generator = &generate_section_size;
 
         if (writer_ctx_add_section(wctx, temp_section)) {
+            PROPAGATE_ERR();
             delete_writer_section(temp_section);
             return (1);
         }
@@ -109,6 +119,7 @@ int build_asset_pack(size_t argc, char **argv, Object *asset_ctx)
     (void)asset_ctx;
 
     if (build_get_args(argc - 3, argv + 3, "pack", &build_args)) {
+        PROPAGATE_ERR();
         (void)reset_args(&build_args);
         return (1);
     }
@@ -122,7 +133,7 @@ int build_asset_pack(size_t argc, char **argv, Object *asset_ctx)
     wctx = new_writer_ctx(NULL);
 
     if (!wctx) {
-        fprintf(stderr, "writter ctx allocation failed.\n");
+        PROPAGATE_ERR();
         (void)reset_args(&build_args);
         return (1);
     }
@@ -135,7 +146,7 @@ int build_asset_pack(size_t argc, char **argv, Object *asset_ctx)
         reader = new_object_file_reader();
 
         if (!reader) {
-            fprintf(stderr, "%s: failed to allocate reader.", argv[0]);
+            PROPAGATE_ERR();
             (void)delete_parsed_data(wctx);
             (void)delete_writer_ctx(wctx);
             (void)empty_generic_vector(&vec, (expr_free)&delete_object_file_reader);
@@ -144,6 +155,7 @@ int build_asset_pack(size_t argc, char **argv, Object *asset_ctx)
         }
 
         if (parse_cnasset(reader, build_args.input_files.content[i],  wctx)) {
+            PROPAGATE_ERR();
             (void)delete_object_file_reader(reader);
             (void)delete_parsed_data(wctx);
             (void)delete_writer_ctx(wctx);
@@ -153,6 +165,7 @@ int build_asset_pack(size_t argc, char **argv, Object *asset_ctx)
         }
 
         if (insert_generic_vector(&vec, reader)) {
+            PROPAGATE_ERR();
             (void)delete_object_file_reader(reader);
             (void)delete_parsed_data(wctx);
             (void)delete_writer_ctx(wctx);
@@ -162,10 +175,10 @@ int build_asset_pack(size_t argc, char **argv, Object *asset_ctx)
         }
     }
 
-    fp = fopen(build_args.output_file, "w");
+    fp = fopen(build_args.output_file, "wb");
 
     if (!fp) {
-        fprintf(stderr, "%s: failed to open output file.\n", build_args.output_file);
+        RAISE_FMT(ERR_OS, "failed to open output file '%s'.", build_args.output_file);
         (void)delete_parsed_data(wctx);
         (void)delete_writer_ctx(wctx);
         (void)empty_generic_vector(&vec, (expr_free)&delete_object_file_reader);
@@ -174,7 +187,7 @@ int build_asset_pack(size_t argc, char **argv, Object *asset_ctx)
     }
     
     if (write_object_file(fp, wctx)) {
-        fprintf(stderr, "%s: failed to write output file.\n", build_args.output_file);
+        PROPAGATE_ERR();
         (void)delete_parsed_data(wctx);
         (void)delete_writer_ctx(wctx);
         (void)empty_generic_vector(&vec, (expr_free)&delete_object_file_reader);

@@ -8,6 +8,7 @@ int build_gui(size_t argc, char **argv, Object *asset_ctx)
     FILE *fp;
 
     if (build_get_args(argc - 3, argv + 3, "gui", &build_args)) {
+        PROPAGATE_ERR();
         (void)reset_args(&build_args);
         return (1);
     }
@@ -27,7 +28,7 @@ int build_gui(size_t argc, char **argv, Object *asset_ctx)
     wctx = new_writer_ctx(NULL);
 
     if (!wctx) {
-        fprintf(stderr, "writter ctx allocation failed.\n");
+        PROPAGATE_ERR();
         (void)reset_args(&build_args);
         return (1);
     }
@@ -44,10 +45,10 @@ int build_gui(size_t argc, char **argv, Object *asset_ctx)
         return (1);
     }
 
-    fp = fopen(build_args.output_file, "w");
+    fp = fopen(build_args.output_file, "wb");
 
     if (!fp) {
-        fprintf(stderr, "%s: failed to open output file.\n", build_args.output_file);
+        RAISE_FMT(ERR_OS, "failed to open output file '%s'.", build_args.output_file);
         (void)delete_generic_vector(left_overs, (expr_free)&delete_parsed_gui);
         (void)delete_writer_ctx(wctx);
         (void)reset_args(&build_args);
@@ -55,7 +56,7 @@ int build_gui(size_t argc, char **argv, Object *asset_ctx)
     }
     
     if (write_object_file(fp, wctx)) {
-        fprintf(stderr, "%s: failed to write output file.\n", build_args.output_file);
+        PROPAGATE_ERR();
         (void)delete_generic_vector(left_overs, (expr_free)&delete_parsed_gui);
         (void)delete_writer_ctx(wctx);
         (void)reset_args(&build_args);

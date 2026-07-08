@@ -24,6 +24,7 @@ add_library(cncore SHARED
     src/library.c
     src/error.c
     src/string.c
+    src/generic_kv_pair.c
 )
 
 target_compile_options(cncore

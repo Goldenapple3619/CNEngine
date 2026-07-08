@@ -384,7 +384,7 @@ int build_project(size_t argc, char **argv, Object *asset_ctx)
     (void)asset_ctx;
 
     if (build_get_args(argc - 3, argv + 3, "project", &build_args)) {
-        (void)reset_args(&build_args);
+        PROPAGATE_ERR();
         return (1);
     }
 

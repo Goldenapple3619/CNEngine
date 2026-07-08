@@ -81,9 +81,10 @@ uint8_t build_gui_element(xmlNode *node, struct generic_vector_s *parsed_data, s
     temp->parent_loaded = true;
 
     for (xmlNode *node_child = node->children; node_child; node_child = node_child->next) {
-        if (node_child->type == XML_ELEMENT_NODE)
-            if (build_gui_element(node_child, parsed_data, temp))
-                return (1);
+        if (node_child->type != XML_ELEMENT_NODE)
+            continue;
+        if (build_gui_element(node_child, parsed_data, temp))
+            return (1);
     }
 
     return (0);

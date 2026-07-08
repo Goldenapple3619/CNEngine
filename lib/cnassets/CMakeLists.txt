@@ -6,6 +6,7 @@ add_library(cnassets SHARED
     src/io_handler.c
     src/fmt_loader.c
     src/asset_ctx.c
+    src/engine_types.c
 )
 
 target_compile_options(cnassets

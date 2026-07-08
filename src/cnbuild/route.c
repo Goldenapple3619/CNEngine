@@ -12,7 +12,7 @@ uint8_t build_get_args(size_t argc, char **argv, const char *toolchain, struct b
 
 
     if (!args->output_file) {
-        fprintf(stderr, "failed to allocate string while parsing args.\n");
+        RAISE(ERR_OUT_OF_MEMORY, "failed to allocate string while parsing args.");
         return (1);
     }
     args->input_files.capacity = 0;
@@ -70,7 +70,7 @@ uint8_t build_get_args(size_t argc, char **argv, const char *toolchain, struct b
             args->output_file = strdup(argv[i]);
 
             if (!args->output_file) {
-                fprintf(stderr, "failed to allocate string while parsing args.\n");
+                RAISE(ERR_OUT_OF_MEMORY, "failed to allocate string while parsing args.");
                 return (1);
             }
 
@@ -78,7 +78,7 @@ uint8_t build_get_args(size_t argc, char **argv, const char *toolchain, struct b
         }
 
         if (insert_generic_vector(&args->input_files, argv[i])) {
-            fprintf(stderr, "failed to allocate vector while parsing args.\n");
+            PROPAGATE_ERR();
             return (1);
         }
     }
@@ -104,21 +104,28 @@ Object *init_asset_ctx(void)
 {
     Object *asset_ctx = new_asset_submodule();
 
+    if (!asset_ctx) {
+        PROPAGATE_ERR();
+        (void)run_gc();
+        return (NULL);
+    }
+
     asset_ctx = build_object(asset_ctx, PACK_ARG(asset_ctx));
 
     if (!asset_ctx) {
+        PROPAGATE_ERR();
         (void)run_gc();
         return (NULL);
     }
 
     if (call_method(asset_ctx, "register_fmt", PACK_ARG("./dist/linux-amd64/lib/libcnguiobj.so")).as.i == VALUE_ERR.as.i) {
-        fprintf(stderr, "failed to open format library %s.\n", "./dist/linux-amd64/lib/libcnguiobj.so");
+        PROPAGATE_ERR();
         DELOC(asset_ctx);
         return (NULL);
     }
 
     if (call_method(asset_ctx, "register_fmt", PACK_ARG("./dist/linux-amd64/lib/libcnsceneobj.so")).as.i == VALUE_ERR.as.i) {
-        fprintf(stderr, "failed to open format library %s.\n", "./dist/linux-amd64/lib/libcnsceneobj.so");
+        PROPAGATE_ERR();
         DELOC(asset_ctx);
         return (NULL);
     }
@@ -132,8 +139,10 @@ int build(size_t argc, char **argv)
     size_t i = 0;
     int ret;
 
-    if (!asset_ctx)
+    if (!asset_ctx) {
+        PROPAGATE_ERR();
         return (1);
+    }
 
     if (argc < 3) {
         fprintf(stderr, "%s: asset build toolchain missing.", argv[0]);

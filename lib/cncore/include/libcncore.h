@@ -297,6 +297,17 @@
         size_t capacity;
     };
 
+    struct generic_kv_pair_s {
+        union {
+            const char *_sk;
+            char *_k;
+        } k;
+        void *v;
+
+        void (*_v_deletor)(void *);
+        cnbool _k_alloc;
+    };
+
     typedef enum {
         ERR_OK = 0,
         ERR_OUT_OF_MEMORY,
@@ -305,7 +316,9 @@
         ERR_OUT_OF_BOUND,
         ERR_INVALID_TYPE,
         ERR_NOT_COMPATIBLE,
-        ERR_RUNTIME
+        ERR_RUNTIME,
+        ERR_CORRUPT_OR_INVALID,
+        WAR_IMPORTANT = 0xffff
     } ErrorCode;
 
     typedef struct {
@@ -504,4 +517,11 @@
     #else
         CN_API void raise_error_fmt(ErrorCode c, const char *file, const char *function, uint32_t line, const char *fmt, ...);
     #endif
+
+    CN_API struct generic_kv_pair_s *new_kv_pair(const char *k, void *v, void (*v_deletor)(void *));
+    CN_API struct generic_kv_pair_s *new_ckv_pair(const char *k, void *v, void (*v_deletor)(void *));
+    CN_API uint8_t init_kv_pair(struct generic_kv_pair_s *kvp, const char *k, void *v, void (*v_deletor)(void *));
+    CN_API uint8_t init_ckv_pair(struct generic_kv_pair_s *kvp, const char *k, void *v, void (*v_deletor)(void *));
+    CN_API void empty_kv_pair(struct generic_kv_pair_s *kvp);
+    CN_API void delete_kv_pair(struct generic_kv_pair_s *kvp);
 #endif
