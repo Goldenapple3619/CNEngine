@@ -42,7 +42,7 @@ static char *_read_file(const char *path)
     buf = malloc(len + 1);
 
     if (!buf) {
-        RAISE_FMT(ERR_OUT_OF_MEMORY, "failed to allocate buffer of size %zu for '%s'.", len + 1, path);
+        RAISE_FMT(ERR_OUT_OF_MEMORY, "failed to allocate buffer of size %ld for '%s'.", len + 1, path);
         (void)fclose(f);
         return (NULL);
     }

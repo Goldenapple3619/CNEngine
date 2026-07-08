@@ -1,6 +1,6 @@
 #include "libcncore.h"
 
-void _init_object_attrs(struct attr_map_s *attribute_map)
+CN_API void _init_object_attrs(struct attr_map_s *attribute_map)
 {
     if (!attribute_map) {
         RAISE(ERR_INVALID_POINTER, "can't init empty attribute map.");
@@ -12,7 +12,7 @@ void _init_object_attrs(struct attr_map_s *attribute_map)
     attribute_map->capacity = 0;
 }
 
-void _delete_object_attrs(struct attr_map_s *attribute_map)
+CN_API void _delete_object_attrs(struct attr_map_s *attribute_map)
 {
     if (!attribute_map) {
         RAISE(ERR_INVALID_POINTER, "can't delete empty attribute map.");
@@ -34,7 +34,7 @@ void _delete_object_attrs(struct attr_map_s *attribute_map)
     attribute_map->capacity = 0;
 }
 
-uint8_t _attr_map_resize(struct attr_map_s *map, size_t new_capacity)
+CN_API uint8_t _attr_map_resize(struct attr_map_s *map, size_t new_capacity)
 {
     if (!map) {
         RAISE(ERR_INVALID_POINTER, "can't resize empty attribute map.");
@@ -55,7 +55,7 @@ uint8_t _attr_map_resize(struct attr_map_s *map, size_t new_capacity)
     return (0);
 }
 
-uint8_t _insert_object_attrs(struct attr_map_s *attribute_map, uint64_t k, OBJAttrib *attr)
+CN_API uint8_t _insert_object_attrs(struct attr_map_s *attribute_map, uint64_t k, OBJAttrib *attr)
 {
     if  (!attribute_map) {
         RAISE(ERR_INVALID_POINTER, "can't insert on empty map.");
@@ -89,7 +89,7 @@ uint8_t _insert_object_attrs(struct attr_map_s *attribute_map, uint64_t k, OBJAt
     return (0);
 }
 
-void _remove_object_attrs(struct attr_map_s *attribute_map, uint64_t k)
+CN_API void _remove_object_attrs(struct attr_map_s *attribute_map, uint64_t k)
 {
     if (!attribute_map) {
         RAISE(ERR_INVALID_POINTER, "can't remove on empty map.");
@@ -118,7 +118,7 @@ void _remove_object_attrs(struct attr_map_s *attribute_map, uint64_t k)
     RAISE(ERR_OUT_OF_BOUND, "can't remove at invalid position.");
 }
 
-OBJAttrib *_find_object_attrs(const struct attr_map_s *attribute_map, uint64_t k)
+CN_API OBJAttrib *_find_object_attrs(const struct attr_map_s *attribute_map, uint64_t k)
 {
     if (!attribute_map) {
         RAISE(ERR_INVALID_POINTER, "can't find on empty map.");

@@ -449,16 +449,16 @@
     CN_API Object *new_ctx(void);
     CN_API cnbool submodule_ctx(Object *ctx, Object *module);
 
-    void _init_attribute_value(cn_value *dest, cnany value);
-    void _delete_object_attribute_value(cn_value *val);
-    void *_attribute_value_extract(const cn_value *src);
+    CN_API void _init_attribute_value(cn_value *dest, cnany value);
+    CN_API void _delete_object_attribute_value(cn_value *val);
+    CN_API void *_attribute_value_extract(const cn_value *src);
 
-    void _init_object_attrs(struct attr_map_s *attribute_map);
-    OBJAttrib *_find_object_attrs(const struct attr_map_s *attribute_map, uint64_t k);
-    void _remove_object_attrs(struct attr_map_s *attribute_map, uint64_t k);
-    uint8_t _insert_object_attrs(struct attr_map_s *attribute_map, uint64_t k, OBJAttrib *attr);
-    uint8_t _attr_map_resize(struct attr_map_s *map, size_t new_capacity);
-    void _delete_object_attrs(struct attr_map_s *attribute_map);
+    CN_API void _init_object_attrs(struct attr_map_s *attribute_map);
+    CN_API OBJAttrib *_find_object_attrs(const struct attr_map_s *attribute_map, uint64_t k);
+    CN_API void _remove_object_attrs(struct attr_map_s *attribute_map, uint64_t k);
+    CN_API uint8_t _insert_object_attrs(struct attr_map_s *attribute_map, uint64_t k, OBJAttrib *attr);
+    CN_API uint8_t _attr_map_resize(struct attr_map_s *map, size_t new_capacity);
+    CN_API void _delete_object_attrs(struct attr_map_s *attribute_map);
 
     CN_API uint64_t _get_attrs_hash(const char *str);
 
@@ -512,7 +512,9 @@
     CN_API uint8_t str_rcadd_cp(String *str, const char *c_str);
     CN_API void delete_str(String *str);
 
-    #if defined(__GNUC__) || defined(__clang__)
+    #if defined(__MINGW32__) || defined(__MINGW64__)
+        CN_API void raise_error_fmt(ErrorCode c, const char *file, const char *function, uint32_t line, const char *fmt, ...) __attribute__((format(gnu_printf, 5, 6)));
+    #elif defined(__GNUC__) || defined(__clang__)
         CN_API void raise_error_fmt(ErrorCode c, const char *file, const char *function, uint32_t line, const char *fmt, ...) __attribute__((format(printf, 5, 6)));
     #else
         CN_API void raise_error_fmt(ErrorCode c, const char *file, const char *function, uint32_t line, const char *fmt, ...);

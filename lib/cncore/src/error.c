@@ -132,17 +132,17 @@ CN_API void print_error(const ErrorContext *err, FILE *output)
         printf("[%s] %s\n", error_type_to_text(err->code), err->message);
         for (size_t i = 0; i < err->frame_count; ++i) {
             if (i != (err->frame_count - 1))
-                printf("  |-[%lu] %s@%s:%" PRIu32 "\n", err->frame_count - i, err->frames[i].function ? err->frames[i].function : "???", err->frames[i].file ? err->frames[i].file : "???", err->frames[i].line);
+                printf("  |-[%zu] %s@%s:%" PRIu32 "\n", err->frame_count - i, err->frames[i].function ? err->frames[i].function : "???", err->frames[i].file ? err->frames[i].file : "???", err->frames[i].line);
             else
-                printf("  \\-[%lu] %s@%s:%" PRIu32 "\n", err->frame_count - i, err->frames[i].function ? err->frames[i].function : "???", err->frames[i].file ? err->frames[i].file : "???", err->frames[i].line);
+                printf("  \\-[%zu] %s@%s:%" PRIu32 "\n", err->frame_count - i, err->frames[i].function ? err->frames[i].function : "???", err->frames[i].file ? err->frames[i].file : "???", err->frames[i].line);
         }
     } else {
         fprintf(output, "[%s] %s\n", error_type_to_text(err->code), err->message);
         for (size_t i = 0; i < err->frame_count; ++i) {
             if (i != (err->frame_count - 1))
-                fprintf(output, "  |-[%lu] %s@%s:%" PRIu32 "\n", err->frame_count - i, err->frames[i].function ? err->frames[i].function : "???", err->frames[i].file ? err->frames[i].file : "???", err->frames[i].line);
+                fprintf(output, "  |-[%zu] %s@%s:%" PRIu32 "\n", err->frame_count - i, err->frames[i].function ? err->frames[i].function : "???", err->frames[i].file ? err->frames[i].file : "???", err->frames[i].line);
             else
-                fprintf(output, "  \\-[%lu] %s@%s:%" PRIu32 "\n", err->frame_count - i, err->frames[i].function ? err->frames[i].function : "???", err->frames[i].file ? err->frames[i].file : "???", err->frames[i].line);
+                fprintf(output, "  \\-[%zu] %s@%s:%" PRIu32 "\n", err->frame_count - i, err->frames[i].function ? err->frames[i].function : "???", err->frames[i].file ? err->frames[i].file : "???", err->frames[i].line);
         }
     }
 }

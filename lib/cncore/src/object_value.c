@@ -1,6 +1,6 @@
 #include "libcncore.h"
 
-void _delete_object_attribute_value(cn_value *val)
+CN_API void _delete_object_attribute_value(cn_value *val)
 {
     if (!val) {
         RAISE(ERR_INVALID_POINTER, "can't delete value from invalid ptr.");
@@ -42,7 +42,7 @@ void _delete_object_attribute_value(cn_value *val)
     }
 }
 
-void _init_attribute_value(cn_value *dest, cnany value)
+CN_API void _init_attribute_value(cn_value *dest, cnany value)
 {
     if (!dest) {
         RAISE(ERR_INVALID_POINTER, "can't init value on invalid ptr.");
@@ -96,7 +96,7 @@ void _init_attribute_value(cn_value *dest, cnany value)
     }
 }
 
-void *_attribute_value_extract(const cn_value *src)
+CN_API void *_attribute_value_extract(const cn_value *src)
 {
     if (!src) {
         RAISE(ERR_INVALID_POINTER, "can't extract value from invalid ptr.");
