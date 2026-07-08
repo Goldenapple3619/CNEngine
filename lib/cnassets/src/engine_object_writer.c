@@ -338,7 +338,7 @@ static uint8_t mv_pad(FILE *fp, int64_t *x, uint32_t align)
         return (1);
     }
     
-    if (write_pad(fp, (uint64_t)x, align)) {
+    if (write_pad(fp, *x, align)) {
         PROPAGATE_ERR();
         return (1);
     }
