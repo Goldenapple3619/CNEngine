@@ -5,5 +5,5 @@ var cnbuild_2asset__toolchain_2route_8c =
     [ "fclose_wrapper", "cnbuild_2asset__toolchain_2route_8c.html#a71a18ded03e46f77c81c584ce30630f0", null ],
     [ "parse_asset", "cnbuild_2asset__toolchain_2route_8c.html#a430759462b1839b6451021abaf2b51aa", null ],
     [ "raw_content_generator", "cnbuild_2asset__toolchain_2route_8c.html#aa7557a10d7dd0ce7c843da9478d0257c", null ],
-    [ "raw_content_size_generator", "cnbuild_2asset__toolchain_2route_8c.html#a1cff336baad28dd9eb9c383d3932920e", null ]
+    [ "raw_content_size_generator", "cnbuild_2asset__toolchain_2route_8c.html#a0c56c47530ecdf7423a1d16468dcc2f1", null ]
 ];
