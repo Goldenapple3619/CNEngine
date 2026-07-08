@@ -184,7 +184,7 @@ CN_API uint8_t object_file_reader_read_section_header(CNAssetReader *reader)
     reader->section_header.entries = malloc(sizeof(struct engine_obj_section_header_entry_s) * reader->section_header.section_count);
 
     if (!reader->section_header.entries) {
-        RAISE_FMT(ERR_OUT_OF_MEMORY, "failed to allocate sheader entries of size " PRIu64 ".", reader->section_header.section_count)
+        RAISE_FMT(ERR_OUT_OF_MEMORY, "failed to allocate sheader entries of size %" PRIu64 ".", reader->section_header.section_count)
         reader->section_header.section_count = 0;
         return (1);
     }
