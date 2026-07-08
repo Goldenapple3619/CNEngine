@@ -4,7 +4,7 @@
 0x4 magic
 0x1 endian
 0x4 flags
-0x4 type
+0x2 type
 0x8 section_header_offset REF
 0x8 strndx REF
 0x4 name
@@ -15,7 +15,7 @@
   - 0x8 section_number LOC
   - /loop section_number
     -- 0x4 section_name REF
-    -- 0x4 section_type
+    -- 0x2 section_type
     -- 0x4 section_flags
     -- 0x8 section_size LOC
     -- 0x8 section_offset REF

@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-static GLuint _compile_stage(GLenum type, const char *src)
+static GLuint _compile_stage_gl(GLenum type, const char *src)
 {
     GLuint s = glCreateShader(type);
     GLint ok;
@@ -13,10 +13,10 @@ static GLuint _compile_stage(GLenum type, const char *src)
     glGetShaderiv(s, GL_COMPILE_STATUS, &ok);
 
     if (!ok) {
-        char log[1024];
+        char log[ERR_MSG_SIZE];
 
         glGetShaderInfoLog(s, sizeof(log), NULL, log);
-        fprintf(stderr, "shader compile error:\n%s\n", log);
+        RAISE_FMT(ERR_OS, "failed to compile glShader (%s).", log);
         glDeleteShader(s);
         return (0);
     }
@@ -32,7 +32,7 @@ static char *_read_file(const char *path)
     size_t _;
 
     if (!f) {
-        fprintf(stderr, "shader: cannot open %s\n", path);
+        RAISE_FMT(ERR_OS, "failed to open shader file '%s'.", path);
         return (NULL);
     }
     (void)fseek(f, 0, SEEK_END);
@@ -40,6 +40,13 @@ static char *_read_file(const char *path)
     (void)rewind(f);
 
     buf = malloc(len + 1);
+
+    if (!buf) {
+        RAISE_FMT(ERR_OUT_OF_MEMORY, "failed to allocate buffer of size %ld for '%s'.", len + 1, path);
+        (void)fclose(f);
+        return (NULL);
+    }
+
     _ = fread(buf, 1, len, f);
 
     (void)_;
@@ -52,14 +59,21 @@ static char *_read_file(const char *path)
 
 CN_API uint8_t gl_shader_compile(Shader *shader, const char *vert_src, const char *frag_src)
 {
-    GLuint vert = _compile_stage(GL_VERTEX_SHADER,   vert_src);
-    GLuint frag = _compile_stage(GL_FRAGMENT_SHADER, frag_src);
+    GLuint vert = _compile_stage_gl(GL_VERTEX_SHADER,   vert_src);
+    GLuint frag;
     GLint ok;
     GLuint program;
 
-    if (!vert || !frag) {
+    if (!vert) {
+        PROPAGATE_ERR();
+        return (1);
+    }
+
+    frag = _compile_stage_gl(GL_FRAGMENT_SHADER, frag_src);
+
+    if (!frag) {
+        PROPAGATE_ERR();
         glDeleteShader(vert);
-        glDeleteShader(frag);
         return (1);
     }
 
@@ -71,10 +85,10 @@ CN_API uint8_t gl_shader_compile(Shader *shader, const char *vert_src, const cha
     glGetProgramiv(program, GL_LINK_STATUS, &ok);
 
     if (!ok) {
-        char log[1024];
+        char log[ERR_MSG_SIZE];
 
         glGetProgramInfoLog(program, sizeof(log), NULL, log);
-        fprintf(stderr, "shader link error:\n%s\n", log);
+        RAISE_FMT(ERR_OS, "failed to create glShader program (%s).", log);
         glDeleteProgram(program);
         program = 0;
     }
@@ -86,23 +100,35 @@ CN_API uint8_t gl_shader_compile(Shader *shader, const char *vert_src, const cha
         return (1);
 
     shader->api = R_API_GL;
-    shader->gpu_handler.gl_shader = program;
+    shader->gpu_handler.gl.gl_shader = program;
+    shader->gpu_handler.gl.gl_ctx = SDL_GL_GetCurrentContext();
     return (0);
 }
 
 CN_API uint8_t gl_shader_load(Shader *shader, const char *vert_path, const char *frag_path)
 {
     char *vert_src = _read_file(vert_path);
-    char *frag_src = _read_file(frag_path);
+    char *frag_src;
     uint8_t ret;
 
-    if (!vert_src || !frag_src) {
+    if (!vert_src) {
+        PROPAGATE_ERR()
+        return (1);
+    }
+
+    frag_src = _read_file(frag_path);
+
+    if (!frag_src) {
+        PROPAGATE_ERR()
         (void)free(vert_src);
-        (void)free(frag_src);
         return (1);
     }
 
     ret = gl_shader_compile(shader, vert_src, frag_src);
+
+    if (ret) {
+        PROPAGATE_ERR();
+    }
 
     (void)free(vert_src);
     (void)free(frag_src);
@@ -114,8 +140,10 @@ CN_API Shader *new_shader(void)
 {
     Shader *shader = (Shader *)malloc(sizeof(Shader));
 
-    if (!shader)
+    if (!shader) {
+        RAISE(ERR_OUT_OF_MEMORY, "failed to allocate new shader.");
         return (NULL);
+    }
     shader->api = R_API_NONE;
     (void)memset(&shader->gpu_handler, 0, sizeof(shader->gpu_handler));
     return (shader);
@@ -123,13 +151,16 @@ CN_API Shader *new_shader(void)
 
 CN_API void delete_gpu_shader(Shader *shader)
 {
-    if (!shader)
+    if (!shader) {
+        RAISE(ERR_INVALID_POINTER, "can't delete empty shader gpu's data.");
         return;
+    }
 
     switch (shader->api) {
         case R_API_GL:
-            (void)glDeleteProgram(shader->gpu_handler.gl_shader);
-            shader->gpu_handler.gl_shader = 0;
+            (void)glDeleteProgram(shader->gpu_handler.gl.gl_shader);
+            shader->gpu_handler.gl.gl_shader = 0;
+            shader->gpu_handler.gl.gl_ctx = 0;
             break;
         default:
             break;
@@ -139,8 +170,10 @@ CN_API void delete_gpu_shader(Shader *shader)
 
 CN_API void delete_shader(Shader *shader)
 {
-    if (!shader)
+    if (!shader) {
+        RAISE(ERR_INVALID_POINTER, "can't delete empty shader.");
         return;
+    }
 
     (void)delete_gpu_shader(shader);
     (void)free(shader);

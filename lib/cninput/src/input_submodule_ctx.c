@@ -9,6 +9,10 @@ static cn_value _events(Object *__this, void **args)
 
     WindowUniverse *wu = get_attr(__this, "all_window")->as.ptr;
     int64_t main_window = get_attr(__this, "_main_window_id")->as.i;
+
+    if (is_window_closed(wu, main_window))
+        return (null_value);
+
     Window *temp = get_window_in_universe(wu, main_window);
     Object *atlas = get_attr(__this, "inputs")->as.ptr;
     const struct event_map_entry_s *ev_map;
@@ -45,68 +49,89 @@ static cn_value _events(Object *__this, void **args)
 
 static cn_value _register_input_callback(Object *__this, void **args)
 {
-    if (!args || !args[0] || !args[1])
+    if (!args || !args[0] || !args[1]) {
+        RAISE(ERR_INVALID_POINTER, "can't register input controller without key/ObjMethodPair.")
         return (VALUE_ERR);
+    }
 
     Object *atlas = get_attr(__this, "inputs")->as.ptr;
     InputEntry *ie;
-    cn_value temp = call_method(atlas, "at", PACK_ARG(args[0]));
+    cn_value temp;
 
-    if (temp.type == CN_TYPE_NULL) {
+    if (!call_method(atlas, "has", PACK_ARG(args[0])).as.b) {
         ie = new_input_entry(args[0]);
 
-        if (!ie)
+        if (!ie) {
+            PROPAGATE_ERR();
             return (VALUE_ERR);
+        }
 
-        if (call_method(atlas, "push", PACK_ARG(ie, args[0])).as.i == VALUE_ERR.as.i)
+        if (call_method(atlas, "push", PACK_ARG(ie, args[0])).as.i == VALUE_ERR.as.i) {
+            PROPAGATE_ERR();
             return (VALUE_ERR);
+        }
     } else {
+        temp = call_method(atlas, "at", PACK_ARG(args[0]));
         ie = temp.as.ptr;
     }
 
-    if (input_entry_add_callback(ie, ((ObjMethodPair *)args[1])->method, ((ObjMethodPair *)args[1])->obj))
+    if (input_entry_add_callback(ie, ((ObjMethodPair *)args[1])->method, ((ObjMethodPair *)args[1])->obj)) {
+        PROPAGATE_ERR();
         return (VALUE_ERR);
+    }
 
     return (VALUE_OK);
 }
 
 static cn_value _register_input_controller(Object *__this, void **args)
 {
-    if (!args || !args[0] || !args[1])
+    if (!args || !args[0] || !args[1]) {
+        RAISE(ERR_INVALID_POINTER, "can't register input controller without key/InputController.")
         return (VALUE_ERR);
+    }
 
     Object *atlas = get_attr(__this, "inputs")->as.ptr;
     InputEntry *ie;
-    cn_value temp = call_method(atlas, "at", PACK_ARG(args[0]));
+    cn_value temp;
 
-    if (temp.type == CN_TYPE_NULL) {
+    if (!call_method(atlas, "has", PACK_ARG(args[0])).as.b) {
         ie = new_input_entry(args[0]);
 
-        if (!ie)
+        if (!ie) {
+            PROPAGATE_ERR();
             return (VALUE_ERR);
+        }
 
-        if (call_method(atlas, "push", PACK_ARG(ie, args[0])).as.i == VALUE_ERR.as.i)
+        if (call_method(atlas, "push", PACK_ARG(ie, args[0])).as.i == VALUE_ERR.as.i) {
+            PROPAGATE_ERR();
             return (VALUE_ERR);
+        }
     } else {
+        temp = call_method(atlas, "at", PACK_ARG(args[0]));
         ie = temp.as.ptr;
     }
 
-    if (input_entry_add_controller(ie, ((InputController *)args[1])->target_type, ((InputController *)args[1])->target_value, ((InputController *)args[1])->ignore_value))
+    if (input_entry_add_controller(ie, ((InputController *)args[1])->target_type, ((InputController *)args[1])->target_value, ((InputController *)args[1])->ignore_value)) {
+        PROPAGATE_ERR();
         return (VALUE_ERR);
+    }
 
     return (VALUE_OK);
 }
 
 static cn_value _unregister_input_callback(Object *__this, void **args)
 {
-    if (!args || !args[0] || !args[1])
+    if (!args || !args[0] || !args[1]) {
+        RAISE(ERR_INVALID_POINTER, "can't unregister input callback without input entry key/ObjMethodPair.")
         return (null_value);
+    }
 
     Object *atlas = get_attr(__this, "inputs")->as.ptr;
     InputEntry *ie;
     cn_value temp = call_method(atlas, "at", PACK_ARG(args[0]));
 
     if (temp.type == CN_TYPE_NULL) {
+        PROPAGATE_ERR();
         return (null_value);
     } else {
         ie = temp.as.ptr;
@@ -126,21 +151,29 @@ static cn_value _init(Object *__this, void **args)
 
     PREP_INIT()
 
-    if (!args || !(args[0]))
+    if (!args || !(args[0])) {
+        RAISE(ERR_INVALID_POINTER, "can't init input submodule without a ctx.")
         return (VALUE_ERR);
+    }
     
     Object *ctx = (Object *)(args[0]);
     
-    if (!start_input())
+    if (!start_input()) {
+        PROPAGATE_ERR();
         return (VALUE_ERR);
+    }
 
-    if (!has_attr(ctx, "_main_window_id") || !has_attr(ctx, "all_window"))
+    if (!has_attr(ctx, "_main_window_id") || !has_attr(ctx, "all_window")) {
+        RAISE(ERR_NOT_COMPATIBLE, "graphic submodule was not inited, therefore can't init input submodule.")
         return (VALUE_ERR);
+    }
 
-    INIT_OBJECT_STATIC(ctx, new_atlas(NULL, (void (*)(void *))(&delete_input_entry)), NULL, "inputs");
+    INIT_OBJECT_STATIC(ctx, new_atlas(NULL, (expr_free)(&delete_input_entry)), NULL, "inputs");
 
-    if (call_method(ctx, "register_event", PACK_ARG(&_events)).as.i == VALUE_ERR.as.i)
+    if (call_method(ctx, "register_event", PACK_ARG(&_events)).as.i == VALUE_ERR.as.i) {
+        PROPAGATE_ERR();
         return (VALUE_ERR);
+    }
 
     INIT_METHOD(ctx, "register_input_controller", _register_input_controller);
     INIT_METHOD(ctx, "register_input_callback", _register_input_callback);
@@ -169,10 +202,12 @@ CN_API Object *new_input_submodule(void)
 {
     Object *obj = new_object();
 
-    if (!obj)
+    if (!obj) {
+        PROPAGATE_ERR();
         return (NULL);
+    }
 
-    SET_PARENT_CLASS_BUILD(obj, create_default_object());
+    SET_PARENT_CLASS_BUILD_STATIC(obj, create_default_object());
     CREATE_METHOD_CLASS_BUILD(obj, "_init", &_init);
     CREATE_METHOD_CLASS_BUILD(obj, "_del", &_del);
     return (obj);

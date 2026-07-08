@@ -4,11 +4,15 @@ static cn_value _init(Object *__this, void **args)
 {
     (void)__this;
 
-    if (!args || !(args[0]))
+    if (!args || !(args[0])) {
+        RAISE(ERR_INVALID_POINTER, "can't init gui submodule with not ctx.");
         return (VALUE_ERR);
+    }
     
-    if (!start_gui())
+    if (!start_gui()) {
+        PROPAGATE_ERR();
         return (VALUE_ERR);
+    }
     
     return (VALUE_OK);
 }
@@ -50,10 +54,12 @@ CN_API Object *new_gui_submodule(void)
 {
     Object *obj = new_object();
 
-    if (!obj)
+    if (!obj) {
+        PROPAGATE_ERR();
         return (NULL);
+    }
 
-    SET_PARENT_CLASS_BUILD(obj, create_default_object());
+    SET_PARENT_CLASS_BUILD_STATIC(obj, create_default_object());
     CREATE_METHOD_CLASS_BUILD(obj, "_init", &_init);
     CREATE_METHOD_CLASS_BUILD(obj, "_del", &_del);
     return (obj);

@@ -1,9 +1,12 @@
-<scene>
-    <name>main</name>
-
+<scene name="main">
     <content>
         <object type="block">
             <name>block 0</name>
+            <instanciation>
+                <str>test block</str>
+                <material>dirt</material>
+                <mesh>cube</mesh>
+            </instanciation>
             <attrs>
                 <vec3 as="position">0,0,0</vec3>
             </attrs>
@@ -11,5 +14,12 @@
             
             </childs>
         </object>
+        <object type="__builtin_camera3d">
+            <name>main_camera</name>
+        </object>
     </content>
+
+    <details>
+        <camera>main_camera</camera>
+    </details>
 </scene>

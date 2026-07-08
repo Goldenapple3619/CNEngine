@@ -4,13 +4,17 @@ static cn_value _init(Object *__this, void **args)
 {
     PREP_INIT()
 
-    if (!args || !args[0])
+    if (!args || !args[0]) {
+        RAISE(ERR_INVALID_POINTER, "can't init text with no text mode.");
         return (VALUE_ERR);
+    }
 
     struct text_mode_s *text_mode = args[0];
 
-    if (call_method(__this->base, "_init", PACK_ARG(&text_mode->parent_mode)).as.i == VALUE_ERR.as.i)
+    if (call_method(__this->base, "_init", PACK_ARG(&text_mode->parent_mode)).as.i == VALUE_ERR.as.i) {
+        PROPAGATE_ERR();
         return (VALUE_ERR);
+    }
 
     SDL_Color c = (SDL_Color){.r = (text_mode->color & 0xff000000) >> 24,
             .g = (text_mode->color & 0x00ff0000) >> 16,
@@ -32,8 +36,10 @@ static cn_value _init(Object *__this, void **args)
 
 static cn_value _set_text(Object *__this, void **args)
 {
-    if (!args || !args[0])
+    if (!args || !args[0]) {
+        RAISE(ERR_INVALID_POINTER, "can't set text with no text.");
         return (VALUE_ERR);
+    }
     if (!strcmp(args[0], get_attr(__this, "text")->as.ptr))
         return (VALUE_OK);
 
@@ -72,10 +78,12 @@ CN_API Object *new_text(void)
 {
     Object *obj = new_object();
 
-    if (!obj)
+    if (!obj) {
+        PROPAGATE_ERR();
         return (NULL);
+    }
 
-    SET_PARENT_CLASS_BUILD(obj, new_guiobject());
+    SET_PARENT_CLASS_BUILD_STATIC(obj, new_guiobject());
     CREATE_METHOD_CLASS_BUILD(obj, "_init", &_init);
     CREATE_METHOD_CLASS_BUILD(obj, "set_text", &_set_text);
     CREATE_METHOD_CLASS_BUILD(obj, "_del", &_del);

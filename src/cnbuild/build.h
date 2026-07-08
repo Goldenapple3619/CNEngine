@@ -8,7 +8,6 @@
 
     #include "../engine.h"
 
-
     struct build_args_s {
         char *output_file;
         struct generic_vector_s input_files;
@@ -17,25 +16,31 @@
         engine_wrt_endian endian;
     };
 
-    struct parsed_gui_element_data_s {
-        char *id;
-        char *object_type;
-        char *text_content;
+    char *strip_whitespace(const char *str);
+    char *string_from_node(xmlNode *node);
 
-        const struct parsed_gui_element_data_s *parent;
-        struct generic_map_s styles;
-    };
+    uint8_t build_get_args(size_t argc, char **argv, const char *toolchain, struct build_args_s *args);
+    void reset_args(struct build_args_s *args);
 
-    int build_gui(size_t argc, char **argv);
+    int build_gui(size_t argc, char **argv, Object *asset_ctx);
+    int build_assets(size_t argc, char **argv, Object *asset_ctx);
+    int build_obj(size_t argc, char **argv, Object *asset_ctx);
+    int build_project(size_t argc, char **argv, Object *asset_ctx);
+    int build_scene(size_t argc, char **argv, Object *asset_ctx);
+    int build_asset_pack(size_t argc, char **argv, Object *asset_ctx);
+
+    typedef int (*route_callback_toolchain)(size_t, char **, Object *);
 
     static const struct {
         const char *name;
-        route_callback callback;
+        route_callback_toolchain callback;
     } build_types[] = {
         {"gui", &build_gui},
-        {"obj", NULL},
-        {"scn", NULL},
-        {"proj", NULL},
+        {"obj", &build_obj},
+        {"scn", &build_scene},
+        {"proj", &build_project},
+        {"asset", &build_assets},
+        {"lnk", &build_asset_pack},
         {NULL, NULL}
     };
 

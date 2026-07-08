@@ -15,12 +15,14 @@ static cn_value _init(Object *__this, void **args)
     (void)args;
     PREP_INIT()
 
-    if (!start_core())
+    if (!start_core()) {
+        PROPAGATE_ERR();
         return (VALUE_ERR);
+    }
 
     INIT_STRING(__this, "ctx", "name");
     INIT_INT(__this, 0, "is_running");
-    INIT_INT(__this, 60, "tps");
+    INIT_INT(__this, -1, "tps");
     INIT_FLOAT(__this, 0.0, "dt");
     INIT_NUMBER(__this, 1.0, "time_scale");
     INIT_CUSTOM_ALLOCATION(__this, new_clock(), delete_clock, "clock");
@@ -30,13 +32,16 @@ static cn_value _init(Object *__this, void **args)
     INIT_OBJECT_STATIC(__this, new_scene(), NULL, "scene");
 
     if (call_method(__this, "register_update", PACK_ARG(&_update_scene)).as.i == VALUE_ERR.as.i) {
+        PROPAGATE_ERR();
         return (VALUE_ERR);
     }
 
     cn_value *temp_vec_attr = get_attr(__this, "submodules");
 
-    if (!temp_vec_attr)
+    if (!temp_vec_attr || !temp_vec_attr->as.ptr) {
+        RAISE(ERR_INVALID_POINTER, "can't init core ctx because submodules is somehow not set.");
         return (VALUE_ERR);
+    }
 
     ObjectVector *temp_vec = temp_vec_attr->as.ptr;
     cn_value ret;
@@ -44,8 +49,14 @@ static cn_value _init(Object *__this, void **args)
     for (size_t i = 0; i < temp_vec->size; ++i) {
         ret = call_method(temp_vec->objects[i], "_init", PACK_ARG((cnany)__this));
 
-        if (ret.type == CN_TYPE_NULL || ret.as.i == VALUE_ERR.as.i)
+        if (ret.type == CN_TYPE_NULL || ret.as.i == VALUE_ERR.as.i) {
+            if (has_error()) {
+                PROPAGATE_ERR();
+            } else {
+                RAISE(ERR_RUNTIME, "failed to init a submodule, no more infos.");
+            }
             return (VALUE_ERR);
+        }
     }
 
     return (VALUE_OK);
@@ -56,7 +67,6 @@ static cn_value _run(Object *__this, void **args)
     (void)args;
 
     double dt;
-
     cn_value *ptr_is_running = get_attr(__this, "is_running");
     cn_value *ptr_tps = get_attr(__this, "tps");
     cn_value *ptr_time_scale = get_attr(__this, "time_scale");
@@ -69,7 +79,7 @@ static cn_value _run(Object *__this, void **args)
     size_t i = 0;
     size_t j = 0;
 
-    set_attr(__this, "is_running", CN_TYPE_INT, (cnany)((int64_t [1]){1}));
+    set_attr(__this, "is_running", CN_TYPE_INT, (cnany)((int64_t [1]){1})); // check not required since its set at init
 
     while (ptr_is_running->as.i) {
         for (j = 0; j < sizeof(methods_pools) / sizeof(struct cn_value_vector_s *); ++j) {
@@ -81,7 +91,7 @@ static cn_value _run(Object *__this, void **args)
         }
 
         dt = clock_tick(c, ptr_tps->as.i) * (double)ptr_time_scale->as.num;
-        set_attr(__this, "dt", CN_TYPE_FLOAT, (cnany)&dt);
+        set_attr(__this, "dt", CN_TYPE_FLOAT, (cnany)&dt); // check not required since its set at init
     };
 
     return (null_value);
@@ -89,8 +99,10 @@ static cn_value _run(Object *__this, void **args)
 
 static cn_value _register_draw(Object *__this, void **args)
 {
-    if (!args || !args[0])
+    if (!args || !args[0]) {
+        RAISE(ERR_INVALID_POINTER, "can't register empty draw function.");
         return (VALUE_ERR);
+    }
 
     if (insert_value_vector(get_attr(__this, "draw_pool")->as.ptr, (cn_value){.type = CN_TYPE_FUNCTION, .as.ptr = args[0]}))
         return (VALUE_ERR);
@@ -99,8 +111,10 @@ static cn_value _register_draw(Object *__this, void **args)
 
 static cn_value _register_update(Object *__this, void **args)
 {
-    if (!args || !args[0])
+    if (!args || !args[0]) {
+        RAISE(ERR_INVALID_POINTER, "can't register empty update function.");
         return (VALUE_ERR);
+    }
 
     if (insert_value_vector(get_attr(__this, "update_pool")->as.ptr, (cn_value){.type = CN_TYPE_FUNCTION, .as.ptr = args[0]}))
         return (VALUE_ERR);
@@ -109,11 +123,15 @@ static cn_value _register_update(Object *__this, void **args)
 
 static cn_value _register_event(Object *__this, void **args)
 {
-    if (!args || !args[0])
+    if (!args || !args[0]) {
+        RAISE(ERR_INVALID_POINTER, "can't register empty event function.");
         return (VALUE_ERR);
+    }
 
-    if (insert_value_vector(get_attr(__this, "event_pool")->as.ptr, (cn_value){.type = CN_TYPE_FUNCTION, .as.ptr = args[0]}))
+    if (insert_value_vector(get_attr(__this, "event_pool")->as.ptr, (cn_value){.type = CN_TYPE_FUNCTION, .as.ptr = args[0]})) {
+        PROPAGATE_ERR();
         return (VALUE_ERR);
+    }
     return (VALUE_OK);
 }
 
@@ -148,27 +166,43 @@ static cn_value _stop(Object *__this, void **args)
 {
     (void)args;
 
-    set_attr(__this, "is_running", CN_TYPE_INT, (cnany)((int64_t [1]){0}));
+    if (!set_attr(__this, "is_running", CN_TYPE_INT, (cnany)((int64_t [1]){0}))) {
+        PROPAGATE_ERR();
+        return (null_value);
+    }
     return (null_value);
 }
 
 CN_API cnbool submodule_ctx(Object *ctx, Object *module)
 {
-    if (!ctx || !module)
+    if (!ctx) {
+        RAISE(ERR_INVALID_POINTER, "can't add submodules to empty ctx.");
         return (false);
+    }
+
+    if (!module) {
+        RAISE(ERR_INVALID_POINTER, "can't add empty submodule to ctx.");
+        return (false);
+    }
     
     cn_value *s = get_attr(ctx, "submodules");
 
-    if (!s)
+    if (!s) {
+        RAISE(ERR_INVALID_POINTER, "submodules vector not found in ctx.");
         return (false);
+    }
     
     ObjectVector *modules = s->as.ptr;
 
-    if (!modules)
+    if (!modules) {
+        RAISE(ERR_INVALID_POINTER, "submodules vector is empty in ctx.");
         return (false);
+    }
 
-    if (insert_object_vector(modules, module))
+    if (insert_object_vector(modules, module)) {
+        PROPAGATE_ERR();
         return (false);
+    }
 
     return (true);
 }
@@ -179,10 +213,12 @@ CN_API Object *new_ctx()
 
     Object *obj = new_object();
 
-    if (!obj)
+    if (!obj) {
+        PROPAGATE_ERR();
         return (NULL);
+    }
 
-    SET_PARENT_CLASS_BUILD(obj, create_default_object());
+    SET_PARENT_CLASS_BUILD_STATIC(obj, create_default_object());
     CREATE_CUSTOM_ALLOCATION_CLASS_BUILD(obj, new_object_vector(), delete_object_vector, "submodules");
 
     CREATE_METHOD_CLASS_BUILD(obj, "_init", &_init);

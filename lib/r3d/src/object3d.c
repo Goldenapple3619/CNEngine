@@ -6,24 +6,29 @@ static cn_value _init(Object *__this, void **args)
 
     PREP_INIT()
 
-    call_method(__this->base, "_init", args);
+    if (call_method(__this->base, "_init", args).as.i == VALUE_ERR.as.i) {
+        PROPAGATE_ERR();
+        return (VALUE_ERR);
+    }
 
     // temporary testing purpose
     Material *mat = new_material();
     if (mat) {
         mat->color = 0x0000ff00;
-        mat->shader = new_shader(); // <- not freed
+        mat->shader = new_shader();
         (void)gl_shader_load(mat->shader,
             "assets/shaders/default.vert",
             "assets/shaders/default.frag"
         ); // <- not freed
-        mat->texture = new_texture_from_file("assets/dirt.png"); // <- not freed also
+        mat->texture = new_texture_from_file("assets/dirt.png");
         if (mat->texture)
             mat->texture->api = R_API_GL; 
     }
     INIT_CUSTOM_ALLOCATION(__this, mat, delete_material, "material");
 
     Mesh *mesh = new_mesh();
+
+    mesh->api = R_API_GL;
 
     if (mesh) {
         mesh->vertices = malloc(24 * sizeof(Vertex));
@@ -82,6 +87,10 @@ static cn_value _init(Object *__this, void **args)
 
 static cn_value _update(Object *__this, void **args)
 {
+    if (!args || !args[0]) {
+        RAISE(ERR_INVALID_POINTER, "can't update camera with no set delta time.");
+        return (null_value);
+    }
     double delta_time = *(double *)args[0];
     Vector3 *rotation = &get_attr(__this, "rotation")->as.vec3;
     rotation->y += 1.0f * delta_time;
@@ -94,6 +103,9 @@ static cn_value _del(Object *__this, void **args)
 
     PREP_DEL()
 
+    delete_texture(((Material *)get_attr(__this, "material")->as.ptr)->texture);
+    delete_shader(((Material *)get_attr(__this, "material")->as.ptr)->shader);
+
     DEL_CUSTOM_ALLOCAION(__this, delete_material, "material");
     DEL_CUSTOM_ALLOCAION(__this, delete_mesh, "mesh");
 
@@ -104,10 +116,12 @@ CN_API Object *new_object3d(void)
 {
     Object *obj = new_object();
 
-    if (!obj)
+    if (!obj) {
+        PROPAGATE_ERR();
         return (NULL);
+    }
 
-    SET_PARENT_CLASS_BUILD(obj, new_scene_object());
+    SET_PARENT_CLASS_BUILD_STATIC(obj, new_scene_object());
     CREATE_METHOD_CLASS_BUILD(obj, "_init", &_init);
     CREATE_METHOD_CLASS_BUILD(obj, "_update", &_update);
     CREATE_METHOD_CLASS_BUILD(obj, "_del", &_del);

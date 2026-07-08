@@ -21,6 +21,10 @@ add_library(cncore SHARED
     src/atlas.c
     src/generic_map.c
     src/generic_vector.c
+    src/library.c
+    src/error.c
+    src/string.c
+    src/generic_kv_pair.c
 )
 
 target_compile_options(cncore

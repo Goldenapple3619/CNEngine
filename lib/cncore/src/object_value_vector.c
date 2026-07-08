@@ -4,20 +4,22 @@ CN_API struct cn_value_vector_s *new_value_vector(void)
 {
     struct cn_value_vector_s *vec = (struct cn_value_vector_s *)malloc(sizeof(struct cn_value_vector_s));
 
-    if (!vec)
+    if (!vec) {
+        RAISE(ERR_OUT_OF_MEMORY, "failed to allocate value vector.");
         return (NULL);
+    }
     vec->size = 0;
     vec->capacity = 0;
     vec->values = NULL;
     return (vec);
 }
 
-
-
 CN_API void delete_value_vector(struct cn_value_vector_s *vec)
 {
-    if (!vec)
+    if (!vec) {
+        RAISE(ERR_INVALID_POINTER, "can't delete empty value vector.");
         return;
+    }
     for (size_t i = 0; i < vec->size; ++i) {
         (void)_delete_object_attribute_value(vec->values[i]);
         (void)free(vec->values[i]);
@@ -33,12 +35,16 @@ CN_API void delete_value_vector(struct cn_value_vector_s *vec)
 
 CN_API uint8_t resize_value_vector(struct cn_value_vector_s *vec, size_t new_capacity)
 {
-    if (!vec)
+    if (!vec) {
+        RAISE(ERR_INVALID_POINTER, "can't resize empty value vector.");
         return (1);
+    }
 
     vec->values = realloc(vec->values, new_capacity * sizeof(cn_value *));
 
     if (!vec->values) {
+        RAISE_FMT(ERR_OUT_OF_MEMORY, "failed to resize value vector (%zu -> %zu).", vec->capacity, new_capacity);
+        vec->size = 0;
         vec->capacity = 0;
         return (1);
     }
@@ -50,13 +56,17 @@ CN_API uint8_t resize_value_vector(struct cn_value_vector_s *vec, size_t new_cap
 
 CN_API uint8_t insert_value_vector(struct cn_value_vector_s *vec, cn_value value)
 {
-    if (!vec)
+    if (!vec) {
+        RAISE(ERR_INVALID_POINTER, "can't insert in empty value vector.");
         return (1);
+    }
 
     cn_value *temp = malloc(sizeof(cn_value));
 
-    if (!temp)
+    if (!temp) {
+        RAISE(ERR_OUT_OF_MEMORY, "failed to allocate new value.");
         return (1);
+    }
 
     temp->type = value.type;
 
@@ -65,6 +75,7 @@ CN_API uint8_t insert_value_vector(struct cn_value_vector_s *vec, cn_value value
     if (vec->size >= vec->capacity) {
         size_t new_capacity = vec->capacity == 0 ? 8 : vec->capacity * 2;
         if (resize_value_vector(vec, new_capacity)) {
+            PROPAGATE_ERR();
             (void)_delete_object_attribute_value(temp);
             (void)free(temp);
             return (1);
@@ -78,8 +89,14 @@ CN_API uint8_t insert_value_vector(struct cn_value_vector_s *vec, cn_value value
 
 CN_API void remove_value_vector(struct cn_value_vector_s *vec, size_t i)
 {
-    if (!vec || vec->size == 0 || i >= vec->size)
+    if (!vec) {
+        RAISE(ERR_INVALID_POINTER, "can't remove in empty value vector.");
         return;
+    }
+    if (vec->size == 0 || i >= vec->size) {
+        RAISE_FMT(ERR_OUT_OF_BOUND, "can't remove value at invalid position (%zu >= %zu).", i, vec->size);
+        return;
+    }
 
     size_t last = vec->size - 1;
 
@@ -92,8 +109,15 @@ CN_API void remove_value_vector(struct cn_value_vector_s *vec, size_t i)
 
 CN_API void remove_value_ordered_vector(struct cn_value_vector_s *vec, size_t i)
 {
-    if (!vec || vec->size == 0 || i >= vec->size)
+    if (!vec) {
+        RAISE(ERR_INVALID_POINTER, "can't remove in empty value vector.");
         return;
+    }
+
+    if (vec->size == 0 || i >= vec->size) {
+        RAISE_FMT(ERR_OUT_OF_BOUND, "can't remove value at invalid position (%zu >= %zu).", i, vec->size);
+        return;
+    }
 
     (void)_delete_object_attribute_value(vec->values[i]);
     (void)free(vec->values[i]);

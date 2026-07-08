@@ -2,18 +2,23 @@
 
 CN_API OBJAttrib *create_object_attribute(const char *name, cn_type type, cnany value)
 {
-    if (!name)
+    if (!name) {
+        RAISE(ERR_INVALID_POINTER, "can't create attribute with no name.");
         return (NULL);
+    }
 
     OBJAttrib *attribute = (OBJAttrib *)malloc(sizeof(OBJAttrib));
 
-    if (!attribute)
+    if (!attribute) {
+        RAISE(ERR_OUT_OF_MEMORY, "failed to allocate attribute.");
         return (NULL);
+    }
     
     #ifdef STRING_INDIVIDUAL_ALLOCATION
         attribute->name = (char *)strdup(name);
 
         if (!attribute->name) {
+            RAISE_FMT(ERR_OUT_OF_MEMORY, "failed to allocate attribute name '%s'.", name);
             (void)free(attribute);
             return (NULL);
         }
@@ -34,18 +39,23 @@ CN_API OBJAttrib *create_object_attribute(const char *name, cn_type type, cnany 
 
 CN_API OBJAttrib *create_object_attribute_from_cnvalue(const char *name, const cn_value *value)
 {
-    if (!value || !name)
+    if (!value || !name) {
+        RAISE(ERR_INVALID_POINTER, "can't create attribute with no name / no value.");
         return (NULL);
+    }
 
     OBJAttrib *attribute = (OBJAttrib *)malloc(sizeof(OBJAttrib));
 
-    if (!attribute)
+    if (!attribute) {
+        RAISE(ERR_OUT_OF_MEMORY, "failed to allocate attribute.");
         return (NULL);
+    }
     
     #ifdef STRING_INDIVIDUAL_ALLOCATION
         attribute->name = (char *)strdup(name);
 
         if (!attribute->name) {
+            RAISE_FMT(ERR_OUT_OF_MEMORY, "failed to allocate attribute name '%s'.", name);
             (void)free(attribute);
             return (NULL);
         }
@@ -62,8 +72,10 @@ CN_API OBJAttrib *create_object_attribute_from_cnvalue(const char *name, const c
 
 CN_API void delete_object_attribute(OBJAttrib *attribute)
 {
-    if (!attribute)
+    if (!attribute) {
+        RAISE(ERR_INVALID_POINTER, "can't delete empty attribute.");
         return;
+    }
     (void)_delete_object_attribute_value(&attribute->value);
     #ifdef STRING_INDIVIDUAL_ALLOCATION
         if (attribute->name)

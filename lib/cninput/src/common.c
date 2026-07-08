@@ -2,12 +2,18 @@
 
 CN_API cnbool start_input(void)
 {
-    if (SDL_Init(SDL_INIT_GAMECONTROLLER))
+    if (SDL_Init(SDL_INIT_GAMECONTROLLER)) {
+        RAISE(ERR_OS, "failed to init gamecontroller sdl module.");
         return (false);
-    if (SDL_Init(SDL_INIT_HAPTIC))
+    }
+    if (SDL_Init(SDL_INIT_HAPTIC)) {
+        RAISE(ERR_OS, "failed to init haptic sdl module.");
         return (false);
-    if (SDL_Init(SDL_INIT_JOYSTICK))
+    }
+    if (SDL_Init(SDL_INIT_JOYSTICK)) {
+        RAISE(ERR_OS, "failed to init joystick sdl module.");
         return (false);
+    }
     return (true);
 }
 

@@ -12,6 +12,7 @@ set(CMAKE_REQUIRED_LIBRARIES m CACHE BOOL "" FORCE)
 
 # ========= Options =========
 option(CN_BUILD_ENGINE "Build engine executable" ON)
+option(CN_SANITIZE     "Build with AddressSanitizer + UBSan" OFF)
 
 if(NOT DEFINED DIST_DIR)
     get_filename_component(CWD_NAME ${CMAKE_SOURCE_DIR} NAME)
@@ -144,7 +145,41 @@ glad_add_library(glad_gl STATIC
 
 FetchContent_MakeAvailable(glad)
 
+set(LIBXML2_WITH_PYTHON OFF CACHE BOOL "" FORCE)
+set(LIBXML2_WITH_TESTS OFF CACHE BOOL "" FORCE)
+set(LIBXML2_WITH_PROGRAMS OFF CACHE BOOL "" FORCE)
+set(LIBXML2_WITH_LZMA OFF CACHE BOOL "" FORCE)
+set(LIBXML2_WITH_ZLIB OFF CACHE BOOL "" FORCE)
+set(LIBXML2_WITH_ICONV OFF CACHE BOOL "" FORCE)
+
+FetchContent_Declare(
+    libxml2
+    GIT_REPOSITORY https://gitlab.gnome.org/GNOME/libxml2.git
+    GIT_TAG v2.14.5
+)
+
+FetchContent_MakeAvailable(libxml2)
+
 find_package(OpenGL REQUIRED)
+
+# ========= Sanitizer =========
+
+if(CN_SANITIZE)
+    message(STATUS "[CNEngine] Sanitizers ON: ASan + UBSan")
+    add_compile_options(
+        -fsanitize=address,undefined
+        -fno-omit-frame-pointer
+        -fno-common
+        -fstack-protector-all
+        -fstack-check
+        -g
+    )
+    add_link_options(-fsanitize=address,undefined)
+endif()
+
+add_compile_options(
+    -ffile-prefix-map=${CMAKE_SOURCE_DIR}=.
+)
 
 # ========= Modules =========
 add_subdirectory(lib/cncore)
@@ -156,24 +191,52 @@ add_subdirectory(lib/rgui)
 add_subdirectory(lib/r2d)
 add_subdirectory(lib/r3d)
 
+add_subdirectory(lib/formats/cnguiobj)
+add_subdirectory(lib/formats/cnsceneobj)
+
 # dist deploy
 add_custom_target(cn_dist ALL)
 
 # ========= engine executable =========
 if(CN_BUILD_ENGINE)
-    find_package(LibXml2 REQUIRED)
-
     add_dependencies(cn_dist cn_engine)
 
     add_executable(cn_engine
         src/main.c
         src/argparser.c
-
+        src/fs.c
+        
         src/init/route.c
 
         src/cnbuild/route.c
+        src/cnbuild/text.c
+    
+        src/cnbuild/scene_toolchain/route.c
+        src/cnbuild/scene_toolchain/scene.c
+    
+        src/cnbuild/asset_toolchain/route.c
+    
+        src/cnbuild/object_toolchain/route.c
+    
+        src/cnbuild/project_toolchain/route.c
+        src/cnbuild/project_toolchain/utils.c
+        src/cnbuild/project_toolchain/ressources.c
+        src/cnbuild/project_toolchain/cnasset.c
+        src/cnbuild/project_toolchain/cnproject.c
+        src/cnbuild/project_toolchain/cnbuild.c
+        src/cnbuild/project_toolchain/parsers/builds.c
+        src/cnbuild/project_toolchain/parsers/ressources.c
+        src/cnbuild/project_toolchain/parsers/project.c
+        src/cnbuild/project_toolchain/generation/library_compiler.c
+    
+        src/cnbuild/gui_toolchain/route.c
+        src/cnbuild/gui_toolchain/gui.c
+
+        src/cnbuild/linker_toolchain/route.c
 
         src/help/route.c
+
+        src/dump/route.c
 
         src/test/camera.c
         src/test/fps.c
@@ -184,7 +247,8 @@ if(CN_BUILD_ENGINE)
 
     target_compile_options(cn_engine
         PRIVATE
-            -Wall -Wextra -Wshadow -Werror -O2
+            -Wall -Wextra -Wshadow -Werror
+            $<IF:$<BOOL:${CN_SANITIZE}>,-O1,-O2>
     )
 
     target_link_libraries(cn_engine
@@ -201,11 +265,11 @@ if(CN_BUILD_ENGINE)
 
             m
 
-            LibXml2::LibXml2
+            LibXml2
     )
 
     if(WIN32)
-        target_link_libraries(cn_engine PRIVATE Rpcrt4)
+        target_link_libraries(cn_engine PRIVATE rpcrt4)
     elseif(APPLE)
         target_link_libraries(cn_engine PRIVATE "-framework CoreFoundation")
     else()
@@ -226,6 +290,11 @@ if(CN_BUILD_ENGINE)
             lib/rgui/include
             lib/r2d/include
             lib/r3d/include
+
+            lib/cnapi/include
+
+            lib/formats/cnguiobj/include
+            lib/formats/cnsceneobj/include
     )
 
     # main
@@ -273,52 +342,20 @@ foreach(lib glad_gl)
     )
 endforeach()
 
-if(WIN32)
-    get_filename_component(MINGW_BIN_DIR ${CMAKE_C_COMPILER} DIRECTORY)
-
-    # Use glob instead of hardcoded names
-    file(GLOB XML2_DLL_CANDIDATES
-        "${MINGW_BIN_DIR}/libxml2*.dll"
-    )
-
-    if(NOT XML2_DLL_CANDIDATES)
-        message(FATAL_ERROR "Could not find libxml2*.dll in ${MINGW_BIN_DIR}")
-    endif()
-
-    list(GET XML2_DLL_CANDIDATES 0 XML2_DLL)
-    message(STATUS "Found xml2 dll: ${XML2_DLL}")
-
-    add_custom_command(TARGET cn_dist POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/lib"
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different
-            "${XML2_DLL}" "${DIST_DIR}/lib/"
-    )
-
-    foreach(dep_dll libiconv-2.dll zlib1.dll)
-        if(EXISTS "${MINGW_BIN_DIR}/${dep_dll}")
+#libxml2
+foreach(lib LibXml2)
+    if(TARGET ${lib})
+        get_target_property(lib_type ${lib} TYPE)
+        if(lib_type STREQUAL "SHARED_LIBRARY")
             add_custom_command(TARGET cn_dist POST_BUILD
+                COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/lib"
                 COMMAND ${CMAKE_COMMAND} -E copy_if_different
-                    "${MINGW_BIN_DIR}/${dep_dll}" "${DIST_DIR}/lib/"
+                    $<TARGET_FILE:${lib}>
+                    "${DIST_DIR}/lib/"
             )
         endif()
-    endforeach()
-elseif(UNIX AND NOT APPLE)
-    get_target_property(XML2_LIB LibXml2::LibXml2 LOCATION)
-    get_filename_component(XML2_REAL "${XML2_LIB}" REALPATH)
-    get_filename_component(XML2_NAME "${XML2_REAL}" NAME)
-
-    add_custom_command(TARGET cn_dist POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/lib"
-
-        COMMAND ${CMAKE_COMMAND} -E copy_if_different
-            "${XML2_REAL}" "${DIST_DIR}/lib/${XML2_NAME}"
-
-        COMMAND ${CMAKE_COMMAND}
-            -DXML2_LIB="${XML2_REAL}"
-            -DDIST_DIR="${DIST_DIR}"
-            -P "${CMAKE_SOURCE_DIR}/toolchain/copy_xml2_deps.cmake"
-    )
-endif()
+    endif()
+endforeach()
 
 # vendored
 foreach(lib freetype harfbuzz ogg opus opusfile xmp tiff)
@@ -340,6 +377,15 @@ foreach(lib cncore cngraphic cnaudio cninput cnassets rgui r2d r3d)
     add_custom_command(TARGET cn_dist POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory
             "${CMAKE_SOURCE_DIR}/lib/${lib}/include"
+            "${DIST_DIR}/include/"
+    )
+endforeach()
+
+#includes formats
+foreach(lib cnguiobj cnsceneobj)
+    add_custom_command(TARGET cn_dist POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+            "${CMAKE_SOURCE_DIR}/lib/formats/${lib}/include"
             "${DIST_DIR}/include/"
     )
 endforeach()
@@ -417,7 +463,7 @@ foreach(lib glad_gl)
 endforeach()
 
 # modules libraries
-foreach(lib cncore cngraphic cnaudio cninput cnassets rgui r2d r3d)
+foreach(lib cncore cngraphic cnaudio cninput cnassets rgui r2d r3d cnguiobj cnsceneobj)
     add_custom_command(TARGET cn_dist POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
             $<TARGET_FILE:${lib}>
@@ -427,7 +473,7 @@ endforeach()
 
 # machine specific libs
 if(WIN32)
-    get_filename_component(MINGW_BIN_DIR ${CMAKE_C_COMPILER} DIRECTORY)
+    set(MINGW_BIN_DIR "${CMAKE_FIND_ROOT_PATH}/bin")
 
     if(TARGET_ARCH STREQUAL "i386")
         set(MINGW_RUNTIME_DLLS libwinpthread-1.dll libgcc_s_dw2-1.dll)

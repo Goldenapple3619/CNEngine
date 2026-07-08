@@ -7,8 +7,11 @@ CN_API Object *new_object(void)
 {
     Object *obj = (Object *)malloc(sizeof(Object));
 
-    if (!obj)
+    if (!obj) {
+        RAISE(ERR_OUT_OF_MEMORY, "failed to allocate new obj.")
         return (NULL);
+    }
+
     obj->base = NULL;
     obj->ref_count = 0;
 
@@ -20,8 +23,10 @@ CN_API Object *new_object(void)
 
 CN_API void delete_object(Object *object)
 {
-    if (!object)
+    if (!object) {
+        RAISE(ERR_INVALID_POINTER, "can't delete empty object.");
         return;
+    }
     if (has_method(object, "_del"))
         (void)call_method(object, "_del", NULL);
     if (object->base) {
@@ -35,13 +40,22 @@ CN_API void delete_object(Object *object)
 
 CN_API cnbool set_attr(Object *object, const char *name, cn_type type, cnany value)
 {
-    if (!object || !name)
+    if (!object) {
+        RAISE(ERR_INVALID_POINTER, "can't set_attr with empty object.");
         return (false);
+    }
+
+    if (!name) {
+        RAISE(ERR_INVALID_POINTER, "can't set_attr with empty name.");
+        return (false);
+    }
 
     cn_value *temp_exist = get_attr(object, name);
 
     if (temp_exist) {
         if (temp_exist->type == CN_TYPE_OBJECT && temp_exist->as.ptr == value)
+            return (true);
+        if (temp_exist->type == CN_TYPE_STRING && temp_exist->as.ptr == value)
             return (true);
         (void)_delete_object_attribute_value(temp_exist);
         temp_exist->type = type;
@@ -52,18 +66,29 @@ CN_API cnbool set_attr(Object *object, const char *name, cn_type type, cnany val
     uint64_t hash = _get_attrs_hash(name);
     OBJAttrib *attr = create_object_attribute(name, type, value);
 
-    if (!attr)
+    if (!attr) {
+        PROPAGATE_ERR();
         return (false);
+    }
 
-    if (_insert_object_attrs(&object->attrs, hash, attr))
+    if (_insert_object_attrs(&object->attrs, hash, attr)) {
+        PROPAGATE_ERR();
         return (false);
+    }
     return (true);
 }
 
 CN_API cn_value *get_attr(const Object *object, const char *name)
 {
-    if (!object || !name)
+    if (!object) {
+        RAISE(ERR_INVALID_POINTER, "can't get_attr with empty object.");
         return (NULL);
+    }
+
+    if (!name) {
+        RAISE(ERR_INVALID_POINTER, "can't get_attr with empty name.");
+        return (NULL);
+    }
     
     uint64_t hash = _get_attrs_hash(name);
     const Object *temp = object;
@@ -83,8 +108,15 @@ CN_API cn_value *get_attr(const Object *object, const char *name)
 
 CN_API cnbool has_attr(const Object *object, const char *name)
 {
-    if (!object || !name)
+    if (!object) {
+        RAISE(ERR_INVALID_POINTER, "can't has_attr with empty object.");
         return (false);
+    }
+
+    if (!name) {
+        RAISE(ERR_INVALID_POINTER, "can't has_attr with empty name.");
+        return (false);
+    }
     
     uint64_t hash = _get_attrs_hash(name);
     const Object *temp = object;
@@ -101,8 +133,20 @@ CN_API cnbool has_attr(const Object *object, const char *name)
 
 CN_API cnbool set_method(Object *object, const char *name, cn_method func)
 {
-    if (!object || !name || !func)
+    if (!object) {
+        RAISE(ERR_INVALID_POINTER, "can't set_method with empty object.");
         return (false);
+    }
+
+    if (!name) {
+        RAISE(ERR_INVALID_POINTER, "can't set_method with empty name.");
+        return (false);
+    }
+
+    if (!func) {
+        RAISE(ERR_INVALID_POINTER, "can't set_method with empty name.");
+        return (false);
+    }
 
     cn_value *temp_exist = get_method_holder(object, name);
 
@@ -122,18 +166,29 @@ CN_API cnbool set_method(Object *object, const char *name, cn_method func)
 
     OBJAttrib *attr = create_object_attribute_from_cnvalue(name, &temp);
 
-    if (!attr)
+    if (!attr) {
+        PROPAGATE_ERR();
         return (false);
+    }
 
-    if (_insert_object_attrs(&object->methods, hash, attr))
+    if (_insert_object_attrs(&object->methods, hash, attr)) {
+        PROPAGATE_ERR();
         return (false);
+    }
     return (true);
 }
 
 CN_API cn_value *get_method_holder(const Object *object, const char *name)
 {
-    if (!object || !name)
+    if (!object) {
+        RAISE(ERR_INVALID_POINTER, "can't get_method_holder with empty object.");
         return (NULL);
+    }
+
+    if (!name) {
+        RAISE(ERR_INVALID_POINTER, "can't get_method_holder with empty name.");
+        return (NULL);
+    }
     
     uint64_t hash = _get_attrs_hash(name);
     OBJAttrib *found;
@@ -148,8 +203,15 @@ CN_API cn_value *get_method_holder(const Object *object, const char *name)
 
 CN_API cn_method get_method(const Object *object, const char *name)
 {
-    if (!object || !name)
+    if (!object) {
+        RAISE(ERR_INVALID_POINTER, "can't get_method with empty object.");
         return (NULL);
+    }
+
+    if (!name) {
+        RAISE(ERR_INVALID_POINTER, "can't get_method with empty name.");
+        return (NULL);
+    }
     
     uint64_t hash = _get_attrs_hash(name);
     const Object *temp = object;
@@ -169,17 +231,34 @@ CN_API cn_method get_method(const Object *object, const char *name)
 
 CN_API cn_value call_method(Object *object, const char *name, void **args)
 {
-    if (!object || !name)
+    if (!object) {
+        RAISE(ERR_INVALID_POINTER, "can't get_method with empty object.");
         return (null_value);
-    if (!has_method(object, name))
+    }
+
+    if (!name) {
+        RAISE(ERR_INVALID_POINTER, "can't get_method with empty name.");
+        return (null_value);
+    }
+
+    if (!has_method(object, name)) {
+        RAISE_FMT(ERR_OUT_OF_BOUND, "can't call non existent method '%s'.", name);
         return  (null_value);
+    }
     return (get_method(object, name))(object, args);
 }
 
 CN_API cnbool has_method(const Object *object, const char *name)
 {
-    if (!object || !name)
+    if (!object) {
+        RAISE(ERR_INVALID_POINTER, "can't has_method with empty object.");
         return (false);
+    }
+
+    if (!name) {
+        RAISE(ERR_INVALID_POINTER, "can't has_method with empty name.");
+        return (false);
+    }
     
     uint64_t hash = _get_attrs_hash(name);
     const Object *temp = object;
@@ -196,12 +275,20 @@ CN_API cnbool has_method(const Object *object, const char *name)
 
 CN_API void print_object(const Object *object)
 {
-    if (!object || !has_method(object, "_str"))
+    if (!object) {
+        RAISE(ERR_INVALID_POINTER, "can't print_object with empty object.");
         return;
+    }
+
+    if (!has_method(object, "_str")) {
+        RAISE(ERR_NOT_COMPATIBLE, "can't print_object with object that as no _str method.");
+        return;
+    }
 
     cn_value val = call_method((Object *)object, "_str", NULL);
 
     if (val.type != CN_TYPE_STRING || !val.as.str) {
+        RAISE(ERR_INVALID_POINTER, "can't print invalid _str return value, check previous trace for potential errors.");
         (void)_delete_object_attribute_value(&val);
         return;
     }
@@ -212,16 +299,20 @@ CN_API void print_object(const Object *object)
 
 CN_API Object *build_object(Object *obj, void **args)
 {
-    if (!obj)
+    if (!obj) {
+        RAISE(ERR_INVALID_POINTER, "can't build empty object.");
         return (NULL);
+    }
     cn_value val = call_method(obj, "_init", args);
 
     if (val.type == CN_TYPE_NULL) {
+        RAISE(ERR_INVALID_TYPE, "object constructor returned null, should be OK or ERR.");
         (void)delete_object(obj);
         return (NULL);
     }
     if (val.as.i == VALUE_OK.as.i)
         return (obj);
+    RAISE(ERR_RUNTIME, "object constructor returned ERR, check previous stack trace for potential informations.");
     (void)delete_object(obj);
     return (NULL);
 };
@@ -235,8 +326,10 @@ static cn_value _str(Object *this, void **args) {
     result.type = CN_TYPE_STRING;
     result.as.str = NULL;
 
-    if (!this)
+    if (!this) {
+        RAISE(ERR_OUT_OF_MEMORY, "I am not real.")
         return (null_value);
+    }
 
     cn_value *name_val = get_attr(this, "name");
     const char *name = "object";
@@ -247,8 +340,10 @@ static cn_value _str(Object *this, void **args) {
     int needed = snprintf(NULL, 0, "<%s@%p>", name, (void *)this);
     char *str = malloc(needed + 1);
 
-    if (!str)
+    if (!str) {
+        RAISE(ERR_OUT_OF_MEMORY, "failed to allocate string.")
         return (null_value);
+    }
 
     snprintf(str, needed + 1, "<%s@%p>", name, (void *)this);
 
@@ -260,7 +355,13 @@ CN_API Object *create_default_object(void)
 {
     Object *obj = new_object();
 
+    if (!obj) {
+        PROPAGATE_ERR();
+        return (NULL);
+    }
+
     if (!set_attr(obj, "name", CN_TYPE_STRING, "object")) {
+        PROPAGATE_ERR();
         (void)delete_object(obj);
         return (NULL);
     }

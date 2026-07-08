@@ -28,8 +28,10 @@ CN_API Clock *new_clock(void)
 {
     Clock *c = (Clock *)malloc(sizeof(Clock));
 
-    if (!c)
+    if (!c) {
+        RAISE(ERR_OUT_OF_MEMORY, "failed to allocate clock.");
         return (NULL);
+    }
     c->last_dt = 0;
     c->old_time = SDL_GetTicks64();
     return (c);
@@ -37,7 +39,9 @@ CN_API Clock *new_clock(void)
 
 CN_API void delete_clock(Clock *c)
 {
-    if (!c)
+    if (!c) {
+        RAISE(ERR_INVALID_POINTER, "invalid delete on empty clock.");
         return;
+    }
     (void)free((void *)c);
 }

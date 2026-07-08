@@ -15,6 +15,7 @@ cmake ../.. \
     -DTARGET_ARCH="i386" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_POLICY_VERSION_MINIMUM=3.20 \
-    -DCMAKE_FIND_ROOT_PATH="/usr/i686-w64-mingw32"
+    -DCMAKE_FIND_ROOT_PATH="/usr/i686-w64-mingw32" \
+    -DCN_SANITIZE=OFF
 
 cmake --build . -- -j8

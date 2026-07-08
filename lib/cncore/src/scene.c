@@ -6,7 +6,7 @@ static cn_value _init(Object *__this, void **args)
 
     PREP_INIT()
 
-    INIT_OBJECT_STATIC(__this, new_list(), NULL, "objects");
+    INIT_OBJECT_STATIC(__this, new_list((expr_free)&collect_object), NULL, "objects");
 
     return (VALUE_OK);
 }
@@ -36,7 +36,15 @@ static cn_value _update(Object *__this, void **args)
 
 static cn_value _add_element(Object *__this, void **args)
 {
-    return (call_method(get_attr(__this, "objects")->as.ptr, "push", args));
+    if (!args || !args[0]) {
+        RAISE(ERR_INVALID_POINTER, "can't add empty element to scene.");
+        return (VALUE_ERR);
+    }
+    if (call_method(get_attr(__this, "objects")->as.ptr, "push", PACK_ARG(share_object(args[0]), NULL)).as.i == VALUE_ERR.as.i) {
+        PROPAGATE_ERR()
+        return (VALUE_ERR);
+    }
+    return (VALUE_OK);
 }
 
 static cn_value _del(Object *__this, void **args)
@@ -51,10 +59,12 @@ CN_API Object *new_scene(void)
 {
     Object *obj = new_object();
 
-    if (!obj)
+    if (!obj) {
+        PROPAGATE_ERR();
         return (NULL);
+    }
 
-    SET_PARENT_CLASS_BUILD(obj, create_default_object());
+    SET_PARENT_CLASS_BUILD_STATIC(obj, create_default_object());
 
     CREATE_METHOD_CLASS_BUILD(obj, "_init", &_init);
     CREATE_METHOD_CLASS_BUILD(obj, "_update", &_update);

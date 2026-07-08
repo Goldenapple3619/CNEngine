@@ -110,7 +110,10 @@
 
     typedef struct {
         union {
-            uint32_t  gl_shader;
+            struct {
+                uint32_t gl_shader;
+                SDL_GLContext gl_ctx;
+            } gl;
         } gpu_handler;
 
         rendering_api api;
@@ -147,6 +150,7 @@
                 uint32_t vao;
                 uint32_t vbo;
                 uint32_t ebo;
+                SDL_GLContext gl_ctx;
             } gl;
         } gpu_handler;
     } Mesh;
@@ -268,7 +272,7 @@
     CN_API Object *new_graphic_submodule(void);
 
     CN_API Mesh *new_mesh(void);
-    CN_API void mesh_draw_gl(const Mesh *m);
+    CN_API void mesh_draw_gl(Mesh *m);
     CN_API cnbool mesh_upload_gl(Mesh *m);
     CN_API void delete_mesh(Mesh *mesh);
 

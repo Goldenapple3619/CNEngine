@@ -13,6 +13,7 @@ Object *create_threed_view(Object *ctx, Vector2 position, Vector2 size)
     ));
 
     if (!threed_board) {
+        PROPAGATE_ERR();
         return (NULL);
     }
 
@@ -42,14 +43,18 @@ Object *build_hud_test(Vector2 position, Vector2 size)
                 }
             )
         ), NULL
-    )).as.i == VALUE_ERR.as.i)
+    )).as.i == VALUE_ERR.as.i) {
+        PROPAGATE_ERR();
         return (NULL);
+    }
 
 
     if (call_method(gui_board, "add_element", PACK_ARG(
         fps_text, NULL
-    )).as.i == VALUE_ERR.as.i)
+    )).as.i == VALUE_ERR.as.i) {
+        PROPAGATE_ERR();
         return (NULL);
+    }
 
     return (gui_board);
 }
@@ -59,7 +64,7 @@ Object *add_test_window(Object *ctx)
     Videomode v = (Videomode){
         .size.x = 800, .size.y = 600,
         .position.x = (SDL_WINDOWPOS_CENTERED), .position.y = (SDL_WINDOWPOS_CENTERED),
-        .flags = VDM_CLOSABLE | VDM_OPENGL | VDM_ACCELERATION | VDM_VSYNC,
+        .flags = VDM_CLOSABLE | VDM_OPENGL | VDM_ACCELERATION,
         .native_flags = VDM_N_SHWN | VDM_N_RSZL | VDM_N_OPENGL
     };
     Texture *tex = new_texture_from_file("./assets/images/logo_XL.png");
@@ -68,6 +73,7 @@ Object *add_test_window(Object *ctx)
     delete_texture(tex); // don't worry, it won't cause any use after free, trust
 
     if (val.type == CN_TYPE_NULL) {
+        PROPAGATE_ERR();
         return (NULL);
     }
 
@@ -76,16 +82,19 @@ Object *add_test_window(Object *ctx)
     Object *hud_test = build_hud_test((Vector2){.x = 0, .y = 0}, (Vector2){.x = v.size.x, .y = v.size.y});
 
     if (call_method(window_interface, "add_element", PACK_ARG(view_threed, NULL)).as.i == VALUE_ERR.as.i) {
+        PROPAGATE_ERR();
         delete_object(view_threed);
         return (NULL);
     }
 
     if (call_method(window_interface, "add_element", PACK_ARG(hud_test, NULL)).as.i == VALUE_ERR.as.i) {
+        PROPAGATE_ERR();
         delete_object(hud_test);
         return (NULL);
     }
 
     if (call_method(get_attr(ctx, "scene")->as.ptr, "add_element", PACK_ARG(set_up_camera(ctx, view_threed), NULL)).as.i == VALUE_ERR.as.i) {
+        PROPAGATE_ERR();
         return (NULL);
     }
 
@@ -99,10 +108,12 @@ Object *add_test_window(Object *ctx)
     ));
 
     if (!obj) {
+        PROPAGATE_ERR();
         return (NULL);
     }
 
     if (call_method(get_attr(ctx, "scene")->as.ptr, "add_element", PACK_ARG(obj, NULL)).as.i == VALUE_ERR.as.i) {
+        PROPAGATE_ERR();
         delete_object(obj);
         return (NULL);
     }
