@@ -5,7 +5,7 @@ static void fclose_wrapper(void *ptr)
     fclose((FILE *)ptr);
 }
 
-static size_t raw_content_size_generator(struct engine_object_file_section_writer_ctx_s *self)
+static uint64_t raw_content_size_generator(struct engine_object_file_section_writer_ctx_s *self)
 {
     FILE *fp = (FILE *)self->_v;
     int64_t len;
@@ -14,7 +14,7 @@ static size_t raw_content_size_generator(struct engine_object_file_section_write
     len = ENGINE_FTELL(fp);
     (void)rewind(fp);
 
-    return ((size_t)len);
+    return (len);
 }
 
 static char *raw_content_generator(struct engine_object_file_section_writer_ctx_s *self, const struct engine_object_file_writer_ctx_s *writer, struct generic_map_s *strndx)
