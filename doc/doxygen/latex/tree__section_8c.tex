@@ -1,0 +1,41 @@
+\doxysection{lib/formats/cnsceneobj/src/tree\+\_\+section.c File Reference}
+\hypertarget{tree__section_8c}{}\label{tree__section_8c}\index{lib/formats/cnsceneobj/src/tree\_section.c@{lib/formats/cnsceneobj/src/tree\_section.c}}
+{\ttfamily \#include "{}cnsceneobj.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static uint64\+\_\+t \mbox{\hyperlink{tree__section_8c_a6afeb5b78f56fb508c761f6a4d80203f}{build\+\_\+tree\+\_\+section\+\_\+size}} (struct \mbox{\hyperlink{structengine__object__file__section__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+section\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}self)
+\item 
+static char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{tree__section_8c_a53258184d0b737b1afdc0018bdad4b8e}{build\+\_\+tree\+\_\+section}} (struct \mbox{\hyperlink{structengine__object__file__section__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+section\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}self, const struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}wctx, struct \mbox{\hyperlink{structgeneric__map__s}{generic\+\_\+map\+\_\+s}} \texorpdfstring{$\ast$}{*}strndx)
+\item 
+static char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{tree__section_8c_ae69e27f454320a12299e5882382ba837}{reconstruct\+\_\+tree\+\_\+section\+\_\+strndx}} (char \texorpdfstring{$\ast$}{*}rw\+\_\+content, uint64\+\_\+t content\+\_\+size, const \mbox{\hyperlink{structCNAssetReader}{CNAsset\+Reader}} \texorpdfstring{$\ast$}{*}reader, struct \mbox{\hyperlink{structgeneric__map__s}{generic\+\_\+map\+\_\+s}} \texorpdfstring{$\ast$}{*}new\+\_\+strndx)
+\item 
+void \mbox{\hyperlink{tree__section_8c_a1d52d07f48808f77154411ca14b8da76}{init\+\_\+tree\+\_\+section\+\_\+registry}} (struct \mbox{\hyperlink{structsection__registry}{section\+\_\+registry}} \texorpdfstring{$\ast$}{*}reg)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{tree__section_8c_a53258184d0b737b1afdc0018bdad4b8e}\label{tree__section_8c_a53258184d0b737b1afdc0018bdad4b8e} 
+\index{tree\_section.c@{tree\_section.c}!build\_tree\_section@{build\_tree\_section}}
+\index{build\_tree\_section@{build\_tree\_section}!tree\_section.c@{tree\_section.c}}
+\doxysubsubsection{\texorpdfstring{build\_tree\_section()}{build\_tree\_section()}}
+{\footnotesize\ttfamily static char \texorpdfstring{$\ast$}{*} build\+\_\+tree\+\_\+section (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structengine__object__file__section__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+section\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{self,  }\item[{const struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{wctx,  }\item[{struct \mbox{\hyperlink{structgeneric__map__s}{generic\+\_\+map\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{strndx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{tree__section_8c_a6afeb5b78f56fb508c761f6a4d80203f}\label{tree__section_8c_a6afeb5b78f56fb508c761f6a4d80203f} 
+\index{tree\_section.c@{tree\_section.c}!build\_tree\_section\_size@{build\_tree\_section\_size}}
+\index{build\_tree\_section\_size@{build\_tree\_section\_size}!tree\_section.c@{tree\_section.c}}
+\doxysubsubsection{\texorpdfstring{build\_tree\_section\_size()}{build\_tree\_section\_size()}}
+{\footnotesize\ttfamily static uint64\+\_\+t build\+\_\+tree\+\_\+section\+\_\+size (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structengine__object__file__section__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+section\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{self }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{tree__section_8c_a1d52d07f48808f77154411ca14b8da76}\label{tree__section_8c_a1d52d07f48808f77154411ca14b8da76} 
+\index{tree\_section.c@{tree\_section.c}!init\_tree\_section\_registry@{init\_tree\_section\_registry}}
+\index{init\_tree\_section\_registry@{init\_tree\_section\_registry}!tree\_section.c@{tree\_section.c}}
+\doxysubsubsection{\texorpdfstring{init\_tree\_section\_registry()}{init\_tree\_section\_registry()}}
+{\footnotesize\ttfamily void init\+\_\+tree\+\_\+section\+\_\+registry (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structsection__registry}{section\+\_\+registry}} \texorpdfstring{$\ast$}{*}}]{reg }\end{DoxyParamCaption})}
+
+\Hypertarget{tree__section_8c_ae69e27f454320a12299e5882382ba837}\label{tree__section_8c_ae69e27f454320a12299e5882382ba837} 
+\index{tree\_section.c@{tree\_section.c}!reconstruct\_tree\_section\_strndx@{reconstruct\_tree\_section\_strndx}}
+\index{reconstruct\_tree\_section\_strndx@{reconstruct\_tree\_section\_strndx}!tree\_section.c@{tree\_section.c}}
+\doxysubsubsection{\texorpdfstring{reconstruct\_tree\_section\_strndx()}{reconstruct\_tree\_section\_strndx()}}
+{\footnotesize\ttfamily static char \texorpdfstring{$\ast$}{*} reconstruct\+\_\+tree\+\_\+section\+\_\+strndx (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{rw\+\_\+content,  }\item[{uint64\+\_\+t}]{content\+\_\+size,  }\item[{const \mbox{\hyperlink{structCNAssetReader}{CNAsset\+Reader}} \texorpdfstring{$\ast$}{*}}]{reader,  }\item[{struct \mbox{\hyperlink{structgeneric__map__s}{generic\+\_\+map\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{new\+\_\+strndx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+

@@ -105,6 +105,7 @@ $(document).ready(function(){initNavTree('build_8h.html',''); initResizable(); }
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">build.h File Reference</div></div>
@@ -121,28 +122,172 @@ $(document).ready(function(){initNavTree('build_8h.html',''); initResizable(); }
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structbuild__args__s.html">build_args_s</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structparsed__gui__element__data__s.html">parsed_gui_element_data_s</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a96b21e673f9e191a885a058eb30e5ab4" id="r_a96b21e673f9e191a885a058eb30e5ab4"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="build_8h.html#a96b21e673f9e191a885a058eb30e5ab4">route_callback_toolchain</a>) (size_t, char **, <a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *)</td></tr>
+<tr class="separator:a96b21e673f9e191a885a058eb30e5ab4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a7c0a4901634cd71315b384c4612b1d57" id="r_a7c0a4901634cd71315b384c4612b1d57"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="build_8h.html#a7c0a4901634cd71315b384c4612b1d57">build_gui</a> (size_t argc, char **argv)</td></tr>
-<tr class="separator:a7c0a4901634cd71315b384c4612b1d57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27ab48711bfa88b9fe49b025564abd19" id="r_a27ab48711bfa88b9fe49b025564abd19"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="build_8h.html#a27ab48711bfa88b9fe49b025564abd19">strip_whitespace</a> (const char *str)</td></tr>
+<tr class="separator:a27ab48711bfa88b9fe49b025564abd19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e578177f221a35383e7d2a5dd0b83fa" id="r_a6e578177f221a35383e7d2a5dd0b83fa"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="build_8h.html#a6e578177f221a35383e7d2a5dd0b83fa">string_from_node</a> (xmlNode *node)</td></tr>
+<tr class="separator:a6e578177f221a35383e7d2a5dd0b83fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a651da7d62a2b42a6ef4db446ccceb21c" id="r_a651da7d62a2b42a6ef4db446ccceb21c"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="build_8h.html#a651da7d62a2b42a6ef4db446ccceb21c">build_get_args</a> (size_t argc, char **argv, const char *toolchain, struct <a class="el" href="structbuild__args__s.html">build_args_s</a> *args)</td></tr>
+<tr class="separator:a651da7d62a2b42a6ef4db446ccceb21c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85972f2507e3f8ad72097fc4eba02dab" id="r_a85972f2507e3f8ad72097fc4eba02dab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="build_8h.html#a85972f2507e3f8ad72097fc4eba02dab">reset_args</a> (struct <a class="el" href="structbuild__args__s.html">build_args_s</a> *args)</td></tr>
+<tr class="separator:a85972f2507e3f8ad72097fc4eba02dab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4827583d802b30fcfd5438a95b57de41" id="r_a4827583d802b30fcfd5438a95b57de41"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="build_8h.html#a4827583d802b30fcfd5438a95b57de41">build_gui</a> (size_t argc, char **argv, <a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *asset_ctx)</td></tr>
+<tr class="separator:a4827583d802b30fcfd5438a95b57de41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f70dca845f25104d35a9f305b27c4e5" id="r_a4f70dca845f25104d35a9f305b27c4e5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="build_8h.html#a4f70dca845f25104d35a9f305b27c4e5">build_assets</a> (size_t argc, char **argv, <a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *asset_ctx)</td></tr>
+<tr class="separator:a4f70dca845f25104d35a9f305b27c4e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05df0e74f26ae861b604888d6f054de6" id="r_a05df0e74f26ae861b604888d6f054de6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="build_8h.html#a05df0e74f26ae861b604888d6f054de6">build_obj</a> (size_t argc, char **argv, <a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *asset_ctx)</td></tr>
+<tr class="separator:a05df0e74f26ae861b604888d6f054de6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a231e302cbb3148ea6aa34eab381d0d21" id="r_a231e302cbb3148ea6aa34eab381d0d21"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="build_8h.html#a231e302cbb3148ea6aa34eab381d0d21">build_project</a> (size_t argc, char **argv, <a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *asset_ctx)</td></tr>
+<tr class="separator:a231e302cbb3148ea6aa34eab381d0d21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a848f8979c95049a4d57941b0de51c577" id="r_a848f8979c95049a4d57941b0de51c577"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="build_8h.html#a848f8979c95049a4d57941b0de51c577">build_scene</a> (size_t argc, char **argv, <a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *asset_ctx)</td></tr>
+<tr class="separator:a848f8979c95049a4d57941b0de51c577"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ca0fed63c7518997505469d87912433" id="r_a5ca0fed63c7518997505469d87912433"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="build_8h.html#a5ca0fed63c7518997505469d87912433">build_asset_pack</a> (size_t argc, char **argv, <a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *asset_ctx)</td></tr>
+<tr class="separator:a5ca0fed63c7518997505469d87912433"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:aeab8ba315596f823ac80964c00c48f83" id="r_aeab8ba315596f823ac80964c00c48f83"><td class="memItemLeft" >struct {&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:a4dca628f5f7d56189c2f88bab8d35518" id="r_a4dca628f5f7d56189c2f88bab8d35518"><td class="memItemLeft" >struct {&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac877081ac10041153f32d4f0d4269e19" id="r_ac877081ac10041153f32d4f0d4269e19"><td class="memItemLeft" >&#160;&#160;&#160;const char *&#160;&#160;&#160;<a class="el" href="build_8h.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
-<tr class="separator:ac877081ac10041153f32d4f0d4269e19"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed0afc3c7fbfd10c805b541b3cae1e35" id="r_aed0afc3c7fbfd10c805b541b3cae1e35"><td class="memItemLeft" >&#160;&#160;&#160;<a class="el" href="engine_8h.html#a3f7bf39bb2c4a4841a227fe878595dbc">route_callback</a>&#160;&#160;&#160;<a class="el" href="build_8h.html#a825191a40d9de85e5b0dc7f60c1e3cd3">callback</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
-<tr class="separator:aed0afc3c7fbfd10c805b541b3cae1e35"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeab8ba315596f823ac80964c00c48f83" id="r_aeab8ba315596f823ac80964c00c48f83"><td class="memItemLeft" valign="top">}&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="build_8h.html#aeab8ba315596f823ac80964c00c48f83">build_types</a> []&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
-<tr class="separator:aeab8ba315596f823ac80964c00c48f83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a119dad6a6b74faae7b09ae662ef9804c" id="r_a119dad6a6b74faae7b09ae662ef9804c"><td class="memItemLeft" >&#160;&#160;&#160;const char *&#160;&#160;&#160;<a class="el" href="build_8h.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="separator:a119dad6a6b74faae7b09ae662ef9804c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a740e1235fa66dbaac01fa5ec92a0f2d9" id="r_a740e1235fa66dbaac01fa5ec92a0f2d9"><td class="memItemLeft" >&#160;&#160;&#160;<a class="el" href="build_8h.html#a96b21e673f9e191a885a058eb30e5ab4">route_callback_toolchain</a>&#160;&#160;&#160;<a class="el" href="build_8h.html#a5ab5a233bdc6ad82f01015b39111c614">callback</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="separator:a740e1235fa66dbaac01fa5ec92a0f2d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4dca628f5f7d56189c2f88bab8d35518" id="r_a4dca628f5f7d56189c2f88bab8d35518"><td class="memItemLeft" valign="top">}&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="build_8h.html#a4dca628f5f7d56189c2f88bab8d35518">build_types</a> []&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="separator:a4dca628f5f7d56189c2f88bab8d35518"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a id="a96b21e673f9e191a885a058eb30e5ab4" name="a96b21e673f9e191a885a058eb30e5ab4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96b21e673f9e191a885a058eb30e5ab4">&#9670;&#160;</a></span>route_callback_toolchain</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef int(* route_callback_toolchain) (size_t, char **, <a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a7c0a4901634cd71315b384c4612b1d57" name="a7c0a4901634cd71315b384c4612b1d57"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7c0a4901634cd71315b384c4612b1d57">&#9670;&#160;</a></span>build_gui()</h2>
+<a id="a5ca0fed63c7518997505469d87912433" name="a5ca0fed63c7518997505469d87912433"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ca0fed63c7518997505469d87912433">&#9670;&#160;</a></span>build_asset_pack()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int build_asset_pack </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>argv</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *&#160;</td>
+          <td class="paramname"><em>asset_ctx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4f70dca845f25104d35a9f305b27c4e5" name="a4f70dca845f25104d35a9f305b27c4e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f70dca845f25104d35a9f305b27c4e5">&#9670;&#160;</a></span>build_assets()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int build_assets </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>argv</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *&#160;</td>
+          <td class="paramname"><em>asset_ctx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a651da7d62a2b42a6ef4db446ccceb21c" name="a651da7d62a2b42a6ef4db446ccceb21c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a651da7d62a2b42a6ef4db446ccceb21c">&#9670;&#160;</a></span>build_get_args()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t build_get_args </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>argv</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>toolchain</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structbuild__args__s.html">build_args_s</a> *&#160;</td>
+          <td class="paramname"><em>args</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4827583d802b30fcfd5438a95b57de41" name="a4827583d802b30fcfd5438a95b57de41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4827583d802b30fcfd5438a95b57de41">&#9670;&#160;</a></span>build_gui()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -157,7 +302,13 @@ Variables</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">char **&#160;</td>
-          <td class="paramname"><em>argv</em>&#160;</td>
+          <td class="paramname"><em>argv</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *&#160;</td>
+          <td class="paramname"><em>asset_ctx</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -169,9 +320,165 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a05df0e74f26ae861b604888d6f054de6" name="a05df0e74f26ae861b604888d6f054de6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05df0e74f26ae861b604888d6f054de6">&#9670;&#160;</a></span>build_obj()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int build_obj </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>argv</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *&#160;</td>
+          <td class="paramname"><em>asset_ctx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a231e302cbb3148ea6aa34eab381d0d21" name="a231e302cbb3148ea6aa34eab381d0d21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a231e302cbb3148ea6aa34eab381d0d21">&#9670;&#160;</a></span>build_project()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int build_project </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>argv</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *&#160;</td>
+          <td class="paramname"><em>asset_ctx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a848f8979c95049a4d57941b0de51c577" name="a848f8979c95049a4d57941b0de51c577"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a848f8979c95049a4d57941b0de51c577">&#9670;&#160;</a></span>build_scene()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int build_scene </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>argv</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *&#160;</td>
+          <td class="paramname"><em>asset_ctx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a85972f2507e3f8ad72097fc4eba02dab" name="a85972f2507e3f8ad72097fc4eba02dab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85972f2507e3f8ad72097fc4eba02dab">&#9670;&#160;</a></span>reset_args()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void reset_args </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structbuild__args__s.html">build_args_s</a> *&#160;</td>
+          <td class="paramname"><em>args</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6e578177f221a35383e7d2a5dd0b83fa" name="a6e578177f221a35383e7d2a5dd0b83fa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e578177f221a35383e7d2a5dd0b83fa">&#9670;&#160;</a></span>string_from_node()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * string_from_node </td>
+          <td>(</td>
+          <td class="paramtype">xmlNode *&#160;</td>
+          <td class="paramname"><em>node</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a27ab48711bfa88b9fe49b025564abd19" name="a27ab48711bfa88b9fe49b025564abd19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27ab48711bfa88b9fe49b025564abd19">&#9670;&#160;</a></span>strip_whitespace()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * strip_whitespace </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>str</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Variable Documentation</h2>
-<a id="aeab8ba315596f823ac80964c00c48f83" name="aeab8ba315596f823ac80964c00c48f83"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeab8ba315596f823ac80964c00c48f83">&#9670;&#160;</a></span>[struct]</h2>
+<a id="a4dca628f5f7d56189c2f88bab8d35518" name="a4dca628f5f7d56189c2f88bab8d35518"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4dca628f5f7d56189c2f88bab8d35518">&#9670;&#160;</a></span>[struct]</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -182,24 +489,31 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">        {<span class="stringliteral">&quot;gui&quot;</span>, &amp;<a class="code hl_function" href="build_8h.html#a7c0a4901634cd71315b384c4612b1d57">build_gui</a>},</div>
-<div class="line">        {<span class="stringliteral">&quot;obj&quot;</span>, NULL},</div>
-<div class="line">        {<span class="stringliteral">&quot;scn&quot;</span>, NULL},</div>
-<div class="line">        {<span class="stringliteral">&quot;proj&quot;</span>, NULL},</div>
+<div class="line">        {<span class="stringliteral">&quot;gui&quot;</span>, &amp;<a class="code hl_function" href="build_8h.html#a4827583d802b30fcfd5438a95b57de41">build_gui</a>},</div>
+<div class="line">        {<span class="stringliteral">&quot;obj&quot;</span>, &amp;<a class="code hl_function" href="build_8h.html#a05df0e74f26ae861b604888d6f054de6">build_obj</a>},</div>
+<div class="line">        {<span class="stringliteral">&quot;scn&quot;</span>, &amp;<a class="code hl_function" href="build_8h.html#a848f8979c95049a4d57941b0de51c577">build_scene</a>},</div>
+<div class="line">        {<span class="stringliteral">&quot;proj&quot;</span>, &amp;<a class="code hl_function" href="build_8h.html#a231e302cbb3148ea6aa34eab381d0d21">build_project</a>},</div>
+<div class="line">        {<span class="stringliteral">&quot;asset&quot;</span>, &amp;<a class="code hl_function" href="build_8h.html#a4f70dca845f25104d35a9f305b27c4e5">build_assets</a>},</div>
+<div class="line">        {<span class="stringliteral">&quot;lnk&quot;</span>, &amp;<a class="code hl_function" href="build_8h.html#a5ca0fed63c7518997505469d87912433">build_asset_pack</a>},</div>
 <div class="line">        {NULL, NULL}</div>
 <div class="line">    }</div>
-<div class="ttc" id="abuild_8h_html_a7c0a4901634cd71315b384c4612b1d57"><div class="ttname"><a href="build_8h.html#a7c0a4901634cd71315b384c4612b1d57">build_gui</a></div><div class="ttdeci">int build_gui(size_t argc, char **argv)</div><div class="ttdef"><b>Definition</b> route.c:381</div></div>
+<div class="ttc" id="abuild_8h_html_a05df0e74f26ae861b604888d6f054de6"><div class="ttname"><a href="build_8h.html#a05df0e74f26ae861b604888d6f054de6">build_obj</a></div><div class="ttdeci">int build_obj(size_t argc, char **argv, Object *asset_ctx)</div><div class="ttdef"><b>Definition</b> route.c:3</div></div>
+<div class="ttc" id="abuild_8h_html_a231e302cbb3148ea6aa34eab381d0d21"><div class="ttname"><a href="build_8h.html#a231e302cbb3148ea6aa34eab381d0d21">build_project</a></div><div class="ttdeci">int build_project(size_t argc, char **argv, Object *asset_ctx)</div><div class="ttdef"><b>Definition</b> route.c:408</div></div>
+<div class="ttc" id="abuild_8h_html_a4827583d802b30fcfd5438a95b57de41"><div class="ttname"><a href="build_8h.html#a4827583d802b30fcfd5438a95b57de41">build_gui</a></div><div class="ttdeci">int build_gui(size_t argc, char **argv, Object *asset_ctx)</div><div class="ttdef"><b>Definition</b> route.c:3</div></div>
+<div class="ttc" id="abuild_8h_html_a4f70dca845f25104d35a9f305b27c4e5"><div class="ttname"><a href="build_8h.html#a4f70dca845f25104d35a9f305b27c4e5">build_assets</a></div><div class="ttdeci">int build_assets(size_t argc, char **argv, Object *asset_ctx)</div><div class="ttdef"><b>Definition</b> route.c:108</div></div>
+<div class="ttc" id="abuild_8h_html_a5ca0fed63c7518997505469d87912433"><div class="ttname"><a href="build_8h.html#a5ca0fed63c7518997505469d87912433">build_asset_pack</a></div><div class="ttdeci">int build_asset_pack(size_t argc, char **argv, Object *asset_ctx)</div><div class="ttdef"><b>Definition</b> route.c:124</div></div>
+<div class="ttc" id="abuild_8h_html_a848f8979c95049a4d57941b0de51c577"><div class="ttname"><a href="build_8h.html#a848f8979c95049a4d57941b0de51c577">build_scene</a></div><div class="ttdeci">int build_scene(size_t argc, char **argv, Object *asset_ctx)</div><div class="ttdef"><b>Definition</b> route.c:3</div></div>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="a825191a40d9de85e5b0dc7f60c1e3cd3" name="a825191a40d9de85e5b0dc7f60c1e3cd3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a825191a40d9de85e5b0dc7f60c1e3cd3">&#9670;&#160;</a></span>callback</h2>
+<a id="a5ab5a233bdc6ad82f01015b39111c614" name="a5ab5a233bdc6ad82f01015b39111c614"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ab5a233bdc6ad82f01015b39111c614">&#9670;&#160;</a></span>callback</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="engine_8h.html#a3f7bf39bb2c4a4841a227fe878595dbc">route_callback</a> callback</td>
+          <td class="memname"><a class="el" href="build_8h.html#a96b21e673f9e191a885a058eb30e5ab4">route_callback_toolchain</a> callback</td>
         </tr>
       </table>
 </div><div class="memdoc">

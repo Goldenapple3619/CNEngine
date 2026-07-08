@@ -7,35 +7,70 @@
 \DoxyCodeLine{00003\ }
 \DoxyCodeLine{00004\ \textcolor{preprocessor}{\ \ \ \ \#include\ <stdio.h>}}
 \DoxyCodeLine{00005\ \textcolor{preprocessor}{\ \ \ \ \#include\ <signal.h>}}
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{libcncore_8h}{libcncore.h}}"{}}}
-\DoxyCodeLine{00007\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{libcnaudio_8h}{libcnaudio.h}}"{}}}
-\DoxyCodeLine{00008\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{libcninput_8h}{libcninput.h}}"{}}}
-\DoxyCodeLine{00009\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{libcngraphic_8h}{libcngraphic.h}}"{}}}
-\DoxyCodeLine{00010\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{librgui_8h}{librgui.h}}"{}}}
-\DoxyCodeLine{00011\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{libr2d_8h}{libr2d.h}}"{}}}
-\DoxyCodeLine{00012\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{libr3d_8h}{libr3d.h}}"{}}}
-\DoxyCodeLine{00013\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{libcnassets_8h}{libcnassets.h}}"{}}}
-\DoxyCodeLine{00014\ }
-\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{engine_8h_ae1b6db075e69c7d50940c6e0a9d357f6}{argument\_route}}(\textcolor{keywordtype}{size\_t}\ argc,\ \textcolor{keywordtype}{char}\ **argv);}
-\DoxyCodeLine{00016\ }
-\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{engine_8h_a152b2bafff5976ca602c43ed93c181c1}{init}}(\textcolor{keywordtype}{size\_t}\ argc,\ \textcolor{keywordtype}{char}\ **argv);}
-\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{engine_8h_a652dfa3636c93a60db188937488e156a}{test}}(\textcolor{keywordtype}{size\_t}\ argc,\ \textcolor{keywordtype}{char}\ **argv);}
-\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{engine_8h_abfce15a97dc0d59066145deb6db71971}{help}}(\textcolor{keywordtype}{size\_t}\ argc,\ \textcolor{keywordtype}{char}\ **argv);}
-\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{engine_8h_acbae52c879a1243e0097c06aa9a3ad82}{build}}(\textcolor{keywordtype}{size\_t}\ argc,\ \textcolor{keywordtype}{char}\ **argv);}
-\DoxyCodeLine{00021\ }
-\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{typedef}\ int\ (*\mbox{\hyperlink{engine_8h_a3f7bf39bb2c4a4841a227fe878595dbc}{route\_callback}})(size\_t,\ \textcolor{keywordtype}{char}\ **);}
-\DoxyCodeLine{00023\ }
-\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keyword}{struct\ }\{}
-\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{engine_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}};}
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{engine_8h_a3f7bf39bb2c4a4841a227fe878595dbc}{route\_callback}}\ \mbox{\hyperlink{engine_8h_a825191a40d9de85e5b0dc7f60c1e3cd3}{callback}};}
-\DoxyCodeLine{00027\ \ \ \ \ \}\ \mbox{\hyperlink{engine_8h_ae42255584dd2cdada9e4e0a159d84213}{routes}}[]\ =\ \{}
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}init"{}},\ \&\mbox{\hyperlink{engine_8h_a152b2bafff5976ca602c43ed93c181c1}{init}}\},}
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}help"{}},\ \&\mbox{\hyperlink{engine_8h_abfce15a97dc0d59066145deb6db71971}{help}}\},}
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}test"{}},\ \&\mbox{\hyperlink{engine_8h_a652dfa3636c93a60db188937488e156a}{test}}\},}
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}build"{}},\ \&\mbox{\hyperlink{engine_8h_acbae52c879a1243e0097c06aa9a3ad82}{build}}\},}
-\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \{NULL,\ NULL\}}
-\DoxyCodeLine{00033\ \ \ \ \ \};}
-\DoxyCodeLine{00034\ }
-\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\ \ \ \ \#include\ <stdint.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\ \ \ \ \#include\ <stdlib.h>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\ \ \ \ \#include\ <string.h>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{libcncore_8h}{libcncore.h}}"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{libcnaudio_8h}{libcnaudio.h}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{libcninput_8h}{libcninput.h}}"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{libcngraphic_8h}{libcngraphic.h}}"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{librgui_8h}{librgui.h}}"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{libr2d_8h}{libr2d.h}}"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{libr3d_8h}{libr3d.h}}"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{libcnassets_8h}{libcnassets.h}}"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\ \ \ \ \#define\ COPY\_BUFFER\_SIZE\ 8192}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\ \ \ \ \#ifdef\ \_WIN32}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ <windows.h>}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ <direct.h>}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ MKDIR(path)\ \_mkdir(path)}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ PATH\_SEP\ '\(\backslash\)\(\backslash\)'}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ WIN\_MAX\_COMMAND\_SIZE\ 4096}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\ \ \ \ \#else}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ <dirent.h>}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ <sys/stat.h>}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ <unistd.h>}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ <sys/wait.h>}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ <sys/types.h>}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ MKDIR(path)\ mkdir(path,\ 0755)}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ PATH\_SEP\ '/'}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{engine_8h_a927967a36c50f9121cb715f84b7ccadd}{get\_dirname}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *path);}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{engine_8h_a15e83376ef0b65a87f450ff6875fbe20}{join\_path}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *a,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *b);}
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{engine_8h_a020e83a629f1db8bb00e42e8b386ca3b}{is\_dir}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *path);}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{engine_8h_a8773aefac368bc3acd28c3d6288487e7}{run\_program}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *program,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\textcolor{keyword}{const}\ argv[]);}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{engine_8h_a5e9345b193ceba83b1594868b6cf24fd}{get\_extension}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *path);}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{engine_8h_a89c471a8eed4bb0b438675fdd16088bb}{replace\_extension}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *path,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *ext);}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{engine_8h_a6c3ad6fe322505caa24f680af093c832}{path\_basename}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *path);}
+\DoxyCodeLine{00044\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{engine_8h_a80c86544a27139d0f6fc3f945d2ef77a}{copy\_file}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *src,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *dst);}
+\DoxyCodeLine{00045\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{engine_8h_a460b7ae1b3bf4be30259bed2f6008644}{copytree}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *src,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *dst);}
+\DoxyCodeLine{00046\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{engine_8h_acf770efe1e0705384cea7c0361eaa9f0}{make\_dir}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *path);}
+\DoxyCodeLine{00047\ \ \ \ \ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{engine_8h_ae1b6db075e69c7d50940c6e0a9d357f6}{argument\_route}}(\textcolor{keywordtype}{size\_t}\ argc,\ \textcolor{keywordtype}{char}\ **argv);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{engine_8h_a152b2bafff5976ca602c43ed93c181c1}{init}}(\textcolor{keywordtype}{size\_t}\ argc,\ \textcolor{keywordtype}{char}\ **argv);}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{engine_8h_a652dfa3636c93a60db188937488e156a}{test}}(\textcolor{keywordtype}{size\_t}\ argc,\ \textcolor{keywordtype}{char}\ **argv);}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{engine_8h_abfce15a97dc0d59066145deb6db71971}{help}}(\textcolor{keywordtype}{size\_t}\ argc,\ \textcolor{keywordtype}{char}\ **argv);}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{engine_8h_acbae52c879a1243e0097c06aa9a3ad82}{build}}(\textcolor{keywordtype}{size\_t}\ argc,\ \textcolor{keywordtype}{char}\ **argv);}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{engine_8h_ad177ef2a270af29fc0d1e6b834b2e945}{dump}}(\textcolor{keywordtype}{size\_t}\ argc,\ \textcolor{keywordtype}{char}\ **argv);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{typedef}\ int\ (*\mbox{\hyperlink{engine_8h_a3f7bf39bb2c4a4841a227fe878595dbc}{route\_callback}})(size\_t,\ \textcolor{keywordtype}{char}\ **);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{engine_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}};}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{engine_8h_a3f7bf39bb2c4a4841a227fe878595dbc}{route\_callback}}\ \mbox{\hyperlink{engine_8h_a825191a40d9de85e5b0dc7f60c1e3cd3}{callback}};}
+\DoxyCodeLine{00061\ \ \ \ \ \}\ \mbox{\hyperlink{engine_8h_a8caea1d671cd22260a6e9179a17a13b8}{routes}}[]\ =\ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}init"{}},\ \&\mbox{\hyperlink{engine_8h_a152b2bafff5976ca602c43ed93c181c1}{init}}\},}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}help"{}},\ \&\mbox{\hyperlink{engine_8h_abfce15a97dc0d59066145deb6db71971}{help}}\},}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}test"{}},\ \&\mbox{\hyperlink{engine_8h_a652dfa3636c93a60db188937488e156a}{test}}\},}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}build"{}},\ \&\mbox{\hyperlink{engine_8h_acbae52c879a1243e0097c06aa9a3ad82}{build}}\},}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}dump"{}},\ \&\mbox{\hyperlink{engine_8h_ad177ef2a270af29fc0d1e6b834b2e945}{dump}}\},}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \{NULL,\ NULL\}}
+\DoxyCodeLine{00068\ \ \ \ \ \};}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

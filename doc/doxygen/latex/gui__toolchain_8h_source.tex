@@ -1,0 +1,20 @@
+\doxysection{gui\+\_\+toolchain.\+h}
+\hypertarget{gui__toolchain_8h_source}{}\label{gui__toolchain_8h_source}\index{src/cnbuild/gui\_toolchain/gui\_toolchain.h@{src/cnbuild/gui\_toolchain/gui\_toolchain.h}}
+\mbox{\hyperlink{gui__toolchain_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_GUI\_TOOLCHAIN\_H\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\ \ \ \ \#define\ \_GUI\_TOOLCHAIN\_H\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}../build.h"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{cnguiobj_8h}{cnguiobj.h}}"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{gui__toolchain_8h_aab77add6ef38fafa365efc7fd8d9bbb5}{delete\_parsed\_gui}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structgui__element__s}{gui\_element\_s}}\ *parsed\_gui);}
+\DoxyCodeLine{00009\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{gui__toolchain_8h_a9389792fbf94f4a0fafe7d16dc1ca155}{fill\_gui\_element}}(xmlNode\ *node,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structgui__element__s}{gui\_element\_s}}\ *element);}
+\DoxyCodeLine{00010\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{gui__toolchain_8h_a35a9bb11b1992f38b7d261424311e95b}{build\_gui\_element}}(xmlNode\ *node,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structgeneric__vector__s}{generic\_vector\_s}}\ *parsed\_data,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structgui__element__s}{gui\_element\_s}}\ *parent);}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgeneric__vector__s}{generic\_vector\_s}}\ *\mbox{\hyperlink{gui__toolchain_8h_a08c7c3e04d810a3ca5d518356dcb8777}{parse\_xml\_gui}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *file\_path,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\_object\_file\_writer\_ctx\_s}}\ *wctx);}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgeneric__vector__s}{generic\_vector\_s}}\ *\mbox{\hyperlink{gui__toolchain_8h_ab6312defc122bd01f7f5cf64c2e44406}{parse\_gui}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *file\_path,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\_object\_file\_writer\_ctx\_s}}\ *wctx,\ \mbox{\hyperlink{structobject__s}{Object}}\ *asset\_ctx);}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

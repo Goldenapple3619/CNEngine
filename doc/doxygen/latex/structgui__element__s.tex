@@ -1,0 +1,91 @@
+\doxysection{gui\+\_\+element\+\_\+s Struct Reference}
+\hypertarget{structgui__element__s}{}\label{structgui__element__s}\index{gui\_element\_s@{gui\_element\_s}}
+
+
+{\ttfamily \#include $<$cnguiobj.\+h$>$}
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structgui__element__s_a2e06dc6c01fca71e6fe3f42f3955ebd8}{id}}
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structgui__element__s_ad3b7331783aa47ebac2146ed3d3810a4}{object\+\_\+type}}
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structgui__element__s_aefc91a6120bdabb00392f0c0d881d831}{text\+\_\+content}}
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>const struct \mbox{\hyperlink{structgui__element__s}{gui\_element\_s}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structgui__element__s_abe593c427385eb12df5dce8ed705cef5}{\_o}}\\
+\>const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structgui__element__s_a740f9b124a0f5ac6135bd3923084f7c9}{\_n}}\\
+\} \mbox{\hyperlink{structgui__element__s_a006bf9940b84585682b891f821192111}{parent}}\\
+
+\end{tabbing}\item 
+struct \mbox{\hyperlink{structgeneric__map__s}{generic\+\_\+map\+\_\+s}} \mbox{\hyperlink{structgui__element__s_a77ee68615e2d816ef215fa8308bd4e73}{styles}}
+\item 
+struct \mbox{\hyperlink{structgeneric__vector__s}{generic\+\_\+vector\+\_\+s}} \mbox{\hyperlink{structgui__element__s_ad1939893f88d31eff91eb982ce923f36}{connectors}}
+\item 
+\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} \mbox{\hyperlink{structgui__element__s_a1ca120477006fcd5a7bc80301b5225a2}{parent\+\_\+loaded}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Field Documentation}
+\Hypertarget{structgui__element__s_a740f9b124a0f5ac6135bd3923084f7c9}\label{structgui__element__s_a740f9b124a0f5ac6135bd3923084f7c9} 
+\index{gui\_element\_s@{gui\_element\_s}!\_n@{\_n}}
+\index{\_n@{\_n}!gui\_element\_s@{gui\_element\_s}}
+\doxysubsubsection{\texorpdfstring{\_n}{\_n}}
+{\footnotesize\ttfamily const char\texorpdfstring{$\ast$}{*} gui\+\_\+element\+\_\+s\+::\+\_\+n}
+
+\Hypertarget{structgui__element__s_abe593c427385eb12df5dce8ed705cef5}\label{structgui__element__s_abe593c427385eb12df5dce8ed705cef5} 
+\index{gui\_element\_s@{gui\_element\_s}!\_o@{\_o}}
+\index{\_o@{\_o}!gui\_element\_s@{gui\_element\_s}}
+\doxysubsubsection{\texorpdfstring{\_o}{\_o}}
+{\footnotesize\ttfamily const struct \mbox{\hyperlink{structgui__element__s}{gui\+\_\+element\+\_\+s}}\texorpdfstring{$\ast$}{*} gui\+\_\+element\+\_\+s\+::\+\_\+o}
+
+\Hypertarget{structgui__element__s_ad1939893f88d31eff91eb982ce923f36}\label{structgui__element__s_ad1939893f88d31eff91eb982ce923f36} 
+\index{gui\_element\_s@{gui\_element\_s}!connectors@{connectors}}
+\index{connectors@{connectors}!gui\_element\_s@{gui\_element\_s}}
+\doxysubsubsection{\texorpdfstring{connectors}{connectors}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structgeneric__vector__s}{generic\+\_\+vector\+\_\+s}} gui\+\_\+element\+\_\+s\+::connectors}
+
+\Hypertarget{structgui__element__s_a2e06dc6c01fca71e6fe3f42f3955ebd8}\label{structgui__element__s_a2e06dc6c01fca71e6fe3f42f3955ebd8} 
+\index{gui\_element\_s@{gui\_element\_s}!id@{id}}
+\index{id@{id}!gui\_element\_s@{gui\_element\_s}}
+\doxysubsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily char\texorpdfstring{$\ast$}{*} gui\+\_\+element\+\_\+s\+::id}
+
+\Hypertarget{structgui__element__s_ad3b7331783aa47ebac2146ed3d3810a4}\label{structgui__element__s_ad3b7331783aa47ebac2146ed3d3810a4} 
+\index{gui\_element\_s@{gui\_element\_s}!object\_type@{object\_type}}
+\index{object\_type@{object\_type}!gui\_element\_s@{gui\_element\_s}}
+\doxysubsubsection{\texorpdfstring{object\_type}{object\_type}}
+{\footnotesize\ttfamily char\texorpdfstring{$\ast$}{*} gui\+\_\+element\+\_\+s\+::object\+\_\+type}
+
+\Hypertarget{structgui__element__s_a006bf9940b84585682b891f821192111}\label{structgui__element__s_a006bf9940b84585682b891f821192111} 
+\index{gui\_element\_s@{gui\_element\_s}!parent@{parent}}
+\index{parent@{parent}!gui\_element\_s@{gui\_element\_s}}
+\doxysubsubsection{\texorpdfstring{[union]}{[union]}}
+{\footnotesize\ttfamily union  \{ ... \}  gui\+\_\+element\+\_\+s\+::parent}
+
+\Hypertarget{structgui__element__s_a1ca120477006fcd5a7bc80301b5225a2}\label{structgui__element__s_a1ca120477006fcd5a7bc80301b5225a2} 
+\index{gui\_element\_s@{gui\_element\_s}!parent\_loaded@{parent\_loaded}}
+\index{parent\_loaded@{parent\_loaded}!gui\_element\_s@{gui\_element\_s}}
+\doxysubsubsection{\texorpdfstring{parent\_loaded}{parent\_loaded}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} gui\+\_\+element\+\_\+s\+::parent\+\_\+loaded}
+
+\Hypertarget{structgui__element__s_a77ee68615e2d816ef215fa8308bd4e73}\label{structgui__element__s_a77ee68615e2d816ef215fa8308bd4e73} 
+\index{gui\_element\_s@{gui\_element\_s}!styles@{styles}}
+\index{styles@{styles}!gui\_element\_s@{gui\_element\_s}}
+\doxysubsubsection{\texorpdfstring{styles}{styles}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structgeneric__map__s}{generic\+\_\+map\+\_\+s}} gui\+\_\+element\+\_\+s\+::styles}
+
+\Hypertarget{structgui__element__s_aefc91a6120bdabb00392f0c0d881d831}\label{structgui__element__s_aefc91a6120bdabb00392f0c0d881d831} 
+\index{gui\_element\_s@{gui\_element\_s}!text\_content@{text\_content}}
+\index{text\_content@{text\_content}!gui\_element\_s@{gui\_element\_s}}
+\doxysubsubsection{\texorpdfstring{text\_content}{text\_content}}
+{\footnotesize\ttfamily char\texorpdfstring{$\ast$}{*} gui\+\_\+element\+\_\+s\+::text\+\_\+content}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+lib/formats/cnguiobj/include/\mbox{\hyperlink{cnguiobj_8h}{cnguiobj.\+h}}\end{DoxyCompactItemize}

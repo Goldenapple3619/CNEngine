@@ -1,0 +1,87 @@
+\doxysection{lib/cnassets/src/engine\+\_\+object\+\_\+reader.c File Reference}
+\hypertarget{engine__object__reader_8c}{}\label{engine__object__reader_8c}\index{lib/cnassets/src/engine\_object\_reader.c@{lib/cnassets/src/engine\_object\_reader.c}}
+{\ttfamily \#include "{}libcnassets.\+h"{}}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$inttypes.\+h$>$}\newline
+{\ttfamily \#include $<$fcntl.\+h$>$}\newline
+{\ttfamily \#include $<$sys/stat.\+h$>$}\newline
+{\ttfamily \#include $<$sys/mman.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structCNAssetReader}{CNAsset\+Reader}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{engine__object__reader_8c_aa778565b7254ccabce6f359401a2a98b}{new\+\_\+object\+\_\+file\+\_\+reader}} (void)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{engine__object__reader_8c_afb5721f8805ba50fb719f090bd715d48}{object\+\_\+file\+\_\+reader\+\_\+read\+\_\+header}} (\mbox{\hyperlink{structCNAssetReader}{CNAsset\+Reader}} \texorpdfstring{$\ast$}{*}reader)
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{engine__object__reader_8c_a0f9940e441d73c86866062b9646018f9}{object\+\_\+file\+\_\+reader\+\_\+get\+\_\+string}} (const \mbox{\hyperlink{structCNAssetReader}{CNAsset\+Reader}} \texorpdfstring{$\ast$}{*}reader, uint32\+\_\+t off)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{engine__object__reader_8c_a163b22fac2684e0d865f9973d426f02c}{object\+\_\+file\+\_\+reader\+\_\+get\+\_\+section}} (const \mbox{\hyperlink{structCNAssetReader}{CNAsset\+Reader}} \texorpdfstring{$\ast$}{*}reader, struct \mbox{\hyperlink{structsection__blk}{section\+\_\+blk}} \texorpdfstring{$\ast$}{*}section\+\_\+block, uint64\+\_\+t section\+\_\+index)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{engine__object__reader_8c_a947bdfc1d47511fe6675d8248e8eb95f}{object\+\_\+file\+\_\+reader\+\_\+read\+\_\+section\+\_\+header}} (\mbox{\hyperlink{structCNAssetReader}{CNAsset\+Reader}} \texorpdfstring{$\ast$}{*}reader)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{engine__object__reader_8c_a56a00455f23781f19c7dc1dd9538be1b}{init\+\_\+object\+\_\+file\+\_\+reader}} (\mbox{\hyperlink{structCNAssetReader}{CNAsset\+Reader}} \texorpdfstring{$\ast$}{*}reader, const char \texorpdfstring{$\ast$}{*}file\+\_\+path)
+\item 
+void \mbox{\hyperlink{engine__object__reader_8c_a9e5b1ee948e1dbc94368d99d14cbb11c}{uninit\+\_\+object\+\_\+file\+\_\+reader}} (\mbox{\hyperlink{structCNAssetReader}{CNAsset\+Reader}} \texorpdfstring{$\ast$}{*}reader)
+\item 
+void \mbox{\hyperlink{engine__object__reader_8c_a4ed42ff7c35b0bdc8ef89843f4b982e8}{delete\+\_\+object\+\_\+file\+\_\+reader}} (\mbox{\hyperlink{structCNAssetReader}{CNAsset\+Reader}} \texorpdfstring{$\ast$}{*}reader)
+\item 
+void \mbox{\hyperlink{engine__object__reader_8c_a4a6ca5fdfe9eaeba8d5ddcca1290bc7e}{print\+\_\+object\+\_\+file}} (\mbox{\hyperlink{structCNAssetReader}{CNAsset\+Reader}} \texorpdfstring{$\ast$}{*}reader)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{engine__object__reader_8c_a4ed42ff7c35b0bdc8ef89843f4b982e8}\label{engine__object__reader_8c_a4ed42ff7c35b0bdc8ef89843f4b982e8} 
+\index{engine\_object\_reader.c@{engine\_object\_reader.c}!delete\_object\_file\_reader@{delete\_object\_file\_reader}}
+\index{delete\_object\_file\_reader@{delete\_object\_file\_reader}!engine\_object\_reader.c@{engine\_object\_reader.c}}
+\doxysubsubsection{\texorpdfstring{delete\_object\_file\_reader()}{delete\_object\_file\_reader()}}
+{\footnotesize\ttfamily void delete\+\_\+object\+\_\+file\+\_\+reader (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCNAssetReader}{CNAsset\+Reader}} \texorpdfstring{$\ast$}{*}}]{reader }\end{DoxyParamCaption})}
+
+\Hypertarget{engine__object__reader_8c_a56a00455f23781f19c7dc1dd9538be1b}\label{engine__object__reader_8c_a56a00455f23781f19c7dc1dd9538be1b} 
+\index{engine\_object\_reader.c@{engine\_object\_reader.c}!init\_object\_file\_reader@{init\_object\_file\_reader}}
+\index{init\_object\_file\_reader@{init\_object\_file\_reader}!engine\_object\_reader.c@{engine\_object\_reader.c}}
+\doxysubsubsection{\texorpdfstring{init\_object\_file\_reader()}{init\_object\_file\_reader()}}
+{\footnotesize\ttfamily uint8\+\_\+t init\+\_\+object\+\_\+file\+\_\+reader (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCNAssetReader}{CNAsset\+Reader}} \texorpdfstring{$\ast$}{*}}]{reader,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{file\+\_\+path }\end{DoxyParamCaption})}
+
+\Hypertarget{engine__object__reader_8c_aa778565b7254ccabce6f359401a2a98b}\label{engine__object__reader_8c_aa778565b7254ccabce6f359401a2a98b} 
+\index{engine\_object\_reader.c@{engine\_object\_reader.c}!new\_object\_file\_reader@{new\_object\_file\_reader}}
+\index{new\_object\_file\_reader@{new\_object\_file\_reader}!engine\_object\_reader.c@{engine\_object\_reader.c}}
+\doxysubsubsection{\texorpdfstring{new\_object\_file\_reader()}{new\_object\_file\_reader()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structCNAssetReader}{CNAsset\+Reader}} \texorpdfstring{$\ast$}{*} new\+\_\+object\+\_\+file\+\_\+reader (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{engine__object__reader_8c_a163b22fac2684e0d865f9973d426f02c}\label{engine__object__reader_8c_a163b22fac2684e0d865f9973d426f02c} 
+\index{engine\_object\_reader.c@{engine\_object\_reader.c}!object\_file\_reader\_get\_section@{object\_file\_reader\_get\_section}}
+\index{object\_file\_reader\_get\_section@{object\_file\_reader\_get\_section}!engine\_object\_reader.c@{engine\_object\_reader.c}}
+\doxysubsubsection{\texorpdfstring{object\_file\_reader\_get\_section()}{object\_file\_reader\_get\_section()}}
+{\footnotesize\ttfamily uint8\+\_\+t object\+\_\+file\+\_\+reader\+\_\+get\+\_\+section (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structCNAssetReader}{CNAsset\+Reader}} \texorpdfstring{$\ast$}{*}}]{reader,  }\item[{struct \mbox{\hyperlink{structsection__blk}{section\+\_\+blk}} \texorpdfstring{$\ast$}{*}}]{section\+\_\+block,  }\item[{uint64\+\_\+t}]{section\+\_\+index }\end{DoxyParamCaption})}
+
+\Hypertarget{engine__object__reader_8c_a0f9940e441d73c86866062b9646018f9}\label{engine__object__reader_8c_a0f9940e441d73c86866062b9646018f9} 
+\index{engine\_object\_reader.c@{engine\_object\_reader.c}!object\_file\_reader\_get\_string@{object\_file\_reader\_get\_string}}
+\index{object\_file\_reader\_get\_string@{object\_file\_reader\_get\_string}!engine\_object\_reader.c@{engine\_object\_reader.c}}
+\doxysubsubsection{\texorpdfstring{object\_file\_reader\_get\_string()}{object\_file\_reader\_get\_string()}}
+{\footnotesize\ttfamily const char \texorpdfstring{$\ast$}{*} object\+\_\+file\+\_\+reader\+\_\+get\+\_\+string (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structCNAssetReader}{CNAsset\+Reader}} \texorpdfstring{$\ast$}{*}}]{reader,  }\item[{uint32\+\_\+t}]{off }\end{DoxyParamCaption})}
+
+\Hypertarget{engine__object__reader_8c_afb5721f8805ba50fb719f090bd715d48}\label{engine__object__reader_8c_afb5721f8805ba50fb719f090bd715d48} 
+\index{engine\_object\_reader.c@{engine\_object\_reader.c}!object\_file\_reader\_read\_header@{object\_file\_reader\_read\_header}}
+\index{object\_file\_reader\_read\_header@{object\_file\_reader\_read\_header}!engine\_object\_reader.c@{engine\_object\_reader.c}}
+\doxysubsubsection{\texorpdfstring{object\_file\_reader\_read\_header()}{object\_file\_reader\_read\_header()}}
+{\footnotesize\ttfamily uint8\+\_\+t object\+\_\+file\+\_\+reader\+\_\+read\+\_\+header (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCNAssetReader}{CNAsset\+Reader}} \texorpdfstring{$\ast$}{*}}]{reader }\end{DoxyParamCaption})}
+
+\Hypertarget{engine__object__reader_8c_a947bdfc1d47511fe6675d8248e8eb95f}\label{engine__object__reader_8c_a947bdfc1d47511fe6675d8248e8eb95f} 
+\index{engine\_object\_reader.c@{engine\_object\_reader.c}!object\_file\_reader\_read\_section\_header@{object\_file\_reader\_read\_section\_header}}
+\index{object\_file\_reader\_read\_section\_header@{object\_file\_reader\_read\_section\_header}!engine\_object\_reader.c@{engine\_object\_reader.c}}
+\doxysubsubsection{\texorpdfstring{object\_file\_reader\_read\_section\_header()}{object\_file\_reader\_read\_section\_header()}}
+{\footnotesize\ttfamily uint8\+\_\+t object\+\_\+file\+\_\+reader\+\_\+read\+\_\+section\+\_\+header (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCNAssetReader}{CNAsset\+Reader}} \texorpdfstring{$\ast$}{*}}]{reader }\end{DoxyParamCaption})}
+
+\Hypertarget{engine__object__reader_8c_a4a6ca5fdfe9eaeba8d5ddcca1290bc7e}\label{engine__object__reader_8c_a4a6ca5fdfe9eaeba8d5ddcca1290bc7e} 
+\index{engine\_object\_reader.c@{engine\_object\_reader.c}!print\_object\_file@{print\_object\_file}}
+\index{print\_object\_file@{print\_object\_file}!engine\_object\_reader.c@{engine\_object\_reader.c}}
+\doxysubsubsection{\texorpdfstring{print\_object\_file()}{print\_object\_file()}}
+{\footnotesize\ttfamily void print\+\_\+object\+\_\+file (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCNAssetReader}{CNAsset\+Reader}} \texorpdfstring{$\ast$}{*}}]{reader }\end{DoxyParamCaption})}
+
+\Hypertarget{engine__object__reader_8c_a9e5b1ee948e1dbc94368d99d14cbb11c}\label{engine__object__reader_8c_a9e5b1ee948e1dbc94368d99d14cbb11c} 
+\index{engine\_object\_reader.c@{engine\_object\_reader.c}!uninit\_object\_file\_reader@{uninit\_object\_file\_reader}}
+\index{uninit\_object\_file\_reader@{uninit\_object\_file\_reader}!engine\_object\_reader.c@{engine\_object\_reader.c}}
+\doxysubsubsection{\texorpdfstring{uninit\_object\_file\_reader()}{uninit\_object\_file\_reader()}}
+{\footnotesize\ttfamily void uninit\+\_\+object\+\_\+file\+\_\+reader (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCNAssetReader}{CNAsset\+Reader}} \texorpdfstring{$\ast$}{*}}]{reader }\end{DoxyParamCaption})}
+

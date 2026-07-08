@@ -1,0 +1,89 @@
+\doxysection{src/fs.c File Reference}
+\hypertarget{fs_8c}{}\label{fs_8c}\index{src/fs.c@{src/fs.c}}
+{\ttfamily \#include "{}engine.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{fs_8c_a927967a36c50f9121cb715f84b7ccadd}{get\+\_\+dirname}} (const char \texorpdfstring{$\ast$}{*}path)
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{fs_8c_a15e83376ef0b65a87f450ff6875fbe20}{join\+\_\+path}} (const char \texorpdfstring{$\ast$}{*}a, const char \texorpdfstring{$\ast$}{*}b)
+\item 
+\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} \mbox{\hyperlink{fs_8c_a020e83a629f1db8bb00e42e8b386ca3b}{is\+\_\+dir}} (const char \texorpdfstring{$\ast$}{*}path)
+\item 
+int \mbox{\hyperlink{fs_8c_a8773aefac368bc3acd28c3d6288487e7}{run\+\_\+program}} (const char \texorpdfstring{$\ast$}{*}program, const char \texorpdfstring{$\ast$}{*}const argv\mbox{[}$\,$\mbox{]})
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{fs_8c_a6c3ad6fe322505caa24f680af093c832}{path\+\_\+basename}} (const char \texorpdfstring{$\ast$}{*}path)
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{fs_8c_a5e9345b193ceba83b1594868b6cf24fd}{get\+\_\+extension}} (const char \texorpdfstring{$\ast$}{*}path)
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{fs_8c_a89c471a8eed4bb0b438675fdd16088bb}{replace\+\_\+extension}} (const char \texorpdfstring{$\ast$}{*}path, const char \texorpdfstring{$\ast$}{*}ext)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{fs_8c_a80c86544a27139d0f6fc3f945d2ef77a}{copy\+\_\+file}} (const char \texorpdfstring{$\ast$}{*}src, const char \texorpdfstring{$\ast$}{*}dst)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{fs_8c_a460b7ae1b3bf4be30259bed2f6008644}{copytree}} (const char \texorpdfstring{$\ast$}{*}src, const char \texorpdfstring{$\ast$}{*}dst)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{fs_8c_acf770efe1e0705384cea7c0361eaa9f0}{make\+\_\+dir}} (const char \texorpdfstring{$\ast$}{*}path)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{fs_8c_a80c86544a27139d0f6fc3f945d2ef77a}\label{fs_8c_a80c86544a27139d0f6fc3f945d2ef77a} 
+\index{fs.c@{fs.c}!copy\_file@{copy\_file}}
+\index{copy\_file@{copy\_file}!fs.c@{fs.c}}
+\doxysubsubsection{\texorpdfstring{copy\_file()}{copy\_file()}}
+{\footnotesize\ttfamily uint8\+\_\+t copy\+\_\+file (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{src,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{dst }\end{DoxyParamCaption})}
+
+\Hypertarget{fs_8c_a460b7ae1b3bf4be30259bed2f6008644}\label{fs_8c_a460b7ae1b3bf4be30259bed2f6008644} 
+\index{fs.c@{fs.c}!copytree@{copytree}}
+\index{copytree@{copytree}!fs.c@{fs.c}}
+\doxysubsubsection{\texorpdfstring{copytree()}{copytree()}}
+{\footnotesize\ttfamily uint8\+\_\+t copytree (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{src,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{dst }\end{DoxyParamCaption})}
+
+\Hypertarget{fs_8c_a927967a36c50f9121cb715f84b7ccadd}\label{fs_8c_a927967a36c50f9121cb715f84b7ccadd} 
+\index{fs.c@{fs.c}!get\_dirname@{get\_dirname}}
+\index{get\_dirname@{get\_dirname}!fs.c@{fs.c}}
+\doxysubsubsection{\texorpdfstring{get\_dirname()}{get\_dirname()}}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} get\+\_\+dirname (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{path }\end{DoxyParamCaption})}
+
+\Hypertarget{fs_8c_a5e9345b193ceba83b1594868b6cf24fd}\label{fs_8c_a5e9345b193ceba83b1594868b6cf24fd} 
+\index{fs.c@{fs.c}!get\_extension@{get\_extension}}
+\index{get\_extension@{get\_extension}!fs.c@{fs.c}}
+\doxysubsubsection{\texorpdfstring{get\_extension()}{get\_extension()}}
+{\footnotesize\ttfamily const char \texorpdfstring{$\ast$}{*} get\+\_\+extension (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{path }\end{DoxyParamCaption})}
+
+\Hypertarget{fs_8c_a020e83a629f1db8bb00e42e8b386ca3b}\label{fs_8c_a020e83a629f1db8bb00e42e8b386ca3b} 
+\index{fs.c@{fs.c}!is\_dir@{is\_dir}}
+\index{is\_dir@{is\_dir}!fs.c@{fs.c}}
+\doxysubsubsection{\texorpdfstring{is\_dir()}{is\_dir()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} is\+\_\+dir (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{path }\end{DoxyParamCaption})}
+
+\Hypertarget{fs_8c_a15e83376ef0b65a87f450ff6875fbe20}\label{fs_8c_a15e83376ef0b65a87f450ff6875fbe20} 
+\index{fs.c@{fs.c}!join\_path@{join\_path}}
+\index{join\_path@{join\_path}!fs.c@{fs.c}}
+\doxysubsubsection{\texorpdfstring{join\_path()}{join\_path()}}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} join\+\_\+path (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{a,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{b }\end{DoxyParamCaption})}
+
+\Hypertarget{fs_8c_acf770efe1e0705384cea7c0361eaa9f0}\label{fs_8c_acf770efe1e0705384cea7c0361eaa9f0} 
+\index{fs.c@{fs.c}!make\_dir@{make\_dir}}
+\index{make\_dir@{make\_dir}!fs.c@{fs.c}}
+\doxysubsubsection{\texorpdfstring{make\_dir()}{make\_dir()}}
+{\footnotesize\ttfamily uint8\+\_\+t make\+\_\+dir (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{path }\end{DoxyParamCaption})}
+
+\Hypertarget{fs_8c_a6c3ad6fe322505caa24f680af093c832}\label{fs_8c_a6c3ad6fe322505caa24f680af093c832} 
+\index{fs.c@{fs.c}!path\_basename@{path\_basename}}
+\index{path\_basename@{path\_basename}!fs.c@{fs.c}}
+\doxysubsubsection{\texorpdfstring{path\_basename()}{path\_basename()}}
+{\footnotesize\ttfamily const char \texorpdfstring{$\ast$}{*} path\+\_\+basename (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{path }\end{DoxyParamCaption})}
+
+\Hypertarget{fs_8c_a89c471a8eed4bb0b438675fdd16088bb}\label{fs_8c_a89c471a8eed4bb0b438675fdd16088bb} 
+\index{fs.c@{fs.c}!replace\_extension@{replace\_extension}}
+\index{replace\_extension@{replace\_extension}!fs.c@{fs.c}}
+\doxysubsubsection{\texorpdfstring{replace\_extension()}{replace\_extension()}}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} replace\+\_\+extension (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{path,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{ext }\end{DoxyParamCaption})}
+
+\Hypertarget{fs_8c_a8773aefac368bc3acd28c3d6288487e7}\label{fs_8c_a8773aefac368bc3acd28c3d6288487e7} 
+\index{fs.c@{fs.c}!run\_program@{run\_program}}
+\index{run\_program@{run\_program}!fs.c@{fs.c}}
+\doxysubsubsection{\texorpdfstring{run\_program()}{run\_program()}}
+{\footnotesize\ttfamily int run\+\_\+program (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{program,  }\item[{const char \texorpdfstring{$\ast$}{*}const}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+

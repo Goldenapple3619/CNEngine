@@ -104,6 +104,7 @@ $(document).ready(function(){initNavTree('engine_8h.html',''); initResizable(); 
 
 <div class="header">
   <div class="summary">
+<a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
@@ -112,6 +113,9 @@ $(document).ready(function(){initNavTree('engine_8h.html',''); initResizable(); 
 <div class="contents">
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;signal.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="libcncore_8h_source.html">libcncore.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="libcnaudio_8h_source.html">libcnaudio.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="libcninput_8h_source.html">libcninput.h</a>&quot;</code><br />
@@ -120,9 +124,23 @@ $(document).ready(function(){initNavTree('engine_8h.html',''); initResizable(); 
 <code>#include &quot;<a class="el" href="libr2d_8h_source.html">libr2d.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="libr3d_8h_source.html">libr3d.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="libcnassets_8h_source.html">libcnassets.h</a>&quot;</code><br />
+<code>#include &lt;dirent.h&gt;</code><br />
+<code>#include &lt;sys/stat.h&gt;</code><br />
+<code>#include &lt;unistd.h&gt;</code><br />
+<code>#include &lt;sys/wait.h&gt;</code><br />
+<code>#include &lt;sys/types.h&gt;</code><br />
 </div>
 <p><a href="engine_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a5e6668951d81243b56eac18d35b16af6" id="r_a5e6668951d81243b56eac18d35b16af6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a5e6668951d81243b56eac18d35b16af6">COPY_BUFFER_SIZE</a>&#160;&#160;&#160;8192</td></tr>
+<tr class="separator:a5e6668951d81243b56eac18d35b16af6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33f0483b64221b258b080bba5882cf3c" id="r_a33f0483b64221b258b080bba5882cf3c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a33f0483b64221b258b080bba5882cf3c">MKDIR</a>(path)&#160;&#160;&#160;mkdir(path, 0755)</td></tr>
+<tr class="separator:a33f0483b64221b258b080bba5882cf3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a837df2c29aacf37cb96c2b65acb312a6" id="r_a837df2c29aacf37cb96c2b65acb312a6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a837df2c29aacf37cb96c2b65acb312a6">PATH_SEP</a>&#160;&#160;&#160;'/'</td></tr>
+<tr class="separator:a837df2c29aacf37cb96c2b65acb312a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a3f7bf39bb2c4a4841a227fe878595dbc" id="r_a3f7bf39bb2c4a4841a227fe878595dbc"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a3f7bf39bb2c4a4841a227fe878595dbc">route_callback</a>) (size_t, char **)</td></tr>
@@ -130,6 +148,26 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a927967a36c50f9121cb715f84b7ccadd" id="r_a927967a36c50f9121cb715f84b7ccadd"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a927967a36c50f9121cb715f84b7ccadd">get_dirname</a> (const char *path)</td></tr>
+<tr class="separator:a927967a36c50f9121cb715f84b7ccadd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15e83376ef0b65a87f450ff6875fbe20" id="r_a15e83376ef0b65a87f450ff6875fbe20"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a15e83376ef0b65a87f450ff6875fbe20">join_path</a> (const char *a, const char *b)</td></tr>
+<tr class="separator:a15e83376ef0b65a87f450ff6875fbe20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a020e83a629f1db8bb00e42e8b386ca3b" id="r_a020e83a629f1db8bb00e42e8b386ca3b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a020e83a629f1db8bb00e42e8b386ca3b">is_dir</a> (const char *path)</td></tr>
+<tr class="separator:a020e83a629f1db8bb00e42e8b386ca3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8773aefac368bc3acd28c3d6288487e7" id="r_a8773aefac368bc3acd28c3d6288487e7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a8773aefac368bc3acd28c3d6288487e7">run_program</a> (const char *program, const char *const argv[])</td></tr>
+<tr class="separator:a8773aefac368bc3acd28c3d6288487e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e9345b193ceba83b1594868b6cf24fd" id="r_a5e9345b193ceba83b1594868b6cf24fd"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a5e9345b193ceba83b1594868b6cf24fd">get_extension</a> (const char *path)</td></tr>
+<tr class="separator:a5e9345b193ceba83b1594868b6cf24fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a89c471a8eed4bb0b438675fdd16088bb" id="r_a89c471a8eed4bb0b438675fdd16088bb"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a89c471a8eed4bb0b438675fdd16088bb">replace_extension</a> (const char *path, const char *ext)</td></tr>
+<tr class="separator:a89c471a8eed4bb0b438675fdd16088bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c3ad6fe322505caa24f680af093c832" id="r_a6c3ad6fe322505caa24f680af093c832"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a6c3ad6fe322505caa24f680af093c832">path_basename</a> (const char *path)</td></tr>
+<tr class="separator:a6c3ad6fe322505caa24f680af093c832"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80c86544a27139d0f6fc3f945d2ef77a" id="r_a80c86544a27139d0f6fc3f945d2ef77a"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a80c86544a27139d0f6fc3f945d2ef77a">copy_file</a> (const char *src, const char *dst)</td></tr>
+<tr class="separator:a80c86544a27139d0f6fc3f945d2ef77a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a460b7ae1b3bf4be30259bed2f6008644" id="r_a460b7ae1b3bf4be30259bed2f6008644"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a460b7ae1b3bf4be30259bed2f6008644">copytree</a> (const char *src, const char *dst)</td></tr>
+<tr class="separator:a460b7ae1b3bf4be30259bed2f6008644"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf770efe1e0705384cea7c0361eaa9f0" id="r_acf770efe1e0705384cea7c0361eaa9f0"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#acf770efe1e0705384cea7c0361eaa9f0">make_dir</a> (const char *path)</td></tr>
+<tr class="separator:acf770efe1e0705384cea7c0361eaa9f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1b6db075e69c7d50940c6e0a9d357f6" id="r_ae1b6db075e69c7d50940c6e0a9d357f6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#ae1b6db075e69c7d50940c6e0a9d357f6">argument_route</a> (size_t argc, char **argv)</td></tr>
 <tr class="separator:ae1b6db075e69c7d50940c6e0a9d357f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a152b2bafff5976ca602c43ed93c181c1" id="r_a152b2bafff5976ca602c43ed93c181c1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a152b2bafff5976ca602c43ed93c181c1">init</a> (size_t argc, char **argv)</td></tr>
@@ -140,18 +178,67 @@ Functions</h2></td></tr>
 <tr class="separator:abfce15a97dc0d59066145deb6db71971"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acbae52c879a1243e0097c06aa9a3ad82" id="r_acbae52c879a1243e0097c06aa9a3ad82"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#acbae52c879a1243e0097c06aa9a3ad82">build</a> (size_t argc, char **argv)</td></tr>
 <tr class="separator:acbae52c879a1243e0097c06aa9a3ad82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad177ef2a270af29fc0d1e6b834b2e945" id="r_ad177ef2a270af29fc0d1e6b834b2e945"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#ad177ef2a270af29fc0d1e6b834b2e945">dump</a> (size_t argc, char **argv)</td></tr>
+<tr class="separator:ad177ef2a270af29fc0d1e6b834b2e945"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:ae42255584dd2cdada9e4e0a159d84213" id="r_ae42255584dd2cdada9e4e0a159d84213"><td class="memItemLeft" >struct {&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="memitem:a8caea1d671cd22260a6e9179a17a13b8" id="r_a8caea1d671cd22260a6e9179a17a13b8"><td class="memItemLeft" >struct {&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acbd0d4a108356ca906ecabf7a0de3089" id="r_acbd0d4a108356ca906ecabf7a0de3089"><td class="memItemLeft" >&#160;&#160;&#160;const char *&#160;&#160;&#160;<a class="el" href="engine_8h.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
-<tr class="separator:acbd0d4a108356ca906ecabf7a0de3089"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aea9ebdafa574105f0b5cff453010f521" id="r_aea9ebdafa574105f0b5cff453010f521"><td class="memItemLeft" >&#160;&#160;&#160;<a class="el" href="engine_8h.html#a3f7bf39bb2c4a4841a227fe878595dbc">route_callback</a>&#160;&#160;&#160;<a class="el" href="engine_8h.html#a825191a40d9de85e5b0dc7f60c1e3cd3">callback</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
-<tr class="separator:aea9ebdafa574105f0b5cff453010f521"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae42255584dd2cdada9e4e0a159d84213" id="r_ae42255584dd2cdada9e4e0a159d84213"><td class="memItemLeft" valign="top">}&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#ae42255584dd2cdada9e4e0a159d84213">routes</a> []&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
-<tr class="separator:ae42255584dd2cdada9e4e0a159d84213"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95ba51973423d535344ccba33f3f899f" id="r_a95ba51973423d535344ccba33f3f899f"><td class="memItemLeft" >&#160;&#160;&#160;const char *&#160;&#160;&#160;<a class="el" href="engine_8h.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="separator:a95ba51973423d535344ccba33f3f899f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c989fd062a20a27cfcdf7cdb217b865" id="r_a1c989fd062a20a27cfcdf7cdb217b865"><td class="memItemLeft" >&#160;&#160;&#160;<a class="el" href="engine_8h.html#a3f7bf39bb2c4a4841a227fe878595dbc">route_callback</a>&#160;&#160;&#160;<a class="el" href="engine_8h.html#a825191a40d9de85e5b0dc7f60c1e3cd3">callback</a>&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="separator:a1c989fd062a20a27cfcdf7cdb217b865"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8caea1d671cd22260a6e9179a17a13b8" id="r_a8caea1d671cd22260a6e9179a17a13b8"><td class="memItemLeft" valign="top">}&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a8caea1d671cd22260a6e9179a17a13b8">routes</a> []&#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="separator:a8caea1d671cd22260a6e9179a17a13b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a5e6668951d81243b56eac18d35b16af6" name="a5e6668951d81243b56eac18d35b16af6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e6668951d81243b56eac18d35b16af6">&#9670;&#160;</a></span>COPY_BUFFER_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define COPY_BUFFER_SIZE&#160;&#160;&#160;8192</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a33f0483b64221b258b080bba5882cf3c" name="a33f0483b64221b258b080bba5882cf3c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33f0483b64221b258b080bba5882cf3c">&#9670;&#160;</a></span>MKDIR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MKDIR</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">path</td><td>)</td>
+          <td>&#160;&#160;&#160;mkdir(path, 0755)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a837df2c29aacf37cb96c2b65acb312a6" name="a837df2c29aacf37cb96c2b65acb312a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a837df2c29aacf37cb96c2b65acb312a6">&#9670;&#160;</a></span>PATH_SEP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PATH_SEP&#160;&#160;&#160;'/'</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="a3f7bf39bb2c4a4841a227fe878595dbc" name="a3f7bf39bb2c4a4841a227fe878595dbc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3f7bf39bb2c4a4841a227fe878595dbc">&#9670;&#160;</a></span>route_callback</h2>
@@ -224,6 +311,126 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a80c86544a27139d0f6fc3f945d2ef77a" name="a80c86544a27139d0f6fc3f945d2ef77a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80c86544a27139d0f6fc3f945d2ef77a">&#9670;&#160;</a></span>copy_file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t copy_file </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>src</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>dst</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a460b7ae1b3bf4be30259bed2f6008644" name="a460b7ae1b3bf4be30259bed2f6008644"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a460b7ae1b3bf4be30259bed2f6008644">&#9670;&#160;</a></span>copytree()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t copytree </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>src</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>dst</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad177ef2a270af29fc0d1e6b834b2e945" name="ad177ef2a270af29fc0d1e6b834b2e945"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad177ef2a270af29fc0d1e6b834b2e945">&#9670;&#160;</a></span>dump()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int dump </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>argv</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a927967a36c50f9121cb715f84b7ccadd" name="a927967a36c50f9121cb715f84b7ccadd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a927967a36c50f9121cb715f84b7ccadd">&#9670;&#160;</a></span>get_dirname()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * get_dirname </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5e9345b193ceba83b1594868b6cf24fd" name="a5e9345b193ceba83b1594868b6cf24fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e9345b193ceba83b1594868b6cf24fd">&#9670;&#160;</a></span>get_extension()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * get_extension </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="abfce15a97dc0d59066145deb6db71971" name="abfce15a97dc0d59066145deb6db71971"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abfce15a97dc0d59066145deb6db71971">&#9670;&#160;</a></span>help()</h2>
 
@@ -269,6 +476,144 @@ Variables</h2></td></tr>
           <td></td>
           <td class="paramtype">char **&#160;</td>
           <td class="paramname"><em>argv</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a020e83a629f1db8bb00e42e8b386ca3b" name="a020e83a629f1db8bb00e42e8b386ca3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a020e83a629f1db8bb00e42e8b386ca3b">&#9670;&#160;</a></span>is_dir()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> is_dir </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a15e83376ef0b65a87f450ff6875fbe20" name="a15e83376ef0b65a87f450ff6875fbe20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15e83376ef0b65a87f450ff6875fbe20">&#9670;&#160;</a></span>join_path()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * join_path </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="acf770efe1e0705384cea7c0361eaa9f0" name="acf770efe1e0705384cea7c0361eaa9f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf770efe1e0705384cea7c0361eaa9f0">&#9670;&#160;</a></span>make_dir()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t make_dir </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6c3ad6fe322505caa24f680af093c832" name="a6c3ad6fe322505caa24f680af093c832"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c3ad6fe322505caa24f680af093c832">&#9670;&#160;</a></span>path_basename()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * path_basename </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a89c471a8eed4bb0b438675fdd16088bb" name="a89c471a8eed4bb0b438675fdd16088bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89c471a8eed4bb0b438675fdd16088bb">&#9670;&#160;</a></span>replace_extension()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * replace_extension </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>ext</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8773aefac368bc3acd28c3d6288487e7" name="a8773aefac368bc3acd28c3d6288487e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8773aefac368bc3acd28c3d6288487e7">&#9670;&#160;</a></span>run_program()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int run_program </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>program</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *const&#160;</td>
+          <td class="paramname"><em>argv</em>[]&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -337,8 +682,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="ae42255584dd2cdada9e4e0a159d84213" name="ae42255584dd2cdada9e4e0a159d84213"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae42255584dd2cdada9e4e0a159d84213">&#9670;&#160;</a></span>[struct]</h2>
+<a id="a8caea1d671cd22260a6e9179a17a13b8" name="a8caea1d671cd22260a6e9179a17a13b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8caea1d671cd22260a6e9179a17a13b8">&#9670;&#160;</a></span>[struct]</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -353,12 +698,14 @@ Variables</h2></td></tr>
 <div class="line">        {<span class="stringliteral">&quot;help&quot;</span>, &amp;<a class="code hl_function" href="engine_8h.html#abfce15a97dc0d59066145deb6db71971">help</a>},</div>
 <div class="line">        {<span class="stringliteral">&quot;test&quot;</span>, &amp;<a class="code hl_function" href="engine_8h.html#a652dfa3636c93a60db188937488e156a">test</a>},</div>
 <div class="line">        {<span class="stringliteral">&quot;build&quot;</span>, &amp;<a class="code hl_function" href="engine_8h.html#acbae52c879a1243e0097c06aa9a3ad82">build</a>},</div>
+<div class="line">        {<span class="stringliteral">&quot;dump&quot;</span>, &amp;<a class="code hl_function" href="engine_8h.html#ad177ef2a270af29fc0d1e6b834b2e945">dump</a>},</div>
 <div class="line">        {NULL, NULL}</div>
 <div class="line">    }</div>
 <div class="ttc" id="aengine_8h_html_a152b2bafff5976ca602c43ed93c181c1"><div class="ttname"><a href="engine_8h.html#a152b2bafff5976ca602c43ed93c181c1">init</a></div><div class="ttdeci">int init(size_t argc, char **argv)</div><div class="ttdef"><b>Definition</b> route.c:48</div></div>
-<div class="ttc" id="aengine_8h_html_a652dfa3636c93a60db188937488e156a"><div class="ttname"><a href="engine_8h.html#a652dfa3636c93a60db188937488e156a">test</a></div><div class="ttdeci">int test(size_t argc, char **argv)</div><div class="ttdef"><b>Definition</b> route.c:54</div></div>
+<div class="ttc" id="aengine_8h_html_a652dfa3636c93a60db188937488e156a"><div class="ttname"><a href="engine_8h.html#a652dfa3636c93a60db188937488e156a">test</a></div><div class="ttdeci">int test(size_t argc, char **argv)</div><div class="ttdef"><b>Definition</b> route.c:61</div></div>
 <div class="ttc" id="aengine_8h_html_abfce15a97dc0d59066145deb6db71971"><div class="ttname"><a href="engine_8h.html#abfce15a97dc0d59066145deb6db71971">help</a></div><div class="ttdeci">int help(size_t argc, char **argv)</div><div class="ttdef"><b>Definition</b> route.c:9</div></div>
-<div class="ttc" id="aengine_8h_html_acbae52c879a1243e0097c06aa9a3ad82"><div class="ttname"><a href="engine_8h.html#acbae52c879a1243e0097c06aa9a3ad82">build</a></div><div class="ttdeci">int build(size_t argc, char **argv)</div><div class="ttdef"><b>Definition</b> route.c:448</div></div>
+<div class="ttc" id="aengine_8h_html_acbae52c879a1243e0097c06aa9a3ad82"><div class="ttname"><a href="engine_8h.html#acbae52c879a1243e0097c06aa9a3ad82">build</a></div><div class="ttdeci">int build(size_t argc, char **argv)</div><div class="ttdef"><b>Definition</b> route.c:136</div></div>
+<div class="ttc" id="aengine_8h_html_ad177ef2a270af29fc0d1e6b834b2e945"><div class="ttname"><a href="engine_8h.html#ad177ef2a270af29fc0d1e6b834b2e945">dump</a></div><div class="ttdeci">int dump(size_t argc, char **argv)</div><div class="ttdef"><b>Definition</b> route.c:4</div></div>
 </div><!-- fragment -->
 </div>
 </div>

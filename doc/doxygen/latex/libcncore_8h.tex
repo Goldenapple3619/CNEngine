@@ -32,7 +32,15 @@ struct \mbox{\hyperlink{structgeneric__map__s}{generic\+\_\+map\+\_\+s}}
 \item 
 struct \mbox{\hyperlink{structgeneric__vector__s}{generic\+\_\+vector\+\_\+s}}
 \item 
+struct \mbox{\hyperlink{structgeneric__kv__pair__s}{generic\+\_\+kv\+\_\+pair\+\_\+s}}
+\item 
 struct \mbox{\hyperlink{structObjMethodPair}{Obj\+Method\+Pair}}
+\item 
+struct \mbox{\hyperlink{structErrorFrame}{Error\+Frame}}
+\item 
+struct \mbox{\hyperlink{structErrorContext}{Error\+Context}}
+\item 
+struct \mbox{\hyperlink{structString}{String}}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Macros}
 \begin{DoxyCompactItemize}
@@ -41,17 +49,31 @@ struct \mbox{\hyperlink{structObjMethodPair}{Obj\+Method\+Pair}}
 \item 
 \#define \mbox{\hyperlink{libcncore_8h_a58d32765d53c109fc2f386946d977219}{GC\+\_\+\+MAX\+\_\+\+SIZE}}~256
 \item 
+\#define \mbox{\hyperlink{libcncore_8h_ab77b2fa0c4d704321a4799801516cecf}{ERR\+\_\+\+MAX\+\_\+\+FRAMES}}~32
+\item 
+\#define \mbox{\hyperlink{libcncore_8h_a69524baf8464fed3740c9efdb6002aa4}{ERR\+\_\+\+MSG\+\_\+\+SIZE}}~128
+\item 
+\#define \mbox{\hyperlink{libcncore_8h_aa640c9e7e7664f6d8238f045811d1640}{ERR\+\_\+\+HISTORY}}~128
+\item 
+\#define \mbox{\hyperlink{libcncore_8h_aeb2857fb5bcf9b3ce19c794bb8d8cc45}{ERR\+\_\+\+FULL\+\_\+\+TRACE}}~1
+\item 
 \#define \mbox{\hyperlink{libcncore_8h_a41f9c5fb8b08eb5dc3edce4dcb37fee7}{true}}~\texorpdfstring{$\sim$}{\string~}(0 $<$$<$ 1)
 \item 
 \#define \mbox{\hyperlink{libcncore_8h_a65e9886d74aaee76545e83dd09011727}{false}}~0
 \item 
 \#define \mbox{\hyperlink{libcncore_8h_ae2252f92419c9d33a95b6420394c138c}{STRING\+\_\+\+INDIVIDUAL\+\_\+\+ALLOCATION}}~1
 \item 
+\#define \mbox{\hyperlink{libcncore_8h_a05cdd8afe24b6621f8d797b0d90e52e0}{RAISE}}(c,  msg)~\mbox{\hyperlink{libcncore_8h_ae7ec79b1a1af9d72038404621a3d382c}{raise\+\_\+error}}(c, msg, \+\_\+\+\_\+\+FILE\+\_\+\+\_\+, \+\_\+\+\_\+func\+\_\+\+\_\+, \+\_\+\+\_\+\+LINE\+\_\+\+\_\+);
+\item 
+\#define \mbox{\hyperlink{libcncore_8h_a4508e1f26d6b30fb7c91cd825445f813}{RAISE\+\_\+\+FMT}}(c, ...)~\mbox{\hyperlink{libcncore_8h_a30691fc149592cae6cafb76a8653750a}{raise\+\_\+error\+\_\+fmt}}(c, \+\_\+\+\_\+\+FILE\+\_\+\+\_\+, \+\_\+\+\_\+func\+\_\+\+\_\+, \+\_\+\+\_\+\+LINE\+\_\+\+\_\+, \+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+);
+\item 
+\#define \mbox{\hyperlink{libcncore_8h_aacb48b8707ccf6f8f1688d1fe07fdb1f}{PROPAGATE\+\_\+\+ERR}}()~\mbox{\hyperlink{libcncore_8h_a9413c6d75fb1fd424e89c688f91168e8}{push\+\_\+error}}(\+\_\+\+\_\+\+FILE\+\_\+\+\_\+, \+\_\+\+\_\+func\+\_\+\+\_\+, \+\_\+\+\_\+\+LINE\+\_\+\+\_\+);
+\item 
 \#define \mbox{\hyperlink{libcncore_8h_a6f9e7c0ce0f85faf1d86c47c6c8970b1}{PREP\+\_\+\+INIT}}()~void \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+temp\+\_\+alloc;
 \item 
 \#define \mbox{\hyperlink{libcncore_8h_ac4cc27a6e3a42081a5357a2fa4c9b31e}{PREP\+\_\+\+CLASS\+\_\+\+BUILD}}()~\mbox{\hyperlink{libcncore_8h_a6f9e7c0ce0f85faf1d86c47c6c8970b1}{PREP\+\_\+\+INIT}}()
 \item 
-\#define \mbox{\hyperlink{libcncore_8h_a6e1cba91492021ca2a9ac1a1714de854}{INIT\+\_\+\+CUSTOM\+\_\+\+ALLOCATION}}(\+\_\+\+\_\+this,  expr\+\_\+alloc,  expr\+\_\+free,  \mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}})
+\#define \mbox{\hyperlink{libcncore_8h_a6e1cba91492021ca2a9ac1a1714de854}{INIT\+\_\+\+CUSTOM\+\_\+\+ALLOCATION}}(\+\_\+\+\_\+this,  expr\+\_\+alloc,  \mbox{\hyperlink{libcncore_8h_aea43bea4736df25649243404d5905567}{expr\+\_\+free}},  \mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}})
 \item 
 \#define \mbox{\hyperlink{libcncore_8h_aa4e88729d3c7d2cc9317906d022f09db}{INIT\+\_\+\+OBJECT\+\_\+\+STATIC}}(\+\_\+\+\_\+this,  expr\+\_\+alloc,  args,  \mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}})
 \item 
@@ -61,7 +83,7 @@ struct \mbox{\hyperlink{structObjMethodPair}{Obj\+Method\+Pair}}
 \item 
 \#define \mbox{\hyperlink{libcncore_8h_ade7746924c46a4a3371f0ab2f0ca38bd}{PREP\+\_\+\+DEL}}()~\mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+temp\+\_\+alloc;
 \item 
-\#define \mbox{\hyperlink{libcncore_8h_acd460b2632ceae92211e96ad795b35ff}{DEL\+\_\+\+CUSTOM\+\_\+\+ALLOCAION}}(\+\_\+\+\_\+this,  expr\+\_\+free,  \mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}})
+\#define \mbox{\hyperlink{libcncore_8h_acd460b2632ceae92211e96ad795b35ff}{DEL\+\_\+\+CUSTOM\+\_\+\+ALLOCAION}}(\+\_\+\+\_\+this,  \mbox{\hyperlink{libcncore_8h_aea43bea4736df25649243404d5905567}{expr\+\_\+free}},  \mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}})
 \item 
 \#define \mbox{\hyperlink{libcncore_8h_ab86609dae54c0d984f951bf311d9ec14}{INIT\+\_\+\+STRING}}(\+\_\+\+\_\+this,  string,  \mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}})
 \item 
@@ -77,19 +99,21 @@ struct \mbox{\hyperlink{structObjMethodPair}{Obj\+Method\+Pair}}
 \item 
 \#define \mbox{\hyperlink{libcncore_8h_a90d2f940e6954e7587a83d7ae29ab73c}{INIT\+\_\+\+FLOAT}}(\+\_\+\+\_\+this,  number,  \mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}})
 \item 
-\#define \mbox{\hyperlink{libcncore_8h_a6ad5c20a38ef876c91a859e929fb8ed8}{INIT\+\_\+\+METHOD}}(\+\_\+\+\_\+this,  \mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}},  \mbox{\hyperlink{build_8h_a825191a40d9de85e5b0dc7f60c1e3cd3}{callback}})
+\#define \mbox{\hyperlink{libcncore_8h_a6ad5c20a38ef876c91a859e929fb8ed8}{INIT\+\_\+\+METHOD}}(\+\_\+\+\_\+this,  \mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}},  \mbox{\hyperlink{build_8h_a5ab5a233bdc6ad82f01015b39111c614}{callback}})
 \item 
-\#define \mbox{\hyperlink{libcncore_8h_a51f550014e5e0380ac151979be125e50}{CREATE\+\_\+\+METHOD\+\_\+\+CLASS\+\_\+\+BUILD}}(\+\_\+\+\_\+class,  \mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}},  \mbox{\hyperlink{build_8h_a825191a40d9de85e5b0dc7f60c1e3cd3}{callback}})
+\#define \mbox{\hyperlink{libcncore_8h_a51f550014e5e0380ac151979be125e50}{CREATE\+\_\+\+METHOD\+\_\+\+CLASS\+\_\+\+BUILD}}(\+\_\+\+\_\+class,  \mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}},  \mbox{\hyperlink{build_8h_a5ab5a233bdc6ad82f01015b39111c614}{callback}})
 \item 
-\#define \mbox{\hyperlink{libcncore_8h_addc430d879e3170c2986a2b76404d9bd}{SET\+\_\+\+PARENT\+\_\+\+CLASS\+\_\+\+BUILD}}(\+\_\+\+\_\+class,  \+\_\+\+\_\+parent)
+\#define \mbox{\hyperlink{libcncore_8h_a998ce36655dc98ae88b1c5790dabc3fa}{SET\+\_\+\+PARENT\+\_\+\+CLASS\+\_\+\+BUILD\+\_\+\+STATIC}}(\+\_\+\+\_\+class,  \+\_\+\+\_\+parent)
 \item 
-\#define \mbox{\hyperlink{libcncore_8h_a973268c391d1288baa8e4f649964b55b}{CREATE\+\_\+\+CUSTOM\+\_\+\+ALLOCATION\+\_\+\+CLASS\+\_\+\+BUILD}}(\+\_\+\+\_\+class,  expr\+\_\+alloc,  expr\+\_\+free,  \mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}})
+\#define \mbox{\hyperlink{libcncore_8h_a973268c391d1288baa8e4f649964b55b}{CREATE\+\_\+\+CUSTOM\+\_\+\+ALLOCATION\+\_\+\+CLASS\+\_\+\+BUILD}}(\+\_\+\+\_\+class,  expr\+\_\+alloc,  \mbox{\hyperlink{libcncore_8h_aea43bea4736df25649243404d5905567}{expr\+\_\+free}},  \mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}})
 \item 
 \#define \mbox{\hyperlink{libcncore_8h_abb451236bc755338894ffe8721d76b72}{PACK\+\_\+\+ARG}}(...)~(\mbox{\hyperlink{libcncore_8h_aa0b4eca710d6fee505d18a41355e1edb}{cnany}} \mbox{[}$\,$\mbox{]})\{ \+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+ \}
 \item 
 \#define \mbox{\hyperlink{libcncore_8h_a4c9cf50c56f74e7b2ebf391c2c0c9147}{INLNE\+\_\+\+PRIM\+\_\+\+T\+\_\+\+ARG}}(number)~((typeof((number)) \mbox{[}1\mbox{]})\{(number)\})
 \item 
 \#define \mbox{\hyperlink{libcncore_8h_addbaf4b676f8edfffd8352455df1adec}{INLN\+\_\+\+STRCT\+\_\+\+T\+\_\+\+ARG}}(constructor)~(\&(constructor))
+\item 
+\#define \mbox{\hyperlink{libcncore_8h_a049a6c5ea3fea13c6f1038130760b6af}{DELOC}}(object)~\mbox{\hyperlink{libcncore_8h_a3c17e388301ab678d57d1e4c0f1d3214}{delete\+\_\+object}}(object); \mbox{\hyperlink{libcncore_8h_a9c22fad07837480ca5c03cf06b489cea}{run\+\_\+gc}}();
 \item 
 \#define \mbox{\hyperlink{libcncore_8h_a2fde6447877a7fb46a9f7b2d73c3c72a}{null\+\_\+value}}~(\mbox{\hyperlink{structcn__value}{cn\+\_\+value}})\{\mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a348012976d3b30d7cb389beab11d7630}{CN\+\_\+\+TYPE\+\_\+\+NULL}}, .as.\+i = 0\}
 \item 
@@ -111,6 +135,8 @@ typedef unsigned char \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789a
 typedef uint64\+\_\+t \mbox{\hyperlink{libcncore_8h_af4bb5bf51962a35dae758006fa2d2ef1}{cnflags}}
 \item 
 typedef \mbox{\hyperlink{structcn__value}{cn\+\_\+value}}(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcncore_8h_a45176b455e70053cf81874c72e0aa5fe}{cn\+\_\+method}}) (struct \mbox{\hyperlink{structobject__s}{object\+\_\+s}} \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}args)
+\item 
+typedef void(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcncore_8h_aea43bea4736df25649243404d5905567}{expr\+\_\+free}}) (void \texorpdfstring{$\ast$}{*}obj)
 \item 
 typedef struct \mbox{\hyperlink{structvector2__s}{vector2\+\_\+s}} \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}}
 \item 
@@ -152,6 +178,21 @@ enum \mbox{\hyperlink{libcncore_8h_a117c2852f064791ed3526c3f97f908a9}{scene\+\_\
 , \mbox{\hyperlink{libcncore_8h_a117c2852f064791ed3526c3f97f908a9afa810ccca97440068e1c8a3031a957ee}{CN\+\_\+\+OBJ\+\_\+\+DRAWABLE}} = (1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 0)
 , \mbox{\hyperlink{libcncore_8h_a117c2852f064791ed3526c3f97f908a9a87ae069167b6054f24b11dfc5a1fe57b}{CN\+\_\+\+OBJ\+\_\+\+REPLICATE}} = (1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 1)
 , \mbox{\hyperlink{libcncore_8h_a117c2852f064791ed3526c3f97f908a9a2d38bd3cff76ac3d1f36fafc51ffa475}{CN\+\_\+\+OBJ\+\_\+\+HOST}} = (1 \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 2)
+ \}
+\item 
+enum \mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05f}{Error\+Code}} \{ \newline
+\mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05faa26c163b80b1f6786ca81dadc14b00fb}{ERR\+\_\+\+OK}} = 0
+, \mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05fa077f6961ef44934823d048c00b535cad}{ERR\+\_\+\+OUT\+\_\+\+OF\+\_\+\+MEMORY}}
+, \mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05fa17e7e6cc9748cdc813324f5d1c73512a}{ERR\+\_\+\+INVALID\+\_\+\+POINTER}}
+, \mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05fa9bde5e5e1ba1c8fc57920389deda0d1c}{ERR\+\_\+\+OS}}
+, \newline
+\mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05faef6d6abbe50345f4193bf1a8f6b78a47}{ERR\+\_\+\+OUT\+\_\+\+OF\+\_\+\+BOUND}}
+, \mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05fae00baeb1e4ac53698e23b4ca9db24ca1}{ERR\+\_\+\+INVALID\+\_\+\+TYPE}}
+, \mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05fae209ef75ccd5df4111245d3bced9cc82}{ERR\+\_\+\+NOT\+\_\+\+COMPATIBLE}}
+, \mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05faea3255c81cbcc7ad0f0f85b1e360567e}{ERR\+\_\+\+RUNTIME}}
+, \newline
+\mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05faac5938045e4927dfed6702ea38dd313a}{ERR\+\_\+\+CORRUPT\+\_\+\+OR\+\_\+\+INVALID}}
+, \mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05fa45f133a01a8fa04f91a8f3df129d5f04}{WAR\+\_\+\+IMPORTANT}} = 0xffff
  \}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
@@ -241,6 +282,10 @@ void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcncore_8h_ab26db6ac7d749fea5
 \item 
 void \mbox{\hyperlink{libcncore_8h_a16a14943a65e0aa9f06d38b3f5a13ee5}{delete\+\_\+generic\+\_\+map}} (struct \mbox{\hyperlink{structgeneric__map__s}{generic\+\_\+map\+\_\+s}} \texorpdfstring{$\ast$}{*}gen\+\_\+map, void(\texorpdfstring{$\ast$}{*}\+\_\+delete\+\_\+obj)(void \texorpdfstring{$\ast$}{*}))
 \item 
+void \mbox{\hyperlink{libcncore_8h_a3bbf301ead18953b31f51ab8a5420539}{empty\+\_\+generic\+\_\+map}} (struct \mbox{\hyperlink{structgeneric__map__s}{generic\+\_\+map\+\_\+s}} \texorpdfstring{$\ast$}{*}gen\+\_\+map, void(\texorpdfstring{$\ast$}{*}\+\_\+delete\+\_\+obj)(void \texorpdfstring{$\ast$}{*}))
+\item 
+\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} \mbox{\hyperlink{libcncore_8h_a25a0f9d41c95002d9c3a6b306b8368b0}{has\+\_\+generic\+\_\+map}} (struct \mbox{\hyperlink{structgeneric__map__s}{generic\+\_\+map\+\_\+s}} \texorpdfstring{$\ast$}{*}gen\+\_\+map, const char \texorpdfstring{$\ast$}{*}key)
+\item 
 struct \mbox{\hyperlink{structgeneric__vector__s}{generic\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcncore_8h_a30634f7f9299aade7169a0f284899a6a}{new\+\_\+generic\+\_\+vector}} (void)
 \item 
 uint8\+\_\+t \mbox{\hyperlink{libcncore_8h_a7736c5ac64e65efe1b62f79e2bda9d8f}{resize\+\_\+generic\+\_\+vector}} (struct \mbox{\hyperlink{structgeneric__vector__s}{generic\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}vec, size\+\_\+t new\+\_\+capacity)
@@ -252,6 +297,8 @@ void \mbox{\hyperlink{libcncore_8h_a014a0b15762459e95664f6f5f2e9431c}{remove\+\_
 void \mbox{\hyperlink{libcncore_8h_a3beeff2dd03e1a2a92970dd63ca15278}{remove\+\_\+generic\+\_\+ordered\+\_\+vector}} (struct \mbox{\hyperlink{structgeneric__vector__s}{generic\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}vec, size\+\_\+t i, void(\texorpdfstring{$\ast$}{*}\+\_\+delete\+\_\+obj)(void \texorpdfstring{$\ast$}{*}))
 \item 
 void \mbox{\hyperlink{libcncore_8h_a68dfb4e356ce668c851ada99d02daf10}{delete\+\_\+generic\+\_\+vector}} (struct \mbox{\hyperlink{structgeneric__vector__s}{generic\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}vec, void(\texorpdfstring{$\ast$}{*}\+\_\+delete\+\_\+obj)(void \texorpdfstring{$\ast$}{*}))
+\item 
+void \mbox{\hyperlink{libcncore_8h_acc3435f4207c03ef74bfc6915e5a7419}{empty\+\_\+generic\+\_\+vector}} (struct \mbox{\hyperlink{structgeneric__vector__s}{generic\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}vec, void(\texorpdfstring{$\ast$}{*}\+\_\+delete\+\_\+obj)(void \texorpdfstring{$\ast$}{*}))
 \item 
 \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcncore_8h_a3e3462937b9d18e8a8a9ed88e732131c}{new\+\_\+ctx}} (void)
 \item 
@@ -265,8 +312,6 @@ void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcncore_8h_ae003a34e28585e7d4
 \item 
 void \mbox{\hyperlink{libcncore_8h_aa656263126f3004a19c4fd87288c075d}{\+\_\+init\+\_\+object\+\_\+attrs}} (struct \mbox{\hyperlink{structattr__map__s}{attr\+\_\+map\+\_\+s}} \texorpdfstring{$\ast$}{*}attribute\+\_\+map)
 \item 
-uint64\+\_\+t \mbox{\hyperlink{libcncore_8h_a55a5749136ec77dd3a55809e74a76f7a}{\+\_\+get\+\_\+attrs\+\_\+hash}} (const char \texorpdfstring{$\ast$}{*}str)
-\item 
 \mbox{\hyperlink{libcncore_8h_ad722eab6934bb74865a45785b0004439}{OBJAttrib}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcncore_8h_a27b65a0c18be9559b774be63016f46bf}{\+\_\+find\+\_\+object\+\_\+attrs}} (const struct \mbox{\hyperlink{structattr__map__s}{attr\+\_\+map\+\_\+s}} \texorpdfstring{$\ast$}{*}attribute\+\_\+map, uint64\+\_\+t k)
 \item 
 void \mbox{\hyperlink{libcncore_8h_abaf231dc94e3e34372c62c1d717cb714}{\+\_\+remove\+\_\+object\+\_\+attrs}} (struct \mbox{\hyperlink{structattr__map__s}{attr\+\_\+map\+\_\+s}} \texorpdfstring{$\ast$}{*}attribute\+\_\+map, uint64\+\_\+t k)
@@ -276,6 +321,8 @@ uint8\+\_\+t \mbox{\hyperlink{libcncore_8h_a9d0a4bfc7d4177d08a48f60973e8c43d}{\+
 uint8\+\_\+t \mbox{\hyperlink{libcncore_8h_a645f50848e158ef1a726eb40f81b8eb8}{\+\_\+attr\+\_\+map\+\_\+resize}} (struct \mbox{\hyperlink{structattr__map__s}{attr\+\_\+map\+\_\+s}} \texorpdfstring{$\ast$}{*}map, size\+\_\+t new\+\_\+capacity)
 \item 
 void \mbox{\hyperlink{libcncore_8h_ad153f4b2f8aefe1e646c0aa98497ebc7}{\+\_\+delete\+\_\+object\+\_\+attrs}} (struct \mbox{\hyperlink{structattr__map__s}{attr\+\_\+map\+\_\+s}} \texorpdfstring{$\ast$}{*}attribute\+\_\+map)
+\item 
+uint64\+\_\+t \mbox{\hyperlink{libcncore_8h_a55a5749136ec77dd3a55809e74a76f7a}{\+\_\+get\+\_\+attrs\+\_\+hash}} (const char \texorpdfstring{$\ast$}{*}str)
 \item 
 struct \mbox{\hyperlink{structcn__value__vector__s}{cn\+\_\+value\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcncore_8h_a6c7eb24b355f7f5e37ede66c67710dcd}{new\+\_\+value\+\_\+vector}} (void)
 \item 
@@ -313,7 +360,7 @@ void \mbox{\hyperlink{libcncore_8h_af98672492e076395a996b05035f100cd}{delete\+\_
 \item 
 void \mbox{\hyperlink{libcncore_8h_a32d1076c40ede49486d41d71b8fc8826}{delete\+\_\+weak\+\_\+object\+\_\+method\+\_\+pair}} (\mbox{\hyperlink{structObjMethodPair}{Obj\+Method\+Pair}} \texorpdfstring{$\ast$}{*}pair)
 \item 
-\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcncore_8h_a486551e1421a45e929b941c4f6bb565f}{new\+\_\+list}} (void)
+\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcncore_8h_a535b4ecd2551f928adf9793fc44cc8f0}{new\+\_\+list}} (void(\texorpdfstring{$\ast$}{*}\+\_\+delete\+\_\+obj)(void \texorpdfstring{$\ast$}{*}))
 \item 
 \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcncore_8h_a962231de1a8ee27e393ec402ac39fbcf}{new\+\_\+scene}} (void)
 \item 
@@ -324,6 +371,54 @@ void \mbox{\hyperlink{libcncore_8h_a32d1076c40ede49486d41d71b8fc8826}{delete\+\_
 \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} \mbox{\hyperlink{libcncore_8h_ae4ddb43a51bf1209346af1e0b98bccbd}{start\+\_\+core}} (void)
 \item 
 void \mbox{\hyperlink{libcncore_8h_a0ca1b4902be942746aa3c76f41333d81}{end\+\_\+core}} (void)
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcncore_8h_a8ebfe6aaa8a25680182095297f37431e}{cnopen\+\_\+library}} (const char \texorpdfstring{$\ast$}{*}path)
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcncore_8h_a503d318d46f0b09944ef2762d803879f}{cnget\+\_\+symbol}} (void \texorpdfstring{$\ast$}{*}handle, const char \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}})
+\item 
+void \mbox{\hyperlink{libcncore_8h_a560d0428889e712b1e96a3f22518a110}{cnclose\+\_\+library}} (void \texorpdfstring{$\ast$}{*}handle)
+\item 
+void \mbox{\hyperlink{libcncore_8h_ae7ec79b1a1af9d72038404621a3d382c}{raise\+\_\+error}} (\mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05f}{Error\+Code}} c, const char \texorpdfstring{$\ast$}{*}message, const char \texorpdfstring{$\ast$}{*}file, const char \texorpdfstring{$\ast$}{*}function, uint32\+\_\+t line)
+\item 
+void \mbox{\hyperlink{libcncore_8h_a9413c6d75fb1fd424e89c688f91168e8}{push\+\_\+error}} (const char \texorpdfstring{$\ast$}{*}file, const char \texorpdfstring{$\ast$}{*}function, uint32\+\_\+t line)
+\item 
+const \mbox{\hyperlink{structErrorContext}{Error\+Context}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcncore_8h_ae531c6707ac8602f24e2e385f26faf00}{get\+\_\+error}} (void)
+\item 
+\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} \mbox{\hyperlink{libcncore_8h_a8c72946e68c22ff628ec256b6e916778}{has\+\_\+error}} (void)
+\item 
+void \mbox{\hyperlink{libcncore_8h_a36094f0d4f4772933f6f982cee8ee737}{print\+\_\+error}} (const \mbox{\hyperlink{structErrorContext}{Error\+Context}} \texorpdfstring{$\ast$}{*}err, FILE \texorpdfstring{$\ast$}{*}output)
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcncore_8h_a7ebe9347c3fcd8d84dc7259bd2da0b73}{error\+\_\+type\+\_\+to\+\_\+text}} (\mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05f}{Error\+Code}} c)
+\item 
+\mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcncore_8h_a803cdc38853737b120ae8bc090de11de}{new\+\_\+str\+\_\+from\+\_\+const}} (const char \texorpdfstring{$\ast$}{*}c\+\_\+str)
+\item 
+\mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcncore_8h_abab5c4e59c24b551c4eec243deb711e2}{new\+\_\+str}} (char \texorpdfstring{$\ast$}{*}c\+\_\+str)
+\item 
+\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} \mbox{\hyperlink{libcncore_8h_acdca66b249758c104f3e4f1cafc1222e}{str\+\_\+is\+\_\+empty}} (const \mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}str)
+\item 
+\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} \mbox{\hyperlink{libcncore_8h_a6b412ec840cbd7b25480af8644b0cfe5}{str\+\_\+is\+\_\+null}} (const \mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}str)
+\item 
+void \mbox{\hyperlink{libcncore_8h_acf84274f83df450656404aac7ba4f8ae}{str\+\_\+override}} (\mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}str, char \texorpdfstring{$\ast$}{*}c\+\_\+str)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{libcncore_8h_a5329b1771083af3811b79c2ddb54c86d}{str\+\_\+rcadd\+\_\+mv}} (\mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}str, char \texorpdfstring{$\ast$}{*}c\+\_\+str)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{libcncore_8h_a639732e7c95d71daef692601b350b16e}{str\+\_\+rcadd\+\_\+cp}} (\mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}str, const char \texorpdfstring{$\ast$}{*}c\+\_\+str)
+\item 
+void \mbox{\hyperlink{libcncore_8h_ad431b97f1c7ba2481216e10000af1ce5}{delete\+\_\+str}} (\mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}str)
+\item 
+void \mbox{\hyperlink{libcncore_8h_a30691fc149592cae6cafb76a8653750a}{raise\+\_\+error\+\_\+fmt}} (\mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05f}{Error\+Code}} c, const char \texorpdfstring{$\ast$}{*}file, const char \texorpdfstring{$\ast$}{*}function, uint32\+\_\+t line, const char \texorpdfstring{$\ast$}{*}fmt,...)
+\item 
+struct \mbox{\hyperlink{structgeneric__kv__pair__s}{generic\+\_\+kv\+\_\+pair\+\_\+s}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcncore_8h_acf66147976bea370ef4ee967dbd3b703}{new\+\_\+kv\+\_\+pair}} (const char \texorpdfstring{$\ast$}{*}k, void \texorpdfstring{$\ast$}{*}v, void(\texorpdfstring{$\ast$}{*}v\+\_\+deletor)(void \texorpdfstring{$\ast$}{*}))
+\item 
+struct \mbox{\hyperlink{structgeneric__kv__pair__s}{generic\+\_\+kv\+\_\+pair\+\_\+s}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcncore_8h_a71886aad153400fc83c355781b880418}{new\+\_\+ckv\+\_\+pair}} (const char \texorpdfstring{$\ast$}{*}k, void \texorpdfstring{$\ast$}{*}v, void(\texorpdfstring{$\ast$}{*}v\+\_\+deletor)(void \texorpdfstring{$\ast$}{*}))
+\item 
+uint8\+\_\+t \mbox{\hyperlink{libcncore_8h_a4f8a289ef007dd4a4c9115be1434804f}{init\+\_\+kv\+\_\+pair}} (struct \mbox{\hyperlink{structgeneric__kv__pair__s}{generic\+\_\+kv\+\_\+pair\+\_\+s}} \texorpdfstring{$\ast$}{*}kvp, const char \texorpdfstring{$\ast$}{*}k, void \texorpdfstring{$\ast$}{*}v, void(\texorpdfstring{$\ast$}{*}v\+\_\+deletor)(void \texorpdfstring{$\ast$}{*}))
+\item 
+uint8\+\_\+t \mbox{\hyperlink{libcncore_8h_a31e02b77af95f9047a415de12004fb73}{init\+\_\+ckv\+\_\+pair}} (struct \mbox{\hyperlink{structgeneric__kv__pair__s}{generic\+\_\+kv\+\_\+pair\+\_\+s}} \texorpdfstring{$\ast$}{*}kvp, const char \texorpdfstring{$\ast$}{*}k, void \texorpdfstring{$\ast$}{*}v, void(\texorpdfstring{$\ast$}{*}v\+\_\+deletor)(void \texorpdfstring{$\ast$}{*}))
+\item 
+void \mbox{\hyperlink{libcncore_8h_ad1471363bc94f72b841a60f4ef358f15}{empty\+\_\+kv\+\_\+pair}} (struct \mbox{\hyperlink{structgeneric__kv__pair__s}{generic\+\_\+kv\+\_\+pair\+\_\+s}} \texorpdfstring{$\ast$}{*}kvp)
+\item 
+void \mbox{\hyperlink{libcncore_8h_ac0d8a2d05a7c95fe64ebf4962671f071}{delete\+\_\+kv\+\_\+pair}} (struct \mbox{\hyperlink{structgeneric__kv__pair__s}{generic\+\_\+kv\+\_\+pair\+\_\+s}} \texorpdfstring{$\ast$}{*}kvp)
 \end{DoxyCompactItemize}
 
 
@@ -338,17 +433,19 @@ void \mbox{\hyperlink{libcncore_8h_a0ca1b4902be942746aa3c76f41333d81}{end\+\_\+c
 \index{libcncore.h@{libcncore.h}!CREATE\_CUSTOM\_ALLOCATION\_CLASS\_BUILD@{CREATE\_CUSTOM\_ALLOCATION\_CLASS\_BUILD}}
 \index{CREATE\_CUSTOM\_ALLOCATION\_CLASS\_BUILD@{CREATE\_CUSTOM\_ALLOCATION\_CLASS\_BUILD}!libcncore.h@{libcncore.h}}
 \doxysubsubsection{\texorpdfstring{CREATE\_CUSTOM\_ALLOCATION\_CLASS\_BUILD}{CREATE\_CUSTOM\_ALLOCATION\_CLASS\_BUILD}}
-{\footnotesize\ttfamily \#define CREATE\+\_\+\+CUSTOM\+\_\+\+ALLOCATION\+\_\+\+CLASS\+\_\+\+BUILD(\begin{DoxyParamCaption}\item[{}]{\+\_\+\+\_\+class,  }\item[{}]{expr\+\_\+alloc,  }\item[{}]{expr\+\_\+free,  }\item[{}]{\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \#define CREATE\+\_\+\+CUSTOM\+\_\+\+ALLOCATION\+\_\+\+CLASS\+\_\+\+BUILD(\begin{DoxyParamCaption}\item[{}]{\+\_\+\+\_\+class,  }\item[{}]{expr\+\_\+alloc,  }\item[{}]{\mbox{\hyperlink{libcncore_8h_aea43bea4736df25649243404d5905567}{expr\+\_\+free}},  }\item[{}]{\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}} }\end{DoxyParamCaption})}
 
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \_\_temp\_alloc\ =\ expr\_alloc;\ \(\backslash\)}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ if\ (!\_\_temp\_alloc)\ \{\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ (void)\mbox{\hyperlink{libcncore_8h_a3c17e388301ab678d57d1e4c0f1d3214}{delete\_object}}(\_\_class);\ \(\backslash\)}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ (NULL);\ \(\backslash\)}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \}\ \(\backslash\)}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ if\ (!\mbox{\hyperlink{libcncore_8h_a0d1200d7a9ee39c24a7cfde96306eec6}{set\_attr}}(\_\_class,\ \mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}},\ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a1e435bbdb30939823b6e4682ec24da6b}{CN\_TYPE\_GENERIC\_UNIQ\_PTR}},\ (\mbox{\hyperlink{libcncore_8h_aa0b4eca710d6fee505d18a41355e1edb}{cnany}})\_\_temp\_alloc))\ \{\ \(\backslash\)}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ (void)expr\_free(\_\_temp\_alloc);\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ (void)\mbox{\hyperlink{libcncore_8h_aea43bea4736df25649243404d5905567}{expr\_free}}(\_\_temp\_alloc);\ \(\backslash\)}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ (void)\mbox{\hyperlink{libcncore_8h_a3c17e388301ab678d57d1e4c0f1d3214}{delete\_object}}(\_\_class);\ \(\backslash\)}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ (NULL);\ \(\backslash\)}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
@@ -358,11 +455,12 @@ void \mbox{\hyperlink{libcncore_8h_a0ca1b4902be942746aa3c76f41333d81}{end\+\_\+c
 \index{libcncore.h@{libcncore.h}!CREATE\_METHOD\_CLASS\_BUILD@{CREATE\_METHOD\_CLASS\_BUILD}}
 \index{CREATE\_METHOD\_CLASS\_BUILD@{CREATE\_METHOD\_CLASS\_BUILD}!libcncore.h@{libcncore.h}}
 \doxysubsubsection{\texorpdfstring{CREATE\_METHOD\_CLASS\_BUILD}{CREATE\_METHOD\_CLASS\_BUILD}}
-{\footnotesize\ttfamily \#define CREATE\+\_\+\+METHOD\+\_\+\+CLASS\+\_\+\+BUILD(\begin{DoxyParamCaption}\item[{}]{\+\_\+\+\_\+class,  }\item[{}]{\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}},  }\item[{}]{\mbox{\hyperlink{build_8h_a825191a40d9de85e5b0dc7f60c1e3cd3}{callback}} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \#define CREATE\+\_\+\+METHOD\+\_\+\+CLASS\+\_\+\+BUILD(\begin{DoxyParamCaption}\item[{}]{\+\_\+\+\_\+class,  }\item[{}]{\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}},  }\item[{}]{\mbox{\hyperlink{build_8h_a5ab5a233bdc6ad82f01015b39111c614}{callback}} }\end{DoxyParamCaption})}
 
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{libcncore_8h_a9a1bd983fe1fdfd618aa5cadf5bb92d1}{set\_method}}(\_\_class,\ \mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}},\ \mbox{\hyperlink{build_8h_a825191a40d9de85e5b0dc7f60c1e3cd3}{callback}}))\ \{\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{libcncore_8h_a9a1bd983fe1fdfd618aa5cadf5bb92d1}{set\_method}}(\_\_class,\ \mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}},\ \mbox{\hyperlink{build_8h_a5ab5a233bdc6ad82f01015b39111c614}{callback}}))\ \{\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ (void)\mbox{\hyperlink{libcncore_8h_a3c17e388301ab678d57d1e4c0f1d3214}{delete\_object}}(\_\_class);\ \(\backslash\)}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ (NULL);\ \(\backslash\)}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
@@ -372,7 +470,7 @@ void \mbox{\hyperlink{libcncore_8h_a0ca1b4902be942746aa3c76f41333d81}{end\+\_\+c
 \index{libcncore.h@{libcncore.h}!DEL\_CUSTOM\_ALLOCAION@{DEL\_CUSTOM\_ALLOCAION}}
 \index{DEL\_CUSTOM\_ALLOCAION@{DEL\_CUSTOM\_ALLOCAION}!libcncore.h@{libcncore.h}}
 \doxysubsubsection{\texorpdfstring{DEL\_CUSTOM\_ALLOCAION}{DEL\_CUSTOM\_ALLOCAION}}
-{\footnotesize\ttfamily \#define DEL\+\_\+\+CUSTOM\+\_\+\+ALLOCAION(\begin{DoxyParamCaption}\item[{}]{\+\_\+\+\_\+this,  }\item[{}]{expr\+\_\+free,  }\item[{}]{\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \#define DEL\+\_\+\+CUSTOM\+\_\+\+ALLOCAION(\begin{DoxyParamCaption}\item[{}]{\+\_\+\+\_\+this,  }\item[{}]{\mbox{\hyperlink{libcncore_8h_aea43bea4736df25649243404d5905567}{expr\+\_\+free}},  }\item[{}]{\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}} }\end{DoxyParamCaption})}
 
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
@@ -383,6 +481,36 @@ void \mbox{\hyperlink{libcncore_8h_a0ca1b4902be942746aa3c76f41333d81}{end\+\_\+c
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
 
 \end{DoxyCode}
+\Hypertarget{libcncore_8h_a049a6c5ea3fea13c6f1038130760b6af}\label{libcncore_8h_a049a6c5ea3fea13c6f1038130760b6af} 
+\index{libcncore.h@{libcncore.h}!DELOC@{DELOC}}
+\index{DELOC@{DELOC}!libcncore.h@{libcncore.h}}
+\doxysubsubsection{\texorpdfstring{DELOC}{DELOC}}
+{\footnotesize\ttfamily \#define DELOC(\begin{DoxyParamCaption}\item[{}]{object }\end{DoxyParamCaption})~\mbox{\hyperlink{libcncore_8h_a3c17e388301ab678d57d1e4c0f1d3214}{delete\+\_\+object}}(object); \mbox{\hyperlink{libcncore_8h_a9c22fad07837480ca5c03cf06b489cea}{run\+\_\+gc}}();}
+
+\Hypertarget{libcncore_8h_aeb2857fb5bcf9b3ce19c794bb8d8cc45}\label{libcncore_8h_aeb2857fb5bcf9b3ce19c794bb8d8cc45} 
+\index{libcncore.h@{libcncore.h}!ERR\_FULL\_TRACE@{ERR\_FULL\_TRACE}}
+\index{ERR\_FULL\_TRACE@{ERR\_FULL\_TRACE}!libcncore.h@{libcncore.h}}
+\doxysubsubsection{\texorpdfstring{ERR\_FULL\_TRACE}{ERR\_FULL\_TRACE}}
+{\footnotesize\ttfamily \#define ERR\+\_\+\+FULL\+\_\+\+TRACE~1}
+
+\Hypertarget{libcncore_8h_aa640c9e7e7664f6d8238f045811d1640}\label{libcncore_8h_aa640c9e7e7664f6d8238f045811d1640} 
+\index{libcncore.h@{libcncore.h}!ERR\_HISTORY@{ERR\_HISTORY}}
+\index{ERR\_HISTORY@{ERR\_HISTORY}!libcncore.h@{libcncore.h}}
+\doxysubsubsection{\texorpdfstring{ERR\_HISTORY}{ERR\_HISTORY}}
+{\footnotesize\ttfamily \#define ERR\+\_\+\+HISTORY~128}
+
+\Hypertarget{libcncore_8h_ab77b2fa0c4d704321a4799801516cecf}\label{libcncore_8h_ab77b2fa0c4d704321a4799801516cecf} 
+\index{libcncore.h@{libcncore.h}!ERR\_MAX\_FRAMES@{ERR\_MAX\_FRAMES}}
+\index{ERR\_MAX\_FRAMES@{ERR\_MAX\_FRAMES}!libcncore.h@{libcncore.h}}
+\doxysubsubsection{\texorpdfstring{ERR\_MAX\_FRAMES}{ERR\_MAX\_FRAMES}}
+{\footnotesize\ttfamily \#define ERR\+\_\+\+MAX\+\_\+\+FRAMES~32}
+
+\Hypertarget{libcncore_8h_a69524baf8464fed3740c9efdb6002aa4}\label{libcncore_8h_a69524baf8464fed3740c9efdb6002aa4} 
+\index{libcncore.h@{libcncore.h}!ERR\_MSG\_SIZE@{ERR\_MSG\_SIZE}}
+\index{ERR\_MSG\_SIZE@{ERR\_MSG\_SIZE}!libcncore.h@{libcncore.h}}
+\doxysubsubsection{\texorpdfstring{ERR\_MSG\_SIZE}{ERR\_MSG\_SIZE}}
+{\footnotesize\ttfamily \#define ERR\+\_\+\+MSG\+\_\+\+SIZE~128}
+
 \Hypertarget{libcncore_8h_a65e9886d74aaee76545e83dd09011727}\label{libcncore_8h_a65e9886d74aaee76545e83dd09011727} 
 \index{libcncore.h@{libcncore.h}!false@{false}}
 \index{false@{false}!libcncore.h@{libcncore.h}}
@@ -399,15 +527,18 @@ void \mbox{\hyperlink{libcncore_8h_a0ca1b4902be942746aa3c76f41333d81}{end\+\_\+c
 \index{libcncore.h@{libcncore.h}!INIT\_CUSTOM\_ALLOCATION@{INIT\_CUSTOM\_ALLOCATION}}
 \index{INIT\_CUSTOM\_ALLOCATION@{INIT\_CUSTOM\_ALLOCATION}!libcncore.h@{libcncore.h}}
 \doxysubsubsection{\texorpdfstring{INIT\_CUSTOM\_ALLOCATION}{INIT\_CUSTOM\_ALLOCATION}}
-{\footnotesize\ttfamily \#define INIT\+\_\+\+CUSTOM\+\_\+\+ALLOCATION(\begin{DoxyParamCaption}\item[{}]{\+\_\+\+\_\+this,  }\item[{}]{expr\+\_\+alloc,  }\item[{}]{expr\+\_\+free,  }\item[{}]{\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \#define INIT\+\_\+\+CUSTOM\+\_\+\+ALLOCATION(\begin{DoxyParamCaption}\item[{}]{\+\_\+\+\_\+this,  }\item[{}]{expr\+\_\+alloc,  }\item[{}]{\mbox{\hyperlink{libcncore_8h_aea43bea4736df25649243404d5905567}{expr\+\_\+free}},  }\item[{}]{\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}} }\end{DoxyParamCaption})}
 
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \_\_temp\_alloc\ =\ (\textcolor{keywordtype}{void}\ *)expr\_alloc;\ \(\backslash\)}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ if\ (!\_\_temp\_alloc)\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ if\ (!\_\_temp\_alloc)\ \{\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ (\mbox{\hyperlink{libcncore_8h_a203549510b067f93099b5ec716053c2d}{VALUE\_ERR}});\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}\ \(\backslash\)}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ if\ (!\mbox{\hyperlink{libcncore_8h_a0d1200d7a9ee39c24a7cfde96306eec6}{set\_attr}}(\_\_this,\ \mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}},\ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a1e435bbdb30939823b6e4682ec24da6b}{CN\_TYPE\_GENERIC\_UNIQ\_PTR}},\ (\mbox{\hyperlink{libcncore_8h_aa0b4eca710d6fee505d18a41355e1edb}{cnany}})\_\_temp\_alloc))\ \{\ \(\backslash\)}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ (void)expr\_free(\_\_temp\_alloc);\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ (void)\mbox{\hyperlink{libcncore_8h_aea43bea4736df25649243404d5905567}{expr\_free}}(\_\_temp\_alloc);\ \(\backslash\)}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ (\mbox{\hyperlink{libcncore_8h_a203549510b067f93099b5ec716053c2d}{VALUE\_ERR}});\ \(\backslash\)}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
 
@@ -420,8 +551,10 @@ void \mbox{\hyperlink{libcncore_8h_a0ca1b4902be942746aa3c76f41333d81}{end\+\_\+c
 
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{libcncore_8h_a0d1200d7a9ee39c24a7cfde96306eec6}{set\_attr}}(\_\_this,\ \mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}},\ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a6f7d564090f644eb968f592e01cb9253}{CN\_TYPE\_FLOAT}},\ (\mbox{\hyperlink{libcncore_8h_aa0b4eca710d6fee505d18a41355e1edb}{cnany}})((\textcolor{keywordtype}{double}\ [1])\{number\})))\ \(\backslash\)}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ (\mbox{\hyperlink{libcncore_8h_a203549510b067f93099b5ec716053c2d}{VALUE\_ERR}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{libcncore_8h_a0d1200d7a9ee39c24a7cfde96306eec6}{set\_attr}}(\_\_this,\ \mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}},\ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a6f7d564090f644eb968f592e01cb9253}{CN\_TYPE\_FLOAT}},\ (\mbox{\hyperlink{libcncore_8h_aa0b4eca710d6fee505d18a41355e1edb}{cnany}})((\textcolor{keywordtype}{double}\ [1])\{number\})))\ \{\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ (\mbox{\hyperlink{libcncore_8h_a203549510b067f93099b5ec716053c2d}{VALUE\_ERR}});\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{libcncore_8h_a9efd130e574e9b2e2c4957cae634ff39}\label{libcncore_8h_a9efd130e574e9b2e2c4957cae634ff39} 
@@ -432,20 +565,24 @@ void \mbox{\hyperlink{libcncore_8h_a0ca1b4902be942746aa3c76f41333d81}{end\+\_\+c
 
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{libcncore_8h_a0d1200d7a9ee39c24a7cfde96306eec6}{set\_attr}}(\_\_this,\ \mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}},\ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a28029ab23dc72127e9c580863863b730}{CN\_TYPE\_INT}},\ (\mbox{\hyperlink{libcncore_8h_aa0b4eca710d6fee505d18a41355e1edb}{cnany}})((int64\_t\ [1])\{number\})))\ \(\backslash\)}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ (\mbox{\hyperlink{libcncore_8h_a203549510b067f93099b5ec716053c2d}{VALUE\_ERR}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{libcncore_8h_a0d1200d7a9ee39c24a7cfde96306eec6}{set\_attr}}(\_\_this,\ \mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}},\ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a28029ab23dc72127e9c580863863b730}{CN\_TYPE\_INT}},\ (\mbox{\hyperlink{libcncore_8h_aa0b4eca710d6fee505d18a41355e1edb}{cnany}})((int64\_t\ [1])\{number\})))\ \{\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ (\mbox{\hyperlink{libcncore_8h_a203549510b067f93099b5ec716053c2d}{VALUE\_ERR}});\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{libcncore_8h_a6ad5c20a38ef876c91a859e929fb8ed8}\label{libcncore_8h_a6ad5c20a38ef876c91a859e929fb8ed8} 
 \index{libcncore.h@{libcncore.h}!INIT\_METHOD@{INIT\_METHOD}}
 \index{INIT\_METHOD@{INIT\_METHOD}!libcncore.h@{libcncore.h}}
 \doxysubsubsection{\texorpdfstring{INIT\_METHOD}{INIT\_METHOD}}
-{\footnotesize\ttfamily \#define INIT\+\_\+\+METHOD(\begin{DoxyParamCaption}\item[{}]{\+\_\+\+\_\+this,  }\item[{}]{\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}},  }\item[{}]{\mbox{\hyperlink{build_8h_a825191a40d9de85e5b0dc7f60c1e3cd3}{callback}} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \#define INIT\+\_\+\+METHOD(\begin{DoxyParamCaption}\item[{}]{\+\_\+\+\_\+this,  }\item[{}]{\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}},  }\item[{}]{\mbox{\hyperlink{build_8h_a5ab5a233bdc6ad82f01015b39111c614}{callback}} }\end{DoxyParamCaption})}
 
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{libcncore_8h_a9a1bd983fe1fdfd618aa5cadf5bb92d1}{set\_method}}(\_\_this,\ \mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}},\ \mbox{\hyperlink{build_8h_a825191a40d9de85e5b0dc7f60c1e3cd3}{callback}}))\ \(\backslash\)}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ (\mbox{\hyperlink{libcncore_8h_a203549510b067f93099b5ec716053c2d}{VALUE\_ERR}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{libcncore_8h_a9a1bd983fe1fdfd618aa5cadf5bb92d1}{set\_method}}(\_\_this,\ \mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}},\ \mbox{\hyperlink{build_8h_a5ab5a233bdc6ad82f01015b39111c614}{callback}}))\ \{\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ (\mbox{\hyperlink{libcncore_8h_a203549510b067f93099b5ec716053c2d}{VALUE\_ERR}});\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{libcncore_8h_a4b2913192dec10cc4c15ddde54ae36b2}\label{libcncore_8h_a4b2913192dec10cc4c15ddde54ae36b2} 
@@ -456,8 +593,10 @@ void \mbox{\hyperlink{libcncore_8h_a0ca1b4902be942746aa3c76f41333d81}{end\+\_\+c
 
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{libcncore_8h_a0d1200d7a9ee39c24a7cfde96306eec6}{set\_attr}}(\_\_this,\ \mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}},\ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25ae53787cc0f9de9334d6d0cef0d76092c}{CN\_TYPE\_NUMBER}},\ (\mbox{\hyperlink{libcncore_8h_aa0b4eca710d6fee505d18a41355e1edb}{cnany}})((\mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}\ [1])\{number\})))\ \(\backslash\)}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ (\mbox{\hyperlink{libcncore_8h_a203549510b067f93099b5ec716053c2d}{VALUE\_ERR}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{libcncore_8h_a0d1200d7a9ee39c24a7cfde96306eec6}{set\_attr}}(\_\_this,\ \mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}},\ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25ae53787cc0f9de9334d6d0cef0d76092c}{CN\_TYPE\_NUMBER}},\ (\mbox{\hyperlink{libcncore_8h_aa0b4eca710d6fee505d18a41355e1edb}{cnany}})((\mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}\ [1])\{number\})))\ \{\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ (\mbox{\hyperlink{libcncore_8h_a203549510b067f93099b5ec716053c2d}{VALUE\_ERR}});\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{libcncore_8h_aa40060ed5b079000135bad4c3ba3e8e3}\label{libcncore_8h_aa40060ed5b079000135bad4c3ba3e8e3} 
@@ -468,9 +607,12 @@ void \mbox{\hyperlink{libcncore_8h_a0ca1b4902be942746aa3c76f41333d81}{end\+\_\+c
 
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!obj)\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!obj)\ \{\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ RAISE(\mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05fa17e7e6cc9748cdc813324f5d1c73512a}{ERR\_INVALID\_POINTER}},\ \textcolor{stringliteral}{"{}can't\ init\ share\ object\ with\ empty\ object."{}});\ \(\backslash\)}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ (\mbox{\hyperlink{libcncore_8h_a203549510b067f93099b5ec716053c2d}{VALUE\_ERR}});\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}\ \(\backslash\)}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ if\ (!\mbox{\hyperlink{libcncore_8h_a0d1200d7a9ee39c24a7cfde96306eec6}{set\_attr}}(\_\_this,\ \mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}},\ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25ab1815f2281072060aeee9fa21c33c879}{CN\_TYPE\_OBJECT}},\ (\mbox{\hyperlink{libcncore_8h_aa0b4eca710d6fee505d18a41355e1edb}{cnany}})obj))\ \{\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ (\mbox{\hyperlink{libcncore_8h_a203549510b067f93099b5ec716053c2d}{VALUE\_ERR}});\ \(\backslash\)}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
 
@@ -483,9 +625,12 @@ void \mbox{\hyperlink{libcncore_8h_a0ca1b4902be942746aa3c76f41333d81}{end\+\_\+c
 
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!obj)\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!obj)\ \{\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ RAISE(\mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05fa17e7e6cc9748cdc813324f5d1c73512a}{ERR\_INVALID\_POINTER}},\ \textcolor{stringliteral}{"{}can't\ init\ share\ weak\ object\ with\ empty\ object."{}});\ \(\backslash\)}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ (\mbox{\hyperlink{libcncore_8h_a203549510b067f93099b5ec716053c2d}{VALUE\_ERR}});\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}\ \(\backslash\)}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ if\ (!\mbox{\hyperlink{libcncore_8h_a0d1200d7a9ee39c24a7cfde96306eec6}{set\_attr}}(\_\_this,\ \mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}},\ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a5ba5ed92d4eaf106cce6fb0818f2d971}{CN\_TYPE\_WEAK\_OBJECT}},\ (\mbox{\hyperlink{libcncore_8h_aa0b4eca710d6fee505d18a41355e1edb}{cnany}})obj))\ \{\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ (\mbox{\hyperlink{libcncore_8h_a203549510b067f93099b5ec716053c2d}{VALUE\_ERR}});\ \(\backslash\)}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
 
@@ -499,9 +644,12 @@ void \mbox{\hyperlink{libcncore_8h_a0ca1b4902be942746aa3c76f41333d81}{end\+\_\+c
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \_\_temp\_alloc\ =\ (\textcolor{keywordtype}{void}\ *)\mbox{\hyperlink{libcncore_8h_aa8a195b1765489f8e4a9a7f184d5b27b}{build\_object}}(expr\_alloc,\ args);\ \(\backslash\)}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ if\ (!\_\_temp\_alloc)\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ if\ (!\_\_temp\_alloc)\ \{\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ (\mbox{\hyperlink{libcncore_8h_a203549510b067f93099b5ec716053c2d}{VALUE\_ERR}});\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}\ \(\backslash\)}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ if\ (!\mbox{\hyperlink{libcncore_8h_a0d1200d7a9ee39c24a7cfde96306eec6}{set\_attr}}(\_\_this,\ \mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}},\ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25ab1815f2281072060aeee9fa21c33c879}{CN\_TYPE\_OBJECT}},\ (\mbox{\hyperlink{libcncore_8h_aa0b4eca710d6fee505d18a41355e1edb}{cnany}})\_\_temp\_alloc))\ \{\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ (void)\mbox{\hyperlink{libcncore_8h_a3c17e388301ab678d57d1e4c0f1d3214}{delete\_object}}(\_\_temp\_alloc);\ \(\backslash\)}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ (\mbox{\hyperlink{libcncore_8h_a203549510b067f93099b5ec716053c2d}{VALUE\_ERR}});\ \(\backslash\)}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
@@ -515,8 +663,10 @@ void \mbox{\hyperlink{libcncore_8h_a0ca1b4902be942746aa3c76f41333d81}{end\+\_\+c
 
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{libcncore_8h_a0d1200d7a9ee39c24a7cfde96306eec6}{set\_attr}}(\_\_this,\ \mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}},\ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a52ec225b27d289b0d05128e3d7ef5992}{CN\_TYPE\_RECT}},\ (\mbox{\hyperlink{libcncore_8h_aa0b4eca710d6fee505d18a41355e1edb}{cnany}})(\&rect)))\ \(\backslash\)}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ (\mbox{\hyperlink{libcncore_8h_a203549510b067f93099b5ec716053c2d}{VALUE\_ERR}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{libcncore_8h_a0d1200d7a9ee39c24a7cfde96306eec6}{set\_attr}}(\_\_this,\ \mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}},\ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a52ec225b27d289b0d05128e3d7ef5992}{CN\_TYPE\_RECT}},\ (\mbox{\hyperlink{libcncore_8h_aa0b4eca710d6fee505d18a41355e1edb}{cnany}})(\&rect)))\ \{\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ (\mbox{\hyperlink{libcncore_8h_a203549510b067f93099b5ec716053c2d}{VALUE\_ERR}});\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{libcncore_8h_ab86609dae54c0d984f951bf311d9ec14}\label{libcncore_8h_ab86609dae54c0d984f951bf311d9ec14} 
@@ -527,8 +677,10 @@ void \mbox{\hyperlink{libcncore_8h_a0ca1b4902be942746aa3c76f41333d81}{end\+\_\+c
 
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{libcncore_8h_a0d1200d7a9ee39c24a7cfde96306eec6}{set\_attr}}(\_\_this,\ \mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}},\ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a384355a765126d78f4e9bbef9173c7a0}{CN\_TYPE\_STRING}},\ (\mbox{\hyperlink{libcncore_8h_aa0b4eca710d6fee505d18a41355e1edb}{cnany}})\textcolor{keywordtype}{string}))\ \(\backslash\)}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ (\mbox{\hyperlink{libcncore_8h_a203549510b067f93099b5ec716053c2d}{VALUE\_ERR}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{libcncore_8h_a0d1200d7a9ee39c24a7cfde96306eec6}{set\_attr}}(\_\_this,\ \mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}},\ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a384355a765126d78f4e9bbef9173c7a0}{CN\_TYPE\_STRING}},\ (\mbox{\hyperlink{libcncore_8h_aa0b4eca710d6fee505d18a41355e1edb}{cnany}})\textcolor{keywordtype}{string}))\ \{\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ (\mbox{\hyperlink{libcncore_8h_a203549510b067f93099b5ec716053c2d}{VALUE\_ERR}});\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{libcncore_8h_a289ffea777a2091b6459f54663cb0fe9}\label{libcncore_8h_a289ffea777a2091b6459f54663cb0fe9} 
@@ -539,8 +691,10 @@ void \mbox{\hyperlink{libcncore_8h_a0ca1b4902be942746aa3c76f41333d81}{end\+\_\+c
 
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{libcncore_8h_a0d1200d7a9ee39c24a7cfde96306eec6}{set\_attr}}(\_\_this,\ \mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}},\ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a7dd8ff986f28d6df8a92f8d5ce441045}{CN\_TYPE\_VEC2}},\ (\mbox{\hyperlink{libcncore_8h_aa0b4eca710d6fee505d18a41355e1edb}{cnany}})(\&vec2)))\ \(\backslash\)}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ (\mbox{\hyperlink{libcncore_8h_a203549510b067f93099b5ec716053c2d}{VALUE\_ERR}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{libcncore_8h_a0d1200d7a9ee39c24a7cfde96306eec6}{set\_attr}}(\_\_this,\ \mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}},\ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a7dd8ff986f28d6df8a92f8d5ce441045}{CN\_TYPE\_VEC2}},\ (\mbox{\hyperlink{libcncore_8h_aa0b4eca710d6fee505d18a41355e1edb}{cnany}})(\&vec2)))\ \{\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ (\mbox{\hyperlink{libcncore_8h_a203549510b067f93099b5ec716053c2d}{VALUE\_ERR}});\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{libcncore_8h_a6207841033d3bc9a45941ea8b237a0db}\label{libcncore_8h_a6207841033d3bc9a45941ea8b237a0db} 
@@ -551,8 +705,10 @@ void \mbox{\hyperlink{libcncore_8h_a0ca1b4902be942746aa3c76f41333d81}{end\+\_\+c
 
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{libcncore_8h_a0d1200d7a9ee39c24a7cfde96306eec6}{set\_attr}}(\_\_this,\ \mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}},\ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a4407833afbec27023b6c38ade807deee}{CN\_TYPE\_VEC3}},\ (\mbox{\hyperlink{libcncore_8h_aa0b4eca710d6fee505d18a41355e1edb}{cnany}})(\&vec3)))\ \(\backslash\)}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ (\mbox{\hyperlink{libcncore_8h_a203549510b067f93099b5ec716053c2d}{VALUE\_ERR}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{libcncore_8h_a0d1200d7a9ee39c24a7cfde96306eec6}{set\_attr}}(\_\_this,\ \mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}},\ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a4407833afbec27023b6c38ade807deee}{CN\_TYPE\_VEC3}},\ (\mbox{\hyperlink{libcncore_8h_aa0b4eca710d6fee505d18a41355e1edb}{cnany}})(\&vec3)))\ \{\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ (\mbox{\hyperlink{libcncore_8h_a203549510b067f93099b5ec716053c2d}{VALUE\_ERR}});\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{libcncore_8h_addbaf4b676f8edfffd8352455df1adec}\label{libcncore_8h_addbaf4b676f8edfffd8352455df1adec} 
@@ -597,16 +753,35 @@ void \mbox{\hyperlink{libcncore_8h_a0ca1b4902be942746aa3c76f41333d81}{end\+\_\+c
 \doxysubsubsection{\texorpdfstring{PREP\_INIT}{PREP\_INIT}}
 {\footnotesize\ttfamily \#define PREP\+\_\+\+INIT(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~void \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+temp\+\_\+alloc;}
 
-\Hypertarget{libcncore_8h_addc430d879e3170c2986a2b76404d9bd}\label{libcncore_8h_addc430d879e3170c2986a2b76404d9bd} 
-\index{libcncore.h@{libcncore.h}!SET\_PARENT\_CLASS\_BUILD@{SET\_PARENT\_CLASS\_BUILD}}
-\index{SET\_PARENT\_CLASS\_BUILD@{SET\_PARENT\_CLASS\_BUILD}!libcncore.h@{libcncore.h}}
-\doxysubsubsection{\texorpdfstring{SET\_PARENT\_CLASS\_BUILD}{SET\_PARENT\_CLASS\_BUILD}}
-{\footnotesize\ttfamily \#define SET\+\_\+\+PARENT\+\_\+\+CLASS\+\_\+\+BUILD(\begin{DoxyParamCaption}\item[{}]{\+\_\+\+\_\+class,  }\item[{}]{\+\_\+\+\_\+parent }\end{DoxyParamCaption})}
+\Hypertarget{libcncore_8h_aacb48b8707ccf6f8f1688d1fe07fdb1f}\label{libcncore_8h_aacb48b8707ccf6f8f1688d1fe07fdb1f} 
+\index{libcncore.h@{libcncore.h}!PROPAGATE\_ERR@{PROPAGATE\_ERR}}
+\index{PROPAGATE\_ERR@{PROPAGATE\_ERR}!libcncore.h@{libcncore.h}}
+\doxysubsubsection{\texorpdfstring{PROPAGATE\_ERR}{PROPAGATE\_ERR}}
+{\footnotesize\ttfamily \#define PROPAGATE\+\_\+\+ERR(\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})~\mbox{\hyperlink{libcncore_8h_a9413c6d75fb1fd424e89c688f91168e8}{push\+\_\+error}}(\+\_\+\+\_\+\+FILE\+\_\+\+\_\+, \+\_\+\+\_\+func\+\_\+\+\_\+, \+\_\+\+\_\+\+LINE\+\_\+\+\_\+);}
+
+\Hypertarget{libcncore_8h_a05cdd8afe24b6621f8d797b0d90e52e0}\label{libcncore_8h_a05cdd8afe24b6621f8d797b0d90e52e0} 
+\index{libcncore.h@{libcncore.h}!RAISE@{RAISE}}
+\index{RAISE@{RAISE}!libcncore.h@{libcncore.h}}
+\doxysubsubsection{\texorpdfstring{RAISE}{RAISE}}
+{\footnotesize\ttfamily \#define RAISE(\begin{DoxyParamCaption}\item[{}]{c,  }\item[{}]{msg }\end{DoxyParamCaption})~\mbox{\hyperlink{libcncore_8h_ae7ec79b1a1af9d72038404621a3d382c}{raise\+\_\+error}}(c, msg, \+\_\+\+\_\+\+FILE\+\_\+\+\_\+, \+\_\+\+\_\+func\+\_\+\+\_\+, \+\_\+\+\_\+\+LINE\+\_\+\+\_\+);}
+
+\Hypertarget{libcncore_8h_a4508e1f26d6b30fb7c91cd825445f813}\label{libcncore_8h_a4508e1f26d6b30fb7c91cd825445f813} 
+\index{libcncore.h@{libcncore.h}!RAISE\_FMT@{RAISE\_FMT}}
+\index{RAISE\_FMT@{RAISE\_FMT}!libcncore.h@{libcncore.h}}
+\doxysubsubsection{\texorpdfstring{RAISE\_FMT}{RAISE\_FMT}}
+{\footnotesize\ttfamily \#define RAISE\+\_\+\+FMT(\begin{DoxyParamCaption}\item[{}]{c,  }\item[{}]{... }\end{DoxyParamCaption})~\mbox{\hyperlink{libcncore_8h_a30691fc149592cae6cafb76a8653750a}{raise\+\_\+error\+\_\+fmt}}(c, \+\_\+\+\_\+\+FILE\+\_\+\+\_\+, \+\_\+\+\_\+func\+\_\+\+\_\+, \+\_\+\+\_\+\+LINE\+\_\+\+\_\+, \+\_\+\+\_\+\+VA\+\_\+\+ARGS\+\_\+\+\_\+);}
+
+\Hypertarget{libcncore_8h_a998ce36655dc98ae88b1c5790dabc3fa}\label{libcncore_8h_a998ce36655dc98ae88b1c5790dabc3fa} 
+\index{libcncore.h@{libcncore.h}!SET\_PARENT\_CLASS\_BUILD\_STATIC@{SET\_PARENT\_CLASS\_BUILD\_STATIC}}
+\index{SET\_PARENT\_CLASS\_BUILD\_STATIC@{SET\_PARENT\_CLASS\_BUILD\_STATIC}!libcncore.h@{libcncore.h}}
+\doxysubsubsection{\texorpdfstring{SET\_PARENT\_CLASS\_BUILD\_STATIC}{SET\_PARENT\_CLASS\_BUILD\_STATIC}}
+{\footnotesize\ttfamily \#define SET\+\_\+\+PARENT\+\_\+\+CLASS\+\_\+\+BUILD\+\_\+\+STATIC(\begin{DoxyParamCaption}\item[{}]{\+\_\+\+\_\+class,  }\item[{}]{\+\_\+\+\_\+parent }\end{DoxyParamCaption})}
 
 {\bfseries Value\+:}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \_\_class-\/>base\ =\ \_\_parent;\ \(\backslash\)}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ if\ (!\_\_class-\/>base)\ \{\ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ (void)\mbox{\hyperlink{libcncore_8h_a3c17e388301ab678d57d1e4c0f1d3214}{delete\_object}}(\_\_class);\ \(\backslash\)}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ return\ (NULL);\ \(\backslash\)}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
@@ -680,6 +855,12 @@ void \mbox{\hyperlink{libcncore_8h_a0ca1b4902be942746aa3c76f41333d81}{end\+\_\+c
 \index{cntime@{cntime}!libcncore.h@{libcncore.h}}
 \doxysubsubsection{\texorpdfstring{cntime}{cntime}}
 {\footnotesize\ttfamily typedef uint64\+\_\+t \mbox{\hyperlink{libcncore_8h_ad8ed72626025da9fbaff30ec74a71d40}{cntime}}}
+
+\Hypertarget{libcncore_8h_aea43bea4736df25649243404d5905567}\label{libcncore_8h_aea43bea4736df25649243404d5905567} 
+\index{libcncore.h@{libcncore.h}!expr\_free@{expr\_free}}
+\index{expr\_free@{expr\_free}!libcncore.h@{libcncore.h}}
+\doxysubsubsection{\texorpdfstring{expr\_free}{expr\_free}}
+{\footnotesize\ttfamily typedef void(\texorpdfstring{$\ast$}{*} expr\+\_\+free) (void \texorpdfstring{$\ast$}{*}obj)}
 
 \Hypertarget{libcncore_8h_ad722eab6934bb74865a45785b0004439}\label{libcncore_8h_ad722eab6934bb74865a45785b0004439} 
 \index{libcncore.h@{libcncore.h}!OBJAttrib@{OBJAttrib}}
@@ -777,6 +958,54 @@ CN\+\_\+\+TYPE\+\_\+\+FUNCTION&\\
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{CN\_TYPE\_GENERIC\_UNIQ\_PTR@{CN\_TYPE\_GENERIC\_UNIQ\_PTR}!libcncore.h@{libcncore.h}}\index{libcncore.h@{libcncore.h}!CN\_TYPE\_GENERIC\_UNIQ\_PTR@{CN\_TYPE\_GENERIC\_UNIQ\_PTR}}}\Hypertarget{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a1e435bbdb30939823b6e4682ec24da6b}\label{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a1e435bbdb30939823b6e4682ec24da6b} 
 CN\+\_\+\+TYPE\+\_\+\+GENERIC\+\_\+\+UNIQ\+\_\+\+PTR&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05f}\label{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05f} 
+\index{libcncore.h@{libcncore.h}!ErrorCode@{ErrorCode}}
+\index{ErrorCode@{ErrorCode}!libcncore.h@{libcncore.h}}
+\doxysubsubsection{\texorpdfstring{ErrorCode}{ErrorCode}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05f}{Error\+Code}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ERR\_OK@{ERR\_OK}!libcncore.h@{libcncore.h}}\index{libcncore.h@{libcncore.h}!ERR\_OK@{ERR\_OK}}}\Hypertarget{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05faa26c163b80b1f6786ca81dadc14b00fb}\label{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05faa26c163b80b1f6786ca81dadc14b00fb} 
+ERR\+\_\+\+OK&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ERR\_OUT\_OF\_MEMORY@{ERR\_OUT\_OF\_MEMORY}!libcncore.h@{libcncore.h}}\index{libcncore.h@{libcncore.h}!ERR\_OUT\_OF\_MEMORY@{ERR\_OUT\_OF\_MEMORY}}}\Hypertarget{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05fa077f6961ef44934823d048c00b535cad}\label{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05fa077f6961ef44934823d048c00b535cad} 
+ERR\+\_\+\+OUT\+\_\+\+OF\+\_\+\+MEMORY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ERR\_INVALID\_POINTER@{ERR\_INVALID\_POINTER}!libcncore.h@{libcncore.h}}\index{libcncore.h@{libcncore.h}!ERR\_INVALID\_POINTER@{ERR\_INVALID\_POINTER}}}\Hypertarget{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05fa17e7e6cc9748cdc813324f5d1c73512a}\label{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05fa17e7e6cc9748cdc813324f5d1c73512a} 
+ERR\+\_\+\+INVALID\+\_\+\+POINTER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ERR\_OS@{ERR\_OS}!libcncore.h@{libcncore.h}}\index{libcncore.h@{libcncore.h}!ERR\_OS@{ERR\_OS}}}\Hypertarget{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05fa9bde5e5e1ba1c8fc57920389deda0d1c}\label{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05fa9bde5e5e1ba1c8fc57920389deda0d1c} 
+ERR\+\_\+\+OS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ERR\_OUT\_OF\_BOUND@{ERR\_OUT\_OF\_BOUND}!libcncore.h@{libcncore.h}}\index{libcncore.h@{libcncore.h}!ERR\_OUT\_OF\_BOUND@{ERR\_OUT\_OF\_BOUND}}}\Hypertarget{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05faef6d6abbe50345f4193bf1a8f6b78a47}\label{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05faef6d6abbe50345f4193bf1a8f6b78a47} 
+ERR\+\_\+\+OUT\+\_\+\+OF\+\_\+\+BOUND&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ERR\_INVALID\_TYPE@{ERR\_INVALID\_TYPE}!libcncore.h@{libcncore.h}}\index{libcncore.h@{libcncore.h}!ERR\_INVALID\_TYPE@{ERR\_INVALID\_TYPE}}}\Hypertarget{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05fae00baeb1e4ac53698e23b4ca9db24ca1}\label{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05fae00baeb1e4ac53698e23b4ca9db24ca1} 
+ERR\+\_\+\+INVALID\+\_\+\+TYPE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ERR\_NOT\_COMPATIBLE@{ERR\_NOT\_COMPATIBLE}!libcncore.h@{libcncore.h}}\index{libcncore.h@{libcncore.h}!ERR\_NOT\_COMPATIBLE@{ERR\_NOT\_COMPATIBLE}}}\Hypertarget{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05fae209ef75ccd5df4111245d3bced9cc82}\label{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05fae209ef75ccd5df4111245d3bced9cc82} 
+ERR\+\_\+\+NOT\+\_\+\+COMPATIBLE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ERR\_RUNTIME@{ERR\_RUNTIME}!libcncore.h@{libcncore.h}}\index{libcncore.h@{libcncore.h}!ERR\_RUNTIME@{ERR\_RUNTIME}}}\Hypertarget{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05faea3255c81cbcc7ad0f0f85b1e360567e}\label{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05faea3255c81cbcc7ad0f0f85b1e360567e} 
+ERR\+\_\+\+RUNTIME&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ERR\_CORRUPT\_OR\_INVALID@{ERR\_CORRUPT\_OR\_INVALID}!libcncore.h@{libcncore.h}}\index{libcncore.h@{libcncore.h}!ERR\_CORRUPT\_OR\_INVALID@{ERR\_CORRUPT\_OR\_INVALID}}}\Hypertarget{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05faac5938045e4927dfed6702ea38dd313a}\label{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05faac5938045e4927dfed6702ea38dd313a} 
+ERR\+\_\+\+CORRUPT\+\_\+\+OR\+\_\+\+INVALID&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WAR\_IMPORTANT@{WAR\_IMPORTANT}!libcncore.h@{libcncore.h}}\index{libcncore.h@{libcncore.h}!WAR\_IMPORTANT@{WAR\_IMPORTANT}}}\Hypertarget{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05fa45f133a01a8fa04f91a8f3df129d5f04}\label{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05fa45f133a01a8fa04f91a8f3df129d5f04} 
+WAR\+\_\+\+IMPORTANT&\\
 \hline
 
 \end{DoxyEnumFields}
@@ -935,6 +1164,24 @@ this function is used to regulate the tick time/frame rate for main loops
 \begin{DoxyReturn}{Returns}
 time that passed between last tick and actual tick (aka\+: delta time) in ms 
 \end{DoxyReturn}
+\Hypertarget{libcncore_8h_a560d0428889e712b1e96a3f22518a110}\label{libcncore_8h_a560d0428889e712b1e96a3f22518a110} 
+\index{libcncore.h@{libcncore.h}!cnclose\_library@{cnclose\_library}}
+\index{cnclose\_library@{cnclose\_library}!libcncore.h@{libcncore.h}}
+\doxysubsubsection{\texorpdfstring{cnclose\_library()}{cnclose\_library()}}
+{\footnotesize\ttfamily void cnclose\+\_\+library (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{handle }\end{DoxyParamCaption})}
+
+\Hypertarget{libcncore_8h_a503d318d46f0b09944ef2762d803879f}\label{libcncore_8h_a503d318d46f0b09944ef2762d803879f} 
+\index{libcncore.h@{libcncore.h}!cnget\_symbol@{cnget\_symbol}}
+\index{cnget\_symbol@{cnget\_symbol}!libcncore.h@{libcncore.h}}
+\doxysubsubsection{\texorpdfstring{cnget\_symbol()}{cnget\_symbol()}}
+{\footnotesize\ttfamily void \texorpdfstring{$\ast$}{*} cnget\+\_\+symbol (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{handle,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{name }\end{DoxyParamCaption})}
+
+\Hypertarget{libcncore_8h_a8ebfe6aaa8a25680182095297f37431e}\label{libcncore_8h_a8ebfe6aaa8a25680182095297f37431e} 
+\index{libcncore.h@{libcncore.h}!cnopen\_library@{cnopen\_library}}
+\index{cnopen\_library@{cnopen\_library}!libcncore.h@{libcncore.h}}
+\doxysubsubsection{\texorpdfstring{cnopen\_library()}{cnopen\_library()}}
+{\footnotesize\ttfamily void \texorpdfstring{$\ast$}{*} cnopen\+\_\+library (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{path }\end{DoxyParamCaption})}
+
 \Hypertarget{libcncore_8h_a10a06d8ee21916088494a5ce0188e397}\label{libcncore_8h_a10a06d8ee21916088494a5ce0188e397} 
 \index{libcncore.h@{libcncore.h}!collect\_object@{collect\_object}}
 \index{collect\_object@{collect\_object}!libcncore.h@{libcncore.h}}
@@ -989,6 +1236,12 @@ this function is used to free an allocated clock created using new\+\_\+clock
 \doxysubsubsection{\texorpdfstring{delete\_generic\_vector()}{delete\_generic\_vector()}}
 {\footnotesize\ttfamily void delete\+\_\+generic\+\_\+vector (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structgeneric__vector__s}{generic\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{vec,  }\item[{void(\texorpdfstring{$\ast$}{*})(void \texorpdfstring{$\ast$}{*})}]{\+\_\+delete\+\_\+obj }\end{DoxyParamCaption})}
 
+\Hypertarget{libcncore_8h_ac0d8a2d05a7c95fe64ebf4962671f071}\label{libcncore_8h_ac0d8a2d05a7c95fe64ebf4962671f071} 
+\index{libcncore.h@{libcncore.h}!delete\_kv\_pair@{delete\_kv\_pair}}
+\index{delete\_kv\_pair@{delete\_kv\_pair}!libcncore.h@{libcncore.h}}
+\doxysubsubsection{\texorpdfstring{delete\_kv\_pair()}{delete\_kv\_pair()}}
+{\footnotesize\ttfamily void delete\+\_\+kv\+\_\+pair (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structgeneric__kv__pair__s}{generic\+\_\+kv\+\_\+pair\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{kvp }\end{DoxyParamCaption})}
+
 \Hypertarget{libcncore_8h_a3c17e388301ab678d57d1e4c0f1d3214}\label{libcncore_8h_a3c17e388301ab678d57d1e4c0f1d3214} 
 \index{libcncore.h@{libcncore.h}!delete\_object@{delete\_object}}
 \index{delete\_object@{delete\_object}!libcncore.h@{libcncore.h}}
@@ -1019,6 +1272,12 @@ this function is used to free an allocated clock created using new\+\_\+clock
 \doxysubsubsection{\texorpdfstring{delete\_rect()}{delete\_rect()}}
 {\footnotesize\ttfamily void delete\+\_\+rect (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_a44e2d24ab2a21b90d03880cab9cc6d16}{Rect}} \texorpdfstring{$\ast$}{*}}]{r }\end{DoxyParamCaption})}
 
+\Hypertarget{libcncore_8h_ad431b97f1c7ba2481216e10000af1ce5}\label{libcncore_8h_ad431b97f1c7ba2481216e10000af1ce5} 
+\index{libcncore.h@{libcncore.h}!delete\_str@{delete\_str}}
+\index{delete\_str@{delete\_str}!libcncore.h@{libcncore.h}}
+\doxysubsubsection{\texorpdfstring{delete\_str()}{delete\_str()}}
+{\footnotesize\ttfamily void delete\+\_\+str (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}}]{str }\end{DoxyParamCaption})}
+
 \Hypertarget{libcncore_8h_a864790e53dc247c7b3b636cce456b347}\label{libcncore_8h_a864790e53dc247c7b3b636cce456b347} 
 \index{libcncore.h@{libcncore.h}!delete\_value\_vector@{delete\_value\_vector}}
 \index{delete\_value\_vector@{delete\_value\_vector}!libcncore.h@{libcncore.h}}
@@ -1043,11 +1302,35 @@ this function is used to free an allocated clock created using new\+\_\+clock
 \doxysubsubsection{\texorpdfstring{delete\_weak\_object\_method\_pair()}{delete\_weak\_object\_method\_pair()}}
 {\footnotesize\ttfamily void delete\+\_\+weak\+\_\+object\+\_\+method\+\_\+pair (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structObjMethodPair}{Obj\+Method\+Pair}} \texorpdfstring{$\ast$}{*}}]{pair }\end{DoxyParamCaption})}
 
+\Hypertarget{libcncore_8h_a3bbf301ead18953b31f51ab8a5420539}\label{libcncore_8h_a3bbf301ead18953b31f51ab8a5420539} 
+\index{libcncore.h@{libcncore.h}!empty\_generic\_map@{empty\_generic\_map}}
+\index{empty\_generic\_map@{empty\_generic\_map}!libcncore.h@{libcncore.h}}
+\doxysubsubsection{\texorpdfstring{empty\_generic\_map()}{empty\_generic\_map()}}
+{\footnotesize\ttfamily void empty\+\_\+generic\+\_\+map (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structgeneric__map__s}{generic\+\_\+map\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{gen\+\_\+map,  }\item[{void(\texorpdfstring{$\ast$}{*})(void \texorpdfstring{$\ast$}{*})}]{\+\_\+delete\+\_\+obj }\end{DoxyParamCaption})}
+
+\Hypertarget{libcncore_8h_acc3435f4207c03ef74bfc6915e5a7419}\label{libcncore_8h_acc3435f4207c03ef74bfc6915e5a7419} 
+\index{libcncore.h@{libcncore.h}!empty\_generic\_vector@{empty\_generic\_vector}}
+\index{empty\_generic\_vector@{empty\_generic\_vector}!libcncore.h@{libcncore.h}}
+\doxysubsubsection{\texorpdfstring{empty\_generic\_vector()}{empty\_generic\_vector()}}
+{\footnotesize\ttfamily void empty\+\_\+generic\+\_\+vector (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structgeneric__vector__s}{generic\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{vec,  }\item[{void(\texorpdfstring{$\ast$}{*})(void \texorpdfstring{$\ast$}{*})}]{\+\_\+delete\+\_\+obj }\end{DoxyParamCaption})}
+
+\Hypertarget{libcncore_8h_ad1471363bc94f72b841a60f4ef358f15}\label{libcncore_8h_ad1471363bc94f72b841a60f4ef358f15} 
+\index{libcncore.h@{libcncore.h}!empty\_kv\_pair@{empty\_kv\_pair}}
+\index{empty\_kv\_pair@{empty\_kv\_pair}!libcncore.h@{libcncore.h}}
+\doxysubsubsection{\texorpdfstring{empty\_kv\_pair()}{empty\_kv\_pair()}}
+{\footnotesize\ttfamily void empty\+\_\+kv\+\_\+pair (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structgeneric__kv__pair__s}{generic\+\_\+kv\+\_\+pair\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{kvp }\end{DoxyParamCaption})}
+
 \Hypertarget{libcncore_8h_a0ca1b4902be942746aa3c76f41333d81}\label{libcncore_8h_a0ca1b4902be942746aa3c76f41333d81} 
 \index{libcncore.h@{libcncore.h}!end\_core@{end\_core}}
 \index{end\_core@{end\_core}!libcncore.h@{libcncore.h}}
 \doxysubsubsection{\texorpdfstring{end\_core()}{end\_core()}}
 {\footnotesize\ttfamily void end\+\_\+core (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{libcncore_8h_a7ebe9347c3fcd8d84dc7259bd2da0b73}\label{libcncore_8h_a7ebe9347c3fcd8d84dc7259bd2da0b73} 
+\index{libcncore.h@{libcncore.h}!error\_type\_to\_text@{error\_type\_to\_text}}
+\index{error\_type\_to\_text@{error\_type\_to\_text}!libcncore.h@{libcncore.h}}
+\doxysubsubsection{\texorpdfstring{error\_type\_to\_text()}{error\_type\_to\_text()}}
+{\footnotesize\ttfamily const char \texorpdfstring{$\ast$}{*} error\+\_\+type\+\_\+to\+\_\+text (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05f}{Error\+Code}}}]{c }\end{DoxyParamCaption})}
 
 \Hypertarget{libcncore_8h_a06035cfbfe854f2f97021a4d68b3ad24}\label{libcncore_8h_a06035cfbfe854f2f97021a4d68b3ad24} 
 \index{libcncore.h@{libcncore.h}!generic\_map\_resize@{generic\_map\_resize}}
@@ -1060,6 +1343,12 @@ this function is used to free an allocated clock created using new\+\_\+clock
 \index{get\_attr@{get\_attr}!libcncore.h@{libcncore.h}}
 \doxysubsubsection{\texorpdfstring{get\_attr()}{get\_attr()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \texorpdfstring{$\ast$}{*} get\+\_\+attr (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{object,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{name }\end{DoxyParamCaption})}
+
+\Hypertarget{libcncore_8h_ae531c6707ac8602f24e2e385f26faf00}\label{libcncore_8h_ae531c6707ac8602f24e2e385f26faf00} 
+\index{libcncore.h@{libcncore.h}!get\_error@{get\_error}}
+\index{get\_error@{get\_error}!libcncore.h@{libcncore.h}}
+\doxysubsubsection{\texorpdfstring{get\_error()}{get\_error()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{structErrorContext}{Error\+Context}} \texorpdfstring{$\ast$}{*} get\+\_\+error (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
 \Hypertarget{libcncore_8h_ab26db6ac7d749fea524232f6eb6b5526}\label{libcncore_8h_ab26db6ac7d749fea524232f6eb6b5526} 
 \index{libcncore.h@{libcncore.h}!get\_generic\_map@{get\_generic\_map}}
@@ -1085,11 +1374,35 @@ this function is used to free an allocated clock created using new\+\_\+clock
 \doxysubsubsection{\texorpdfstring{has\_attr()}{has\_attr()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} has\+\_\+attr (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{object,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{name }\end{DoxyParamCaption})}
 
+\Hypertarget{libcncore_8h_a8c72946e68c22ff628ec256b6e916778}\label{libcncore_8h_a8c72946e68c22ff628ec256b6e916778} 
+\index{libcncore.h@{libcncore.h}!has\_error@{has\_error}}
+\index{has\_error@{has\_error}!libcncore.h@{libcncore.h}}
+\doxysubsubsection{\texorpdfstring{has\_error()}{has\_error()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} has\+\_\+error (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{libcncore_8h_a25a0f9d41c95002d9c3a6b306b8368b0}\label{libcncore_8h_a25a0f9d41c95002d9c3a6b306b8368b0} 
+\index{libcncore.h@{libcncore.h}!has\_generic\_map@{has\_generic\_map}}
+\index{has\_generic\_map@{has\_generic\_map}!libcncore.h@{libcncore.h}}
+\doxysubsubsection{\texorpdfstring{has\_generic\_map()}{has\_generic\_map()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} has\+\_\+generic\+\_\+map (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structgeneric__map__s}{generic\+\_\+map\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{gen\+\_\+map,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{key }\end{DoxyParamCaption})}
+
 \Hypertarget{libcncore_8h_a279b2ab4efcad21dbfcb8a8ee92a9944}\label{libcncore_8h_a279b2ab4efcad21dbfcb8a8ee92a9944} 
 \index{libcncore.h@{libcncore.h}!has\_method@{has\_method}}
 \index{has\_method@{has\_method}!libcncore.h@{libcncore.h}}
 \doxysubsubsection{\texorpdfstring{has\_method()}{has\_method()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} has\+\_\+method (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{object,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{name }\end{DoxyParamCaption})}
+
+\Hypertarget{libcncore_8h_a31e02b77af95f9047a415de12004fb73}\label{libcncore_8h_a31e02b77af95f9047a415de12004fb73} 
+\index{libcncore.h@{libcncore.h}!init\_ckv\_pair@{init\_ckv\_pair}}
+\index{init\_ckv\_pair@{init\_ckv\_pair}!libcncore.h@{libcncore.h}}
+\doxysubsubsection{\texorpdfstring{init\_ckv\_pair()}{init\_ckv\_pair()}}
+{\footnotesize\ttfamily uint8\+\_\+t init\+\_\+ckv\+\_\+pair (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structgeneric__kv__pair__s}{generic\+\_\+kv\+\_\+pair\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{kvp,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{k,  }\item[{void \texorpdfstring{$\ast$}{*}}]{v,  }\item[{void(\texorpdfstring{$\ast$}{*})(void \texorpdfstring{$\ast$}{*})}]{v\+\_\+deletor }\end{DoxyParamCaption})}
+
+\Hypertarget{libcncore_8h_a4f8a289ef007dd4a4c9115be1434804f}\label{libcncore_8h_a4f8a289ef007dd4a4c9115be1434804f} 
+\index{libcncore.h@{libcncore.h}!init\_kv\_pair@{init\_kv\_pair}}
+\index{init\_kv\_pair@{init\_kv\_pair}!libcncore.h@{libcncore.h}}
+\doxysubsubsection{\texorpdfstring{init\_kv\_pair()}{init\_kv\_pair()}}
+{\footnotesize\ttfamily uint8\+\_\+t init\+\_\+kv\+\_\+pair (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structgeneric__kv__pair__s}{generic\+\_\+kv\+\_\+pair\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{kvp,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{k,  }\item[{void \texorpdfstring{$\ast$}{*}}]{v,  }\item[{void(\texorpdfstring{$\ast$}{*})(void \texorpdfstring{$\ast$}{*})}]{v\+\_\+deletor }\end{DoxyParamCaption})}
 
 \Hypertarget{libcncore_8h_ae008741fa324696513f7f009a0db7d79}\label{libcncore_8h_ae008741fa324696513f7f009a0db7d79} 
 \index{libcncore.h@{libcncore.h}!insert\_generic\_vector@{insert\_generic\_vector}}
@@ -1139,6 +1452,12 @@ this function is used to free an allocated clock created using new\+\_\+clock
 \doxysubsubsection{\texorpdfstring{new\_atlas()}{new\_atlas()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*} new\+\_\+atlas (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}(\texorpdfstring{$\ast$}{*})(const char \texorpdfstring{$\ast$}{*})}]{\+\_\+fetch\+\_\+default,  }\item[{void(\texorpdfstring{$\ast$}{*})(void \texorpdfstring{$\ast$}{*})}]{\+\_\+delete\+\_\+obj }\end{DoxyParamCaption})}
 
+\Hypertarget{libcncore_8h_a71886aad153400fc83c355781b880418}\label{libcncore_8h_a71886aad153400fc83c355781b880418} 
+\index{libcncore.h@{libcncore.h}!new\_ckv\_pair@{new\_ckv\_pair}}
+\index{new\_ckv\_pair@{new\_ckv\_pair}!libcncore.h@{libcncore.h}}
+\doxysubsubsection{\texorpdfstring{new\_ckv\_pair()}{new\_ckv\_pair()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structgeneric__kv__pair__s}{generic\+\_\+kv\+\_\+pair\+\_\+s}} \texorpdfstring{$\ast$}{*} new\+\_\+ckv\+\_\+pair (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{k,  }\item[{void \texorpdfstring{$\ast$}{*}}]{v,  }\item[{void(\texorpdfstring{$\ast$}{*})(void \texorpdfstring{$\ast$}{*})}]{v\+\_\+deletor }\end{DoxyParamCaption})}
+
 \Hypertarget{libcncore_8h_ad2174767fae55bd52b02a7ada46523c3}\label{libcncore_8h_ad2174767fae55bd52b02a7ada46523c3} 
 \index{libcncore.h@{libcncore.h}!new\_clock@{new\_clock}}
 \index{new\_clock@{new\_clock}!libcncore.h@{libcncore.h}}
@@ -1173,11 +1492,17 @@ a pointer to a new clock that you must free yourself
 \doxysubsubsection{\texorpdfstring{new\_generic\_vector()}{new\_generic\_vector()}}
 {\footnotesize\ttfamily struct \mbox{\hyperlink{structgeneric__vector__s}{generic\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*} new\+\_\+generic\+\_\+vector (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
-\Hypertarget{libcncore_8h_a486551e1421a45e929b941c4f6bb565f}\label{libcncore_8h_a486551e1421a45e929b941c4f6bb565f} 
+\Hypertarget{libcncore_8h_acf66147976bea370ef4ee967dbd3b703}\label{libcncore_8h_acf66147976bea370ef4ee967dbd3b703} 
+\index{libcncore.h@{libcncore.h}!new\_kv\_pair@{new\_kv\_pair}}
+\index{new\_kv\_pair@{new\_kv\_pair}!libcncore.h@{libcncore.h}}
+\doxysubsubsection{\texorpdfstring{new\_kv\_pair()}{new\_kv\_pair()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structgeneric__kv__pair__s}{generic\+\_\+kv\+\_\+pair\+\_\+s}} \texorpdfstring{$\ast$}{*} new\+\_\+kv\+\_\+pair (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{k,  }\item[{void \texorpdfstring{$\ast$}{*}}]{v,  }\item[{void(\texorpdfstring{$\ast$}{*})(void \texorpdfstring{$\ast$}{*})}]{v\+\_\+deletor }\end{DoxyParamCaption})}
+
+\Hypertarget{libcncore_8h_a535b4ecd2551f928adf9793fc44cc8f0}\label{libcncore_8h_a535b4ecd2551f928adf9793fc44cc8f0} 
 \index{libcncore.h@{libcncore.h}!new\_list@{new\_list}}
 \index{new\_list@{new\_list}!libcncore.h@{libcncore.h}}
 \doxysubsubsection{\texorpdfstring{new\_list()}{new\_list()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*} new\+\_\+list (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*} new\+\_\+list (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*})(void \texorpdfstring{$\ast$}{*})}]{\+\_\+delete\+\_\+obj }\end{DoxyParamCaption})}
 
 \Hypertarget{libcncore_8h_acd4e13f593de029b541fbd1cdeae553b}\label{libcncore_8h_acd4e13f593de029b541fbd1cdeae553b} 
 \index{libcncore.h@{libcncore.h}!new\_object@{new\_object}}
@@ -1215,6 +1540,18 @@ a pointer to a new clock that you must free yourself
 \doxysubsubsection{\texorpdfstring{new\_scene\_object()}{new\_scene\_object()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*} new\+\_\+scene\+\_\+object (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
+\Hypertarget{libcncore_8h_abab5c4e59c24b551c4eec243deb711e2}\label{libcncore_8h_abab5c4e59c24b551c4eec243deb711e2} 
+\index{libcncore.h@{libcncore.h}!new\_str@{new\_str}}
+\index{new\_str@{new\_str}!libcncore.h@{libcncore.h}}
+\doxysubsubsection{\texorpdfstring{new\_str()}{new\_str()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*} new\+\_\+str (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{c\+\_\+str }\end{DoxyParamCaption})}
+
+\Hypertarget{libcncore_8h_a803cdc38853737b120ae8bc090de11de}\label{libcncore_8h_a803cdc38853737b120ae8bc090de11de} 
+\index{libcncore.h@{libcncore.h}!new\_str\_from\_const@{new\_str\_from\_const}}
+\index{new\_str\_from\_const@{new\_str\_from\_const}!libcncore.h@{libcncore.h}}
+\doxysubsubsection{\texorpdfstring{new\_str\_from\_const()}{new\_str\_from\_const()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*} new\+\_\+str\+\_\+from\+\_\+const (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{c\+\_\+str }\end{DoxyParamCaption})}
+
 \Hypertarget{libcncore_8h_a6c7eb24b355f7f5e37ede66c67710dcd}\label{libcncore_8h_a6c7eb24b355f7f5e37ede66c67710dcd} 
 \index{libcncore.h@{libcncore.h}!new\_value\_vector@{new\_value\_vector}}
 \index{new\_value\_vector@{new\_value\_vector}!libcncore.h@{libcncore.h}}
@@ -1239,11 +1576,35 @@ a pointer to a new clock that you must free yourself
 \doxysubsubsection{\texorpdfstring{new\_weak\_object\_method\_pair()}{new\_weak\_object\_method\_pair()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structObjMethodPair}{Obj\+Method\+Pair}} \texorpdfstring{$\ast$}{*} new\+\_\+weak\+\_\+object\+\_\+method\+\_\+pair (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{obj,  }\item[{\mbox{\hyperlink{libcncore_8h_a45176b455e70053cf81874c72e0aa5fe}{cn\+\_\+method}}}]{method }\end{DoxyParamCaption})}
 
+\Hypertarget{libcncore_8h_a36094f0d4f4772933f6f982cee8ee737}\label{libcncore_8h_a36094f0d4f4772933f6f982cee8ee737} 
+\index{libcncore.h@{libcncore.h}!print\_error@{print\_error}}
+\index{print\_error@{print\_error}!libcncore.h@{libcncore.h}}
+\doxysubsubsection{\texorpdfstring{print\_error()}{print\_error()}}
+{\footnotesize\ttfamily void print\+\_\+error (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structErrorContext}{Error\+Context}} \texorpdfstring{$\ast$}{*}}]{err,  }\item[{FILE \texorpdfstring{$\ast$}{*}}]{output }\end{DoxyParamCaption})}
+
 \Hypertarget{libcncore_8h_af37f3d6b332840c4b7f60353de54657e}\label{libcncore_8h_af37f3d6b332840c4b7f60353de54657e} 
 \index{libcncore.h@{libcncore.h}!print\_object@{print\_object}}
 \index{print\_object@{print\_object}!libcncore.h@{libcncore.h}}
 \doxysubsubsection{\texorpdfstring{print\_object()}{print\_object()}}
 {\footnotesize\ttfamily void print\+\_\+object (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{object }\end{DoxyParamCaption})}
+
+\Hypertarget{libcncore_8h_a9413c6d75fb1fd424e89c688f91168e8}\label{libcncore_8h_a9413c6d75fb1fd424e89c688f91168e8} 
+\index{libcncore.h@{libcncore.h}!push\_error@{push\_error}}
+\index{push\_error@{push\_error}!libcncore.h@{libcncore.h}}
+\doxysubsubsection{\texorpdfstring{push\_error()}{push\_error()}}
+{\footnotesize\ttfamily void push\+\_\+error (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{file,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{function,  }\item[{uint32\+\_\+t}]{line }\end{DoxyParamCaption})}
+
+\Hypertarget{libcncore_8h_ae7ec79b1a1af9d72038404621a3d382c}\label{libcncore_8h_ae7ec79b1a1af9d72038404621a3d382c} 
+\index{libcncore.h@{libcncore.h}!raise\_error@{raise\_error}}
+\index{raise\_error@{raise\_error}!libcncore.h@{libcncore.h}}
+\doxysubsubsection{\texorpdfstring{raise\_error()}{raise\_error()}}
+{\footnotesize\ttfamily void raise\+\_\+error (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05f}{Error\+Code}}}]{c,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{message,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{file,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{function,  }\item[{uint32\+\_\+t}]{line }\end{DoxyParamCaption})}
+
+\Hypertarget{libcncore_8h_a30691fc149592cae6cafb76a8653750a}\label{libcncore_8h_a30691fc149592cae6cafb76a8653750a} 
+\index{libcncore.h@{libcncore.h}!raise\_error\_fmt@{raise\_error\_fmt}}
+\index{raise\_error\_fmt@{raise\_error\_fmt}!libcncore.h@{libcncore.h}}
+\doxysubsubsection{\texorpdfstring{raise\_error\_fmt()}{raise\_error\_fmt()}}
+{\footnotesize\ttfamily void raise\+\_\+error\+\_\+fmt (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05f}{Error\+Code}}}]{c,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{file,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{function,  }\item[{uint32\+\_\+t}]{line,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{fmt,  }\item[{}]{... }\end{DoxyParamCaption})}
 
 \Hypertarget{libcncore_8h_ac611a10be70eebc6d8f696c409dce697}\label{libcncore_8h_ac611a10be70eebc6d8f696c409dce697} 
 \index{libcncore.h@{libcncore.h}!release\_object@{release\_object}}
@@ -1340,6 +1701,36 @@ a pointer to a new clock that you must free yourself
 \index{start\_core@{start\_core}!libcncore.h@{libcncore.h}}
 \doxysubsubsection{\texorpdfstring{start\_core()}{start\_core()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} start\+\_\+core (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{libcncore_8h_acdca66b249758c104f3e4f1cafc1222e}\label{libcncore_8h_acdca66b249758c104f3e4f1cafc1222e} 
+\index{libcncore.h@{libcncore.h}!str\_is\_empty@{str\_is\_empty}}
+\index{str\_is\_empty@{str\_is\_empty}!libcncore.h@{libcncore.h}}
+\doxysubsubsection{\texorpdfstring{str\_is\_empty()}{str\_is\_empty()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} str\+\_\+is\+\_\+empty (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}}]{str }\end{DoxyParamCaption})}
+
+\Hypertarget{libcncore_8h_a6b412ec840cbd7b25480af8644b0cfe5}\label{libcncore_8h_a6b412ec840cbd7b25480af8644b0cfe5} 
+\index{libcncore.h@{libcncore.h}!str\_is\_null@{str\_is\_null}}
+\index{str\_is\_null@{str\_is\_null}!libcncore.h@{libcncore.h}}
+\doxysubsubsection{\texorpdfstring{str\_is\_null()}{str\_is\_null()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} str\+\_\+is\+\_\+null (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}}]{str }\end{DoxyParamCaption})}
+
+\Hypertarget{libcncore_8h_acf84274f83df450656404aac7ba4f8ae}\label{libcncore_8h_acf84274f83df450656404aac7ba4f8ae} 
+\index{libcncore.h@{libcncore.h}!str\_override@{str\_override}}
+\index{str\_override@{str\_override}!libcncore.h@{libcncore.h}}
+\doxysubsubsection{\texorpdfstring{str\_override()}{str\_override()}}
+{\footnotesize\ttfamily void str\+\_\+override (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}}]{str,  }\item[{char \texorpdfstring{$\ast$}{*}}]{c\+\_\+str }\end{DoxyParamCaption})}
+
+\Hypertarget{libcncore_8h_a639732e7c95d71daef692601b350b16e}\label{libcncore_8h_a639732e7c95d71daef692601b350b16e} 
+\index{libcncore.h@{libcncore.h}!str\_rcadd\_cp@{str\_rcadd\_cp}}
+\index{str\_rcadd\_cp@{str\_rcadd\_cp}!libcncore.h@{libcncore.h}}
+\doxysubsubsection{\texorpdfstring{str\_rcadd\_cp()}{str\_rcadd\_cp()}}
+{\footnotesize\ttfamily uint8\+\_\+t str\+\_\+rcadd\+\_\+cp (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}}]{str,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{c\+\_\+str }\end{DoxyParamCaption})}
+
+\Hypertarget{libcncore_8h_a5329b1771083af3811b79c2ddb54c86d}\label{libcncore_8h_a5329b1771083af3811b79c2ddb54c86d} 
+\index{libcncore.h@{libcncore.h}!str\_rcadd\_mv@{str\_rcadd\_mv}}
+\index{str\_rcadd\_mv@{str\_rcadd\_mv}!libcncore.h@{libcncore.h}}
+\doxysubsubsection{\texorpdfstring{str\_rcadd\_mv()}{str\_rcadd\_mv()}}
+{\footnotesize\ttfamily uint8\+\_\+t str\+\_\+rcadd\+\_\+mv (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}}]{str,  }\item[{char \texorpdfstring{$\ast$}{*}}]{c\+\_\+str }\end{DoxyParamCaption})}
 
 \Hypertarget{libcncore_8h_a379caad25b78a71ea0e20e15ec2b7dd8}\label{libcncore_8h_a379caad25b78a71ea0e20e15ec2b7dd8} 
 \index{libcncore.h@{libcncore.h}!submodule\_ctx@{submodule\_ctx}}

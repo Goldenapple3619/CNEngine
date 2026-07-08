@@ -1,0 +1,65 @@
+\doxysection{src/cnbuild/project\+\_\+toolchain/generation/library\+\_\+compiler.c File Reference}
+\hypertarget{library__compiler_8c}{}\label{library__compiler_8c}\index{src/cnbuild/project\_toolchain/generation/library\_compiler.c@{src/cnbuild/project\_toolchain/generation/library\_compiler.c}}
+{\ttfamily \#include "{}../project\+\_\+toolchain.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structLibraryCompiler}{Library\+Compiler}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{library__compiler_8c_a8b99de070861ab7254d24201f99d6703}{new\+\_\+library\+\_\+compiler}} (const char \texorpdfstring{$\ast$}{*}libname, const char \texorpdfstring{$\ast$}{*}toolchain, const char \texorpdfstring{$\ast$}{*}build\+\_\+path)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{library__compiler_8c_ae20179ac245d63ad403e48a77d867314}{library\+\_\+compiler\+\_\+add\+\_\+src}} (\mbox{\hyperlink{structLibraryCompiler}{Library\+Compiler}} \texorpdfstring{$\ast$}{*}compiler, const char \texorpdfstring{$\ast$}{*}srcname)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{library__compiler_8c_a78db579348f5b8d6f5fedb5e9f737b85}{library\+\_\+compiler\+\_\+set\+\_\+include\+\_\+path}} (\mbox{\hyperlink{structLibraryCompiler}{Library\+Compiler}} \texorpdfstring{$\ast$}{*}compiler, const char \texorpdfstring{$\ast$}{*}include\+\_\+path)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{library__compiler_8c_a4cc906a55a487a9ad9de8d30d073b2c5}{library\+\_\+compiler\+\_\+build\+\_\+objects}} (\mbox{\hyperlink{structLibraryCompiler}{Library\+Compiler}} \texorpdfstring{$\ast$}{*}compiler)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{library__compiler_8c_a717376311e9ada337bae3a58b3f96524}{library\+\_\+compiler\+\_\+build\+\_\+dynlib}} (\mbox{\hyperlink{structLibraryCompiler}{Library\+Compiler}} \texorpdfstring{$\ast$}{*}compiler)
+\item 
+void \mbox{\hyperlink{library__compiler_8c_ade51a26b37d41bf811c82a7365164b6a}{delete\+\_\+library\+\_\+compiler}} (\mbox{\hyperlink{structLibraryCompiler}{Library\+Compiler}} \texorpdfstring{$\ast$}{*}compiler)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{library__compiler_8c_ae644faafeeefe23e1ace53c1180ee885}{compile\+\_\+library}} (const \mbox{\hyperlink{structCNProject}{CNProject}} \texorpdfstring{$\ast$}{*}project, const \mbox{\hyperlink{structCNBuild}{CNBuild}} \texorpdfstring{$\ast$}{*}build\+\_\+info, const char \texorpdfstring{$\ast$}{*}output\+\_\+path, const char \texorpdfstring{$\ast$}{*}build\+\_\+path, const char \texorpdfstring{$\ast$}{*}include\+\_\+path)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{library__compiler_8c_ae644faafeeefe23e1ace53c1180ee885}\label{library__compiler_8c_ae644faafeeefe23e1ace53c1180ee885} 
+\index{library\_compiler.c@{library\_compiler.c}!compile\_library@{compile\_library}}
+\index{compile\_library@{compile\_library}!library\_compiler.c@{library\_compiler.c}}
+\doxysubsubsection{\texorpdfstring{compile\_library()}{compile\_library()}}
+{\footnotesize\ttfamily uint8\+\_\+t compile\+\_\+library (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structCNProject}{CNProject}} \texorpdfstring{$\ast$}{*}}]{project,  }\item[{const \mbox{\hyperlink{structCNBuild}{CNBuild}} \texorpdfstring{$\ast$}{*}}]{build\+\_\+info,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{output\+\_\+path,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{build\+\_\+path,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{include\+\_\+path }\end{DoxyParamCaption})}
+
+\Hypertarget{library__compiler_8c_ade51a26b37d41bf811c82a7365164b6a}\label{library__compiler_8c_ade51a26b37d41bf811c82a7365164b6a} 
+\index{library\_compiler.c@{library\_compiler.c}!delete\_library\_compiler@{delete\_library\_compiler}}
+\index{delete\_library\_compiler@{delete\_library\_compiler}!library\_compiler.c@{library\_compiler.c}}
+\doxysubsubsection{\texorpdfstring{delete\_library\_compiler()}{delete\_library\_compiler()}}
+{\footnotesize\ttfamily void delete\+\_\+library\+\_\+compiler (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLibraryCompiler}{Library\+Compiler}} \texorpdfstring{$\ast$}{*}}]{compiler }\end{DoxyParamCaption})}
+
+\Hypertarget{library__compiler_8c_ae20179ac245d63ad403e48a77d867314}\label{library__compiler_8c_ae20179ac245d63ad403e48a77d867314} 
+\index{library\_compiler.c@{library\_compiler.c}!library\_compiler\_add\_src@{library\_compiler\_add\_src}}
+\index{library\_compiler\_add\_src@{library\_compiler\_add\_src}!library\_compiler.c@{library\_compiler.c}}
+\doxysubsubsection{\texorpdfstring{library\_compiler\_add\_src()}{library\_compiler\_add\_src()}}
+{\footnotesize\ttfamily uint8\+\_\+t library\+\_\+compiler\+\_\+add\+\_\+src (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLibraryCompiler}{Library\+Compiler}} \texorpdfstring{$\ast$}{*}}]{compiler,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{srcname }\end{DoxyParamCaption})}
+
+\Hypertarget{library__compiler_8c_a717376311e9ada337bae3a58b3f96524}\label{library__compiler_8c_a717376311e9ada337bae3a58b3f96524} 
+\index{library\_compiler.c@{library\_compiler.c}!library\_compiler\_build\_dynlib@{library\_compiler\_build\_dynlib}}
+\index{library\_compiler\_build\_dynlib@{library\_compiler\_build\_dynlib}!library\_compiler.c@{library\_compiler.c}}
+\doxysubsubsection{\texorpdfstring{library\_compiler\_build\_dynlib()}{library\_compiler\_build\_dynlib()}}
+{\footnotesize\ttfamily uint8\+\_\+t library\+\_\+compiler\+\_\+build\+\_\+dynlib (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLibraryCompiler}{Library\+Compiler}} \texorpdfstring{$\ast$}{*}}]{compiler }\end{DoxyParamCaption})}
+
+\Hypertarget{library__compiler_8c_a4cc906a55a487a9ad9de8d30d073b2c5}\label{library__compiler_8c_a4cc906a55a487a9ad9de8d30d073b2c5} 
+\index{library\_compiler.c@{library\_compiler.c}!library\_compiler\_build\_objects@{library\_compiler\_build\_objects}}
+\index{library\_compiler\_build\_objects@{library\_compiler\_build\_objects}!library\_compiler.c@{library\_compiler.c}}
+\doxysubsubsection{\texorpdfstring{library\_compiler\_build\_objects()}{library\_compiler\_build\_objects()}}
+{\footnotesize\ttfamily uint8\+\_\+t library\+\_\+compiler\+\_\+build\+\_\+objects (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLibraryCompiler}{Library\+Compiler}} \texorpdfstring{$\ast$}{*}}]{compiler }\end{DoxyParamCaption})}
+
+\Hypertarget{library__compiler_8c_a78db579348f5b8d6f5fedb5e9f737b85}\label{library__compiler_8c_a78db579348f5b8d6f5fedb5e9f737b85} 
+\index{library\_compiler.c@{library\_compiler.c}!library\_compiler\_set\_include\_path@{library\_compiler\_set\_include\_path}}
+\index{library\_compiler\_set\_include\_path@{library\_compiler\_set\_include\_path}!library\_compiler.c@{library\_compiler.c}}
+\doxysubsubsection{\texorpdfstring{library\_compiler\_set\_include\_path()}{library\_compiler\_set\_include\_path()}}
+{\footnotesize\ttfamily uint8\+\_\+t library\+\_\+compiler\+\_\+set\+\_\+include\+\_\+path (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLibraryCompiler}{Library\+Compiler}} \texorpdfstring{$\ast$}{*}}]{compiler,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{include\+\_\+path }\end{DoxyParamCaption})}
+
+\Hypertarget{library__compiler_8c_a8b99de070861ab7254d24201f99d6703}\label{library__compiler_8c_a8b99de070861ab7254d24201f99d6703} 
+\index{library\_compiler.c@{library\_compiler.c}!new\_library\_compiler@{new\_library\_compiler}}
+\index{new\_library\_compiler@{new\_library\_compiler}!library\_compiler.c@{library\_compiler.c}}
+\doxysubsubsection{\texorpdfstring{new\_library\_compiler()}{new\_library\_compiler()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structLibraryCompiler}{Library\+Compiler}} \texorpdfstring{$\ast$}{*} new\+\_\+library\+\_\+compiler (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{libname,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{toolchain,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{build\+\_\+path }\end{DoxyParamCaption})}
+

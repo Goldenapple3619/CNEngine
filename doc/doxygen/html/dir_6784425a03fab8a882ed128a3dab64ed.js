@@ -5,5 +5,5 @@ var dir_6784425a03fab8a882ed128a3dab64ed =
     [ "gui_object.c", "gui__object_8c.html", "gui__object_8c" ],
     [ "gui_submodule_ctx.c", "gui__submodule__ctx_8c.html", "gui__submodule__ctx_8c" ],
     [ "guiboard.c", "guiboard_8c.html", "guiboard_8c" ],
-    [ "text.c", "text_8c.html", "text_8c" ]
+    [ "text.c", "lib_2rgui_2src_2text_8c.html", "lib_2rgui_2src_2text_8c" ]
 ];

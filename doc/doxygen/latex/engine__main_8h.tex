@@ -1,0 +1,68 @@
+\doxysection{assets/generator/engine\+\_\+main.h File Reference}
+\hypertarget{engine__main_8h}{}\label{engine__main_8h}\index{assets/generator/engine\_main.h@{assets/generator/engine\_main.h}}
+{\ttfamily \#include "{}libcncore.\+h"{}}\newline
+{\ttfamily \#include $<$signal.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{engine__main_8h_a56b6ebaf371875dd9cafa1a2405d1a21}{template}}(\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}})~;
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{engine__main_8h_a226a099351f7447457181b1233d2722a}{FEEDBACK\+\_\+\+STATUS\+\_\+\+TYPE}} \{ \mbox{\hyperlink{engine__main_8h_a226a099351f7447457181b1233d2722aa81740363b0b2e1af31a7c7930ad7613e}{FDS\+\_\+\+NONE}}
+, \mbox{\hyperlink{engine__main_8h_a226a099351f7447457181b1233d2722aa7ffda9c0820035dd1daec00c6c7f1594}{FDS\+\_\+\+INFO}}
+, \mbox{\hyperlink{engine__main_8h_a226a099351f7447457181b1233d2722aaa2f9cc963e6ef3ba494d664686602255}{FDS\+\_\+\+WARNING}}
+, \mbox{\hyperlink{engine__main_8h_a226a099351f7447457181b1233d2722aa5d0a7799b83fc4b17c7a186e69ab7a17}{FDS\+\_\+\+ERROR}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{engine__main_8h_a6f7b23397e810a78b010dacff5c3b877}{load\+\_\+submodules}} (\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}ctx)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{engine__main_8h_a56b6ebaf371875dd9cafa1a2405d1a21}\label{engine__main_8h_a56b6ebaf371875dd9cafa1a2405d1a21} 
+\index{engine\_main.h@{engine\_main.h}!template@{template}}
+\index{template@{template}!engine\_main.h@{engine\_main.h}}
+\doxysubsubsection{\texorpdfstring{template}{template}}
+{\footnotesize\ttfamily \#define template(\begin{DoxyParamCaption}\item[{}]{\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}} }\end{DoxyParamCaption})~;}
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{engine__main_8h_a226a099351f7447457181b1233d2722a}\label{engine__main_8h_a226a099351f7447457181b1233d2722a} 
+\index{engine\_main.h@{engine\_main.h}!FEEDBACK\_STATUS\_TYPE@{FEEDBACK\_STATUS\_TYPE}}
+\index{FEEDBACK\_STATUS\_TYPE@{FEEDBACK\_STATUS\_TYPE}!engine\_main.h@{engine\_main.h}}
+\doxysubsubsection{\texorpdfstring{FEEDBACK\_STATUS\_TYPE}{FEEDBACK\_STATUS\_TYPE}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{engine__main_8h_a226a099351f7447457181b1233d2722a}{FEEDBACK\+\_\+\+STATUS\+\_\+\+TYPE}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FDS\_NONE@{FDS\_NONE}!engine\_main.h@{engine\_main.h}}\index{engine\_main.h@{engine\_main.h}!FDS\_NONE@{FDS\_NONE}}}\Hypertarget{engine__main_8h_a226a099351f7447457181b1233d2722aa81740363b0b2e1af31a7c7930ad7613e}\label{engine__main_8h_a226a099351f7447457181b1233d2722aa81740363b0b2e1af31a7c7930ad7613e} 
+FDS\+\_\+\+NONE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FDS\_INFO@{FDS\_INFO}!engine\_main.h@{engine\_main.h}}\index{engine\_main.h@{engine\_main.h}!FDS\_INFO@{FDS\_INFO}}}\Hypertarget{engine__main_8h_a226a099351f7447457181b1233d2722aa7ffda9c0820035dd1daec00c6c7f1594}\label{engine__main_8h_a226a099351f7447457181b1233d2722aa7ffda9c0820035dd1daec00c6c7f1594} 
+FDS\+\_\+\+INFO&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FDS\_WARNING@{FDS\_WARNING}!engine\_main.h@{engine\_main.h}}\index{engine\_main.h@{engine\_main.h}!FDS\_WARNING@{FDS\_WARNING}}}\Hypertarget{engine__main_8h_a226a099351f7447457181b1233d2722aaa2f9cc963e6ef3ba494d664686602255}\label{engine__main_8h_a226a099351f7447457181b1233d2722aaa2f9cc963e6ef3ba494d664686602255} 
+FDS\+\_\+\+WARNING&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FDS\_ERROR@{FDS\_ERROR}!engine\_main.h@{engine\_main.h}}\index{engine\_main.h@{engine\_main.h}!FDS\_ERROR@{FDS\_ERROR}}}\Hypertarget{engine__main_8h_a226a099351f7447457181b1233d2722aa5d0a7799b83fc4b17c7a186e69ab7a17}\label{engine__main_8h_a226a099351f7447457181b1233d2722aa5d0a7799b83fc4b17c7a186e69ab7a17} 
+FDS\+\_\+\+ERROR&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{engine__main_8h_a6f7b23397e810a78b010dacff5c3b877}\label{engine__main_8h_a6f7b23397e810a78b010dacff5c3b877} 
+\index{engine\_main.h@{engine\_main.h}!load\_submodules@{load\_submodules}}
+\index{load\_submodules@{load\_submodules}!engine\_main.h@{engine\_main.h}}
+\doxysubsubsection{\texorpdfstring{load\_submodules()}{load\_submodules()}}
+{\footnotesize\ttfamily uint8\+\_\+t load\+\_\+submodules (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{ctx }\end{DoxyParamCaption})}
+

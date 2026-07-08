@@ -1,0 +1,35 @@
+\doxysection{cnguiobj.\+h}
+\hypertarget{cnguiobj_8h_source}{}\label{cnguiobj_8h_source}\index{lib/formats/cnguiobj/include/cnguiobj.h@{lib/formats/cnguiobj/include/cnguiobj.h}}
+\mbox{\hyperlink{cnguiobj_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_CNGUIOBJ\_H\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\ \ \ \ \#define\ \_CNGUIOBJ\_H\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{libcnassets_8h}{libcnassets.h}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{cnguiobj_8h_aec9beff68e3c4bea862fb8c350b05c64}{asset\_name}}[]\ =\ \textcolor{stringliteral}{"{}gui"{}};}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgui__element__s}{gui\_element\_s}}\ \{}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structgui__element__s_a2e06dc6c01fca71e6fe3f42f3955ebd8}{id}};}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structgui__element__s_ad3b7331783aa47ebac2146ed3d3810a4}{object\_type}};}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structgui__element__s_aefc91a6120bdabb00392f0c0d881d831}{text\_content}};}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \textcolor{keyword}{union\ }\{}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgui__element__s}{gui\_element\_s}}\ *\mbox{\hyperlink{structgui__element__s_abe593c427385eb12df5dce8ed705cef5}{\_o}};}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structgui__element__s_a740f9b124a0f5ac6135bd3923084f7c9}{\_n}};}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \}\ \mbox{\hyperlink{structgui__element__s_a006bf9940b84585682b891f821192111}{parent}};}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgeneric__map__s}{generic\_map\_s}}\ \mbox{\hyperlink{structgui__element__s_a77ee68615e2d816ef215fa8308bd4e73}{styles}};}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgeneric__vector__s}{generic\_vector\_s}}\ \mbox{\hyperlink{structgui__element__s_ad1939893f88d31eff91eb982ce923f36}{connectors}};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{structgui__element__s_a1ca120477006fcd5a7bc80301b5225a2}{parent\_loaded}};}
+\DoxyCodeLine{00022\ \ \ \ \ \};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structasset__registry}{asset\_registry}}\ *\mbox{\hyperlink{cnguiobj_8h_ad919e3c09d781aea58681203f26c7f5c}{register\_asset}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{cnguiobj_8h_aab170e9f19d739ae994db5afde5aeec5}{unregister\_asset}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structasset__registry}{asset\_registry}}\ *registered\_asset);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{cnguiobj_8h_a621b0464c4aba9fd10d9459175a83083}{init\_node\_section\_registry}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structsection__registry}{section\_registry}}\ *reg);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

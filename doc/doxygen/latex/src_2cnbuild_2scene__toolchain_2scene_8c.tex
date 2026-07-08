@@ -1,0 +1,57 @@
+\doxysection{src/cnbuild/scene\+\_\+toolchain/scene.c File Reference}
+\hypertarget{src_2cnbuild_2scene__toolchain_2scene_8c}{}\label{src_2cnbuild_2scene__toolchain_2scene_8c}\index{src/cnbuild/scene\_toolchain/scene.c@{src/cnbuild/scene\_toolchain/scene.c}}
+{\ttfamily \#include "{}scene\+\_\+toolchain.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{src_2cnbuild_2scene__toolchain_2scene_8c_a0cadd9c214959f2546a3b257b2764092}{delete\+\_\+parsed\+\_\+scene}} (struct \mbox{\hyperlink{structscene__element__s}{scene\+\_\+element\+\_\+s}} \texorpdfstring{$\ast$}{*}parsed\+\_\+object)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{src_2cnbuild_2scene__toolchain_2scene_8c_a9e70d21d3fe990607d69107f1f295d2f}{fill\+\_\+scene\+\_\+element}} (xml\+Node \texorpdfstring{$\ast$}{*}node, struct \mbox{\hyperlink{structscene__element__s}{scene\+\_\+element\+\_\+s}} \texorpdfstring{$\ast$}{*}element)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{src_2cnbuild_2scene__toolchain_2scene_8c_acd528a89ddca9334877f068c4c93d7e1}{build\+\_\+element\+\_\+attribs}} (xml\+Node \texorpdfstring{$\ast$}{*}node, struct \mbox{\hyperlink{structscene__element__s}{scene\+\_\+element\+\_\+s}} \texorpdfstring{$\ast$}{*}element)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{src_2cnbuild_2scene__toolchain_2scene_8c_ae63d15cb011984129adf8712e9e460d6}{build\+\_\+scene\+\_\+element}} (xml\+Node \texorpdfstring{$\ast$}{*}node, struct \mbox{\hyperlink{structgeneric__vector__s}{generic\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}parsed\+\_\+data, struct \mbox{\hyperlink{structscene__element__s}{scene\+\_\+element\+\_\+s}} \texorpdfstring{$\ast$}{*}parent)
+\item 
+struct \mbox{\hyperlink{structgeneric__vector__s}{generic\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{src_2cnbuild_2scene__toolchain_2scene_8c_a0a8c0b4a2107ecd70ec701205f4fe795}{parse\+\_\+xml\+\_\+scene}} (const char \texorpdfstring{$\ast$}{*}file\+\_\+path, struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}wctx)
+\item 
+struct \mbox{\hyperlink{structgeneric__vector__s}{generic\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{src_2cnbuild_2scene__toolchain_2scene_8c_abdcd5345fac7b77c2c9f0b3d85d7217e}{parse\+\_\+scene}} (const char \texorpdfstring{$\ast$}{*}file\+\_\+path, struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}wctx, \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}asset\+\_\+ctx)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{src_2cnbuild_2scene__toolchain_2scene_8c_acd528a89ddca9334877f068c4c93d7e1}\label{src_2cnbuild_2scene__toolchain_2scene_8c_acd528a89ddca9334877f068c4c93d7e1} 
+\index{scene.c@{scene.c}!build\_element\_attribs@{build\_element\_attribs}}
+\index{build\_element\_attribs@{build\_element\_attribs}!scene.c@{scene.c}}
+\doxysubsubsection{\texorpdfstring{build\_element\_attribs()}{build\_element\_attribs()}}
+{\footnotesize\ttfamily uint8\+\_\+t build\+\_\+element\+\_\+attribs (\begin{DoxyParamCaption}\item[{xml\+Node \texorpdfstring{$\ast$}{*}}]{node,  }\item[{struct \mbox{\hyperlink{structscene__element__s}{scene\+\_\+element\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{element }\end{DoxyParamCaption})}
+
+\Hypertarget{src_2cnbuild_2scene__toolchain_2scene_8c_ae63d15cb011984129adf8712e9e460d6}\label{src_2cnbuild_2scene__toolchain_2scene_8c_ae63d15cb011984129adf8712e9e460d6} 
+\index{scene.c@{scene.c}!build\_scene\_element@{build\_scene\_element}}
+\index{build\_scene\_element@{build\_scene\_element}!scene.c@{scene.c}}
+\doxysubsubsection{\texorpdfstring{build\_scene\_element()}{build\_scene\_element()}}
+{\footnotesize\ttfamily uint8\+\_\+t build\+\_\+scene\+\_\+element (\begin{DoxyParamCaption}\item[{xml\+Node \texorpdfstring{$\ast$}{*}}]{node,  }\item[{struct \mbox{\hyperlink{structgeneric__vector__s}{generic\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{parsed\+\_\+data,  }\item[{struct \mbox{\hyperlink{structscene__element__s}{scene\+\_\+element\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{parent }\end{DoxyParamCaption})}
+
+\Hypertarget{src_2cnbuild_2scene__toolchain_2scene_8c_a0cadd9c214959f2546a3b257b2764092}\label{src_2cnbuild_2scene__toolchain_2scene_8c_a0cadd9c214959f2546a3b257b2764092} 
+\index{scene.c@{scene.c}!delete\_parsed\_scene@{delete\_parsed\_scene}}
+\index{delete\_parsed\_scene@{delete\_parsed\_scene}!scene.c@{scene.c}}
+\doxysubsubsection{\texorpdfstring{delete\_parsed\_scene()}{delete\_parsed\_scene()}}
+{\footnotesize\ttfamily void delete\+\_\+parsed\+\_\+scene (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structscene__element__s}{scene\+\_\+element\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{parsed\+\_\+object }\end{DoxyParamCaption})}
+
+\Hypertarget{src_2cnbuild_2scene__toolchain_2scene_8c_a9e70d21d3fe990607d69107f1f295d2f}\label{src_2cnbuild_2scene__toolchain_2scene_8c_a9e70d21d3fe990607d69107f1f295d2f} 
+\index{scene.c@{scene.c}!fill\_scene\_element@{fill\_scene\_element}}
+\index{fill\_scene\_element@{fill\_scene\_element}!scene.c@{scene.c}}
+\doxysubsubsection{\texorpdfstring{fill\_scene\_element()}{fill\_scene\_element()}}
+{\footnotesize\ttfamily uint8\+\_\+t fill\+\_\+scene\+\_\+element (\begin{DoxyParamCaption}\item[{xml\+Node \texorpdfstring{$\ast$}{*}}]{node,  }\item[{struct \mbox{\hyperlink{structscene__element__s}{scene\+\_\+element\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{element }\end{DoxyParamCaption})}
+
+\Hypertarget{src_2cnbuild_2scene__toolchain_2scene_8c_abdcd5345fac7b77c2c9f0b3d85d7217e}\label{src_2cnbuild_2scene__toolchain_2scene_8c_abdcd5345fac7b77c2c9f0b3d85d7217e} 
+\index{scene.c@{scene.c}!parse\_scene@{parse\_scene}}
+\index{parse\_scene@{parse\_scene}!scene.c@{scene.c}}
+\doxysubsubsection{\texorpdfstring{parse\_scene()}{parse\_scene()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structgeneric__vector__s}{generic\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*} parse\+\_\+scene (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{file\+\_\+path,  }\item[{struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{wctx,  }\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{asset\+\_\+ctx }\end{DoxyParamCaption})}
+
+\Hypertarget{src_2cnbuild_2scene__toolchain_2scene_8c_a0a8c0b4a2107ecd70ec701205f4fe795}\label{src_2cnbuild_2scene__toolchain_2scene_8c_a0a8c0b4a2107ecd70ec701205f4fe795} 
+\index{scene.c@{scene.c}!parse\_xml\_scene@{parse\_xml\_scene}}
+\index{parse\_xml\_scene@{parse\_xml\_scene}!scene.c@{scene.c}}
+\doxysubsubsection{\texorpdfstring{parse\_xml\_scene()}{parse\_xml\_scene()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structgeneric__vector__s}{generic\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*} parse\+\_\+xml\+\_\+scene (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{file\+\_\+path,  }\item[{struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{wctx }\end{DoxyParamCaption})}
+

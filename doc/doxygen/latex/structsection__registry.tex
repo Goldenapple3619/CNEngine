@@ -1,0 +1,57 @@
+\doxysection{section\+\_\+registry Struct Reference}
+\hypertarget{structsection__registry}{}\label{structsection__registry}\index{section\_registry@{section\_registry}}
+
+
+{\ttfamily \#include $<$libcnassets.\+h$>$}
+
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structsection__registry_ae3b2a5095c33e9b2c68ec46660fbc21c}{name}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{structsection__registry_a76ec80b38501f32baeee56a82b1d96e8}{section\+\_\+type}}
+\item 
+char \texorpdfstring{$\ast$}{*}(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structsection__registry_a223d54dbcf251cfbe4af622e495c5636}{data\+\_\+builder}} )(struct \mbox{\hyperlink{structengine__object__file__section__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+section\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}self, const struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}wctx, struct \mbox{\hyperlink{structgeneric__map__s}{generic\+\_\+map\+\_\+s}} \texorpdfstring{$\ast$}{*}strndx)
+\item 
+uint64\+\_\+t(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structsection__registry_a28d7ab695bef7f5e65dbdfa77b95c106}{size\+\_\+compute}} )(struct \mbox{\hyperlink{structengine__object__file__section__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+section\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}self)
+\item 
+char \texorpdfstring{$\ast$}{*}(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structsection__registry_ab0773ba25213c33ac978db803cd03a91}{strndx\+\_\+reconstructor}} )(char \texorpdfstring{$\ast$}{*}rw\+\_\+content, uint64\+\_\+t content\+\_\+size, const \mbox{\hyperlink{structCNAssetReader}{CNAsset\+Reader}} \texorpdfstring{$\ast$}{*}reader, struct \mbox{\hyperlink{structgeneric__map__s}{generic\+\_\+map\+\_\+s}} \texorpdfstring{$\ast$}{*}new\+\_\+strndx)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Field Documentation}
+\Hypertarget{structsection__registry_a223d54dbcf251cfbe4af622e495c5636}\label{structsection__registry_a223d54dbcf251cfbe4af622e495c5636} 
+\index{section\_registry@{section\_registry}!data\_builder@{data\_builder}}
+\index{data\_builder@{data\_builder}!section\_registry@{section\_registry}}
+\doxysubsubsection{\texorpdfstring{data\_builder}{data\_builder}}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*}(\texorpdfstring{$\ast$}{*} section\+\_\+registry\+::data\+\_\+builder) (struct \mbox{\hyperlink{structengine__object__file__section__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+section\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}self, const struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}wctx, struct \mbox{\hyperlink{structgeneric__map__s}{generic\+\_\+map\+\_\+s}} \texorpdfstring{$\ast$}{*}strndx)}
+
+\Hypertarget{structsection__registry_ae3b2a5095c33e9b2c68ec46660fbc21c}\label{structsection__registry_ae3b2a5095c33e9b2c68ec46660fbc21c} 
+\index{section\_registry@{section\_registry}!name@{name}}
+\index{name@{name}!section\_registry@{section\_registry}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily const char\texorpdfstring{$\ast$}{*} section\+\_\+registry\+::name}
+
+\Hypertarget{structsection__registry_a76ec80b38501f32baeee56a82b1d96e8}\label{structsection__registry_a76ec80b38501f32baeee56a82b1d96e8} 
+\index{section\_registry@{section\_registry}!section\_type@{section\_type}}
+\index{section\_type@{section\_type}!section\_registry@{section\_registry}}
+\doxysubsubsection{\texorpdfstring{section\_type}{section\_type}}
+{\footnotesize\ttfamily uint16\+\_\+t section\+\_\+registry\+::section\+\_\+type}
+
+\Hypertarget{structsection__registry_a28d7ab695bef7f5e65dbdfa77b95c106}\label{structsection__registry_a28d7ab695bef7f5e65dbdfa77b95c106} 
+\index{section\_registry@{section\_registry}!size\_compute@{size\_compute}}
+\index{size\_compute@{size\_compute}!section\_registry@{section\_registry}}
+\doxysubsubsection{\texorpdfstring{size\_compute}{size\_compute}}
+{\footnotesize\ttfamily uint64\+\_\+t(\texorpdfstring{$\ast$}{*} section\+\_\+registry\+::size\+\_\+compute) (struct \mbox{\hyperlink{structengine__object__file__section__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+section\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}self)}
+
+\Hypertarget{structsection__registry_ab0773ba25213c33ac978db803cd03a91}\label{structsection__registry_ab0773ba25213c33ac978db803cd03a91} 
+\index{section\_registry@{section\_registry}!strndx\_reconstructor@{strndx\_reconstructor}}
+\index{strndx\_reconstructor@{strndx\_reconstructor}!section\_registry@{section\_registry}}
+\doxysubsubsection{\texorpdfstring{strndx\_reconstructor}{strndx\_reconstructor}}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*}(\texorpdfstring{$\ast$}{*} section\+\_\+registry\+::strndx\+\_\+reconstructor) (char \texorpdfstring{$\ast$}{*}rw\+\_\+content, uint64\+\_\+t content\+\_\+size, const \mbox{\hyperlink{structCNAssetReader}{CNAsset\+Reader}} \texorpdfstring{$\ast$}{*}reader, struct \mbox{\hyperlink{structgeneric__map__s}{generic\+\_\+map\+\_\+s}} \texorpdfstring{$\ast$}{*}new\+\_\+strndx)}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+lib/cnassets/include/\mbox{\hyperlink{libcnassets_8h}{libcnassets.\+h}}\end{DoxyCompactItemize}

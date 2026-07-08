@@ -12,37 +12,42 @@
 \DoxyCodeLine{00008\ }
 \DoxyCodeLine{00009\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}../engine.h"{}}}
 \DoxyCodeLine{00010\ }
-\DoxyCodeLine{00011\ }
-\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structbuild__args__s}{build\_args\_s}}\ \{}
-\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structbuild__args__s_a91fb902daa31036ce721448c2edd464e}{output\_file}};}
-\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgeneric__vector__s}{generic\_vector\_s}}\ \mbox{\hyperlink{structbuild__args__s_a82b7034f84e82e866f350e36dc7a6092}{input\_files}};}
-\DoxyCodeLine{00015\ }
-\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnassets_8h_a80aea36b56e30038a40d82b823efcf20}{engine\_wrt\_flags}}\ \mbox{\hyperlink{structbuild__args__s_ab3d260e440aaaa239f2e7e52a467c730}{padding}};}
-\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnassets_8h_ab1164f59055b40a6fea404d875315464}{engine\_wrt\_endian}}\ \mbox{\hyperlink{structbuild__args__s_a74092f39d638de90eb8d8faac5910ebb}{endian}};}
-\DoxyCodeLine{00018\ \ \ \ \ \};}
-\DoxyCodeLine{00019\ }
-\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structparsed__gui__element__data__s}{parsed\_gui\_element\_data\_s}}\ \{}
-\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structparsed__gui__element__data__s_a02b081dacc80f0f572149152f974676d}{id}};}
-\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structparsed__gui__element__data__s_afabbb8dd1229da2ceacc4cbef5c10c76}{object\_type}};}
-\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structparsed__gui__element__data__s_a36166e24fa2aa14cd66540accc4d161d}{text\_content}};}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structbuild__args__s}{build\_args\_s}}\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structbuild__args__s_a91fb902daa31036ce721448c2edd464e}{output\_file}};}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgeneric__vector__s}{generic\_vector\_s}}\ \mbox{\hyperlink{structbuild__args__s_a82b7034f84e82e866f350e36dc7a6092}{input\_files}};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnassets_8h_a80aea36b56e30038a40d82b823efcf20}{engine\_wrt\_flags}}\ \mbox{\hyperlink{structbuild__args__s_ab3d260e440aaaa239f2e7e52a467c730}{padding}};}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnassets_8h_ab1164f59055b40a6fea404d875315464}{engine\_wrt\_endian}}\ \mbox{\hyperlink{structbuild__args__s_a74092f39d638de90eb8d8faac5910ebb}{endian}};}
+\DoxyCodeLine{00017\ \ \ \ \ \};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{build_8h_a27ab48711bfa88b9fe49b025564abd19}{strip\_whitespace}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *str);}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{build_8h_a6e578177f221a35383e7d2a5dd0b83fa}{string\_from\_node}}(xmlNode\ *node);}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{build_8h_a651da7d62a2b42a6ef4db446ccceb21c}{build\_get\_args}}(\textcolor{keywordtype}{size\_t}\ argc,\ \textcolor{keywordtype}{char}\ **argv,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *toolchain,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structbuild__args__s}{build\_args\_s}}\ *args);}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{build_8h_a85972f2507e3f8ad72097fc4eba02dab}{reset\_args}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structbuild__args__s}{build\_args\_s}}\ *args);}
 \DoxyCodeLine{00024\ }
-\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structparsed__gui__element__data__s}{parsed\_gui\_element\_data\_s}}\ *\mbox{\hyperlink{structparsed__gui__element__data__s_ae0f42db9fac4407a3c01ffabf7981960}{parent}};}
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgeneric__map__s}{generic\_map\_s}}\ \mbox{\hyperlink{structparsed__gui__element__data__s_a89a2a555b2f8bb428e9ba89725f63e01}{styles}};}
-\DoxyCodeLine{00027\ \ \ \ \ \};}
-\DoxyCodeLine{00028\ }
-\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{build_8h_a7c0a4901634cd71315b384c4612b1d57}{build\_gui}}(\textcolor{keywordtype}{size\_t}\ argc,\ \textcolor{keywordtype}{char}\ **argv);}
-\DoxyCodeLine{00030\ }
-\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keyword}{struct\ }\{}
-\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}};}
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{engine_8h_a3f7bf39bb2c4a4841a227fe878595dbc}{route\_callback}}\ \mbox{\hyperlink{build_8h_a825191a40d9de85e5b0dc7f60c1e3cd3}{callback}};}
-\DoxyCodeLine{00034\ \ \ \ \ \}\ \mbox{\hyperlink{build_8h_aeab8ba315596f823ac80964c00c48f83}{build\_types}}[]\ =\ \{}
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}gui"{}},\ \&\mbox{\hyperlink{build_8h_a7c0a4901634cd71315b384c4612b1d57}{build\_gui}}\},}
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}obj"{}},\ NULL\},}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}scn"{}},\ NULL\},}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}proj"{}},\ NULL\},}
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \{NULL,\ NULL\}}
-\DoxyCodeLine{00040\ \ \ \ \ \};}
-\DoxyCodeLine{00041\ }
-\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{build_8h_a4827583d802b30fcfd5438a95b57de41}{build\_gui}}(\textcolor{keywordtype}{size\_t}\ argc,\ \textcolor{keywordtype}{char}\ **argv,\ \mbox{\hyperlink{structobject__s}{Object}}\ *asset\_ctx);}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{build_8h_a4f70dca845f25104d35a9f305b27c4e5}{build\_assets}}(\textcolor{keywordtype}{size\_t}\ argc,\ \textcolor{keywordtype}{char}\ **argv,\ \mbox{\hyperlink{structobject__s}{Object}}\ *asset\_ctx);}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{build_8h_a05df0e74f26ae861b604888d6f054de6}{build\_obj}}(\textcolor{keywordtype}{size\_t}\ argc,\ \textcolor{keywordtype}{char}\ **argv,\ \mbox{\hyperlink{structobject__s}{Object}}\ *asset\_ctx);}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{build_8h_a231e302cbb3148ea6aa34eab381d0d21}{build\_project}}(\textcolor{keywordtype}{size\_t}\ argc,\ \textcolor{keywordtype}{char}\ **argv,\ \mbox{\hyperlink{structobject__s}{Object}}\ *asset\_ctx);}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{build_8h_a848f8979c95049a4d57941b0de51c577}{build\_scene}}(\textcolor{keywordtype}{size\_t}\ argc,\ \textcolor{keywordtype}{char}\ **argv,\ \mbox{\hyperlink{structobject__s}{Object}}\ *asset\_ctx);}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{build_8h_a5ca0fed63c7518997505469d87912433}{build\_asset\_pack}}(\textcolor{keywordtype}{size\_t}\ argc,\ \textcolor{keywordtype}{char}\ **argv,\ \mbox{\hyperlink{structobject__s}{Object}}\ *asset\_ctx);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{typedef}\ int\ (*\mbox{\hyperlink{build_8h_a96b21e673f9e191a885a058eb30e5ab4}{route\_callback\_toolchain}})(size\_t,\ \textcolor{keywordtype}{char}\ **,\ \mbox{\hyperlink{structobject__s}{Object}}\ *);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}};}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{build_8h_a96b21e673f9e191a885a058eb30e5ab4}{route\_callback\_toolchain}}\ \mbox{\hyperlink{build_8h_a5ab5a233bdc6ad82f01015b39111c614}{callback}};}
+\DoxyCodeLine{00037\ \ \ \ \ \}\ \mbox{\hyperlink{build_8h_a4dca628f5f7d56189c2f88bab8d35518}{build\_types}}[]\ =\ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}gui"{}},\ \&\mbox{\hyperlink{build_8h_a4827583d802b30fcfd5438a95b57de41}{build\_gui}}\},}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}obj"{}},\ \&\mbox{\hyperlink{build_8h_a05df0e74f26ae861b604888d6f054de6}{build\_obj}}\},}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}scn"{}},\ \&\mbox{\hyperlink{build_8h_a848f8979c95049a4d57941b0de51c577}{build\_scene}}\},}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}proj"{}},\ \&\mbox{\hyperlink{build_8h_a231e302cbb3148ea6aa34eab381d0d21}{build\_project}}\},}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}asset"{}},\ \&\mbox{\hyperlink{build_8h_a4f70dca845f25104d35a9f305b27c4e5}{build\_assets}}\},}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}lnk"{}},\ \&\mbox{\hyperlink{build_8h_a5ca0fed63c7518997505469d87912433}{build\_asset\_pack}}\},}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \{NULL,\ NULL\}}
+\DoxyCodeLine{00045\ \ \ \ \ \};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

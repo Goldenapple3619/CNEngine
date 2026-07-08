@@ -4,8 +4,11 @@ var dir_b182329bb7f479432d5e3f8fb156c79c =
     [ "clock.c", "clock_8c.html", "clock_8c" ],
     [ "common.c", "cncore_2src_2common_8c.html", "cncore_2src_2common_8c" ],
     [ "core_ctx.c", "core__ctx_8c.html", "core__ctx_8c" ],
+    [ "error.c", "error_8c.html", "error_8c" ],
+    [ "generic_kv_pair.c", "generic__kv__pair_8c.html", "generic__kv__pair_8c" ],
     [ "generic_map.c", "generic__map_8c.html", "generic__map_8c" ],
     [ "generic_vector.c", "generic__vector_8c.html", "generic__vector_8c" ],
+    [ "library.c", "library_8c.html", "library_8c" ],
     [ "list.c", "list_8c.html", "list_8c" ],
     [ "object.c", "object_8c.html", "object_8c" ],
     [ "object_attributes.c", "object__attributes_8c.html", "object__attributes_8c" ],
@@ -16,8 +19,9 @@ var dir_b182329bb7f479432d5e3f8fb156c79c =
     [ "object_value_vector.c", "object__value__vector_8c.html", "object__value__vector_8c" ],
     [ "object_vector.c", "object__vector_8c.html", "object__vector_8c" ],
     [ "rect.c", "rect_8c.html", "rect_8c" ],
-    [ "scene.c", "scene_8c.html", "scene_8c" ],
+    [ "scene.c", "lib_2cncore_2src_2scene_8c.html", "lib_2cncore_2src_2scene_8c" ],
     [ "scene_object.c", "scene__object_8c.html", "scene__object_8c" ],
+    [ "string.c", "string_8c.html", "string_8c" ],
     [ "vector2.c", "vector2_8c.html", "vector2_8c" ],
     [ "vector3.c", "vector3_8c.html", "vector3_8c" ]
 ];

@@ -1,0 +1,105 @@
+\doxysection{src/cnbuild/project\+\_\+toolchain/route.c File Reference}
+\hypertarget{cnbuild_2project__toolchain_2route_8c}{}\label{cnbuild_2project__toolchain_2route_8c}\index{src/cnbuild/project\_toolchain/route.c@{src/cnbuild/project\_toolchain/route.c}}
+{\ttfamily \#include "{}project\+\_\+toolchain.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{cnbuild_2project__toolchain_2route_8c_a531b1bbf18e05fe3042a925866b5a27d}{init\+\_\+build\+\_\+path}} (const char \texorpdfstring{$\ast$}{*}project\+\_\+root)
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{cnbuild_2project__toolchain_2route_8c_a9001d95a4a2bf1e4e6a6eec11b59801b}{init\+\_\+dist\+\_\+path}} (const char \texorpdfstring{$\ast$}{*}output\+\_\+path)
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{cnbuild_2project__toolchain_2route_8c_ae5df6fca748e1b1b5d66f64407516444}{init\+\_\+subdist\+\_\+path}} (const char \texorpdfstring{$\ast$}{*}dist\+\_\+path, const char \texorpdfstring{$\ast$}{*}project\+\_\+name)
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{cnbuild_2project__toolchain_2route_8c_a09c3cf1af9e099a928a2fa81e22857ee}{init\+\_\+subbuild\+\_\+path}} (const char \texorpdfstring{$\ast$}{*}build\+\_\+path, const char \texorpdfstring{$\ast$}{*}project\+\_\+name)
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{cnbuild_2project__toolchain_2route_8c_ad4e1039ea85c04095b4a99b42d1b5ff0}{init\+\_\+subinclude\+\_\+path}} (const char \texorpdfstring{$\ast$}{*}build\+\_\+path, const char \texorpdfstring{$\ast$}{*}base\+\_\+include\+\_\+path, const \mbox{\hyperlink{structCNBuild}{CNBuild}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{cnbuild_2route_8c_acbae52c879a1243e0097c06aa9a3ad82}{build}})
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{cnbuild_2project__toolchain_2route_8c_ac7e247882423e8475133628502cd9cca}{extension\+\_\+from\+\_\+system}} (\mbox{\hyperlink{project__toolchain_8h_ac5748ac67111f38f1c1544fd88d28a93}{cnbuild\+\_\+system}} system)
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{cnbuild_2project__toolchain_2route_8c_a6d3413cb0409d611f27835c44416953a}{sysname\+\_\+from\+\_\+system}} (\mbox{\hyperlink{project__toolchain_8h_ac5748ac67111f38f1c1544fd88d28a93}{cnbuild\+\_\+system}} system)
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{cnbuild_2project__toolchain_2route_8c_a9ce224e76b4e83dbe2981f19d9e30611}{archname\+\_\+from\+\_\+arch}} (\mbox{\hyperlink{project__toolchain_8h_a46a8c72f40fa77645588f3b547443a16}{cnbuild\+\_\+architectures}} arch)
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{cnbuild_2project__toolchain_2route_8c_a49ee5150e09096c00aa2860985e184b4}{build\+\_\+name\+\_\+from\+\_\+cnbuild}} (const \mbox{\hyperlink{structCNBuild}{CNBuild}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{cnbuild_2route_8c_acbae52c879a1243e0097c06aa9a3ad82}{build}})
+\item 
+uint8\+\_\+t \mbox{\hyperlink{cnbuild_2project__toolchain_2route_8c_af143ca8581289f81d548bdca80d697be}{construct\+\_\+build}} (const \mbox{\hyperlink{structCNProject}{CNProject}} \texorpdfstring{$\ast$}{*}project, const \mbox{\hyperlink{structCNBuild}{CNBuild}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{cnbuild_2route_8c_acbae52c879a1243e0097c06aa9a3ad82}{build}}, const char \texorpdfstring{$\ast$}{*}build\+\_\+path, const char \texorpdfstring{$\ast$}{*}dist\+\_\+path)
+\item 
+\mbox{\hyperlink{structCNProject}{CNProject}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{cnbuild_2project__toolchain_2route_8c_a1b83c238f95b6f403abf213fce284171}{parse\+\_\+project}} (const char \texorpdfstring{$\ast$}{*}output\+\_\+path, const char \texorpdfstring{$\ast$}{*}file\+\_\+path, \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}asset\+\_\+ctx)
+\item 
+int \mbox{\hyperlink{cnbuild_2project__toolchain_2route_8c_a231e302cbb3148ea6aa34eab381d0d21}{build\+\_\+project}} (size\+\_\+t argc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv, \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}asset\+\_\+ctx)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{cnbuild_2project__toolchain_2route_8c_a9ce224e76b4e83dbe2981f19d9e30611}\label{cnbuild_2project__toolchain_2route_8c_a9ce224e76b4e83dbe2981f19d9e30611} 
+\index{route.c@{route.c}!archname\_from\_arch@{archname\_from\_arch}}
+\index{archname\_from\_arch@{archname\_from\_arch}!route.c@{route.c}}
+\doxysubsubsection{\texorpdfstring{archname\_from\_arch()}{archname\_from\_arch()}}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} archname\+\_\+from\+\_\+arch (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{project__toolchain_8h_a46a8c72f40fa77645588f3b547443a16}{cnbuild\+\_\+architectures}}}]{arch }\end{DoxyParamCaption})}
+
+\Hypertarget{cnbuild_2project__toolchain_2route_8c_a49ee5150e09096c00aa2860985e184b4}\label{cnbuild_2project__toolchain_2route_8c_a49ee5150e09096c00aa2860985e184b4} 
+\index{route.c@{route.c}!build\_name\_from\_cnbuild@{build\_name\_from\_cnbuild}}
+\index{build\_name\_from\_cnbuild@{build\_name\_from\_cnbuild}!route.c@{route.c}}
+\doxysubsubsection{\texorpdfstring{build\_name\_from\_cnbuild()}{build\_name\_from\_cnbuild()}}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} build\+\_\+name\+\_\+from\+\_\+cnbuild (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structCNBuild}{CNBuild}} \texorpdfstring{$\ast$}{*}}]{build }\end{DoxyParamCaption})}
+
+\Hypertarget{cnbuild_2project__toolchain_2route_8c_a231e302cbb3148ea6aa34eab381d0d21}\label{cnbuild_2project__toolchain_2route_8c_a231e302cbb3148ea6aa34eab381d0d21} 
+\index{route.c@{route.c}!build\_project@{build\_project}}
+\index{build\_project@{build\_project}!route.c@{route.c}}
+\doxysubsubsection{\texorpdfstring{build\_project()}{build\_project()}}
+{\footnotesize\ttfamily int build\+\_\+project (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv,  }\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{asset\+\_\+ctx }\end{DoxyParamCaption})}
+
+\Hypertarget{cnbuild_2project__toolchain_2route_8c_af143ca8581289f81d548bdca80d697be}\label{cnbuild_2project__toolchain_2route_8c_af143ca8581289f81d548bdca80d697be} 
+\index{route.c@{route.c}!construct\_build@{construct\_build}}
+\index{construct\_build@{construct\_build}!route.c@{route.c}}
+\doxysubsubsection{\texorpdfstring{construct\_build()}{construct\_build()}}
+{\footnotesize\ttfamily uint8\+\_\+t construct\+\_\+build (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structCNProject}{CNProject}} \texorpdfstring{$\ast$}{*}}]{project,  }\item[{const \mbox{\hyperlink{structCNBuild}{CNBuild}} \texorpdfstring{$\ast$}{*}}]{build,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{build\+\_\+path,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{dist\+\_\+path }\end{DoxyParamCaption})}
+
+\Hypertarget{cnbuild_2project__toolchain_2route_8c_ac7e247882423e8475133628502cd9cca}\label{cnbuild_2project__toolchain_2route_8c_ac7e247882423e8475133628502cd9cca} 
+\index{route.c@{route.c}!extension\_from\_system@{extension\_from\_system}}
+\index{extension\_from\_system@{extension\_from\_system}!route.c@{route.c}}
+\doxysubsubsection{\texorpdfstring{extension\_from\_system()}{extension\_from\_system()}}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} extension\+\_\+from\+\_\+system (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{project__toolchain_8h_ac5748ac67111f38f1c1544fd88d28a93}{cnbuild\+\_\+system}}}]{system }\end{DoxyParamCaption})}
+
+\Hypertarget{cnbuild_2project__toolchain_2route_8c_a531b1bbf18e05fe3042a925866b5a27d}\label{cnbuild_2project__toolchain_2route_8c_a531b1bbf18e05fe3042a925866b5a27d} 
+\index{route.c@{route.c}!init\_build\_path@{init\_build\_path}}
+\index{init\_build\_path@{init\_build\_path}!route.c@{route.c}}
+\doxysubsubsection{\texorpdfstring{init\_build\_path()}{init\_build\_path()}}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} init\+\_\+build\+\_\+path (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{project\+\_\+root }\end{DoxyParamCaption})}
+
+\Hypertarget{cnbuild_2project__toolchain_2route_8c_a9001d95a4a2bf1e4e6a6eec11b59801b}\label{cnbuild_2project__toolchain_2route_8c_a9001d95a4a2bf1e4e6a6eec11b59801b} 
+\index{route.c@{route.c}!init\_dist\_path@{init\_dist\_path}}
+\index{init\_dist\_path@{init\_dist\_path}!route.c@{route.c}}
+\doxysubsubsection{\texorpdfstring{init\_dist\_path()}{init\_dist\_path()}}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} init\+\_\+dist\+\_\+path (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{output\+\_\+path }\end{DoxyParamCaption})}
+
+\Hypertarget{cnbuild_2project__toolchain_2route_8c_a09c3cf1af9e099a928a2fa81e22857ee}\label{cnbuild_2project__toolchain_2route_8c_a09c3cf1af9e099a928a2fa81e22857ee} 
+\index{route.c@{route.c}!init\_subbuild\_path@{init\_subbuild\_path}}
+\index{init\_subbuild\_path@{init\_subbuild\_path}!route.c@{route.c}}
+\doxysubsubsection{\texorpdfstring{init\_subbuild\_path()}{init\_subbuild\_path()}}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} init\+\_\+subbuild\+\_\+path (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{build\+\_\+path,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{project\+\_\+name }\end{DoxyParamCaption})}
+
+\Hypertarget{cnbuild_2project__toolchain_2route_8c_ae5df6fca748e1b1b5d66f64407516444}\label{cnbuild_2project__toolchain_2route_8c_ae5df6fca748e1b1b5d66f64407516444} 
+\index{route.c@{route.c}!init\_subdist\_path@{init\_subdist\_path}}
+\index{init\_subdist\_path@{init\_subdist\_path}!route.c@{route.c}}
+\doxysubsubsection{\texorpdfstring{init\_subdist\_path()}{init\_subdist\_path()}}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} init\+\_\+subdist\+\_\+path (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{dist\+\_\+path,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{project\+\_\+name }\end{DoxyParamCaption})}
+
+\Hypertarget{cnbuild_2project__toolchain_2route_8c_ad4e1039ea85c04095b4a99b42d1b5ff0}\label{cnbuild_2project__toolchain_2route_8c_ad4e1039ea85c04095b4a99b42d1b5ff0} 
+\index{route.c@{route.c}!init\_subinclude\_path@{init\_subinclude\_path}}
+\index{init\_subinclude\_path@{init\_subinclude\_path}!route.c@{route.c}}
+\doxysubsubsection{\texorpdfstring{init\_subinclude\_path()}{init\_subinclude\_path()}}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} init\+\_\+subinclude\+\_\+path (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{build\+\_\+path,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{base\+\_\+include\+\_\+path,  }\item[{const \mbox{\hyperlink{structCNBuild}{CNBuild}} \texorpdfstring{$\ast$}{*}}]{build }\end{DoxyParamCaption})}
+
+\Hypertarget{cnbuild_2project__toolchain_2route_8c_a1b83c238f95b6f403abf213fce284171}\label{cnbuild_2project__toolchain_2route_8c_a1b83c238f95b6f403abf213fce284171} 
+\index{route.c@{route.c}!parse\_project@{parse\_project}}
+\index{parse\_project@{parse\_project}!route.c@{route.c}}
+\doxysubsubsection{\texorpdfstring{parse\_project()}{parse\_project()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structCNProject}{CNProject}} \texorpdfstring{$\ast$}{*} parse\+\_\+project (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{output\+\_\+path,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{file\+\_\+path,  }\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{asset\+\_\+ctx }\end{DoxyParamCaption})}
+
+\Hypertarget{cnbuild_2project__toolchain_2route_8c_a6d3413cb0409d611f27835c44416953a}\label{cnbuild_2project__toolchain_2route_8c_a6d3413cb0409d611f27835c44416953a} 
+\index{route.c@{route.c}!sysname\_from\_system@{sysname\_from\_system}}
+\index{sysname\_from\_system@{sysname\_from\_system}!route.c@{route.c}}
+\doxysubsubsection{\texorpdfstring{sysname\_from\_system()}{sysname\_from\_system()}}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} sysname\+\_\+from\+\_\+system (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{project__toolchain_8h_ac5748ac67111f38f1c1544fd88d28a93}{cnbuild\+\_\+system}}}]{system }\end{DoxyParamCaption})}
+

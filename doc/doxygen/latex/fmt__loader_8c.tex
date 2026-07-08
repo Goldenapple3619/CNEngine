@@ -1,0 +1,50 @@
+\doxysection{lib/cnassets/src/fmt\+\_\+loader.c File Reference}
+\hypertarget{fmt__loader_8c}{}\label{fmt__loader_8c}\index{lib/cnassets/src/fmt\_loader.c@{lib/cnassets/src/fmt\_loader.c}}
+{\ttfamily \#include "{}libcnassets.\+h"{}}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structasset__loader__s}{asset\+\_\+loader\+\_\+s}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{fmt__loader_8c_a5af848d75ca3ce2618d825d1cfcef071}{new\+\_\+asset\+\_\+loader}} (void)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{fmt__loader_8c_a0158b02fb49e49313250f4ed49ad9d1c}{asset\+\_\+loader\+\_\+init}} (struct \mbox{\hyperlink{structasset__loader__s}{asset\+\_\+loader\+\_\+s}} \texorpdfstring{$\ast$}{*}loader, const char \texorpdfstring{$\ast$}{*}path)
+\item 
+void \mbox{\hyperlink{fmt__loader_8c_a6e8fa8d19227a5623124886a119503e4}{asset\+\_\+loader\+\_\+uninit}} (struct \mbox{\hyperlink{structasset__loader__s}{asset\+\_\+loader\+\_\+s}} \texorpdfstring{$\ast$}{*}loader)
+\item 
+void \mbox{\hyperlink{fmt__loader_8c_aa9703080f2fb25bd3166f343a82b237a}{delete\+\_\+asset\+\_\+loader}} (struct \mbox{\hyperlink{structasset__loader__s}{asset\+\_\+loader\+\_\+s}} \texorpdfstring{$\ast$}{*}loader)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{fmt__loader_8c_a976c9e75a04f757767366522694cce85}{section\+\_\+registry\+\_\+to\+\_\+wctx\+\_\+section}} (const char \texorpdfstring{$\ast$}{*}section\+\_\+name, void \texorpdfstring{$\ast$}{*}content, struct \mbox{\hyperlink{structsection__registry}{section\+\_\+registry}} \texorpdfstring{$\ast$}{*}reg, struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}wctx)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{fmt__loader_8c_a0158b02fb49e49313250f4ed49ad9d1c}\label{fmt__loader_8c_a0158b02fb49e49313250f4ed49ad9d1c} 
+\index{fmt\_loader.c@{fmt\_loader.c}!asset\_loader\_init@{asset\_loader\_init}}
+\index{asset\_loader\_init@{asset\_loader\_init}!fmt\_loader.c@{fmt\_loader.c}}
+\doxysubsubsection{\texorpdfstring{asset\_loader\_init()}{asset\_loader\_init()}}
+{\footnotesize\ttfamily uint8\+\_\+t asset\+\_\+loader\+\_\+init (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structasset__loader__s}{asset\+\_\+loader\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{loader,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{path }\end{DoxyParamCaption})}
+
+\Hypertarget{fmt__loader_8c_a6e8fa8d19227a5623124886a119503e4}\label{fmt__loader_8c_a6e8fa8d19227a5623124886a119503e4} 
+\index{fmt\_loader.c@{fmt\_loader.c}!asset\_loader\_uninit@{asset\_loader\_uninit}}
+\index{asset\_loader\_uninit@{asset\_loader\_uninit}!fmt\_loader.c@{fmt\_loader.c}}
+\doxysubsubsection{\texorpdfstring{asset\_loader\_uninit()}{asset\_loader\_uninit()}}
+{\footnotesize\ttfamily void asset\+\_\+loader\+\_\+uninit (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structasset__loader__s}{asset\+\_\+loader\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{loader }\end{DoxyParamCaption})}
+
+\Hypertarget{fmt__loader_8c_aa9703080f2fb25bd3166f343a82b237a}\label{fmt__loader_8c_aa9703080f2fb25bd3166f343a82b237a} 
+\index{fmt\_loader.c@{fmt\_loader.c}!delete\_asset\_loader@{delete\_asset\_loader}}
+\index{delete\_asset\_loader@{delete\_asset\_loader}!fmt\_loader.c@{fmt\_loader.c}}
+\doxysubsubsection{\texorpdfstring{delete\_asset\_loader()}{delete\_asset\_loader()}}
+{\footnotesize\ttfamily void delete\+\_\+asset\+\_\+loader (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structasset__loader__s}{asset\+\_\+loader\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{loader }\end{DoxyParamCaption})}
+
+\Hypertarget{fmt__loader_8c_a5af848d75ca3ce2618d825d1cfcef071}\label{fmt__loader_8c_a5af848d75ca3ce2618d825d1cfcef071} 
+\index{fmt\_loader.c@{fmt\_loader.c}!new\_asset\_loader@{new\_asset\_loader}}
+\index{new\_asset\_loader@{new\_asset\_loader}!fmt\_loader.c@{fmt\_loader.c}}
+\doxysubsubsection{\texorpdfstring{new\_asset\_loader()}{new\_asset\_loader()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structasset__loader__s}{asset\+\_\+loader\+\_\+s}} \texorpdfstring{$\ast$}{*} new\+\_\+asset\+\_\+loader (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{fmt__loader_8c_a976c9e75a04f757767366522694cce85}\label{fmt__loader_8c_a976c9e75a04f757767366522694cce85} 
+\index{fmt\_loader.c@{fmt\_loader.c}!section\_registry\_to\_wctx\_section@{section\_registry\_to\_wctx\_section}}
+\index{section\_registry\_to\_wctx\_section@{section\_registry\_to\_wctx\_section}!fmt\_loader.c@{fmt\_loader.c}}
+\doxysubsubsection{\texorpdfstring{section\_registry\_to\_wctx\_section()}{section\_registry\_to\_wctx\_section()}}
+{\footnotesize\ttfamily uint8\+\_\+t section\+\_\+registry\+\_\+to\+\_\+wctx\+\_\+section (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{section\+\_\+name,  }\item[{void \texorpdfstring{$\ast$}{*}}]{content,  }\item[{struct \mbox{\hyperlink{structsection__registry}{section\+\_\+registry}} \texorpdfstring{$\ast$}{*}}]{reg,  }\item[{struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{wctx }\end{DoxyParamCaption})}
+

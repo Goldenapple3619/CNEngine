@@ -1,0 +1,57 @@
+\doxysection{lib/cncore/src/generic\+\_\+kv\+\_\+pair.c File Reference}
+\hypertarget{generic__kv__pair_8c}{}\label{generic__kv__pair_8c}\index{lib/cncore/src/generic\_kv\_pair.c@{lib/cncore/src/generic\_kv\_pair.c}}
+{\ttfamily \#include "{}libcncore.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structgeneric__kv__pair__s}{generic\+\_\+kv\+\_\+pair\+\_\+s}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{generic__kv__pair_8c_acf66147976bea370ef4ee967dbd3b703}{new\+\_\+kv\+\_\+pair}} (const char \texorpdfstring{$\ast$}{*}k, void \texorpdfstring{$\ast$}{*}v, void(\texorpdfstring{$\ast$}{*}v\+\_\+deletor)(void \texorpdfstring{$\ast$}{*}))
+\item 
+struct \mbox{\hyperlink{structgeneric__kv__pair__s}{generic\+\_\+kv\+\_\+pair\+\_\+s}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{generic__kv__pair_8c_a71886aad153400fc83c355781b880418}{new\+\_\+ckv\+\_\+pair}} (const char \texorpdfstring{$\ast$}{*}k, void \texorpdfstring{$\ast$}{*}v, void(\texorpdfstring{$\ast$}{*}v\+\_\+deletor)(void \texorpdfstring{$\ast$}{*}))
+\item 
+uint8\+\_\+t \mbox{\hyperlink{generic__kv__pair_8c_a4f8a289ef007dd4a4c9115be1434804f}{init\+\_\+kv\+\_\+pair}} (struct \mbox{\hyperlink{structgeneric__kv__pair__s}{generic\+\_\+kv\+\_\+pair\+\_\+s}} \texorpdfstring{$\ast$}{*}kvp, const char \texorpdfstring{$\ast$}{*}k, void \texorpdfstring{$\ast$}{*}v, void(\texorpdfstring{$\ast$}{*}v\+\_\+deletor)(void \texorpdfstring{$\ast$}{*}))
+\item 
+uint8\+\_\+t \mbox{\hyperlink{generic__kv__pair_8c_a31e02b77af95f9047a415de12004fb73}{init\+\_\+ckv\+\_\+pair}} (struct \mbox{\hyperlink{structgeneric__kv__pair__s}{generic\+\_\+kv\+\_\+pair\+\_\+s}} \texorpdfstring{$\ast$}{*}kvp, const char \texorpdfstring{$\ast$}{*}k, void \texorpdfstring{$\ast$}{*}v, void(\texorpdfstring{$\ast$}{*}v\+\_\+deletor)(void \texorpdfstring{$\ast$}{*}))
+\item 
+void \mbox{\hyperlink{generic__kv__pair_8c_ad1471363bc94f72b841a60f4ef358f15}{empty\+\_\+kv\+\_\+pair}} (struct \mbox{\hyperlink{structgeneric__kv__pair__s}{generic\+\_\+kv\+\_\+pair\+\_\+s}} \texorpdfstring{$\ast$}{*}kvp)
+\item 
+void \mbox{\hyperlink{generic__kv__pair_8c_ac0d8a2d05a7c95fe64ebf4962671f071}{delete\+\_\+kv\+\_\+pair}} (struct \mbox{\hyperlink{structgeneric__kv__pair__s}{generic\+\_\+kv\+\_\+pair\+\_\+s}} \texorpdfstring{$\ast$}{*}kvp)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{generic__kv__pair_8c_ac0d8a2d05a7c95fe64ebf4962671f071}\label{generic__kv__pair_8c_ac0d8a2d05a7c95fe64ebf4962671f071} 
+\index{generic\_kv\_pair.c@{generic\_kv\_pair.c}!delete\_kv\_pair@{delete\_kv\_pair}}
+\index{delete\_kv\_pair@{delete\_kv\_pair}!generic\_kv\_pair.c@{generic\_kv\_pair.c}}
+\doxysubsubsection{\texorpdfstring{delete\_kv\_pair()}{delete\_kv\_pair()}}
+{\footnotesize\ttfamily void delete\+\_\+kv\+\_\+pair (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structgeneric__kv__pair__s}{generic\+\_\+kv\+\_\+pair\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{kvp }\end{DoxyParamCaption})}
+
+\Hypertarget{generic__kv__pair_8c_ad1471363bc94f72b841a60f4ef358f15}\label{generic__kv__pair_8c_ad1471363bc94f72b841a60f4ef358f15} 
+\index{generic\_kv\_pair.c@{generic\_kv\_pair.c}!empty\_kv\_pair@{empty\_kv\_pair}}
+\index{empty\_kv\_pair@{empty\_kv\_pair}!generic\_kv\_pair.c@{generic\_kv\_pair.c}}
+\doxysubsubsection{\texorpdfstring{empty\_kv\_pair()}{empty\_kv\_pair()}}
+{\footnotesize\ttfamily void empty\+\_\+kv\+\_\+pair (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structgeneric__kv__pair__s}{generic\+\_\+kv\+\_\+pair\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{kvp }\end{DoxyParamCaption})}
+
+\Hypertarget{generic__kv__pair_8c_a31e02b77af95f9047a415de12004fb73}\label{generic__kv__pair_8c_a31e02b77af95f9047a415de12004fb73} 
+\index{generic\_kv\_pair.c@{generic\_kv\_pair.c}!init\_ckv\_pair@{init\_ckv\_pair}}
+\index{init\_ckv\_pair@{init\_ckv\_pair}!generic\_kv\_pair.c@{generic\_kv\_pair.c}}
+\doxysubsubsection{\texorpdfstring{init\_ckv\_pair()}{init\_ckv\_pair()}}
+{\footnotesize\ttfamily uint8\+\_\+t init\+\_\+ckv\+\_\+pair (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structgeneric__kv__pair__s}{generic\+\_\+kv\+\_\+pair\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{kvp,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{k,  }\item[{void \texorpdfstring{$\ast$}{*}}]{v,  }\item[{void(\texorpdfstring{$\ast$}{*})(void \texorpdfstring{$\ast$}{*})}]{v\+\_\+deletor }\end{DoxyParamCaption})}
+
+\Hypertarget{generic__kv__pair_8c_a4f8a289ef007dd4a4c9115be1434804f}\label{generic__kv__pair_8c_a4f8a289ef007dd4a4c9115be1434804f} 
+\index{generic\_kv\_pair.c@{generic\_kv\_pair.c}!init\_kv\_pair@{init\_kv\_pair}}
+\index{init\_kv\_pair@{init\_kv\_pair}!generic\_kv\_pair.c@{generic\_kv\_pair.c}}
+\doxysubsubsection{\texorpdfstring{init\_kv\_pair()}{init\_kv\_pair()}}
+{\footnotesize\ttfamily uint8\+\_\+t init\+\_\+kv\+\_\+pair (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structgeneric__kv__pair__s}{generic\+\_\+kv\+\_\+pair\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{kvp,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{k,  }\item[{void \texorpdfstring{$\ast$}{*}}]{v,  }\item[{void(\texorpdfstring{$\ast$}{*})(void \texorpdfstring{$\ast$}{*})}]{v\+\_\+deletor }\end{DoxyParamCaption})}
+
+\Hypertarget{generic__kv__pair_8c_a71886aad153400fc83c355781b880418}\label{generic__kv__pair_8c_a71886aad153400fc83c355781b880418} 
+\index{generic\_kv\_pair.c@{generic\_kv\_pair.c}!new\_ckv\_pair@{new\_ckv\_pair}}
+\index{new\_ckv\_pair@{new\_ckv\_pair}!generic\_kv\_pair.c@{generic\_kv\_pair.c}}
+\doxysubsubsection{\texorpdfstring{new\_ckv\_pair()}{new\_ckv\_pair()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structgeneric__kv__pair__s}{generic\+\_\+kv\+\_\+pair\+\_\+s}} \texorpdfstring{$\ast$}{*} new\+\_\+ckv\+\_\+pair (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{k,  }\item[{void \texorpdfstring{$\ast$}{*}}]{v,  }\item[{void(\texorpdfstring{$\ast$}{*})(void \texorpdfstring{$\ast$}{*})}]{v\+\_\+deletor }\end{DoxyParamCaption})}
+
+\Hypertarget{generic__kv__pair_8c_acf66147976bea370ef4ee967dbd3b703}\label{generic__kv__pair_8c_acf66147976bea370ef4ee967dbd3b703} 
+\index{generic\_kv\_pair.c@{generic\_kv\_pair.c}!new\_kv\_pair@{new\_kv\_pair}}
+\index{new\_kv\_pair@{new\_kv\_pair}!generic\_kv\_pair.c@{generic\_kv\_pair.c}}
+\doxysubsubsection{\texorpdfstring{new\_kv\_pair()}{new\_kv\_pair()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structgeneric__kv__pair__s}{generic\+\_\+kv\+\_\+pair\+\_\+s}} \texorpdfstring{$\ast$}{*} new\+\_\+kv\+\_\+pair (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{k,  }\item[{void \texorpdfstring{$\ast$}{*}}]{v,  }\item[{void(\texorpdfstring{$\ast$}{*})(void \texorpdfstring{$\ast$}{*})}]{v\+\_\+deletor }\end{DoxyParamCaption})}
+

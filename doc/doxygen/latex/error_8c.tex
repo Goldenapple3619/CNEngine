@@ -1,0 +1,87 @@
+\doxysection{lib/cncore/src/error.c File Reference}
+\hypertarget{error_8c}{}\label{error_8c}\index{lib/cncore/src/error.c@{lib/cncore/src/error.c}}
+{\ttfamily \#include "{}libcncore.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{error_8c_ae7ec79b1a1af9d72038404621a3d382c}{raise\+\_\+error}} (\mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05f}{Error\+Code}} c, const char \texorpdfstring{$\ast$}{*}message, const char \texorpdfstring{$\ast$}{*}file, const char \texorpdfstring{$\ast$}{*}function, uint32\+\_\+t line)
+\item 
+void \mbox{\hyperlink{error_8c_a30691fc149592cae6cafb76a8653750a}{raise\+\_\+error\+\_\+fmt}} (\mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05f}{Error\+Code}} c, const char \texorpdfstring{$\ast$}{*}file, const char \texorpdfstring{$\ast$}{*}function, uint32\+\_\+t line, const char \texorpdfstring{$\ast$}{*}fmt,...)
+\item 
+void \mbox{\hyperlink{error_8c_a9413c6d75fb1fd424e89c688f91168e8}{push\+\_\+error}} (const char \texorpdfstring{$\ast$}{*}file, const char \texorpdfstring{$\ast$}{*}function, uint32\+\_\+t line)
+\item 
+const \mbox{\hyperlink{structErrorContext}{Error\+Context}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{error_8c_ae531c6707ac8602f24e2e385f26faf00}{get\+\_\+error}} (void)
+\item 
+\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} \mbox{\hyperlink{error_8c_a8c72946e68c22ff628ec256b6e916778}{has\+\_\+error}} (void)
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{error_8c_a7ebe9347c3fcd8d84dc7259bd2da0b73}{error\+\_\+type\+\_\+to\+\_\+text}} (\mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05f}{Error\+Code}} c)
+\item 
+void \mbox{\hyperlink{error_8c_a36094f0d4f4772933f6f982cee8ee737}{print\+\_\+error}} (const \mbox{\hyperlink{structErrorContext}{Error\+Context}} \texorpdfstring{$\ast$}{*}err, FILE \texorpdfstring{$\ast$}{*}output)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\+\_\+\+Thread\+\_\+local \mbox{\hyperlink{structErrorContext}{Error\+Context}} \mbox{\hyperlink{error_8c_ad5c4b88d63da1eeabf85ab80702f12b9}{g\+\_\+error\+\_\+history}} \mbox{[}\mbox{\hyperlink{libcncore_8h_aa640c9e7e7664f6d8238f045811d1640}{ERR\+\_\+\+HISTORY}}\mbox{]} = \{0\}
+\item 
+\+\_\+\+Thread\+\_\+local uint32\+\_\+t \mbox{\hyperlink{error_8c_a60b0a35b1d2b632a6f742c394c53dc99}{g\+\_\+error\+\_\+history\+\_\+index}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{error_8c_a7ebe9347c3fcd8d84dc7259bd2da0b73}\label{error_8c_a7ebe9347c3fcd8d84dc7259bd2da0b73} 
+\index{error.c@{error.c}!error\_type\_to\_text@{error\_type\_to\_text}}
+\index{error\_type\_to\_text@{error\_type\_to\_text}!error.c@{error.c}}
+\doxysubsubsection{\texorpdfstring{error\_type\_to\_text()}{error\_type\_to\_text()}}
+{\footnotesize\ttfamily const char \texorpdfstring{$\ast$}{*} error\+\_\+type\+\_\+to\+\_\+text (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05f}{Error\+Code}}}]{c }\end{DoxyParamCaption})}
+
+\Hypertarget{error_8c_ae531c6707ac8602f24e2e385f26faf00}\label{error_8c_ae531c6707ac8602f24e2e385f26faf00} 
+\index{error.c@{error.c}!get\_error@{get\_error}}
+\index{get\_error@{get\_error}!error.c@{error.c}}
+\doxysubsubsection{\texorpdfstring{get\_error()}{get\_error()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{structErrorContext}{Error\+Context}} \texorpdfstring{$\ast$}{*} get\+\_\+error (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{error_8c_a8c72946e68c22ff628ec256b6e916778}\label{error_8c_a8c72946e68c22ff628ec256b6e916778} 
+\index{error.c@{error.c}!has\_error@{has\_error}}
+\index{has\_error@{has\_error}!error.c@{error.c}}
+\doxysubsubsection{\texorpdfstring{has\_error()}{has\_error()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} has\+\_\+error (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{error_8c_a36094f0d4f4772933f6f982cee8ee737}\label{error_8c_a36094f0d4f4772933f6f982cee8ee737} 
+\index{error.c@{error.c}!print\_error@{print\_error}}
+\index{print\_error@{print\_error}!error.c@{error.c}}
+\doxysubsubsection{\texorpdfstring{print\_error()}{print\_error()}}
+{\footnotesize\ttfamily void print\+\_\+error (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structErrorContext}{Error\+Context}} \texorpdfstring{$\ast$}{*}}]{err,  }\item[{FILE \texorpdfstring{$\ast$}{*}}]{output }\end{DoxyParamCaption})}
+
+\Hypertarget{error_8c_a9413c6d75fb1fd424e89c688f91168e8}\label{error_8c_a9413c6d75fb1fd424e89c688f91168e8} 
+\index{error.c@{error.c}!push\_error@{push\_error}}
+\index{push\_error@{push\_error}!error.c@{error.c}}
+\doxysubsubsection{\texorpdfstring{push\_error()}{push\_error()}}
+{\footnotesize\ttfamily void push\+\_\+error (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{file,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{function,  }\item[{uint32\+\_\+t}]{line }\end{DoxyParamCaption})}
+
+\Hypertarget{error_8c_ae7ec79b1a1af9d72038404621a3d382c}\label{error_8c_ae7ec79b1a1af9d72038404621a3d382c} 
+\index{error.c@{error.c}!raise\_error@{raise\_error}}
+\index{raise\_error@{raise\_error}!error.c@{error.c}}
+\doxysubsubsection{\texorpdfstring{raise\_error()}{raise\_error()}}
+{\footnotesize\ttfamily void raise\+\_\+error (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05f}{Error\+Code}}}]{c,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{message,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{file,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{function,  }\item[{uint32\+\_\+t}]{line }\end{DoxyParamCaption})}
+
+\Hypertarget{error_8c_a30691fc149592cae6cafb76a8653750a}\label{error_8c_a30691fc149592cae6cafb76a8653750a} 
+\index{error.c@{error.c}!raise\_error\_fmt@{raise\_error\_fmt}}
+\index{raise\_error\_fmt@{raise\_error\_fmt}!error.c@{error.c}}
+\doxysubsubsection{\texorpdfstring{raise\_error\_fmt()}{raise\_error\_fmt()}}
+{\footnotesize\ttfamily void raise\+\_\+error\+\_\+fmt (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05f}{Error\+Code}}}]{c,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{file,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{function,  }\item[{uint32\+\_\+t}]{line,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{fmt,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{error_8c_ad5c4b88d63da1eeabf85ab80702f12b9}\label{error_8c_ad5c4b88d63da1eeabf85ab80702f12b9} 
+\index{error.c@{error.c}!g\_error\_history@{g\_error\_history}}
+\index{g\_error\_history@{g\_error\_history}!error.c@{error.c}}
+\doxysubsubsection{\texorpdfstring{g\_error\_history}{g\_error\_history}}
+{\footnotesize\ttfamily \+\_\+\+Thread\+\_\+local \mbox{\hyperlink{structErrorContext}{Error\+Context}} g\+\_\+error\+\_\+history\mbox{[}\mbox{\hyperlink{libcncore_8h_aa640c9e7e7664f6d8238f045811d1640}{ERR\+\_\+\+HISTORY}}\mbox{]} = \{0\}}
+
+\Hypertarget{error_8c_a60b0a35b1d2b632a6f742c394c53dc99}\label{error_8c_a60b0a35b1d2b632a6f742c394c53dc99} 
+\index{error.c@{error.c}!g\_error\_history\_index@{g\_error\_history\_index}}
+\index{g\_error\_history\_index@{g\_error\_history\_index}!error.c@{error.c}}
+\doxysubsubsection{\texorpdfstring{g\_error\_history\_index}{g\_error\_history\_index}}
+{\footnotesize\ttfamily \+\_\+\+Thread\+\_\+local uint32\+\_\+t g\+\_\+error\+\_\+history\+\_\+index = 0}
+

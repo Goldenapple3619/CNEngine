@@ -18,7 +18,7 @@ uint8\+\_\+t \mbox{\hyperlink{engine__object__writer_8c_ae8f03b75370a07d2bfeb6cb
 \item 
 void \mbox{\hyperlink{engine__object__writer_8c_a94f23195c4b372d2f9537a65f97dfb92}{delete\+\_\+writer\+\_\+section}} (struct \mbox{\hyperlink{structengine__object__file__section__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+section\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}section)
 \item 
-static uint32\+\_\+t \mbox{\hyperlink{engine__object__writer_8c_ac82d767ebd746ab2f95dda8e60af5038}{flags\+\_\+to\+\_\+align}} (uint32\+\_\+t flags)
+uint32\+\_\+t \mbox{\hyperlink{engine__object__writer_8c_a6b4b34de717ea0cf6ca384dee20607fd}{flags\+\_\+to\+\_\+align}} (uint32\+\_\+t flags)
 \item 
 static uint8\+\_\+t \mbox{\hyperlink{engine__object__writer_8c_a7239a0cbdb55a82449ddd5d53c1a16ee}{write\+\_\+pad}} (FILE \texorpdfstring{$\ast$}{*}fp, uint64\+\_\+t pos, uint32\+\_\+t align)
 \item 
@@ -33,6 +33,8 @@ static struct \mbox{\hyperlink{structstrndx__entry__s}{strndx\+\_\+entry\+\_\+s}
 static void \mbox{\hyperlink{engine__object__writer_8c_a413c9a6211d4233d58ae3ae7c7a5956c}{delete\+\_\+strndx\+\_\+entry}} (struct \mbox{\hyperlink{structstrndx__entry__s}{strndx\+\_\+entry\+\_\+s}} \texorpdfstring{$\ast$}{*}entry)
 \item 
 uint32\+\_\+t \mbox{\hyperlink{engine__object__writer_8c_a5ef11e9fb3a608b84a0462590b9c6d58}{add\+\_\+str\+\_\+table}} (const char \texorpdfstring{$\ast$}{*}str, struct \mbox{\hyperlink{structgeneric__map__s}{generic\+\_\+map\+\_\+s}} \texorpdfstring{$\ast$}{*}strndx)
+\item 
+static uint8\+\_\+t \mbox{\hyperlink{engine__object__writer_8c_a0e906b056853be4f1616f09689bd772e}{mv\+\_\+pad}} (FILE \texorpdfstring{$\ast$}{*}fp, int64\+\_\+t \texorpdfstring{$\ast$}{*}x, uint32\+\_\+t align)
 \item 
 uint8\+\_\+t \mbox{\hyperlink{engine__object__writer_8c_a8b388339c7e7503ea76cf39cb507aeba}{write\+\_\+object\+\_\+file}} (FILE \texorpdfstring{$\ast$}{*}fp, const struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}object\+\_\+file\+\_\+write\+\_\+ctx)
 \end{DoxyCompactItemize}
@@ -63,11 +65,17 @@ uint8\+\_\+t \mbox{\hyperlink{engine__object__writer_8c_a8b388339c7e7503ea76cf39
 \doxysubsubsection{\texorpdfstring{delete\_writer\_section()}{delete\_writer\_section()}}
 {\footnotesize\ttfamily void delete\+\_\+writer\+\_\+section (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structengine__object__file__section__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+section\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{section }\end{DoxyParamCaption})}
 
-\Hypertarget{engine__object__writer_8c_ac82d767ebd746ab2f95dda8e60af5038}\label{engine__object__writer_8c_ac82d767ebd746ab2f95dda8e60af5038} 
+\Hypertarget{engine__object__writer_8c_a6b4b34de717ea0cf6ca384dee20607fd}\label{engine__object__writer_8c_a6b4b34de717ea0cf6ca384dee20607fd} 
 \index{engine\_object\_writer.c@{engine\_object\_writer.c}!flags\_to\_align@{flags\_to\_align}}
 \index{flags\_to\_align@{flags\_to\_align}!engine\_object\_writer.c@{engine\_object\_writer.c}}
 \doxysubsubsection{\texorpdfstring{flags\_to\_align()}{flags\_to\_align()}}
-{\footnotesize\ttfamily static uint32\+\_\+t flags\+\_\+to\+\_\+align (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{flags }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily uint32\+\_\+t flags\+\_\+to\+\_\+align (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{flags }\end{DoxyParamCaption})}
+
+\Hypertarget{engine__object__writer_8c_a0e906b056853be4f1616f09689bd772e}\label{engine__object__writer_8c_a0e906b056853be4f1616f09689bd772e} 
+\index{engine\_object\_writer.c@{engine\_object\_writer.c}!mv\_pad@{mv\_pad}}
+\index{mv\_pad@{mv\_pad}!engine\_object\_writer.c@{engine\_object\_writer.c}}
+\doxysubsubsection{\texorpdfstring{mv\_pad()}{mv\_pad()}}
+{\footnotesize\ttfamily static uint8\+\_\+t mv\+\_\+pad (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}}]{fp,  }\item[{int64\+\_\+t \texorpdfstring{$\ast$}{*}}]{x,  }\item[{uint32\+\_\+t}]{align }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 \Hypertarget{engine__object__writer_8c_a8dc0ea661e4ec2dc5cc08f9c8013fa34}\label{engine__object__writer_8c_a8dc0ea661e4ec2dc5cc08f9c8013fa34} 
 \index{engine\_object\_writer.c@{engine\_object\_writer.c}!new\_strndx\_entry@{new\_strndx\_entry}}

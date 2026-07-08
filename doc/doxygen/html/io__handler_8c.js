@@ -1,5 +1,12 @@
 var io__handler_8c =
 [
+    [ "bufrd_u16_be", "io__handler_8c.html#acbe9104114ac318a3c36ac8036372742", null ],
+    [ "bufrd_u16_le", "io__handler_8c.html#ae29abf776300e51e3dac4bd73dda9c6e", null ],
+    [ "bufrd_u32_be", "io__handler_8c.html#a115661a6ba24c158225d424b62e870ad", null ],
+    [ "bufrd_u32_le", "io__handler_8c.html#a1cca167b78e13c22566141d998b10c3e", null ],
+    [ "bufrd_u64_be", "io__handler_8c.html#ab54b896f764f5a230ff811f6f5072fba", null ],
+    [ "bufrd_u64_le", "io__handler_8c.html#a1f1cff79c20ae49d9f755d811bdf1f7b", null ],
+    [ "bufrd_u8", "io__handler_8c.html#af5ccc3030d28a959d9a782e741841347", null ],
     [ "bufwr_u16_be", "io__handler_8c.html#a3dcb3c082123e52a066be3695a89b323", null ],
     [ "bufwr_u16_le", "io__handler_8c.html#a88ab3bf57ac4832cae822607eb18321a", null ],
     [ "bufwr_u32_be", "io__handler_8c.html#a9f49e0d3089b862e89c8b407a438063b", null ],

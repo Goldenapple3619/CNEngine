@@ -1,0 +1,57 @@
+\doxysection{src/cnbuild/asset\+\_\+toolchain/route.c File Reference}
+\hypertarget{cnbuild_2asset__toolchain_2route_8c}{}\label{cnbuild_2asset__toolchain_2route_8c}\index{src/cnbuild/asset\_toolchain/route.c@{src/cnbuild/asset\_toolchain/route.c}}
+{\ttfamily \#include "{}assets\+\_\+toolchain.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{cnbuild_2asset__toolchain_2route_8c_a71a18ded03e46f77c81c584ce30630f0}{fclose\+\_\+wrapper}} (void \texorpdfstring{$\ast$}{*}ptr)
+\item 
+static size\+\_\+t \mbox{\hyperlink{cnbuild_2asset__toolchain_2route_8c_a1cff336baad28dd9eb9c383d3932920e}{raw\+\_\+content\+\_\+size\+\_\+generator}} (struct \mbox{\hyperlink{structengine__object__file__section__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+section\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}self)
+\item 
+static char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{cnbuild_2asset__toolchain_2route_8c_aa7557a10d7dd0ce7c843da9478d0257c}{raw\+\_\+content\+\_\+generator}} (struct \mbox{\hyperlink{structengine__object__file__section__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+section\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}self, const struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}writer, struct \mbox{\hyperlink{structgeneric__map__s}{generic\+\_\+map\+\_\+s}} \texorpdfstring{$\ast$}{*}strndx)
+\item 
+static uint8\+\_\+t \mbox{\hyperlink{cnbuild_2asset__toolchain_2route_8c_af018f413128205cb6900ae38786ca549}{create\+\_\+new\+\_\+section\+\_\+asset}} (struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}wctx, const char \texorpdfstring{$\ast$}{*}asset\+\_\+path, FILE \texorpdfstring{$\ast$}{*}fp)
+\item 
+struct \mbox{\hyperlink{structgeneric__vector__s}{generic\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{cnbuild_2asset__toolchain_2route_8c_a430759462b1839b6451021abaf2b51aa}{parse\+\_\+asset}} (struct \mbox{\hyperlink{structgeneric__vector__s}{generic\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}inputs, struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}wctx, \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}asset\+\_\+ctx)
+\item 
+int \mbox{\hyperlink{cnbuild_2asset__toolchain_2route_8c_a4f70dca845f25104d35a9f305b27c4e5}{build\+\_\+assets}} (size\+\_\+t argc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv, \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}asset\+\_\+ctx)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{cnbuild_2asset__toolchain_2route_8c_a4f70dca845f25104d35a9f305b27c4e5}\label{cnbuild_2asset__toolchain_2route_8c_a4f70dca845f25104d35a9f305b27c4e5} 
+\index{route.c@{route.c}!build\_assets@{build\_assets}}
+\index{build\_assets@{build\_assets}!route.c@{route.c}}
+\doxysubsubsection{\texorpdfstring{build\_assets()}{build\_assets()}}
+{\footnotesize\ttfamily int build\+\_\+assets (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv,  }\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{asset\+\_\+ctx }\end{DoxyParamCaption})}
+
+\Hypertarget{cnbuild_2asset__toolchain_2route_8c_af018f413128205cb6900ae38786ca549}\label{cnbuild_2asset__toolchain_2route_8c_af018f413128205cb6900ae38786ca549} 
+\index{route.c@{route.c}!create\_new\_section\_asset@{create\_new\_section\_asset}}
+\index{create\_new\_section\_asset@{create\_new\_section\_asset}!route.c@{route.c}}
+\doxysubsubsection{\texorpdfstring{create\_new\_section\_asset()}{create\_new\_section\_asset()}}
+{\footnotesize\ttfamily static uint8\+\_\+t create\+\_\+new\+\_\+section\+\_\+asset (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{wctx,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{asset\+\_\+path,  }\item[{FILE \texorpdfstring{$\ast$}{*}}]{fp }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{cnbuild_2asset__toolchain_2route_8c_a71a18ded03e46f77c81c584ce30630f0}\label{cnbuild_2asset__toolchain_2route_8c_a71a18ded03e46f77c81c584ce30630f0} 
+\index{route.c@{route.c}!fclose\_wrapper@{fclose\_wrapper}}
+\index{fclose\_wrapper@{fclose\_wrapper}!route.c@{route.c}}
+\doxysubsubsection{\texorpdfstring{fclose\_wrapper()}{fclose\_wrapper()}}
+{\footnotesize\ttfamily static void fclose\+\_\+wrapper (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{ptr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{cnbuild_2asset__toolchain_2route_8c_a430759462b1839b6451021abaf2b51aa}\label{cnbuild_2asset__toolchain_2route_8c_a430759462b1839b6451021abaf2b51aa} 
+\index{route.c@{route.c}!parse\_asset@{parse\_asset}}
+\index{parse\_asset@{parse\_asset}!route.c@{route.c}}
+\doxysubsubsection{\texorpdfstring{parse\_asset()}{parse\_asset()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structgeneric__vector__s}{generic\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*} parse\+\_\+asset (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structgeneric__vector__s}{generic\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{inputs,  }\item[{struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{wctx,  }\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{asset\+\_\+ctx }\end{DoxyParamCaption})}
+
+\Hypertarget{cnbuild_2asset__toolchain_2route_8c_aa7557a10d7dd0ce7c843da9478d0257c}\label{cnbuild_2asset__toolchain_2route_8c_aa7557a10d7dd0ce7c843da9478d0257c} 
+\index{route.c@{route.c}!raw\_content\_generator@{raw\_content\_generator}}
+\index{raw\_content\_generator@{raw\_content\_generator}!route.c@{route.c}}
+\doxysubsubsection{\texorpdfstring{raw\_content\_generator()}{raw\_content\_generator()}}
+{\footnotesize\ttfamily static char \texorpdfstring{$\ast$}{*} raw\+\_\+content\+\_\+generator (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structengine__object__file__section__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+section\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{self,  }\item[{const struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{writer,  }\item[{struct \mbox{\hyperlink{structgeneric__map__s}{generic\+\_\+map\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{strndx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{cnbuild_2asset__toolchain_2route_8c_a1cff336baad28dd9eb9c383d3932920e}\label{cnbuild_2asset__toolchain_2route_8c_a1cff336baad28dd9eb9c383d3932920e} 
+\index{route.c@{route.c}!raw\_content\_size\_generator@{raw\_content\_size\_generator}}
+\index{raw\_content\_size\_generator@{raw\_content\_size\_generator}!route.c@{route.c}}
+\doxysubsubsection{\texorpdfstring{raw\_content\_size\_generator()}{raw\_content\_size\_generator()}}
+{\footnotesize\ttfamily static size\+\_\+t raw\+\_\+content\+\_\+size\+\_\+generator (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structengine__object__file__section__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+section\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{self }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+

@@ -126,8 +126,8 @@ Functions</h2></td></tr>
 <tr class="separator:ae8f03b75370a07d2bfeb6cb0ac4d2973"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a94f23195c4b372d2f9537a65f97dfb92" id="r_a94f23195c4b372d2f9537a65f97dfb92"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine__object__writer_8c.html#a94f23195c4b372d2f9537a65f97dfb92">delete_writer_section</a> (struct <a class="el" href="structengine__object__file__section__writer__ctx__s.html">engine_object_file_section_writer_ctx_s</a> *section)</td></tr>
 <tr class="separator:a94f23195c4b372d2f9537a65f97dfb92"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac82d767ebd746ab2f95dda8e60af5038" id="r_ac82d767ebd746ab2f95dda8e60af5038"><td class="memItemLeft" align="right" valign="top">static uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine__object__writer_8c.html#ac82d767ebd746ab2f95dda8e60af5038">flags_to_align</a> (uint32_t flags)</td></tr>
-<tr class="separator:ac82d767ebd746ab2f95dda8e60af5038"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b4b34de717ea0cf6ca384dee20607fd" id="r_a6b4b34de717ea0cf6ca384dee20607fd"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine__object__writer_8c.html#a6b4b34de717ea0cf6ca384dee20607fd">flags_to_align</a> (uint32_t flags)</td></tr>
+<tr class="separator:a6b4b34de717ea0cf6ca384dee20607fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7239a0cbdb55a82449ddd5d53c1a16ee" id="r_a7239a0cbdb55a82449ddd5d53c1a16ee"><td class="memItemLeft" align="right" valign="top">static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine__object__writer_8c.html#a7239a0cbdb55a82449ddd5d53c1a16ee">write_pad</a> (FILE *fp, uint64_t pos, uint32_t align)</td></tr>
 <tr class="separator:a7239a0cbdb55a82449ddd5d53c1a16ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f124b31861ec552cfb05e638cc5ed9d" id="r_a1f124b31861ec552cfb05e638cc5ed9d"><td class="memItemLeft" align="right" valign="top">static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine__object__writer_8c.html#a1f124b31861ec552cfb05e638cc5ed9d">write_object_file_header</a> (FILE *fp, const <a class="el" href="structfpio__handler__t.html">fpio_handler_t</a> *io, const struct <a class="el" href="structengine__obj__header__s.html">engine_obj_header_s</a> *header)</td></tr>
@@ -142,6 +142,8 @@ Functions</h2></td></tr>
 <tr class="separator:a413c9a6211d4233d58ae3ae7c7a5956c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5ef11e9fb3a608b84a0462590b9c6d58" id="r_a5ef11e9fb3a608b84a0462590b9c6d58"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine__object__writer_8c.html#a5ef11e9fb3a608b84a0462590b9c6d58">add_str_table</a> (const char *str, struct <a class="el" href="structgeneric__map__s.html">generic_map_s</a> *strndx)</td></tr>
 <tr class="separator:a5ef11e9fb3a608b84a0462590b9c6d58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e906b056853be4f1616f09689bd772e" id="r_a0e906b056853be4f1616f09689bd772e"><td class="memItemLeft" align="right" valign="top">static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine__object__writer_8c.html#a0e906b056853be4f1616f09689bd772e">mv_pad</a> (FILE *fp, int64_t *x, uint32_t align)</td></tr>
+<tr class="separator:a0e906b056853be4f1616f09689bd772e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8b388339c7e7503ea76cf39cb507aeba" id="r_a8b388339c7e7503ea76cf39cb507aeba"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine__object__writer_8c.html#a8b388339c7e7503ea76cf39cb507aeba">write_object_file</a> (FILE *fp, const struct <a class="el" href="structengine__object__file__writer__ctx__s.html">engine_object_file_writer_ctx_s</a> *object_file_write_ctx)</td></tr>
 <tr class="separator:a8b388339c7e7503ea76cf39cb507aeba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -236,8 +238,26 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ac82d767ebd746ab2f95dda8e60af5038" name="ac82d767ebd746ab2f95dda8e60af5038"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac82d767ebd746ab2f95dda8e60af5038">&#9670;&#160;</a></span>flags_to_align()</h2>
+<a id="a6b4b34de717ea0cf6ca384dee20607fd" name="a6b4b34de717ea0cf6ca384dee20607fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b4b34de717ea0cf6ca384dee20607fd">&#9670;&#160;</a></span>flags_to_align()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t flags_to_align </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>flags</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0e906b056853be4f1616f09689bd772e" name="a0e906b056853be4f1616f09689bd772e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e906b056853be4f1616f09689bd772e">&#9670;&#160;</a></span>mv_pad()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -246,11 +266,27 @@ Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static uint32_t flags_to_align </td>
+          <td class="memname">static uint8_t mv_pad </td>
           <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
-          <td class="paramname"><em>flags</em></td><td>)</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">int64_t *&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>align</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>

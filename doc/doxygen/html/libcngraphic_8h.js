@@ -110,7 +110,7 @@ var libcngraphic_8h =
     [ "is_window_closed", "libcngraphic_8h.html#a3ad73b86968872fb9168b4f117d4b2a9", null ],
     [ "is_window_closed_addr", "libcngraphic_8h.html#a9eb1863a4e5ae2747e9d334a62cce175", null ],
     [ "material_use_gl", "libcngraphic_8h.html#a6cce96e755402d79b79c58c117f4b910", null ],
-    [ "mesh_draw_gl", "libcngraphic_8h.html#a9e477f4333422c372d1b5e75c439968c", null ],
+    [ "mesh_draw_gl", "libcngraphic_8h.html#a14fc4a68514386c582b383f73dd8357c", null ],
     [ "mesh_upload_gl", "libcngraphic_8h.html#a72fce26160c250bd11da7dcf05f8b8fe", null ],
     [ "new_event", "libcngraphic_8h.html#afbdf6fdfba2f9f70f534ef8c9a8406eb", null ],
     [ "new_event_map", "libcngraphic_8h.html#aa6f72501bc23fe99f9925bea9219d721", null ],

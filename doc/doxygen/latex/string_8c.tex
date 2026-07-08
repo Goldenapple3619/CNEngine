@@ -1,0 +1,73 @@
+\doxysection{lib/cncore/src/string.c File Reference}
+\hypertarget{string_8c}{}\label{string_8c}\index{lib/cncore/src/string.c@{lib/cncore/src/string.c}}
+{\ttfamily \#include "{}libcncore.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{string_8c_a803cdc38853737b120ae8bc090de11de}{new\+\_\+str\+\_\+from\+\_\+const}} (const char \texorpdfstring{$\ast$}{*}c\+\_\+str)
+\item 
+\mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{string_8c_abab5c4e59c24b551c4eec243deb711e2}{new\+\_\+str}} (char \texorpdfstring{$\ast$}{*}c\+\_\+str)
+\item 
+\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} \mbox{\hyperlink{string_8c_acdca66b249758c104f3e4f1cafc1222e}{str\+\_\+is\+\_\+empty}} (const \mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}str)
+\item 
+\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} \mbox{\hyperlink{string_8c_a6b412ec840cbd7b25480af8644b0cfe5}{str\+\_\+is\+\_\+null}} (const \mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}str)
+\item 
+void \mbox{\hyperlink{string_8c_acf84274f83df450656404aac7ba4f8ae}{str\+\_\+override}} (\mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}str, char \texorpdfstring{$\ast$}{*}c\+\_\+str)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{string_8c_a5329b1771083af3811b79c2ddb54c86d}{str\+\_\+rcadd\+\_\+mv}} (\mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}str, char \texorpdfstring{$\ast$}{*}c\+\_\+str)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{string_8c_a639732e7c95d71daef692601b350b16e}{str\+\_\+rcadd\+\_\+cp}} (\mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}str, const char \texorpdfstring{$\ast$}{*}c\+\_\+str)
+\item 
+void \mbox{\hyperlink{string_8c_ad431b97f1c7ba2481216e10000af1ce5}{delete\+\_\+str}} (\mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}str)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{string_8c_ad431b97f1c7ba2481216e10000af1ce5}\label{string_8c_ad431b97f1c7ba2481216e10000af1ce5} 
+\index{string.c@{string.c}!delete\_str@{delete\_str}}
+\index{delete\_str@{delete\_str}!string.c@{string.c}}
+\doxysubsubsection{\texorpdfstring{delete\_str()}{delete\_str()}}
+{\footnotesize\ttfamily void delete\+\_\+str (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}}]{str }\end{DoxyParamCaption})}
+
+\Hypertarget{string_8c_abab5c4e59c24b551c4eec243deb711e2}\label{string_8c_abab5c4e59c24b551c4eec243deb711e2} 
+\index{string.c@{string.c}!new\_str@{new\_str}}
+\index{new\_str@{new\_str}!string.c@{string.c}}
+\doxysubsubsection{\texorpdfstring{new\_str()}{new\_str()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*} new\+\_\+str (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{c\+\_\+str }\end{DoxyParamCaption})}
+
+\Hypertarget{string_8c_a803cdc38853737b120ae8bc090de11de}\label{string_8c_a803cdc38853737b120ae8bc090de11de} 
+\index{string.c@{string.c}!new\_str\_from\_const@{new\_str\_from\_const}}
+\index{new\_str\_from\_const@{new\_str\_from\_const}!string.c@{string.c}}
+\doxysubsubsection{\texorpdfstring{new\_str\_from\_const()}{new\_str\_from\_const()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*} new\+\_\+str\+\_\+from\+\_\+const (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{c\+\_\+str }\end{DoxyParamCaption})}
+
+\Hypertarget{string_8c_acdca66b249758c104f3e4f1cafc1222e}\label{string_8c_acdca66b249758c104f3e4f1cafc1222e} 
+\index{string.c@{string.c}!str\_is\_empty@{str\_is\_empty}}
+\index{str\_is\_empty@{str\_is\_empty}!string.c@{string.c}}
+\doxysubsubsection{\texorpdfstring{str\_is\_empty()}{str\_is\_empty()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} str\+\_\+is\+\_\+empty (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}}]{str }\end{DoxyParamCaption})}
+
+\Hypertarget{string_8c_a6b412ec840cbd7b25480af8644b0cfe5}\label{string_8c_a6b412ec840cbd7b25480af8644b0cfe5} 
+\index{string.c@{string.c}!str\_is\_null@{str\_is\_null}}
+\index{str\_is\_null@{str\_is\_null}!string.c@{string.c}}
+\doxysubsubsection{\texorpdfstring{str\_is\_null()}{str\_is\_null()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} str\+\_\+is\+\_\+null (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}}]{str }\end{DoxyParamCaption})}
+
+\Hypertarget{string_8c_acf84274f83df450656404aac7ba4f8ae}\label{string_8c_acf84274f83df450656404aac7ba4f8ae} 
+\index{string.c@{string.c}!str\_override@{str\_override}}
+\index{str\_override@{str\_override}!string.c@{string.c}}
+\doxysubsubsection{\texorpdfstring{str\_override()}{str\_override()}}
+{\footnotesize\ttfamily void str\+\_\+override (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}}]{str,  }\item[{char \texorpdfstring{$\ast$}{*}}]{c\+\_\+str }\end{DoxyParamCaption})}
+
+\Hypertarget{string_8c_a639732e7c95d71daef692601b350b16e}\label{string_8c_a639732e7c95d71daef692601b350b16e} 
+\index{string.c@{string.c}!str\_rcadd\_cp@{str\_rcadd\_cp}}
+\index{str\_rcadd\_cp@{str\_rcadd\_cp}!string.c@{string.c}}
+\doxysubsubsection{\texorpdfstring{str\_rcadd\_cp()}{str\_rcadd\_cp()}}
+{\footnotesize\ttfamily uint8\+\_\+t str\+\_\+rcadd\+\_\+cp (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}}]{str,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{c\+\_\+str }\end{DoxyParamCaption})}
+
+\Hypertarget{string_8c_a5329b1771083af3811b79c2ddb54c86d}\label{string_8c_a5329b1771083af3811b79c2ddb54c86d} 
+\index{string.c@{string.c}!str\_rcadd\_mv@{str\_rcadd\_mv}}
+\index{str\_rcadd\_mv@{str\_rcadd\_mv}!string.c@{string.c}}
+\doxysubsubsection{\texorpdfstring{str\_rcadd\_mv()}{str\_rcadd\_mv()}}
+{\footnotesize\ttfamily uint8\+\_\+t str\+\_\+rcadd\+\_\+mv (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}}]{str,  }\item[{char \texorpdfstring{$\ast$}{*}}]{c\+\_\+str }\end{DoxyParamCaption})}
+

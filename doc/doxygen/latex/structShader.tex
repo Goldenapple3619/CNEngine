@@ -10,8 +10,11 @@
 \begin{tabbing}
 xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
 union \{\\
-\>uint32\_t \mbox{\hyperlink{structShader_a22042e39fac00e266747b1705fabbd52}{gl\_shader}}\\
-\} \mbox{\hyperlink{structShader_a84a4fd3862603c5c099aec434f909462}{gpu\_handler}}\\
+\>struct \{\\
+\>\>uint32\_t \mbox{\hyperlink{structShader_a22042e39fac00e266747b1705fabbd52}{gl\_shader}}\\
+\>\>SDL\_GLContext \mbox{\hyperlink{structShader_a583e9445062f6388078fc5fd7eab7026}{gl\_ctx}}\\
+\>\} \mbox{\hyperlink{structShader_a67a6dfd2d78aa44f2901794eaa8cbb62}{gl}}\\
+\} \mbox{\hyperlink{structShader_a84cb5be46d0eefb1abc1f5221758075a}{gpu\_handler}}\\
 
 \end{tabbing}\item 
 \mbox{\hyperlink{libcngraphic_8h_a68f9fcaba986f3dcdf56316330102559}{rendering\+\_\+api}} \mbox{\hyperlink{structShader_a333a720301041db81494bb1e90dd01dc}{api}}
@@ -25,13 +28,25 @@ union \{\\
 \doxysubsubsection{\texorpdfstring{api}{api}}
 {\footnotesize\ttfamily \mbox{\hyperlink{libcngraphic_8h_a68f9fcaba986f3dcdf56316330102559}{rendering\+\_\+api}} Shader\+::api}
 
+\Hypertarget{structShader_a67a6dfd2d78aa44f2901794eaa8cbb62}\label{structShader_a67a6dfd2d78aa44f2901794eaa8cbb62} 
+\index{Shader@{Shader}!gl@{gl}}
+\index{gl@{gl}!Shader@{Shader}}
+\doxysubsubsection{\texorpdfstring{[struct]}{[struct]}}
+{\footnotesize\ttfamily struct  \{ ... \}  Shader\+::gl}
+
+\Hypertarget{structShader_a583e9445062f6388078fc5fd7eab7026}\label{structShader_a583e9445062f6388078fc5fd7eab7026} 
+\index{Shader@{Shader}!gl\_ctx@{gl\_ctx}}
+\index{gl\_ctx@{gl\_ctx}!Shader@{Shader}}
+\doxysubsubsection{\texorpdfstring{gl\_ctx}{gl\_ctx}}
+{\footnotesize\ttfamily SDL\+\_\+\+GLContext Shader\+::gl\+\_\+ctx}
+
 \Hypertarget{structShader_a22042e39fac00e266747b1705fabbd52}\label{structShader_a22042e39fac00e266747b1705fabbd52} 
 \index{Shader@{Shader}!gl\_shader@{gl\_shader}}
 \index{gl\_shader@{gl\_shader}!Shader@{Shader}}
 \doxysubsubsection{\texorpdfstring{gl\_shader}{gl\_shader}}
 {\footnotesize\ttfamily uint32\+\_\+t Shader\+::gl\+\_\+shader}
 
-\Hypertarget{structShader_a84a4fd3862603c5c099aec434f909462}\label{structShader_a84a4fd3862603c5c099aec434f909462} 
+\Hypertarget{structShader_a84cb5be46d0eefb1abc1f5221758075a}\label{structShader_a84cb5be46d0eefb1abc1f5221758075a} 
 \index{Shader@{Shader}!gpu\_handler@{gpu\_handler}}
 \index{gpu\_handler@{gpu\_handler}!Shader@{Shader}}
 \doxysubsubsection{\texorpdfstring{[union]}{[union]}}

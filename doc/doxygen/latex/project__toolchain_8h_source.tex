@@ -1,0 +1,92 @@
+\doxysection{project\+\_\+toolchain.\+h}
+\hypertarget{project__toolchain_8h_source}{}\label{project__toolchain_8h_source}\index{src/cnbuild/project\_toolchain/project\_toolchain.h@{src/cnbuild/project\_toolchain/project\_toolchain.h}}
+\mbox{\hyperlink{project__toolchain_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_PROJECT\_TOOLCHAIN\_H\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\ \ \ \ \#define\ \_PROJECT\_TOOLCHAIN\_H\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}../build.h"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00007\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{project__toolchain_8h_a46a8c72f40fa77645588f3b547443a16a96db12e205a7f023a7b91a1d1b31c45f}{CNBUILD\_ARCH\_HOST}}\ =\ 0x00,}
+\DoxyCodeLine{00008\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{project__toolchain_8h_a46a8c72f40fa77645588f3b547443a16a44e2d829deebaac93c5834af8881f541}{CNBUILD\_ARCH\_AMD64}},}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{project__toolchain_8h_a46a8c72f40fa77645588f3b547443a16a95511792bbe39909152375d4da0adc0b}{CNBUILD\_ARCH\_I386}},}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{project__toolchain_8h_a46a8c72f40fa77645588f3b547443a16a6b38c9d0c819a087e70289f8092deab6}{CNBUILD\_ARCH\_ARM64}}}
+\DoxyCodeLine{00011\ \ \ \ \ \}\ \mbox{\hyperlink{project__toolchain_8h_a46a8c72f40fa77645588f3b547443a16}{cnbuild\_architectures}};}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{project__toolchain_8h_ac5748ac67111f38f1c1544fd88d28a93ab23e1c0355810d758f5a826c26eff8f3}{CNBUILD\_SYS\_HOST}}\ =\ 0x00,}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{project__toolchain_8h_ac5748ac67111f38f1c1544fd88d28a93aa11290d512086e06e09f31c30c0aa638}{CNBUILD\_SYS\_WIN}},}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{project__toolchain_8h_ac5748ac67111f38f1c1544fd88d28a93a31ba8231011c158600f0fb35d590eeea}{CNBUILD\_SYS\_DARWIN}},}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{project__toolchain_8h_ac5748ac67111f38f1c1544fd88d28a93aa6b48213172500502328939d466dfe7f}{CNBUILD\_SYS\_GEN\_LINUX}}}
+\DoxyCodeLine{00018\ \ \ \ \ \}\ \mbox{\hyperlink{project__toolchain_8h_ac5748ac67111f38f1c1544fd88d28a93}{cnbuild\_system}};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{project__toolchain_8h_a3924bc2aede93e122d59991d0db8dd2fac1fde266a1731d883af7572d2fbc222d}{CNASSET\_TP\_RAW}}\ =\ 0x00,}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{project__toolchain_8h_a3924bc2aede93e122d59991d0db8dd2faf8516c5d2fa28fdcf359c067320c8bdd}{CNASSET\_TP\_GUI}},}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{project__toolchain_8h_a3924bc2aede93e122d59991d0db8dd2fa430dada1b4388d7d18d347388d25bdf4}{CNASSET\_TP\_OBJ}},}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{project__toolchain_8h_a3924bc2aede93e122d59991d0db8dd2fa28f3590365c26d72dec13beb2e0de618}{CNASSET\_TP\_SCN}},}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{project__toolchain_8h_a3924bc2aede93e122d59991d0db8dd2fa30103b470b9026932d57b5bc43e7e931}{CNASSET\_TP\_SRC}},}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{project__toolchain_8h_a3924bc2aede93e122d59991d0db8dd2fa0227a53c780616c1fc8f2725f719477d}{CNASSET\_TP\_PCA}}}
+\DoxyCodeLine{00027\ \ \ \ \ \}\ \mbox{\hyperlink{project__toolchain_8h_a3924bc2aede93e122d59991d0db8dd2f}{cnasset\_type}};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structCNAsset_ac642d61db2187f2ce29b899b3c20c88a}{location}};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{project__toolchain_8h_a3924bc2aede93e122d59991d0db8dd2f}{cnasset\_type}}\ \mbox{\hyperlink{structCNAsset_a13471b0278164e14052da33ceb831212}{type}};}
+\DoxyCodeLine{00033\ \ \ \ \ \}\ \mbox{\hyperlink{structCNAsset}{CNAsset}};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structCNBuild_a75e5067007663708a4dc7e6a29861032}{name}};}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structCNBuild_af4812227e881f5081c8208e5749f43de}{scene\_entry\_point}};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{project__toolchain_8h_a46a8c72f40fa77645588f3b547443a16}{cnbuild\_architectures}}\ \mbox{\hyperlink{structCNBuild_a36cfa6ed8928f5d0dc48e59ee33bec6d}{arch}};}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{project__toolchain_8h_ac5748ac67111f38f1c1544fd88d28a93}{cnbuild\_system}}\ \mbox{\hyperlink{structCNBuild_a8d279862c176f427a1478b99a1776d3c}{machine}};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgeneric__vector__s}{generic\_vector\_s}}\ dependencies;}
+\DoxyCodeLine{00043\ \ \ \ \ \}\ \mbox{\hyperlink{structCNBuild}{CNBuild}};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structCNProject_a1a61103be1a94ecfca8a8a12cc93ecaa}{name}};}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structCNProject_a41bbc302b5dcea7a62c6bcd6ec374edd}{version\_name}};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgeneric__vector__s}{generic\_vector\_s}}\ builds;}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgeneric__vector__s}{generic\_vector\_s}}\ \mbox{\hyperlink{structgeneric__vector__s_aeec5c8834c5033873785bdfb336b18d2}{content}};}
+\DoxyCodeLine{00051\ \ \ \ \ \}\ \mbox{\hyperlink{structCNProject}{CNProject}};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structLibraryCompiler_a3696cc1173fa3975ddb13f5deb7f6953}{output\_path}};}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structLibraryCompiler_a8647e57b4bcd405e70c90fd6eb01aee1}{compiler\_path}};}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structLibraryCompiler_ad490f4f73ec371571f12e8f1f2087efc}{includes\_path}};}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structLibraryCompiler_a5cf6bcd2748ef09782c2ef8e921c5a9d}{build\_path}};}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgeneric__vector__s}{generic\_vector\_s}}\ srcs;}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgeneric__vector__s}{generic\_vector\_s}}\ objs;}
+\DoxyCodeLine{00062\ \ \ \ \ \}\ \mbox{\hyperlink{structLibraryCompiler}{LibraryCompiler}};}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \mbox{\hyperlink{structCNProject}{CNProject}}\ *\mbox{\hyperlink{project__toolchain_8h_a5a9f58c99adabc18df1f1d1a6dc3a80d}{new\_cnproject}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{project__toolchain_8h_a9f4411092a5248d7bba833360ef78d1e}{delete\_cnproject}}(\mbox{\hyperlink{structCNProject}{CNProject}}\ *ptr);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \mbox{\hyperlink{structCNAsset}{CNAsset}}\ *\mbox{\hyperlink{project__toolchain_8h_a0fed1f4b14b85be0ecc8a835284cfe06}{new\_cnasset}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *asset\_location,\ \mbox{\hyperlink{project__toolchain_8h_a3924bc2aede93e122d59991d0db8dd2f}{cnasset\_type}}\ tp);}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{project__toolchain_8h_a3af358307eecba3a9934650ba5cc0603}{delete\_cnasset}}(\mbox{\hyperlink{structCNAsset}{CNAsset}}\ *ptr);}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \mbox{\hyperlink{structCNBuild}{CNBuild}}\ *\mbox{\hyperlink{project__toolchain_8h_ac535d4b8f980cebb7ed368d62a16e430}{new\_build}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00072\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{project__toolchain_8h_a4e211ebdcdcaa1dc09949abc5acfa353}{build\_set\_entry\_point}}(\mbox{\hyperlink{structCNBuild}{CNBuild}}\ *\mbox{\hyperlink{cnbuild_2route_8c_acbae52c879a1243e0097c06aa9a3ad82}{build}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *entry\_point);}
+\DoxyCodeLine{00073\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{project__toolchain_8h_aae5a0bec9aff0663ee957978e7873200}{build\_set\_name}}(\mbox{\hyperlink{structCNBuild}{CNBuild}}\ *\mbox{\hyperlink{cnbuild_2route_8c_acbae52c879a1243e0097c06aa9a3ad82}{build}},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}});}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{project__toolchain_8h_a11c2f0aa14b692b3a066447f8228a192}{delete\_build}}(\mbox{\hyperlink{structCNBuild}{CNBuild}}\ *\mbox{\hyperlink{cnbuild_2route_8c_acbae52c879a1243e0097c06aa9a3ad82}{build}});}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \mbox{\hyperlink{project__toolchain_8h_a3924bc2aede93e122d59991d0db8dd2f}{cnasset\_type}}\ \mbox{\hyperlink{project__toolchain_8h_a1a9c13f08838fe8e31d8d40b4901ae17}{tp\_from\_string}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *str);}
+\DoxyCodeLine{00077\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{project__toolchain_8h_a3bffa8150b958b1df1051add9fc78bce}{cnressources\_walk\_path}}(\mbox{\hyperlink{structCNProject}{CNProject}}\ *project,\ \textcolor{keywordtype}{char}\ *path,\ \mbox{\hyperlink{project__toolchain_8h_a3924bc2aede93e122d59991d0db8dd2f}{cnasset\_type}}\ tp);}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{project__toolchain_8h_af194c9a1e46c0b70bab3e87692ef9a8f}{resolve\_path}}(\textcolor{keywordtype}{char}\ *base\_path,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *project\_root);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \mbox{\hyperlink{structCNProject}{CNProject}}\ *\mbox{\hyperlink{project__toolchain_8h_a5aa4e840eb55113e08636137ac51331c}{parse\_project\_xml}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *file\_path,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *project\_root);}
+\DoxyCodeLine{00082\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{project__toolchain_8h_ae1711ce1808a4a6aedf948b0d952dde8}{parse\_cnressources\_xml}}(\mbox{\hyperlink{structCNProject}{CNProject}}\ *project,\ xmlNode\ *node,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *project\_root);}
+\DoxyCodeLine{00083\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{project__toolchain_8h_a3d982caf768dc61c5611ec1c5f2f9675}{parse\_cnbuilds\_xml}}(\mbox{\hyperlink{structCNProject}{CNProject}}\ *project,\ xmlNode\ *node);}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{project__toolchain_8h_ae644faafeeefe23e1ace53c1180ee885}{compile\_library}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structCNProject}{CNProject}}\ *project,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structCNBuild}{CNBuild}}\ *build\_info,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *output\_path,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *build\_path,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *include\_path);}
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

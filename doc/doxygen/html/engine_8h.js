@@ -1,12 +1,26 @@
 var engine_8h =
 [
+    [ "COPY_BUFFER_SIZE", "engine_8h.html#a5e6668951d81243b56eac18d35b16af6", null ],
+    [ "MKDIR", "engine_8h.html#a33f0483b64221b258b080bba5882cf3c", null ],
+    [ "PATH_SEP", "engine_8h.html#a837df2c29aacf37cb96c2b65acb312a6", null ],
     [ "route_callback", "engine_8h.html#a3f7bf39bb2c4a4841a227fe878595dbc", null ],
     [ "argument_route", "engine_8h.html#ae1b6db075e69c7d50940c6e0a9d357f6", null ],
     [ "build", "engine_8h.html#acbae52c879a1243e0097c06aa9a3ad82", null ],
+    [ "copy_file", "engine_8h.html#a80c86544a27139d0f6fc3f945d2ef77a", null ],
+    [ "copytree", "engine_8h.html#a460b7ae1b3bf4be30259bed2f6008644", null ],
+    [ "dump", "engine_8h.html#ad177ef2a270af29fc0d1e6b834b2e945", null ],
+    [ "get_dirname", "engine_8h.html#a927967a36c50f9121cb715f84b7ccadd", null ],
+    [ "get_extension", "engine_8h.html#a5e9345b193ceba83b1594868b6cf24fd", null ],
     [ "help", "engine_8h.html#abfce15a97dc0d59066145deb6db71971", null ],
     [ "init", "engine_8h.html#a152b2bafff5976ca602c43ed93c181c1", null ],
+    [ "is_dir", "engine_8h.html#a020e83a629f1db8bb00e42e8b386ca3b", null ],
+    [ "join_path", "engine_8h.html#a15e83376ef0b65a87f450ff6875fbe20", null ],
+    [ "make_dir", "engine_8h.html#acf770efe1e0705384cea7c0361eaa9f0", null ],
+    [ "path_basename", "engine_8h.html#a6c3ad6fe322505caa24f680af093c832", null ],
+    [ "replace_extension", "engine_8h.html#a89c471a8eed4bb0b438675fdd16088bb", null ],
+    [ "run_program", "engine_8h.html#a8773aefac368bc3acd28c3d6288487e7", null ],
     [ "test", "engine_8h.html#a652dfa3636c93a60db188937488e156a", null ],
     [ "callback", "engine_8h.html#a825191a40d9de85e5b0dc7f60c1e3cd3", null ],
     [ "name", "engine_8h.html#a8f8f80d37794cde9472343e4487ba3eb", null ],
-    [ "routes", "engine_8h.html#ae42255584dd2cdada9e4e0a159d84213", null ]
+    [ "routes", "engine_8h.html#a8caea1d671cd22260a6e9179a17a13b8", null ]
 ];

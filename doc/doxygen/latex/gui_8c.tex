@@ -1,0 +1,49 @@
+\doxysection{src/cnbuild/gui\+\_\+toolchain/gui.c File Reference}
+\hypertarget{gui_8c}{}\label{gui_8c}\index{src/cnbuild/gui\_toolchain/gui.c@{src/cnbuild/gui\_toolchain/gui.c}}
+{\ttfamily \#include "{}gui\+\_\+toolchain.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{gui_8c_aab77add6ef38fafa365efc7fd8d9bbb5}{delete\+\_\+parsed\+\_\+gui}} (struct \mbox{\hyperlink{structgui__element__s}{gui\+\_\+element\+\_\+s}} \texorpdfstring{$\ast$}{*}parsed\+\_\+gui)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{gui_8c_a9389792fbf94f4a0fafe7d16dc1ca155}{fill\+\_\+gui\+\_\+element}} (xml\+Node \texorpdfstring{$\ast$}{*}node, struct \mbox{\hyperlink{structgui__element__s}{gui\+\_\+element\+\_\+s}} \texorpdfstring{$\ast$}{*}element)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{gui_8c_a35a9bb11b1992f38b7d261424311e95b}{build\+\_\+gui\+\_\+element}} (xml\+Node \texorpdfstring{$\ast$}{*}node, struct \mbox{\hyperlink{structgeneric__vector__s}{generic\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}parsed\+\_\+data, struct \mbox{\hyperlink{structgui__element__s}{gui\+\_\+element\+\_\+s}} \texorpdfstring{$\ast$}{*}parent)
+\item 
+struct \mbox{\hyperlink{structgeneric__vector__s}{generic\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{gui_8c_a08c7c3e04d810a3ca5d518356dcb8777}{parse\+\_\+xml\+\_\+gui}} (const char \texorpdfstring{$\ast$}{*}file\+\_\+path, struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}wctx)
+\item 
+struct \mbox{\hyperlink{structgeneric__vector__s}{generic\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{gui_8c_ab6312defc122bd01f7f5cf64c2e44406}{parse\+\_\+gui}} (const char \texorpdfstring{$\ast$}{*}file\+\_\+path, struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}wctx, \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}asset\+\_\+ctx)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{gui_8c_a35a9bb11b1992f38b7d261424311e95b}\label{gui_8c_a35a9bb11b1992f38b7d261424311e95b} 
+\index{gui.c@{gui.c}!build\_gui\_element@{build\_gui\_element}}
+\index{build\_gui\_element@{build\_gui\_element}!gui.c@{gui.c}}
+\doxysubsubsection{\texorpdfstring{build\_gui\_element()}{build\_gui\_element()}}
+{\footnotesize\ttfamily uint8\+\_\+t build\+\_\+gui\+\_\+element (\begin{DoxyParamCaption}\item[{xml\+Node \texorpdfstring{$\ast$}{*}}]{node,  }\item[{struct \mbox{\hyperlink{structgeneric__vector__s}{generic\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{parsed\+\_\+data,  }\item[{struct \mbox{\hyperlink{structgui__element__s}{gui\+\_\+element\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{parent }\end{DoxyParamCaption})}
+
+\Hypertarget{gui_8c_aab77add6ef38fafa365efc7fd8d9bbb5}\label{gui_8c_aab77add6ef38fafa365efc7fd8d9bbb5} 
+\index{gui.c@{gui.c}!delete\_parsed\_gui@{delete\_parsed\_gui}}
+\index{delete\_parsed\_gui@{delete\_parsed\_gui}!gui.c@{gui.c}}
+\doxysubsubsection{\texorpdfstring{delete\_parsed\_gui()}{delete\_parsed\_gui()}}
+{\footnotesize\ttfamily void delete\+\_\+parsed\+\_\+gui (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structgui__element__s}{gui\+\_\+element\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{parsed\+\_\+gui }\end{DoxyParamCaption})}
+
+\Hypertarget{gui_8c_a9389792fbf94f4a0fafe7d16dc1ca155}\label{gui_8c_a9389792fbf94f4a0fafe7d16dc1ca155} 
+\index{gui.c@{gui.c}!fill\_gui\_element@{fill\_gui\_element}}
+\index{fill\_gui\_element@{fill\_gui\_element}!gui.c@{gui.c}}
+\doxysubsubsection{\texorpdfstring{fill\_gui\_element()}{fill\_gui\_element()}}
+{\footnotesize\ttfamily uint8\+\_\+t fill\+\_\+gui\+\_\+element (\begin{DoxyParamCaption}\item[{xml\+Node \texorpdfstring{$\ast$}{*}}]{node,  }\item[{struct \mbox{\hyperlink{structgui__element__s}{gui\+\_\+element\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{element }\end{DoxyParamCaption})}
+
+\Hypertarget{gui_8c_ab6312defc122bd01f7f5cf64c2e44406}\label{gui_8c_ab6312defc122bd01f7f5cf64c2e44406} 
+\index{gui.c@{gui.c}!parse\_gui@{parse\_gui}}
+\index{parse\_gui@{parse\_gui}!gui.c@{gui.c}}
+\doxysubsubsection{\texorpdfstring{parse\_gui()}{parse\_gui()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structgeneric__vector__s}{generic\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*} parse\+\_\+gui (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{file\+\_\+path,  }\item[{struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{wctx,  }\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{asset\+\_\+ctx }\end{DoxyParamCaption})}
+
+\Hypertarget{gui_8c_a08c7c3e04d810a3ca5d518356dcb8777}\label{gui_8c_a08c7c3e04d810a3ca5d518356dcb8777} 
+\index{gui.c@{gui.c}!parse\_xml\_gui@{parse\_xml\_gui}}
+\index{parse\_xml\_gui@{parse\_xml\_gui}!gui.c@{gui.c}}
+\doxysubsubsection{\texorpdfstring{parse\_xml\_gui()}{parse\_xml\_gui()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structgeneric__vector__s}{generic\+\_\+vector\+\_\+s}} \texorpdfstring{$\ast$}{*} parse\+\_\+xml\+\_\+gui (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{file\+\_\+path,  }\item[{struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{wctx }\end{DoxyParamCaption})}
+

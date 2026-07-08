@@ -8,13 +8,34 @@
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{structbuild__args__s}{build\+\_\+args\+\_\+s}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
 \item 
-struct \mbox{\hyperlink{structparsed__gui__element__data__s}{parsed\+\_\+gui\+\_\+element\+\_\+data\+\_\+s}}
+typedef int(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{build_8h_a96b21e673f9e191a885a058eb30e5ab4}{route\+\_\+callback\+\_\+toolchain}}) (size\+\_\+t, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*})
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int \mbox{\hyperlink{build_8h_a7c0a4901634cd71315b384c4612b1d57}{build\+\_\+gui}} (size\+\_\+t argc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv)
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{build_8h_a27ab48711bfa88b9fe49b025564abd19}{strip\+\_\+whitespace}} (const char \texorpdfstring{$\ast$}{*}str)
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{build_8h_a6e578177f221a35383e7d2a5dd0b83fa}{string\+\_\+from\+\_\+node}} (xml\+Node \texorpdfstring{$\ast$}{*}node)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{build_8h_a651da7d62a2b42a6ef4db446ccceb21c}{build\+\_\+get\+\_\+args}} (size\+\_\+t argc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv, const char \texorpdfstring{$\ast$}{*}toolchain, struct \mbox{\hyperlink{structbuild__args__s}{build\+\_\+args\+\_\+s}} \texorpdfstring{$\ast$}{*}args)
+\item 
+void \mbox{\hyperlink{build_8h_a85972f2507e3f8ad72097fc4eba02dab}{reset\+\_\+args}} (struct \mbox{\hyperlink{structbuild__args__s}{build\+\_\+args\+\_\+s}} \texorpdfstring{$\ast$}{*}args)
+\item 
+int \mbox{\hyperlink{build_8h_a4827583d802b30fcfd5438a95b57de41}{build\+\_\+gui}} (size\+\_\+t argc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv, \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}asset\+\_\+ctx)
+\item 
+int \mbox{\hyperlink{build_8h_a4f70dca845f25104d35a9f305b27c4e5}{build\+\_\+assets}} (size\+\_\+t argc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv, \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}asset\+\_\+ctx)
+\item 
+int \mbox{\hyperlink{build_8h_a05df0e74f26ae861b604888d6f054de6}{build\+\_\+obj}} (size\+\_\+t argc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv, \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}asset\+\_\+ctx)
+\item 
+int \mbox{\hyperlink{build_8h_a231e302cbb3148ea6aa34eab381d0d21}{build\+\_\+project}} (size\+\_\+t argc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv, \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}asset\+\_\+ctx)
+\item 
+int \mbox{\hyperlink{build_8h_a848f8979c95049a4d57941b0de51c577}{build\+\_\+scene}} (size\+\_\+t argc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv, \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}asset\+\_\+ctx)
+\item 
+int \mbox{\hyperlink{build_8h_a5ca0fed63c7518997505469d87912433}{build\+\_\+asset\+\_\+pack}} (size\+\_\+t argc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv, \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}asset\+\_\+ctx)
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -23,23 +44,86 @@ int \mbox{\hyperlink{build_8h_a7c0a4901634cd71315b384c4612b1d57}{build\+\_\+gui}
 xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
 struct \{\\
 \>const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}}\\
-\>\mbox{\hyperlink{engine_8h_a3f7bf39bb2c4a4841a227fe878595dbc}{route\_callback}} \mbox{\hyperlink{build_8h_a825191a40d9de85e5b0dc7f60c1e3cd3}{callback}}\\
-\} \mbox{\hyperlink{build_8h_aeab8ba315596f823ac80964c00c48f83}{build\_types}} \mbox{[}$\,$\mbox{]}\\
+\>\mbox{\hyperlink{build_8h_a96b21e673f9e191a885a058eb30e5ab4}{route\_callback\_toolchain}} \mbox{\hyperlink{build_8h_a5ab5a233bdc6ad82f01015b39111c614}{callback}}\\
+\} \mbox{\hyperlink{build_8h_a4dca628f5f7d56189c2f88bab8d35518}{build\_types}} \mbox{[}$\,$\mbox{]}\\
 
 \end{tabbing}\end{DoxyCompactItemize}
 
 
+\doxysubsection{Typedef Documentation}
+\Hypertarget{build_8h_a96b21e673f9e191a885a058eb30e5ab4}\label{build_8h_a96b21e673f9e191a885a058eb30e5ab4} 
+\index{build.h@{build.h}!route\_callback\_toolchain@{route\_callback\_toolchain}}
+\index{route\_callback\_toolchain@{route\_callback\_toolchain}!build.h@{build.h}}
+\doxysubsubsection{\texorpdfstring{route\_callback\_toolchain}{route\_callback\_toolchain}}
+{\footnotesize\ttfamily typedef int(\texorpdfstring{$\ast$}{*} route\+\_\+callback\+\_\+toolchain) (size\+\_\+t, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}, \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*})}
+
+
+
 \doxysubsection{Function Documentation}
-\Hypertarget{build_8h_a7c0a4901634cd71315b384c4612b1d57}\label{build_8h_a7c0a4901634cd71315b384c4612b1d57} 
+\Hypertarget{build_8h_a5ca0fed63c7518997505469d87912433}\label{build_8h_a5ca0fed63c7518997505469d87912433} 
+\index{build.h@{build.h}!build\_asset\_pack@{build\_asset\_pack}}
+\index{build\_asset\_pack@{build\_asset\_pack}!build.h@{build.h}}
+\doxysubsubsection{\texorpdfstring{build\_asset\_pack()}{build\_asset\_pack()}}
+{\footnotesize\ttfamily int build\+\_\+asset\+\_\+pack (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv,  }\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{asset\+\_\+ctx }\end{DoxyParamCaption})}
+
+\Hypertarget{build_8h_a4f70dca845f25104d35a9f305b27c4e5}\label{build_8h_a4f70dca845f25104d35a9f305b27c4e5} 
+\index{build.h@{build.h}!build\_assets@{build\_assets}}
+\index{build\_assets@{build\_assets}!build.h@{build.h}}
+\doxysubsubsection{\texorpdfstring{build\_assets()}{build\_assets()}}
+{\footnotesize\ttfamily int build\+\_\+assets (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv,  }\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{asset\+\_\+ctx }\end{DoxyParamCaption})}
+
+\Hypertarget{build_8h_a651da7d62a2b42a6ef4db446ccceb21c}\label{build_8h_a651da7d62a2b42a6ef4db446ccceb21c} 
+\index{build.h@{build.h}!build\_get\_args@{build\_get\_args}}
+\index{build\_get\_args@{build\_get\_args}!build.h@{build.h}}
+\doxysubsubsection{\texorpdfstring{build\_get\_args()}{build\_get\_args()}}
+{\footnotesize\ttfamily uint8\+\_\+t build\+\_\+get\+\_\+args (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{toolchain,  }\item[{struct \mbox{\hyperlink{structbuild__args__s}{build\+\_\+args\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{args }\end{DoxyParamCaption})}
+
+\Hypertarget{build_8h_a4827583d802b30fcfd5438a95b57de41}\label{build_8h_a4827583d802b30fcfd5438a95b57de41} 
 \index{build.h@{build.h}!build\_gui@{build\_gui}}
 \index{build\_gui@{build\_gui}!build.h@{build.h}}
 \doxysubsubsection{\texorpdfstring{build\_gui()}{build\_gui()}}
-{\footnotesize\ttfamily int build\+\_\+gui (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int build\+\_\+gui (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv,  }\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{asset\+\_\+ctx }\end{DoxyParamCaption})}
+
+\Hypertarget{build_8h_a05df0e74f26ae861b604888d6f054de6}\label{build_8h_a05df0e74f26ae861b604888d6f054de6} 
+\index{build.h@{build.h}!build\_obj@{build\_obj}}
+\index{build\_obj@{build\_obj}!build.h@{build.h}}
+\doxysubsubsection{\texorpdfstring{build\_obj()}{build\_obj()}}
+{\footnotesize\ttfamily int build\+\_\+obj (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv,  }\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{asset\+\_\+ctx }\end{DoxyParamCaption})}
+
+\Hypertarget{build_8h_a231e302cbb3148ea6aa34eab381d0d21}\label{build_8h_a231e302cbb3148ea6aa34eab381d0d21} 
+\index{build.h@{build.h}!build\_project@{build\_project}}
+\index{build\_project@{build\_project}!build.h@{build.h}}
+\doxysubsubsection{\texorpdfstring{build\_project()}{build\_project()}}
+{\footnotesize\ttfamily int build\+\_\+project (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv,  }\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{asset\+\_\+ctx }\end{DoxyParamCaption})}
+
+\Hypertarget{build_8h_a848f8979c95049a4d57941b0de51c577}\label{build_8h_a848f8979c95049a4d57941b0de51c577} 
+\index{build.h@{build.h}!build\_scene@{build\_scene}}
+\index{build\_scene@{build\_scene}!build.h@{build.h}}
+\doxysubsubsection{\texorpdfstring{build\_scene()}{build\_scene()}}
+{\footnotesize\ttfamily int build\+\_\+scene (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv,  }\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{asset\+\_\+ctx }\end{DoxyParamCaption})}
+
+\Hypertarget{build_8h_a85972f2507e3f8ad72097fc4eba02dab}\label{build_8h_a85972f2507e3f8ad72097fc4eba02dab} 
+\index{build.h@{build.h}!reset\_args@{reset\_args}}
+\index{reset\_args@{reset\_args}!build.h@{build.h}}
+\doxysubsubsection{\texorpdfstring{reset\_args()}{reset\_args()}}
+{\footnotesize\ttfamily void reset\+\_\+args (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structbuild__args__s}{build\+\_\+args\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{args }\end{DoxyParamCaption})}
+
+\Hypertarget{build_8h_a6e578177f221a35383e7d2a5dd0b83fa}\label{build_8h_a6e578177f221a35383e7d2a5dd0b83fa} 
+\index{build.h@{build.h}!string\_from\_node@{string\_from\_node}}
+\index{string\_from\_node@{string\_from\_node}!build.h@{build.h}}
+\doxysubsubsection{\texorpdfstring{string\_from\_node()}{string\_from\_node()}}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} string\+\_\+from\+\_\+node (\begin{DoxyParamCaption}\item[{xml\+Node \texorpdfstring{$\ast$}{*}}]{node }\end{DoxyParamCaption})}
+
+\Hypertarget{build_8h_a27ab48711bfa88b9fe49b025564abd19}\label{build_8h_a27ab48711bfa88b9fe49b025564abd19} 
+\index{build.h@{build.h}!strip\_whitespace@{strip\_whitespace}}
+\index{strip\_whitespace@{strip\_whitespace}!build.h@{build.h}}
+\doxysubsubsection{\texorpdfstring{strip\_whitespace()}{strip\_whitespace()}}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} strip\+\_\+whitespace (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{str }\end{DoxyParamCaption})}
 
 
 
 \doxysubsection{Variable Documentation}
-\Hypertarget{build_8h_aeab8ba315596f823ac80964c00c48f83}\label{build_8h_aeab8ba315596f823ac80964c00c48f83} 
+\Hypertarget{build_8h_a4dca628f5f7d56189c2f88bab8d35518}\label{build_8h_a4dca628f5f7d56189c2f88bab8d35518} 
 \index{build.h@{build.h}!build\_types@{build\_types}}
 \index{build\_types@{build\_types}!build.h@{build.h}}
 \doxysubsubsection{\texorpdfstring{[struct]}{[struct]}}
@@ -48,19 +132,21 @@ struct \{\\
 {\bfseries Initial value\+:}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{=\ \{}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}gui"{}},\ \&\mbox{\hyperlink{build_8h_a7c0a4901634cd71315b384c4612b1d57}{build\_gui}}\},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}obj"{}},\ NULL\},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}scn"{}},\ NULL\},}
-\DoxyCodeLine{\ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}proj"{}},\ NULL\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}gui"{}},\ \&\mbox{\hyperlink{build_8h_a4827583d802b30fcfd5438a95b57de41}{build\_gui}}\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}obj"{}},\ \&\mbox{\hyperlink{build_8h_a05df0e74f26ae861b604888d6f054de6}{build\_obj}}\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}scn"{}},\ \&\mbox{\hyperlink{build_8h_a848f8979c95049a4d57941b0de51c577}{build\_scene}}\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}proj"{}},\ \&\mbox{\hyperlink{build_8h_a231e302cbb3148ea6aa34eab381d0d21}{build\_project}}\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}asset"{}},\ \&\mbox{\hyperlink{build_8h_a4f70dca845f25104d35a9f305b27c4e5}{build\_assets}}\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}lnk"{}},\ \&\mbox{\hyperlink{build_8h_a5ca0fed63c7518997505469d87912433}{build\_asset\_pack}}\},}
 \DoxyCodeLine{\ \ \ \ \ \ \ \ \{NULL,\ NULL\}}
 \DoxyCodeLine{\ \ \ \ \}}
 
 \end{DoxyCode}
-\Hypertarget{build_8h_a825191a40d9de85e5b0dc7f60c1e3cd3}\label{build_8h_a825191a40d9de85e5b0dc7f60c1e3cd3} 
+\Hypertarget{build_8h_a5ab5a233bdc6ad82f01015b39111c614}\label{build_8h_a5ab5a233bdc6ad82f01015b39111c614} 
 \index{build.h@{build.h}!callback@{callback}}
 \index{callback@{callback}!build.h@{build.h}}
 \doxysubsubsection{\texorpdfstring{callback}{callback}}
-{\footnotesize\ttfamily \mbox{\hyperlink{engine_8h_a3f7bf39bb2c4a4841a227fe878595dbc}{route\+\_\+callback}} callback}
+{\footnotesize\ttfamily \mbox{\hyperlink{build_8h_a96b21e673f9e191a885a058eb30e5ab4}{route\+\_\+callback\+\_\+toolchain}} callback}
 
 \Hypertarget{build_8h_a8f8f80d37794cde9472343e4487ba3eb}\label{build_8h_a8f8f80d37794cde9472343e4487ba3eb} 
 \index{build.h@{build.h}!name@{name}}

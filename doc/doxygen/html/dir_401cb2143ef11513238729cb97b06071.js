@@ -4,7 +4,7 @@ var dir_401cb2143ef11513238729cb97b06071 =
     [ "event.c", "event_8c.html", "event_8c" ],
     [ "event_map.c", "event__map_8c.html", "event__map_8c" ],
     [ "graphic_submodule_ctx.c", "graphic__submodule__ctx_8c.html", "graphic__submodule__ctx_8c" ],
-    [ "interface.c", "interface_8c.html", "interface_8c" ],
+    [ "interface.c", "cngraphic_2src_2interface_8c.html", "cngraphic_2src_2interface_8c" ],
     [ "material.c", "material_8c.html", "material_8c" ],
     [ "mesh.c", "mesh_8c.html", "mesh_8c" ],
     [ "quad.c", "quad_8c.html", "quad_8c" ],

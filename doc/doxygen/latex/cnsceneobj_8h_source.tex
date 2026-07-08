@@ -1,0 +1,31 @@
+\doxysection{cnsceneobj.\+h}
+\hypertarget{cnsceneobj_8h_source}{}\label{cnsceneobj_8h_source}\index{lib/formats/cnsceneobj/include/cnsceneobj.h@{lib/formats/cnsceneobj/include/cnsceneobj.h}}
+\mbox{\hyperlink{cnsceneobj_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_CNSCENEOBJ\_H\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\ \ \ \ \#define\ \_CNSCENEOBJ\_H\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{libcnassets_8h}{libcnassets.h}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structscene__element__s}{scene\_element\_s}}\ \{}
+\DoxyCodeLine{00007\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structscene__element__s_a9aa0c55659a28b1ce050025c4ca0ca7e}{id}};}
+\DoxyCodeLine{00008\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structscene__element__s_a8ac6e10651b83b82f8173def28560067}{object\_type}};}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \textcolor{keyword}{union\ }\{}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structscene__element__s}{scene\_element\_s}}\ *\mbox{\hyperlink{structscene__element__s_ab446e1caac9f60653654336031d793f1}{\_o}};}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structscene__element__s_ab8e20455fc42fdcc608e2acd6a713b8f}{\_n}};}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \}\ \mbox{\hyperlink{structscene__element__s_ae55ce0712ff5d0a3be41beeff086e79e}{parent}};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgeneric__vector__s}{generic\_vector\_s}}\ \mbox{\hyperlink{structscene__element__s_a0500eea8beda01c7980d0740af8e2c56}{attributes}};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{structscene__element__s_aa9144b9cc4b49fe3131d7e74f291ee14}{parent\_loaded}};}
+\DoxyCodeLine{00018\ \ \ \ \ \};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structasset__registry}{asset\_registry}}\ *\mbox{\hyperlink{cnsceneobj_8h_ad919e3c09d781aea58681203f26c7f5c}{register\_asset}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{cnsceneobj_8h_aab170e9f19d739ae994db5afde5aeec5}{unregister\_asset}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structasset__registry}{asset\_registry}}\ *registered\_asset);}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{cnsceneobj_8h_a1d52d07f48808f77154411ca14b8da76}{init\_tree\_section\_registry}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structsection__registry}{section\_registry}}\ *reg);}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

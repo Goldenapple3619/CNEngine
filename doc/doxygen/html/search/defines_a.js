@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['sdl_5fmain_5fhandled_0',['SDL_MAIN_HANDLED',['../main_8c.html#a51f528deaaeb973f417b46a2ec36f850',1,'main.c']]],
-  ['set_5fparent_5fclass_5fbuild_1',['SET_PARENT_CLASS_BUILD',['../libcncore_8h.html#addc430d879e3170c2986a2b76404d9bd',1,'libcncore.h']]],
-  ['string_5findividual_5fallocation_2',['STRING_INDIVIDUAL_ALLOCATION',['../libcncore_8h.html#ae2252f92419c9d33a95b6420394c138c',1,'libcncore.h']]]
+  ['raise_0',['RAISE',['../libcncore_8h.html#a05cdd8afe24b6621f8d797b0d90e52e0',1,'libcncore.h']]],
+  ['raise_5ffmt_1',['RAISE_FMT',['../libcncore_8h.html#a4508e1f26d6b30fb7c91cd825445f813',1,'libcncore.h']]],
+  ['register_5finput_2',['register_input',['../libcnapi_8h.html#a11ac2965e1922f66324fe46aca7f8376',1,'libcnapi.h']]]
 ];
