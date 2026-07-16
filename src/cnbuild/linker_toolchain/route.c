@@ -17,25 +17,54 @@ static uint64_t generate_section_size(struct engine_object_file_section_writer_c
 
 static char *generate_section_content(struct engine_object_file_section_writer_ctx_s *self, const struct engine_object_file_writer_ctx_s *writer, struct generic_map_s *strndx)
 {
-    (void)writer;
-    (void)strndx;
     uint64_t size = generate_section_size(self);
     char *section_content = malloc(sizeof(char) * size);
+    struct section_registry *temp_reg;
 
     if (!section_content) {
         RAISE_FMT(ERR_OUT_OF_MEMORY, "failed to allocate new section content of size %" PRIu64 ".", size);
         return (NULL);
     }
 
-    (void)memcpy(section_content, ((struct section_blk *)self->_v)->section_blk_ptr, size);
+    (void)memcpy(section_content, ((BLKAssetStorage *)self->_v)->_s.section_blk_ptr, size);
+
+    if (!((BLKAssetStorage *)self->_v)->asset_reg) {
+        return (section_content);
+    }
+
+    for (size_t i = 0; i < ((BLKAssetStorage *)self->_v)->asset_reg->registered_sections.size; ++i) {
+        temp_reg = ((BLKAssetStorage *)self->_v)->asset_reg->registered_sections.content[i];
+
+        if (temp_reg->section_type == ((BLKAssetStorage *)self->_v)->_s.section_type) {
+            if (!temp_reg->strndx_reconstructor) {
+                RAISE_FMT(WAR_IMPORTANT, "section registry for %" PRIu16 " as no strndx reconstruction callback, skipping.", ((BLKAssetStorage *)self->_v)->_s.section_type);
+            } else {
+                printf("reconstructing %s.\n", self->section_name);
+                temp_reg->strndx_reconstructor(section_content, size, ((BLKAssetStorage *)self->_v)->reader, strndx);
+            }
+
+            if (((BLKAssetStorage *)self->_v)->reader->header.endian != writer->write_infos.endian) {
+                if (!temp_reg->endian_converter) {
+                    RAISE_FMT(WAR_IMPORTANT, "section registry for %" PRIu16 " as no endian converter callback, skipping.", ((BLKAssetStorage *)self->_v)->_s.section_type);
+                } else {
+                    printf("converting %s.\n", self->section_name);
+                    temp_reg->endian_converter(section_content, size, ((BLKAssetStorage *)self->_v)->reader, writer->write_infos.endian);
+                }
+            }
+            return (section_content);
+        }
+    }
+
+    RAISE_FMT(WAR_IMPORTANT, "no section registry found for %" PRIu16 " no strndx reconstruction/endian conversion will be applied.", ((BLKAssetStorage *)self->_v)->_s.section_type);
+
     return (section_content);
 }
 
 
-uint8_t parse_cnasset(CNAssetReader *reader, const char *file_path, struct engine_object_file_writer_ctx_s *wctx)
+uint8_t parse_cnasset(CNAssetReader *reader, const char *file_path, struct engine_object_file_writer_ctx_s *wctx, Object *asset_ctx)
 {
     struct engine_object_file_section_writer_ctx_s *temp_section;
-    struct section_blk *temp_blk;
+    BLKAssetStorage *temp_blk;
     char *new_section_name;
     const char *base_section_name;
     const char *base_obj_name;
@@ -49,9 +78,21 @@ uint8_t parse_cnasset(CNAssetReader *reader, const char *file_path, struct engin
         PROPAGATE_ERR();
         return (1);
     }
+
+    if (reader->header.type == ENGINE_OBJ_ASSET_PACK) {
+        RAISE(ERR_NOT_COMPATIBLE, "asset pack merge not supported yet.");
+        return (1);
+    }
+
     if (object_file_reader_read_section_header(reader)) {
         PROPAGATE_ERR();
         return (1);
+    }
+
+    struct asset_registry *reg = call_method(asset_ctx, "find_asset_by_type", PACK_ARG(&reader->header.type)).as.ptr;
+
+    if (!reg && reader->header.type != ENGINE_OBJ_RAW_RESSOURCES) {
+        RAISE_FMT(WAR_IMPORTANT, "no asset registry found for %" PRIu16 " no strndx reconstruction/endian conversion will be applied & type treated as raw.", reader->header.type);
     }
 
     if (!reader->section_header.section_count) {
@@ -73,24 +114,27 @@ uint8_t parse_cnasset(CNAssetReader *reader, const char *file_path, struct engin
             return (1);
         }
 
-        new_section_name = malloc(sizeof(char) * (strlen(base_obj_name) + strlen(base_section_name) + 1 + 1));
+        new_section_name = malloc(sizeof(char) * ((reg ? strlen(reg->name) : strlen("raw")) + strlen(base_obj_name) + strlen(base_section_name) + 2 + 1));
 
         if (!new_section_name) {
             RAISE(ERR_OUT_OF_MEMORY, "failed to allocate new section name.");
             return (1);
         }
 
-        (void)snprintf(new_section_name, strlen(base_obj_name) + strlen(base_section_name) + 1 + 1, "%s.%s", base_obj_name, base_section_name);
+        (void)snprintf(new_section_name, (reg ? strlen(reg->name) : strlen("raw")) + strlen(base_obj_name) + strlen(base_section_name) + 2 + 1, "%s.%s.%s", (reg ? reg->name : "raw"), base_obj_name, base_section_name);
 
-        temp_blk = malloc(sizeof(struct section_blk));
+        temp_blk = malloc(sizeof(BLKAssetStorage));
 
         if (!temp_blk) {
             RAISE(ERR_OUT_OF_MEMORY, "failed to allocate new section_blk.");
             (void)free(new_section_name);
             return (1);
         }
+
+        temp_blk->asset_reg = reg;
+        temp_blk->reader = reader;
     
-        if (object_file_reader_get_section(reader, temp_blk, i)) {
+        if (object_file_reader_get_section(reader, &temp_blk->_s, i)) {
             PROPAGATE_ERR();
             (void)free(new_section_name);
             (void)free(temp_blk);
@@ -129,8 +173,6 @@ int build_asset_pack(size_t argc, char **argv, Object *asset_ctx)
     CNAssetReader *reader;
     FILE *fp;
 
-    (void)asset_ctx;
-
     if (build_get_args(argc - 3, argv + 3, "pack", &build_args)) {
         PROPAGATE_ERR();
         (void)reset_args(&build_args);
@@ -167,7 +209,7 @@ int build_asset_pack(size_t argc, char **argv, Object *asset_ctx)
             return (1);
         }
 
-        if (parse_cnasset(reader, build_args.input_files.content[i],  wctx)) {
+        if (parse_cnasset(reader, build_args.input_files.content[i], wctx, asset_ctx)) {
             PROPAGATE_ERR();
             (void)delete_object_file_reader(reader);
             (void)delete_parsed_data(wctx);

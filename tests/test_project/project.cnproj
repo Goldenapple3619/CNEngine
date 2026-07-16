@@ -8,6 +8,7 @@
                 <module>core</module>
                 <module>assets</module>
                 <module>graphic</module>
+                <module>input</module>
                 <module>audio</module>
                 <module>r3d</module>
                 <module>rgui</module>

@@ -3,4 +3,10 @@
 
     #include "../build.h"
 
+    typedef struct {
+        struct section_blk _s;
+        struct asset_registry *asset_reg;
+        CNAssetReader *reader;
+    } BLKAssetStorage;
+
 #endif

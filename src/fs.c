@@ -93,6 +93,22 @@ cnbool is_dir(const char *path)
     #endif
 }
 
+cnbool is_file(const char *path)
+{
+    #ifdef _WIN32
+        DWORD attr = GetFileAttributesA(path);
+
+        if (attr == INVALID_FILE_ATTRIBUTES)
+            return (false);
+
+        return ((attr & FILE_ATTRIBUTE_DIRECTORY) ? false : true);
+    #else
+        struct stat s;
+
+        return ((stat(path, &s) == 0 && S_ISREG(s.st_mode)) ? true : false);
+    #endif
+}
+
 #ifdef _WIN32
     static char *quote_arg(const char *arg)
     {
@@ -340,7 +356,7 @@ uint8_t copy_file(const char *src, const char *dst)
     return (0);
 }
 
-uint8_t copytree(const char *src, const char *dst)
+uint8_t copytree(const char *src, const char *dst, cnbool overwrite)
 {
     #ifdef _WIN32
         WIN32_FIND_DATAA fd;
@@ -370,13 +386,20 @@ uint8_t copytree(const char *src, const char *dst)
             dst_path = join_path(dst, fd.cFileName);
 
             if (fd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) {
-                if (copytree(src_path, dst_path) != 0) {
+                if (copytree(src_path, dst_path, overwrite) != 0) {
                     FindClose(h);
                     free(src_path);
                     free(dst_path);
                     return (1);
                 }
             } else {
+                if (is_file(dst_path) && !overwrite) {
+                    FindClose(h);
+                    free(src_path);
+                    free(dst_path);
+                    continue;
+                }
+
                 if (copy_file(src_path, dst_path) != 0) {
                     FindClose(h);
                     free(src_path);
@@ -416,13 +439,18 @@ uint8_t copytree(const char *src, const char *dst)
             dst_path = join_path(dst, entry->d_name);
 
             if (is_dir(src_path)) {
-                if (copytree(src_path, dst_path) != 0) {
+                if (copytree(src_path, dst_path, overwrite) != 0) {
                     closedir(dir);
                     free(src_path);
                     free(dst_path);
                     return (1);
                 }
             } else {
+                if (is_file(dst_path) && !overwrite) {
+                    free(src_path);
+                    free(dst_path);
+                    continue;
+                }
                 if (copy_file(src_path, dst_path) != 0) {
                     closedir(dir);
                     free(src_path);

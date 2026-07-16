@@ -1,0 +1,20 @@
+<engine>
+    <submodules>${ENGINE_ROOT}/assets/submodules</submodules>
+    <ressources>
+        <set machine="linux" architecture="amd64">
+            <includes>${ENGINE_ROOT}/dist/linux-amd64/include</includes>
+            <libs>${ENGINE_ROOT}/dist/linux-amd64/lib</libs>
+            <toolchain>gcc</toolchain>
+        </set>
+
+        <set machine="win" architecture="amd64">
+            <includes>${ENGINE_ROOT}/dist/windows-amd64/include</includes>
+            <libs>${ENGINE_ROOT}/dist/windows-amd64/lib</libs>
+            <toolchain>gcc</toolchain>
+        </set>
+    </ressources>
+    <generator>
+        <include>${ENGINE_ROOT}/assets/generator/engine_main.h</include>
+        <src>${ENGINE_ROOT}/assets/generator/main.c</src>
+    </generator>
+</engine>

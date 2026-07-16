@@ -30,9 +30,9 @@
         typedef long file_off_t;
     #endif
     typedef enum {
-        ENGINE_OBJ_UKN = 0x00,
-        ENGINE_OBJ_RAW_RESSOURCES,
-        ENGINE_OBJ_ASSET_PACK,
+        ENGINE_OBJ_UKN = 0x00, // reserved
+        ENGINE_OBJ_RAW_RESSOURCES, // reserved
+        ENGINE_OBJ_ASSET_PACK, // reserved
         ENGINE_OBJ_GUI,
         ENGINE_OBJ_SCN,
         ENGINE_OBJ_OBJ,
@@ -54,7 +54,7 @@
     } engine_wrt_flags;
 
     typedef enum {
-        ENGINE_SEC_UKN = 0x00,
+        ENGINE_SEC_UKN = 0x00, // reserved
         ENGINE_SEC_GUI_NODES,
         ENGINE_SEC_GUI_STYLE,
         ENGINE_SEC_GUI_CONN,
@@ -173,6 +173,8 @@
         const uint8_t *section_blk_ptr;
 
         uint64_t blk_size;
+        uint16_t section_type;
+        uint32_t section_flags;
     };
 
     struct section_registry {
@@ -183,6 +185,7 @@
         char *(*data_builder)(struct engine_object_file_section_writer_ctx_s *self, const struct engine_object_file_writer_ctx_s *wctx, struct generic_map_s *strndx);
         uint64_t (*size_compute)(struct engine_object_file_section_writer_ctx_s *self);
         char *(*strndx_reconstructor)(char *rw_content, uint64_t content_size, const CNAssetReader *reader, struct generic_map_s *new_strndx);
+        char *(*endian_converter)(char *rw_content, uint64_t content_size, const CNAssetReader *reader, engine_wrt_endian endian);
     };
 
     struct asset_registry {

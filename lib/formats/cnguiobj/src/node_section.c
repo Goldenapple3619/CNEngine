@@ -53,28 +53,51 @@ static char *reconstruct_node_section_strndx(char *rw_content, uint64_t content_
     void (*writter_u32)(char *, uint32_t) = reader->header.endian == ENGINE_WRT_LITTLE_ENDIAN ? &bufwr_u32_le : &bufwr_u32_be;
 
     while (pos < content_size) {
-        val = add_str_table(object_file_reader_get_string(reader, reader->read_handler.u32(rw_content)), new_strndx); // parent
+        val = add_str_table(object_file_reader_get_string(reader, reader->read_handler.u32((const void *)(rw_content + pos))), new_strndx); // parent
         if (val == 0xFFFFFFFFu)
             return (NULL);
         (void)writter_u32(rw_content + pos, val);
         pos += sizeof(uint32_t);
     
-        val = add_str_table(object_file_reader_get_string(reader, reader->read_handler.u32(rw_content)), new_strndx); // id
+        val = add_str_table(object_file_reader_get_string(reader, reader->read_handler.u32(rw_content + pos)), new_strndx); // id
         if (val == 0xFFFFFFFFu)
             return (NULL);
         (void)writter_u32(rw_content + pos, val);
         pos += sizeof(uint32_t);
     
-        val = add_str_table(object_file_reader_get_string(reader, reader->read_handler.u32(rw_content)), new_strndx); // type
+        val = add_str_table(object_file_reader_get_string(reader, reader->read_handler.u32(rw_content + pos)), new_strndx); // type
         if (val == 0xFFFFFFFFu)
             return (NULL);
         (void)writter_u32(rw_content + pos, val);
         pos += sizeof(uint32_t);
     
-        val = add_str_table(object_file_reader_get_string(reader, reader->read_handler.u32(rw_content)), new_strndx); // text
+        val = add_str_table(object_file_reader_get_string(reader, reader->read_handler.u32(rw_content + pos)), new_strndx); // text
         if (val == 0xFFFFFFFFu)
             return (NULL);
         (void)writter_u32(rw_content + pos, val);
+        pos += sizeof(uint32_t);
+    }
+
+    return (rw_content);
+}
+
+static char *convert_node_section_endian(char *rw_content, uint64_t content_size, const CNAssetReader *reader, engine_wrt_endian endian)
+{
+    uint64_t pos = 0;
+    void (*writter_u32)(char *, uint32_t) = endian == ENGINE_WRT_LITTLE_ENDIAN ? &bufwr_u32_le : &bufwr_u32_be;
+    uint32_t (*reader_u32)(const void *) = reader->header.endian == ENGINE_WRT_LITTLE_ENDIAN ? &bufrd_u32_le: &bufrd_u32_be;
+
+    while (pos < content_size) {
+        (void)writter_u32(rw_content + pos, reader_u32((const void *)(rw_content + pos)));
+        pos += sizeof(uint32_t);
+    
+        (void)writter_u32(rw_content + pos, reader_u32((const void *)(rw_content + pos)));
+        pos += sizeof(uint32_t);
+    
+        (void)writter_u32(rw_content + pos, reader_u32((const void *)(rw_content + pos)));
+        pos += sizeof(uint32_t);
+    
+        (void)writter_u32(rw_content + pos, reader_u32((const void *)(rw_content + pos)));
         pos += sizeof(uint32_t);
     }
 
@@ -93,4 +116,5 @@ void init_node_section_registry(struct section_registry *reg)
     reg->strndx_reconstructor = &reconstruct_node_section_strndx;
     reg->data_builder = &build_node_section;
     reg->size_compute = &build_node_section_size;
+    reg->endian_converter = &convert_node_section_endian;
 }

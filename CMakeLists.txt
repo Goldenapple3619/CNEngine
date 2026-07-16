@@ -224,9 +224,12 @@ if(CN_BUILD_ENGINE)
         src/cnbuild/project_toolchain/cnasset.c
         src/cnbuild/project_toolchain/cnproject.c
         src/cnbuild/project_toolchain/cnbuild.c
+        src/cnbuild/project_toolchain/engine_config.c
         src/cnbuild/project_toolchain/parsers/builds.c
         src/cnbuild/project_toolchain/parsers/ressources.c
+        src/cnbuild/project_toolchain/parsers/submodules.c
         src/cnbuild/project_toolchain/parsers/project.c
+        src/cnbuild/project_toolchain/parsers/config.c
         src/cnbuild/project_toolchain/generation/library_compiler.c
     
         src/cnbuild/gui_toolchain/route.c
@@ -493,4 +496,18 @@ if(WIN32)
             message(STATUS "Skipping ${dll} - not found in ${MINGW_BIN_DIR}")
         endif()
     endforeach()
+endif()
+
+if(UNIX AND NOT APPLE)
+    find_program(PATCHELF_EXECUTABLE patchelf)
+    if(PATCHELF_EXECUTABLE)
+        add_custom_command(TARGET cn_dist POST_BUILD
+            COMMAND ${CMAKE_COMMAND}
+                -DLIB_DIR=${DIST_DIR}/lib
+                -DBIN_DIR=${DIST_DIR}/bin
+                -P ${CMAKE_SOURCE_DIR}/toolchain/strip_soversion.cmake
+        )
+    else()
+        message(WARNING "patchelf not found versioned .so files will be kept")
+    endif()
 endif()

@@ -1,0 +1,15 @@
+<module>
+    <name>rgui</name>
+    <includes>
+        <file overwrite="true">${INCLUDES}/librgui.h</file>
+        <file>${INCLUDES}/SDL_ttf.h</file>
+    </includes>
+    <libs>
+        <file name="rgui" link="true" overwrite="true">${LIBS}/librgui.${EXT}</file>
+        <file>${LIBS}/libSDL2_ttf-2.0.${EXT}</file>
+    </libs>
+    <need>
+        <module>core</module>
+        <module>graphic</module>
+    </need>
+</module>

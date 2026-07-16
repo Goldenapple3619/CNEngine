@@ -140,6 +140,11 @@
             (void)delete_object(__class); \
             return (NULL); \
         }
+    #define SHR_INIT_METHOD(__class, name, callback, error_value) \
+        if (!set_method(__class, name, callback)) { \
+            PROPAGATE_ERR(); \
+            return (error_value); \
+        }
 
     #define PACK_ARG(...) (cnany []){ __VA_ARGS__ }
     #define INLNE_PRIM_T_ARG(number) ((typeof((number)) [1]){(number)})
@@ -226,6 +231,8 @@
     #define VALUE_OK (cn_value){CN_TYPE_INT, .as.i = 0}
     typedef cn_value (*cn_method)(struct object_s *self, void **args);
     typedef void (*expr_free)(void *obj);
+
+    #define RET_OK(ret_expr) (ret_expr).as.i == VALUE_OK.as.i
 
     struct object_attribute_s {
         #ifdef STRING_INDIVIDUAL_ALLOCATION

@@ -1,0 +1,11 @@
+<module>
+    <name>core</name>
+    <includes>
+        <file overwrite="true">${INCLUDES}/libcncore.h</file>
+        <dir>${INCLUDES}/SDL2</dir>
+    </includes>
+    <libs>
+        <file name="cncore" link="true" overwrite="true">${LIBS}/libcncore.${EXT}</file>
+        <file>${LIBS}/libSDL2-2.0.${EXT}</file>
+    </libs>
+</module>

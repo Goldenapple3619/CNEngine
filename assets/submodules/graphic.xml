@@ -1,0 +1,19 @@
+<module>
+    <name>graphics</name>
+    <includes>
+        <file overwrite="true">${INCLUDES}/libcngraphic.h</file>
+        <file>${INCLUDES}/SDL_image.h</file>
+        <dir>${INCLUDES}/glad</dir>
+        <dir>${INCLUDES}/KHR</dir>
+        
+    </includes>
+    <libs>
+        <file name="cngraphic" link="true" overwrite="true">${LIBS}/libcngraphic.${EXT}</file>
+        <file>${LIBS}/libSDL2_image-2.0.${EXT}</file>
+        <file>${LIBS}/libglad_gl.${EXT}</file>
+        <file error="skip">${LIBS}/libtiff.${EXT}</file>
+    </libs>
+    <need>
+        <module>core</module>
+    </need>
+</module>
