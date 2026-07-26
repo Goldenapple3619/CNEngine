@@ -1,8 +1,10 @@
 #include "../project_toolchain.h"
+#include <string.h>
 
 uint8_t parse_config_generator_xml(EngineConfig *config, xmlNode *node, const char *engine_root)
 {
     EngineGeneratorItem *item;
+    xmlChar *temp_s;
 
     for (xmlNode *node_child = node->children; node_child; node_child = node_child->next) {
         if (node_child->type != XML_ELEMENT_NODE)
@@ -11,11 +13,13 @@ uint8_t parse_config_generator_xml(EngineConfig *config, xmlNode *node, const ch
         if (!strcmp((const char *)node_child->name, "include")) {
             item = new_generator_item();
 
-            if (item->location)
-                (void)free(item->location);
+            if (!item) {
+                PROPAGATE_ERR();
+                return (1);
+            }
 
-            item->location = string_from_node(node_child);
             item->type = GENT_INCLUDE;
+            item->location = string_from_node(node_child);
 
             if (!item->location) {
                 PROPAGATE_ERR();
@@ -31,18 +35,34 @@ uint8_t parse_config_generator_xml(EngineConfig *config, xmlNode *node, const ch
                 return (1);
             }
 
+            temp_s = xmlGetProp(node_child, (xmlChar *)"forsubmodule");
+
+            if (temp_s) {
+                item->forsubmodule = strdup((char *)temp_s);
+                (void)xmlFree(temp_s);
+
+                if (!item->forsubmodule) {
+                    RAISE(ERR_OUT_OF_MEMORY, "failed to allocate new forsubmodule string.");
+                    (void)delete_generator_item(item);
+                    return (1);
+                }
+            }
+
             if (insert_generic_vector(&config->generator, item)) {
                 PROPAGATE_ERR();
+                (void)delete_generator_item(item);
                 return (1);
             }
         } else if (!strcmp((const char *)node_child->name, "src")) {
             item = new_generator_item();
 
-            if (item->location)
-                (void)free(item->location);
+            if (!item) {
+                PROPAGATE_ERR();
+                return (1);
+            }
 
-            item->location = string_from_node(node_child);
             item->type = GENT_SRC;
+            item->location = string_from_node(node_child);
 
             if (!item->location) {
                 PROPAGATE_ERR();
@@ -58,8 +78,22 @@ uint8_t parse_config_generator_xml(EngineConfig *config, xmlNode *node, const ch
                 return (1);
             }
 
+            temp_s = xmlGetProp(node_child, (xmlChar *)"forsubmodule");
+
+            if (temp_s) {
+                item->forsubmodule = strdup((char *)temp_s);
+                (void)xmlFree(temp_s);
+
+                if (!item->forsubmodule) {
+                    RAISE(ERR_OUT_OF_MEMORY, "failed to allocate new forsubmodule string.");
+                    (void)delete_generator_item(item);
+                    return (1);
+                }
+            }
+
             if (insert_generic_vector(&config->generator, item)) {
                 PROPAGATE_ERR();
+                (void)delete_generator_item(item);
                 return (1);
             }
         } else {

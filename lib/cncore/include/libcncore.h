@@ -1,6 +1,7 @@
 #ifndef _LIBCNCORE_H_
     #define _LIBCNCORE_H_
 
+    #include <stdio.h>
     #include <SDL2/SDL.h>
 
     #ifdef _WIN32
@@ -21,9 +22,19 @@
 
     #define STRING_INDIVIDUAL_ALLOCATION 1 // are we duping every string ? or are they handled with an atlas
 
-    #define RAISE(c, msg) raise_error(c, msg, __FILE__, __func__, __LINE__);
-    #define RAISE_FMT(c, ...) raise_error_fmt(c, __FILE__, __func__, __LINE__, __VA_ARGS__);
-    #define PROPAGATE_ERR() push_error(__FILE__, __func__, __LINE__);
+    #if defined(ERR_FULL_TRACE) && ERR_FULL_TRACE == 1
+        #define RAISE(c, msg) raise_error(c, msg, __FILE__, __func__, __LINE__);
+        #define RAISE_FMT(c, ...) raise_error_fmt(c, __FILE__, __func__, __LINE__, __VA_ARGS__);
+        #define PROPAGATE_ERR() push_error(__FILE__, __func__, __LINE__);
+    #elif defined(ERR_SEMI_TRACE) && ERR_SEMI_TRACE == 1
+        #define RAISE(c, msg) raise_error(c, msg, "???", __func__, __LINE__);
+        #define RAISE_FMT(c, ...) raise_error_fmt(c, "???", __func__, __LINE__, __VA_ARGS__);
+        #define PROPAGATE_ERR() push_error("???", __func__, __LINE__);
+    #else
+        #define RAISE(c, msg) raise_error(c, msg, "???", "???", "???");
+        #define RAISE_FMT(c, ...) raise_error_fmt(c, "???", "???", "???", __VA_ARGS__);
+        #define PROPAGATE_ERR() push_error("???", "???", "???");
+    #endif
 
     #define PREP_INIT() void *__temp_alloc;
     #define PREP_CLASS_BUILD() PREP_INIT()

@@ -17,6 +17,8 @@ option(CN_SANITIZE     "Build with AddressSanitizer + UBSan" OFF)
 if(NOT DEFINED DIST_DIR)
     get_filename_component(CWD_NAME ${CMAKE_SOURCE_DIR} NAME)
     set(DIST_DIR "${CMAKE_SOURCE_DIR}/dist/${CWD_NAME}")
+else()
+    get_filename_component(DIST_DIR "${DIST_DIR}" ABSOLUTE BASE_DIR "${CMAKE_BINARY_DIR}")
 endif()
 
 if(NOT DEFINED TARGET_ARCH)
@@ -231,6 +233,7 @@ if(CN_BUILD_ENGINE)
         src/cnbuild/project_toolchain/parsers/project.c
         src/cnbuild/project_toolchain/parsers/config.c
         src/cnbuild/project_toolchain/generation/library_compiler.c
+        src/cnbuild/project_toolchain/generation/executable_compiler.c
     
         src/cnbuild/gui_toolchain/route.c
         src/cnbuild/gui_toolchain/gui.c
@@ -511,3 +514,9 @@ if(UNIX AND NOT APPLE)
         message(WARNING "patchelf not found versioned .so files will be kept")
     endif()
 endif()
+
+add_custom_command(TARGET cn_dist POST_BUILD
+    COMMAND ${CMAKE_COMMAND}
+        -DINCLUDE_DIR=${DIST_DIR}/include
+        -P ${CMAKE_SOURCE_DIR}/toolchain/patch_sdl_includes.cmake
+)

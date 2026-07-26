@@ -10,7 +10,18 @@ static void sigint_handler(int signum)
         call_method(global_ctx, "_stop", NULL);
 }
 
-int main(size_t argc, char **argv)
+static void report_errors(void)
+{
+    const ErrorContext *temp;
+
+    while (has_error()) {
+        temp = get_error();
+
+        (void)print_error(temp, NULL);
+    }
+}
+
+int main(int argc, char **argv)
 {
     (void)argc;
     (void)argv;
@@ -21,6 +32,7 @@ int main(size_t argc, char **argv)
     if (!ctx) {
         PROPAGATE_ERR();
         (void)run_gc();
+        report_errors();
         return (1);
     }
 
@@ -32,6 +44,7 @@ int main(size_t argc, char **argv)
     if (load_submodules(ctx)) {
         PROPAGATE_ERR();
         DELOC(ctx);
+        report_errors();
         return (1);
     }
 
@@ -40,19 +53,31 @@ int main(size_t argc, char **argv)
     if (temp_val.type == CN_TYPE_NULL || temp_val.as.i == VALUE_ERR.as.i) {
         PROPAGATE_ERR();
         DELOC(ctx);
+        report_errors();
         return (1);
     }
 
-    #if defined(_ENGINE_HAS_ASSETS) && (_ENGINE_HAS_ASSETS == 1)
+    #if defined(_HAS_ASSETS) && (_HAS_ASSETS == 1)
         if (load_assets_handler(ctx)) {
             PROPAGATE_ERR();
             DELOC(ctx);
+            report_errors();
             return (1);
         }
 
         if (load_entry_scene(ctx)) {
             PROPAGATE_ERR();
             DELOC(ctx);
+            report_errors();
+            return (1);
+        }
+    #endif
+
+    #if defined(_HAS_GRAPHICS) && (_HAS_GRAPHICS == 1)
+        if (add_main_interface(ctx)) {
+            PROPAGATE_ERR();
+            DELOC(ctx);
+            report_errors();
             return (1);
         }
     #endif
@@ -60,6 +85,8 @@ int main(size_t argc, char **argv)
     call_method(ctx, "_run", NULL);
     call_method(ctx, "_stop", NULL);
     DELOC(ctx);
+
+    report_errors();
 
     return (0);
 }

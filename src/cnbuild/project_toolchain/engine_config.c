@@ -10,6 +10,7 @@ EngineGeneratorItem *new_generator_item(void)
     }
 
     item->location = NULL;
+    item->forsubmodule = NULL;
     item->type = GENT_SRC;
     return (item);
 }
@@ -24,6 +25,10 @@ void delete_generator_item(EngineGeneratorItem *item)
     if (item->location) {
         (void)free(item->location);
         item->location = NULL;
+    }
+    if (item->forsubmodule) {
+        (void)free(item->forsubmodule);
+        item->forsubmodule = NULL;
     }
     (void)free(item);
 }

@@ -57,16 +57,22 @@
 
     typedef struct {
         char *output_path;
-        
+
         char *compiler_path;
-        
+
+        cnbuild_system machine;
+        cnbuild_architectures architecture;
+
         char *includes_path;
         char *build_path;
         char *library_path;
         struct generic_vector_s srcs;
         struct generic_vector_s objs;
         struct generic_vector_s libs;
+        struct generic_vector_s preprocessor_definitions;
     } LibraryCompiler;
+
+    typedef LibraryCompiler ExecutableCompiler;
 
     typedef struct {
         char *name;
@@ -103,6 +109,7 @@
 
     typedef struct {
         char *location;
+        char *forsubmodule;
 
         generator_type type;
     } EngineGeneratorItem;
@@ -137,6 +144,12 @@
     uint8_t parse_submodules_xml(SubModule *submodule, const char *xml_path);
 
     uint8_t compile_library(const CNProject *project, const CNBuild *build_info, const char *output_path, const char *build_path, const char *include_path, const char *lib_path);
+    uint8_t library_compiler_set_library_path(LibraryCompiler *compiler, const char *library_path);
+    uint8_t library_compiler_set_include_path(LibraryCompiler *compiler, const char *include_path);
+    uint8_t library_compiler_add_lib(LibraryCompiler *compiler, const char *libname);
+    uint8_t library_compiler_add_src(LibraryCompiler *compiler, const char *srcname);
+    LibraryCompiler *new_library_compiler(const char *libname, const char *toolchain, const char *build_path);
+    void delete_library_compiler(LibraryCompiler *compiler);
     void clear_submodule_datas(SubModule *submodule);
     SubModule *new_submodule(void);
     void delete_submodule(SubModule *submodule);
@@ -159,4 +172,7 @@
 
     EngineGeneratorItem *new_generator_item(void);
     void delete_generator_item(EngineGeneratorItem *item);
+
+    uint8_t compile_executable(const EngineConfig *config, const CNProject *project, const CNBuild *build_info, const char *output_path, const char *build_path, const char *include_path, const char *lib_path);
+    uint8_t library_compiler_add_preprocessor_definition(LibraryCompiler *compiler, const char *definition_name, const char *definition_content);
 #endif

@@ -17,6 +17,23 @@ char *extension_from_system(cnbuild_system system)
     }
 }
 
+char *extension_executable_from_system(cnbuild_system system)
+{
+    switch (system) {
+        case CNBUILD_SYS_WIN:
+            return ("exe");
+
+        case CNBUILD_SYS_GEN_LINUX:
+            return ("out");
+
+        case CNBUILD_SYS_DARWIN:
+            return ("out");
+
+        default:
+            return ("out");
+    }
+}
+
 char *sysname_from_system(cnbuild_system system)
 {
     switch (system) {
@@ -238,9 +255,52 @@ char *init_subinclude_path(const char *build_path, const char *base_include_path
     return (subinclude_path);
 }
 
+uint8_t prepare_executable_subinclude_path(const char *subinclude_path, const EngineConfig *config)
+{
+    char *temp_dest;
+    EngineGeneratorItem *res;
+
+    if (!is_dir(subinclude_path)) {
+        if (make_dir(subinclude_path)) {
+            PROPAGATE_ERR();
+            return (1);
+        }
+    }
+
+    render_step("HEADERS", 0, config->generator.size);
+
+    for (size_t i = 0; i < config->generator.size; ++i) {
+        render_step("HEADERS", i + 1, config->generator.size);
+
+        res = config->generator.content[i];
+
+        if (res->type != GENT_INCLUDE)
+            continue;
+
+        temp_dest = join_path(subinclude_path, path_basename(res->location));
+
+        if (!temp_dest) {
+            printf(" | FAILURE\n");
+            PROPAGATE_ERR()
+            return (1);
+        }
+
+        if (copy_file(res->location, temp_dest)) {
+            printf(" | FAILURE\n");
+            RAISE_FMT(ERR_OS, "failed to copy file '%s' to '%s'.", res->location, subinclude_path);
+            (void)free(temp_dest);
+            return (1);
+        }
+
+        (void)free(temp_dest);
+    }
+
+    return (0);
+}
+
 char *init_sublib_path(const char *dist_path, const char *base_lib_path, const CNBuild *build)
 {
-    char *sublib_path = join_path(dist_path, "lib");
+    char *sublib_path = strdup(dist_path); // join_path(dist_path, "lib");
     char *temp_dest;
     SubModule *submodule;
     SubModuleLib lib;
@@ -250,13 +310,13 @@ char *init_sublib_path(const char *dist_path, const char *base_lib_path, const C
         return (NULL);
     }
 
-    if (!is_dir(sublib_path)) {
-        if (make_dir(sublib_path)) {
-            PROPAGATE_ERR();
-            (void)free(sublib_path);
-            return (NULL);
-        }
-    }
+    // if (!is_dir(sublib_path)) {
+    //     if (make_dir(sublib_path)) {
+    //         PROPAGATE_ERR();
+    //         (void)free(sublib_path);
+    //         return (NULL);
+    //     }
+    // }
 
     render_step("LIBS   ", 0, build->dependencies.size);
 
@@ -408,7 +468,7 @@ uint8_t construct_build(const EngineConfig *config, const CNProject *project, co
     str_override(library_output_name, replace_extension(library_output_name->c_str, extension_from_system(build->machine)));
 
     if (str_is_null(library_output_name)) {
-        RAISE(ERR_RUNTIME, "");
+        PROPAGATE_ERR();
         (void)delete_str(library_output_name);
         (void)free(temp_build_path);
         (void)free(temp_dist_path);
@@ -420,6 +480,54 @@ uint8_t construct_build(const EngineConfig *config, const CNProject *project, co
     printf("-======- Source Compilation -======-\n");
 
     if (compile_library(project, build, library_output_name->c_str, temp_build_path, include_path, lib_path)) {
+        PROPAGATE_ERR();
+        (void)delete_str(library_output_name);
+        (void)free(temp_build_path);
+        (void)free(temp_dist_path);
+        (void)free(include_path);
+        (void)free(lib_path);
+        return (1);
+    }
+
+    printf("-======- Executable Preparation -======-\n");
+
+    str_override(library_output_name, join_path(temp_dist_path, project->name ? project->name : "game"));
+
+    if (str_is_null(library_output_name)) {
+        PROPAGATE_ERR();
+        (void)delete_str(library_output_name);
+        (void)free(temp_build_path);
+        (void)free(temp_dist_path);
+        (void)free(include_path);
+        (void)free(lib_path);
+        return (1);
+    }
+
+    str_override(library_output_name, replace_extension(library_output_name->c_str, extension_executable_from_system(build->machine)));
+
+    if (str_is_null(library_output_name)) {
+        PROPAGATE_ERR();
+        (void)delete_str(library_output_name);
+        (void)free(temp_build_path);
+        (void)free(temp_dist_path);
+        (void)free(include_path);
+        (void)free(lib_path);
+        return (1);
+    }
+
+    if (prepare_executable_subinclude_path(include_path, config)) {
+        PROPAGATE_ERR();
+        (void)delete_str(library_output_name);
+        (void)free(temp_build_path);
+        (void)free(temp_dist_path);
+        (void)free(include_path);
+        (void)free(lib_path);
+        return (1);
+    }
+
+    printf("-======- Executable Compilation -======-\n");
+
+    if (compile_executable(config, project, build, library_output_name->c_str, temp_build_path, include_path, lib_path)) {
         PROPAGATE_ERR();
         (void)delete_str(library_output_name);
         (void)free(temp_build_path);

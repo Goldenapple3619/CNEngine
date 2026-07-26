@@ -199,6 +199,11 @@ static cn_value _init(Object *__this, void **args)
     Object *ctx = (Object *)(args[0]);
 
     INIT_OBJECT_STATIC(ctx, new_list((expr_free)&delete_asset_loader), NULL, "assets_fmts");
+    INIT_METHOD(ctx, "register_fmt", &_register_fmt);
+    INIT_METHOD(ctx, "find_asset_by_type", &_find_asset_type);
+    INIT_METHOD(ctx, "find_asset_by_name", &_find_asset_name);
+    INIT_METHOD(ctx, "find_section_by_type", &_find_section_type);
+    INIT_METHOD(ctx, "find_section_by_name", &_find_section_name);
 
     return (VALUE_OK);
 }
@@ -209,11 +214,11 @@ static cn_value _del(Object *__this, void **args)
 
     if (!args || !(args[0]))
         return (VALUE_ERR);
-    
+
     Object *ctx = (Object *)(args[0]);
 
     (void)ctx;
-    
+
     return (VALUE_OK);
 }
 
@@ -230,10 +235,5 @@ CN_API Object *new_asset_submodule(void)
 
     CREATE_METHOD_CLASS_BUILD(obj, "_init", &_init);
     CREATE_METHOD_CLASS_BUILD(obj, "_del", &_del);
-    CREATE_METHOD_CLASS_BUILD(obj, "register_fmt", &_register_fmt);
-    CREATE_METHOD_CLASS_BUILD(obj, "find_asset_by_type", &_find_asset_type);
-    CREATE_METHOD_CLASS_BUILD(obj, "find_asset_by_name", &_find_asset_name);
-    CREATE_METHOD_CLASS_BUILD(obj, "find_section_by_type", &_find_section_type);
-    CREATE_METHOD_CLASS_BUILD(obj, "find_section_by_name", &_find_section_name);
     return (obj);
 }
