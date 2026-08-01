@@ -1,6 +1,5 @@
 var fs_8c =
 [
-    [ "_FILE_OFFSET_BITS", "fs_8c.html#a44d01ba0a136b8e27ad362f5a823d14e", null ],
     [ "copy_file", "fs_8c.html#a80c86544a27139d0f6fc3f945d2ef77a", null ],
     [ "copytree", "fs_8c.html#aa236763c532df52309fcc7ab4ec847ec", null ],
     [ "get_dirname", "fs_8c.html#a927967a36c50f9121cb715f84b7ccadd", null ],
