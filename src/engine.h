@@ -45,7 +45,8 @@
     uint8_t copytree(const char *src, const char *dst, cnbool overwrite);
     uint8_t make_dir(const char *path);
     cnbool is_file(const char *path);
-    
+    uint64_t get_file_size(const char *path);
+
     int argument_route(size_t argc, char **argv);
 
     int init(size_t argc, char **argv);

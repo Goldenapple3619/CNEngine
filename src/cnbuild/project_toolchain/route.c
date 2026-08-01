@@ -300,7 +300,7 @@ uint8_t prepare_executable_subinclude_path(const char *subinclude_path, const En
 
 char *init_sublib_path(const char *dist_path, const char *base_lib_path, const CNBuild *build)
 {
-    char *sublib_path = strdup(dist_path); // join_path(dist_path, "lib");
+    char *sublib_path = join_path(dist_path, "bin");
     char *temp_dest;
     SubModule *submodule;
     SubModuleLib lib;
@@ -310,13 +310,13 @@ char *init_sublib_path(const char *dist_path, const char *base_lib_path, const C
         return (NULL);
     }
 
-    // if (!is_dir(sublib_path)) {
-    //     if (make_dir(sublib_path)) {
-    //         PROPAGATE_ERR();
-    //         (void)free(sublib_path);
-    //         return (NULL);
-    //     }
-    // }
+    if (!is_dir(sublib_path)) {
+        if (make_dir(sublib_path)) {
+            PROPAGATE_ERR();
+            (void)free(sublib_path);
+            return (NULL);
+        }
+    }
 
     render_step("LIBS   ", 0, build->dependencies.size);
 
@@ -411,7 +411,7 @@ char *build_name_from_cnbuild(const CNBuild *build)
     return (name);
 }
 
-uint8_t construct_build(const EngineConfig *config, const CNProject *project, const CNBuild *build, const char *build_path, const char *dist_path)
+uint8_t construct_build(const EngineConfig *config, const CNProject *project, const CNBuild *build, const char *build_path, const char *dist_path, const char *self_path)
 {
     printf("* [BUILD#%s]\n", build->name ? build->name : "???");
 
@@ -452,7 +452,7 @@ uint8_t construct_build(const EngineConfig *config, const CNProject *project, co
         return (1);
     }
 
-    String *library_output_name = new_str(join_path(temp_dist_path, "game"));
+    String *library_output_name = new_str(join_path(lib_path, "game"));
 
     if (!library_output_name || str_is_null(library_output_name)) {
         PROPAGATE_ERR();
@@ -491,7 +491,7 @@ uint8_t construct_build(const EngineConfig *config, const CNProject *project, co
 
     printf("-======- Executable Preparation -======-\n");
 
-    str_override(library_output_name, join_path(temp_dist_path, project->name ? project->name : "game"));
+    str_override(library_output_name, join_path(lib_path, project->name ? project->name : "game"));
 
     if (str_is_null(library_output_name)) {
         PROPAGATE_ERR();
@@ -538,14 +538,24 @@ uint8_t construct_build(const EngineConfig *config, const CNProject *project, co
     }
 
     (void)delete_str(library_output_name);
-    (void)free(temp_build_path);
-    (void)free(temp_dist_path);
     (void)free(include_path);
     (void)free(lib_path);
+
+    printf("-======- Game Assets Compilation -======-\n");
+
+    if (compile_assets(project, build, temp_dist_path, temp_build_path, self_path)) {
+        PROPAGATE_ERR();
+        (void)free(temp_build_path);
+        (void)free(temp_dist_path);
+        return (1);
+    }
+
+    (void)free(temp_build_path);
+    (void)free(temp_dist_path);
     return (0);
 }
 
-CNProject *parse_project(const EngineConfig *config, const char *output_path, const char *file_path, Object *asset_ctx)
+CNProject *parse_project(const EngineConfig *config, const char *output_path, const char *file_path, Object *asset_ctx, const char *self_path)
 {
     CNProject *project;
     CNBuild *temp_build;
@@ -596,7 +606,7 @@ CNProject *parse_project(const EngineConfig *config, const char *output_path, co
             (void)free(project_root);
             return (NULL);
         }
-        if (construct_build(config, project, project->builds.content[i], build_path, dist_path)) {
+        if (construct_build(config, project, project->builds.content[i], build_path, dist_path, self_path)) {
             PROPAGATE_ERR();
             (void)free(dist_path);
             (void)free(build_path);
@@ -643,7 +653,7 @@ int build_project(size_t argc, char **argv, Object *asset_ctx)
         return (1);
     }
 
-    left_overs = parse_project(config, build_args.output_file, build_args.input_files.content[0], asset_ctx);
+    left_overs = parse_project(config, build_args.output_file, build_args.input_files.content[0], asset_ctx, argv[0]);
 
     delete_engine_config(config);
 

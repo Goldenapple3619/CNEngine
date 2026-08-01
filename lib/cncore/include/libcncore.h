@@ -328,6 +328,7 @@
 
     typedef enum {
         ERR_OK = 0,
+
         ERR_OUT_OF_MEMORY,
         ERR_INVALID_POINTER,
         ERR_OS,
@@ -336,6 +337,7 @@
         ERR_NOT_COMPATIBLE,
         ERR_RUNTIME,
         ERR_CORRUPT_OR_INVALID,
+
         WAR_IMPORTANT = 0xffff
     } ErrorCode;
 

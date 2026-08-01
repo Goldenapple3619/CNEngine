@@ -155,6 +155,8 @@ uint8_t parse_cnbuilds_xml(const EngineConfig *config, CNProject *project, xmlNo
                         return (1);
                     }
                     (void)free(temp);
+                } else if (!strcmp((const char *)build_content_node->name, "assets")) {
+                    RAISE(WAR_IMPORTANT, "assets compilation specification not implemented yet.")
                 } else if (!strcmp((const char *)build_content_node->name, "entry")) {
                     temp = string_from_node(build_content_node);
 

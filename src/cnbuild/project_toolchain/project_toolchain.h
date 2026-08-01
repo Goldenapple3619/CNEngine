@@ -75,6 +75,20 @@
     typedef LibraryCompiler ExecutableCompiler;
 
     typedef struct {
+        char *dist_path;
+        char *build_path;
+
+        char *compiler_path;
+
+        cnbool endianness; // false big / true little
+        uint16_t alignement;
+        uint64_t max_bank_size;
+
+        struct generic_vector_s srcs;
+        struct generic_vector_s objs;
+    } GameAssetCompiler;
+
+    typedef struct {
         char *name;
         char *path;
         cnbool isdir;
@@ -175,4 +189,5 @@
 
     uint8_t compile_executable(const EngineConfig *config, const CNProject *project, const CNBuild *build_info, const char *output_path, const char *build_path, const char *include_path, const char *lib_path);
     uint8_t library_compiler_add_preprocessor_definition(LibraryCompiler *compiler, const char *definition_name, const char *definition_content);
+    uint8_t compile_assets(const CNProject *project, const CNBuild *build_info, const char *dist_path, const char *build_path, const char *toolchain_path);
 #endif

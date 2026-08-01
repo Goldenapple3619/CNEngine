@@ -1,5 +1,24 @@
 #include "engine.h"
 
+#ifdef _WIN32
+    #include <io.h>
+    #define stat _stat64
+#else
+    #if !defined(_FILE_OFFSET_BITS)
+        #define _FILE_OFFSET_BITS 64
+    #endif
+#endif
+
+uint64_t get_file_size(const char *path)
+{
+    struct stat st;
+
+    if (stat(path, &st) != 0)
+        return (0);
+
+    return (uint64_t)st.st_size;
+}
+
 char *get_dirname(const char *path)
 {
     const char *last_slash = NULL;
@@ -427,7 +446,7 @@ uint8_t copytree(const char *src, const char *dst, cnbool overwrite)
         }
 
         dir = opendir(src);
-    
+
         if (!dir)
             return (1);
 

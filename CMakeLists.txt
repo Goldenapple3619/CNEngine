@@ -234,6 +234,7 @@ if(CN_BUILD_ENGINE)
         src/cnbuild/project_toolchain/parsers/config.c
         src/cnbuild/project_toolchain/generation/library_compiler.c
         src/cnbuild/project_toolchain/generation/executable_compiler.c
+        src/cnbuild/project_toolchain/generation/game_assets_compiler.c
     
         src/cnbuild/gui_toolchain/route.c
         src/cnbuild/gui_toolchain/gui.c
