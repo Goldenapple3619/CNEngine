@@ -51,13 +51,13 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "2dboard_8c.html",
-"dir_a5a55e478dd70ed825b11f1b4d59692a.html",
-"globals_l.html",
-"libcnaudio_8h.html#a965ab79ae726810cf1a354a3b6d69549a37c7fee83dfef9e4edd61c17957727fe",
-"libcngraphic_8h.html#a68f9fcaba986f3dcdf56316330102559a903f3798fd8ab4ee1f84117589009a23",
-"object__value__vector_8c.html#a5d70925f3be81cf6b238412aeb2cee24",
-"structclock__s.html#a37e5caed2ac9ce0bee05f0797baa98d8",
-"structwindow__s.html#ad9d1f838ffa2a66e911f2258f8f04c57"
+"dir_6784425a03fab8a882ed128a3dab64ed.html",
+"generic__vector_8c.html#acc3435f4207c03ef74bfc6915e5a7419",
+"libcnassets_8h.html#ab6f57059a2b8b8eb3fb281cbea5aab34ac5eb0006acdeb543b210dd74eb00e505",
+"libcncore_8h.html#af98672492e076395a996b05035f100cd",
+"object_8c.html#a1a63a6f58510226876eb4212dbe5da70",
+"structGameAssetCompiler.html#a25d18774765fb7d75e38937d8d31cdeb",
+"structgui__object__mode__s.html#a54a51b200de6cb624c0b51cd7dbf6b7c"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

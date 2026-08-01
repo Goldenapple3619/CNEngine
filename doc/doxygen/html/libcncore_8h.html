@@ -112,7 +112,8 @@ $(document).ready(function(){initNavTree('libcncore_8h.html',''); initResizable(
   <div class="headertitle"><div class="title">libcncore.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;SDL2/SDL.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;SDL2/SDL.h&gt;</code><br />
 </div>
 <p><a href="libcncore_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -221,6 +222,8 @@ Macros</h2></td></tr>
 <tr class="separator:a998ce36655dc98ae88b1c5790dabc3fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a973268c391d1288baa8e4f649964b55b" id="r_a973268c391d1288baa8e4f649964b55b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a973268c391d1288baa8e4f649964b55b">CREATE_CUSTOM_ALLOCATION_CLASS_BUILD</a>(__class,  expr_alloc,  <a class="el" href="libcncore_8h.html#aea43bea4736df25649243404d5905567">expr_free</a>,  <a class="el" href="build_8h.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>)</td></tr>
 <tr class="separator:a973268c391d1288baa8e4f649964b55b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a7e2f1991ed0413c9ca688e9b19c17f" id="r_a2a7e2f1991ed0413c9ca688e9b19c17f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a2a7e2f1991ed0413c9ca688e9b19c17f">SHR_INIT_METHOD</a>(__class,  <a class="el" href="build_8h.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>,  <a class="el" href="build_8h.html#a5ab5a233bdc6ad82f01015b39111c614">callback</a>,  error_value)</td></tr>
+<tr class="separator:a2a7e2f1991ed0413c9ca688e9b19c17f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb451236bc755338894ffe8721d76b72" id="r_abb451236bc755338894ffe8721d76b72"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#abb451236bc755338894ffe8721d76b72">PACK_ARG</a>(...)&#160;&#160;&#160;(<a class="el" href="libcncore_8h.html#aa0b4eca710d6fee505d18a41355e1edb">cnany</a> []){ __VA_ARGS__ }</td></tr>
 <tr class="separator:abb451236bc755338894ffe8721d76b72"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c9cf50c56f74e7b2ebf391c2c0c9147" id="r_a4c9cf50c56f74e7b2ebf391c2c0c9147"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a4c9cf50c56f74e7b2ebf391c2c0c9147">INLNE_PRIM_T_ARG</a>(number)&#160;&#160;&#160;((typeof((number)) [1]){(number)})</td></tr>
@@ -235,6 +238,8 @@ Macros</h2></td></tr>
 <tr class="separator:a203549510b067f93099b5ec716053c2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af27a79191e25a09b20fa2852ee6d63cb" id="r_af27a79191e25a09b20fa2852ee6d63cb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#af27a79191e25a09b20fa2852ee6d63cb">VALUE_OK</a>&#160;&#160;&#160;(<a class="el" href="structcn__value.html">cn_value</a>){<a class="el" href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a28029ab23dc72127e9c580863863b730">CN_TYPE_INT</a>, .as.i = 0}</td></tr>
 <tr class="separator:af27a79191e25a09b20fa2852ee6d63cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add6fd6697551913462314d20badb3741" id="r_add6fd6697551913462314d20badb3741"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#add6fd6697551913462314d20badb3741">RET_OK</a>(ret_expr)&#160;&#160;&#160;(ret_expr).as.i == VALUE_OK.as.i</td></tr>
+<tr class="separator:add6fd6697551913462314d20badb3741"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -603,10 +608,10 @@ Functions</h2></td></tr>
 <div class="line">        }</div>
 <div class="ttc" id="abuild_8h_html_a8f8f80d37794cde9472343e4487ba3eb"><div class="ttname"><a href="build_8h.html#a8f8f80d37794cde9472343e4487ba3eb">name</a></div><div class="ttdeci">const char * name</div><div class="ttdef"><b>Definition</b> build.h:35</div></div>
 <div class="ttc" id="alibcncore_8h_html_a0d1200d7a9ee39c24a7cfde96306eec6"><div class="ttname"><a href="libcncore_8h.html#a0d1200d7a9ee39c24a7cfde96306eec6">set_attr</a></div><div class="ttdeci">cnbool set_attr(Object *object, const char *name, cn_type type, cnany value)</div><div class="ttdef"><b>Definition</b> object.c:41</div></div>
-<div class="ttc" id="alibcncore_8h_html_a0e8eaf1430f3893d155ad709d2d84f25a1e435bbdb30939823b6e4682ec24da6b"><div class="ttname"><a href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a1e435bbdb30939823b6e4682ec24da6b">CN_TYPE_GENERIC_UNIQ_PTR</a></div><div class="ttdeci">@ CN_TYPE_GENERIC_UNIQ_PTR</div><div class="ttdef"><b>Definition</b> libcncore.h:194</div></div>
+<div class="ttc" id="alibcncore_8h_html_a0e8eaf1430f3893d155ad709d2d84f25a1e435bbdb30939823b6e4682ec24da6b"><div class="ttname"><a href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a1e435bbdb30939823b6e4682ec24da6b">CN_TYPE_GENERIC_UNIQ_PTR</a></div><div class="ttdeci">@ CN_TYPE_GENERIC_UNIQ_PTR</div><div class="ttdef"><b>Definition</b> libcncore.h:210</div></div>
 <div class="ttc" id="alibcncore_8h_html_a3c17e388301ab678d57d1e4c0f1d3214"><div class="ttname"><a href="libcncore_8h.html#a3c17e388301ab678d57d1e4c0f1d3214">delete_object</a></div><div class="ttdeci">void delete_object(Object *object)</div><div class="ttdef"><b>Definition</b> object.c:24</div></div>
-<div class="ttc" id="alibcncore_8h_html_aa0b4eca710d6fee505d18a41355e1edb"><div class="ttname"><a href="libcncore_8h.html#aa0b4eca710d6fee505d18a41355e1edb">cnany</a></div><div class="ttdeci">void * cnany</div><div class="ttdef"><b>Definition</b> libcncore.h:153</div></div>
-<div class="ttc" id="alibcncore_8h_html_aea43bea4736df25649243404d5905567"><div class="ttname"><a href="libcncore_8h.html#aea43bea4736df25649243404d5905567">expr_free</a></div><div class="ttdeci">void(* expr_free)(void *obj)</div><div class="ttdef"><b>Definition</b> libcncore.h:228</div></div>
+<div class="ttc" id="alibcncore_8h_html_aa0b4eca710d6fee505d18a41355e1edb"><div class="ttname"><a href="libcncore_8h.html#aa0b4eca710d6fee505d18a41355e1edb">cnany</a></div><div class="ttdeci">void * cnany</div><div class="ttdef"><b>Definition</b> libcncore.h:169</div></div>
+<div class="ttc" id="alibcncore_8h_html_aea43bea4736df25649243404d5905567"><div class="ttname"><a href="libcncore_8h.html#aea43bea4736df25649243404d5905567">expr_free</a></div><div class="ttdeci">void(* expr_free)(void *obj)</div><div class="ttdef"><b>Definition</b> libcncore.h:244</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -840,7 +845,7 @@ Functions</h2></td></tr>
 <div class="line">            (void)<a class="code hl_typedef" href="libcncore_8h.html#aea43bea4736df25649243404d5905567">expr_free</a>(__temp_alloc); \</div>
 <div class="line">            return (<a class="code hl_define" href="libcncore_8h.html#a203549510b067f93099b5ec716053c2d">VALUE_ERR</a>); \</div>
 <div class="line">        }</div>
-<div class="ttc" id="alibcncore_8h_html_a203549510b067f93099b5ec716053c2d"><div class="ttname"><a href="libcncore_8h.html#a203549510b067f93099b5ec716053c2d">VALUE_ERR</a></div><div class="ttdeci">#define VALUE_ERR</div><div class="ttdef"><b>Definition</b> libcncore.h:225</div></div>
+<div class="ttc" id="alibcncore_8h_html_a203549510b067f93099b5ec716053c2d"><div class="ttname"><a href="libcncore_8h.html#a203549510b067f93099b5ec716053c2d">VALUE_ERR</a></div><div class="ttdeci">#define VALUE_ERR</div><div class="ttdef"><b>Definition</b> libcncore.h:241</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -879,7 +884,7 @@ Functions</h2></td></tr>
 <div class="line">            PROPAGATE_ERR(); \</div>
 <div class="line">            return (<a class="code hl_define" href="libcncore_8h.html#a203549510b067f93099b5ec716053c2d">VALUE_ERR</a>); \</div>
 <div class="line">        }</div>
-<div class="ttc" id="alibcncore_8h_html_a0e8eaf1430f3893d155ad709d2d84f25a6f7d564090f644eb968f592e01cb9253"><div class="ttname"><a href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a6f7d564090f644eb968f592e01cb9253">CN_TYPE_FLOAT</a></div><div class="ttdeci">@ CN_TYPE_FLOAT</div><div class="ttdef"><b>Definition</b> libcncore.h:184</div></div>
+<div class="ttc" id="alibcncore_8h_html_a0e8eaf1430f3893d155ad709d2d84f25a6f7d564090f644eb968f592e01cb9253"><div class="ttname"><a href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a6f7d564090f644eb968f592e01cb9253">CN_TYPE_FLOAT</a></div><div class="ttdeci">@ CN_TYPE_FLOAT</div><div class="ttdef"><b>Definition</b> libcncore.h:200</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -918,7 +923,7 @@ Functions</h2></td></tr>
 <div class="line">            PROPAGATE_ERR(); \</div>
 <div class="line">            return (<a class="code hl_define" href="libcncore_8h.html#a203549510b067f93099b5ec716053c2d">VALUE_ERR</a>); \</div>
 <div class="line">        }</div>
-<div class="ttc" id="alibcncore_8h_html_a0e8eaf1430f3893d155ad709d2d84f25a28029ab23dc72127e9c580863863b730"><div class="ttname"><a href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a28029ab23dc72127e9c580863863b730">CN_TYPE_INT</a></div><div class="ttdeci">@ CN_TYPE_INT</div><div class="ttdef"><b>Definition</b> libcncore.h:183</div></div>
+<div class="ttc" id="alibcncore_8h_html_a0e8eaf1430f3893d155ad709d2d84f25a28029ab23dc72127e9c580863863b730"><div class="ttname"><a href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a28029ab23dc72127e9c580863863b730">CN_TYPE_INT</a></div><div class="ttdeci">@ CN_TYPE_INT</div><div class="ttdef"><b>Definition</b> libcncore.h:199</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -995,8 +1000,8 @@ Functions</h2></td></tr>
 <div class="line">            PROPAGATE_ERR(); \</div>
 <div class="line">            return (<a class="code hl_define" href="libcncore_8h.html#a203549510b067f93099b5ec716053c2d">VALUE_ERR</a>); \</div>
 <div class="line">        }</div>
-<div class="ttc" id="alibcncore_8h_html_a0e8eaf1430f3893d155ad709d2d84f25ae53787cc0f9de9334d6d0cef0d76092c"><div class="ttname"><a href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25ae53787cc0f9de9334d6d0cef0d76092c">CN_TYPE_NUMBER</a></div><div class="ttdeci">@ CN_TYPE_NUMBER</div><div class="ttdef"><b>Definition</b> libcncore.h:185</div></div>
-<div class="ttc" id="alibcncore_8h_html_a7b05d657b3da4196f19727ba490b7401"><div class="ttname"><a href="libcncore_8h.html#a7b05d657b3da4196f19727ba490b7401">cnnumber</a></div><div class="ttdeci">float cnnumber</div><div class="ttdef"><b>Definition</b> libcncore.h:150</div></div>
+<div class="ttc" id="alibcncore_8h_html_a0e8eaf1430f3893d155ad709d2d84f25ae53787cc0f9de9334d6d0cef0d76092c"><div class="ttname"><a href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25ae53787cc0f9de9334d6d0cef0d76092c">CN_TYPE_NUMBER</a></div><div class="ttdeci">@ CN_TYPE_NUMBER</div><div class="ttdef"><b>Definition</b> libcncore.h:201</div></div>
+<div class="ttc" id="alibcncore_8h_html_a7b05d657b3da4196f19727ba490b7401"><div class="ttname"><a href="libcncore_8h.html#a7b05d657b3da4196f19727ba490b7401">cnnumber</a></div><div class="ttdeci">float cnnumber</div><div class="ttdef"><b>Definition</b> libcncore.h:166</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1039,8 +1044,8 @@ Functions</h2></td></tr>
 <div class="line">            PROPAGATE_ERR(); \</div>
 <div class="line">            return (<a class="code hl_define" href="libcncore_8h.html#a203549510b067f93099b5ec716053c2d">VALUE_ERR</a>); \</div>
 <div class="line">        }</div>
-<div class="ttc" id="alibcncore_8h_html_a0e8eaf1430f3893d155ad709d2d84f25ab1815f2281072060aeee9fa21c33c879"><div class="ttname"><a href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25ab1815f2281072060aeee9fa21c33c879">CN_TYPE_OBJECT</a></div><div class="ttdeci">@ CN_TYPE_OBJECT</div><div class="ttdef"><b>Definition</b> libcncore.h:191</div></div>
-<div class="ttc" id="alibcncore_8h_html_a59e56af19e754a6aa26a612ebf91d05fa17e7e6cc9748cdc813324f5d1c73512a"><div class="ttname"><a href="libcncore_8h.html#a59e56af19e754a6aa26a612ebf91d05fa17e7e6cc9748cdc813324f5d1c73512a">ERR_INVALID_POINTER</a></div><div class="ttdeci">@ ERR_INVALID_POINTER</div><div class="ttdef"><b>Definition</b> libcncore.h:314</div></div>
+<div class="ttc" id="alibcncore_8h_html_a0e8eaf1430f3893d155ad709d2d84f25ab1815f2281072060aeee9fa21c33c879"><div class="ttname"><a href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25ab1815f2281072060aeee9fa21c33c879">CN_TYPE_OBJECT</a></div><div class="ttdeci">@ CN_TYPE_OBJECT</div><div class="ttdef"><b>Definition</b> libcncore.h:207</div></div>
+<div class="ttc" id="alibcncore_8h_html_a59e56af19e754a6aa26a612ebf91d05fa17e7e6cc9748cdc813324f5d1c73512a"><div class="ttname"><a href="libcncore_8h.html#a59e56af19e754a6aa26a612ebf91d05fa17e7e6cc9748cdc813324f5d1c73512a">ERR_INVALID_POINTER</a></div><div class="ttdeci">@ ERR_INVALID_POINTER</div><div class="ttdef"><b>Definition</b> libcncore.h:333</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1083,7 +1088,7 @@ Functions</h2></td></tr>
 <div class="line">            PROPAGATE_ERR(); \</div>
 <div class="line">            return (<a class="code hl_define" href="libcncore_8h.html#a203549510b067f93099b5ec716053c2d">VALUE_ERR</a>); \</div>
 <div class="line">        }</div>
-<div class="ttc" id="alibcncore_8h_html_a0e8eaf1430f3893d155ad709d2d84f25a5ba5ed92d4eaf106cce6fb0818f2d971"><div class="ttname"><a href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a5ba5ed92d4eaf106cce6fb0818f2d971">CN_TYPE_WEAK_OBJECT</a></div><div class="ttdeci">@ CN_TYPE_WEAK_OBJECT</div><div class="ttdef"><b>Definition</b> libcncore.h:192</div></div>
+<div class="ttc" id="alibcncore_8h_html_a0e8eaf1430f3893d155ad709d2d84f25a5ba5ed92d4eaf106cce6fb0818f2d971"><div class="ttname"><a href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a5ba5ed92d4eaf106cce6fb0818f2d971">CN_TYPE_WEAK_OBJECT</a></div><div class="ttdeci">@ CN_TYPE_WEAK_OBJECT</div><div class="ttdef"><b>Definition</b> libcncore.h:208</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1173,7 +1178,7 @@ Functions</h2></td></tr>
 <div class="line">            PROPAGATE_ERR(); \</div>
 <div class="line">            return (<a class="code hl_define" href="libcncore_8h.html#a203549510b067f93099b5ec716053c2d">VALUE_ERR</a>); \</div>
 <div class="line">        }</div>
-<div class="ttc" id="alibcncore_8h_html_a0e8eaf1430f3893d155ad709d2d84f25a52ec225b27d289b0d05128e3d7ef5992"><div class="ttname"><a href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a52ec225b27d289b0d05128e3d7ef5992">CN_TYPE_RECT</a></div><div class="ttdeci">@ CN_TYPE_RECT</div><div class="ttdef"><b>Definition</b> libcncore.h:188</div></div>
+<div class="ttc" id="alibcncore_8h_html_a0e8eaf1430f3893d155ad709d2d84f25a52ec225b27d289b0d05128e3d7ef5992"><div class="ttname"><a href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a52ec225b27d289b0d05128e3d7ef5992">CN_TYPE_RECT</a></div><div class="ttdeci">@ CN_TYPE_RECT</div><div class="ttdef"><b>Definition</b> libcncore.h:204</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1212,7 +1217,7 @@ Functions</h2></td></tr>
 <div class="line">            PROPAGATE_ERR(); \</div>
 <div class="line">            return (<a class="code hl_define" href="libcncore_8h.html#a203549510b067f93099b5ec716053c2d">VALUE_ERR</a>); \</div>
 <div class="line">        }</div>
-<div class="ttc" id="alibcncore_8h_html_a0e8eaf1430f3893d155ad709d2d84f25a384355a765126d78f4e9bbef9173c7a0"><div class="ttname"><a href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a384355a765126d78f4e9bbef9173c7a0">CN_TYPE_STRING</a></div><div class="ttdeci">@ CN_TYPE_STRING</div><div class="ttdef"><b>Definition</b> libcncore.h:190</div></div>
+<div class="ttc" id="alibcncore_8h_html_a0e8eaf1430f3893d155ad709d2d84f25a384355a765126d78f4e9bbef9173c7a0"><div class="ttname"><a href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a384355a765126d78f4e9bbef9173c7a0">CN_TYPE_STRING</a></div><div class="ttdeci">@ CN_TYPE_STRING</div><div class="ttdef"><b>Definition</b> libcncore.h:206</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1251,7 +1256,7 @@ Functions</h2></td></tr>
 <div class="line">            PROPAGATE_ERR(); \</div>
 <div class="line">            return (<a class="code hl_define" href="libcncore_8h.html#a203549510b067f93099b5ec716053c2d">VALUE_ERR</a>); \</div>
 <div class="line">        }</div>
-<div class="ttc" id="alibcncore_8h_html_a0e8eaf1430f3893d155ad709d2d84f25a7dd8ff986f28d6df8a92f8d5ce441045"><div class="ttname"><a href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a7dd8ff986f28d6df8a92f8d5ce441045">CN_TYPE_VEC2</a></div><div class="ttdeci">@ CN_TYPE_VEC2</div><div class="ttdef"><b>Definition</b> libcncore.h:186</div></div>
+<div class="ttc" id="alibcncore_8h_html_a0e8eaf1430f3893d155ad709d2d84f25a7dd8ff986f28d6df8a92f8d5ce441045"><div class="ttname"><a href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a7dd8ff986f28d6df8a92f8d5ce441045">CN_TYPE_VEC2</a></div><div class="ttdeci">@ CN_TYPE_VEC2</div><div class="ttdef"><b>Definition</b> libcncore.h:202</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1290,7 +1295,7 @@ Functions</h2></td></tr>
 <div class="line">            PROPAGATE_ERR(); \</div>
 <div class="line">            return (<a class="code hl_define" href="libcncore_8h.html#a203549510b067f93099b5ec716053c2d">VALUE_ERR</a>); \</div>
 <div class="line">        }</div>
-<div class="ttc" id="alibcncore_8h_html_a0e8eaf1430f3893d155ad709d2d84f25a4407833afbec27023b6c38ade807deee"><div class="ttname"><a href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a4407833afbec27023b6c38ade807deee">CN_TYPE_VEC3</a></div><div class="ttdeci">@ CN_TYPE_VEC3</div><div class="ttdef"><b>Definition</b> libcncore.h:187</div></div>
+<div class="ttc" id="alibcncore_8h_html_a0e8eaf1430f3893d155ad709d2d84f25a4407833afbec27023b6c38ade807deee"><div class="ttname"><a href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a4407833afbec27023b6c38ade807deee">CN_TYPE_VEC3</a></div><div class="ttdeci">@ CN_TYPE_VEC3</div><div class="ttdef"><b>Definition</b> libcncore.h:203</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1486,6 +1491,24 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="add6fd6697551913462314d20badb3741" name="add6fd6697551913462314d20badb3741"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add6fd6697551913462314d20badb3741">&#9670;&#160;</a></span>RET_OK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RET_OK</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">ret_expr</td><td>)</td>
+          <td>&#160;&#160;&#160;(ret_expr).as.i == VALUE_OK.as.i</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a998ce36655dc98ae88b1c5790dabc3fa" name="a998ce36655dc98ae88b1c5790dabc3fa"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a998ce36655dc98ae88b1c5790dabc3fa">&#9670;&#160;</a></span>SET_PARENT_CLASS_BUILD_STATIC</h2>
 
@@ -1516,6 +1539,50 @@ Functions</h2></td></tr>
 <div class="line">            PROPAGATE_ERR(); \</div>
 <div class="line">            (void)<a class="code hl_function" href="libcncore_8h.html#a3c17e388301ab678d57d1e4c0f1d3214">delete_object</a>(__class); \</div>
 <div class="line">            return (NULL); \</div>
+<div class="line">        }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a2a7e2f1991ed0413c9ca688e9b19c17f" name="a2a7e2f1991ed0413c9ca688e9b19c17f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a7e2f1991ed0413c9ca688e9b19c17f">&#9670;&#160;</a></span>SHR_INIT_METHOD</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SHR_INIT_METHOD</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__class, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><a class="el" href="build_8h.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><a class="el" href="build_8h.html#a5ab5a233bdc6ad82f01015b39111c614">callback</a>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">error_value&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">        <span class="keywordflow">if</span> (!<a class="code hl_function" href="libcncore_8h.html#a9a1bd983fe1fdfd618aa5cadf5bb92d1">set_method</a>(__class, <a class="code hl_variable" href="build_8h.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>, <a class="code hl_variable" href="build_8h.html#a5ab5a233bdc6ad82f01015b39111c614">callback</a>)) { \</div>
+<div class="line">            PROPAGATE_ERR(); \</div>
+<div class="line">            return (error_value); \</div>
 <div class="line">        }</div>
 </div><!-- fragment -->
 </div>

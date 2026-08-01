@@ -1,0 +1,57 @@
+\doxysection{src/cnbuild/project\+\_\+toolchain/generation/game\+\_\+assets\+\_\+compiler.c File Reference}
+\hypertarget{game__assets__compiler_8c}{}\label{game__assets__compiler_8c}\index{src/cnbuild/project\_toolchain/generation/game\_assets\_compiler.c@{src/cnbuild/project\_toolchain/generation/game\_assets\_compiler.c}}
+{\ttfamily \#include "{}../project\+\_\+toolchain.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structGameAssetCompiler}{Game\+Asset\+Compiler}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{game__assets__compiler_8c_a082f8546f44096d154ef1053e9c88739}{new\+\_\+asset\+\_\+compiler}} (const char \texorpdfstring{$\ast$}{*}toolchain, const char \texorpdfstring{$\ast$}{*}build\+\_\+path, const char \texorpdfstring{$\ast$}{*}dist\+\_\+path)
+\item 
+void \mbox{\hyperlink{game__assets__compiler_8c_a9540122281aa3fb5c277e4af8e314b37}{delete\+\_\+asset\+\_\+compiler}} (\mbox{\hyperlink{structGameAssetCompiler}{Game\+Asset\+Compiler}} \texorpdfstring{$\ast$}{*}compiler)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{game__assets__compiler_8c_a737dd4ef1edeb280ba3c7e9d47ffb807}{add\+\_\+src\+\_\+to\+\_\+asset\+\_\+compiler}} (\mbox{\hyperlink{structGameAssetCompiler}{Game\+Asset\+Compiler}} \texorpdfstring{$\ast$}{*}compiler, const char \texorpdfstring{$\ast$}{*}location, \mbox{\hyperlink{project__toolchain_8h_a3924bc2aede93e122d59991d0db8dd2f}{cnasset\+\_\+type}} type)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{game__assets__compiler_8c_a1d7c7c4ee4845e4d4a5f44061e56a1e0}{asset\+\_\+compiler\+\_\+build\+\_\+objects}} (\mbox{\hyperlink{structGameAssetCompiler}{Game\+Asset\+Compiler}} \texorpdfstring{$\ast$}{*}compiler)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{game__assets__compiler_8c_aa3281fa1335d741eeacff24a53921026}{asset\+\_\+compiler\+\_\+build\+\_\+banks}} (\mbox{\hyperlink{structGameAssetCompiler}{Game\+Asset\+Compiler}} \texorpdfstring{$\ast$}{*}compiler)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{game__assets__compiler_8c_a8f7ac9edc8b9a808b6089ecd4b3fcd80}{compile\+\_\+assets}} (const \mbox{\hyperlink{structCNProject}{CNProject}} \texorpdfstring{$\ast$}{*}project, const \mbox{\hyperlink{structCNBuild}{CNBuild}} \texorpdfstring{$\ast$}{*}build\+\_\+info, const char \texorpdfstring{$\ast$}{*}dist\+\_\+path, const char \texorpdfstring{$\ast$}{*}build\+\_\+path, const char \texorpdfstring{$\ast$}{*}toolchain\+\_\+path)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{game__assets__compiler_8c_a737dd4ef1edeb280ba3c7e9d47ffb807}\label{game__assets__compiler_8c_a737dd4ef1edeb280ba3c7e9d47ffb807} 
+\index{game\_assets\_compiler.c@{game\_assets\_compiler.c}!add\_src\_to\_asset\_compiler@{add\_src\_to\_asset\_compiler}}
+\index{add\_src\_to\_asset\_compiler@{add\_src\_to\_asset\_compiler}!game\_assets\_compiler.c@{game\_assets\_compiler.c}}
+\doxysubsubsection{\texorpdfstring{add\_src\_to\_asset\_compiler()}{add\_src\_to\_asset\_compiler()}}
+{\footnotesize\ttfamily uint8\+\_\+t add\+\_\+src\+\_\+to\+\_\+asset\+\_\+compiler (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameAssetCompiler}{Game\+Asset\+Compiler}} \texorpdfstring{$\ast$}{*}}]{compiler,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{location,  }\item[{\mbox{\hyperlink{project__toolchain_8h_a3924bc2aede93e122d59991d0db8dd2f}{cnasset\+\_\+type}}}]{type }\end{DoxyParamCaption})}
+
+\Hypertarget{game__assets__compiler_8c_aa3281fa1335d741eeacff24a53921026}\label{game__assets__compiler_8c_aa3281fa1335d741eeacff24a53921026} 
+\index{game\_assets\_compiler.c@{game\_assets\_compiler.c}!asset\_compiler\_build\_banks@{asset\_compiler\_build\_banks}}
+\index{asset\_compiler\_build\_banks@{asset\_compiler\_build\_banks}!game\_assets\_compiler.c@{game\_assets\_compiler.c}}
+\doxysubsubsection{\texorpdfstring{asset\_compiler\_build\_banks()}{asset\_compiler\_build\_banks()}}
+{\footnotesize\ttfamily uint8\+\_\+t asset\+\_\+compiler\+\_\+build\+\_\+banks (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameAssetCompiler}{Game\+Asset\+Compiler}} \texorpdfstring{$\ast$}{*}}]{compiler }\end{DoxyParamCaption})}
+
+\Hypertarget{game__assets__compiler_8c_a1d7c7c4ee4845e4d4a5f44061e56a1e0}\label{game__assets__compiler_8c_a1d7c7c4ee4845e4d4a5f44061e56a1e0} 
+\index{game\_assets\_compiler.c@{game\_assets\_compiler.c}!asset\_compiler\_build\_objects@{asset\_compiler\_build\_objects}}
+\index{asset\_compiler\_build\_objects@{asset\_compiler\_build\_objects}!game\_assets\_compiler.c@{game\_assets\_compiler.c}}
+\doxysubsubsection{\texorpdfstring{asset\_compiler\_build\_objects()}{asset\_compiler\_build\_objects()}}
+{\footnotesize\ttfamily uint8\+\_\+t asset\+\_\+compiler\+\_\+build\+\_\+objects (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameAssetCompiler}{Game\+Asset\+Compiler}} \texorpdfstring{$\ast$}{*}}]{compiler }\end{DoxyParamCaption})}
+
+\Hypertarget{game__assets__compiler_8c_a8f7ac9edc8b9a808b6089ecd4b3fcd80}\label{game__assets__compiler_8c_a8f7ac9edc8b9a808b6089ecd4b3fcd80} 
+\index{game\_assets\_compiler.c@{game\_assets\_compiler.c}!compile\_assets@{compile\_assets}}
+\index{compile\_assets@{compile\_assets}!game\_assets\_compiler.c@{game\_assets\_compiler.c}}
+\doxysubsubsection{\texorpdfstring{compile\_assets()}{compile\_assets()}}
+{\footnotesize\ttfamily uint8\+\_\+t compile\+\_\+assets (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structCNProject}{CNProject}} \texorpdfstring{$\ast$}{*}}]{project,  }\item[{const \mbox{\hyperlink{structCNBuild}{CNBuild}} \texorpdfstring{$\ast$}{*}}]{build\+\_\+info,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{dist\+\_\+path,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{build\+\_\+path,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{toolchain\+\_\+path }\end{DoxyParamCaption})}
+
+\Hypertarget{game__assets__compiler_8c_a9540122281aa3fb5c277e4af8e314b37}\label{game__assets__compiler_8c_a9540122281aa3fb5c277e4af8e314b37} 
+\index{game\_assets\_compiler.c@{game\_assets\_compiler.c}!delete\_asset\_compiler@{delete\_asset\_compiler}}
+\index{delete\_asset\_compiler@{delete\_asset\_compiler}!game\_assets\_compiler.c@{game\_assets\_compiler.c}}
+\doxysubsubsection{\texorpdfstring{delete\_asset\_compiler()}{delete\_asset\_compiler()}}
+{\footnotesize\ttfamily void delete\+\_\+asset\+\_\+compiler (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameAssetCompiler}{Game\+Asset\+Compiler}} \texorpdfstring{$\ast$}{*}}]{compiler }\end{DoxyParamCaption})}
+
+\Hypertarget{game__assets__compiler_8c_a082f8546f44096d154ef1053e9c88739}\label{game__assets__compiler_8c_a082f8546f44096d154ef1053e9c88739} 
+\index{game\_assets\_compiler.c@{game\_assets\_compiler.c}!new\_asset\_compiler@{new\_asset\_compiler}}
+\index{new\_asset\_compiler@{new\_asset\_compiler}!game\_assets\_compiler.c@{game\_assets\_compiler.c}}
+\doxysubsubsection{\texorpdfstring{new\_asset\_compiler()}{new\_asset\_compiler()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structGameAssetCompiler}{Game\+Asset\+Compiler}} \texorpdfstring{$\ast$}{*} new\+\_\+asset\+\_\+compiler (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{toolchain,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{build\+\_\+path,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{dist\+\_\+path }\end{DoxyParamCaption})}
+

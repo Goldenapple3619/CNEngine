@@ -10,6 +10,8 @@ static char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{node__section_8c_aff0bb5
 \item 
 static char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{node__section_8c_a1b5d6a3227bedf96221c2848fe91a48b}{reconstruct\+\_\+node\+\_\+section\+\_\+strndx}} (char \texorpdfstring{$\ast$}{*}rw\+\_\+content, uint64\+\_\+t content\+\_\+size, const \mbox{\hyperlink{structCNAssetReader}{CNAsset\+Reader}} \texorpdfstring{$\ast$}{*}reader, struct \mbox{\hyperlink{structgeneric__map__s}{generic\+\_\+map\+\_\+s}} \texorpdfstring{$\ast$}{*}new\+\_\+strndx)
 \item 
+static char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{node__section_8c_a15842a164facfc6791a7db385e88e9b8}{convert\+\_\+node\+\_\+section\+\_\+endian}} (char \texorpdfstring{$\ast$}{*}rw\+\_\+content, uint64\+\_\+t content\+\_\+size, const \mbox{\hyperlink{structCNAssetReader}{CNAsset\+Reader}} \texorpdfstring{$\ast$}{*}reader, \mbox{\hyperlink{libcnassets_8h_ab1164f59055b40a6fea404d875315464}{engine\+\_\+wrt\+\_\+endian}} endian)
+\item 
 void \mbox{\hyperlink{node__section_8c_a621b0464c4aba9fd10d9459175a83083}{init\+\_\+node\+\_\+section\+\_\+registry}} (struct \mbox{\hyperlink{structsection__registry}{section\+\_\+registry}} \texorpdfstring{$\ast$}{*}reg)
 \end{DoxyCompactItemize}
 
@@ -26,6 +28,12 @@ void \mbox{\hyperlink{node__section_8c_a621b0464c4aba9fd10d9459175a83083}{init\+
 \index{build\_node\_section\_size@{build\_node\_section\_size}!node\_section.c@{node\_section.c}}
 \doxysubsubsection{\texorpdfstring{build\_node\_section\_size()}{build\_node\_section\_size()}}
 {\footnotesize\ttfamily static uint64\+\_\+t build\+\_\+node\+\_\+section\+\_\+size (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structengine__object__file__section__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+section\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{self }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{node__section_8c_a15842a164facfc6791a7db385e88e9b8}\label{node__section_8c_a15842a164facfc6791a7db385e88e9b8} 
+\index{node\_section.c@{node\_section.c}!convert\_node\_section\_endian@{convert\_node\_section\_endian}}
+\index{convert\_node\_section\_endian@{convert\_node\_section\_endian}!node\_section.c@{node\_section.c}}
+\doxysubsubsection{\texorpdfstring{convert\_node\_section\_endian()}{convert\_node\_section\_endian()}}
+{\footnotesize\ttfamily static char \texorpdfstring{$\ast$}{*} convert\+\_\+node\+\_\+section\+\_\+endian (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{rw\+\_\+content,  }\item[{uint64\+\_\+t}]{content\+\_\+size,  }\item[{const \mbox{\hyperlink{structCNAssetReader}{CNAsset\+Reader}} \texorpdfstring{$\ast$}{*}}]{reader,  }\item[{\mbox{\hyperlink{libcnassets_8h_ab1164f59055b40a6fea404d875315464}{engine\+\_\+wrt\+\_\+endian}}}]{endian }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 \Hypertarget{node__section_8c_a621b0464c4aba9fd10d9459175a83083}\label{node__section_8c_a621b0464c4aba9fd10d9459175a83083} 
 \index{node\_section.c@{node\_section.c}!init\_node\_section\_registry@{init\_node\_section\_registry}}

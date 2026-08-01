@@ -10,7 +10,7 @@ static uint64\+\_\+t \mbox{\hyperlink{cnbuild_2linker__toolchain_2route_8c_ad8f0
 \item 
 static char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{cnbuild_2linker__toolchain_2route_8c_a16c89cbca77c7044cbe5cc97faf1dfd5}{generate\+\_\+section\+\_\+content}} (struct \mbox{\hyperlink{structengine__object__file__section__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+section\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}self, const struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}writer, struct \mbox{\hyperlink{structgeneric__map__s}{generic\+\_\+map\+\_\+s}} \texorpdfstring{$\ast$}{*}strndx)
 \item 
-uint8\+\_\+t \mbox{\hyperlink{cnbuild_2linker__toolchain_2route_8c_a861bb6cab3f466fd289c2064c177ca10}{parse\+\_\+cnasset}} (\mbox{\hyperlink{structCNAssetReader}{CNAsset\+Reader}} \texorpdfstring{$\ast$}{*}reader, const char \texorpdfstring{$\ast$}{*}file\+\_\+path, struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}wctx)
+uint8\+\_\+t \mbox{\hyperlink{cnbuild_2linker__toolchain_2route_8c_a6958842a9f49552da4ab280037fb5bd1}{parse\+\_\+cnasset}} (\mbox{\hyperlink{structCNAssetReader}{CNAsset\+Reader}} \texorpdfstring{$\ast$}{*}reader, const char \texorpdfstring{$\ast$}{*}file\+\_\+path, struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}wctx, \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}asset\+\_\+ctx)
 \item 
 int \mbox{\hyperlink{cnbuild_2linker__toolchain_2route_8c_a5ca0fed63c7518997505469d87912433}{build\+\_\+asset\+\_\+pack}} (size\+\_\+t argc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv, \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}asset\+\_\+ctx)
 \end{DoxyCompactItemize}
@@ -41,9 +41,9 @@ int \mbox{\hyperlink{cnbuild_2linker__toolchain_2route_8c_a5ca0fed63c75189975054
 \doxysubsubsection{\texorpdfstring{generate\_section\_size()}{generate\_section\_size()}}
 {\footnotesize\ttfamily static uint64\+\_\+t generate\+\_\+section\+\_\+size (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structengine__object__file__section__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+section\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{self }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-\Hypertarget{cnbuild_2linker__toolchain_2route_8c_a861bb6cab3f466fd289c2064c177ca10}\label{cnbuild_2linker__toolchain_2route_8c_a861bb6cab3f466fd289c2064c177ca10} 
+\Hypertarget{cnbuild_2linker__toolchain_2route_8c_a6958842a9f49552da4ab280037fb5bd1}\label{cnbuild_2linker__toolchain_2route_8c_a6958842a9f49552da4ab280037fb5bd1} 
 \index{route.c@{route.c}!parse\_cnasset@{parse\_cnasset}}
 \index{parse\_cnasset@{parse\_cnasset}!route.c@{route.c}}
 \doxysubsubsection{\texorpdfstring{parse\_cnasset()}{parse\_cnasset()}}
-{\footnotesize\ttfamily uint8\+\_\+t parse\+\_\+cnasset (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCNAssetReader}{CNAsset\+Reader}} \texorpdfstring{$\ast$}{*}}]{reader,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{file\+\_\+path,  }\item[{struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{wctx }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily uint8\+\_\+t parse\+\_\+cnasset (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCNAssetReader}{CNAsset\+Reader}} \texorpdfstring{$\ast$}{*}}]{reader,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{file\+\_\+path,  }\item[{struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{wctx,  }\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{asset\+\_\+ctx }\end{DoxyParamCaption})}
 

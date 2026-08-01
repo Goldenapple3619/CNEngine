@@ -7,35 +7,52 @@
 \DoxyCodeLine{00003\ }
 \DoxyCodeLine{00004\ \textcolor{preprocessor}{\ \ \ \ \#define\ \$template(name)\ ;}}
 \DoxyCodeLine{00005\ }
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\ \ \ \ \#if\ defined(\_ENGINE\_HAS\_GRAPHICS)\ \&\&\ (\_ENGINE\_HAS\_GRAPHICS\ ==\ 1)}}
-\DoxyCodeLine{00007\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ "{}\mbox{\hyperlink{libcngraphic_8h}{libcngraphic.h}}"{}}}
-\DoxyCodeLine{00008\ }
-\DoxyCodeLine{00009\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#if\ defined(\_ENGINE\_HAS\_GUI)\ \&\&\ (\_ENGINE\_HAS\_GUI\ ==\ 1)}}
-\DoxyCodeLine{00010\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \#include\ "{}\mbox{\hyperlink{librgui_8h}{librgui.h}}"{}}}
-\DoxyCodeLine{00011\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endif}}
-\DoxyCodeLine{00012\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
-\DoxyCodeLine{00013\ }
-\DoxyCodeLine{00014\ \textcolor{preprocessor}{\ \ \ \ \#if\ defined(\_WIN32)}}
-\DoxyCodeLine{00015\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ <windows.h>}}
-\DoxyCodeLine{00016\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
-\DoxyCodeLine{00017\ }
-\DoxyCodeLine{00018\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{libcncore_8h}{libcncore.h}}"{}}}
-\DoxyCodeLine{00019\ \textcolor{preprocessor}{\ \ \ \ \#include\ <signal.h>}}
-\DoxyCodeLine{00020\ }
-\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
-\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{engine__main_8h_a226a099351f7447457181b1233d2722aa81740363b0b2e1af31a7c7930ad7613e}{FDS\_NONE}},}
-\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{engine__main_8h_a226a099351f7447457181b1233d2722aa7ffda9c0820035dd1daec00c6c7f1594}{FDS\_INFO}},}
-\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{engine__main_8h_a226a099351f7447457181b1233d2722aaa2f9cc963e6ef3ba494d664686602255}{FDS\_WARNING}},}
-\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{engine__main_8h_a226a099351f7447457181b1233d2722aa5d0a7799b83fc4b17c7a186e69ab7a17}{FDS\_ERROR}}}
-\DoxyCodeLine{00026\ \ \ \ \ \}\ \mbox{\hyperlink{engine__main_8h_a226a099351f7447457181b1233d2722a}{FEEDBACK\_STATUS\_TYPE}};}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{libcncore_8h}{libcncore.h}}"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\ \ \ \ \#if\ defined(\_HAS\_GRAPHICS)\ \&\&\ (\_HAS\_GRAPHICS\ ==\ 1)}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ "{}\mbox{\hyperlink{libcngraphic_8h}{libcngraphic.h}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\ \ \ \ \#if\ defined(\_HAS\_GUI)\ \&\&\ (\_HAS\_GUI\ ==\ 1)}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ "{}\mbox{\hyperlink{librgui_8h}{librgui.h}}"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\ \ \ \ \#if\ defined(\_HAS\_AUDIO)\ \&\&\ (\_HAS\_AUDIO\ ==\ 1)}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ "{}\mbox{\hyperlink{libcnaudio_8h}{libcnaudio.h}}"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\ \ \ \ \#if\ defined(\_HAS\_INPUT)\ \&\&\ (\_HAS\_INPUT\ ==\ 1)}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ "{}\mbox{\hyperlink{libcninput_8h}{libcninput.h}}"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\ \ \ \ \#if\ defined(\_HAS\_ASSETS)\ \&\&\ (\_HAS\_ASSETS\ ==\ 1)}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ "{}\mbox{\hyperlink{libcnassets_8h}{libcnassets.h}}"{}}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
 \DoxyCodeLine{00027\ }
-\DoxyCodeLine{00028\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{engine__main_8h_a6f7b23397e810a78b010dacff5c3b877}{load\_submodules}}(\mbox{\hyperlink{structobject__s}{Object}}\ *ctx);\ \textcolor{comment}{//\ generated}}
-\DoxyCodeLine{00029\ }
-\DoxyCodeLine{00030\ \textcolor{preprocessor}{\ \ \ \ \#if\ defined(\_ENGINE\_HAS\_ASSETS)\ \&\&\ (\_ENGINE\_HAS\_ASSETS\ ==\ 1)}}
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ uint8\_t\ \mbox{\hyperlink{assets_8c_a59221d57a86f4eca416c790fea7ccaed}{load\_assets\_handler}}(\mbox{\hyperlink{structobject__s}{Object}}\ *ctx);\ \textcolor{comment}{//\ generated}}
-\DoxyCodeLine{00032\ }
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ uint8\_t\ \mbox{\hyperlink{assets_8c_a192f2c190cce299b6b6ae7474647599f}{load\_entry\_scene}}(\mbox{\hyperlink{structobject__s}{Object}}\ *ctx);\ \textcolor{comment}{//\ generated}}
-\DoxyCodeLine{00034\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
-\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\ \ \ \ \#if\ defined(\_WIN32)}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#include\ <windows.h>}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\ \ \ \ \#include\ <signal.h>}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{engine__main_8h_a226a099351f7447457181b1233d2722aa81740363b0b2e1af31a7c7930ad7613e}{FDS\_NONE}},}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{engine__main_8h_a226a099351f7447457181b1233d2722aa7ffda9c0820035dd1daec00c6c7f1594}{FDS\_INFO}},}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{engine__main_8h_a226a099351f7447457181b1233d2722aaa2f9cc963e6ef3ba494d664686602255}{FDS\_WARNING}},}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{engine__main_8h_a226a099351f7447457181b1233d2722aa5d0a7799b83fc4b17c7a186e69ab7a17}{FDS\_ERROR}}}
+\DoxyCodeLine{00039\ \ \ \ \ \}\ \mbox{\hyperlink{engine__main_8h_a226a099351f7447457181b1233d2722a}{FEEDBACK\_STATUS\_TYPE}};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{engine__main_8h_a6f7b23397e810a78b010dacff5c3b877}{load\_submodules}}(\mbox{\hyperlink{structobject__s}{Object}}\ *ctx);\ \textcolor{comment}{//\ generated}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\ \ \ \ \#if\ defined(\_HAS\_ASSETS)\ \&\&\ (\_HAS\_ASSETS\ ==\ 1)}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ uint8\_t\ \mbox{\hyperlink{assets_8c_a648e9280d4c4f707fb22f691afe0af3b}{register\_engine\_asset\_api}}(\mbox{\hyperlink{structobject__s}{Object}}\ *ctx);}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ uint8\_t\ \mbox{\hyperlink{assets_8c_a59221d57a86f4eca416c790fea7ccaed}{load\_assets\_handler}}(\mbox{\hyperlink{structobject__s}{Object}}\ *ctx);}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ uint8\_t\ \mbox{\hyperlink{assets_8c_a192f2c190cce299b6b6ae7474647599f}{load\_entry\_scene}}(\mbox{\hyperlink{structobject__s}{Object}}\ *ctx);}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\ \ \ \ \#if\ defined(\_HAS\_GRAPHICS)\ \&\&\ (\_HAS\_GRAPHICS\ ==\ 1)}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ uint8\_t\ \mbox{\hyperlink{graphics_8c_a219330e51a60888af6dbf158617dfc3e}{add\_main\_interface}}(\mbox{\hyperlink{structobject__s}{Object}}\ *ctx);}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

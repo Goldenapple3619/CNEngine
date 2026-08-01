@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['input_5fstate_0',['INPUT_STATE',['../libcninput_8h.html#ab6a9a77d24941f4213521fdc931391e3',1,'libcninput.h']]],
-  ['input_5ftype_1',['input_type',['../libcninput_8h.html#a0ae208dfa21925e3cb4a7c4ea17ea8ef',1,'libcninput.h']]]
+  ['generator_5ftype_0',['generator_type',['../project__toolchain_8h.html#a62d7e3c4dfc06d29877060e3b6cf745b',1,'project_toolchain.h']]]
 ];

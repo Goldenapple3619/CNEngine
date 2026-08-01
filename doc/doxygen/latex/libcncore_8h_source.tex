@@ -5,509 +5,529 @@
 \DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_LIBCNCORE\_H\_}}
 \DoxyCodeLine{00002\ \textcolor{preprocessor}{\ \ \ \ \#define\ \_LIBCNCORE\_H\_}}
 \DoxyCodeLine{00003\ }
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\ \ \ \ \#include\ <SDL2/SDL.h>}}
-\DoxyCodeLine{00005\ }
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\ \ \ \ \#ifdef\ \_WIN32}}
-\DoxyCodeLine{00007\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CN\_API\ \_\_declspec(dllexport)}}
-\DoxyCodeLine{00008\ \textcolor{preprocessor}{\ \ \ \ \#else}}
-\DoxyCodeLine{00009\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CN\_API}}
-\DoxyCodeLine{00010\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
-\DoxyCodeLine{00011\ }
-\DoxyCodeLine{00012\ \textcolor{preprocessor}{\ \ \ \ \#define\ GC\_MAX\_SIZE\ 256}}
-\DoxyCodeLine{00013\ \textcolor{preprocessor}{\ \ \ \ \#define\ ERR\_MAX\_FRAMES\ 32}}
-\DoxyCodeLine{00014\ \textcolor{preprocessor}{\ \ \ \ \#define\ ERR\_MSG\_SIZE\ 128}}
-\DoxyCodeLine{00015\ \textcolor{preprocessor}{\ \ \ \ \#define\ ERR\_HISTORY\ 128}}
-\DoxyCodeLine{00016\ }
-\DoxyCodeLine{00017\ \textcolor{preprocessor}{\ \ \ \ \#define\ ERR\_FULL\_TRACE\ 1}}
-\DoxyCodeLine{00018\ }
-\DoxyCodeLine{00019\ \textcolor{preprocessor}{\ \ \ \ \#define\ true\ \string~(0\ <<\ 1)}}
-\DoxyCodeLine{00020\ \textcolor{preprocessor}{\ \ \ \ \#define\ false\ 0}}
-\DoxyCodeLine{00021\ }
-\DoxyCodeLine{00022\ \textcolor{preprocessor}{\ \ \ \ \#define\ STRING\_INDIVIDUAL\_ALLOCATION\ 1\ }\textcolor{comment}{//\ are\ we\ duping\ every\ string\ ?\ or\ are\ they\ handled\ with\ an\ atlas}}
-\DoxyCodeLine{00023\ }
-\DoxyCodeLine{00024\ \textcolor{preprocessor}{\ \ \ \ \#define\ RAISE(c,\ msg)\ raise\_error(c,\ msg,\ \_\_FILE\_\_,\ \_\_func\_\_,\ \_\_LINE\_\_);}}
-\DoxyCodeLine{00025\ \textcolor{preprocessor}{\ \ \ \ \#define\ RAISE\_FMT(c,\ ...)\ raise\_error\_fmt(c,\ \_\_FILE\_\_,\ \_\_func\_\_,\ \_\_LINE\_\_,\ \_\_VA\_ARGS\_\_);}}
-\DoxyCodeLine{00026\ \textcolor{preprocessor}{\ \ \ \ \#define\ PROPAGATE\_ERR()\ push\_error(\_\_FILE\_\_,\ \_\_func\_\_,\ \_\_LINE\_\_);}}
-\DoxyCodeLine{00027\ }
-\DoxyCodeLine{00028\ \textcolor{preprocessor}{\ \ \ \ \#define\ PREP\_INIT()\ void\ *\_\_temp\_alloc;}}
-\DoxyCodeLine{00029\ \textcolor{preprocessor}{\ \ \ \ \#define\ PREP\_CLASS\_BUILD()\ PREP\_INIT()}}
-\DoxyCodeLine{00030\ \textcolor{preprocessor}{\ \ \ \ \#define\ INIT\_CUSTOM\_ALLOCATION(\_\_this,\ expr\_alloc,\ expr\_free,\ name)\ \(\backslash\)}}
-\DoxyCodeLine{00031\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \_\_temp\_alloc\ =\ (void\ *)expr\_alloc;\ \(\backslash\)}}
-\DoxyCodeLine{00032\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (!\_\_temp\_alloc)\ \{\ \(\backslash\)}}
-\DoxyCodeLine{00033\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}}
-\DoxyCodeLine{00034\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ (VALUE\_ERR);\ \(\backslash\)}}
-\DoxyCodeLine{00035\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}\ \(\backslash\)}}
-\DoxyCodeLine{00036\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (!set\_attr(\_\_this,\ name,\ CN\_TYPE\_GENERIC\_UNIQ\_PTR,\ (cnany)\_\_temp\_alloc))\ \{\ \(\backslash\)}}
-\DoxyCodeLine{00037\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}}
-\DoxyCodeLine{00038\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ (void)expr\_free(\_\_temp\_alloc);\ \(\backslash\)}}
-\DoxyCodeLine{00039\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ (VALUE\_ERR);\ \(\backslash\)}}
-\DoxyCodeLine{00040\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}}}
-\DoxyCodeLine{00041\ \textcolor{preprocessor}{\ \ \ \ \#define\ INIT\_OBJECT\_STATIC(\_\_this,\ expr\_alloc,\ args,\ name)\ \(\backslash\)}}
-\DoxyCodeLine{00042\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \_\_temp\_alloc\ =\ (void\ *)build\_object(expr\_alloc,\ args);\ \(\backslash\)}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\ \ \ \ \#include\ <stdio.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\ \ \ \ \#include\ <SDL2/SDL.h>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\ \ \ \ \#ifdef\ \_WIN32}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CN\_API\ \_\_declspec(dllexport)}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\ \ \ \ \#else}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ CN\_API}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\ \ \ \ \#define\ GC\_MAX\_SIZE\ 256}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\ \ \ \ \#define\ ERR\_MAX\_FRAMES\ 32}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\ \ \ \ \#define\ ERR\_MSG\_SIZE\ 128}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\ \ \ \ \#define\ ERR\_HISTORY\ 128}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\ \ \ \ \#define\ ERR\_FULL\_TRACE\ 1}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\ \ \ \ \#define\ true\ \string~(0\ <<\ 1)}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\ \ \ \ \#define\ false\ 0}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\ \ \ \ \#define\ STRING\_INDIVIDUAL\_ALLOCATION\ 1\ }\textcolor{comment}{//\ are\ we\ duping\ every\ string\ ?\ or\ are\ they\ handled\ with\ an\ atlas}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\ \ \ \ \#if\ defined(ERR\_FULL\_TRACE)\ \&\&\ ERR\_FULL\_TRACE\ ==\ 1}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ RAISE(c,\ msg)\ raise\_error(c,\ msg,\ \_\_FILE\_\_,\ \_\_func\_\_,\ \_\_LINE\_\_);}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ RAISE\_FMT(c,\ ...)\ raise\_error\_fmt(c,\ \_\_FILE\_\_,\ \_\_func\_\_,\ \_\_LINE\_\_,\ \_\_VA\_ARGS\_\_);}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ PROPAGATE\_ERR()\ push\_error(\_\_FILE\_\_,\ \_\_func\_\_,\ \_\_LINE\_\_);}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\ \ \ \ \#elif\ defined(ERR\_SEMI\_TRACE)\ \&\&\ ERR\_SEMI\_TRACE\ ==\ 1}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ RAISE(c,\ msg)\ raise\_error(c,\ msg,\ "{}???"{},\ \_\_func\_\_,\ \_\_LINE\_\_);}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ RAISE\_FMT(c,\ ...)\ raise\_error\_fmt(c,\ "{}???"{},\ \_\_func\_\_,\ \_\_LINE\_\_,\ \_\_VA\_ARGS\_\_);}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ PROPAGATE\_ERR()\ push\_error("{}???"{},\ \_\_func\_\_,\ \_\_LINE\_\_);}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\ \ \ \ \#else}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ RAISE(c,\ msg)\ raise\_error(c,\ msg,\ "{}???"{},\ "{}???"{},\ "{}???"{});}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ RAISE\_FMT(c,\ ...)\ raise\_error\_fmt(c,\ "{}???"{},\ "{}???"{},\ "{}???"{},\ \_\_VA\_ARGS\_\_);}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ PROPAGATE\_ERR()\ push\_error("{}???"{},\ "{}???"{},\ "{}???"{});}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\ \ \ \ \#define\ PREP\_INIT()\ void\ *\_\_temp\_alloc;}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\ \ \ \ \#define\ PREP\_CLASS\_BUILD()\ PREP\_INIT()}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\ \ \ \ \#define\ INIT\_CUSTOM\_ALLOCATION(\_\_this,\ expr\_alloc,\ expr\_free,\ name)\ \(\backslash\)}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \_\_temp\_alloc\ =\ (void\ *)expr\_alloc;\ \(\backslash\)}}
 \DoxyCodeLine{00043\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (!\_\_temp\_alloc)\ \{\ \(\backslash\)}}
 \DoxyCodeLine{00044\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}}
 \DoxyCodeLine{00045\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ (VALUE\_ERR);\ \(\backslash\)}}
 \DoxyCodeLine{00046\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}\ \(\backslash\)}}
-\DoxyCodeLine{00047\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (!set\_attr(\_\_this,\ name,\ CN\_TYPE\_OBJECT,\ (cnany)\_\_temp\_alloc))\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (!set\_attr(\_\_this,\ name,\ CN\_TYPE\_GENERIC\_UNIQ\_PTR,\ (cnany)\_\_temp\_alloc))\ \{\ \(\backslash\)}}
 \DoxyCodeLine{00048\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}}
-\DoxyCodeLine{00049\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ (void)delete\_object(\_\_temp\_alloc);\ \(\backslash\)}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ (void)expr\_free(\_\_temp\_alloc);\ \(\backslash\)}}
 \DoxyCodeLine{00050\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ (VALUE\_ERR);\ \(\backslash\)}}
 \DoxyCodeLine{00051\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}}}
-\DoxyCodeLine{00052\ \textcolor{preprocessor}{\ \ \ \ \#define\ INIT\_OBJECT\_SHR(\_\_this,\ obj,\ name)\ \(\backslash\)}}
-\DoxyCodeLine{00053\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (!obj)\ \{\ \(\backslash\)}}
-\DoxyCodeLine{00054\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ RAISE(ERR\_INVALID\_POINTER,\ "{}can't\ init\ share\ object\ with\ empty\ object."{});\ \(\backslash\)}}
-\DoxyCodeLine{00055\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ (VALUE\_ERR);\ \(\backslash\)}}
-\DoxyCodeLine{00056\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}\ \(\backslash\)}}
-\DoxyCodeLine{00057\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (!set\_attr(\_\_this,\ name,\ CN\_TYPE\_OBJECT,\ (cnany)obj))\ \{\ \(\backslash\)}}
-\DoxyCodeLine{00058\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}}
-\DoxyCodeLine{00059\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ (VALUE\_ERR);\ \(\backslash\)}}
-\DoxyCodeLine{00060\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}}}
-\DoxyCodeLine{00061\ \textcolor{preprocessor}{\ \ \ \ \#define\ INIT\_OBJECT\_SHR\_WEAK(\_\_this,\ obj,\ name)\ \(\backslash\)}}
-\DoxyCodeLine{00062\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (!obj)\ \{\ \(\backslash\)}}
-\DoxyCodeLine{00063\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ RAISE(ERR\_INVALID\_POINTER,\ "{}can't\ init\ share\ weak\ object\ with\ empty\ object."{});\ \(\backslash\)}}
-\DoxyCodeLine{00064\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ (VALUE\_ERR);\ \(\backslash\)}}
-\DoxyCodeLine{00065\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}\ \(\backslash\)}}
-\DoxyCodeLine{00066\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (!set\_attr(\_\_this,\ name,\ CN\_TYPE\_WEAK\_OBJECT,\ (cnany)obj))\ \{\ \(\backslash\)}}
-\DoxyCodeLine{00067\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}}
-\DoxyCodeLine{00068\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ (VALUE\_ERR);\ \(\backslash\)}}
-\DoxyCodeLine{00069\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}}}
-\DoxyCodeLine{00070\ \textcolor{preprocessor}{\ \ \ \ \#define\ PREP\_DEL()\ cn\_value\ *\_\_temp\_alloc;}}
-\DoxyCodeLine{00071\ \textcolor{preprocessor}{\ \ \ \ \#define\ DEL\_CUSTOM\_ALLOCAION(\_\_this,\ expr\_free,\ name)\ \(\backslash\)}}
-\DoxyCodeLine{00072\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \_\_temp\_alloc\ =\ get\_attr(\_\_this,\ name);\ \(\backslash\)}}
-\DoxyCodeLine{00073\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (\_\_temp\_alloc\ \&\&\ \_\_temp\_alloc-\/>as.ptr)\ \{\ \(\backslash\)}}
-\DoxyCodeLine{00074\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ expr\_free(\_\_temp\_alloc-\/>as.ptr);\ \(\backslash\)}}
-\DoxyCodeLine{00075\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \_\_temp\_alloc-\/>as.ptr\ =\ NULL;\ \(\backslash\)}}
-\DoxyCodeLine{00076\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}}}
-\DoxyCodeLine{00077\ \textcolor{preprocessor}{\ \ \ \ \#define\ INIT\_STRING(\_\_this,\ string,\ name)\ \(\backslash\)}}
-\DoxyCodeLine{00078\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (!set\_attr(\_\_this,\ name,\ CN\_TYPE\_STRING,\ (cnany)string))\ \{\ \(\backslash\)}}
-\DoxyCodeLine{00079\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}}
-\DoxyCodeLine{00080\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ (VALUE\_ERR);\ \(\backslash\)}}
-\DoxyCodeLine{00081\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}}}
-\DoxyCodeLine{00082\ \textcolor{preprocessor}{\ \ \ \ \#define\ INIT\_INT(\_\_this,\ number,\ name)\ \(\backslash\)}}
-\DoxyCodeLine{00083\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (!set\_attr(\_\_this,\ name,\ CN\_TYPE\_INT,\ (cnany)((int64\_t\ [1])\{number\})))\ \{\ \(\backslash\)}}
-\DoxyCodeLine{00084\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}}
-\DoxyCodeLine{00085\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ (VALUE\_ERR);\ \(\backslash\)}}
-\DoxyCodeLine{00086\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}}}
-\DoxyCodeLine{00087\ \textcolor{preprocessor}{\ \ \ \ \#define\ INIT\_NUMBER(\_\_this,\ number,\ name)\ \(\backslash\)}}
-\DoxyCodeLine{00088\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (!set\_attr(\_\_this,\ name,\ CN\_TYPE\_NUMBER,\ (cnany)((cnnumber\ [1])\{number\})))\ \{\ \(\backslash\)}}
-\DoxyCodeLine{00089\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}}
-\DoxyCodeLine{00090\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ (VALUE\_ERR);\ \(\backslash\)}}
-\DoxyCodeLine{00091\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}}}
-\DoxyCodeLine{00092\ \textcolor{preprocessor}{\ \ \ \ \#define\ INIT\_VEC2(\_\_this,\ vec2,\ name)\ \(\backslash\)}}
-\DoxyCodeLine{00093\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (!set\_attr(\_\_this,\ name,\ CN\_TYPE\_VEC2,\ (cnany)(\&vec2)))\ \{\ \(\backslash\)}}
-\DoxyCodeLine{00094\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}}
-\DoxyCodeLine{00095\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ (VALUE\_ERR);\ \(\backslash\)}}
-\DoxyCodeLine{00096\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}}}
-\DoxyCodeLine{00097\ \textcolor{preprocessor}{\ \ \ \ \#define\ INIT\_VEC3(\_\_this,\ vec3,\ name)\ \(\backslash\)}}
-\DoxyCodeLine{00098\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (!set\_attr(\_\_this,\ name,\ CN\_TYPE\_VEC3,\ (cnany)(\&vec3)))\ \{\ \(\backslash\)}}
-\DoxyCodeLine{00099\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}}
-\DoxyCodeLine{00100\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ (VALUE\_ERR);\ \(\backslash\)}}
-\DoxyCodeLine{00101\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}}}
-\DoxyCodeLine{00102\ \textcolor{preprocessor}{\ \ \ \ \#define\ INIT\_RECT(\_\_this,\ rect,\ name)\ \(\backslash\)}}
-\DoxyCodeLine{00103\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (!set\_attr(\_\_this,\ name,\ CN\_TYPE\_RECT,\ (cnany)(\&rect)))\ \{\ \(\backslash\)}}
-\DoxyCodeLine{00104\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}}
-\DoxyCodeLine{00105\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ (VALUE\_ERR);\ \(\backslash\)}}
-\DoxyCodeLine{00106\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}}}
-\DoxyCodeLine{00107\ \textcolor{preprocessor}{\ \ \ \ \#define\ INIT\_FLOAT(\_\_this,\ number,\ name)\ \(\backslash\)}}
-\DoxyCodeLine{00108\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (!set\_attr(\_\_this,\ name,\ CN\_TYPE\_FLOAT,\ (cnany)((double\ [1])\{number\})))\ \{\ \(\backslash\)}}
-\DoxyCodeLine{00109\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}}
-\DoxyCodeLine{00110\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ (VALUE\_ERR);\ \(\backslash\)}}
-\DoxyCodeLine{00111\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}}}
-\DoxyCodeLine{00112\ \textcolor{preprocessor}{\ \ \ \ \#define\ INIT\_METHOD(\_\_this,\ name,\ callback)\ \(\backslash\)}}
-\DoxyCodeLine{00113\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (!set\_method(\_\_this,\ name,\ callback))\ \{\ \(\backslash\)}}
-\DoxyCodeLine{00114\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}}
-\DoxyCodeLine{00115\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ (VALUE\_ERR);\ \(\backslash\)}}
-\DoxyCodeLine{00116\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}}}
-\DoxyCodeLine{00117\ \textcolor{preprocessor}{\ \ \ \ \#define\ CREATE\_METHOD\_CLASS\_BUILD(\_\_class,\ name,\ callback)\ \(\backslash\)}}
-\DoxyCodeLine{00118\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (!set\_method(\_\_class,\ name,\ callback))\ \{\ \(\backslash\)}}
-\DoxyCodeLine{00119\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}}
-\DoxyCodeLine{00120\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ (void)delete\_object(\_\_class);\ \(\backslash\)}}
-\DoxyCodeLine{00121\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ (NULL);\ \(\backslash\)}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\ \ \ \ \#define\ INIT\_OBJECT\_STATIC(\_\_this,\ expr\_alloc,\ args,\ name)\ \(\backslash\)}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \_\_temp\_alloc\ =\ (void\ *)build\_object(expr\_alloc,\ args);\ \(\backslash\)}}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (!\_\_temp\_alloc)\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ (VALUE\_ERR);\ \(\backslash\)}}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}\ \(\backslash\)}}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (!set\_attr(\_\_this,\ name,\ CN\_TYPE\_OBJECT,\ (cnany)\_\_temp\_alloc))\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ (void)delete\_object(\_\_temp\_alloc);\ \(\backslash\)}}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ (VALUE\_ERR);\ \(\backslash\)}}
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\ \ \ \ \#define\ INIT\_OBJECT\_SHR(\_\_this,\ obj,\ name)\ \(\backslash\)}}
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (!obj)\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ RAISE(ERR\_INVALID\_POINTER,\ "{}can't\ init\ share\ object\ with\ empty\ object."{});\ \(\backslash\)}}
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ (VALUE\_ERR);\ \(\backslash\)}}
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}\ \(\backslash\)}}
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (!set\_attr(\_\_this,\ name,\ CN\_TYPE\_OBJECT,\ (cnany)obj))\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}}
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ (VALUE\_ERR);\ \(\backslash\)}}
+\DoxyCodeLine{00071\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00072\ \textcolor{preprocessor}{\ \ \ \ \#define\ INIT\_OBJECT\_SHR\_WEAK(\_\_this,\ obj,\ name)\ \(\backslash\)}}
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (!obj)\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00074\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ RAISE(ERR\_INVALID\_POINTER,\ "{}can't\ init\ share\ weak\ object\ with\ empty\ object."{});\ \(\backslash\)}}
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ (VALUE\_ERR);\ \(\backslash\)}}
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}\ \(\backslash\)}}
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (!set\_attr(\_\_this,\ name,\ CN\_TYPE\_WEAK\_OBJECT,\ (cnany)obj))\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}}
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ (VALUE\_ERR);\ \(\backslash\)}}
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\ \ \ \ \#define\ PREP\_DEL()\ cn\_value\ *\_\_temp\_alloc;}}
+\DoxyCodeLine{00082\ \textcolor{preprocessor}{\ \ \ \ \#define\ DEL\_CUSTOM\_ALLOCAION(\_\_this,\ expr\_free,\ name)\ \(\backslash\)}}
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \_\_temp\_alloc\ =\ get\_attr(\_\_this,\ name);\ \(\backslash\)}}
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (\_\_temp\_alloc\ \&\&\ \_\_temp\_alloc-\/>as.ptr)\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ expr\_free(\_\_temp\_alloc-\/>as.ptr);\ \(\backslash\)}}
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \_\_temp\_alloc-\/>as.ptr\ =\ NULL;\ \(\backslash\)}}
+\DoxyCodeLine{00087\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\ \ \ \ \#define\ INIT\_STRING(\_\_this,\ string,\ name)\ \(\backslash\)}}
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (!set\_attr(\_\_this,\ name,\ CN\_TYPE\_STRING,\ (cnany)string))\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00090\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}}
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ (VALUE\_ERR);\ \(\backslash\)}}
+\DoxyCodeLine{00092\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00093\ \textcolor{preprocessor}{\ \ \ \ \#define\ INIT\_INT(\_\_this,\ number,\ name)\ \(\backslash\)}}
+\DoxyCodeLine{00094\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (!set\_attr(\_\_this,\ name,\ CN\_TYPE\_INT,\ (cnany)((int64\_t\ [1])\{number\})))\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00095\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}}
+\DoxyCodeLine{00096\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ (VALUE\_ERR);\ \(\backslash\)}}
+\DoxyCodeLine{00097\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00098\ \textcolor{preprocessor}{\ \ \ \ \#define\ INIT\_NUMBER(\_\_this,\ number,\ name)\ \(\backslash\)}}
+\DoxyCodeLine{00099\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (!set\_attr(\_\_this,\ name,\ CN\_TYPE\_NUMBER,\ (cnany)((cnnumber\ [1])\{number\})))\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00100\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}}
+\DoxyCodeLine{00101\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ (VALUE\_ERR);\ \(\backslash\)}}
+\DoxyCodeLine{00102\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00103\ \textcolor{preprocessor}{\ \ \ \ \#define\ INIT\_VEC2(\_\_this,\ vec2,\ name)\ \(\backslash\)}}
+\DoxyCodeLine{00104\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (!set\_attr(\_\_this,\ name,\ CN\_TYPE\_VEC2,\ (cnany)(\&vec2)))\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00105\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}}
+\DoxyCodeLine{00106\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ (VALUE\_ERR);\ \(\backslash\)}}
+\DoxyCodeLine{00107\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00108\ \textcolor{preprocessor}{\ \ \ \ \#define\ INIT\_VEC3(\_\_this,\ vec3,\ name)\ \(\backslash\)}}
+\DoxyCodeLine{00109\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (!set\_attr(\_\_this,\ name,\ CN\_TYPE\_VEC3,\ (cnany)(\&vec3)))\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00110\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}}
+\DoxyCodeLine{00111\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ (VALUE\_ERR);\ \(\backslash\)}}
+\DoxyCodeLine{00112\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00113\ \textcolor{preprocessor}{\ \ \ \ \#define\ INIT\_RECT(\_\_this,\ rect,\ name)\ \(\backslash\)}}
+\DoxyCodeLine{00114\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (!set\_attr(\_\_this,\ name,\ CN\_TYPE\_RECT,\ (cnany)(\&rect)))\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00115\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}}
+\DoxyCodeLine{00116\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ (VALUE\_ERR);\ \(\backslash\)}}
+\DoxyCodeLine{00117\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00118\ \textcolor{preprocessor}{\ \ \ \ \#define\ INIT\_FLOAT(\_\_this,\ number,\ name)\ \(\backslash\)}}
+\DoxyCodeLine{00119\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (!set\_attr(\_\_this,\ name,\ CN\_TYPE\_FLOAT,\ (cnany)((double\ [1])\{number\})))\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00120\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}}
+\DoxyCodeLine{00121\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ (VALUE\_ERR);\ \(\backslash\)}}
 \DoxyCodeLine{00122\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}}}
-\DoxyCodeLine{00123\ \textcolor{preprocessor}{\ \ \ \ \#define\ SET\_PARENT\_CLASS\_BUILD\_STATIC(\_\_class,\ \_\_parent)\ \(\backslash\)}}
-\DoxyCodeLine{00124\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \_\_class-\/>base\ =\ \_\_parent;\ \(\backslash\)}}
-\DoxyCodeLine{00125\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (!\_\_class-\/>base)\ \{\ \(\backslash\)}}
-\DoxyCodeLine{00126\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}}
-\DoxyCodeLine{00127\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ (void)delete\_object(\_\_class);\ \(\backslash\)}}
-\DoxyCodeLine{00128\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ (NULL);\ \(\backslash\)}}
-\DoxyCodeLine{00129\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}}}
-\DoxyCodeLine{00130\ \textcolor{preprocessor}{\ \ \ \ \#define\ CREATE\_CUSTOM\_ALLOCATION\_CLASS\_BUILD(\_\_class,\ expr\_alloc,\ expr\_free,\ name)\ \(\backslash\)}}
-\DoxyCodeLine{00131\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \_\_temp\_alloc\ =\ expr\_alloc;\ \(\backslash\)}}
-\DoxyCodeLine{00132\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (!\_\_temp\_alloc)\ \{\ \(\backslash\)}}
-\DoxyCodeLine{00133\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}}
-\DoxyCodeLine{00134\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ (void)delete\_object(\_\_class);\ \(\backslash\)}}
-\DoxyCodeLine{00135\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ (NULL);\ \(\backslash\)}}
-\DoxyCodeLine{00136\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}\ \(\backslash\)}}
-\DoxyCodeLine{00137\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (!set\_attr(\_\_class,\ name,\ CN\_TYPE\_GENERIC\_UNIQ\_PTR,\ (cnany)\_\_temp\_alloc))\ \{\ \(\backslash\)}}
-\DoxyCodeLine{00138\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}}
-\DoxyCodeLine{00139\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ (void)expr\_free(\_\_temp\_alloc);\ \(\backslash\)}}
-\DoxyCodeLine{00140\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ (void)delete\_object(\_\_class);\ \(\backslash\)}}
-\DoxyCodeLine{00141\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ (NULL);\ \(\backslash\)}}
-\DoxyCodeLine{00142\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}}}
-\DoxyCodeLine{00143\ }
-\DoxyCodeLine{00144\ \textcolor{preprocessor}{\ \ \ \ \#define\ PACK\_ARG(...)\ (cnany\ [])\{\ \_\_VA\_ARGS\_\_\ \}}}
-\DoxyCodeLine{00145\ \textcolor{preprocessor}{\ \ \ \ \#define\ INLNE\_PRIM\_T\_ARG(number)\ ((typeof((number))\ [1])\{(number)\})}}
-\DoxyCodeLine{00146\ \textcolor{preprocessor}{\ \ \ \ \#define\ INLN\_STRCT\_T\_ARG(constructor)\ (\&(constructor))}}
-\DoxyCodeLine{00147\ }
-\DoxyCodeLine{00148\ \textcolor{preprocessor}{\ \ \ \ \#define\ DELOC(object)\ delete\_object(object);\ run\_gc();}}
-\DoxyCodeLine{00149\ }
-\DoxyCodeLine{00150\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}};\ \textcolor{comment}{//\ less\ memory,\ more\ performance\ but\ less\ accuracy\ and\ capacity}}
-\DoxyCodeLine{00151\ \ \ \ \ \textcolor{comment}{//\ typedef\ double\ cnnumber;}}
-\DoxyCodeLine{00152\ \ \ \ \ }
-\DoxyCodeLine{00153\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{void}\ *\ \mbox{\hyperlink{libcncore_8h_aa0b4eca710d6fee505d18a41355e1edb}{cnany}};}
-\DoxyCodeLine{00154\ \ \ \ \ \textcolor{keyword}{typedef}\ uint64\_t\ \mbox{\hyperlink{libcncore_8h_ad8ed72626025da9fbaff30ec74a71d40}{cntime}};\ \textcolor{comment}{//\ timestamp}}
-\DoxyCodeLine{00155\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}};}
-\DoxyCodeLine{00156\ \ \ \ \ \textcolor{keyword}{typedef}\ uint64\_t\ \mbox{\hyperlink{libcncore_8h_af4bb5bf51962a35dae758006fa2d2ef1}{cnflags}};\ \textcolor{comment}{//\ 64bits\ falgs}}
-\DoxyCodeLine{00157\ }
-\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structvector2__s}{vector2\_s}}\ \{}
-\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}\ \mbox{\hyperlink{structvector2__s_a860564ed111971a77a36499acdb491ec}{x}};}
-\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}\ \mbox{\hyperlink{structvector2__s_aa9d2a843e3c8d07d6734907115e7071d}{y}};}
-\DoxyCodeLine{00161\ \ \ \ \ \};}
-\DoxyCodeLine{00162\ }
-\DoxyCodeLine{00163\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structvector3__s}{vector3\_s}}\ \{}
-\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}\ \mbox{\hyperlink{structvector3__s_a306011403b3f85d653ca5228f29b0ec6}{x}};}
-\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}\ \mbox{\hyperlink{structvector3__s_accfb042159e24e6517c55a6f3a497204}{y}};}
-\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}\ \mbox{\hyperlink{structvector3__s_a361266046077cfda987e04fcaf356547}{z}};}
-\DoxyCodeLine{00167\ \ \ \ \ \};}
+\DoxyCodeLine{00123\ \textcolor{preprocessor}{\ \ \ \ \#define\ INIT\_METHOD(\_\_this,\ name,\ callback)\ \(\backslash\)}}
+\DoxyCodeLine{00124\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (!set\_method(\_\_this,\ name,\ callback))\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00125\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}}
+\DoxyCodeLine{00126\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ (VALUE\_ERR);\ \(\backslash\)}}
+\DoxyCodeLine{00127\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00128\ \textcolor{preprocessor}{\ \ \ \ \#define\ CREATE\_METHOD\_CLASS\_BUILD(\_\_class,\ name,\ callback)\ \(\backslash\)}}
+\DoxyCodeLine{00129\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (!set\_method(\_\_class,\ name,\ callback))\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00130\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}}
+\DoxyCodeLine{00131\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ (void)delete\_object(\_\_class);\ \(\backslash\)}}
+\DoxyCodeLine{00132\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ (NULL);\ \(\backslash\)}}
+\DoxyCodeLine{00133\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00134\ \textcolor{preprocessor}{\ \ \ \ \#define\ SET\_PARENT\_CLASS\_BUILD\_STATIC(\_\_class,\ \_\_parent)\ \(\backslash\)}}
+\DoxyCodeLine{00135\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \_\_class-\/>base\ =\ \_\_parent;\ \(\backslash\)}}
+\DoxyCodeLine{00136\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (!\_\_class-\/>base)\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00137\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}}
+\DoxyCodeLine{00138\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ (void)delete\_object(\_\_class);\ \(\backslash\)}}
+\DoxyCodeLine{00139\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ (NULL);\ \(\backslash\)}}
+\DoxyCodeLine{00140\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00141\ \textcolor{preprocessor}{\ \ \ \ \#define\ CREATE\_CUSTOM\_ALLOCATION\_CLASS\_BUILD(\_\_class,\ expr\_alloc,\ expr\_free,\ name)\ \(\backslash\)}}
+\DoxyCodeLine{00142\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \_\_temp\_alloc\ =\ expr\_alloc;\ \(\backslash\)}}
+\DoxyCodeLine{00143\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (!\_\_temp\_alloc)\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00144\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}}
+\DoxyCodeLine{00145\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ (void)delete\_object(\_\_class);\ \(\backslash\)}}
+\DoxyCodeLine{00146\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ (NULL);\ \(\backslash\)}}
+\DoxyCodeLine{00147\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}\ \(\backslash\)}}
+\DoxyCodeLine{00148\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (!set\_attr(\_\_class,\ name,\ CN\_TYPE\_GENERIC\_UNIQ\_PTR,\ (cnany)\_\_temp\_alloc))\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00149\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}}
+\DoxyCodeLine{00150\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ (void)expr\_free(\_\_temp\_alloc);\ \(\backslash\)}}
+\DoxyCodeLine{00151\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ (void)delete\_object(\_\_class);\ \(\backslash\)}}
+\DoxyCodeLine{00152\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ (NULL);\ \(\backslash\)}}
+\DoxyCodeLine{00153\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00154\ \textcolor{preprocessor}{\ \ \ \ \#define\ SHR\_INIT\_METHOD(\_\_class,\ name,\ callback,\ error\_value)\ \(\backslash\)}}
+\DoxyCodeLine{00155\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ if\ (!set\_method(\_\_class,\ name,\ callback))\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00156\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ PROPAGATE\_ERR();\ \(\backslash\)}}
+\DoxyCodeLine{00157\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ return\ (error\_value);\ \(\backslash\)}}
+\DoxyCodeLine{00158\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00160\ \textcolor{preprocessor}{\ \ \ \ \#define\ PACK\_ARG(...)\ (cnany\ [])\{\ \_\_VA\_ARGS\_\_\ \}}}
+\DoxyCodeLine{00161\ \textcolor{preprocessor}{\ \ \ \ \#define\ INLNE\_PRIM\_T\_ARG(number)\ ((typeof((number))\ [1])\{(number)\})}}
+\DoxyCodeLine{00162\ \textcolor{preprocessor}{\ \ \ \ \#define\ INLN\_STRCT\_T\_ARG(constructor)\ (\&(constructor))}}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ \textcolor{preprocessor}{\ \ \ \ \#define\ DELOC(object)\ delete\_object(object);\ run\_gc();}}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00166\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}};\ \textcolor{comment}{//\ less\ memory,\ more\ performance\ but\ less\ accuracy\ and\ capacity}}
+\DoxyCodeLine{00167\ \ \ \ \ \textcolor{comment}{//\ typedef\ double\ cnnumber;}}
 \DoxyCodeLine{00168\ \ \ \ \ }
-\DoxyCodeLine{00169\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structrect__s}{rect\_s}}\ \{}
-\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}\ \mbox{\hyperlink{structrect__s_a7946e7231ddc36fa602d71d6dfef534b}{x}};}
-\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}\ \mbox{\hyperlink{structrect__s_aebd72c56b2dfc9d456505ec0d6ba68ff}{y}};}
-\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}\ \mbox{\hyperlink{structrect__s_ad3baa6fda994f47a61252478dc7ec847}{w}};}
-\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}\ \mbox{\hyperlink{structrect__s_a1533ef6dcecb0340e6ec7ae8c8146455}{h}};}
-\DoxyCodeLine{00174\ \ \ \ \ \};}
-\DoxyCodeLine{00175\ }
-\DoxyCodeLine{00176\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structclock__s}{clock\_s}}\ \{}
-\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ad8ed72626025da9fbaff30ec74a71d40}{cntime}}\ \mbox{\hyperlink{structclock__s_a1fff5347ebbaa031a53aff8d2ba95cdd}{old\_time}};\ \textcolor{comment}{//\ sdl\_gettick64()}}
-\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{structclock__s_a37e5caed2ac9ce0bee05f0797baa98d8}{last\_dt}};}
-\DoxyCodeLine{00179\ \ \ \ \ \};}
-\DoxyCodeLine{00180\ }
-\DoxyCodeLine{00181\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
-\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a348012976d3b30d7cb389beab11d7630}{CN\_TYPE\_NULL}},}
-\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a28029ab23dc72127e9c580863863b730}{CN\_TYPE\_INT}},}
-\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a6f7d564090f644eb968f592e01cb9253}{CN\_TYPE\_FLOAT}},}
-\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25ae53787cc0f9de9334d6d0cef0d76092c}{CN\_TYPE\_NUMBER}},}
-\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a7dd8ff986f28d6df8a92f8d5ce441045}{CN\_TYPE\_VEC2}},}
-\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a4407833afbec27023b6c38ade807deee}{CN\_TYPE\_VEC3}},}
-\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a52ec225b27d289b0d05128e3d7ef5992}{CN\_TYPE\_RECT}},}
-\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a72313bf6757a13dc8fd101533280f6fb}{CN\_TYPE\_BOOL}},}
-\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a384355a765126d78f4e9bbef9173c7a0}{CN\_TYPE\_STRING}},}
-\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25ab1815f2281072060aeee9fa21c33c879}{CN\_TYPE\_OBJECT}},}
-\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a5ba5ed92d4eaf106cce6fb0818f2d971}{CN\_TYPE\_WEAK\_OBJECT}},}
-\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a6c2fa05d1159dc3a4ab3e011ab48d442}{CN\_TYPE\_FUNCTION}},}
-\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a1e435bbdb30939823b6e4682ec24da6b}{CN\_TYPE\_GENERIC\_UNIQ\_PTR}}\ \textcolor{comment}{//\ custom\ things\ that\ may\ be\ handled\ by\ user\ in\ the\ dtor}}
-\DoxyCodeLine{00195\ \ \ \ \ \}\ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25}{cn\_type}};}
+\DoxyCodeLine{00169\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{void}\ *\ \mbox{\hyperlink{libcncore_8h_aa0b4eca710d6fee505d18a41355e1edb}{cnany}};}
+\DoxyCodeLine{00170\ \ \ \ \ \textcolor{keyword}{typedef}\ uint64\_t\ \mbox{\hyperlink{libcncore_8h_ad8ed72626025da9fbaff30ec74a71d40}{cntime}};\ \textcolor{comment}{//\ timestamp}}
+\DoxyCodeLine{00171\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}};}
+\DoxyCodeLine{00172\ \ \ \ \ \textcolor{keyword}{typedef}\ uint64\_t\ \mbox{\hyperlink{libcncore_8h_af4bb5bf51962a35dae758006fa2d2ef1}{cnflags}};\ \textcolor{comment}{//\ 64bits\ falgs}}
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00174\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structvector2__s}{vector2\_s}}\ \{}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}\ \mbox{\hyperlink{structvector2__s_a860564ed111971a77a36499acdb491ec}{x}};}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}\ \mbox{\hyperlink{structvector2__s_aa9d2a843e3c8d07d6734907115e7071d}{y}};}
+\DoxyCodeLine{00177\ \ \ \ \ \};}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00179\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structvector3__s}{vector3\_s}}\ \{}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}\ \mbox{\hyperlink{structvector3__s_a306011403b3f85d653ca5228f29b0ec6}{x}};}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}\ \mbox{\hyperlink{structvector3__s_accfb042159e24e6517c55a6f3a497204}{y}};}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}\ \mbox{\hyperlink{structvector3__s_a361266046077cfda987e04fcaf356547}{z}};}
+\DoxyCodeLine{00183\ \ \ \ \ \};}
+\DoxyCodeLine{00184\ \ \ \ \ }
+\DoxyCodeLine{00185\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structrect__s}{rect\_s}}\ \{}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}\ \mbox{\hyperlink{structrect__s_a7946e7231ddc36fa602d71d6dfef534b}{x}};}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}\ \mbox{\hyperlink{structrect__s_aebd72c56b2dfc9d456505ec0d6ba68ff}{y}};}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}\ \mbox{\hyperlink{structrect__s_ad3baa6fda994f47a61252478dc7ec847}{w}};}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}\ \mbox{\hyperlink{structrect__s_a1533ef6dcecb0340e6ec7ae8c8146455}{h}};}
+\DoxyCodeLine{00190\ \ \ \ \ \};}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00192\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structclock__s}{clock\_s}}\ \{}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ad8ed72626025da9fbaff30ec74a71d40}{cntime}}\ \mbox{\hyperlink{structclock__s_a1fff5347ebbaa031a53aff8d2ba95cdd}{old\_time}};\ \textcolor{comment}{//\ sdl\_gettick64()}}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{structclock__s_a37e5caed2ac9ce0bee05f0797baa98d8}{last\_dt}};}
+\DoxyCodeLine{00195\ \ \ \ \ \};}
 \DoxyCodeLine{00196\ }
 \DoxyCodeLine{00197\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
-\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a117c2852f064791ed3526c3f97f908a9a5b51e0f3dee93e0a501c5287b92e9685}{CN\_OBJ\_NULL}}\ =\ 0x00,}
-\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a117c2852f064791ed3526c3f97f908a9afa810ccca97440068e1c8a3031a957ee}{CN\_OBJ\_DRAWABLE}}\ =\ (1\ <<\ 0),}
-\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a117c2852f064791ed3526c3f97f908a9a87ae069167b6054f24b11dfc5a1fe57b}{CN\_OBJ\_REPLICATE}}\ =\ (1\ <<\ 1),}
-\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a117c2852f064791ed3526c3f97f908a9a2d38bd3cff76ac3d1f36fafc51ffa475}{CN\_OBJ\_HOST}}\ =\ (1\ <<\ 2)}
-\DoxyCodeLine{00202\ \ \ \ \ \}\ \mbox{\hyperlink{libcncore_8h_a117c2852f064791ed3526c3f97f908a9}{scene\_object\_flags}};}
-\DoxyCodeLine{00203\ }
-\DoxyCodeLine{00204\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
-\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25}{cn\_type}}\ \mbox{\hyperlink{structcn__value_ab5b23a39af00ef185b077fd98dae0b04}{type}};}
-\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \textcolor{keyword}{union\ }\{\ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{structcn__value_a3959193368d8a6b97790f672005e744a}{b}};}
-\DoxyCodeLine{00208\ }
-\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ int64\_t\ \mbox{\hyperlink{structcn__value_abc594e31bc923cd0dd226321dbfd1645}{i}};}
-\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{structcn__value_a3489c7eba8ca23110ee4c3bced9c892d}{f}};}
-\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}\ \mbox{\hyperlink{structcn__value_a94cda7dac494346639ec6d2d75ea776d}{num}};}
-\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structcn__value_a0f7d548adc8c6c78accf474221f37135}{str}};}
-\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{structcn__value_a4c75cd5394a9dcb406456b70075db433}{ptr}};}
-\DoxyCodeLine{00215\ }
-\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structvector2__s}{vector2\_s}}\ vec2;}
-\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structvector3__s}{vector3\_s}}\ vec3;}
-\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structrect__s}{rect\_s}}\ rect;}
-\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \}\ as;}
-\DoxyCodeLine{00220\ \ \ \ \ \}\ \mbox{\hyperlink{structcn__value}{cn\_value}};}
-\DoxyCodeLine{00221\ }
-\DoxyCodeLine{00222\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structobject__s}{object\_s}};}
-\DoxyCodeLine{00223\ }
-\DoxyCodeLine{00224\ \textcolor{preprocessor}{\ \ \ \ \#define\ null\_value\ (cn\_value)\{CN\_TYPE\_NULL,\ .as.i\ =\ 0\}}}
-\DoxyCodeLine{00225\ \textcolor{preprocessor}{\ \ \ \ \#define\ VALUE\_ERR\ (cn\_value)\{CN\_TYPE\_INT,\ .as.i\ =\ 1\}}}
-\DoxyCodeLine{00226\ \textcolor{preprocessor}{\ \ \ \ \#define\ VALUE\_OK\ (cn\_value)\{CN\_TYPE\_INT,\ .as.i\ =\ 0\}}}
-\DoxyCodeLine{00227\ \ \ \ \ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{structcn__value}{cn\_value}}\ (*\mbox{\hyperlink{libcncore_8h_a45176b455e70053cf81874c72e0aa5fe}{cn\_method}})(\textcolor{keyword}{struct\ }\mbox{\hyperlink{structobject__s}{object\_s}}\ *self,\ \textcolor{keywordtype}{void}\ **args);}
-\DoxyCodeLine{00228\ \ \ \ \ \textcolor{keyword}{typedef}\ void\ (*\mbox{\hyperlink{libcncore_8h_aea43bea4736df25649243404d5905567}{expr\_free}})(\textcolor{keywordtype}{void}\ *obj);}
-\DoxyCodeLine{00229\ }
-\DoxyCodeLine{00230\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structobject__attribute__s}{object\_attribute\_s}}\ \{}
-\DoxyCodeLine{00231\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#ifdef\ STRING\_INDIVIDUAL\_ALLOCATION}}
-\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structobject__attribute__s_a2decd404b6fa8439e0564ec1359c71d0}{name}};}
-\DoxyCodeLine{00233\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#else}}
-\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structobject__attribute__s_a2decd404b6fa8439e0564ec1359c71d0}{name}};}
-\DoxyCodeLine{00235\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endif}}
-\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structcn__value}{cn\_value}}\ \mbox{\hyperlink{structobject__attribute__s_ab8a7110f405d5e069553e5284197e8db}{value}};}
-\DoxyCodeLine{00237\ \ \ \ \ \};}
-\DoxyCodeLine{00238\ }
-\DoxyCodeLine{00239\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structattr__map__s}{attr\_map\_s}}\ \{}
-\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structobject__attribute__s}{object\_attribute\_s}}\ **\mbox{\hyperlink{structattr__map__s_a94687f44c8fad871e8813fab937818b2}{attrs}};}
-\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ uint64\_t\ *\mbox{\hyperlink{structattr__map__s_ace0e53ce7cfc5ba8bf04cfab9d0cfd85}{keys}};\ \textcolor{comment}{//\ keys[i]\ -\/>\ attrs[i]}}
-\DoxyCodeLine{00242\ \ \ \ \ }
-\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structattr__map__s_a404d96db44642eb02eb15de2457f5dc6}{size}};}
-\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structattr__map__s_a9bacc1de623c5c5df8ca68edf214b5f4}{capacity}};}
-\DoxyCodeLine{00245\ \ \ \ \ \};}
-\DoxyCodeLine{00246\ }
-\DoxyCodeLine{00247\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structobject__s}{object\_s}}\ \{}
-\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structobject__s}{object\_s}}\ *\mbox{\hyperlink{structobject__s_aa6afcf718ca7eb242f9158572016a25e}{base}};}
-\DoxyCodeLine{00249\ }
-\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structattr__map__s}{attr\_map\_s}}\ \mbox{\hyperlink{structobject__s_a9025b9acf711bd76dc42c65793d78822}{attrs}};}
-\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structattr__map__s}{attr\_map\_s}}\ \mbox{\hyperlink{structobject__s_abe619d8408e96a85e54d809ad9e10b94}{methods}};}
-\DoxyCodeLine{00252\ }
-\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structobject__s_ae8559e10f290cd7d95dd6d948d918678}{ref\_count}};}
-\DoxyCodeLine{00254\ \ \ \ \ \};}
-\DoxyCodeLine{00255\ }
-\DoxyCodeLine{00256\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structobject__vector__s}{object\_vector\_s}}\ \{}
-\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structobject__s}{object\_s}}\ **\mbox{\hyperlink{structobject__vector__s_a3c7d0680d641d853e3d6d68472536c89}{objects}};}
-\DoxyCodeLine{00258\ }
-\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structobject__vector__s_a58cd077f77c8a3aad0250d75be7d0b90}{size}};}
-\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structobject__vector__s_ac8ca5c51f1e8464e6d8f42cb4da5508a}{capacity}};}
-\DoxyCodeLine{00261\ \ \ \ \ \};}
-\DoxyCodeLine{00262\ }
-\DoxyCodeLine{00263\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structcn__value__vector__s}{cn\_value\_vector\_s}}\ \{}
-\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structcn__value}{cn\_value}}\ **\mbox{\hyperlink{structcn__value__vector__s_a521be7a0ac8a8fc4224195e6ee6fd65c}{values}};}
-\DoxyCodeLine{00265\ }
-\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structcn__value__vector__s_af4293d70445810812faa270cdb4e6695}{size}};}
-\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structcn__value__vector__s_aa0c0843917f1469e098191f43120be6c}{capacity}};}
-\DoxyCodeLine{00268\ \ \ \ \ \};}
-\DoxyCodeLine{00269\ }
-\DoxyCodeLine{00270\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structscene__object__mode__s}{scene\_object\_mode\_s}}\ \{}
-\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structvector3__s}{vector3\_s}}\ \mbox{\hyperlink{structscene__object__mode__s_acb595fc6d06f704d4a3bc6e1ce32b4ce}{coords}};}
-\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structvector3__s}{vector3\_s}}\ \mbox{\hyperlink{structscene__object__mode__s_aa68b12eeb123f907948eac988ebb4eec}{scale}};}
-\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structvector3__s}{vector3\_s}}\ \mbox{\hyperlink{structscene__object__mode__s_acab8988a6a697184fc10ce46c88c1e3a}{rotation}};}
-\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a117c2852f064791ed3526c3f97f908a9}{scene\_object\_flags}}\ \mbox{\hyperlink{structscene__object__mode__s_adacb0e2fdf90e25a568d6298a57786e6}{flags}};}
-\DoxyCodeLine{00275\ \ \ \ \ \};}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a348012976d3b30d7cb389beab11d7630}{CN\_TYPE\_NULL}},}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a28029ab23dc72127e9c580863863b730}{CN\_TYPE\_INT}},}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a6f7d564090f644eb968f592e01cb9253}{CN\_TYPE\_FLOAT}},}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25ae53787cc0f9de9334d6d0cef0d76092c}{CN\_TYPE\_NUMBER}},}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a7dd8ff986f28d6df8a92f8d5ce441045}{CN\_TYPE\_VEC2}},}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a4407833afbec27023b6c38ade807deee}{CN\_TYPE\_VEC3}},}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a52ec225b27d289b0d05128e3d7ef5992}{CN\_TYPE\_RECT}},}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a72313bf6757a13dc8fd101533280f6fb}{CN\_TYPE\_BOOL}},}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a384355a765126d78f4e9bbef9173c7a0}{CN\_TYPE\_STRING}},}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25ab1815f2281072060aeee9fa21c33c879}{CN\_TYPE\_OBJECT}},}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a5ba5ed92d4eaf106cce6fb0818f2d971}{CN\_TYPE\_WEAK\_OBJECT}},}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a6c2fa05d1159dc3a4ab3e011ab48d442}{CN\_TYPE\_FUNCTION}},}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25a1e435bbdb30939823b6e4682ec24da6b}{CN\_TYPE\_GENERIC\_UNIQ\_PTR}}\ \textcolor{comment}{//\ custom\ things\ that\ may\ be\ handled\ by\ user\ in\ the\ dtor}}
+\DoxyCodeLine{00211\ \ \ \ \ \}\ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25}{cn\_type}};}
+\DoxyCodeLine{00212\ }
+\DoxyCodeLine{00213\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a117c2852f064791ed3526c3f97f908a9a5b51e0f3dee93e0a501c5287b92e9685}{CN\_OBJ\_NULL}}\ =\ 0x00,}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a117c2852f064791ed3526c3f97f908a9afa810ccca97440068e1c8a3031a957ee}{CN\_OBJ\_DRAWABLE}}\ =\ (1\ <<\ 0),}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a117c2852f064791ed3526c3f97f908a9a87ae069167b6054f24b11dfc5a1fe57b}{CN\_OBJ\_REPLICATE}}\ =\ (1\ <<\ 1),}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a117c2852f064791ed3526c3f97f908a9a2d38bd3cff76ac3d1f36fafc51ffa475}{CN\_OBJ\_HOST}}\ =\ (1\ <<\ 2)}
+\DoxyCodeLine{00218\ \ \ \ \ \}\ \mbox{\hyperlink{libcncore_8h_a117c2852f064791ed3526c3f97f908a9}{scene\_object\_flags}};}
+\DoxyCodeLine{00219\ }
+\DoxyCodeLine{00220\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25}{cn\_type}}\ \mbox{\hyperlink{structcn__value_ab5b23a39af00ef185b077fd98dae0b04}{type}};}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \textcolor{keyword}{union\ }\{\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{structcn__value_a3959193368d8a6b97790f672005e744a}{b}};}
+\DoxyCodeLine{00224\ }
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ int64\_t\ \mbox{\hyperlink{structcn__value_abc594e31bc923cd0dd226321dbfd1645}{i}};}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{structcn__value_a3489c7eba8ca23110ee4c3bced9c892d}{f}};}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}\ \mbox{\hyperlink{structcn__value_a94cda7dac494346639ec6d2d75ea776d}{num}};}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structcn__value_a0f7d548adc8c6c78accf474221f37135}{str}};}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{structcn__value_a4c75cd5394a9dcb406456b70075db433}{ptr}};}
+\DoxyCodeLine{00231\ }
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structvector2__s}{vector2\_s}}\ vec2;}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structvector3__s}{vector3\_s}}\ vec3;}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structrect__s}{rect\_s}}\ rect;}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \}\ as;}
+\DoxyCodeLine{00236\ \ \ \ \ \}\ \mbox{\hyperlink{structcn__value}{cn\_value}};}
+\DoxyCodeLine{00237\ }
+\DoxyCodeLine{00238\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structobject__s}{object\_s}};}
+\DoxyCodeLine{00239\ }
+\DoxyCodeLine{00240\ \textcolor{preprocessor}{\ \ \ \ \#define\ null\_value\ (cn\_value)\{CN\_TYPE\_NULL,\ .as.i\ =\ 0\}}}
+\DoxyCodeLine{00241\ \textcolor{preprocessor}{\ \ \ \ \#define\ VALUE\_ERR\ (cn\_value)\{CN\_TYPE\_INT,\ .as.i\ =\ 1\}}}
+\DoxyCodeLine{00242\ \textcolor{preprocessor}{\ \ \ \ \#define\ VALUE\_OK\ (cn\_value)\{CN\_TYPE\_INT,\ .as.i\ =\ 0\}}}
+\DoxyCodeLine{00243\ \ \ \ \ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{structcn__value}{cn\_value}}\ (*\mbox{\hyperlink{libcncore_8h_a45176b455e70053cf81874c72e0aa5fe}{cn\_method}})(\textcolor{keyword}{struct\ }\mbox{\hyperlink{structobject__s}{object\_s}}\ *self,\ \textcolor{keywordtype}{void}\ **args);}
+\DoxyCodeLine{00244\ \ \ \ \ \textcolor{keyword}{typedef}\ void\ (*\mbox{\hyperlink{libcncore_8h_aea43bea4736df25649243404d5905567}{expr\_free}})(\textcolor{keywordtype}{void}\ *obj);}
+\DoxyCodeLine{00245\ }
+\DoxyCodeLine{00246\ \textcolor{preprocessor}{\ \ \ \ \#define\ RET\_OK(ret\_expr)\ (ret\_expr).as.i\ ==\ VALUE\_OK.as.i}}
+\DoxyCodeLine{00247\ }
+\DoxyCodeLine{00248\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structobject__attribute__s}{object\_attribute\_s}}\ \{}
+\DoxyCodeLine{00249\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#ifdef\ STRING\_INDIVIDUAL\_ALLOCATION}}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structobject__attribute__s_a2decd404b6fa8439e0564ec1359c71d0}{name}};}
+\DoxyCodeLine{00251\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#else}}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structobject__attribute__s_a2decd404b6fa8439e0564ec1359c71d0}{name}};}
+\DoxyCodeLine{00253\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endif}}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structcn__value}{cn\_value}}\ \mbox{\hyperlink{structobject__attribute__s_ab8a7110f405d5e069553e5284197e8db}{value}};}
+\DoxyCodeLine{00255\ \ \ \ \ \};}
+\DoxyCodeLine{00256\ }
+\DoxyCodeLine{00257\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structattr__map__s}{attr\_map\_s}}\ \{}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structobject__attribute__s}{object\_attribute\_s}}\ **\mbox{\hyperlink{structattr__map__s_a94687f44c8fad871e8813fab937818b2}{attrs}};}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ uint64\_t\ *\mbox{\hyperlink{structattr__map__s_ace0e53ce7cfc5ba8bf04cfab9d0cfd85}{keys}};\ \textcolor{comment}{//\ keys[i]\ -\/>\ attrs[i]}}
+\DoxyCodeLine{00260\ \ \ \ \ }
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structattr__map__s_a404d96db44642eb02eb15de2457f5dc6}{size}};}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structattr__map__s_a9bacc1de623c5c5df8ca68edf214b5f4}{capacity}};}
+\DoxyCodeLine{00263\ \ \ \ \ \};}
+\DoxyCodeLine{00264\ }
+\DoxyCodeLine{00265\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structobject__s}{object\_s}}\ \{}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structobject__s}{object\_s}}\ *\mbox{\hyperlink{structobject__s_aa6afcf718ca7eb242f9158572016a25e}{base}};}
+\DoxyCodeLine{00267\ }
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structattr__map__s}{attr\_map\_s}}\ \mbox{\hyperlink{structobject__s_a9025b9acf711bd76dc42c65793d78822}{attrs}};}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structattr__map__s}{attr\_map\_s}}\ \mbox{\hyperlink{structobject__s_abe619d8408e96a85e54d809ad9e10b94}{methods}};}
+\DoxyCodeLine{00270\ }
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structobject__s_ae8559e10f290cd7d95dd6d948d918678}{ref\_count}};}
+\DoxyCodeLine{00272\ \ \ \ \ \};}
+\DoxyCodeLine{00273\ }
+\DoxyCodeLine{00274\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structobject__vector__s}{object\_vector\_s}}\ \{}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structobject__s}{object\_s}}\ **\mbox{\hyperlink{structobject__vector__s_a3c7d0680d641d853e3d6d68472536c89}{objects}};}
 \DoxyCodeLine{00276\ }
-\DoxyCodeLine{00277\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structlist__iterator__s}{list\_iterator\_s}}\ \{}
-\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structlist__iterator__s_aa7c2a3519e77e43966a27a6e9efb4505}{pos}};}
-\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structlist__iterator__s_ab75daa4a79a9ad1c555c9c3be9ce6099}{size}};}
-\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a45176b455e70053cf81874c72e0aa5fe}{cn\_method}}\ \mbox{\hyperlink{structlist__iterator__s_a5ca163c3caa3dbd6d44d83649ce8af68}{get\_element}};}
-\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structcn__value}{cn\_value}}\ \mbox{\hyperlink{structlist__iterator__s_a0c567de7bfb7103460ad5e10aa97f90a}{val}};}
-\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structobject__s}{object\_s}}\ *\mbox{\hyperlink{structlist__iterator__s_a1d8d438e4c6845533b6a3189c593363a}{\_obj}};}
-\DoxyCodeLine{00283\ \ \ \ \ \};}
-\DoxyCodeLine{00284\ }
-\DoxyCodeLine{00285\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgeneric__map__s}{generic\_map\_s}}\ \{}
-\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ **\mbox{\hyperlink{structgeneric__map__s_a6e252ab085c1db4e9cb13ce14c0b2a05}{content}};}
-\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ uint64\_t\ *\mbox{\hyperlink{structgeneric__map__s_a7590ff9029b4e583ab90d371b2f93ad8}{keys}};\ \textcolor{comment}{//\ keys[i]\ -\/>\ content[i]}}
-\DoxyCodeLine{00288\ }
-\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structgeneric__map__s_ab55b6ba2a883b34ba63fe2735a60aa94}{size}};}
-\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structgeneric__map__s_a8bbe4fb8f970091d9d338d1526209eb4}{capacity}};}
-\DoxyCodeLine{00291\ \ \ \ \ \};}
-\DoxyCodeLine{00292\ }
-\DoxyCodeLine{00293\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgeneric__vector__s}{generic\_vector\_s}}\ \{}
-\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ **\mbox{\hyperlink{structgeneric__vector__s_aeec5c8834c5033873785bdfb336b18d2}{content}};}
-\DoxyCodeLine{00295\ }
-\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structgeneric__vector__s_a8e1eb9010ce0492091b85a9f4c382ca3}{size}};}
-\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structgeneric__vector__s_ac9dac07d72ffde215012bef0fb72245e}{capacity}};}
-\DoxyCodeLine{00298\ \ \ \ \ \};}
-\DoxyCodeLine{00299\ }
-\DoxyCodeLine{00300\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgeneric__kv__pair__s}{generic\_kv\_pair\_s}}\ \{}
-\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \textcolor{keyword}{union\ }\{}
-\DoxyCodeLine{00302\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structgeneric__kv__pair__s_aaeb8366336bd5646c60d67517c5c0e0e}{\_sk}};}
-\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structgeneric__kv__pair__s_a51386f6fcb435141cb7d04d56e9e6497}{\_k}};}
-\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \}\ \mbox{\hyperlink{structgeneric__kv__pair__s_a4fdb93a10fd0a39102081620297f8b3c}{k}};}
-\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{structgeneric__kv__pair__s_a65a1787e431aa4f27d603b767ac16f03}{v}};}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structobject__vector__s_a58cd077f77c8a3aad0250d75be7d0b90}{size}};}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structobject__vector__s_ac8ca5c51f1e8464e6d8f42cb4da5508a}{capacity}};}
+\DoxyCodeLine{00279\ \ \ \ \ \};}
+\DoxyCodeLine{00280\ }
+\DoxyCodeLine{00281\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structcn__value__vector__s}{cn\_value\_vector\_s}}\ \{}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structcn__value}{cn\_value}}\ **\mbox{\hyperlink{structcn__value__vector__s_a521be7a0ac8a8fc4224195e6ee6fd65c}{values}};}
+\DoxyCodeLine{00283\ }
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structcn__value__vector__s_af4293d70445810812faa270cdb4e6695}{size}};}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structcn__value__vector__s_aa0c0843917f1469e098191f43120be6c}{capacity}};}
+\DoxyCodeLine{00286\ \ \ \ \ \};}
+\DoxyCodeLine{00287\ }
+\DoxyCodeLine{00288\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structscene__object__mode__s}{scene\_object\_mode\_s}}\ \{}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structvector3__s}{vector3\_s}}\ \mbox{\hyperlink{structscene__object__mode__s_acb595fc6d06f704d4a3bc6e1ce32b4ce}{coords}};}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structvector3__s}{vector3\_s}}\ \mbox{\hyperlink{structscene__object__mode__s_aa68b12eeb123f907948eac988ebb4eec}{scale}};}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structvector3__s}{vector3\_s}}\ \mbox{\hyperlink{structscene__object__mode__s_acab8988a6a697184fc10ce46c88c1e3a}{rotation}};}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a117c2852f064791ed3526c3f97f908a9}{scene\_object\_flags}}\ \mbox{\hyperlink{structscene__object__mode__s_adacb0e2fdf90e25a568d6298a57786e6}{flags}};}
+\DoxyCodeLine{00293\ \ \ \ \ \};}
+\DoxyCodeLine{00294\ }
+\DoxyCodeLine{00295\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structlist__iterator__s}{list\_iterator\_s}}\ \{}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structlist__iterator__s_aa7c2a3519e77e43966a27a6e9efb4505}{pos}};}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structlist__iterator__s_ab75daa4a79a9ad1c555c9c3be9ce6099}{size}};}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a45176b455e70053cf81874c72e0aa5fe}{cn\_method}}\ \mbox{\hyperlink{structlist__iterator__s_a5ca163c3caa3dbd6d44d83649ce8af68}{get\_element}};}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structcn__value}{cn\_value}}\ \mbox{\hyperlink{structlist__iterator__s_a0c567de7bfb7103460ad5e10aa97f90a}{val}};}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structobject__s}{object\_s}}\ *\mbox{\hyperlink{structlist__iterator__s_a1d8d438e4c6845533b6a3189c593363a}{\_obj}};}
+\DoxyCodeLine{00301\ \ \ \ \ \};}
+\DoxyCodeLine{00302\ }
+\DoxyCodeLine{00303\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgeneric__map__s}{generic\_map\_s}}\ \{}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ **\mbox{\hyperlink{structgeneric__map__s_a6e252ab085c1db4e9cb13ce14c0b2a05}{content}};}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ uint64\_t\ *\mbox{\hyperlink{structgeneric__map__s_a7590ff9029b4e583ab90d371b2f93ad8}{keys}};\ \textcolor{comment}{//\ keys[i]\ -\/>\ content[i]}}
 \DoxyCodeLine{00306\ }
-\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ void\ (*\mbox{\hyperlink{structgeneric__kv__pair__s_ad1c57f7a1c95f7064b7ea3f9a413ac0e}{\_v\_deletor}})(\textcolor{keywordtype}{void}\ *);}
-\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{structgeneric__kv__pair__s_a26b2d44bf78320cca11a2f0eb42a92f2}{\_k\_alloc}};}
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structgeneric__map__s_ab55b6ba2a883b34ba63fe2735a60aa94}{size}};}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structgeneric__map__s_a8bbe4fb8f970091d9d338d1526209eb4}{capacity}};}
 \DoxyCodeLine{00309\ \ \ \ \ \};}
 \DoxyCodeLine{00310\ }
-\DoxyCodeLine{00311\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
-\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05faa26c163b80b1f6786ca81dadc14b00fb}{ERR\_OK}}\ =\ 0,}
-\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05fa077f6961ef44934823d048c00b535cad}{ERR\_OUT\_OF\_MEMORY}},}
-\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05fa17e7e6cc9748cdc813324f5d1c73512a}{ERR\_INVALID\_POINTER}},}
-\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05fa9bde5e5e1ba1c8fc57920389deda0d1c}{ERR\_OS}},}
-\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05faef6d6abbe50345f4193bf1a8f6b78a47}{ERR\_OUT\_OF\_BOUND}},}
-\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05fae00baeb1e4ac53698e23b4ca9db24ca1}{ERR\_INVALID\_TYPE}},}
-\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05fae209ef75ccd5df4111245d3bced9cc82}{ERR\_NOT\_COMPATIBLE}},}
-\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05faea3255c81cbcc7ad0f0f85b1e360567e}{ERR\_RUNTIME}},}
-\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05faac5938045e4927dfed6702ea38dd313a}{ERR\_CORRUPT\_OR\_INVALID}},}
-\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05fa45f133a01a8fa04f91a8f3df129d5f04}{WAR\_IMPORTANT}}\ =\ 0xffff}
-\DoxyCodeLine{00322\ \ \ \ \ \}\ \mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05f}{ErrorCode}};}
-\DoxyCodeLine{00323\ }
-\DoxyCodeLine{00324\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
-\DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structobject__s}{object\_s}}\ *\mbox{\hyperlink{structObjMethodPair_a97419867d0fa9bfe2fa839e440cfaa2f}{obj}};}
-\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a45176b455e70053cf81874c72e0aa5fe}{cn\_method}}\ \mbox{\hyperlink{structObjMethodPair_a816b82bfbb5f9b6fbfacbb8b9cb87490}{method}};}
-\DoxyCodeLine{00327\ \ \ \ \ \}\ \mbox{\hyperlink{structObjMethodPair}{ObjMethodPair}};}
+\DoxyCodeLine{00311\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgeneric__vector__s}{generic\_vector\_s}}\ \{}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ **\mbox{\hyperlink{structgeneric__vector__s_aeec5c8834c5033873785bdfb336b18d2}{content}};}
+\DoxyCodeLine{00313\ }
+\DoxyCodeLine{00314\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structgeneric__vector__s_a8e1eb9010ce0492091b85a9f4c382ca3}{size}};}
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structgeneric__vector__s_ac9dac07d72ffde215012bef0fb72245e}{capacity}};}
+\DoxyCodeLine{00316\ \ \ \ \ \};}
+\DoxyCodeLine{00317\ }
+\DoxyCodeLine{00318\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgeneric__kv__pair__s}{generic\_kv\_pair\_s}}\ \{}
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \textcolor{keyword}{union\ }\{}
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structgeneric__kv__pair__s_aaeb8366336bd5646c60d67517c5c0e0e}{\_sk}};}
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structgeneric__kv__pair__s_a51386f6fcb435141cb7d04d56e9e6497}{\_k}};}
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ \}\ \mbox{\hyperlink{structgeneric__kv__pair__s_a4fdb93a10fd0a39102081620297f8b3c}{k}};}
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{structgeneric__kv__pair__s_a65a1787e431aa4f27d603b767ac16f03}{v}};}
+\DoxyCodeLine{00324\ }
+\DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ void\ (*\mbox{\hyperlink{structgeneric__kv__pair__s_ad1c57f7a1c95f7064b7ea3f9a413ac0e}{\_v\_deletor}})(\textcolor{keywordtype}{void}\ *);}
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{structgeneric__kv__pair__s_a26b2d44bf78320cca11a2f0eb42a92f2}{\_k\_alloc}};}
+\DoxyCodeLine{00327\ \ \ \ \ \};}
 \DoxyCodeLine{00328\ }
-\DoxyCodeLine{00329\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
-\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structErrorFrame_a434986f90dcb71294ef680ae5a06cb20}{file}};}
-\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structErrorFrame_a61107ea84cd93c823341b5865efa4681}{function}};}
-\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structErrorFrame_ab2262231472fbeafd60b8cdf2dfda9b7}{line}};}
-\DoxyCodeLine{00333\ \ \ \ \ \}\ \mbox{\hyperlink{structErrorFrame}{ErrorFrame}};}
-\DoxyCodeLine{00334\ }
-\DoxyCodeLine{00335\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
-\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05f}{ErrorCode}}\ \mbox{\hyperlink{structErrorContext_a68724efdb077509d5000d9352273b5dd}{code}};}
-\DoxyCodeLine{00337\ }
-\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ message[\mbox{\hyperlink{libcncore_8h_a69524baf8464fed3740c9efdb6002aa4}{ERR\_MSG\_SIZE}}];}
-\DoxyCodeLine{00339\ }
-\DoxyCodeLine{00340\ \ \ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structErrorContext_acd9d9819c5979d046bc8e7fa9010ba82}{frame\_count}};}
-\DoxyCodeLine{00341\ }
-\DoxyCodeLine{00342\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structErrorFrame}{ErrorFrame}}\ frames[\mbox{\hyperlink{libcncore_8h_ab77b2fa0c4d704321a4799801516cecf}{ERR\_MAX\_FRAMES}}];}
-\DoxyCodeLine{00343\ \ \ \ \ \}\ \mbox{\hyperlink{structErrorContext}{ErrorContext}};}
-\DoxyCodeLine{00344\ }
-\DoxyCodeLine{00345\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
-\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structString_a537ff624b83e16e254740e605c3ad97c}{c\_str}};}
-\DoxyCodeLine{00347\ }
-\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structString_a467ea29ffa5dd45a89f7c01e199fd104}{size}};}
-\DoxyCodeLine{00349\ \ \ \ \ \}\ \mbox{\hyperlink{structString}{String}};}
-\DoxyCodeLine{00350\ }
-\DoxyCodeLine{00351\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structvector2__s}{vector2\_s}}\ \mbox{\hyperlink{structvector2__s}{Vector2}};}
-\DoxyCodeLine{00352\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structvector3__s}{vector3\_s}}\ \mbox{\hyperlink{structvector3__s}{Vector3}};}
-\DoxyCodeLine{00353\ \textcolor{preprocessor}{\ \ \ \ \#if\ !defined(\_\_APPLE\_\_)}}
-\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structrect__s}{rect\_s}}\ \mbox{\hyperlink{structrect__s}{Rect}};}
-\DoxyCodeLine{00355\ \textcolor{preprocessor}{\ \ \ \ \#else}}
-\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structrect__s}{rect\_s}}\ CNRect;}
-\DoxyCodeLine{00357\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ Rect\ CNRect}}
-\DoxyCodeLine{00358\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
-\DoxyCodeLine{00359\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structclock__s}{clock\_s}}\ \mbox{\hyperlink{structclock__s}{Clock}};}
-\DoxyCodeLine{00360\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structobject__s}{object\_s}}\ \mbox{\hyperlink{structobject__s}{Object}};}
-\DoxyCodeLine{00361\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structobject__attribute__s}{object\_attribute\_s}}\ \mbox{\hyperlink{structobject__attribute__s}{OBJAttrib}};}
-\DoxyCodeLine{00362\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structobject__vector__s}{object\_vector\_s}}\ \mbox{\hyperlink{structobject__vector__s}{ObjectVector}};}
-\DoxyCodeLine{00363\ }
+\DoxyCodeLine{00329\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05faa26c163b80b1f6786ca81dadc14b00fb}{ERR\_OK}}\ =\ 0,}
+\DoxyCodeLine{00331\ }
+\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05fa077f6961ef44934823d048c00b535cad}{ERR\_OUT\_OF\_MEMORY}},}
+\DoxyCodeLine{00333\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05fa17e7e6cc9748cdc813324f5d1c73512a}{ERR\_INVALID\_POINTER}},}
+\DoxyCodeLine{00334\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05fa9bde5e5e1ba1c8fc57920389deda0d1c}{ERR\_OS}},}
+\DoxyCodeLine{00335\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05faef6d6abbe50345f4193bf1a8f6b78a47}{ERR\_OUT\_OF\_BOUND}},}
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05fae00baeb1e4ac53698e23b4ca9db24ca1}{ERR\_INVALID\_TYPE}},}
+\DoxyCodeLine{00337\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05fae209ef75ccd5df4111245d3bced9cc82}{ERR\_NOT\_COMPATIBLE}},}
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05faea3255c81cbcc7ad0f0f85b1e360567e}{ERR\_RUNTIME}},}
+\DoxyCodeLine{00339\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05faac5938045e4927dfed6702ea38dd313a}{ERR\_CORRUPT\_OR\_INVALID}},}
+\DoxyCodeLine{00340\ }
+\DoxyCodeLine{00341\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05fa45f133a01a8fa04f91a8f3df129d5f04}{WAR\_IMPORTANT}}\ =\ 0xffff}
+\DoxyCodeLine{00342\ \ \ \ \ \}\ \mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05f}{ErrorCode}};}
+\DoxyCodeLine{00343\ }
+\DoxyCodeLine{00344\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00345\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structobject__s}{object\_s}}\ *\mbox{\hyperlink{structObjMethodPair_a97419867d0fa9bfe2fa839e440cfaa2f}{obj}};}
+\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a45176b455e70053cf81874c72e0aa5fe}{cn\_method}}\ \mbox{\hyperlink{structObjMethodPair_a816b82bfbb5f9b6fbfacbb8b9cb87490}{method}};}
+\DoxyCodeLine{00347\ \ \ \ \ \}\ \mbox{\hyperlink{structObjMethodPair}{ObjMethodPair}};}
+\DoxyCodeLine{00348\ }
+\DoxyCodeLine{00349\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structErrorFrame_a434986f90dcb71294ef680ae5a06cb20}{file}};}
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structErrorFrame_a61107ea84cd93c823341b5865efa4681}{function}};}
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structErrorFrame_ab2262231472fbeafd60b8cdf2dfda9b7}{line}};}
+\DoxyCodeLine{00353\ \ \ \ \ \}\ \mbox{\hyperlink{structErrorFrame}{ErrorFrame}};}
+\DoxyCodeLine{00354\ }
+\DoxyCodeLine{00355\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05f}{ErrorCode}}\ \mbox{\hyperlink{structErrorContext_a68724efdb077509d5000d9352273b5dd}{code}};}
+\DoxyCodeLine{00357\ }
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ message[\mbox{\hyperlink{libcncore_8h_a69524baf8464fed3740c9efdb6002aa4}{ERR\_MSG\_SIZE}}];}
+\DoxyCodeLine{00359\ }
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ uint32\_t\ \mbox{\hyperlink{structErrorContext_acd9d9819c5979d046bc8e7fa9010ba82}{frame\_count}};}
+\DoxyCodeLine{00361\ }
+\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structErrorFrame}{ErrorFrame}}\ frames[\mbox{\hyperlink{libcncore_8h_ab77b2fa0c4d704321a4799801516cecf}{ERR\_MAX\_FRAMES}}];}
+\DoxyCodeLine{00363\ \ \ \ \ \}\ \mbox{\hyperlink{structErrorContext}{ErrorContext}};}
 \DoxyCodeLine{00364\ }
-\DoxyCodeLine{00372\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structclock__s}{Clock}}\ *\mbox{\hyperlink{libcncore_8h_ad2174767fae55bd52b02a7ada46523c3}{new\_clock}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00373\ }
-\DoxyCodeLine{00382\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{libcncore_8h_a459d9191fd5e12fb59ac96b98527cb71}{clock\_tick}}(\mbox{\hyperlink{structclock__s}{Clock}}\ *c,\ int32\_t\ tps);}
+\DoxyCodeLine{00365\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structString_a537ff624b83e16e254740e605c3ad97c}{c\_str}};}
+\DoxyCodeLine{00367\ }
+\DoxyCodeLine{00368\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structString_a467ea29ffa5dd45a89f7c01e199fd104}{size}};}
+\DoxyCodeLine{00369\ \ \ \ \ \}\ \mbox{\hyperlink{structString}{String}};}
+\DoxyCodeLine{00370\ }
+\DoxyCodeLine{00371\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structvector2__s}{vector2\_s}}\ \mbox{\hyperlink{structvector2__s}{Vector2}};}
+\DoxyCodeLine{00372\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structvector3__s}{vector3\_s}}\ \mbox{\hyperlink{structvector3__s}{Vector3}};}
+\DoxyCodeLine{00373\ \textcolor{preprocessor}{\ \ \ \ \#if\ !defined(\_\_APPLE\_\_)}}
+\DoxyCodeLine{00374\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structrect__s}{rect\_s}}\ \mbox{\hyperlink{structrect__s}{Rect}};}
+\DoxyCodeLine{00375\ \textcolor{preprocessor}{\ \ \ \ \#else}}
+\DoxyCodeLine{00376\ \ \ \ \ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structrect__s}{rect\_s}}\ CNRect;}
+\DoxyCodeLine{00377\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#define\ Rect\ CNRect}}
+\DoxyCodeLine{00378\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00379\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structclock__s}{clock\_s}}\ \mbox{\hyperlink{structclock__s}{Clock}};}
+\DoxyCodeLine{00380\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structobject__s}{object\_s}}\ \mbox{\hyperlink{structobject__s}{Object}};}
+\DoxyCodeLine{00381\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structobject__attribute__s}{object\_attribute\_s}}\ \mbox{\hyperlink{structobject__attribute__s}{OBJAttrib}};}
+\DoxyCodeLine{00382\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structobject__vector__s}{object\_vector\_s}}\ \mbox{\hyperlink{structobject__vector__s}{ObjectVector}};}
 \DoxyCodeLine{00383\ }
-\DoxyCodeLine{00391\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a7013e8a9e6c633e52ba2bda677656805}{delete\_clock}}(\mbox{\hyperlink{structclock__s}{Clock}}\ *c);}
-\DoxyCodeLine{00392\ }
-\DoxyCodeLine{00393\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structrect__s}{Rect}}\ *\mbox{\hyperlink{libcncore_8h_ab1eec78e601bc44f0c0f30cd76cf2fb1}{new\_rect}}(\mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}\ x,\ \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}\ y,\ \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}\ w,\ \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}\ h);}
-\DoxyCodeLine{00394\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a484713bf777bc7635966a5e1358744bd}{delete\_rect}}(\mbox{\hyperlink{structrect__s}{Rect}}\ *r);}
-\DoxyCodeLine{00395\ }
-\DoxyCodeLine{00396\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structvector2__s}{Vector2}}\ *\mbox{\hyperlink{libcncore_8h_abb8ceba32dfa3fd3616b2401ec24cc41}{new\_vector2}}(\mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}\ x,\ \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}\ y);}
-\DoxyCodeLine{00397\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structvector2__s}{Vector2}}\ \mbox{\hyperlink{libcncore_8h_a3675c7ebc8f403a8d1a494dcc8048443}{add\_vector2}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structvector2__s}{Vector2}}\ *vec0,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structvector2__s}{Vector2}}\ *vec1);}
-\DoxyCodeLine{00398\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_affcdeb78870848745c7ecb146fa223e7}{delete\_vector2}}(\mbox{\hyperlink{structvector2__s}{Vector2}}\ *v);}
-\DoxyCodeLine{00399\ }
-\DoxyCodeLine{00400\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structvector3__s}{Vector3}}\ *\mbox{\hyperlink{libcncore_8h_ac96e989a6c7642d49ed00a3dad5fee09}{new\_vector3}}(\mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}\ x,\ \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}\ y,\ \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}\ z);}
-\DoxyCodeLine{00401\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_afa584dd9b093614ff61da5455500cd2e}{delete\_vector3}}(\mbox{\hyperlink{structvector3__s}{Vector3}}\ *v);}
-\DoxyCodeLine{00402\ \ \ \ \ }
-\DoxyCodeLine{00403\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structobject__attribute__s}{OBJAttrib}}\ *\mbox{\hyperlink{libcncore_8h_af3c9e213358cc6cc574390e77a75a441}{create\_object\_attribute}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}},\ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25}{cn\_type}}\ type,\ \mbox{\hyperlink{libcncore_8h_aa0b4eca710d6fee505d18a41355e1edb}{cnany}}\ value);}
-\DoxyCodeLine{00404\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structobject__attribute__s}{OBJAttrib}}\ *\mbox{\hyperlink{libcncore_8h_a8b5e870b60fa2bb8907248d3d6075c34}{create\_object\_attribute\_from\_cnvalue}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structcn__value}{cn\_value}}\ *value);}
-\DoxyCodeLine{00405\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a954b62328ab5c37f3539e6020d747930}{delete\_object\_attribute}}(\mbox{\hyperlink{structobject__attribute__s}{OBJAttrib}}\ *attribute);}
-\DoxyCodeLine{00406\ \ \ \ \ }
-\DoxyCodeLine{00407\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\mbox{\hyperlink{libcncore_8h_acd4e13f593de029b541fbd1cdeae553b}{new\_object}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00408\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\mbox{\hyperlink{libcncore_8h_aa8a195b1765489f8e4a9a7f184d5b27b}{build\_object}}(\mbox{\hyperlink{structobject__s}{Object}}\ *obj,\ \textcolor{keywordtype}{void}\ **args);}
-\DoxyCodeLine{00409\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\mbox{\hyperlink{libcncore_8h_aa657a671bc4f2e222a1174ebde0ae963}{share\_object}}(\mbox{\hyperlink{structobject__s}{Object}}\ *\textcolor{keywordtype}{object});}
-\DoxyCodeLine{00410\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a10a06d8ee21916088494a5ce0188e397}{collect\_object}}(\mbox{\hyperlink{structobject__s}{Object}}\ *\textcolor{keywordtype}{object});}
-\DoxyCodeLine{00411\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a9c22fad07837480ca5c03cf06b489cea}{run\_gc}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00412\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{libcncore_8h_a0d1200d7a9ee39c24a7cfde96306eec6}{set\_attr}}(\mbox{\hyperlink{structobject__s}{Object}}\ *\textcolor{keywordtype}{object},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}},\ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25}{cn\_type}}\ type,\ \mbox{\hyperlink{libcncore_8h_aa0b4eca710d6fee505d18a41355e1edb}{cnany}}\ value);}
-\DoxyCodeLine{00413\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structcn__value}{cn\_value}}\ *\mbox{\hyperlink{libcncore_8h_a84f46592467e4fd19376a17178476562}{get\_attr}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\textcolor{keywordtype}{object},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}});}
-\DoxyCodeLine{00414\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{libcncore_8h_a48a248e7350d8316019df9d177df446a}{has\_attr}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\textcolor{keywordtype}{object},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}});}
-\DoxyCodeLine{00415\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{libcncore_8h_a9a1bd983fe1fdfd618aa5cadf5bb92d1}{set\_method}}(\mbox{\hyperlink{structobject__s}{Object}}\ *\textcolor{keywordtype}{object},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}},\ \mbox{\hyperlink{libcncore_8h_a45176b455e70053cf81874c72e0aa5fe}{cn\_method}}\ func);}
-\DoxyCodeLine{00416\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{libcncore_8h_a45176b455e70053cf81874c72e0aa5fe}{cn\_method}}\ \mbox{\hyperlink{libcncore_8h_a00ce8e7d1aef17fe9165e345f9af77ef}{get\_method}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\textcolor{keywordtype}{object},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}});}
-\DoxyCodeLine{00417\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structcn__value}{cn\_value}}\ *\mbox{\hyperlink{libcncore_8h_a50101f8d72316da5b77075b8f271d48b}{get\_method\_holder}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\textcolor{keywordtype}{object},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}});}
-\DoxyCodeLine{00418\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structcn__value}{cn\_value}}\ \mbox{\hyperlink{libcncore_8h_a303f13c5e7b6e2d6a1e3215c57113925}{call\_method}}(\mbox{\hyperlink{structobject__s}{Object}}\ *\textcolor{keywordtype}{object},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}},\ \textcolor{keywordtype}{void}\ **args);}
-\DoxyCodeLine{00419\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_af37f3d6b332840c4b7f60353de54657e}{print\_object}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\textcolor{keywordtype}{object});}
-\DoxyCodeLine{00420\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\mbox{\hyperlink{libcncore_8h_ab6cdf8e13a027f8512ccec402a3bbdc6}{create\_default\_object}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00421\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{libcncore_8h_a279b2ab4efcad21dbfcb8a8ee92a9944}{has\_method}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\textcolor{keywordtype}{object},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}});}
-\DoxyCodeLine{00422\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\mbox{\hyperlink{libcncore_8h_ac611a10be70eebc6d8f696c409dce697}{release\_object}}(\mbox{\hyperlink{structobject__s}{Object}}\ *\textcolor{keywordtype}{object});}
-\DoxyCodeLine{00423\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a3c17e388301ab678d57d1e4c0f1d3214}{delete\_object}}(\mbox{\hyperlink{structobject__s}{Object}}\ *\textcolor{keywordtype}{object});}
-\DoxyCodeLine{00424\ }
-\DoxyCodeLine{00425\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structobject__vector__s}{ObjectVector}}\ *\mbox{\hyperlink{libcncore_8h_ae8bc2462d4dbe2458f10ca7eb1b35316}{new\_object\_vector}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00426\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a09db9f129fc4e0a37dce330ea5de4163}{delete\_object\_vector}}(\mbox{\hyperlink{structobject__vector__s}{ObjectVector}}\ *vec);}
-\DoxyCodeLine{00427\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ uint8\_t\ \mbox{\hyperlink{libcncore_8h_a00a037f35eb3d780fe9c4ecc16584860}{resize\_object\_vector}}(\mbox{\hyperlink{structobject__vector__s}{ObjectVector}}\ *vec,\ \textcolor{keywordtype}{size\_t}\ new\_capacity);}
-\DoxyCodeLine{00428\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ uint8\_t\ \mbox{\hyperlink{libcncore_8h_af6e6bf6d171447010da1d68b8f6ef35c}{insert\_object\_vector}}(\mbox{\hyperlink{structobject__vector__s}{ObjectVector}}\ *vec,\ \mbox{\hyperlink{structobject__s}{Object}}\ *obj);}
-\DoxyCodeLine{00429\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a2c0a3f71fd93ed179f2e54924ac1bfad}{remove\_object\_ordered\_vector}}(\mbox{\hyperlink{structobject__vector__s}{ObjectVector}}\ *vec,\ \textcolor{keywordtype}{size\_t}\ i);}
-\DoxyCodeLine{00430\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a015d8a3db05f836ad0b2cc2294cff806}{remove\_object\_vector}}(\mbox{\hyperlink{structobject__vector__s}{ObjectVector}}\ *vec,\ \textcolor{keywordtype}{size\_t}\ i);}
-\DoxyCodeLine{00431\ }
-\DoxyCodeLine{00432\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgeneric__map__s}{generic\_map\_s}}\ *\mbox{\hyperlink{libcncore_8h_a2ffb182dcb6cb1b7939f1fd1164a6882}{new\_generic\_map}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00433\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ uint8\_t\ \mbox{\hyperlink{libcncore_8h_a06035cfbfe854f2f97021a4d68b3ad24}{generic\_map\_resize}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structgeneric__map__s}{generic\_map\_s}}\ *gen\_map,\ \textcolor{keywordtype}{size\_t}\ new\_capacity);}
-\DoxyCodeLine{00434\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ uint8\_t\ \mbox{\hyperlink{libcncore_8h_a811de5f37ff3d85219ea62ed82a3c2db}{add\_generic\_map}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structgeneric__map__s}{generic\_map\_s}}\ *gen\_map,\ \textcolor{keywordtype}{void}\ *element,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *key,\ \textcolor{keywordtype}{void}\ (*\_delete\_obj)(\textcolor{keywordtype}{void}\ *));}
-\DoxyCodeLine{00435\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a964a6031a1ef62f0c1cf7a5f380e28e3}{remove\_generic\_map}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structgeneric__map__s}{generic\_map\_s}}\ *gen\_map,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *key,\ \textcolor{keywordtype}{void}\ (*\_delete\_obj)(\textcolor{keywordtype}{void}\ *));}
-\DoxyCodeLine{00436\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{libcncore_8h_ab26db6ac7d749fea524232f6eb6b5526}{get\_generic\_map}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structgeneric__map__s}{generic\_map\_s}}\ *gen\_map,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *key,\ \textcolor{keywordtype}{void}\ *(*\_obj\_from\_key\_default)(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *),\ \textcolor{keywordtype}{void}\ (*\_delete\_obj)(\textcolor{keywordtype}{void}\ *));}
-\DoxyCodeLine{00437\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a16a14943a65e0aa9f06d38b3f5a13ee5}{delete\_generic\_map}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structgeneric__map__s}{generic\_map\_s}}\ *gen\_map,\ \textcolor{keywordtype}{void}\ (*\_delete\_obj)(\textcolor{keywordtype}{void}\ *));}
-\DoxyCodeLine{00438\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a3bbf301ead18953b31f51ab8a5420539}{empty\_generic\_map}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structgeneric__map__s}{generic\_map\_s}}\ *gen\_map,\ \textcolor{keywordtype}{void}\ (*\_delete\_obj)(\textcolor{keywordtype}{void}\ *));}
-\DoxyCodeLine{00439\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{libcncore_8h_a25a0f9d41c95002d9c3a6b306b8368b0}{has\_generic\_map}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structgeneric__map__s}{generic\_map\_s}}\ *gen\_map,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *key);}
-\DoxyCodeLine{00440\ }
-\DoxyCodeLine{00441\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgeneric__vector__s}{generic\_vector\_s}}\ *\mbox{\hyperlink{libcncore_8h_a30634f7f9299aade7169a0f284899a6a}{new\_generic\_vector}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00442\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ uint8\_t\ \mbox{\hyperlink{libcncore_8h_a7736c5ac64e65efe1b62f79e2bda9d8f}{resize\_generic\_vector}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structgeneric__vector__s}{generic\_vector\_s}}\ *vec,\ \textcolor{keywordtype}{size\_t}\ new\_capacity);}
-\DoxyCodeLine{00443\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ uint8\_t\ \mbox{\hyperlink{libcncore_8h_ae008741fa324696513f7f009a0db7d79}{insert\_generic\_vector}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structgeneric__vector__s}{generic\_vector\_s}}\ *vec,\ \textcolor{keywordtype}{void}\ *obj);}
-\DoxyCodeLine{00444\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a014a0b15762459e95664f6f5f2e9431c}{remove\_generic\_vector}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structgeneric__vector__s}{generic\_vector\_s}}\ *vec,\ \textcolor{keywordtype}{size\_t}\ i,\ \textcolor{keywordtype}{void}\ (*\_delete\_obj)(\textcolor{keywordtype}{void}\ *));}
-\DoxyCodeLine{00445\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a3beeff2dd03e1a2a92970dd63ca15278}{remove\_generic\_ordered\_vector}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structgeneric__vector__s}{generic\_vector\_s}}\ *vec,\ \textcolor{keywordtype}{size\_t}\ i,\ \textcolor{keywordtype}{void}\ (*\_delete\_obj)(\textcolor{keywordtype}{void}\ *));}
-\DoxyCodeLine{00446\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a68dfb4e356ce668c851ada99d02daf10}{delete\_generic\_vector}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structgeneric__vector__s}{generic\_vector\_s}}\ *vec,\ \textcolor{keywordtype}{void}\ (*\_delete\_obj)(\textcolor{keywordtype}{void}\ *));}
-\DoxyCodeLine{00447\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_acc3435f4207c03ef74bfc6915e5a7419}{empty\_generic\_vector}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structgeneric__vector__s}{generic\_vector\_s}}\ *vec,\ \textcolor{keywordtype}{void}\ (*\_delete\_obj)(\textcolor{keywordtype}{void}\ *));}
-\DoxyCodeLine{00448\ }
-\DoxyCodeLine{00449\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\mbox{\hyperlink{libcncore_8h_a3e3462937b9d18e8a8a9ed88e732131c}{new\_ctx}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00450\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{libcncore_8h_a379caad25b78a71ea0e20e15ec2b7dd8}{submodule\_ctx}}(\mbox{\hyperlink{structobject__s}{Object}}\ *ctx,\ \mbox{\hyperlink{structobject__s}{Object}}\ *module);}
+\DoxyCodeLine{00384\ }
+\DoxyCodeLine{00392\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structclock__s}{Clock}}\ *\mbox{\hyperlink{libcncore_8h_ad2174767fae55bd52b02a7ada46523c3}{new\_clock}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00393\ }
+\DoxyCodeLine{00402\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{libcncore_8h_a459d9191fd5e12fb59ac96b98527cb71}{clock\_tick}}(\mbox{\hyperlink{structclock__s}{Clock}}\ *c,\ int32\_t\ tps);}
+\DoxyCodeLine{00403\ }
+\DoxyCodeLine{00411\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a7013e8a9e6c633e52ba2bda677656805}{delete\_clock}}(\mbox{\hyperlink{structclock__s}{Clock}}\ *c);}
+\DoxyCodeLine{00412\ }
+\DoxyCodeLine{00413\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structrect__s}{Rect}}\ *\mbox{\hyperlink{libcncore_8h_ab1eec78e601bc44f0c0f30cd76cf2fb1}{new\_rect}}(\mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}\ x,\ \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}\ y,\ \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}\ w,\ \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}\ h);}
+\DoxyCodeLine{00414\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a484713bf777bc7635966a5e1358744bd}{delete\_rect}}(\mbox{\hyperlink{structrect__s}{Rect}}\ *r);}
+\DoxyCodeLine{00415\ }
+\DoxyCodeLine{00416\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structvector2__s}{Vector2}}\ *\mbox{\hyperlink{libcncore_8h_abb8ceba32dfa3fd3616b2401ec24cc41}{new\_vector2}}(\mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}\ x,\ \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}\ y);}
+\DoxyCodeLine{00417\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structvector2__s}{Vector2}}\ \mbox{\hyperlink{libcncore_8h_a3675c7ebc8f403a8d1a494dcc8048443}{add\_vector2}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structvector2__s}{Vector2}}\ *vec0,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structvector2__s}{Vector2}}\ *vec1);}
+\DoxyCodeLine{00418\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_affcdeb78870848745c7ecb146fa223e7}{delete\_vector2}}(\mbox{\hyperlink{structvector2__s}{Vector2}}\ *v);}
+\DoxyCodeLine{00419\ }
+\DoxyCodeLine{00420\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structvector3__s}{Vector3}}\ *\mbox{\hyperlink{libcncore_8h_ac96e989a6c7642d49ed00a3dad5fee09}{new\_vector3}}(\mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}\ x,\ \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}\ y,\ \mbox{\hyperlink{libcncore_8h_a7b05d657b3da4196f19727ba490b7401}{cnnumber}}\ z);}
+\DoxyCodeLine{00421\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_afa584dd9b093614ff61da5455500cd2e}{delete\_vector3}}(\mbox{\hyperlink{structvector3__s}{Vector3}}\ *v);}
+\DoxyCodeLine{00422\ \ \ \ \ }
+\DoxyCodeLine{00423\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structobject__attribute__s}{OBJAttrib}}\ *\mbox{\hyperlink{libcncore_8h_af3c9e213358cc6cc574390e77a75a441}{create\_object\_attribute}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}},\ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25}{cn\_type}}\ type,\ \mbox{\hyperlink{libcncore_8h_aa0b4eca710d6fee505d18a41355e1edb}{cnany}}\ value);}
+\DoxyCodeLine{00424\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structobject__attribute__s}{OBJAttrib}}\ *\mbox{\hyperlink{libcncore_8h_a8b5e870b60fa2bb8907248d3d6075c34}{create\_object\_attribute\_from\_cnvalue}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structcn__value}{cn\_value}}\ *value);}
+\DoxyCodeLine{00425\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a954b62328ab5c37f3539e6020d747930}{delete\_object\_attribute}}(\mbox{\hyperlink{structobject__attribute__s}{OBJAttrib}}\ *attribute);}
+\DoxyCodeLine{00426\ \ \ \ \ }
+\DoxyCodeLine{00427\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\mbox{\hyperlink{libcncore_8h_acd4e13f593de029b541fbd1cdeae553b}{new\_object}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00428\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\mbox{\hyperlink{libcncore_8h_aa8a195b1765489f8e4a9a7f184d5b27b}{build\_object}}(\mbox{\hyperlink{structobject__s}{Object}}\ *obj,\ \textcolor{keywordtype}{void}\ **args);}
+\DoxyCodeLine{00429\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\mbox{\hyperlink{libcncore_8h_aa657a671bc4f2e222a1174ebde0ae963}{share\_object}}(\mbox{\hyperlink{structobject__s}{Object}}\ *\textcolor{keywordtype}{object});}
+\DoxyCodeLine{00430\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a10a06d8ee21916088494a5ce0188e397}{collect\_object}}(\mbox{\hyperlink{structobject__s}{Object}}\ *\textcolor{keywordtype}{object});}
+\DoxyCodeLine{00431\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a9c22fad07837480ca5c03cf06b489cea}{run\_gc}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00432\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{libcncore_8h_a0d1200d7a9ee39c24a7cfde96306eec6}{set\_attr}}(\mbox{\hyperlink{structobject__s}{Object}}\ *\textcolor{keywordtype}{object},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}},\ \mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25}{cn\_type}}\ type,\ \mbox{\hyperlink{libcncore_8h_aa0b4eca710d6fee505d18a41355e1edb}{cnany}}\ value);}
+\DoxyCodeLine{00433\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structcn__value}{cn\_value}}\ *\mbox{\hyperlink{libcncore_8h_a84f46592467e4fd19376a17178476562}{get\_attr}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\textcolor{keywordtype}{object},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}});}
+\DoxyCodeLine{00434\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{libcncore_8h_a48a248e7350d8316019df9d177df446a}{has\_attr}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\textcolor{keywordtype}{object},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}});}
+\DoxyCodeLine{00435\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{libcncore_8h_a9a1bd983fe1fdfd618aa5cadf5bb92d1}{set\_method}}(\mbox{\hyperlink{structobject__s}{Object}}\ *\textcolor{keywordtype}{object},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}},\ \mbox{\hyperlink{libcncore_8h_a45176b455e70053cf81874c72e0aa5fe}{cn\_method}}\ func);}
+\DoxyCodeLine{00436\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{libcncore_8h_a45176b455e70053cf81874c72e0aa5fe}{cn\_method}}\ \mbox{\hyperlink{libcncore_8h_a00ce8e7d1aef17fe9165e345f9af77ef}{get\_method}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\textcolor{keywordtype}{object},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}});}
+\DoxyCodeLine{00437\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structcn__value}{cn\_value}}\ *\mbox{\hyperlink{libcncore_8h_a50101f8d72316da5b77075b8f271d48b}{get\_method\_holder}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\textcolor{keywordtype}{object},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}});}
+\DoxyCodeLine{00438\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structcn__value}{cn\_value}}\ \mbox{\hyperlink{libcncore_8h_a303f13c5e7b6e2d6a1e3215c57113925}{call\_method}}(\mbox{\hyperlink{structobject__s}{Object}}\ *\textcolor{keywordtype}{object},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}},\ \textcolor{keywordtype}{void}\ **args);}
+\DoxyCodeLine{00439\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_af37f3d6b332840c4b7f60353de54657e}{print\_object}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\textcolor{keywordtype}{object});}
+\DoxyCodeLine{00440\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\mbox{\hyperlink{libcncore_8h_ab6cdf8e13a027f8512ccec402a3bbdc6}{create\_default\_object}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00441\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{libcncore_8h_a279b2ab4efcad21dbfcb8a8ee92a9944}{has\_method}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\textcolor{keywordtype}{object},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}});}
+\DoxyCodeLine{00442\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\mbox{\hyperlink{libcncore_8h_ac611a10be70eebc6d8f696c409dce697}{release\_object}}(\mbox{\hyperlink{structobject__s}{Object}}\ *\textcolor{keywordtype}{object});}
+\DoxyCodeLine{00443\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a3c17e388301ab678d57d1e4c0f1d3214}{delete\_object}}(\mbox{\hyperlink{structobject__s}{Object}}\ *\textcolor{keywordtype}{object});}
+\DoxyCodeLine{00444\ }
+\DoxyCodeLine{00445\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structobject__vector__s}{ObjectVector}}\ *\mbox{\hyperlink{libcncore_8h_ae8bc2462d4dbe2458f10ca7eb1b35316}{new\_object\_vector}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00446\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a09db9f129fc4e0a37dce330ea5de4163}{delete\_object\_vector}}(\mbox{\hyperlink{structobject__vector__s}{ObjectVector}}\ *vec);}
+\DoxyCodeLine{00447\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ uint8\_t\ \mbox{\hyperlink{libcncore_8h_a00a037f35eb3d780fe9c4ecc16584860}{resize\_object\_vector}}(\mbox{\hyperlink{structobject__vector__s}{ObjectVector}}\ *vec,\ \textcolor{keywordtype}{size\_t}\ new\_capacity);}
+\DoxyCodeLine{00448\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ uint8\_t\ \mbox{\hyperlink{libcncore_8h_af6e6bf6d171447010da1d68b8f6ef35c}{insert\_object\_vector}}(\mbox{\hyperlink{structobject__vector__s}{ObjectVector}}\ *vec,\ \mbox{\hyperlink{structobject__s}{Object}}\ *obj);}
+\DoxyCodeLine{00449\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a2c0a3f71fd93ed179f2e54924ac1bfad}{remove\_object\_ordered\_vector}}(\mbox{\hyperlink{structobject__vector__s}{ObjectVector}}\ *vec,\ \textcolor{keywordtype}{size\_t}\ i);}
+\DoxyCodeLine{00450\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a015d8a3db05f836ad0b2cc2294cff806}{remove\_object\_vector}}(\mbox{\hyperlink{structobject__vector__s}{ObjectVector}}\ *vec,\ \textcolor{keywordtype}{size\_t}\ i);}
 \DoxyCodeLine{00451\ }
-\DoxyCodeLine{00452\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a3fa620bfd458954333fe5cefa7de7353}{\_init\_attribute\_value}}(\mbox{\hyperlink{structcn__value}{cn\_value}}\ *dest,\ \mbox{\hyperlink{libcncore_8h_aa0b4eca710d6fee505d18a41355e1edb}{cnany}}\ value);}
-\DoxyCodeLine{00453\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_adc26a9d76e90b34c82d75043d6f11606}{\_delete\_object\_attribute\_value}}(\mbox{\hyperlink{structcn__value}{cn\_value}}\ *val);}
-\DoxyCodeLine{00454\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{libcncore_8h_ae003a34e28585e7d405dde28fae4663c}{\_attribute\_value\_extract}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structcn__value}{cn\_value}}\ *src);}
-\DoxyCodeLine{00455\ }
-\DoxyCodeLine{00456\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_aa656263126f3004a19c4fd87288c075d}{\_init\_object\_attrs}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structattr__map__s}{attr\_map\_s}}\ *attribute\_map);}
-\DoxyCodeLine{00457\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structobject__attribute__s}{OBJAttrib}}\ *\mbox{\hyperlink{libcncore_8h_a27b65a0c18be9559b774be63016f46bf}{\_find\_object\_attrs}}(\textcolor{keyword}{const}\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structattr__map__s}{attr\_map\_s}}\ *attribute\_map,\ uint64\_t\ k);}
-\DoxyCodeLine{00458\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_abaf231dc94e3e34372c62c1d717cb714}{\_remove\_object\_attrs}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structattr__map__s}{attr\_map\_s}}\ *attribute\_map,\ uint64\_t\ k);}
-\DoxyCodeLine{00459\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ uint8\_t\ \mbox{\hyperlink{libcncore_8h_a9d0a4bfc7d4177d08a48f60973e8c43d}{\_insert\_object\_attrs}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structattr__map__s}{attr\_map\_s}}\ *attribute\_map,\ uint64\_t\ k,\ \mbox{\hyperlink{structobject__attribute__s}{OBJAttrib}}\ *attr);}
-\DoxyCodeLine{00460\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ uint8\_t\ \mbox{\hyperlink{libcncore_8h_a645f50848e158ef1a726eb40f81b8eb8}{\_attr\_map\_resize}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structattr__map__s}{attr\_map\_s}}\ *map,\ \textcolor{keywordtype}{size\_t}\ new\_capacity);}
-\DoxyCodeLine{00461\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_ad153f4b2f8aefe1e646c0aa98497ebc7}{\_delete\_object\_attrs}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structattr__map__s}{attr\_map\_s}}\ *attribute\_map);}
-\DoxyCodeLine{00462\ }
-\DoxyCodeLine{00463\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ uint64\_t\ \mbox{\hyperlink{libcncore_8h_a55a5749136ec77dd3a55809e74a76f7a}{\_get\_attrs\_hash}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *str);}
-\DoxyCodeLine{00464\ }
-\DoxyCodeLine{00465\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structcn__value__vector__s}{cn\_value\_vector\_s}}\ *\mbox{\hyperlink{libcncore_8h_a6c7eb24b355f7f5e37ede66c67710dcd}{new\_value\_vector}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00466\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ uint8\_t\ \mbox{\hyperlink{libcncore_8h_af539339b9926324b283c89d3954dde34}{resize\_value\_vector}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structcn__value__vector__s}{cn\_value\_vector\_s}}\ *vec,\ \textcolor{keywordtype}{size\_t}\ new\_capacity);}
-\DoxyCodeLine{00467\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ uint8\_t\ \mbox{\hyperlink{libcncore_8h_a5c29ebff01efd987f6fd634d06410bce}{insert\_value\_vector}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structcn__value__vector__s}{cn\_value\_vector\_s}}\ *vec,\ \mbox{\hyperlink{structcn__value}{cn\_value}}\ value);}
-\DoxyCodeLine{00468\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a5d70925f3be81cf6b238412aeb2cee24}{remove\_value\_vector}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structcn__value__vector__s}{cn\_value\_vector\_s}}\ *vec,\ \textcolor{keywordtype}{size\_t}\ i);}
-\DoxyCodeLine{00469\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a10b0bf1a98dc32c4ae93c42bc818956c}{remove\_value\_ordered\_vector}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structcn__value__vector__s}{cn\_value\_vector\_s}}\ *vec,\ \textcolor{keywordtype}{size\_t}\ i);}
-\DoxyCodeLine{00470\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a864790e53dc247c7b3b636cce456b347}{delete\_value\_vector}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structcn__value__vector__s}{cn\_value\_vector\_s}}\ *vec);}
+\DoxyCodeLine{00452\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgeneric__map__s}{generic\_map\_s}}\ *\mbox{\hyperlink{libcncore_8h_a2ffb182dcb6cb1b7939f1fd1164a6882}{new\_generic\_map}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00453\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ uint8\_t\ \mbox{\hyperlink{libcncore_8h_a06035cfbfe854f2f97021a4d68b3ad24}{generic\_map\_resize}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structgeneric__map__s}{generic\_map\_s}}\ *gen\_map,\ \textcolor{keywordtype}{size\_t}\ new\_capacity);}
+\DoxyCodeLine{00454\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ uint8\_t\ \mbox{\hyperlink{libcncore_8h_a811de5f37ff3d85219ea62ed82a3c2db}{add\_generic\_map}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structgeneric__map__s}{generic\_map\_s}}\ *gen\_map,\ \textcolor{keywordtype}{void}\ *element,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *key,\ \textcolor{keywordtype}{void}\ (*\_delete\_obj)(\textcolor{keywordtype}{void}\ *));}
+\DoxyCodeLine{00455\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a964a6031a1ef62f0c1cf7a5f380e28e3}{remove\_generic\_map}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structgeneric__map__s}{generic\_map\_s}}\ *gen\_map,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *key,\ \textcolor{keywordtype}{void}\ (*\_delete\_obj)(\textcolor{keywordtype}{void}\ *));}
+\DoxyCodeLine{00456\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{libcncore_8h_ab26db6ac7d749fea524232f6eb6b5526}{get\_generic\_map}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structgeneric__map__s}{generic\_map\_s}}\ *gen\_map,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *key,\ \textcolor{keywordtype}{void}\ *(*\_obj\_from\_key\_default)(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *),\ \textcolor{keywordtype}{void}\ (*\_delete\_obj)(\textcolor{keywordtype}{void}\ *));}
+\DoxyCodeLine{00457\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a16a14943a65e0aa9f06d38b3f5a13ee5}{delete\_generic\_map}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structgeneric__map__s}{generic\_map\_s}}\ *gen\_map,\ \textcolor{keywordtype}{void}\ (*\_delete\_obj)(\textcolor{keywordtype}{void}\ *));}
+\DoxyCodeLine{00458\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a3bbf301ead18953b31f51ab8a5420539}{empty\_generic\_map}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structgeneric__map__s}{generic\_map\_s}}\ *gen\_map,\ \textcolor{keywordtype}{void}\ (*\_delete\_obj)(\textcolor{keywordtype}{void}\ *));}
+\DoxyCodeLine{00459\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{libcncore_8h_a25a0f9d41c95002d9c3a6b306b8368b0}{has\_generic\_map}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structgeneric__map__s}{generic\_map\_s}}\ *gen\_map,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *key);}
+\DoxyCodeLine{00460\ }
+\DoxyCodeLine{00461\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgeneric__vector__s}{generic\_vector\_s}}\ *\mbox{\hyperlink{libcncore_8h_a30634f7f9299aade7169a0f284899a6a}{new\_generic\_vector}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00462\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ uint8\_t\ \mbox{\hyperlink{libcncore_8h_a7736c5ac64e65efe1b62f79e2bda9d8f}{resize\_generic\_vector}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structgeneric__vector__s}{generic\_vector\_s}}\ *vec,\ \textcolor{keywordtype}{size\_t}\ new\_capacity);}
+\DoxyCodeLine{00463\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ uint8\_t\ \mbox{\hyperlink{libcncore_8h_ae008741fa324696513f7f009a0db7d79}{insert\_generic\_vector}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structgeneric__vector__s}{generic\_vector\_s}}\ *vec,\ \textcolor{keywordtype}{void}\ *obj);}
+\DoxyCodeLine{00464\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a014a0b15762459e95664f6f5f2e9431c}{remove\_generic\_vector}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structgeneric__vector__s}{generic\_vector\_s}}\ *vec,\ \textcolor{keywordtype}{size\_t}\ i,\ \textcolor{keywordtype}{void}\ (*\_delete\_obj)(\textcolor{keywordtype}{void}\ *));}
+\DoxyCodeLine{00465\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a3beeff2dd03e1a2a92970dd63ca15278}{remove\_generic\_ordered\_vector}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structgeneric__vector__s}{generic\_vector\_s}}\ *vec,\ \textcolor{keywordtype}{size\_t}\ i,\ \textcolor{keywordtype}{void}\ (*\_delete\_obj)(\textcolor{keywordtype}{void}\ *));}
+\DoxyCodeLine{00466\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a68dfb4e356ce668c851ada99d02daf10}{delete\_generic\_vector}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structgeneric__vector__s}{generic\_vector\_s}}\ *vec,\ \textcolor{keywordtype}{void}\ (*\_delete\_obj)(\textcolor{keywordtype}{void}\ *));}
+\DoxyCodeLine{00467\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_acc3435f4207c03ef74bfc6915e5a7419}{empty\_generic\_vector}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structgeneric__vector__s}{generic\_vector\_s}}\ *vec,\ \textcolor{keywordtype}{void}\ (*\_delete\_obj)(\textcolor{keywordtype}{void}\ *));}
+\DoxyCodeLine{00468\ }
+\DoxyCodeLine{00469\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\mbox{\hyperlink{libcncore_8h_a3e3462937b9d18e8a8a9ed88e732131c}{new\_ctx}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00470\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{libcncore_8h_a379caad25b78a71ea0e20e15ec2b7dd8}{submodule\_ctx}}(\mbox{\hyperlink{structobject__s}{Object}}\ *ctx,\ \mbox{\hyperlink{structobject__s}{Object}}\ *module);}
 \DoxyCodeLine{00471\ }
-\DoxyCodeLine{00472\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structlist__iterator__s}{list\_iterator\_s}}\ \mbox{\hyperlink{libcncore_8h_aea80fcc93f7e297bbfa53fc81749747c}{list\_get\_iterator}}(\mbox{\hyperlink{structobject__s}{Object}}\ *\_\_list);}
-\DoxyCodeLine{00473\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a4c7610112a3a4b02b642d392eba87b0b}{list\_iterator\_next}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structlist__iterator__s}{list\_iterator\_s}}\ *iterator);}
-\DoxyCodeLine{00474\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{libcncore_8h_a01f85eb0f466d9be2244cbc2a3c3fe7c}{list\_iterator\_isend}}(\textcolor{keyword}{const}\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structlist__iterator__s}{list\_iterator\_s}}\ *iterator);}
-\DoxyCodeLine{00475\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{libcncore_8h_a8fed0630b348b6325ff41d30653737b1}{list\_iterator\_value\_isnull}}(\textcolor{keyword}{const}\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structlist__iterator__s}{list\_iterator\_s}}\ *iterator);}
-\DoxyCodeLine{00476\ }
-\DoxyCodeLine{00477\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structlist__iterator__s}{list\_iterator\_s}}\ \mbox{\hyperlink{libcncore_8h_a42cdc48a09072327a298258e87620e40}{atlas\_get\_iterator}}(\mbox{\hyperlink{structobject__s}{Object}}\ *\_\_atlas,\ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ get\_value\_instead\_of\_key);}
-\DoxyCodeLine{00478\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a71801ca0019fa1b41a7dc1d51c5ac04e}{atlas\_iterator\_next}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structlist__iterator__s}{list\_iterator\_s}}\ *iterator);}
-\DoxyCodeLine{00479\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{libcncore_8h_a04053dab892d6feaee8725fd92e26fcf}{atlas\_iterator\_value\_isnull}}(\textcolor{keyword}{const}\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structlist__iterator__s}{list\_iterator\_s}}\ *iterator);}
-\DoxyCodeLine{00480\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{libcncore_8h_a486e7e4c7641d6b36b8b86814a707064}{atlas\_iterator\_isend}}(\textcolor{keyword}{const}\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structlist__iterator__s}{list\_iterator\_s}}\ *iterator);}
-\DoxyCodeLine{00481\ }
-\DoxyCodeLine{00482\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structObjMethodPair}{ObjMethodPair}}\ *\mbox{\hyperlink{libcncore_8h_a440de9c766f6aaaa0d318b0d366ec89d}{new\_object\_method\_pair}}(\mbox{\hyperlink{structobject__s}{Object}}\ *obj,\ \mbox{\hyperlink{libcncore_8h_a45176b455e70053cf81874c72e0aa5fe}{cn\_method}}\ method);}
-\DoxyCodeLine{00483\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structObjMethodPair}{ObjMethodPair}}\ *\mbox{\hyperlink{libcncore_8h_a3e70fc6e23d3d7c5222e4034e9f29583}{new\_weak\_object\_method\_pair}}(\mbox{\hyperlink{structobject__s}{Object}}\ *obj,\ \mbox{\hyperlink{libcncore_8h_a45176b455e70053cf81874c72e0aa5fe}{cn\_method}}\ method);}
-\DoxyCodeLine{00484\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_af98672492e076395a996b05035f100cd}{delete\_object\_method\_pair}}(\mbox{\hyperlink{structObjMethodPair}{ObjMethodPair}}\ *pair);}
-\DoxyCodeLine{00485\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a32d1076c40ede49486d41d71b8fc8826}{delete\_weak\_object\_method\_pair}}(\mbox{\hyperlink{structObjMethodPair}{ObjMethodPair}}\ *pair);}
-\DoxyCodeLine{00486\ }
-\DoxyCodeLine{00487\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\mbox{\hyperlink{libcncore_8h_a535b4ecd2551f928adf9793fc44cc8f0}{new\_list}}(\textcolor{keywordtype}{void}\ (*\_delete\_obj)(\textcolor{keywordtype}{void}\ *));}
-\DoxyCodeLine{00488\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\mbox{\hyperlink{libcncore_8h_a962231de1a8ee27e393ec402ac39fbcf}{new\_scene}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00489\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\mbox{\hyperlink{libcncore_8h_ad2f96aa2b8efb3db2d643beac3fdda2a}{new\_scene\_object}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00490\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\mbox{\hyperlink{libcncore_8h_a2fe3a47d0696447e3784c67bfa9e693e}{new\_atlas}}(\textcolor{keywordtype}{void}\ *(*\_fetch\_default)(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *),\ \textcolor{keywordtype}{void}\ (*\_delete\_obj)(\textcolor{keywordtype}{void}\ *));}
+\DoxyCodeLine{00472\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a3fa620bfd458954333fe5cefa7de7353}{\_init\_attribute\_value}}(\mbox{\hyperlink{structcn__value}{cn\_value}}\ *dest,\ \mbox{\hyperlink{libcncore_8h_aa0b4eca710d6fee505d18a41355e1edb}{cnany}}\ value);}
+\DoxyCodeLine{00473\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_adc26a9d76e90b34c82d75043d6f11606}{\_delete\_object\_attribute\_value}}(\mbox{\hyperlink{structcn__value}{cn\_value}}\ *val);}
+\DoxyCodeLine{00474\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{libcncore_8h_ae003a34e28585e7d405dde28fae4663c}{\_attribute\_value\_extract}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structcn__value}{cn\_value}}\ *src);}
+\DoxyCodeLine{00475\ }
+\DoxyCodeLine{00476\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_aa656263126f3004a19c4fd87288c075d}{\_init\_object\_attrs}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structattr__map__s}{attr\_map\_s}}\ *attribute\_map);}
+\DoxyCodeLine{00477\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structobject__attribute__s}{OBJAttrib}}\ *\mbox{\hyperlink{libcncore_8h_a27b65a0c18be9559b774be63016f46bf}{\_find\_object\_attrs}}(\textcolor{keyword}{const}\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structattr__map__s}{attr\_map\_s}}\ *attribute\_map,\ uint64\_t\ k);}
+\DoxyCodeLine{00478\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_abaf231dc94e3e34372c62c1d717cb714}{\_remove\_object\_attrs}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structattr__map__s}{attr\_map\_s}}\ *attribute\_map,\ uint64\_t\ k);}
+\DoxyCodeLine{00479\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ uint8\_t\ \mbox{\hyperlink{libcncore_8h_a9d0a4bfc7d4177d08a48f60973e8c43d}{\_insert\_object\_attrs}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structattr__map__s}{attr\_map\_s}}\ *attribute\_map,\ uint64\_t\ k,\ \mbox{\hyperlink{structobject__attribute__s}{OBJAttrib}}\ *attr);}
+\DoxyCodeLine{00480\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ uint8\_t\ \mbox{\hyperlink{libcncore_8h_a645f50848e158ef1a726eb40f81b8eb8}{\_attr\_map\_resize}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structattr__map__s}{attr\_map\_s}}\ *map,\ \textcolor{keywordtype}{size\_t}\ new\_capacity);}
+\DoxyCodeLine{00481\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_ad153f4b2f8aefe1e646c0aa98497ebc7}{\_delete\_object\_attrs}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structattr__map__s}{attr\_map\_s}}\ *attribute\_map);}
+\DoxyCodeLine{00482\ }
+\DoxyCodeLine{00483\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ uint64\_t\ \mbox{\hyperlink{libcncore_8h_a55a5749136ec77dd3a55809e74a76f7a}{\_get\_attrs\_hash}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *str);}
+\DoxyCodeLine{00484\ }
+\DoxyCodeLine{00485\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structcn__value__vector__s}{cn\_value\_vector\_s}}\ *\mbox{\hyperlink{libcncore_8h_a6c7eb24b355f7f5e37ede66c67710dcd}{new\_value\_vector}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00486\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ uint8\_t\ \mbox{\hyperlink{libcncore_8h_af539339b9926324b283c89d3954dde34}{resize\_value\_vector}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structcn__value__vector__s}{cn\_value\_vector\_s}}\ *vec,\ \textcolor{keywordtype}{size\_t}\ new\_capacity);}
+\DoxyCodeLine{00487\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ uint8\_t\ \mbox{\hyperlink{libcncore_8h_a5c29ebff01efd987f6fd634d06410bce}{insert\_value\_vector}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structcn__value__vector__s}{cn\_value\_vector\_s}}\ *vec,\ \mbox{\hyperlink{structcn__value}{cn\_value}}\ value);}
+\DoxyCodeLine{00488\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a5d70925f3be81cf6b238412aeb2cee24}{remove\_value\_vector}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structcn__value__vector__s}{cn\_value\_vector\_s}}\ *vec,\ \textcolor{keywordtype}{size\_t}\ i);}
+\DoxyCodeLine{00489\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a10b0bf1a98dc32c4ae93c42bc818956c}{remove\_value\_ordered\_vector}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structcn__value__vector__s}{cn\_value\_vector\_s}}\ *vec,\ \textcolor{keywordtype}{size\_t}\ i);}
+\DoxyCodeLine{00490\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a864790e53dc247c7b3b636cce456b347}{delete\_value\_vector}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structcn__value__vector__s}{cn\_value\_vector\_s}}\ *vec);}
 \DoxyCodeLine{00491\ }
-\DoxyCodeLine{00492\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{libcncore_8h_ae4ddb43a51bf1209346af1e0b98bccbd}{start\_core}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00493\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a0ca1b4902be942746aa3c76f41333d81}{end\_core}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00494\ }
-\DoxyCodeLine{00495\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{libcncore_8h_a8ebfe6aaa8a25680182095297f37431e}{cnopen\_library}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *path);}
-\DoxyCodeLine{00496\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{libcncore_8h_a503d318d46f0b09944ef2762d803879f}{cnget\_symbol}}(\textcolor{keywordtype}{void}\ *handle,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}});}
-\DoxyCodeLine{00497\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a560d0428889e712b1e96a3f22518a110}{cnclose\_library}}(\textcolor{keywordtype}{void}\ *handle);}
-\DoxyCodeLine{00498\ \ \ \ \ }
-\DoxyCodeLine{00499\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_ae7ec79b1a1af9d72038404621a3d382c}{raise\_error}}(\mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05f}{ErrorCode}}\ c,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *message,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *file,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *function,\ uint32\_t\ line);}
-\DoxyCodeLine{00500\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a9413c6d75fb1fd424e89c688f91168e8}{push\_error}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *file,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *function,\ uint32\_t\ line);}
-\DoxyCodeLine{00501\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structErrorContext}{ErrorContext}}\ *\mbox{\hyperlink{libcncore_8h_ae531c6707ac8602f24e2e385f26faf00}{get\_error}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00502\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{libcncore_8h_a8c72946e68c22ff628ec256b6e916778}{has\_error}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00503\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a36094f0d4f4772933f6f982cee8ee737}{print\_error}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structErrorContext}{ErrorContext}}\ *err,\ FILE\ *output);}
-\DoxyCodeLine{00504\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{libcncore_8h_a7ebe9347c3fcd8d84dc7259bd2da0b73}{error\_type\_to\_text}}(\mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05f}{ErrorCode}}\ c);}
-\DoxyCodeLine{00505\ }
-\DoxyCodeLine{00506\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structString}{String}}\ *\mbox{\hyperlink{libcncore_8h_a803cdc38853737b120ae8bc090de11de}{new\_str\_from\_const}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *c\_str);}
-\DoxyCodeLine{00507\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structString}{String}}\ *\mbox{\hyperlink{libcncore_8h_abab5c4e59c24b551c4eec243deb711e2}{new\_str}}(\textcolor{keywordtype}{char}\ *c\_str);}
-\DoxyCodeLine{00508\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{libcncore_8h_acdca66b249758c104f3e4f1cafc1222e}{str\_is\_empty}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structString}{String}}\ *str);}
-\DoxyCodeLine{00509\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{libcncore_8h_a6b412ec840cbd7b25480af8644b0cfe5}{str\_is\_null}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structString}{String}}\ *str);}
-\DoxyCodeLine{00510\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_acf84274f83df450656404aac7ba4f8ae}{str\_override}}(\mbox{\hyperlink{structString}{String}}\ *str,\ \textcolor{keywordtype}{char}\ *c\_str);}
-\DoxyCodeLine{00511\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ uint8\_t\ \mbox{\hyperlink{libcncore_8h_a5329b1771083af3811b79c2ddb54c86d}{str\_rcadd\_mv}}(\mbox{\hyperlink{structString}{String}}\ *str,\ \textcolor{keywordtype}{char}\ *c\_str);}
-\DoxyCodeLine{00512\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ uint8\_t\ \mbox{\hyperlink{libcncore_8h_a639732e7c95d71daef692601b350b16e}{str\_rcadd\_cp}}(\mbox{\hyperlink{structString}{String}}\ *str,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *c\_str);}
-\DoxyCodeLine{00513\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_ad431b97f1c7ba2481216e10000af1ce5}{delete\_str}}(\mbox{\hyperlink{structString}{String}}\ *str);}
+\DoxyCodeLine{00492\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structlist__iterator__s}{list\_iterator\_s}}\ \mbox{\hyperlink{libcncore_8h_aea80fcc93f7e297bbfa53fc81749747c}{list\_get\_iterator}}(\mbox{\hyperlink{structobject__s}{Object}}\ *\_\_list);}
+\DoxyCodeLine{00493\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a4c7610112a3a4b02b642d392eba87b0b}{list\_iterator\_next}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structlist__iterator__s}{list\_iterator\_s}}\ *iterator);}
+\DoxyCodeLine{00494\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{libcncore_8h_a01f85eb0f466d9be2244cbc2a3c3fe7c}{list\_iterator\_isend}}(\textcolor{keyword}{const}\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structlist__iterator__s}{list\_iterator\_s}}\ *iterator);}
+\DoxyCodeLine{00495\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{libcncore_8h_a8fed0630b348b6325ff41d30653737b1}{list\_iterator\_value\_isnull}}(\textcolor{keyword}{const}\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structlist__iterator__s}{list\_iterator\_s}}\ *iterator);}
+\DoxyCodeLine{00496\ }
+\DoxyCodeLine{00497\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structlist__iterator__s}{list\_iterator\_s}}\ \mbox{\hyperlink{libcncore_8h_a42cdc48a09072327a298258e87620e40}{atlas\_get\_iterator}}(\mbox{\hyperlink{structobject__s}{Object}}\ *\_\_atlas,\ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ get\_value\_instead\_of\_key);}
+\DoxyCodeLine{00498\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a71801ca0019fa1b41a7dc1d51c5ac04e}{atlas\_iterator\_next}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structlist__iterator__s}{list\_iterator\_s}}\ *iterator);}
+\DoxyCodeLine{00499\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{libcncore_8h_a04053dab892d6feaee8725fd92e26fcf}{atlas\_iterator\_value\_isnull}}(\textcolor{keyword}{const}\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structlist__iterator__s}{list\_iterator\_s}}\ *iterator);}
+\DoxyCodeLine{00500\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{libcncore_8h_a486e7e4c7641d6b36b8b86814a707064}{atlas\_iterator\_isend}}(\textcolor{keyword}{const}\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structlist__iterator__s}{list\_iterator\_s}}\ *iterator);}
+\DoxyCodeLine{00501\ }
+\DoxyCodeLine{00502\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structObjMethodPair}{ObjMethodPair}}\ *\mbox{\hyperlink{libcncore_8h_a440de9c766f6aaaa0d318b0d366ec89d}{new\_object\_method\_pair}}(\mbox{\hyperlink{structobject__s}{Object}}\ *obj,\ \mbox{\hyperlink{libcncore_8h_a45176b455e70053cf81874c72e0aa5fe}{cn\_method}}\ method);}
+\DoxyCodeLine{00503\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structObjMethodPair}{ObjMethodPair}}\ *\mbox{\hyperlink{libcncore_8h_a3e70fc6e23d3d7c5222e4034e9f29583}{new\_weak\_object\_method\_pair}}(\mbox{\hyperlink{structobject__s}{Object}}\ *obj,\ \mbox{\hyperlink{libcncore_8h_a45176b455e70053cf81874c72e0aa5fe}{cn\_method}}\ method);}
+\DoxyCodeLine{00504\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_af98672492e076395a996b05035f100cd}{delete\_object\_method\_pair}}(\mbox{\hyperlink{structObjMethodPair}{ObjMethodPair}}\ *pair);}
+\DoxyCodeLine{00505\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a32d1076c40ede49486d41d71b8fc8826}{delete\_weak\_object\_method\_pair}}(\mbox{\hyperlink{structObjMethodPair}{ObjMethodPair}}\ *pair);}
+\DoxyCodeLine{00506\ }
+\DoxyCodeLine{00507\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\mbox{\hyperlink{libcncore_8h_a535b4ecd2551f928adf9793fc44cc8f0}{new\_list}}(\textcolor{keywordtype}{void}\ (*\_delete\_obj)(\textcolor{keywordtype}{void}\ *));}
+\DoxyCodeLine{00508\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\mbox{\hyperlink{libcncore_8h_a962231de1a8ee27e393ec402ac39fbcf}{new\_scene}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00509\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\mbox{\hyperlink{libcncore_8h_ad2f96aa2b8efb3db2d643beac3fdda2a}{new\_scene\_object}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00510\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\mbox{\hyperlink{libcncore_8h_a2fe3a47d0696447e3784c67bfa9e693e}{new\_atlas}}(\textcolor{keywordtype}{void}\ *(*\_fetch\_default)(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *),\ \textcolor{keywordtype}{void}\ (*\_delete\_obj)(\textcolor{keywordtype}{void}\ *));}
+\DoxyCodeLine{00511\ }
+\DoxyCodeLine{00512\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{libcncore_8h_ae4ddb43a51bf1209346af1e0b98bccbd}{start\_core}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00513\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a0ca1b4902be942746aa3c76f41333d81}{end\_core}}(\textcolor{keywordtype}{void});}
 \DoxyCodeLine{00514\ }
-\DoxyCodeLine{00515\ \textcolor{preprocessor}{\ \ \ \ \#if\ defined(\_\_MINGW32\_\_)\ ||\ defined(\_\_MINGW64\_\_)}}
-\DoxyCodeLine{00516\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a30691fc149592cae6cafb76a8653750a}{raise\_error\_fmt}}(\mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05f}{ErrorCode}}\ c,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *file,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *function,\ uint32\_t\ line,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *fmt,\ ...)\ \_\_attribute\_\_((format(gnu\_printf,\ 5,\ 6)));}
-\DoxyCodeLine{00517\ \ \ \ \ \textcolor{preprocessor}{\#elif\ defined(\_\_GNUC\_\_)\ ||\ defined(\_\_clang\_\_)}}
-\DoxyCodeLine{00518\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a30691fc149592cae6cafb76a8653750a}{raise\_error\_fmt}}(\mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05f}{ErrorCode}}\ c,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *file,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *function,\ uint32\_t\ line,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *fmt,\ ...)\ \_\_attribute\_\_((format(printf,\ 5,\ 6)));}
-\DoxyCodeLine{00519\ \ \ \ \ \textcolor{preprocessor}{\#else}}
-\DoxyCodeLine{00520\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a30691fc149592cae6cafb76a8653750a}{raise\_error\_fmt}}(\mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05f}{ErrorCode}}\ c,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *file,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *function,\ uint32\_t\ line,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *fmt,\ ...);}
-\DoxyCodeLine{00521\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
-\DoxyCodeLine{00522\ }
-\DoxyCodeLine{00523\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgeneric__kv__pair__s}{generic\_kv\_pair\_s}}\ *\mbox{\hyperlink{libcncore_8h_acf66147976bea370ef4ee967dbd3b703}{new\_kv\_pair}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structgeneric__kv__pair__s_a4fdb93a10fd0a39102081620297f8b3c}{k}},\ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{structgeneric__kv__pair__s_a65a1787e431aa4f27d603b767ac16f03}{v}},\ \textcolor{keywordtype}{void}\ (*v\_deletor)(\textcolor{keywordtype}{void}\ *));}
-\DoxyCodeLine{00524\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgeneric__kv__pair__s}{generic\_kv\_pair\_s}}\ *\mbox{\hyperlink{libcncore_8h_a71886aad153400fc83c355781b880418}{new\_ckv\_pair}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structgeneric__kv__pair__s_a4fdb93a10fd0a39102081620297f8b3c}{k}},\ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{structgeneric__kv__pair__s_a65a1787e431aa4f27d603b767ac16f03}{v}},\ \textcolor{keywordtype}{void}\ (*v\_deletor)(\textcolor{keywordtype}{void}\ *));}
-\DoxyCodeLine{00525\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ uint8\_t\ \mbox{\hyperlink{libcncore_8h_a4f8a289ef007dd4a4c9115be1434804f}{init\_kv\_pair}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structgeneric__kv__pair__s}{generic\_kv\_pair\_s}}\ *kvp,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structgeneric__kv__pair__s_a4fdb93a10fd0a39102081620297f8b3c}{k}},\ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{structgeneric__kv__pair__s_a65a1787e431aa4f27d603b767ac16f03}{v}},\ \textcolor{keywordtype}{void}\ (*v\_deletor)(\textcolor{keywordtype}{void}\ *));}
-\DoxyCodeLine{00526\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ uint8\_t\ \mbox{\hyperlink{libcncore_8h_a31e02b77af95f9047a415de12004fb73}{init\_ckv\_pair}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structgeneric__kv__pair__s}{generic\_kv\_pair\_s}}\ *kvp,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structgeneric__kv__pair__s_a4fdb93a10fd0a39102081620297f8b3c}{k}},\ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{structgeneric__kv__pair__s_a65a1787e431aa4f27d603b767ac16f03}{v}},\ \textcolor{keywordtype}{void}\ (*v\_deletor)(\textcolor{keywordtype}{void}\ *));}
-\DoxyCodeLine{00527\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_ad1471363bc94f72b841a60f4ef358f15}{empty\_kv\_pair}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structgeneric__kv__pair__s}{generic\_kv\_pair\_s}}\ *kvp);}
-\DoxyCodeLine{00528\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_ac0d8a2d05a7c95fe64ebf4962671f071}{delete\_kv\_pair}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structgeneric__kv__pair__s}{generic\_kv\_pair\_s}}\ *kvp);}
-\DoxyCodeLine{00529\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00515\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{libcncore_8h_a8ebfe6aaa8a25680182095297f37431e}{cnopen\_library}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *path);}
+\DoxyCodeLine{00516\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{libcncore_8h_a503d318d46f0b09944ef2762d803879f}{cnget\_symbol}}(\textcolor{keywordtype}{void}\ *handle,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}});}
+\DoxyCodeLine{00517\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a560d0428889e712b1e96a3f22518a110}{cnclose\_library}}(\textcolor{keywordtype}{void}\ *handle);}
+\DoxyCodeLine{00518\ \ \ \ \ }
+\DoxyCodeLine{00519\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_ae7ec79b1a1af9d72038404621a3d382c}{raise\_error}}(\mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05f}{ErrorCode}}\ c,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *message,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *file,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *function,\ uint32\_t\ line);}
+\DoxyCodeLine{00520\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a9413c6d75fb1fd424e89c688f91168e8}{push\_error}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *file,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *function,\ uint32\_t\ line);}
+\DoxyCodeLine{00521\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structErrorContext}{ErrorContext}}\ *\mbox{\hyperlink{libcncore_8h_ae531c6707ac8602f24e2e385f26faf00}{get\_error}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00522\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{libcncore_8h_a8c72946e68c22ff628ec256b6e916778}{has\_error}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00523\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a36094f0d4f4772933f6f982cee8ee737}{print\_error}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structErrorContext}{ErrorContext}}\ *err,\ FILE\ *output);}
+\DoxyCodeLine{00524\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{libcncore_8h_a7ebe9347c3fcd8d84dc7259bd2da0b73}{error\_type\_to\_text}}(\mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05f}{ErrorCode}}\ c);}
+\DoxyCodeLine{00525\ }
+\DoxyCodeLine{00526\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structString}{String}}\ *\mbox{\hyperlink{libcncore_8h_a803cdc38853737b120ae8bc090de11de}{new\_str\_from\_const}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *c\_str);}
+\DoxyCodeLine{00527\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structString}{String}}\ *\mbox{\hyperlink{libcncore_8h_abab5c4e59c24b551c4eec243deb711e2}{new\_str}}(\textcolor{keywordtype}{char}\ *c\_str);}
+\DoxyCodeLine{00528\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{libcncore_8h_acdca66b249758c104f3e4f1cafc1222e}{str\_is\_empty}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structString}{String}}\ *str);}
+\DoxyCodeLine{00529\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{libcncore_8h_a6b412ec840cbd7b25480af8644b0cfe5}{str\_is\_null}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structString}{String}}\ *str);}
+\DoxyCodeLine{00530\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_acf84274f83df450656404aac7ba4f8ae}{str\_override}}(\mbox{\hyperlink{structString}{String}}\ *str,\ \textcolor{keywordtype}{char}\ *c\_str);}
+\DoxyCodeLine{00531\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ uint8\_t\ \mbox{\hyperlink{libcncore_8h_a5329b1771083af3811b79c2ddb54c86d}{str\_rcadd\_mv}}(\mbox{\hyperlink{structString}{String}}\ *str,\ \textcolor{keywordtype}{char}\ *c\_str);}
+\DoxyCodeLine{00532\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ uint8\_t\ \mbox{\hyperlink{libcncore_8h_a639732e7c95d71daef692601b350b16e}{str\_rcadd\_cp}}(\mbox{\hyperlink{structString}{String}}\ *str,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *c\_str);}
+\DoxyCodeLine{00533\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_ad431b97f1c7ba2481216e10000af1ce5}{delete\_str}}(\mbox{\hyperlink{structString}{String}}\ *str);}
+\DoxyCodeLine{00534\ }
+\DoxyCodeLine{00535\ \textcolor{preprocessor}{\ \ \ \ \#if\ defined(\_\_MINGW32\_\_)\ ||\ defined(\_\_MINGW64\_\_)}}
+\DoxyCodeLine{00536\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a30691fc149592cae6cafb76a8653750a}{raise\_error\_fmt}}(\mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05f}{ErrorCode}}\ c,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *file,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *function,\ uint32\_t\ line,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *fmt,\ ...)\ \_\_attribute\_\_((format(gnu\_printf,\ 5,\ 6)));}
+\DoxyCodeLine{00537\ \ \ \ \ \textcolor{preprocessor}{\#elif\ defined(\_\_GNUC\_\_)\ ||\ defined(\_\_clang\_\_)}}
+\DoxyCodeLine{00538\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a30691fc149592cae6cafb76a8653750a}{raise\_error\_fmt}}(\mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05f}{ErrorCode}}\ c,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *file,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *function,\ uint32\_t\ line,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *fmt,\ ...)\ \_\_attribute\_\_((format(printf,\ 5,\ 6)));}
+\DoxyCodeLine{00539\ \ \ \ \ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00540\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_a30691fc149592cae6cafb76a8653750a}{raise\_error\_fmt}}(\mbox{\hyperlink{libcncore_8h_a59e56af19e754a6aa26a612ebf91d05f}{ErrorCode}}\ c,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *file,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *function,\ uint32\_t\ line,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *fmt,\ ...);}
+\DoxyCodeLine{00541\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00542\ }
+\DoxyCodeLine{00543\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgeneric__kv__pair__s}{generic\_kv\_pair\_s}}\ *\mbox{\hyperlink{libcncore_8h_acf66147976bea370ef4ee967dbd3b703}{new\_kv\_pair}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structgeneric__kv__pair__s_a4fdb93a10fd0a39102081620297f8b3c}{k}},\ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{structgeneric__kv__pair__s_a65a1787e431aa4f27d603b767ac16f03}{v}},\ \textcolor{keywordtype}{void}\ (*v\_deletor)(\textcolor{keywordtype}{void}\ *));}
+\DoxyCodeLine{00544\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structgeneric__kv__pair__s}{generic\_kv\_pair\_s}}\ *\mbox{\hyperlink{libcncore_8h_a71886aad153400fc83c355781b880418}{new\_ckv\_pair}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structgeneric__kv__pair__s_a4fdb93a10fd0a39102081620297f8b3c}{k}},\ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{structgeneric__kv__pair__s_a65a1787e431aa4f27d603b767ac16f03}{v}},\ \textcolor{keywordtype}{void}\ (*v\_deletor)(\textcolor{keywordtype}{void}\ *));}
+\DoxyCodeLine{00545\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ uint8\_t\ \mbox{\hyperlink{libcncore_8h_a4f8a289ef007dd4a4c9115be1434804f}{init\_kv\_pair}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structgeneric__kv__pair__s}{generic\_kv\_pair\_s}}\ *kvp,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structgeneric__kv__pair__s_a4fdb93a10fd0a39102081620297f8b3c}{k}},\ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{structgeneric__kv__pair__s_a65a1787e431aa4f27d603b767ac16f03}{v}},\ \textcolor{keywordtype}{void}\ (*v\_deletor)(\textcolor{keywordtype}{void}\ *));}
+\DoxyCodeLine{00546\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ uint8\_t\ \mbox{\hyperlink{libcncore_8h_a31e02b77af95f9047a415de12004fb73}{init\_ckv\_pair}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structgeneric__kv__pair__s}{generic\_kv\_pair\_s}}\ *kvp,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{structgeneric__kv__pair__s_a4fdb93a10fd0a39102081620297f8b3c}{k}},\ \textcolor{keywordtype}{void}\ *\mbox{\hyperlink{structgeneric__kv__pair__s_a65a1787e431aa4f27d603b767ac16f03}{v}},\ \textcolor{keywordtype}{void}\ (*v\_deletor)(\textcolor{keywordtype}{void}\ *));}
+\DoxyCodeLine{00547\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_ad1471363bc94f72b841a60f4ef358f15}{empty\_kv\_pair}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structgeneric__kv__pair__s}{generic\_kv\_pair\_s}}\ *kvp);}
+\DoxyCodeLine{00548\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcncore_8h_ac0d8a2d05a7c95fe64ebf4962671f071}{delete\_kv\_pair}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structgeneric__kv__pair__s}{generic\_kv\_pair\_s}}\ *kvp);}
+\DoxyCodeLine{00549\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

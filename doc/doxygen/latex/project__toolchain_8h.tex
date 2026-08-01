@@ -11,9 +11,32 @@ struct \mbox{\hyperlink{structCNBuild}{CNBuild}}
 struct \mbox{\hyperlink{structCNProject}{CNProject}}
 \item 
 struct \mbox{\hyperlink{structLibraryCompiler}{Library\+Compiler}}
+\item 
+struct \mbox{\hyperlink{structGameAssetCompiler}{Game\+Asset\+Compiler}}
+\item 
+struct \mbox{\hyperlink{structSubModuleLib}{Sub\+Module\+Lib}}
+\item 
+struct \mbox{\hyperlink{structSubModuleInclude}{Sub\+Module\+Include}}
+\item 
+struct \mbox{\hyperlink{structSubModule}{Sub\+Module}}
+\item 
+struct \mbox{\hyperlink{structEngineRessourceSet}{Engine\+Ressource\+Set}}
+\item 
+struct \mbox{\hyperlink{structEngineGeneratorItem}{Engine\+Generator\+Item}}
+\item 
+struct \mbox{\hyperlink{structEngineConfig}{Engine\+Config}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef \mbox{\hyperlink{structLibraryCompiler}{Library\+Compiler}} \mbox{\hyperlink{project__toolchain_8h_aa619cdd9810d163bf631250915b45f8e}{Executable\+Compiler}}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Enumerations}
 \begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{project__toolchain_8h_a62d7e3c4dfc06d29877060e3b6cf745b}{generator\+\_\+type}} \{ \mbox{\hyperlink{project__toolchain_8h_a62d7e3c4dfc06d29877060e3b6cf745ba73eb5d585094631f0d2ee32c67c95dd2}{GENT\+\_\+\+INCLUDE}} = 0x00
+, \mbox{\hyperlink{project__toolchain_8h_a62d7e3c4dfc06d29877060e3b6cf745ba425d1a6f0cdd9507d92fd355d1ba01de}{GENT\+\_\+\+SRC}}
+ \}
 \item 
 enum \mbox{\hyperlink{project__toolchain_8h_a46a8c72f40fa77645588f3b547443a16}{cnbuild\+\_\+architectures}} \{ \mbox{\hyperlink{project__toolchain_8h_a46a8c72f40fa77645588f3b547443a16a96db12e205a7f023a7b91a1d1b31c45f}{CNBUILD\+\_\+\+ARCH\+\_\+\+HOST}} = 0x00
 , \mbox{\hyperlink{project__toolchain_8h_a46a8c72f40fa77645588f3b547443a16a44e2d829deebaac93c5834af8881f541}{CNBUILD\+\_\+\+ARCH\+\_\+\+AMD64}}
@@ -60,16 +83,75 @@ void \mbox{\hyperlink{project__toolchain_8h_a11c2f0aa14b692b3a066447f8228a192}{d
 \item 
 uint8\+\_\+t \mbox{\hyperlink{project__toolchain_8h_a3bffa8150b958b1df1051add9fc78bce}{cnressources\+\_\+walk\+\_\+path}} (\mbox{\hyperlink{structCNProject}{CNProject}} \texorpdfstring{$\ast$}{*}project, char \texorpdfstring{$\ast$}{*}path, \mbox{\hyperlink{project__toolchain_8h_a3924bc2aede93e122d59991d0db8dd2f}{cnasset\+\_\+type}} tp)
 \item 
-char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{project__toolchain_8h_af194c9a1e46c0b70bab3e87692ef9a8f}{resolve\+\_\+path}} (char \texorpdfstring{$\ast$}{*}base\+\_\+path, const char \texorpdfstring{$\ast$}{*}project\+\_\+root)
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{project__toolchain_8h_a591f34149779b172abd08a6627131b62}{resolve\+\_\+path}} (char \texorpdfstring{$\ast$}{*}base\+\_\+path, const char \texorpdfstring{$\ast$}{*}replace\+\_\+with, const char \texorpdfstring{$\ast$}{*}placeholder)
 \item 
-\mbox{\hyperlink{structCNProject}{CNProject}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{project__toolchain_8h_a5aa4e840eb55113e08636137ac51331c}{parse\+\_\+project\+\_\+xml}} (const char \texorpdfstring{$\ast$}{*}file\+\_\+path, const char \texorpdfstring{$\ast$}{*}project\+\_\+root)
+\mbox{\hyperlink{structCNProject}{CNProject}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{project__toolchain_8h_a5b02c60674443534219d5c5e4d8adabb}{parse\+\_\+project\+\_\+xml}} (const \mbox{\hyperlink{structEngineConfig}{Engine\+Config}} \texorpdfstring{$\ast$}{*}config, const char \texorpdfstring{$\ast$}{*}file\+\_\+path, const char \texorpdfstring{$\ast$}{*}project\+\_\+root)
 \item 
 uint8\+\_\+t \mbox{\hyperlink{project__toolchain_8h_ae1711ce1808a4a6aedf948b0d952dde8}{parse\+\_\+cnressources\+\_\+xml}} (\mbox{\hyperlink{structCNProject}{CNProject}} \texorpdfstring{$\ast$}{*}project, xml\+Node \texorpdfstring{$\ast$}{*}node, const char \texorpdfstring{$\ast$}{*}project\+\_\+root)
 \item 
-uint8\+\_\+t \mbox{\hyperlink{project__toolchain_8h_a3d982caf768dc61c5611ec1c5f2f9675}{parse\+\_\+cnbuilds\+\_\+xml}} (\mbox{\hyperlink{structCNProject}{CNProject}} \texorpdfstring{$\ast$}{*}project, xml\+Node \texorpdfstring{$\ast$}{*}node)
+uint8\+\_\+t \mbox{\hyperlink{project__toolchain_8h_ab5ca3fad8d3b7e454fd9490669ebd767}{parse\+\_\+cnbuilds\+\_\+xml}} (const \mbox{\hyperlink{structEngineConfig}{Engine\+Config}} \texorpdfstring{$\ast$}{*}config, \mbox{\hyperlink{structCNProject}{CNProject}} \texorpdfstring{$\ast$}{*}project, xml\+Node \texorpdfstring{$\ast$}{*}node)
 \item 
-uint8\+\_\+t \mbox{\hyperlink{project__toolchain_8h_ae644faafeeefe23e1ace53c1180ee885}{compile\+\_\+library}} (const \mbox{\hyperlink{structCNProject}{CNProject}} \texorpdfstring{$\ast$}{*}project, const \mbox{\hyperlink{structCNBuild}{CNBuild}} \texorpdfstring{$\ast$}{*}build\+\_\+info, const char \texorpdfstring{$\ast$}{*}output\+\_\+path, const char \texorpdfstring{$\ast$}{*}build\+\_\+path, const char \texorpdfstring{$\ast$}{*}include\+\_\+path)
+uint8\+\_\+t \mbox{\hyperlink{project__toolchain_8h_a1d3dad7643d108eec68008bda9d9fb93}{parse\+\_\+submodules\+\_\+xml}} (\mbox{\hyperlink{structSubModule}{Sub\+Module}} \texorpdfstring{$\ast$}{*}submodule, const char \texorpdfstring{$\ast$}{*}xml\+\_\+path)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{project__toolchain_8h_a98d0ca465ec248a90f3e72bbf8c41ea6}{compile\+\_\+library}} (const \mbox{\hyperlink{structCNProject}{CNProject}} \texorpdfstring{$\ast$}{*}project, const \mbox{\hyperlink{structCNBuild}{CNBuild}} \texorpdfstring{$\ast$}{*}build\+\_\+info, const char \texorpdfstring{$\ast$}{*}output\+\_\+path, const char \texorpdfstring{$\ast$}{*}build\+\_\+path, const char \texorpdfstring{$\ast$}{*}include\+\_\+path, const char \texorpdfstring{$\ast$}{*}lib\+\_\+path)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{project__toolchain_8h_a411745f2ca6cd98df1cb9e17a1a6be7d}{library\+\_\+compiler\+\_\+set\+\_\+library\+\_\+path}} (\mbox{\hyperlink{structLibraryCompiler}{Library\+Compiler}} \texorpdfstring{$\ast$}{*}compiler, const char \texorpdfstring{$\ast$}{*}library\+\_\+path)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{project__toolchain_8h_a78db579348f5b8d6f5fedb5e9f737b85}{library\+\_\+compiler\+\_\+set\+\_\+include\+\_\+path}} (\mbox{\hyperlink{structLibraryCompiler}{Library\+Compiler}} \texorpdfstring{$\ast$}{*}compiler, const char \texorpdfstring{$\ast$}{*}include\+\_\+path)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{project__toolchain_8h_a6ee4d92e9018e3c2819b6506b46e944a}{library\+\_\+compiler\+\_\+add\+\_\+lib}} (\mbox{\hyperlink{structLibraryCompiler}{Library\+Compiler}} \texorpdfstring{$\ast$}{*}compiler, const char \texorpdfstring{$\ast$}{*}libname)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{project__toolchain_8h_ae20179ac245d63ad403e48a77d867314}{library\+\_\+compiler\+\_\+add\+\_\+src}} (\mbox{\hyperlink{structLibraryCompiler}{Library\+Compiler}} \texorpdfstring{$\ast$}{*}compiler, const char \texorpdfstring{$\ast$}{*}srcname)
+\item 
+\mbox{\hyperlink{structLibraryCompiler}{Library\+Compiler}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{project__toolchain_8h_a8b99de070861ab7254d24201f99d6703}{new\+\_\+library\+\_\+compiler}} (const char \texorpdfstring{$\ast$}{*}libname, const char \texorpdfstring{$\ast$}{*}toolchain, const char \texorpdfstring{$\ast$}{*}build\+\_\+path)
+\item 
+void \mbox{\hyperlink{project__toolchain_8h_ade51a26b37d41bf811c82a7365164b6a}{delete\+\_\+library\+\_\+compiler}} (\mbox{\hyperlink{structLibraryCompiler}{Library\+Compiler}} \texorpdfstring{$\ast$}{*}compiler)
+\item 
+void \mbox{\hyperlink{project__toolchain_8h_a6aeee300df7e8cd113cbf8de281514df}{clear\+\_\+submodule\+\_\+datas}} (\mbox{\hyperlink{structSubModule}{Sub\+Module}} \texorpdfstring{$\ast$}{*}submodule)
+\item 
+\mbox{\hyperlink{structSubModule}{Sub\+Module}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{project__toolchain_8h_a4ce70a83b0404a3c50678e0468b8b406}{new\+\_\+submodule}} (void)
+\item 
+void \mbox{\hyperlink{project__toolchain_8h_af2fccc89e415c9787d6e44a80ae6af5b}{delete\+\_\+submodule}} (\mbox{\hyperlink{structSubModule}{Sub\+Module}} \texorpdfstring{$\ast$}{*}submodule)
+\item 
+\mbox{\hyperlink{structEngineConfig}{Engine\+Config}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{project__toolchain_8h_a8fe9898aba2d9f74b37c92563cd79f09}{parse\+\_\+config\+\_\+xml}} (const char \texorpdfstring{$\ast$}{*}file\+\_\+path, const char \texorpdfstring{$\ast$}{*}engine\+\_\+root)
+\item 
+\mbox{\hyperlink{structEngineRessourceSet}{Engine\+Ressource\+Set}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{project__toolchain_8h_a86ec5fbae74817d9dd72e887f89a32af}{new\+\_\+ressource\+\_\+set}} (void)
+\item 
+void \mbox{\hyperlink{project__toolchain_8h_ad97f85ad5fe31a16b1036041a0590a5f}{delete\+\_\+ressource\+\_\+set}} (\mbox{\hyperlink{structEngineRessourceSet}{Engine\+Ressource\+Set}} \texorpdfstring{$\ast$}{*}set)
+\item 
+\mbox{\hyperlink{structEngineConfig}{Engine\+Config}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{project__toolchain_8h_a9c352899eb42ae7a9a512d478a538068}{new\+\_\+engine\+\_\+config}} (void)
+\item 
+void \mbox{\hyperlink{project__toolchain_8h_acbf2ba0716d3cb59c66fb5f8db35e163}{delete\+\_\+engine\+\_\+config}} (\mbox{\hyperlink{structEngineConfig}{Engine\+Config}} \texorpdfstring{$\ast$}{*}config)
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{project__toolchain_8h_a6d3413cb0409d611f27835c44416953a}{sysname\+\_\+from\+\_\+system}} (\mbox{\hyperlink{project__toolchain_8h_ac5748ac67111f38f1c1544fd88d28a93}{cnbuild\+\_\+system}} system)
+\item 
+\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} \mbox{\hyperlink{project__toolchain_8h_aee6f62620412191c441e1aeb43d5e8da}{has\+\_\+ressource\+\_\+set}} (const \mbox{\hyperlink{structEngineConfig}{Engine\+Config}} \texorpdfstring{$\ast$}{*}config, \mbox{\hyperlink{project__toolchain_8h_a46a8c72f40fa77645588f3b547443a16}{cnbuild\+\_\+architectures}} arch, \mbox{\hyperlink{project__toolchain_8h_ac5748ac67111f38f1c1544fd88d28a93}{cnbuild\+\_\+system}} machine)
+\item 
+const \mbox{\hyperlink{structEngineRessourceSet}{Engine\+Ressource\+Set}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{project__toolchain_8h_adec5f37704fdd7e5984487a3b5fd30c5}{find\+\_\+ressource\+\_\+set}} (const \mbox{\hyperlink{structEngineConfig}{Engine\+Config}} \texorpdfstring{$\ast$}{*}config, \mbox{\hyperlink{project__toolchain_8h_a46a8c72f40fa77645588f3b547443a16}{cnbuild\+\_\+architectures}} arch, \mbox{\hyperlink{project__toolchain_8h_ac5748ac67111f38f1c1544fd88d28a93}{cnbuild\+\_\+system}} machine)
+\item 
+\mbox{\hyperlink{project__toolchain_8h_ac5748ac67111f38f1c1544fd88d28a93}{cnbuild\+\_\+system}} \mbox{\hyperlink{project__toolchain_8h_ace8a700b7a09bc999844ef7ea05095bc}{os\+\_\+from\+\_\+string}} (const char \texorpdfstring{$\ast$}{*}str)
+\item 
+\mbox{\hyperlink{project__toolchain_8h_a46a8c72f40fa77645588f3b547443a16}{cnbuild\+\_\+architectures}} \mbox{\hyperlink{project__toolchain_8h_a05a89a93dd9d317315df346924f8420f}{arch\+\_\+from\+\_\+string}} (const char \texorpdfstring{$\ast$}{*}str)
+\item 
+\mbox{\hyperlink{structEngineGeneratorItem}{Engine\+Generator\+Item}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{project__toolchain_8h_a7eb41ea626476fa49a3af741662fa5c3}{new\+\_\+generator\+\_\+item}} (void)
+\item 
+void \mbox{\hyperlink{project__toolchain_8h_a9e3bbd2e42a897850bdb96e6c3518138}{delete\+\_\+generator\+\_\+item}} (\mbox{\hyperlink{structEngineGeneratorItem}{Engine\+Generator\+Item}} \texorpdfstring{$\ast$}{*}item)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{project__toolchain_8h_a6be373a6bd3eda905182ef0bd1533348}{compile\+\_\+executable}} (const \mbox{\hyperlink{structEngineConfig}{Engine\+Config}} \texorpdfstring{$\ast$}{*}config, const \mbox{\hyperlink{structCNProject}{CNProject}} \texorpdfstring{$\ast$}{*}project, const \mbox{\hyperlink{structCNBuild}{CNBuild}} \texorpdfstring{$\ast$}{*}build\+\_\+info, const char \texorpdfstring{$\ast$}{*}output\+\_\+path, const char \texorpdfstring{$\ast$}{*}build\+\_\+path, const char \texorpdfstring{$\ast$}{*}include\+\_\+path, const char \texorpdfstring{$\ast$}{*}lib\+\_\+path)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{project__toolchain_8h_a6ddac25e5f25d4f37079eb3c1a3c9e44}{library\+\_\+compiler\+\_\+add\+\_\+preprocessor\+\_\+definition}} (\mbox{\hyperlink{structLibraryCompiler}{Library\+Compiler}} \texorpdfstring{$\ast$}{*}compiler, const char \texorpdfstring{$\ast$}{*}definition\+\_\+name, const char \texorpdfstring{$\ast$}{*}definition\+\_\+content)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{project__toolchain_8h_a8f7ac9edc8b9a808b6089ecd4b3fcd80}{compile\+\_\+assets}} (const \mbox{\hyperlink{structCNProject}{CNProject}} \texorpdfstring{$\ast$}{*}project, const \mbox{\hyperlink{structCNBuild}{CNBuild}} \texorpdfstring{$\ast$}{*}build\+\_\+info, const char \texorpdfstring{$\ast$}{*}dist\+\_\+path, const char \texorpdfstring{$\ast$}{*}build\+\_\+path, const char \texorpdfstring{$\ast$}{*}toolchain\+\_\+path)
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{project__toolchain_8h_aa619cdd9810d163bf631250915b45f8e}\label{project__toolchain_8h_aa619cdd9810d163bf631250915b45f8e} 
+\index{project\_toolchain.h@{project\_toolchain.h}!ExecutableCompiler@{ExecutableCompiler}}
+\index{ExecutableCompiler@{ExecutableCompiler}!project\_toolchain.h@{project\_toolchain.h}}
+\doxysubsubsection{\texorpdfstring{ExecutableCompiler}{ExecutableCompiler}}
+{\footnotesize\ttfamily typedef \mbox{\hyperlink{structLibraryCompiler}{Library\+Compiler}} \mbox{\hyperlink{project__toolchain_8h_aa619cdd9810d163bf631250915b45f8e}{Executable\+Compiler}}}
+
 
 
 \doxysubsection{Enumeration Type Documentation}
@@ -153,9 +235,31 @@ CNBUILD\+\_\+\+SYS\+\_\+\+GEN\+\_\+\+LINUX&\\
 \hline
 
 \end{DoxyEnumFields}
+\Hypertarget{project__toolchain_8h_a62d7e3c4dfc06d29877060e3b6cf745b}\label{project__toolchain_8h_a62d7e3c4dfc06d29877060e3b6cf745b} 
+\index{project\_toolchain.h@{project\_toolchain.h}!generator\_type@{generator\_type}}
+\index{generator\_type@{generator\_type}!project\_toolchain.h@{project\_toolchain.h}}
+\doxysubsubsection{\texorpdfstring{generator\_type}{generator\_type}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{project__toolchain_8h_a62d7e3c4dfc06d29877060e3b6cf745b}{generator\+\_\+type}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GENT\_INCLUDE@{GENT\_INCLUDE}!project\_toolchain.h@{project\_toolchain.h}}\index{project\_toolchain.h@{project\_toolchain.h}!GENT\_INCLUDE@{GENT\_INCLUDE}}}\Hypertarget{project__toolchain_8h_a62d7e3c4dfc06d29877060e3b6cf745ba73eb5d585094631f0d2ee32c67c95dd2}\label{project__toolchain_8h_a62d7e3c4dfc06d29877060e3b6cf745ba73eb5d585094631f0d2ee32c67c95dd2} 
+GENT\+\_\+\+INCLUDE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GENT\_SRC@{GENT\_SRC}!project\_toolchain.h@{project\_toolchain.h}}\index{project\_toolchain.h@{project\_toolchain.h}!GENT\_SRC@{GENT\_SRC}}}\Hypertarget{project__toolchain_8h_a62d7e3c4dfc06d29877060e3b6cf745ba425d1a6f0cdd9507d92fd355d1ba01de}\label{project__toolchain_8h_a62d7e3c4dfc06d29877060e3b6cf745ba425d1a6f0cdd9507d92fd355d1ba01de} 
+GENT\+\_\+\+SRC&\\
+\hline
+
+\end{DoxyEnumFields}
 
 
 \doxysubsection{Function Documentation}
+\Hypertarget{project__toolchain_8h_a05a89a93dd9d317315df346924f8420f}\label{project__toolchain_8h_a05a89a93dd9d317315df346924f8420f} 
+\index{project\_toolchain.h@{project\_toolchain.h}!arch\_from\_string@{arch\_from\_string}}
+\index{arch\_from\_string@{arch\_from\_string}!project\_toolchain.h@{project\_toolchain.h}}
+\doxysubsubsection{\texorpdfstring{arch\_from\_string()}{arch\_from\_string()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{project__toolchain_8h_a46a8c72f40fa77645588f3b547443a16}{cnbuild\+\_\+architectures}} arch\+\_\+from\+\_\+string (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{str }\end{DoxyParamCaption})}
+
 \Hypertarget{project__toolchain_8h_a4e211ebdcdcaa1dc09949abc5acfa353}\label{project__toolchain_8h_a4e211ebdcdcaa1dc09949abc5acfa353} 
 \index{project\_toolchain.h@{project\_toolchain.h}!build\_set\_entry\_point@{build\_set\_entry\_point}}
 \index{build\_set\_entry\_point@{build\_set\_entry\_point}!project\_toolchain.h@{project\_toolchain.h}}
@@ -168,17 +272,35 @@ CNBUILD\+\_\+\+SYS\+\_\+\+GEN\+\_\+\+LINUX&\\
 \doxysubsubsection{\texorpdfstring{build\_set\_name()}{build\_set\_name()}}
 {\footnotesize\ttfamily uint8\+\_\+t build\+\_\+set\+\_\+name (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCNBuild}{CNBuild}} \texorpdfstring{$\ast$}{*}}]{build,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{name }\end{DoxyParamCaption})}
 
+\Hypertarget{project__toolchain_8h_a6aeee300df7e8cd113cbf8de281514df}\label{project__toolchain_8h_a6aeee300df7e8cd113cbf8de281514df} 
+\index{project\_toolchain.h@{project\_toolchain.h}!clear\_submodule\_datas@{clear\_submodule\_datas}}
+\index{clear\_submodule\_datas@{clear\_submodule\_datas}!project\_toolchain.h@{project\_toolchain.h}}
+\doxysubsubsection{\texorpdfstring{clear\_submodule\_datas()}{clear\_submodule\_datas()}}
+{\footnotesize\ttfamily void clear\+\_\+submodule\+\_\+datas (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structSubModule}{Sub\+Module}} \texorpdfstring{$\ast$}{*}}]{submodule }\end{DoxyParamCaption})}
+
 \Hypertarget{project__toolchain_8h_a3bffa8150b958b1df1051add9fc78bce}\label{project__toolchain_8h_a3bffa8150b958b1df1051add9fc78bce} 
 \index{project\_toolchain.h@{project\_toolchain.h}!cnressources\_walk\_path@{cnressources\_walk\_path}}
 \index{cnressources\_walk\_path@{cnressources\_walk\_path}!project\_toolchain.h@{project\_toolchain.h}}
 \doxysubsubsection{\texorpdfstring{cnressources\_walk\_path()}{cnressources\_walk\_path()}}
 {\footnotesize\ttfamily uint8\+\_\+t cnressources\+\_\+walk\+\_\+path (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCNProject}{CNProject}} \texorpdfstring{$\ast$}{*}}]{project,  }\item[{char \texorpdfstring{$\ast$}{*}}]{path,  }\item[{\mbox{\hyperlink{project__toolchain_8h_a3924bc2aede93e122d59991d0db8dd2f}{cnasset\+\_\+type}}}]{tp }\end{DoxyParamCaption})}
 
-\Hypertarget{project__toolchain_8h_ae644faafeeefe23e1ace53c1180ee885}\label{project__toolchain_8h_ae644faafeeefe23e1ace53c1180ee885} 
+\Hypertarget{project__toolchain_8h_a8f7ac9edc8b9a808b6089ecd4b3fcd80}\label{project__toolchain_8h_a8f7ac9edc8b9a808b6089ecd4b3fcd80} 
+\index{project\_toolchain.h@{project\_toolchain.h}!compile\_assets@{compile\_assets}}
+\index{compile\_assets@{compile\_assets}!project\_toolchain.h@{project\_toolchain.h}}
+\doxysubsubsection{\texorpdfstring{compile\_assets()}{compile\_assets()}}
+{\footnotesize\ttfamily uint8\+\_\+t compile\+\_\+assets (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structCNProject}{CNProject}} \texorpdfstring{$\ast$}{*}}]{project,  }\item[{const \mbox{\hyperlink{structCNBuild}{CNBuild}} \texorpdfstring{$\ast$}{*}}]{build\+\_\+info,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{dist\+\_\+path,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{build\+\_\+path,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{toolchain\+\_\+path }\end{DoxyParamCaption})}
+
+\Hypertarget{project__toolchain_8h_a6be373a6bd3eda905182ef0bd1533348}\label{project__toolchain_8h_a6be373a6bd3eda905182ef0bd1533348} 
+\index{project\_toolchain.h@{project\_toolchain.h}!compile\_executable@{compile\_executable}}
+\index{compile\_executable@{compile\_executable}!project\_toolchain.h@{project\_toolchain.h}}
+\doxysubsubsection{\texorpdfstring{compile\_executable()}{compile\_executable()}}
+{\footnotesize\ttfamily uint8\+\_\+t compile\+\_\+executable (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structEngineConfig}{Engine\+Config}} \texorpdfstring{$\ast$}{*}}]{config,  }\item[{const \mbox{\hyperlink{structCNProject}{CNProject}} \texorpdfstring{$\ast$}{*}}]{project,  }\item[{const \mbox{\hyperlink{structCNBuild}{CNBuild}} \texorpdfstring{$\ast$}{*}}]{build\+\_\+info,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{output\+\_\+path,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{build\+\_\+path,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{include\+\_\+path,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{lib\+\_\+path }\end{DoxyParamCaption})}
+
+\Hypertarget{project__toolchain_8h_a98d0ca465ec248a90f3e72bbf8c41ea6}\label{project__toolchain_8h_a98d0ca465ec248a90f3e72bbf8c41ea6} 
 \index{project\_toolchain.h@{project\_toolchain.h}!compile\_library@{compile\_library}}
 \index{compile\_library@{compile\_library}!project\_toolchain.h@{project\_toolchain.h}}
 \doxysubsubsection{\texorpdfstring{compile\_library()}{compile\_library()}}
-{\footnotesize\ttfamily uint8\+\_\+t compile\+\_\+library (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structCNProject}{CNProject}} \texorpdfstring{$\ast$}{*}}]{project,  }\item[{const \mbox{\hyperlink{structCNBuild}{CNBuild}} \texorpdfstring{$\ast$}{*}}]{build\+\_\+info,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{output\+\_\+path,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{build\+\_\+path,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{include\+\_\+path }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily uint8\+\_\+t compile\+\_\+library (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structCNProject}{CNProject}} \texorpdfstring{$\ast$}{*}}]{project,  }\item[{const \mbox{\hyperlink{structCNBuild}{CNBuild}} \texorpdfstring{$\ast$}{*}}]{build\+\_\+info,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{output\+\_\+path,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{build\+\_\+path,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{include\+\_\+path,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{lib\+\_\+path }\end{DoxyParamCaption})}
 
 \Hypertarget{project__toolchain_8h_a11c2f0aa14b692b3a066447f8228a192}\label{project__toolchain_8h_a11c2f0aa14b692b3a066447f8228a192} 
 \index{project\_toolchain.h@{project\_toolchain.h}!delete\_build@{delete\_build}}
@@ -198,6 +320,78 @@ CNBUILD\+\_\+\+SYS\+\_\+\+GEN\+\_\+\+LINUX&\\
 \doxysubsubsection{\texorpdfstring{delete\_cnproject()}{delete\_cnproject()}}
 {\footnotesize\ttfamily void delete\+\_\+cnproject (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCNProject}{CNProject}} \texorpdfstring{$\ast$}{*}}]{ptr }\end{DoxyParamCaption})}
 
+\Hypertarget{project__toolchain_8h_acbf2ba0716d3cb59c66fb5f8db35e163}\label{project__toolchain_8h_acbf2ba0716d3cb59c66fb5f8db35e163} 
+\index{project\_toolchain.h@{project\_toolchain.h}!delete\_engine\_config@{delete\_engine\_config}}
+\index{delete\_engine\_config@{delete\_engine\_config}!project\_toolchain.h@{project\_toolchain.h}}
+\doxysubsubsection{\texorpdfstring{delete\_engine\_config()}{delete\_engine\_config()}}
+{\footnotesize\ttfamily void delete\+\_\+engine\+\_\+config (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structEngineConfig}{Engine\+Config}} \texorpdfstring{$\ast$}{*}}]{config }\end{DoxyParamCaption})}
+
+\Hypertarget{project__toolchain_8h_a9e3bbd2e42a897850bdb96e6c3518138}\label{project__toolchain_8h_a9e3bbd2e42a897850bdb96e6c3518138} 
+\index{project\_toolchain.h@{project\_toolchain.h}!delete\_generator\_item@{delete\_generator\_item}}
+\index{delete\_generator\_item@{delete\_generator\_item}!project\_toolchain.h@{project\_toolchain.h}}
+\doxysubsubsection{\texorpdfstring{delete\_generator\_item()}{delete\_generator\_item()}}
+{\footnotesize\ttfamily void delete\+\_\+generator\+\_\+item (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structEngineGeneratorItem}{Engine\+Generator\+Item}} \texorpdfstring{$\ast$}{*}}]{item }\end{DoxyParamCaption})}
+
+\Hypertarget{project__toolchain_8h_ade51a26b37d41bf811c82a7365164b6a}\label{project__toolchain_8h_ade51a26b37d41bf811c82a7365164b6a} 
+\index{project\_toolchain.h@{project\_toolchain.h}!delete\_library\_compiler@{delete\_library\_compiler}}
+\index{delete\_library\_compiler@{delete\_library\_compiler}!project\_toolchain.h@{project\_toolchain.h}}
+\doxysubsubsection{\texorpdfstring{delete\_library\_compiler()}{delete\_library\_compiler()}}
+{\footnotesize\ttfamily void delete\+\_\+library\+\_\+compiler (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLibraryCompiler}{Library\+Compiler}} \texorpdfstring{$\ast$}{*}}]{compiler }\end{DoxyParamCaption})}
+
+\Hypertarget{project__toolchain_8h_ad97f85ad5fe31a16b1036041a0590a5f}\label{project__toolchain_8h_ad97f85ad5fe31a16b1036041a0590a5f} 
+\index{project\_toolchain.h@{project\_toolchain.h}!delete\_ressource\_set@{delete\_ressource\_set}}
+\index{delete\_ressource\_set@{delete\_ressource\_set}!project\_toolchain.h@{project\_toolchain.h}}
+\doxysubsubsection{\texorpdfstring{delete\_ressource\_set()}{delete\_ressource\_set()}}
+{\footnotesize\ttfamily void delete\+\_\+ressource\+\_\+set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structEngineRessourceSet}{Engine\+Ressource\+Set}} \texorpdfstring{$\ast$}{*}}]{set }\end{DoxyParamCaption})}
+
+\Hypertarget{project__toolchain_8h_af2fccc89e415c9787d6e44a80ae6af5b}\label{project__toolchain_8h_af2fccc89e415c9787d6e44a80ae6af5b} 
+\index{project\_toolchain.h@{project\_toolchain.h}!delete\_submodule@{delete\_submodule}}
+\index{delete\_submodule@{delete\_submodule}!project\_toolchain.h@{project\_toolchain.h}}
+\doxysubsubsection{\texorpdfstring{delete\_submodule()}{delete\_submodule()}}
+{\footnotesize\ttfamily void delete\+\_\+submodule (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structSubModule}{Sub\+Module}} \texorpdfstring{$\ast$}{*}}]{submodule }\end{DoxyParamCaption})}
+
+\Hypertarget{project__toolchain_8h_adec5f37704fdd7e5984487a3b5fd30c5}\label{project__toolchain_8h_adec5f37704fdd7e5984487a3b5fd30c5} 
+\index{project\_toolchain.h@{project\_toolchain.h}!find\_ressource\_set@{find\_ressource\_set}}
+\index{find\_ressource\_set@{find\_ressource\_set}!project\_toolchain.h@{project\_toolchain.h}}
+\doxysubsubsection{\texorpdfstring{find\_ressource\_set()}{find\_ressource\_set()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{structEngineRessourceSet}{Engine\+Ressource\+Set}} \texorpdfstring{$\ast$}{*} find\+\_\+ressource\+\_\+set (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structEngineConfig}{Engine\+Config}} \texorpdfstring{$\ast$}{*}}]{config,  }\item[{\mbox{\hyperlink{project__toolchain_8h_a46a8c72f40fa77645588f3b547443a16}{cnbuild\+\_\+architectures}}}]{arch,  }\item[{\mbox{\hyperlink{project__toolchain_8h_ac5748ac67111f38f1c1544fd88d28a93}{cnbuild\+\_\+system}}}]{machine }\end{DoxyParamCaption})}
+
+\Hypertarget{project__toolchain_8h_aee6f62620412191c441e1aeb43d5e8da}\label{project__toolchain_8h_aee6f62620412191c441e1aeb43d5e8da} 
+\index{project\_toolchain.h@{project\_toolchain.h}!has\_ressource\_set@{has\_ressource\_set}}
+\index{has\_ressource\_set@{has\_ressource\_set}!project\_toolchain.h@{project\_toolchain.h}}
+\doxysubsubsection{\texorpdfstring{has\_ressource\_set()}{has\_ressource\_set()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} has\+\_\+ressource\+\_\+set (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structEngineConfig}{Engine\+Config}} \texorpdfstring{$\ast$}{*}}]{config,  }\item[{\mbox{\hyperlink{project__toolchain_8h_a46a8c72f40fa77645588f3b547443a16}{cnbuild\+\_\+architectures}}}]{arch,  }\item[{\mbox{\hyperlink{project__toolchain_8h_ac5748ac67111f38f1c1544fd88d28a93}{cnbuild\+\_\+system}}}]{machine }\end{DoxyParamCaption})}
+
+\Hypertarget{project__toolchain_8h_a6ee4d92e9018e3c2819b6506b46e944a}\label{project__toolchain_8h_a6ee4d92e9018e3c2819b6506b46e944a} 
+\index{project\_toolchain.h@{project\_toolchain.h}!library\_compiler\_add\_lib@{library\_compiler\_add\_lib}}
+\index{library\_compiler\_add\_lib@{library\_compiler\_add\_lib}!project\_toolchain.h@{project\_toolchain.h}}
+\doxysubsubsection{\texorpdfstring{library\_compiler\_add\_lib()}{library\_compiler\_add\_lib()}}
+{\footnotesize\ttfamily uint8\+\_\+t library\+\_\+compiler\+\_\+add\+\_\+lib (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLibraryCompiler}{Library\+Compiler}} \texorpdfstring{$\ast$}{*}}]{compiler,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{libname }\end{DoxyParamCaption})}
+
+\Hypertarget{project__toolchain_8h_a6ddac25e5f25d4f37079eb3c1a3c9e44}\label{project__toolchain_8h_a6ddac25e5f25d4f37079eb3c1a3c9e44} 
+\index{project\_toolchain.h@{project\_toolchain.h}!library\_compiler\_add\_preprocessor\_definition@{library\_compiler\_add\_preprocessor\_definition}}
+\index{library\_compiler\_add\_preprocessor\_definition@{library\_compiler\_add\_preprocessor\_definition}!project\_toolchain.h@{project\_toolchain.h}}
+\doxysubsubsection{\texorpdfstring{library\_compiler\_add\_preprocessor\_definition()}{library\_compiler\_add\_preprocessor\_definition()}}
+{\footnotesize\ttfamily uint8\+\_\+t library\+\_\+compiler\+\_\+add\+\_\+preprocessor\+\_\+definition (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLibraryCompiler}{Library\+Compiler}} \texorpdfstring{$\ast$}{*}}]{compiler,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{definition\+\_\+name,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{definition\+\_\+content }\end{DoxyParamCaption})}
+
+\Hypertarget{project__toolchain_8h_ae20179ac245d63ad403e48a77d867314}\label{project__toolchain_8h_ae20179ac245d63ad403e48a77d867314} 
+\index{project\_toolchain.h@{project\_toolchain.h}!library\_compiler\_add\_src@{library\_compiler\_add\_src}}
+\index{library\_compiler\_add\_src@{library\_compiler\_add\_src}!project\_toolchain.h@{project\_toolchain.h}}
+\doxysubsubsection{\texorpdfstring{library\_compiler\_add\_src()}{library\_compiler\_add\_src()}}
+{\footnotesize\ttfamily uint8\+\_\+t library\+\_\+compiler\+\_\+add\+\_\+src (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLibraryCompiler}{Library\+Compiler}} \texorpdfstring{$\ast$}{*}}]{compiler,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{srcname }\end{DoxyParamCaption})}
+
+\Hypertarget{project__toolchain_8h_a78db579348f5b8d6f5fedb5e9f737b85}\label{project__toolchain_8h_a78db579348f5b8d6f5fedb5e9f737b85} 
+\index{project\_toolchain.h@{project\_toolchain.h}!library\_compiler\_set\_include\_path@{library\_compiler\_set\_include\_path}}
+\index{library\_compiler\_set\_include\_path@{library\_compiler\_set\_include\_path}!project\_toolchain.h@{project\_toolchain.h}}
+\doxysubsubsection{\texorpdfstring{library\_compiler\_set\_include\_path()}{library\_compiler\_set\_include\_path()}}
+{\footnotesize\ttfamily uint8\+\_\+t library\+\_\+compiler\+\_\+set\+\_\+include\+\_\+path (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLibraryCompiler}{Library\+Compiler}} \texorpdfstring{$\ast$}{*}}]{compiler,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{include\+\_\+path }\end{DoxyParamCaption})}
+
+\Hypertarget{project__toolchain_8h_a411745f2ca6cd98df1cb9e17a1a6be7d}\label{project__toolchain_8h_a411745f2ca6cd98df1cb9e17a1a6be7d} 
+\index{project\_toolchain.h@{project\_toolchain.h}!library\_compiler\_set\_library\_path@{library\_compiler\_set\_library\_path}}
+\index{library\_compiler\_set\_library\_path@{library\_compiler\_set\_library\_path}!project\_toolchain.h@{project\_toolchain.h}}
+\doxysubsubsection{\texorpdfstring{library\_compiler\_set\_library\_path()}{library\_compiler\_set\_library\_path()}}
+{\footnotesize\ttfamily uint8\+\_\+t library\+\_\+compiler\+\_\+set\+\_\+library\+\_\+path (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLibraryCompiler}{Library\+Compiler}} \texorpdfstring{$\ast$}{*}}]{compiler,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{library\+\_\+path }\end{DoxyParamCaption})}
+
 \Hypertarget{project__toolchain_8h_ac535d4b8f980cebb7ed368d62a16e430}\label{project__toolchain_8h_ac535d4b8f980cebb7ed368d62a16e430} 
 \index{project\_toolchain.h@{project\_toolchain.h}!new\_build@{new\_build}}
 \index{new\_build@{new\_build}!project\_toolchain.h@{project\_toolchain.h}}
@@ -216,11 +410,47 @@ CNBUILD\+\_\+\+SYS\+\_\+\+GEN\+\_\+\+LINUX&\\
 \doxysubsubsection{\texorpdfstring{new\_cnproject()}{new\_cnproject()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structCNProject}{CNProject}} \texorpdfstring{$\ast$}{*} new\+\_\+cnproject (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
-\Hypertarget{project__toolchain_8h_a3d982caf768dc61c5611ec1c5f2f9675}\label{project__toolchain_8h_a3d982caf768dc61c5611ec1c5f2f9675} 
+\Hypertarget{project__toolchain_8h_a9c352899eb42ae7a9a512d478a538068}\label{project__toolchain_8h_a9c352899eb42ae7a9a512d478a538068} 
+\index{project\_toolchain.h@{project\_toolchain.h}!new\_engine\_config@{new\_engine\_config}}
+\index{new\_engine\_config@{new\_engine\_config}!project\_toolchain.h@{project\_toolchain.h}}
+\doxysubsubsection{\texorpdfstring{new\_engine\_config()}{new\_engine\_config()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structEngineConfig}{Engine\+Config}} \texorpdfstring{$\ast$}{*} new\+\_\+engine\+\_\+config (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{project__toolchain_8h_a7eb41ea626476fa49a3af741662fa5c3}\label{project__toolchain_8h_a7eb41ea626476fa49a3af741662fa5c3} 
+\index{project\_toolchain.h@{project\_toolchain.h}!new\_generator\_item@{new\_generator\_item}}
+\index{new\_generator\_item@{new\_generator\_item}!project\_toolchain.h@{project\_toolchain.h}}
+\doxysubsubsection{\texorpdfstring{new\_generator\_item()}{new\_generator\_item()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structEngineGeneratorItem}{Engine\+Generator\+Item}} \texorpdfstring{$\ast$}{*} new\+\_\+generator\+\_\+item (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{project__toolchain_8h_a8b99de070861ab7254d24201f99d6703}\label{project__toolchain_8h_a8b99de070861ab7254d24201f99d6703} 
+\index{project\_toolchain.h@{project\_toolchain.h}!new\_library\_compiler@{new\_library\_compiler}}
+\index{new\_library\_compiler@{new\_library\_compiler}!project\_toolchain.h@{project\_toolchain.h}}
+\doxysubsubsection{\texorpdfstring{new\_library\_compiler()}{new\_library\_compiler()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structLibraryCompiler}{Library\+Compiler}} \texorpdfstring{$\ast$}{*} new\+\_\+library\+\_\+compiler (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{libname,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{toolchain,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{build\+\_\+path }\end{DoxyParamCaption})}
+
+\Hypertarget{project__toolchain_8h_a86ec5fbae74817d9dd72e887f89a32af}\label{project__toolchain_8h_a86ec5fbae74817d9dd72e887f89a32af} 
+\index{project\_toolchain.h@{project\_toolchain.h}!new\_ressource\_set@{new\_ressource\_set}}
+\index{new\_ressource\_set@{new\_ressource\_set}!project\_toolchain.h@{project\_toolchain.h}}
+\doxysubsubsection{\texorpdfstring{new\_ressource\_set()}{new\_ressource\_set()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structEngineRessourceSet}{Engine\+Ressource\+Set}} \texorpdfstring{$\ast$}{*} new\+\_\+ressource\+\_\+set (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{project__toolchain_8h_a4ce70a83b0404a3c50678e0468b8b406}\label{project__toolchain_8h_a4ce70a83b0404a3c50678e0468b8b406} 
+\index{project\_toolchain.h@{project\_toolchain.h}!new\_submodule@{new\_submodule}}
+\index{new\_submodule@{new\_submodule}!project\_toolchain.h@{project\_toolchain.h}}
+\doxysubsubsection{\texorpdfstring{new\_submodule()}{new\_submodule()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSubModule}{Sub\+Module}} \texorpdfstring{$\ast$}{*} new\+\_\+submodule (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{project__toolchain_8h_ace8a700b7a09bc999844ef7ea05095bc}\label{project__toolchain_8h_ace8a700b7a09bc999844ef7ea05095bc} 
+\index{project\_toolchain.h@{project\_toolchain.h}!os\_from\_string@{os\_from\_string}}
+\index{os\_from\_string@{os\_from\_string}!project\_toolchain.h@{project\_toolchain.h}}
+\doxysubsubsection{\texorpdfstring{os\_from\_string()}{os\_from\_string()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{project__toolchain_8h_ac5748ac67111f38f1c1544fd88d28a93}{cnbuild\+\_\+system}} os\+\_\+from\+\_\+string (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{str }\end{DoxyParamCaption})}
+
+\Hypertarget{project__toolchain_8h_ab5ca3fad8d3b7e454fd9490669ebd767}\label{project__toolchain_8h_ab5ca3fad8d3b7e454fd9490669ebd767} 
 \index{project\_toolchain.h@{project\_toolchain.h}!parse\_cnbuilds\_xml@{parse\_cnbuilds\_xml}}
 \index{parse\_cnbuilds\_xml@{parse\_cnbuilds\_xml}!project\_toolchain.h@{project\_toolchain.h}}
 \doxysubsubsection{\texorpdfstring{parse\_cnbuilds\_xml()}{parse\_cnbuilds\_xml()}}
-{\footnotesize\ttfamily uint8\+\_\+t parse\+\_\+cnbuilds\+\_\+xml (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCNProject}{CNProject}} \texorpdfstring{$\ast$}{*}}]{project,  }\item[{xml\+Node \texorpdfstring{$\ast$}{*}}]{node }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily uint8\+\_\+t parse\+\_\+cnbuilds\+\_\+xml (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structEngineConfig}{Engine\+Config}} \texorpdfstring{$\ast$}{*}}]{config,  }\item[{\mbox{\hyperlink{structCNProject}{CNProject}} \texorpdfstring{$\ast$}{*}}]{project,  }\item[{xml\+Node \texorpdfstring{$\ast$}{*}}]{node }\end{DoxyParamCaption})}
 
 \Hypertarget{project__toolchain_8h_ae1711ce1808a4a6aedf948b0d952dde8}\label{project__toolchain_8h_ae1711ce1808a4a6aedf948b0d952dde8} 
 \index{project\_toolchain.h@{project\_toolchain.h}!parse\_cnressources\_xml@{parse\_cnressources\_xml}}
@@ -228,17 +458,35 @@ CNBUILD\+\_\+\+SYS\+\_\+\+GEN\+\_\+\+LINUX&\\
 \doxysubsubsection{\texorpdfstring{parse\_cnressources\_xml()}{parse\_cnressources\_xml()}}
 {\footnotesize\ttfamily uint8\+\_\+t parse\+\_\+cnressources\+\_\+xml (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCNProject}{CNProject}} \texorpdfstring{$\ast$}{*}}]{project,  }\item[{xml\+Node \texorpdfstring{$\ast$}{*}}]{node,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{project\+\_\+root }\end{DoxyParamCaption})}
 
-\Hypertarget{project__toolchain_8h_a5aa4e840eb55113e08636137ac51331c}\label{project__toolchain_8h_a5aa4e840eb55113e08636137ac51331c} 
+\Hypertarget{project__toolchain_8h_a8fe9898aba2d9f74b37c92563cd79f09}\label{project__toolchain_8h_a8fe9898aba2d9f74b37c92563cd79f09} 
+\index{project\_toolchain.h@{project\_toolchain.h}!parse\_config\_xml@{parse\_config\_xml}}
+\index{parse\_config\_xml@{parse\_config\_xml}!project\_toolchain.h@{project\_toolchain.h}}
+\doxysubsubsection{\texorpdfstring{parse\_config\_xml()}{parse\_config\_xml()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structEngineConfig}{Engine\+Config}} \texorpdfstring{$\ast$}{*} parse\+\_\+config\+\_\+xml (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{file\+\_\+path,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{engine\+\_\+root }\end{DoxyParamCaption})}
+
+\Hypertarget{project__toolchain_8h_a5b02c60674443534219d5c5e4d8adabb}\label{project__toolchain_8h_a5b02c60674443534219d5c5e4d8adabb} 
 \index{project\_toolchain.h@{project\_toolchain.h}!parse\_project\_xml@{parse\_project\_xml}}
 \index{parse\_project\_xml@{parse\_project\_xml}!project\_toolchain.h@{project\_toolchain.h}}
 \doxysubsubsection{\texorpdfstring{parse\_project\_xml()}{parse\_project\_xml()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{structCNProject}{CNProject}} \texorpdfstring{$\ast$}{*} parse\+\_\+project\+\_\+xml (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{file\+\_\+path,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{project\+\_\+root }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{structCNProject}{CNProject}} \texorpdfstring{$\ast$}{*} parse\+\_\+project\+\_\+xml (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structEngineConfig}{Engine\+Config}} \texorpdfstring{$\ast$}{*}}]{config,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{file\+\_\+path,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{project\+\_\+root }\end{DoxyParamCaption})}
 
-\Hypertarget{project__toolchain_8h_af194c9a1e46c0b70bab3e87692ef9a8f}\label{project__toolchain_8h_af194c9a1e46c0b70bab3e87692ef9a8f} 
+\Hypertarget{project__toolchain_8h_a1d3dad7643d108eec68008bda9d9fb93}\label{project__toolchain_8h_a1d3dad7643d108eec68008bda9d9fb93} 
+\index{project\_toolchain.h@{project\_toolchain.h}!parse\_submodules\_xml@{parse\_submodules\_xml}}
+\index{parse\_submodules\_xml@{parse\_submodules\_xml}!project\_toolchain.h@{project\_toolchain.h}}
+\doxysubsubsection{\texorpdfstring{parse\_submodules\_xml()}{parse\_submodules\_xml()}}
+{\footnotesize\ttfamily uint8\+\_\+t parse\+\_\+submodules\+\_\+xml (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structSubModule}{Sub\+Module}} \texorpdfstring{$\ast$}{*}}]{submodule,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{xml\+\_\+path }\end{DoxyParamCaption})}
+
+\Hypertarget{project__toolchain_8h_a591f34149779b172abd08a6627131b62}\label{project__toolchain_8h_a591f34149779b172abd08a6627131b62} 
 \index{project\_toolchain.h@{project\_toolchain.h}!resolve\_path@{resolve\_path}}
 \index{resolve\_path@{resolve\_path}!project\_toolchain.h@{project\_toolchain.h}}
 \doxysubsubsection{\texorpdfstring{resolve\_path()}{resolve\_path()}}
-{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} resolve\+\_\+path (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{base\+\_\+path,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{project\+\_\+root }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} resolve\+\_\+path (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{base\+\_\+path,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{replace\+\_\+with,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{placeholder }\end{DoxyParamCaption})}
+
+\Hypertarget{project__toolchain_8h_a6d3413cb0409d611f27835c44416953a}\label{project__toolchain_8h_a6d3413cb0409d611f27835c44416953a} 
+\index{project\_toolchain.h@{project\_toolchain.h}!sysname\_from\_system@{sysname\_from\_system}}
+\index{sysname\_from\_system@{sysname\_from\_system}!project\_toolchain.h@{project\_toolchain.h}}
+\doxysubsubsection{\texorpdfstring{sysname\_from\_system()}{sysname\_from\_system()}}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} sysname\+\_\+from\+\_\+system (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{project__toolchain_8h_ac5748ac67111f38f1c1544fd88d28a93}{cnbuild\+\_\+system}}}]{system }\end{DoxyParamCaption})}
 
 \Hypertarget{project__toolchain_8h_a1a9c13f08838fe8e31d8d40b4901ae17}\label{project__toolchain_8h_a1a9c13f08838fe8e31d8d40b4901ae17} 
 \index{project\_toolchain.h@{project\_toolchain.h}!tp\_from\_string@{tp\_from\_string}}

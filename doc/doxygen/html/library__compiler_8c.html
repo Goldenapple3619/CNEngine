@@ -109,6 +109,7 @@ $(document).ready(function(){initNavTree('library__compiler_8c.html',''); initRe
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="project__toolchain_8h_source.html">../project_toolchain.h</a>&quot;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -116,20 +117,26 @@ Functions</h2></td></tr>
 <tr class="separator:a8b99de070861ab7254d24201f99d6703"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae20179ac245d63ad403e48a77d867314" id="r_ae20179ac245d63ad403e48a77d867314"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="library__compiler_8c.html#ae20179ac245d63ad403e48a77d867314">library_compiler_add_src</a> (<a class="el" href="structLibraryCompiler.html">LibraryCompiler</a> *compiler, const char *srcname)</td></tr>
 <tr class="separator:ae20179ac245d63ad403e48a77d867314"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ee4d92e9018e3c2819b6506b46e944a" id="r_a6ee4d92e9018e3c2819b6506b46e944a"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="library__compiler_8c.html#a6ee4d92e9018e3c2819b6506b46e944a">library_compiler_add_lib</a> (<a class="el" href="structLibraryCompiler.html">LibraryCompiler</a> *compiler, const char *libname)</td></tr>
+<tr class="separator:a6ee4d92e9018e3c2819b6506b46e944a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a78db579348f5b8d6f5fedb5e9f737b85" id="r_a78db579348f5b8d6f5fedb5e9f737b85"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="library__compiler_8c.html#a78db579348f5b8d6f5fedb5e9f737b85">library_compiler_set_include_path</a> (<a class="el" href="structLibraryCompiler.html">LibraryCompiler</a> *compiler, const char *include_path)</td></tr>
 <tr class="separator:a78db579348f5b8d6f5fedb5e9f737b85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a411745f2ca6cd98df1cb9e17a1a6be7d" id="r_a411745f2ca6cd98df1cb9e17a1a6be7d"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="library__compiler_8c.html#a411745f2ca6cd98df1cb9e17a1a6be7d">library_compiler_set_library_path</a> (<a class="el" href="structLibraryCompiler.html">LibraryCompiler</a> *compiler, const char *library_path)</td></tr>
+<tr class="separator:a411745f2ca6cd98df1cb9e17a1a6be7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4cc906a55a487a9ad9de8d30d073b2c5" id="r_a4cc906a55a487a9ad9de8d30d073b2c5"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="library__compiler_8c.html#a4cc906a55a487a9ad9de8d30d073b2c5">library_compiler_build_objects</a> (<a class="el" href="structLibraryCompiler.html">LibraryCompiler</a> *compiler)</td></tr>
 <tr class="separator:a4cc906a55a487a9ad9de8d30d073b2c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a717376311e9ada337bae3a58b3f96524" id="r_a717376311e9ada337bae3a58b3f96524"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="library__compiler_8c.html#a717376311e9ada337bae3a58b3f96524">library_compiler_build_dynlib</a> (<a class="el" href="structLibraryCompiler.html">LibraryCompiler</a> *compiler)</td></tr>
 <tr class="separator:a717376311e9ada337bae3a58b3f96524"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade51a26b37d41bf811c82a7365164b6a" id="r_ade51a26b37d41bf811c82a7365164b6a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="library__compiler_8c.html#ade51a26b37d41bf811c82a7365164b6a">delete_library_compiler</a> (<a class="el" href="structLibraryCompiler.html">LibraryCompiler</a> *compiler)</td></tr>
 <tr class="separator:ade51a26b37d41bf811c82a7365164b6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae644faafeeefe23e1ace53c1180ee885" id="r_ae644faafeeefe23e1ace53c1180ee885"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="library__compiler_8c.html#ae644faafeeefe23e1ace53c1180ee885">compile_library</a> (const <a class="el" href="structCNProject.html">CNProject</a> *project, const <a class="el" href="structCNBuild.html">CNBuild</a> *build_info, const char *output_path, const char *build_path, const char *include_path)</td></tr>
-<tr class="separator:ae644faafeeefe23e1ace53c1180ee885"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ddac25e5f25d4f37079eb3c1a3c9e44" id="r_a6ddac25e5f25d4f37079eb3c1a3c9e44"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="library__compiler_8c.html#a6ddac25e5f25d4f37079eb3c1a3c9e44">library_compiler_add_preprocessor_definition</a> (<a class="el" href="structLibraryCompiler.html">LibraryCompiler</a> *compiler, const char *definition_name, const char *definition_content)</td></tr>
+<tr class="separator:a6ddac25e5f25d4f37079eb3c1a3c9e44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98d0ca465ec248a90f3e72bbf8c41ea6" id="r_a98d0ca465ec248a90f3e72bbf8c41ea6"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="library__compiler_8c.html#a98d0ca465ec248a90f3e72bbf8c41ea6">compile_library</a> (const <a class="el" href="structCNProject.html">CNProject</a> *project, const <a class="el" href="structCNBuild.html">CNBuild</a> *build_info, const char *output_path, const char *build_path, const char *include_path, const char *lib_path)</td></tr>
+<tr class="separator:a98d0ca465ec248a90f3e72bbf8c41ea6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ae644faafeeefe23e1ace53c1180ee885" name="ae644faafeeefe23e1ace53c1180ee885"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae644faafeeefe23e1ace53c1180ee885">&#9670;&#160;</a></span>compile_library()</h2>
+<a id="a98d0ca465ec248a90f3e72bbf8c41ea6" name="a98d0ca465ec248a90f3e72bbf8c41ea6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98d0ca465ec248a90f3e72bbf8c41ea6">&#9670;&#160;</a></span>compile_library()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -162,7 +169,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>include_path</em>&#160;</td>
+          <td class="paramname"><em>include_path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>lib_path</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -186,6 +199,68 @@ Functions</h2></td></tr>
           <td class="paramtype"><a class="el" href="structLibraryCompiler.html">LibraryCompiler</a> *&#160;</td>
           <td class="paramname"><em>compiler</em></td><td>)</td>
           <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6ee4d92e9018e3c2819b6506b46e944a" name="a6ee4d92e9018e3c2819b6506b46e944a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ee4d92e9018e3c2819b6506b46e944a">&#9670;&#160;</a></span>library_compiler_add_lib()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t library_compiler_add_lib </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structLibraryCompiler.html">LibraryCompiler</a> *&#160;</td>
+          <td class="paramname"><em>compiler</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>libname</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6ddac25e5f25d4f37079eb3c1a3c9e44" name="a6ddac25e5f25d4f37079eb3c1a3c9e44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ddac25e5f25d4f37079eb3c1a3c9e44">&#9670;&#160;</a></span>library_compiler_add_preprocessor_definition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t library_compiler_add_preprocessor_definition </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structLibraryCompiler.html">LibraryCompiler</a> *&#160;</td>
+          <td class="paramname"><em>compiler</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>definition_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>definition_content</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -273,6 +348,34 @@ Functions</h2></td></tr>
           <td></td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>include_path</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a411745f2ca6cd98df1cb9e17a1a6be7d" name="a411745f2ca6cd98df1cb9e17a1a6be7d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a411745f2ca6cd98df1cb9e17a1a6be7d">&#9670;&#160;</a></span>library_compiler_set_library_path()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t library_compiler_set_library_path </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structLibraryCompiler.html">LibraryCompiler</a> *&#160;</td>
+          <td class="paramname"><em>compiler</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>library_path</em>&#160;</td>
         </tr>
         <tr>
           <td></td>

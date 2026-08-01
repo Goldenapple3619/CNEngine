@@ -1,0 +1,73 @@
+\doxysection{src/cnbuild/project\+\_\+toolchain/engine\+\_\+config.c File Reference}
+\hypertarget{engine__config_8c}{}\label{engine__config_8c}\index{src/cnbuild/project\_toolchain/engine\_config.c@{src/cnbuild/project\_toolchain/engine\_config.c}}
+{\ttfamily \#include "{}project\+\_\+toolchain.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structEngineGeneratorItem}{Engine\+Generator\+Item}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{engine__config_8c_a7eb41ea626476fa49a3af741662fa5c3}{new\+\_\+generator\+\_\+item}} (void)
+\item 
+void \mbox{\hyperlink{engine__config_8c_a9e3bbd2e42a897850bdb96e6c3518138}{delete\+\_\+generator\+\_\+item}} (\mbox{\hyperlink{structEngineGeneratorItem}{Engine\+Generator\+Item}} \texorpdfstring{$\ast$}{*}item)
+\item 
+\mbox{\hyperlink{structEngineRessourceSet}{Engine\+Ressource\+Set}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{engine__config_8c_a86ec5fbae74817d9dd72e887f89a32af}{new\+\_\+ressource\+\_\+set}} (void)
+\item 
+void \mbox{\hyperlink{engine__config_8c_ad97f85ad5fe31a16b1036041a0590a5f}{delete\+\_\+ressource\+\_\+set}} (\mbox{\hyperlink{structEngineRessourceSet}{Engine\+Ressource\+Set}} \texorpdfstring{$\ast$}{*}set)
+\item 
+\mbox{\hyperlink{structEngineConfig}{Engine\+Config}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{engine__config_8c_a9c352899eb42ae7a9a512d478a538068}{new\+\_\+engine\+\_\+config}} (void)
+\item 
+\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} \mbox{\hyperlink{engine__config_8c_aee6f62620412191c441e1aeb43d5e8da}{has\+\_\+ressource\+\_\+set}} (const \mbox{\hyperlink{structEngineConfig}{Engine\+Config}} \texorpdfstring{$\ast$}{*}config, \mbox{\hyperlink{project__toolchain_8h_a46a8c72f40fa77645588f3b547443a16}{cnbuild\+\_\+architectures}} arch, \mbox{\hyperlink{project__toolchain_8h_ac5748ac67111f38f1c1544fd88d28a93}{cnbuild\+\_\+system}} machine)
+\item 
+const \mbox{\hyperlink{structEngineRessourceSet}{Engine\+Ressource\+Set}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{engine__config_8c_adec5f37704fdd7e5984487a3b5fd30c5}{find\+\_\+ressource\+\_\+set}} (const \mbox{\hyperlink{structEngineConfig}{Engine\+Config}} \texorpdfstring{$\ast$}{*}config, \mbox{\hyperlink{project__toolchain_8h_a46a8c72f40fa77645588f3b547443a16}{cnbuild\+\_\+architectures}} arch, \mbox{\hyperlink{project__toolchain_8h_ac5748ac67111f38f1c1544fd88d28a93}{cnbuild\+\_\+system}} machine)
+\item 
+void \mbox{\hyperlink{engine__config_8c_acbf2ba0716d3cb59c66fb5f8db35e163}{delete\+\_\+engine\+\_\+config}} (\mbox{\hyperlink{structEngineConfig}{Engine\+Config}} \texorpdfstring{$\ast$}{*}config)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{engine__config_8c_acbf2ba0716d3cb59c66fb5f8db35e163}\label{engine__config_8c_acbf2ba0716d3cb59c66fb5f8db35e163} 
+\index{engine\_config.c@{engine\_config.c}!delete\_engine\_config@{delete\_engine\_config}}
+\index{delete\_engine\_config@{delete\_engine\_config}!engine\_config.c@{engine\_config.c}}
+\doxysubsubsection{\texorpdfstring{delete\_engine\_config()}{delete\_engine\_config()}}
+{\footnotesize\ttfamily void delete\+\_\+engine\+\_\+config (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structEngineConfig}{Engine\+Config}} \texorpdfstring{$\ast$}{*}}]{config }\end{DoxyParamCaption})}
+
+\Hypertarget{engine__config_8c_a9e3bbd2e42a897850bdb96e6c3518138}\label{engine__config_8c_a9e3bbd2e42a897850bdb96e6c3518138} 
+\index{engine\_config.c@{engine\_config.c}!delete\_generator\_item@{delete\_generator\_item}}
+\index{delete\_generator\_item@{delete\_generator\_item}!engine\_config.c@{engine\_config.c}}
+\doxysubsubsection{\texorpdfstring{delete\_generator\_item()}{delete\_generator\_item()}}
+{\footnotesize\ttfamily void delete\+\_\+generator\+\_\+item (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structEngineGeneratorItem}{Engine\+Generator\+Item}} \texorpdfstring{$\ast$}{*}}]{item }\end{DoxyParamCaption})}
+
+\Hypertarget{engine__config_8c_ad97f85ad5fe31a16b1036041a0590a5f}\label{engine__config_8c_ad97f85ad5fe31a16b1036041a0590a5f} 
+\index{engine\_config.c@{engine\_config.c}!delete\_ressource\_set@{delete\_ressource\_set}}
+\index{delete\_ressource\_set@{delete\_ressource\_set}!engine\_config.c@{engine\_config.c}}
+\doxysubsubsection{\texorpdfstring{delete\_ressource\_set()}{delete\_ressource\_set()}}
+{\footnotesize\ttfamily void delete\+\_\+ressource\+\_\+set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structEngineRessourceSet}{Engine\+Ressource\+Set}} \texorpdfstring{$\ast$}{*}}]{set }\end{DoxyParamCaption})}
+
+\Hypertarget{engine__config_8c_adec5f37704fdd7e5984487a3b5fd30c5}\label{engine__config_8c_adec5f37704fdd7e5984487a3b5fd30c5} 
+\index{engine\_config.c@{engine\_config.c}!find\_ressource\_set@{find\_ressource\_set}}
+\index{find\_ressource\_set@{find\_ressource\_set}!engine\_config.c@{engine\_config.c}}
+\doxysubsubsection{\texorpdfstring{find\_ressource\_set()}{find\_ressource\_set()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{structEngineRessourceSet}{Engine\+Ressource\+Set}} \texorpdfstring{$\ast$}{*} find\+\_\+ressource\+\_\+set (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structEngineConfig}{Engine\+Config}} \texorpdfstring{$\ast$}{*}}]{config,  }\item[{\mbox{\hyperlink{project__toolchain_8h_a46a8c72f40fa77645588f3b547443a16}{cnbuild\+\_\+architectures}}}]{arch,  }\item[{\mbox{\hyperlink{project__toolchain_8h_ac5748ac67111f38f1c1544fd88d28a93}{cnbuild\+\_\+system}}}]{machine }\end{DoxyParamCaption})}
+
+\Hypertarget{engine__config_8c_aee6f62620412191c441e1aeb43d5e8da}\label{engine__config_8c_aee6f62620412191c441e1aeb43d5e8da} 
+\index{engine\_config.c@{engine\_config.c}!has\_ressource\_set@{has\_ressource\_set}}
+\index{has\_ressource\_set@{has\_ressource\_set}!engine\_config.c@{engine\_config.c}}
+\doxysubsubsection{\texorpdfstring{has\_ressource\_set()}{has\_ressource\_set()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} has\+\_\+ressource\+\_\+set (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structEngineConfig}{Engine\+Config}} \texorpdfstring{$\ast$}{*}}]{config,  }\item[{\mbox{\hyperlink{project__toolchain_8h_a46a8c72f40fa77645588f3b547443a16}{cnbuild\+\_\+architectures}}}]{arch,  }\item[{\mbox{\hyperlink{project__toolchain_8h_ac5748ac67111f38f1c1544fd88d28a93}{cnbuild\+\_\+system}}}]{machine }\end{DoxyParamCaption})}
+
+\Hypertarget{engine__config_8c_a9c352899eb42ae7a9a512d478a538068}\label{engine__config_8c_a9c352899eb42ae7a9a512d478a538068} 
+\index{engine\_config.c@{engine\_config.c}!new\_engine\_config@{new\_engine\_config}}
+\index{new\_engine\_config@{new\_engine\_config}!engine\_config.c@{engine\_config.c}}
+\doxysubsubsection{\texorpdfstring{new\_engine\_config()}{new\_engine\_config()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structEngineConfig}{Engine\+Config}} \texorpdfstring{$\ast$}{*} new\+\_\+engine\+\_\+config (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{engine__config_8c_a7eb41ea626476fa49a3af741662fa5c3}\label{engine__config_8c_a7eb41ea626476fa49a3af741662fa5c3} 
+\index{engine\_config.c@{engine\_config.c}!new\_generator\_item@{new\_generator\_item}}
+\index{new\_generator\_item@{new\_generator\_item}!engine\_config.c@{engine\_config.c}}
+\doxysubsubsection{\texorpdfstring{new\_generator\_item()}{new\_generator\_item()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structEngineGeneratorItem}{Engine\+Generator\+Item}} \texorpdfstring{$\ast$}{*} new\+\_\+generator\+\_\+item (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\Hypertarget{engine__config_8c_a86ec5fbae74817d9dd72e887f89a32af}\label{engine__config_8c_a86ec5fbae74817d9dd72e887f89a32af} 
+\index{engine\_config.c@{engine\_config.c}!new\_ressource\_set@{new\_ressource\_set}}
+\index{new\_ressource\_set@{new\_ressource\_set}!engine\_config.c@{engine\_config.c}}
+\doxysubsubsection{\texorpdfstring{new\_ressource\_set()}{new\_ressource\_set()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structEngineRessourceSet}{Engine\+Ressource\+Set}} \texorpdfstring{$\ast$}{*} new\+\_\+ressource\+\_\+set (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+

@@ -164,10 +164,14 @@ Functions</h2></td></tr>
 <tr class="separator:a6c3ad6fe322505caa24f680af093c832"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a80c86544a27139d0f6fc3f945d2ef77a" id="r_a80c86544a27139d0f6fc3f945d2ef77a"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a80c86544a27139d0f6fc3f945d2ef77a">copy_file</a> (const char *src, const char *dst)</td></tr>
 <tr class="separator:a80c86544a27139d0f6fc3f945d2ef77a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a460b7ae1b3bf4be30259bed2f6008644" id="r_a460b7ae1b3bf4be30259bed2f6008644"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a460b7ae1b3bf4be30259bed2f6008644">copytree</a> (const char *src, const char *dst)</td></tr>
-<tr class="separator:a460b7ae1b3bf4be30259bed2f6008644"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa236763c532df52309fcc7ab4ec847ec" id="r_aa236763c532df52309fcc7ab4ec847ec"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#aa236763c532df52309fcc7ab4ec847ec">copytree</a> (const char *src, const char *dst, <a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> overwrite)</td></tr>
+<tr class="separator:aa236763c532df52309fcc7ab4ec847ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf770efe1e0705384cea7c0361eaa9f0" id="r_acf770efe1e0705384cea7c0361eaa9f0"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#acf770efe1e0705384cea7c0361eaa9f0">make_dir</a> (const char *path)</td></tr>
 <tr class="separator:acf770efe1e0705384cea7c0361eaa9f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8af457e1c59e7f35f403ffd5d87fb3e2" id="r_a8af457e1c59e7f35f403ffd5d87fb3e2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a8af457e1c59e7f35f403ffd5d87fb3e2">is_file</a> (const char *path)</td></tr>
+<tr class="separator:a8af457e1c59e7f35f403ffd5d87fb3e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a389b618b1d2f226e0c49d639d3258913" id="r_a389b618b1d2f226e0c49d639d3258913"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a389b618b1d2f226e0c49d639d3258913">get_file_size</a> (const char *path)</td></tr>
+<tr class="separator:a389b618b1d2f226e0c49d639d3258913"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1b6db075e69c7d50940c6e0a9d357f6" id="r_ae1b6db075e69c7d50940c6e0a9d357f6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#ae1b6db075e69c7d50940c6e0a9d357f6">argument_route</a> (size_t argc, char **argv)</td></tr>
 <tr class="separator:ae1b6db075e69c7d50940c6e0a9d357f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a152b2bafff5976ca602c43ed93c181c1" id="r_a152b2bafff5976ca602c43ed93c181c1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="engine_8h.html#a152b2bafff5976ca602c43ed93c181c1">init</a> (size_t argc, char **argv)</td></tr>
@@ -339,8 +343,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a460b7ae1b3bf4be30259bed2f6008644" name="a460b7ae1b3bf4be30259bed2f6008644"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a460b7ae1b3bf4be30259bed2f6008644">&#9670;&#160;</a></span>copytree()</h2>
+<a id="aa236763c532df52309fcc7ab4ec847ec" name="aa236763c532df52309fcc7ab4ec847ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa236763c532df52309fcc7ab4ec847ec">&#9670;&#160;</a></span>copytree()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -355,7 +359,13 @@ Variables</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>dst</em>&#160;</td>
+          <td class="paramname"><em>dst</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a>&#160;</td>
+          <td class="paramname"><em>overwrite</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -431,6 +441,24 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a389b618b1d2f226e0c49d639d3258913" name="a389b618b1d2f226e0c49d639d3258913"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a389b618b1d2f226e0c49d639d3258913">&#9670;&#160;</a></span>get_file_size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t get_file_size </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="abfce15a97dc0d59066145deb6db71971" name="abfce15a97dc0d59066145deb6db71971"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abfce15a97dc0d59066145deb6db71971">&#9670;&#160;</a></span>help()</h2>
 
@@ -495,6 +523,24 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> is_dir </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8af457e1c59e7f35f403ffd5d87fb3e2" name="a8af457e1c59e7f35f403ffd5d87fb3e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8af457e1c59e7f35f403ffd5d87fb3e2">&#9670;&#160;</a></span>is_file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> is_file </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>path</em></td><td>)</td>

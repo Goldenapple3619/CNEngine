@@ -1,10 +1,10 @@
 var searchData=
 [
   ['m_5fpi_0',['m_pi',['../projection3d_8c.html#ae71449b1cc6e6250b91f539153a7a0d3',1,'M_PI:&#160;projection3d.c'],['../2dboard_8c.html#ae71449b1cc6e6250b91f539153a7a0d3',1,'M_PI:&#160;2dboard.c']]],
-  ['machine_1',['machine',['../structCNBuild.html#a8d279862c176f427a1478b99a1776d3c',1,'CNBuild']]],
+  ['machine_1',['machine',['../structEngineRessourceSet.html#a8e803e6753db2df448d9d08a2fca1964',1,'EngineRessourceSet::machine'],['../structLibraryCompiler.html#ac05108669c313cc3ea308d396f8f262f',1,'LibraryCompiler::machine'],['../structCNBuild.html#a8d279862c176f427a1478b99a1776d3c',1,'CNBuild::machine']]],
   ['macos_2',['MacOS',['../md_README.html#autotoc_md9',1,'']]],
   ['magic_3',['magic',['../structengine__obj__header__s.html#a921ac7b72376b4238cf1af4264db9ac8',1,'engine_obj_header_s']]],
-  ['main_4',['main',['../src_2main_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;main.c'],['../assets_2generator_2main_8c.html#a9196e3d124f2bc97a5362693e03b2520',1,'main(size_t argc, char **argv):&#160;main.c']]],
+  ['main_4',['main',['../src_2main_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;main.c'],['../assets_2generator_2main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'main(int argc, char **argv):&#160;main.c']]],
   ['main_2ec_5',['main.c',['../assets_2generator_2main_8c.html',1,'(Global Namespace)'],['../src_2main_8c.html',1,'(Global Namespace)']]],
   ['make_5fdir_6',['make_dir',['../fs_8c.html#acf770efe1e0705384cea7c0361eaa9f0',1,'make_dir(const char *path):&#160;fs.c'],['../engine_8h.html#acf770efe1e0705384cea7c0361eaa9f0',1,'make_dir(const char *path):&#160;fs.c']]],
   ['mapio_5freader_5ft_7',['mapio_reader_t',['../structmapio__reader__t.html',1,'']]],
@@ -12,14 +12,15 @@ var searchData=
   ['material_9',['Material',['../structMaterial.html',1,'']]],
   ['material_2ec_10',['material.c',['../material_8c.html',1,'']]],
   ['material_5fuse_5fgl_11',['material_use_gl',['../material_8c.html#a6cce96e755402d79b79c58c117f4b910',1,'material_use_gl(const Material *mat, const cnnumber model[16], const cnnumber view[16], const cnnumber proj[16]):&#160;material.c'],['../libcngraphic_8h.html#a6cce96e755402d79b79c58c117f4b910',1,'material_use_gl(const Material *mat, const cnnumber model[16], const cnnumber view[16], const cnnumber proj[16]):&#160;material.c']]],
-  ['mesh_12',['Mesh',['../structMesh.html',1,'']]],
-  ['mesh_2ec_13',['mesh.c',['../mesh_8c.html',1,'']]],
-  ['mesh_5fdraw_5fgl_14',['mesh_draw_gl',['../libcngraphic_8h.html#a14fc4a68514386c582b383f73dd8357c',1,'mesh_draw_gl(Mesh *m):&#160;mesh.c'],['../mesh_8c.html#a14fc4a68514386c582b383f73dd8357c',1,'mesh_draw_gl(Mesh *m):&#160;mesh.c']]],
-  ['mesh_5fupload_5fgl_15',['mesh_upload_gl',['../libcngraphic_8h.html#a72fce26160c250bd11da7dcf05f8b8fe',1,'mesh_upload_gl(Mesh *m):&#160;mesh.c'],['../mesh_8c.html#a72fce26160c250bd11da7dcf05f8b8fe',1,'mesh_upload_gl(Mesh *m):&#160;mesh.c']]],
-  ['message_16',['message',['../structErrorContext.html#afef893087f5117075d26e3e8fe378296',1,'ErrorContext']]],
-  ['method_17',['method',['../structObjMethodPair.html#a816b82bfbb5f9b6fbfacbb8b9cb87490',1,'ObjMethodPair']]],
-  ['methods_18',['methods',['../structobject__s.html#abe619d8408e96a85e54d809ad9e10b94',1,'object_s']]],
-  ['mkdir_19',['MKDIR',['../engine_8h.html#a33f0483b64221b258b080bba5882cf3c',1,'engine.h']]],
-  ['msys_20',['Windows using MSYS',['../md_README.html#autotoc_md6',1,'']]],
-  ['mv_5fpad_21',['mv_pad',['../engine__object__writer_8c.html#a0e906b056853be4f1616f09689bd772e',1,'engine_object_writer.c']]]
+  ['max_5fbank_5fsize_12',['max_bank_size',['../structGameAssetCompiler.html#a06d2f55e317797abfcaa53d9208bc1ac',1,'GameAssetCompiler']]],
+  ['mesh_13',['Mesh',['../structMesh.html',1,'']]],
+  ['mesh_2ec_14',['mesh.c',['../mesh_8c.html',1,'']]],
+  ['mesh_5fdraw_5fgl_15',['mesh_draw_gl',['../libcngraphic_8h.html#a14fc4a68514386c582b383f73dd8357c',1,'mesh_draw_gl(Mesh *m):&#160;mesh.c'],['../mesh_8c.html#a14fc4a68514386c582b383f73dd8357c',1,'mesh_draw_gl(Mesh *m):&#160;mesh.c']]],
+  ['mesh_5fupload_5fgl_16',['mesh_upload_gl',['../libcngraphic_8h.html#a72fce26160c250bd11da7dcf05f8b8fe',1,'mesh_upload_gl(Mesh *m):&#160;mesh.c'],['../mesh_8c.html#a72fce26160c250bd11da7dcf05f8b8fe',1,'mesh_upload_gl(Mesh *m):&#160;mesh.c']]],
+  ['message_17',['message',['../structErrorContext.html#afef893087f5117075d26e3e8fe378296',1,'ErrorContext']]],
+  ['method_18',['method',['../structObjMethodPair.html#a816b82bfbb5f9b6fbfacbb8b9cb87490',1,'ObjMethodPair']]],
+  ['methods_19',['methods',['../structobject__s.html#abe619d8408e96a85e54d809ad9e10b94',1,'object_s']]],
+  ['mkdir_20',['MKDIR',['../engine_8h.html#a33f0483b64221b258b080bba5882cf3c',1,'engine.h']]],
+  ['msys_21',['Windows using MSYS',['../md_README.html#autotoc_md6',1,'']]],
+  ['mv_5fpad_22',['mv_pad',['../engine__object__writer_8c.html#a0e906b056853be4f1616f09689bd772e',1,'engine_object_writer.c']]]
 ];

@@ -1,0 +1,41 @@
+\doxysection{src/cnbuild/project\+\_\+toolchain/generation/executable\+\_\+compiler.c File Reference}
+\hypertarget{executable__compiler_8c}{}\label{executable__compiler_8c}\index{src/cnbuild/project\_toolchain/generation/executable\_compiler.c@{src/cnbuild/project\_toolchain/generation/executable\_compiler.c}}
+{\ttfamily \#include "{}../project\+\_\+toolchain.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{executable__compiler_8c_a7927f6ee73c40c15c89c552876f02135}{executable\+\_\+compiler\+\_\+build\+\_\+objects}} (\mbox{\hyperlink{structLibraryCompiler}{Library\+Compiler}} \texorpdfstring{$\ast$}{*}compiler)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{executable__compiler_8c_a572e68d6081c481a3fcc631132229b99}{executable\+\_\+compiler\+\_\+build\+\_\+binary}} (\mbox{\hyperlink{structLibraryCompiler}{Library\+Compiler}} \texorpdfstring{$\ast$}{*}compiler)
+\item 
+\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} \mbox{\hyperlink{executable__compiler_8c_a59e8408afe3a4c2c9b5d28ac5e157039}{\+\_\+is\+\_\+forsubmodule\+\_\+src}} (const char \texorpdfstring{$\ast$}{*}submodule, const \mbox{\hyperlink{structCNBuild}{CNBuild}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{cnbuild_2route_8c_acbae52c879a1243e0097c06aa9a3ad82}{build}})
+\item 
+uint8\+\_\+t \mbox{\hyperlink{executable__compiler_8c_a6be373a6bd3eda905182ef0bd1533348}{compile\+\_\+executable}} (const \mbox{\hyperlink{structEngineConfig}{Engine\+Config}} \texorpdfstring{$\ast$}{*}config, const \mbox{\hyperlink{structCNProject}{CNProject}} \texorpdfstring{$\ast$}{*}project, const \mbox{\hyperlink{structCNBuild}{CNBuild}} \texorpdfstring{$\ast$}{*}build\+\_\+info, const char \texorpdfstring{$\ast$}{*}output\+\_\+path, const char \texorpdfstring{$\ast$}{*}build\+\_\+path, const char \texorpdfstring{$\ast$}{*}include\+\_\+path, const char \texorpdfstring{$\ast$}{*}lib\+\_\+path)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{executable__compiler_8c_a59e8408afe3a4c2c9b5d28ac5e157039}\label{executable__compiler_8c_a59e8408afe3a4c2c9b5d28ac5e157039} 
+\index{executable\_compiler.c@{executable\_compiler.c}!\_is\_forsubmodule\_src@{\_is\_forsubmodule\_src}}
+\index{\_is\_forsubmodule\_src@{\_is\_forsubmodule\_src}!executable\_compiler.c@{executable\_compiler.c}}
+\doxysubsubsection{\texorpdfstring{\_is\_forsubmodule\_src()}{\_is\_forsubmodule\_src()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} \+\_\+is\+\_\+forsubmodule\+\_\+src (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{submodule,  }\item[{const \mbox{\hyperlink{structCNBuild}{CNBuild}} \texorpdfstring{$\ast$}{*}}]{build }\end{DoxyParamCaption})}
+
+\Hypertarget{executable__compiler_8c_a6be373a6bd3eda905182ef0bd1533348}\label{executable__compiler_8c_a6be373a6bd3eda905182ef0bd1533348} 
+\index{executable\_compiler.c@{executable\_compiler.c}!compile\_executable@{compile\_executable}}
+\index{compile\_executable@{compile\_executable}!executable\_compiler.c@{executable\_compiler.c}}
+\doxysubsubsection{\texorpdfstring{compile\_executable()}{compile\_executable()}}
+{\footnotesize\ttfamily uint8\+\_\+t compile\+\_\+executable (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structEngineConfig}{Engine\+Config}} \texorpdfstring{$\ast$}{*}}]{config,  }\item[{const \mbox{\hyperlink{structCNProject}{CNProject}} \texorpdfstring{$\ast$}{*}}]{project,  }\item[{const \mbox{\hyperlink{structCNBuild}{CNBuild}} \texorpdfstring{$\ast$}{*}}]{build\+\_\+info,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{output\+\_\+path,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{build\+\_\+path,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{include\+\_\+path,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{lib\+\_\+path }\end{DoxyParamCaption})}
+
+\Hypertarget{executable__compiler_8c_a572e68d6081c481a3fcc631132229b99}\label{executable__compiler_8c_a572e68d6081c481a3fcc631132229b99} 
+\index{executable\_compiler.c@{executable\_compiler.c}!executable\_compiler\_build\_binary@{executable\_compiler\_build\_binary}}
+\index{executable\_compiler\_build\_binary@{executable\_compiler\_build\_binary}!executable\_compiler.c@{executable\_compiler.c}}
+\doxysubsubsection{\texorpdfstring{executable\_compiler\_build\_binary()}{executable\_compiler\_build\_binary()}}
+{\footnotesize\ttfamily uint8\+\_\+t executable\+\_\+compiler\+\_\+build\+\_\+binary (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLibraryCompiler}{Library\+Compiler}} \texorpdfstring{$\ast$}{*}}]{compiler }\end{DoxyParamCaption})}
+
+\Hypertarget{executable__compiler_8c_a7927f6ee73c40c15c89c552876f02135}\label{executable__compiler_8c_a7927f6ee73c40c15c89c552876f02135} 
+\index{executable\_compiler.c@{executable\_compiler.c}!executable\_compiler\_build\_objects@{executable\_compiler\_build\_objects}}
+\index{executable\_compiler\_build\_objects@{executable\_compiler\_build\_objects}!executable\_compiler.c@{executable\_compiler.c}}
+\doxysubsubsection{\texorpdfstring{executable\_compiler\_build\_objects()}{executable\_compiler\_build\_objects()}}
+{\footnotesize\ttfamily uint8\+\_\+t executable\+\_\+compiler\+\_\+build\+\_\+objects (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLibraryCompiler}{Library\+Compiler}} \texorpdfstring{$\ast$}{*}}]{compiler }\end{DoxyParamCaption})}
+

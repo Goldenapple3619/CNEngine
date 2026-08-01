@@ -7,7 +7,7 @@ var searchData=
   ['background_5ftype_4',['background_type',['../structcontainer__mode__s.html#aaf3613483e420c1df3997ab34dc3223b',1,'container_mode_s']]],
   ['base_5',['base',['../structobject__s.html#aa6afcf718ca7eb242f9158572016a25e',1,'object_s']]],
   ['blk_5fsize_6',['blk_size',['../structsection__blk.html#a393825ed1dffb4a2ac9b4cf01280b479',1,'section_blk']]],
-  ['build_5fpath_7',['build_path',['../structLibraryCompiler.html#a5cf6bcd2748ef09782c2ef8e921c5a9d',1,'LibraryCompiler']]],
+  ['build_5fpath_7',['build_path',['../structLibraryCompiler.html#a5cf6bcd2748ef09782c2ef8e921c5a9d',1,'LibraryCompiler::build_path'],['../structGameAssetCompiler.html#a9b0c669ce66fc5e25b802f441346c9c6',1,'GameAssetCompiler::build_path']]],
   ['build_5ftypes_8',['build_types',['../build_8h.html#a4dca628f5f7d56189c2f88bab8d35518',1,'build.h']]],
   ['builds_9',['builds',['../structCNProject.html#aa45288da10cd442d7692a872f503b0b2',1,'CNProject']]]
 ];

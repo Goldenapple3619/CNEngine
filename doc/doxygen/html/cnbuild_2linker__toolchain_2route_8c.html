@@ -118,8 +118,8 @@ Functions</h2></td></tr>
 <tr class="separator:ad8f0cd13a98e88fe54dd0540ecd13f14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a16c89cbca77c7044cbe5cc97faf1dfd5" id="r_a16c89cbca77c7044cbe5cc97faf1dfd5"><td class="memItemLeft" align="right" valign="top">static char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnbuild_2linker__toolchain_2route_8c.html#a16c89cbca77c7044cbe5cc97faf1dfd5">generate_section_content</a> (struct <a class="el" href="structengine__object__file__section__writer__ctx__s.html">engine_object_file_section_writer_ctx_s</a> *self, const struct <a class="el" href="structengine__object__file__writer__ctx__s.html">engine_object_file_writer_ctx_s</a> *writer, struct <a class="el" href="structgeneric__map__s.html">generic_map_s</a> *strndx)</td></tr>
 <tr class="separator:a16c89cbca77c7044cbe5cc97faf1dfd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a861bb6cab3f466fd289c2064c177ca10" id="r_a861bb6cab3f466fd289c2064c177ca10"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnbuild_2linker__toolchain_2route_8c.html#a861bb6cab3f466fd289c2064c177ca10">parse_cnasset</a> (<a class="el" href="structCNAssetReader.html">CNAssetReader</a> *reader, const char *file_path, struct <a class="el" href="structengine__object__file__writer__ctx__s.html">engine_object_file_writer_ctx_s</a> *wctx)</td></tr>
-<tr class="separator:a861bb6cab3f466fd289c2064c177ca10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6958842a9f49552da4ab280037fb5bd1" id="r_a6958842a9f49552da4ab280037fb5bd1"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnbuild_2linker__toolchain_2route_8c.html#a6958842a9f49552da4ab280037fb5bd1">parse_cnasset</a> (<a class="el" href="structCNAssetReader.html">CNAssetReader</a> *reader, const char *file_path, struct <a class="el" href="structengine__object__file__writer__ctx__s.html">engine_object_file_writer_ctx_s</a> *wctx, <a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *asset_ctx)</td></tr>
+<tr class="separator:a6958842a9f49552da4ab280037fb5bd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5ca0fed63c7518997505469d87912433" id="r_a5ca0fed63c7518997505469d87912433"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnbuild_2linker__toolchain_2route_8c.html#a5ca0fed63c7518997505469d87912433">build_asset_pack</a> (size_t argc, char **argv, <a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *asset_ctx)</td></tr>
 <tr class="separator:a5ca0fed63c7518997505469d87912433"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -252,8 +252,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a861bb6cab3f466fd289c2064c177ca10" name="a861bb6cab3f466fd289c2064c177ca10"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a861bb6cab3f466fd289c2064c177ca10">&#9670;&#160;</a></span>parse_cnasset()</h2>
+<a id="a6958842a9f49552da4ab280037fb5bd1" name="a6958842a9f49552da4ab280037fb5bd1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6958842a9f49552da4ab280037fb5bd1">&#9670;&#160;</a></span>parse_cnasset()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -274,7 +274,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">struct <a class="el" href="structengine__object__file__writer__ctx__s.html">engine_object_file_writer_ctx_s</a> *&#160;</td>
-          <td class="paramname"><em>wctx</em>&#160;</td>
+          <td class="paramname"><em>wctx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *&#160;</td>
+          <td class="paramname"><em>asset_ctx</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
