@@ -1,14 +1,5 @@
 #include "engine.h"
 
-#ifdef _WIN32
-    #include <io.h>
-    #define stat _stat64
-#else
-    #if !defined(_FILE_OFFSET_BITS)
-        #define _FILE_OFFSET_BITS 64
-    #endif
-#endif
-
 uint64_t get_file_size(const char *path)
 {
     struct stat st;
