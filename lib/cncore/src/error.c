@@ -117,10 +117,21 @@ CN_API const char *error_type_to_text(ErrorCode c)
         "RUNTIME_ERROR"
     };
 
-    if (c >= (sizeof(errornames) / sizeof(char *)))
-        return ("UKNOWN_ERROR");
+    const char *warningnames[] = {
+        "WARNING_IMPORTANT"
+    };
 
-    return (errornames[(size_t)c]);
+    if (c < 0xffff) {
+        if (c >= (sizeof(errornames) / sizeof(char *)))
+            return ("UKNOWN_ERROR");
+
+        return (errornames[(size_t)c]);
+    } else {
+        if (c - 0xffff >= (sizeof(warningnames) / sizeof(char *)))
+            return ("UKNOWN_WARNING");
+
+        return (warningnames[(size_t)(c - 0xffff)]);
+    }
 }
 
 CN_API void print_error(const ErrorContext *err, FILE *output)

@@ -13,18 +13,22 @@ uint8_t parse_cnressources_xml(CNProject *project, xmlNode *node, const char *pr
 
         res_path = string_from_node(node_child);
 
-        if (!res_path)
+        if (!res_path) {
+            PROPAGATE_ERR();
             return (1);
+        }
 
-        res_path = resolve_path(res_path, project_root);
+        res_path = resolve_path(res_path, project_root, "${project_root}");
 
-        if (!res_path)
+        if (!res_path) {
+            PROPAGATE_ERR();
             return (1);
+        }
 
         temp_s = xmlGetProp(node_child, (xmlChar *)"type");
 
         if (!temp_s) {
-            fprintf(stderr, "missing element type for '%s'.\n", node_child->name);
+            RAISE_FMT(ERR_INVALID_TYPE, "missing element type for '%s'.", node_child->name);
             (void)free(res_path);
             return (1);
         }
@@ -33,28 +37,32 @@ uint8_t parse_cnressources_xml(CNProject *project, xmlNode *node, const char *pr
         xmlFree(temp_s);
 
         if (tp < 0) {
-            fprintf(stderr, "invalid element type for '%s'.\n", node_child->name);
+            RAISE_FMT(ERR_INVALID_TYPE, "invalid element type for '%s'.", node_child->name);
             (void)free(res_path);
             return (1);
         }
 
         if (!strcmp((const char *)node_child->name, "dir")) {
             if (cnressources_walk_path(project, res_path, tp)) {
+                PROPAGATE_ERR();
                 (void)free(res_path);
                 return (1);
             }
         } else if (!strcmp((const char *)node_child->name, "file")) {
             temp_res = new_cnasset(res_path, tp);
 
-            if (!temp_res)
+            if (!temp_res) {
+                PROPAGATE_ERR();
                 return (1);
+            }
 
             if (insert_generic_vector(&project->content, temp_res)) {
+                PROPAGATE_ERR();
                 (void)delete_cnasset(temp_res);
                 return (1);
             }
         } else {
-            fprintf(stderr, "invalid element '%s' in '%s'.\n", node_child->name, node->name);
+            RAISE_FMT(ERR_INVALID_TYPE, "invalid element '%s' in '%s'.", node_child->name, node->name);
             (void)free(res_path);
             return (1);
         }

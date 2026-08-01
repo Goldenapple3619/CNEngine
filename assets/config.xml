@@ -1,0 +1,31 @@
+<engine>
+    <submodules>${ENGINE_ROOT}/assets/submodules</submodules>
+    <ressources>
+        <set machine="linux" architecture="amd64">
+            <includes>${ENGINE_ROOT}/dist/linux-amd64/include</includes>
+            <libs>${ENGINE_ROOT}/dist/linux-amd64/lib</libs>
+            <toolchain>gcc</toolchain>
+        </set>
+
+        <set machine="macos" architecture="amd64">
+            <includes>${ENGINE_ROOT}/dist/macos-arm64/include</includes>
+            <libs>${ENGINE_ROOT}/dist/macos-arm64/lib</libs>
+            <toolchain>gcc</toolchain>
+        </set>
+
+        <set machine="win" architecture="amd64">
+            <includes>${ENGINE_ROOT}/dist/windows-amd64/include</includes>
+            <libs>${ENGINE_ROOT}/dist/windows-amd64/lib</libs>
+            <toolchain>x86_64-w64-mingw32-gcc</toolchain>
+        </set>
+    </ressources>
+    <generator>
+        <include>${ENGINE_ROOT}/assets/generator/engine_main.h</include>
+
+        <src>${ENGINE_ROOT}/assets/generator/main.c</src>
+        <src>${ENGINE_ROOT}/assets/generator/submodules.c</src>
+
+        <src forsubmodule="assets">${ENGINE_ROOT}/assets/generator/submodules/assets.c</src>
+        <src forsubmodule="graphics">${ENGINE_ROOT}/assets/generator/submodules/graphics.c</src>
+    </generator>
+</engine>

@@ -1,0 +1,17 @@
+<module>
+    <name>audio</name>
+    <includes>
+        <file overwrite="true">${INCLUDES}/libcnaudio.h</file>
+        <file>${INCLUDES}/SDL_mixer.h</file>
+    </includes>
+    <libs>
+        <file name="cnaudio" link="true" overwrite="true">${LIBS}/libcnaudio.${EXT}</file>
+        <file>${LIBS}/libSDL2_mixer-2.0.${EXT}</file>
+        <file error="skip">${LIBS}/libogg.${EXT}</file>
+        <file error="skip">${LIBS}/libopusfile.${EXT}</file>
+        <file error="skip">${LIBS}/libopus.${EXT}</file>
+    </libs>
+    <need>
+        <module>core</module>
+    </need>
+</module>

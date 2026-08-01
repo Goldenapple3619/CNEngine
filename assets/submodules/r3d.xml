@@ -1,0 +1,13 @@
+<module>
+    <name>r3d</name>
+    <includes>
+        <file overwrite="true">${INCLUDES}/libr3d.h</file>
+    </includes>
+    <libs>
+        <file name="r3d" link="true" overwrite="true">${LIBS}/libr3d.${EXT}</file>
+    </libs>
+    <need>
+        <module>core</module>
+        <module>graphic</module>
+    </need>
+</module>

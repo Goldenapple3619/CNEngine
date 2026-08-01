@@ -26,11 +26,14 @@ cnbuild_system os_from_string(const char *str)
     return (CNBUILD_SYS_HOST);
 }
 
-uint8_t parse_cnbuilds_xml(CNProject *project, xmlNode *node)
+uint8_t parse_cnbuilds_xml(const EngineConfig *config, CNProject *project, xmlNode *node)
 {
     CNBuild *build;
     char *temp;
     xmlChar *temp_s;
+    char *temp_module;
+    char *temp_module_full;
+    SubModule *submodule;
 
     for (xmlNode *node_child = node->children; node_child; node_child = node_child->next) {
         if (node_child->type != XML_ELEMENT_NODE)
@@ -39,8 +42,10 @@ uint8_t parse_cnbuilds_xml(CNProject *project, xmlNode *node)
         if (!strcmp((const char *)node_child->name, "binary")) {
             build = new_build();
 
-            if (!build)
+            if (!build) {
+                PROPAGATE_ERR();
                 return (1);
+            }
 
             temp_s = xmlGetProp(node_child, (xmlChar *)"os");
 
@@ -73,17 +78,63 @@ uint8_t parse_cnbuilds_xml(CNProject *project, xmlNode *node)
                             temp = string_from_node(deps_node);
 
                             if (!temp) {
+                                PROPAGATE_ERR();
                                 (void)delete_build(build);
                                 return (1);
                             }
 
-                            if (insert_generic_vector(&build->dependencies, temp)) {
+                            temp_module = join_path(config->submodules_location, temp);
+
+                            if (!temp_module) {
+                                PROPAGATE_ERR();
                                 (void)delete_build(build);
                                 (void)free(temp);
                                 return (1);
                             }
+
+                            temp_module_full = replace_extension(temp_module, "xml");
+
+                            (void)free(temp_module);
+
+                            if (!temp_module_full) {
+                                PROPAGATE_ERR();
+                                (void)delete_build(build);
+                                (void)free(temp);
+                                return (1);
+                            }
+
+                            submodule = new_submodule();
+
+                            if (!submodule) {
+                                PROPAGATE_ERR();
+                                (void)free(temp_module_full);
+                                (void)delete_build(build);
+                                (void)free(temp);
+                                return (1);
+                            }
+
+                            if (parse_submodules_xml(submodule, temp_module_full)) {
+                                PROPAGATE_ERR();
+                                (void)delete_submodule(submodule);
+                                (void)free(temp_module_full);
+                                (void)delete_build(build);
+                                (void)free(temp);
+                                return (1);
+                            }
+
+                            (void)free(temp_module_full);
+
+                            if (insert_generic_vector(&build->dependencies, submodule)) {
+                                PROPAGATE_ERR();
+                                (void)delete_submodule(submodule);
+                                (void)delete_build(build);
+                                (void)free(temp);
+                                return (1);
+                            }
+
+                            (void)free(temp);
                         } else {
-                            fprintf(stderr, "invalid element '%s' in '%s'.\n", deps_node->name, build_content_node->name);
+                            RAISE_FMT(ERR_INVALID_TYPE, "invalid element '%s' in '%s'.", deps_node->name, build_content_node->name);
                             (void)delete_build(build);
                             return (1);
                         }
@@ -92,43 +143,50 @@ uint8_t parse_cnbuilds_xml(CNProject *project, xmlNode *node)
                     temp = string_from_node(build_content_node);
 
                     if (!temp) {
+                        PROPAGATE_ERR();
                         (void)delete_build(build);
                         return (1);
                     }
 
                     if (build_set_name(build, temp)) {
+                        PROPAGATE_ERR();
                         (void)delete_build(build);
                         (void)free(temp);
                         return (1);
                     }
                     (void)free(temp);
+                } else if (!strcmp((const char *)build_content_node->name, "assets")) {
+                    RAISE(WAR_IMPORTANT, "assets compilation specification not implemented yet.")
                 } else if (!strcmp((const char *)build_content_node->name, "entry")) {
                     temp = string_from_node(build_content_node);
 
                     if (!temp) {
+                        PROPAGATE_ERR();
                         (void)delete_build(build);
                         return (1);
                     }
 
                     if (build_set_entry_point(build, temp)) {
+                        PROPAGATE_ERR();
                         (void)delete_build(build);
                         (void)free(temp);
                         return (1);
                     }
                     (void)free(temp);
                 } else {
-                    fprintf(stderr, "invalid element '%s' in '%s'.\n", build_content_node->name, node_child->name);
+                    RAISE_FMT(ERR_INVALID_TYPE, "invalid element '%s' in '%s'.", build_content_node->name, node_child->name);
                     (void)delete_build(build);
                     return (1);
                 }
             }
 
             if (insert_generic_vector(&project->builds, build)) {
+                PROPAGATE_ERR();
                 (void)delete_build(build);
                 return (1);
             }
         } else {
-            fprintf(stderr, "invalid element '%s' in '%s'.\n", node_child->name, node->name);
+            RAISE_FMT(ERR_INVALID_TYPE, "invalid element '%s' in '%s'.", node_child->name, node->name);
             return (1);
         }
     }

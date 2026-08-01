@@ -8,6 +8,7 @@
                 <module>core</module>
                 <module>assets</module>
                 <module>graphic</module>
+                <module>input</module>
                 <module>audio</module>
                 <module>r3d</module>
                 <module>rgui</module>
@@ -16,14 +17,23 @@
             <entry>
                 main
             </entry>
+            <assets>
+                <endian>little</endian>
+                <align>8</align>
+                <max-size>2100000000</max-size>
+            </assets>
         </binary>
     </builds>
 
     <ressources>
         <dir type="objects">${project_root}/objects</dir>
+
         <dir type="scenes" packing="nolink">${project_root}/scenes</dir>
+
         <dir type="assets">${project_root}/assets</dir>
+
         <dir type="guis">${project_root}/guis</dir>
+
         <file type="srcs">${project_root}/src/block.c</file>
     </ressources>
 </project>

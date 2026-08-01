@@ -17,3 +17,6 @@ temp
 **/__generated_*
 
 **/agame
+
+*.cno
+*.cbk

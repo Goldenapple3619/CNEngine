@@ -4,6 +4,11 @@
     #include "../build.h"
 
     typedef enum {
+        GENT_INCLUDE = 0x00,
+        GENT_SRC,
+    } generator_type;
+
+    typedef enum {
         CNBUILD_ARCH_HOST = 0x00,
         CNBUILD_ARCH_AMD64,
         CNBUILD_ARCH_I386,
@@ -52,14 +57,83 @@
 
     typedef struct {
         char *output_path;
-        
+
         char *compiler_path;
-        
+
+        cnbuild_system machine;
+        cnbuild_architectures architecture;
+
         char *includes_path;
         char *build_path;
+        char *library_path;
         struct generic_vector_s srcs;
         struct generic_vector_s objs;
+        struct generic_vector_s libs;
+        struct generic_vector_s preprocessor_definitions;
     } LibraryCompiler;
+
+    typedef LibraryCompiler ExecutableCompiler;
+
+    typedef struct {
+        char *dist_path;
+        char *build_path;
+
+        char *compiler_path;
+
+        cnbool endianness; // false big / true little
+        uint16_t alignement;
+        uint64_t max_bank_size;
+
+        struct generic_vector_s srcs;
+        struct generic_vector_s objs;
+    } GameAssetCompiler;
+
+    typedef struct {
+        char *name;
+        char *path;
+        cnbool isdir;
+        cnbool link;
+        cnbool overwrite;
+        cnbool skip_error;
+    } SubModuleLib;
+
+    typedef struct {
+        char *path;
+        cnbool isdir;
+        cnbool overwrite;
+        cnbool skip_error;
+    } SubModuleInclude;
+
+    typedef struct {
+        char *name;
+
+        struct generic_vector_s libs;
+        struct generic_vector_s includes;
+        struct generic_vector_s need;
+    } SubModule;
+
+    typedef struct {
+        cnbuild_architectures architecture;
+        cnbuild_system machine;
+
+        char *lib_path;
+        char *include_path;
+        char *toolchain;
+    } EngineRessourceSet;
+
+    typedef struct {
+        char *location;
+        char *forsubmodule;
+
+        generator_type type;
+    } EngineGeneratorItem;
+
+    typedef struct {
+        char *submodules_location;
+
+        struct generic_vector_s ressources;
+        struct generic_vector_s generator;
+    } EngineConfig;
 
 
     CNProject *new_cnproject(void);
@@ -76,11 +150,44 @@
     cnasset_type tp_from_string(const char *str);
     uint8_t cnressources_walk_path(CNProject *project, char *path, cnasset_type tp);
 
-    char *resolve_path(char *base_path, const char *project_root);
+    char *resolve_path(char *base_path, const char *replace_with, const char *placeholder);
 
-    CNProject *parse_project_xml(const char *file_path, const char *project_root);
+    CNProject *parse_project_xml(const EngineConfig *config, const char *file_path, const char *project_root);
     uint8_t parse_cnressources_xml(CNProject *project, xmlNode *node, const char *project_root);
-    uint8_t parse_cnbuilds_xml(CNProject *project, xmlNode *node);
+    uint8_t parse_cnbuilds_xml(const EngineConfig *config, CNProject *project, xmlNode *node);
+    uint8_t parse_submodules_xml(SubModule *submodule, const char *xml_path);
 
-    uint8_t compile_library(const CNProject *project, const CNBuild *build_info, const char *output_path, const char *build_path, const char *include_path);
+    uint8_t compile_library(const CNProject *project, const CNBuild *build_info, const char *output_path, const char *build_path, const char *include_path, const char *lib_path);
+    uint8_t library_compiler_set_library_path(LibraryCompiler *compiler, const char *library_path);
+    uint8_t library_compiler_set_include_path(LibraryCompiler *compiler, const char *include_path);
+    uint8_t library_compiler_add_lib(LibraryCompiler *compiler, const char *libname);
+    uint8_t library_compiler_add_src(LibraryCompiler *compiler, const char *srcname);
+    LibraryCompiler *new_library_compiler(const char *libname, const char *toolchain, const char *build_path);
+    void delete_library_compiler(LibraryCompiler *compiler);
+    void clear_submodule_datas(SubModule *submodule);
+    SubModule *new_submodule(void);
+    void delete_submodule(SubModule *submodule);
+
+    EngineConfig *parse_config_xml(const char *file_path, const char *engine_root);
+
+    EngineRessourceSet *new_ressource_set(void);
+    void delete_ressource_set(EngineRessourceSet *set);
+
+    EngineConfig *new_engine_config(void);
+    void delete_engine_config(EngineConfig *config);
+
+    char *sysname_from_system(cnbuild_system system);
+
+    cnbool has_ressource_set(const EngineConfig *config, cnbuild_architectures arch, cnbuild_system machine);
+    const EngineRessourceSet *find_ressource_set(const EngineConfig *config, cnbuild_architectures arch, cnbuild_system machine);
+
+    cnbuild_system os_from_string(const char *str);
+    cnbuild_architectures arch_from_string(const char *str);
+
+    EngineGeneratorItem *new_generator_item(void);
+    void delete_generator_item(EngineGeneratorItem *item);
+
+    uint8_t compile_executable(const EngineConfig *config, const CNProject *project, const CNBuild *build_info, const char *output_path, const char *build_path, const char *include_path, const char *lib_path);
+    uint8_t library_compiler_add_preprocessor_definition(LibraryCompiler *compiler, const char *definition_name, const char *definition_content);
+    uint8_t compile_assets(const CNProject *project, const CNBuild *build_info, const char *dist_path, const char *build_path, const char *toolchain_path);
 #endif

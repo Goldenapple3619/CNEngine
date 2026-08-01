@@ -110,16 +110,25 @@ CN_API const char *object_file_reader_get_string(const CNAssetReader *reader, ui
 
 CN_API uint8_t object_file_reader_get_section(const CNAssetReader *reader, struct section_blk *section_block, uint64_t section_index)
 {
+    if (!section_block) {
+        RAISE(ERR_INVALID_POINTER, "can't put section data to empty section_blk.");
+        return (1);
+    }
+
     if (!reader || !reader->_content.ready) {
         RAISE(ERR_INVALID_POINTER, "can't get section of empty/notready reader.");
         section_block->section_blk_ptr = NULL;
         section_block->blk_size = 0;
+        section_block->section_flags = ENGINE_SEC_NULL_FLAG;
+        section_block->section_type = ENGINE_SEC_UKN;
         return (1);
     }
     if (section_index >= reader->section_header.section_count) {
         RAISE_FMT(ERR_OUT_OF_BOUND, "can't get section at invalid position (%" PRIu64 " >= %" PRIu64 ").", section_index, reader->section_header.section_count);
         section_block->section_blk_ptr = NULL;
         section_block->blk_size = 0;
+        section_block->section_flags = ENGINE_SEC_NULL_FLAG;
+        section_block->section_type = ENGINE_SEC_UKN;
         return (1);
     }
 
@@ -129,11 +138,15 @@ CN_API uint8_t object_file_reader_get_section(const CNAssetReader *reader, struc
         RAISE_FMT(ERR_CORRUPT_OR_INVALID, "can't get section at invalid location (%zu < %" PRIu64 ").", reader->_content.size, reader->section_header.entries[section_index].section_off);
         section_block->section_blk_ptr = NULL;
         section_block->blk_size = 0;
+        section_block->section_flags = ENGINE_SEC_NULL_FLAG;
+        section_block->section_type = ENGINE_SEC_UKN;
         return (1);
     }
 
     section_block->section_blk_ptr = (const uint8_t *)(res + reader->section_header.entries[section_index].section_off);
     section_block->blk_size = reader->section_header.entries[section_index].section_size;
+    section_block->section_flags = reader->section_header.entries[section_index].section_flags;
+    section_block->section_type = reader->section_header.entries[section_index].section_type;
 
     return (0);
 }

@@ -1,0 +1,13 @@
+<module>
+    <name>input</name>
+    <includes>
+        <file overwrite="true">${INCLUDES}/libcninput.h</file>
+    </includes>
+    <libs>
+        <file name="cninput" link="true" overwrite="true">${LIBS}/libcninput.${EXT}</file>
+    </libs>
+    <need>
+        <module>core</module>
+        <module>graphic</module>
+    </need>
+</module>

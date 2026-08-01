@@ -1,0 +1,13 @@
+<module>
+    <name>r2d</name>
+    <includes>
+        <file overwrite="true">${INCLUDES}/libr2d.h</file>
+    </includes>
+    <libs>
+        <file name="r2d" link="true" overwrite="true">${LIBS}/libr2d.${EXT}</file>
+    </libs>
+    <need>
+        <module>core</module>
+        <module>graphic</module>
+    </need>
+</module>

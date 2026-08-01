@@ -82,7 +82,7 @@ void delete_build(CNBuild *build)
     }
 
     if (build->dependencies.content)
-        (void)empty_generic_vector(&build->dependencies, &free);
+        (void)empty_generic_vector(&build->dependencies, (expr_free)&delete_submodule);
     if (build->name)
         (void)free(build->name);
     if (build->scene_entry_point)

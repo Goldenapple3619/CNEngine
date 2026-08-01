@@ -495,7 +495,7 @@ CN_API uint8_t write_object_file(FILE *fp, const struct engine_object_file_write
                 return (1);
             }
         } else {
-            RAISE_FMT(WAR_IMPORTANT, "written an empty section at %" PRIx64 "\n", ENGINE_FTELL(fp))
+            RAISE_FMT(WAR_IMPORTANT, "written an empty section at %" PRIx64 ".", ENGINE_FTELL(fp))
         }
 
         if (content)
