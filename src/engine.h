@@ -1,6 +1,10 @@
 #ifndef _ENGINE_H_
     #define _ENGINE_H_
 
+    #if !defined(_FILE_OFFSET_BITS)
+        #define _FILE_OFFSET_BITS 64
+    #endif
+
     #include <stdio.h>
     #include <signal.h>
     #include <stdint.h>
