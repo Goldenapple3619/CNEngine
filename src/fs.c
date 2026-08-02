@@ -1,13 +1,45 @@
 #include "engine.h"
 
+#if !defined(_WIN32) && !defined(_FILE_OFFSET_BITS)
+    #define _FILE_OFFSET_BITS 64
+#endif
+
+#if defined(_WIN32)
+    #include <windows.h>
+#else
+    #include <sys/stat.h>
+#endif
+
 uint64_t get_file_size(const char *path)
 {
-    struct stat st;
-
-    if (stat(path, &st) != 0)
+    if (path == NULL)
         return (0);
 
-    return (uint64_t)st.st_size;
+    #if defined(_WIN32)
+        WIN32_FILE_ATTRIBUTE_DATA attr;
+        ULARGE_INTEGER size;
+
+        if (!GetFileAttributesExA(path, GetFileExInfoStandard, &attr))
+            return (0);
+
+        if (attr.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
+            return (0);
+
+        size.HighPart = attr.nFileSizeHigh;
+        size.LowPart  = attr.nFileSizeLow;
+
+        return ((uint64_t)size.QuadPart);
+
+    #else
+        struct stat st;
+        if (stat(path, &st) != 0)
+            return (0);
+
+        if (!S_ISREG(st.st_mode))
+            return (0);
+
+        return ((uint64_t)st.st_size);
+    #endif
 }
 
 char *get_dirname(const char *path)
