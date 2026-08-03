@@ -71,6 +71,33 @@ CN_API void str_override(String *str, char *c_str)
     str->size = c_str ? strlen(c_str) : 0;
 }
 
+CN_API uint8_t str_override_cp(String *str, const char *c_str)
+{
+    if (!str) {
+        RAISE(ERR_INVALID_POINTER, "can't override empty str content.");
+        return (1);
+    }
+
+    if (str->c_str)
+        (void)free(str->c_str);
+
+    if (!c_str) {
+        str->c_str = NULL;
+        str->size = 0;
+        return (0);
+    }
+
+    str->c_str = strdup(c_str);
+    str->size = str->c_str ? strlen(str->c_str) : 0;
+
+    if (!str->c_str) {
+        RAISE(ERR_OUT_OF_MEMORY, "failed to allocate new c_str.");
+        return (1);
+    }
+
+    return (0);
+}
+
 CN_API uint8_t str_rcadd_mv(String *str, char *c_str)
 {
     if (!str) {
@@ -121,6 +148,88 @@ CN_API uint8_t str_rcadd_cp(String *str, const char *c_str)
 
     (void)strcpy(new_cstr, str->c_str ? str->c_str : "");
     (void)strcpy(new_cstr + str->size, c_str);
+
+    (void)str_override(str, new_cstr);
+    return (0);
+}
+
+CN_API void empty_str(String *str)
+{
+    if (!str) {
+        RAISE(ERR_INVALID_POINTER, "can't empty empty string.");
+        return;
+    }
+
+    if (str->c_str) {
+        (void)free(str->c_str);
+        str->c_str = NULL;
+    }
+    str->size = 0;
+}
+
+CN_API uint8_t str_replace(String *str, const char *to_replace, const char *with, size_t count)
+{
+    if (!str) {
+        RAISE(ERR_INVALID_POINTER, "can't replace in empty string.");
+        return (1);
+    }
+
+    if (!to_replace || !*to_replace) {
+        RAISE(ERR_INVALID_POINTER, "can't replace an empty or null token.");
+        return (1);
+    }
+
+    if (!str->c_str) {
+        return (0);
+    }
+
+    const char *with_str = with ? with : "";
+    const char *scan = str->c_str;
+    const char *found;
+    char *new_cstr;
+
+    size_t to_replace_len = strlen(to_replace);
+    size_t with_len = strlen(with_str);
+    size_t occurrences = 0;
+    size_t new_size;
+
+    while ((count == 0 || occurrences < count) && (found = strstr(scan, to_replace))) {
+        occurrences++;
+        scan = found + to_replace_len;
+    }
+
+    if (!occurrences) {
+        return (0);
+    }
+
+    new_size = str->size - (occurrences * to_replace_len) + (occurrences * with_len);
+    new_cstr = malloc(sizeof(char) * (new_size + 1));
+
+    if (!new_cstr) {
+        RAISE(ERR_OUT_OF_MEMORY, "failed to allocate new c_str.");
+        return (1);
+    }
+
+    char *dst = new_cstr;
+    const char *src = str->c_str;
+    size_t replaced = 0;
+    size_t chunk_len;
+    size_t remaining;
+
+    while ((count == 0 || replaced < count) && (found = strstr(src, to_replace))) {
+        chunk_len = (size_t)(found - src);
+        (void)memcpy(dst, src, chunk_len);
+        dst += chunk_len;
+        (void)memcpy(dst, with_str, with_len);
+        dst += with_len;
+        src = found + to_replace_len;
+        replaced++;
+    }
+
+    remaining = strlen(src);
+    (void)memcpy(dst, src, remaining);
+    dst += remaining;
+    *dst = '\0';
 
     (void)str_override(str, new_cstr);
     return (0);

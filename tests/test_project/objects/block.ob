@@ -1,7 +1,7 @@
 <object base="__builtin_object3d" name="block">
-    <srcs packing="lib">
-        <c>${PROJECT_SRC}/block.c</c>
-    </srcs>
+    <generate_in>
+        ${project_root}/src/block.c
+    </generate_in>
 
     <methods>
         <symbol name="_update">_update_block</symbol>

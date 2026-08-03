@@ -16,6 +16,9 @@ CNBuild *new_build(void)
     build->machine = CNBUILD_SYS_HOST;
     build->scene_entry_point = NULL;
     build->name = NULL;
+    build->assets_endian = false;
+    build->assets_alignement = 8;
+    build->assets_max_bank_size = 21000000000;
     return (build);
 }
 

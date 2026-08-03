@@ -50,6 +50,7 @@
     uint8_t make_dir(const char *path);
     cnbool is_file(const char *path);
     uint64_t get_file_size(const char *path);
+    char *flatten_source_path(const char *src);
 
     int argument_route(size_t argc, char **argv);
 

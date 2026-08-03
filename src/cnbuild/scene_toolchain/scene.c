@@ -103,7 +103,7 @@ uint8_t build_element_attribs(xmlNode *node, struct scene_element_s *element)
                 return (1);
             }
         } else {
-            _init_attribute_value(&temp->value, (cnany)text);
+            _init_attribute_value(&temp->value, strdup(text));
         }
 
         (void)free(text);
@@ -207,7 +207,6 @@ struct generic_vector_s *parse_xml_scene(const char *file_path, struct engine_ob
     if (strcmp((const char *)root->name, "scene")) {
         RAISE_FMT(ERR_INVALID_TYPE, "invalid root type, expected: 'scene', got: '%s' in '%s'.", root->name, file_path);
         (void)xmlFreeDoc(doc);
-        (void)xmlCleanupParser();
         return (NULL);
     }
 
@@ -215,7 +214,6 @@ struct generic_vector_s *parse_xml_scene(const char *file_path, struct engine_ob
     if (writer_ctx_set_object_name(wctx, (const char *)temp_s)) {
         PROPAGATE_ERR();
         (void)xmlFreeDoc(doc);
-        (void)xmlCleanupParser();
         return (NULL);
     }
     xmlFree(temp_s);
@@ -225,7 +223,6 @@ struct generic_vector_s *parse_xml_scene(const char *file_path, struct engine_ob
     if (!parsed_data) {
         PROPAGATE_ERR();
         (void)xmlFreeDoc(doc);
-        (void)xmlCleanupParser();
         return (NULL);
     }
 
@@ -241,13 +238,11 @@ struct generic_vector_s *parse_xml_scene(const char *file_path, struct engine_ob
             RAISE_FMT(ERR_INVALID_TYPE, "invalid node type for: '%s', got: '%s'.", node->name, root->name);
             delete_generic_vector(parsed_data, (expr_free)&delete_parsed_scene);
             (void)xmlFreeDoc(doc);
-            (void)xmlCleanupParser();
             return (NULL);
         }
     }
 
     (void)xmlFreeDoc(doc);
-    (void)xmlCleanupParser();
     return (parsed_data);
 }
 

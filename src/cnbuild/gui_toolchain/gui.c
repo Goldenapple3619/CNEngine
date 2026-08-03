@@ -123,7 +123,6 @@ struct generic_vector_s *parse_xml_gui(const char *file_path, struct engine_obje
     if (strcmp((const char *)root->name, "gui")) {
         RAISE_FMT(ERR_INVALID_TYPE, "invalid root type, expected: 'gui', got: '%s' in '%s'.", root->name, file_path);
         (void)xmlFreeDoc(doc);
-        (void)xmlCleanupParser();
         return (NULL);
     }
 
@@ -131,7 +130,6 @@ struct generic_vector_s *parse_xml_gui(const char *file_path, struct engine_obje
     if (writer_ctx_set_object_name(wctx, (const char *)temp_s)) {
         PROPAGATE_ERR();
         (void)xmlFreeDoc(doc);
-        (void)xmlCleanupParser();
         return (NULL);
     }
     xmlFree(temp_s);
@@ -141,7 +139,6 @@ struct generic_vector_s *parse_xml_gui(const char *file_path, struct engine_obje
     if (!parsed_data) {
         PROPAGATE_ERR();
         (void)xmlFreeDoc(doc);
-        (void)xmlCleanupParser();
         return (NULL);
     }
 
@@ -156,7 +153,6 @@ struct generic_vector_s *parse_xml_gui(const char *file_path, struct engine_obje
                     PROPAGATE_ERR();
                     delete_generic_vector(parsed_data, (expr_free)&delete_parsed_gui);
                     (void)xmlFreeDoc(doc);
-                    (void)xmlCleanupParser();
                     return (NULL);
                 }
             }
@@ -169,14 +165,11 @@ struct generic_vector_s *parse_xml_gui(const char *file_path, struct engine_obje
             RAISE_FMT(ERR_INVALID_TYPE, "invalid node type for: '%s', got: '%s'.", node->name, root->name);
             delete_generic_vector(parsed_data, (expr_free)&delete_parsed_gui);
             (void)xmlFreeDoc(doc);
-            (void)xmlCleanupParser();
             return (NULL);
         }
     }
 
     (void)xmlFreeDoc(doc);
-    (void)xmlCleanupParser();
-
     return (parsed_data);
 }
 

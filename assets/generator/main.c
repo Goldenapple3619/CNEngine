@@ -1,3 +1,5 @@
+#define SDL_MAIN_HANDLED
+
 #include "engine_main.h"
 
 static Object *global_ctx = NULL;

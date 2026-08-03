@@ -436,7 +436,6 @@ uint8_t copytree(const char *src, const char *dst, cnbool overwrite)
                 }
             } else {
                 if (is_file(dst_path) && !overwrite) {
-                    FindClose(h);
                     free(src_path);
                     free(dst_path);
                     continue;
@@ -522,4 +521,34 @@ uint8_t make_dir(const char *path)
     }
 
     return (0);
+}
+
+char *flatten_source_path(const char *src)
+{
+    if (!src) {
+        RAISE(ERR_INVALID_POINTER, "can't flatten empty src.");
+        return (NULL);
+    }
+
+    size_t len = strlen(src);
+    char *out = malloc(len * 2 + 1);
+    size_t j = 0;
+
+    if (!out) {
+        RAISE(ERR_OUT_OF_MEMORY, "failed to allocate new flatten source path.");
+        return (NULL);
+    }
+
+    for (size_t i = 0; i < len; ++i) {
+        if (src[i] == '_') {
+            out[j++] = '_';
+            out[j++] = '_';
+        } else if (src[i] == '/' || src[i] == '\\') {
+            out[j++] = '_';
+        } else {
+            out[j++] = src[i];
+        }
+    }
+    out[j] = '\0';
+    return (out);
 }

@@ -18,7 +18,6 @@ CNProject *parse_project_xml(const EngineConfig *config, const char *file_path, 
     if (strcmp((const char *)root->name, "project")) {
         RAISE_FMT(ERR_INVALID_TYPE, "invalid element '%s' in '%s'.", root->name, file_path);
         (void)xmlFreeDoc(doc);
-        (void)xmlCleanupParser();
         return (NULL);
     }
 
@@ -27,7 +26,6 @@ CNProject *parse_project_xml(const EngineConfig *config, const char *file_path, 
     if (!parsed_data) {
         PROPAGATE_ERR();
         (void)xmlFreeDoc(doc);
-        (void)xmlCleanupParser();
         return (NULL);
     }
 
@@ -44,7 +42,6 @@ CNProject *parse_project_xml(const EngineConfig *config, const char *file_path, 
                 PROPAGATE_ERR();
                 (void)delete_cnproject(parsed_data);
                 (void)xmlFreeDoc(doc);
-                (void)xmlCleanupParser();
                 return (NULL);
             }
         } else if (!strcmp((const char *)node->name, "version")) {
@@ -57,7 +54,6 @@ CNProject *parse_project_xml(const EngineConfig *config, const char *file_path, 
                 PROPAGATE_ERR();
                 (void)delete_cnproject(parsed_data);
                 (void)xmlFreeDoc(doc);
-                (void)xmlCleanupParser();
                 return (NULL);
             }
         } else if (!strcmp((const char *)node->name, "builds")) {
@@ -65,7 +61,6 @@ CNProject *parse_project_xml(const EngineConfig *config, const char *file_path, 
                 PROPAGATE_ERR();
                 (void)delete_cnproject(parsed_data);
                 (void)xmlFreeDoc(doc);
-                (void)xmlCleanupParser();
                 return (NULL);
             }
         } else if (!strcmp((const char *)node->name, "ressources")) {
@@ -73,20 +68,16 @@ CNProject *parse_project_xml(const EngineConfig *config, const char *file_path, 
                 PROPAGATE_ERR();
                 (void)delete_cnproject(parsed_data);
                 (void)xmlFreeDoc(doc);
-                (void)xmlCleanupParser();
                 return (NULL);
             }
         } else {
             RAISE_FMT(ERR_INVALID_TYPE, "invalid element '%s' in '%s'.", node->name, root->name);
             (void)delete_cnproject(parsed_data);
             (void)xmlFreeDoc(doc);
-            (void)xmlCleanupParser();
             return (NULL);
         }
     }
 
     (void)xmlFreeDoc(doc);
-    (void)xmlCleanupParser();
-
     return (parsed_data);
 }

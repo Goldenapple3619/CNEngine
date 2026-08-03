@@ -55,6 +55,13 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(SDL2)
 
+if(WIN32)
+    set_target_properties(SDL2 PROPERTIES
+        PREFIX ""
+        OUTPUT_NAME "libSDL2-2.0"
+    )
+endif()
+
 set(SDL2IMAGE_VENDORED ON CACHE BOOL "" FORCE)
 set(SDL2IMAGE_EXTERNAL_PROJECT_BUILD_ALWAYS ON)
 
@@ -91,6 +98,13 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(SDL2_image)
 
+if(WIN32)
+    set_target_properties(SDL2_image PROPERTIES
+        PREFIX ""
+        OUTPUT_NAME "libSDL2_image-2.0"
+    )
+endif()
+
 set(SDL2TTF_VENDORED ON CACHE BOOL "" FORCE)
 set(SDL2TTF_HARFBUZZ ON CACHE BOOL "" FORCE)
 
@@ -100,6 +114,13 @@ FetchContent_Declare(
     GIT_TAG release-2.24.0
 )
 FetchContent_MakeAvailable(SDL2_ttf)
+
+if(WIN32)
+    set_target_properties(SDL2_ttf PROPERTIES
+        PREFIX ""
+        OUTPUT_NAME "libSDL2_ttf-2.0"
+    )
+endif()
 
 set(SDL2MIXER_WAVPACK OFF CACHE BOOL "" FORCE)
 set(SDL2MIXER_VENDORED ON CACHE BOOL "" FORCE)
@@ -125,6 +146,13 @@ FetchContent_Declare(
 )
 
 FetchContent_MakeAvailable(SDL2_mixer)
+
+if(WIN32)
+    set_target_properties(SDL2_mixer PROPERTIES
+        PREFIX ""
+        OUTPUT_NAME "libSDL2_mixer-2.0"
+    )
+endif()
 
 FetchContent_Declare(
     glad
@@ -195,6 +223,7 @@ add_subdirectory(lib/r3d)
 
 add_subdirectory(lib/formats/cnguiobj)
 add_subdirectory(lib/formats/cnsceneobj)
+add_subdirectory(lib/formats/cnobjectobj)
 
 # dist deploy
 add_custom_target(cn_dist ALL)
@@ -235,6 +264,7 @@ if(CN_BUILD_ENGINE)
         src/cnbuild/project_toolchain/generation/library_compiler.c
         src/cnbuild/project_toolchain/generation/executable_compiler.c
         src/cnbuild/project_toolchain/generation/game_assets_compiler.c
+        src/cnbuild/project_toolchain/generation/object_instance_generator.c
     
         src/cnbuild/gui_toolchain/route.c
         src/cnbuild/gui_toolchain/gui.c
@@ -302,6 +332,7 @@ if(CN_BUILD_ENGINE)
 
             lib/formats/cnguiobj/include
             lib/formats/cnsceneobj/include
+            lib/formats/cnobjectobj/include
     )
 
     # main
@@ -389,7 +420,7 @@ foreach(lib cncore cngraphic cnaudio cninput cnassets rgui r2d r3d)
 endforeach()
 
 #includes formats
-foreach(lib cnguiobj cnsceneobj)
+foreach(lib cnguiobj cnsceneobj cnobjectobj)
     add_custom_command(TARGET cn_dist POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory
             "${CMAKE_SOURCE_DIR}/lib/formats/${lib}/include"
@@ -470,7 +501,7 @@ foreach(lib glad_gl)
 endforeach()
 
 # modules libraries
-foreach(lib cncore cngraphic cnaudio cninput cnassets rgui r2d r3d cnguiobj cnsceneobj)
+foreach(lib cncore cngraphic cnaudio cninput cnassets rgui r2d r3d cnguiobj cnsceneobj cnobjectobj)
     add_custom_command(TARGET cn_dist POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_if_different
             $<TARGET_FILE:${lib}>

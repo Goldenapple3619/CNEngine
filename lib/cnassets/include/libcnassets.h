@@ -55,6 +55,7 @@
 
     typedef enum {
         ENGINE_SEC_UKN = 0x00, // reserved
+        ENGINE_SEC_RAW,
         ENGINE_SEC_GUI_NODES,
         ENGINE_SEC_GUI_STYLE,
         ENGINE_SEC_GUI_CONN,

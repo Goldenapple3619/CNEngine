@@ -457,6 +457,7 @@
     CN_API void delete_generic_map(struct generic_map_s *gen_map, void (*_delete_obj)(void *));
     CN_API void empty_generic_map(struct generic_map_s *gen_map, void (*_delete_obj)(void *));
     CN_API cnbool has_generic_map(struct generic_map_s *gen_map, const char *key);
+    CN_API void init_generic_vector(struct generic_vector_s *vec);
 
     CN_API struct generic_vector_s *new_generic_vector(void);
     CN_API uint8_t resize_generic_vector(struct generic_vector_s *vec, size_t new_capacity);
@@ -531,6 +532,9 @@
     CN_API uint8_t str_rcadd_mv(String *str, char *c_str);
     CN_API uint8_t str_rcadd_cp(String *str, const char *c_str);
     CN_API void delete_str(String *str);
+    CN_API uint8_t str_override_cp(String *str, const char *c_str);
+    CN_API void empty_str(String *str);
+    CN_API uint8_t str_replace(String *str, const char *to_replace, const char *with, size_t count);
 
     #if defined(__MINGW32__) || defined(__MINGW64__)
         CN_API void raise_error_fmt(ErrorCode c, const char *file, const char *function, uint32_t line, const char *fmt, ...) __attribute__((format(gnu_printf, 5, 6)));

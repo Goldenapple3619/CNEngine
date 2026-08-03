@@ -26,6 +26,64 @@ cnbuild_system os_from_string(const char *str)
     return (CNBUILD_SYS_HOST);
 }
 
+uint8_t parse_assets_compile_settings_xml(CNBuild *build, xmlNode *node)
+{
+    char *temp;
+
+    for (xmlNode *node_child = node->children; node_child; node_child = node_child->next) {
+        if (node_child->type != XML_ELEMENT_NODE)
+            continue;
+
+        if (!strcmp((const char *)node_child->name, "endian")) {
+            temp = string_from_node(node_child);
+
+            if (!temp) {
+                PROPAGATE_ERR();
+                return (1);
+            }
+
+            if (!strcmp(temp, "little")) {
+                build->assets_endian = true;
+            } else if (!strcmp(temp, "big")) {
+                build->assets_endian = false;
+            } else {
+                RAISE_FMT(ERR_INVALID_TYPE, "invalid endianness in '%s', '%s'.", node_child->name, temp);
+                (void)free(temp);
+                return (1);
+            }
+
+            (void)free(temp);
+        } else if (!strcmp((const char *)node_child->name, "align")) {
+            temp = string_from_node(node_child);
+
+            if (!temp) {
+                PROPAGATE_ERR();
+                return (1);
+            }
+
+            build->assets_alignement = (uint16_t)strtoul((const char *)temp, NULL, 10);
+
+            (void)free(temp);
+        } else if (!strcmp((const char *)node_child->name, "max-size")) {
+            temp = string_from_node(node_child);
+
+            if (!temp) {
+                PROPAGATE_ERR();
+                return (1);
+            }
+
+            build->assets_max_bank_size = (uint64_t)strtoull((const char *)temp, NULL, 10);
+
+            (void)free(temp);
+        } else {
+            RAISE_FMT(ERR_INVALID_TYPE, "invalid element '%s' in '%s'.", node_child->name, node->name);
+            return (1);
+        }
+    }
+
+    return (0);
+}
+
 uint8_t parse_cnbuilds_xml(const EngineConfig *config, CNProject *project, xmlNode *node)
 {
     CNBuild *build;
@@ -156,7 +214,11 @@ uint8_t parse_cnbuilds_xml(const EngineConfig *config, CNProject *project, xmlNo
                     }
                     (void)free(temp);
                 } else if (!strcmp((const char *)build_content_node->name, "assets")) {
-                    RAISE(WAR_IMPORTANT, "assets compilation specification not implemented yet.")
+                    if (parse_assets_compile_settings_xml(build, build_content_node)) {
+                        PROPAGATE_ERR();
+                        (void)delete_build(build);
+                        return (1);
+                    }
                 } else if (!strcmp((const char *)build_content_node->name, "entry")) {
                     temp = string_from_node(build_content_node);
 

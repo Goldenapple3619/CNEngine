@@ -263,7 +263,6 @@ uint8_t parse_submodules_xml(SubModule *submodule, const char *xml_path)
     if (strcmp((const char *)root->name, "module")) {
         RAISE_FMT(ERR_INVALID_TYPE, "invalid element '%s' in '%s'.", root->name, xml_path);
         (void)xmlFreeDoc(doc);
-        (void)xmlCleanupParser();
         return (1);
     }
 
@@ -279,35 +278,31 @@ uint8_t parse_submodules_xml(SubModule *submodule, const char *xml_path)
             if (!submodule->name) {
                 PROPAGATE_ERR();
                 (void)xmlFreeDoc(doc);
-                (void)xmlCleanupParser();
                 return (1);
             }
         } else if (!strcmp((const char *)node->name, "includes")) {
             if (parse_submodule_includes_xml(submodule, node)) {
                 PROPAGATE_ERR();
                 (void)xmlFreeDoc(doc);
-                (void)xmlCleanupParser();
                 return (1);
             }
         } else if (!strcmp((const char *)node->name, "libs")) {
             if (parse_submodule_libs_xml(submodule, node)) {
                 PROPAGATE_ERR();
                 (void)xmlFreeDoc(doc);
-                (void)xmlCleanupParser();
                 return (1);
             }
         } else if (!strcmp((const char *)node->name, "need")) {
             for (xmlNode *node_child = node->children; node_child; node_child = node_child->next) {
                 if (node_child->type != XML_ELEMENT_NODE)
                     continue;
-                    
+
                 if (!strcmp((const char *)node_child->name, "module")) {
                     temp_str = string_from_node(node);
 
                     if (!temp_str) {
                         PROPAGATE_ERR();
                         (void)xmlFreeDoc(doc);
-                        (void)xmlCleanupParser();
                         return (1);
                     }
 
@@ -315,26 +310,21 @@ uint8_t parse_submodules_xml(SubModule *submodule, const char *xml_path)
                         PROPAGATE_ERR();
                         (void)free(temp_str);
                         (void)xmlFreeDoc(doc);
-                        (void)xmlCleanupParser();
                         return (1);
                     };
                 } else {
                     RAISE_FMT(ERR_INVALID_TYPE, "invalid element '%s' in '%s'.", node_child->name, node->name);
                     (void)xmlFreeDoc(doc);
-                    (void)xmlCleanupParser();
                     return (1);
                 }
             }
         } else {
             RAISE_FMT(ERR_INVALID_TYPE, "invalid element '%s' in '%s'.", node->name, root->name);
             (void)xmlFreeDoc(doc);
-            (void)xmlCleanupParser();
             return (1);
         }
     }
 
     (void)xmlFreeDoc(doc);
-    (void)xmlCleanupParser();
-
     return (0);
 }
