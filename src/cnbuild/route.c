@@ -118,17 +118,43 @@ Object *init_asset_ctx(void)
         return (NULL);
     }
 
-    if (call_method(asset_ctx, "register_fmt", PACK_ARG("./dist/linux-amd64/lib/libcnguiobj.so")).as.i == VALUE_ERR.as.i) {
-        PROPAGATE_ERR();
-        DELOC(asset_ctx);
-        return (NULL);
-    }
+    #ifdef _WIN32
+        if (call_method(asset_ctx, "register_fmt", PACK_ARG("./dist/windows-amd64/lib/libcnguiobj.dll")).as.i == VALUE_ERR.as.i) {
+            PROPAGATE_ERR();
+            DELOC(asset_ctx);
+            return (NULL);
+        }
 
-    if (call_method(asset_ctx, "register_fmt", PACK_ARG("./dist/linux-amd64/lib/libcnsceneobj.so")).as.i == VALUE_ERR.as.i) {
-        PROPAGATE_ERR();
-        DELOC(asset_ctx);
-        return (NULL);
-    }
+        if (call_method(asset_ctx, "register_fmt", PACK_ARG("./dist/windows-amd64/lib/libcnsceneobj.dll")).as.i == VALUE_ERR.as.i) {
+            PROPAGATE_ERR();
+            DELOC(asset_ctx);
+            return (NULL);
+        }
+
+        if (call_method(asset_ctx, "register_fmt", PACK_ARG("./dist/windows-amd64/lib/libcnobjectobj.dll")).as.i == VALUE_ERR.as.i) {
+            PROPAGATE_ERR();
+            DELOC(asset_ctx);
+            return (NULL);
+        }
+    #else
+        if (call_method(asset_ctx, "register_fmt", PACK_ARG("./dist/linux-amd64/lib/libcnguiobj.so")).as.i == VALUE_ERR.as.i) {
+            PROPAGATE_ERR();
+            DELOC(asset_ctx);
+            return (NULL);
+        }
+
+        if (call_method(asset_ctx, "register_fmt", PACK_ARG("./dist/linux-amd64/lib/libcnsceneobj.so")).as.i == VALUE_ERR.as.i) {
+            PROPAGATE_ERR();
+            DELOC(asset_ctx);
+            return (NULL);
+        }
+
+        if (call_method(asset_ctx, "register_fmt", PACK_ARG("./dist/linux-amd64/lib/libcnobjectobj.so")).as.i == VALUE_ERR.as.i) {
+            PROPAGATE_ERR();
+            DELOC(asset_ctx);
+            return (NULL);
+        }
+    #endif
 
     return (asset_ctx);
 }
@@ -154,6 +180,7 @@ int build(size_t argc, char **argv)
         if (!strcmp((*(build_types + i)).name, argv[2])) {
             ret = ((*(build_types + i)).callback(argc, argv, asset_ctx));
             DELOC(asset_ctx);
+            (void)xmlCleanupParser();
             return (ret);
         }
         ++i;

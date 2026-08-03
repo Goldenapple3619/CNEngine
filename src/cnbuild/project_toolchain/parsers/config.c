@@ -238,7 +238,6 @@ EngineConfig *parse_config_xml(const char *file_path, const char *engine_root)
     if (strcmp((const char *)root->name, "engine")) {
         RAISE_FMT(ERR_INVALID_TYPE, "invalid element '%s' in '%s' expected 'engine'.", root->name, file_path);
         (void)xmlFreeDoc(doc);
-        (void)xmlCleanupParser();
         return (NULL);
     }
 
@@ -247,7 +246,6 @@ EngineConfig *parse_config_xml(const char *file_path, const char *engine_root)
     if (!parsed_data) {
         PROPAGATE_ERR();
         (void)xmlFreeDoc(doc);
-        (void)xmlCleanupParser();
         return (NULL);
     }
 
@@ -264,7 +262,6 @@ EngineConfig *parse_config_xml(const char *file_path, const char *engine_root)
                 PROPAGATE_ERR();
                 (void)delete_engine_config(parsed_data);
                 (void)xmlFreeDoc(doc);
-                (void)xmlCleanupParser();
                 return (NULL);
             }
 
@@ -274,7 +271,6 @@ EngineConfig *parse_config_xml(const char *file_path, const char *engine_root)
                 PROPAGATE_ERR();
                 (void)delete_engine_config(parsed_data);
                 (void)xmlFreeDoc(doc);
-                (void)xmlCleanupParser();
                 return (NULL);
             }
 
@@ -283,7 +279,6 @@ EngineConfig *parse_config_xml(const char *file_path, const char *engine_root)
                 PROPAGATE_ERR();
                 (void)delete_engine_config(parsed_data);
                 (void)xmlFreeDoc(doc);
-                (void)xmlCleanupParser();
                 return (NULL);
             }
         } else if (!strcmp((const char *)node->name, "generator")) {
@@ -291,20 +286,16 @@ EngineConfig *parse_config_xml(const char *file_path, const char *engine_root)
                 PROPAGATE_ERR();
                 (void)delete_engine_config(parsed_data);
                 (void)xmlFreeDoc(doc);
-                (void)xmlCleanupParser();
                 return (NULL);
             }
         } else {
             RAISE_FMT(ERR_INVALID_TYPE, "invalid element '%s' in '%s'.", node->name, root->name);
             (void)delete_engine_config(parsed_data);
             (void)xmlFreeDoc(doc);
-            (void)xmlCleanupParser();
             return (NULL);
         }
     }
 
     (void)xmlFreeDoc(doc);
-    (void)xmlCleanupParser();
-
     return (parsed_data);
 }

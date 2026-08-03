@@ -1,6 +1,6 @@
 #include "libcncore.h"
 
-cn_value _update_block(Object *__this, void **args)
+static cn_value _update_block(Object *__this, void **args)
 {
     (void)__this;
     (void)args;

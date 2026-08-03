@@ -46,13 +46,13 @@ static uint8_t create_new_section_asset(struct engine_object_file_writer_ctx_s *
     struct engine_object_file_section_writer_ctx_s *section;
 
     section = new_writer_section(asset_path, (void *)fp);
-    
+
     if (!section) {
         PROPAGATE_ERR();
         return (1);
     }
 
-    section->write_infos.type = ENGINE_OBJ_RAW_RESSOURCES;
+    section->write_infos.type = ENGINE_SEC_RAW;
 
     if (writer_ctx_add_section(wctx, section)) {
         PROPAGATE_ERR();

@@ -479,7 +479,7 @@ uint8_t construct_build(const EngineConfig *config, const CNProject *project, co
 
     printf("-======- Source Compilation -======-\n");
 
-    if (compile_library(project, build, library_output_name->c_str, temp_build_path, include_path, lib_path)) {
+    if (compile_library(config, project, build, library_output_name->c_str, temp_build_path, include_path, lib_path)) {
         PROPAGATE_ERR();
         (void)delete_str(library_output_name);
         (void)free(temp_build_path);
@@ -597,10 +597,22 @@ CNProject *parse_project(const EngineConfig *config, const char *output_path, co
         return (NULL);
     }
 
+    printf("* [RessourceGeneration#%s]\n", project->name ? project->name : "???");
+
+    if (generate_object_src(project, build_path, project_root)) {
+        PROPAGATE_ERR();
+        (void)delete_cnproject(project);
+        (void)free(dist_path);
+        (void)free(build_path);
+        (void)free(project_root);
+        return (NULL);
+    }
+
     for (size_t i = 0; i < project->builds.size; ++i) {
         temp_build = project->builds.content[i];
         if (!has_ressource_set(config, temp_build->arch, temp_build->machine)) {
             RAISE_FMT(ERR_NOT_COMPATIBLE, "no ressource set matching arch/os found for build %s.", temp_build->name)
+            (void)delete_cnproject(project);
             (void)free(dist_path);
             (void)free(build_path);
             (void)free(project_root);
@@ -608,6 +620,7 @@ CNProject *parse_project(const EngineConfig *config, const char *output_path, co
         }
         if (construct_build(config, project, project->builds.content[i], build_path, dist_path, self_path)) {
             PROPAGATE_ERR();
+            (void)delete_cnproject(project);
             (void)free(dist_path);
             (void)free(build_path);
             (void)free(project_root);

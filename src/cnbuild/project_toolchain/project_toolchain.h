@@ -44,6 +44,10 @@
         cnbuild_architectures arch;
         cnbuild_system machine;
 
+        cnbool assets_endian;
+        uint16_t assets_alignement;
+        uint64_t assets_max_bank_size;
+
         struct generic_vector_s dependencies;
     } CNBuild;
 
@@ -135,6 +139,15 @@
         struct generic_vector_s generator;
     } EngineConfig;
 
+    typedef struct {
+        char *object_name;
+        char *object_base;
+        char *generate_in;
+
+        struct generic_vector_s methods;
+        struct generic_vector_s attributes;
+    } ObjectGenerationData;
+
 
     CNProject *new_cnproject(void);
     void delete_cnproject(CNProject *ptr);
@@ -157,7 +170,7 @@
     uint8_t parse_cnbuilds_xml(const EngineConfig *config, CNProject *project, xmlNode *node);
     uint8_t parse_submodules_xml(SubModule *submodule, const char *xml_path);
 
-    uint8_t compile_library(const CNProject *project, const CNBuild *build_info, const char *output_path, const char *build_path, const char *include_path, const char *lib_path);
+    uint8_t compile_library(const EngineConfig *config, const CNProject *project, const CNBuild *build_info, const char *output_path, const char *build_path, const char *include_path, const char *lib_path);
     uint8_t library_compiler_set_library_path(LibraryCompiler *compiler, const char *library_path);
     uint8_t library_compiler_set_include_path(LibraryCompiler *compiler, const char *include_path);
     uint8_t library_compiler_add_lib(LibraryCompiler *compiler, const char *libname);
@@ -190,4 +203,5 @@
     uint8_t compile_executable(const EngineConfig *config, const CNProject *project, const CNBuild *build_info, const char *output_path, const char *build_path, const char *include_path, const char *lib_path);
     uint8_t library_compiler_add_preprocessor_definition(LibraryCompiler *compiler, const char *definition_name, const char *definition_content);
     uint8_t compile_assets(const CNProject *project, const CNBuild *build_info, const char *dist_path, const char *build_path, const char *toolchain_path);
+    uint8_t generate_object_src(CNProject *project, const char *output_path, const char *project_root);
 #endif

@@ -179,6 +179,7 @@ uint8_t asset_compiler_build_objects(GameAssetCompiler *compiler)
             return (1);
         }
 
+        printf("building %s\n", argv[3]);
         for (size_t v = 0; argv[v]; ++v)
             printf(argv[v + 1] ? "%s " : "%s\n", argv[v]);
 
@@ -222,16 +223,16 @@ uint8_t asset_compiler_build_banks(GameAssetCompiler *compiler)
 
     (void)snprintf(alignement_flag, len, "--align=%d", compiler->alignement);
 
-    printf("/BANK#%zu - 0", bnk_cnt);
+    // printf("/BANK#%zu - 0", bnk_cnt);
 
-    if (!compiler->objs.size)
-        printf("\nempty?\n");
+    // if (!compiler->objs.size)
+    //     printf("\nempty?\n");
 
     for (size_t i = 0; i < compiler->objs.size; ++i) {
         size_registered += get_file_size((const char *)compiler->objs.content[i]);
 
         if (size_registered > compiler->max_bank_size || i + 1 >= compiler->objs.size) {
-            printf("\n");
+            // printf("\n");
 
             argv = malloc(sizeof(char *) * (7 + ((item_end - item_start) + 1) + 1));
 
@@ -273,8 +274,9 @@ uint8_t asset_compiler_build_banks(GameAssetCompiler *compiler)
 
             argv[7 + (item_end - item_start) + 1] = NULL;
 
-            for (size_t v = 0; argv[v]; ++v)
-                printf(argv[v + 1] ? "%s " : "%s\n", argv[v]);
+            printf("packing %s\n", argv[6]);
+            // for (size_t v = 0; argv[v]; ++v)
+            //     printf(argv[v + 1] ? "%s " : "%s\n", argv[v]);
 
             if (run_program(compiler->compiler_path, (const char * const*)argv)) {
                 RAISE_FMT(ERR_OS, "compiler '%s' returned failure.", compiler->compiler_path);
@@ -290,14 +292,14 @@ uint8_t asset_compiler_build_banks(GameAssetCompiler *compiler)
             item_end = i;
             ++bnk_cnt;
 
-            if (i + 1 < compiler->objs.size)
-                printf("/BANK#%zu - 1", bnk_cnt);
+            // if (i + 1 < compiler->objs.size)
+            //     printf("/BANK#%zu - 1", bnk_cnt);
 
             continue;
         }
 
         ++item_end;
-        printf("\r/BANK#%zu - %zu", bnk_cnt, (item_end - item_start) + 1);
+        // printf("\r/BANK#%zu - %zu", bnk_cnt, (item_end - item_start) + 1);
     }
 
     (void)free(alignement_flag);
@@ -321,6 +323,10 @@ uint8_t compile_assets(const CNProject *project, const CNBuild *build_info, cons
         PROPAGATE_ERR();
         return (1);
     }
+
+    compiler->endianness = build_info->assets_endian;
+    compiler->alignement = build_info->assets_alignement;
+    compiler->max_bank_size = build_info->assets_max_bank_size;
 
     for (size_t i = 0; i < project->content.size; ++i) {
         temp_asset = project->content.content[i];

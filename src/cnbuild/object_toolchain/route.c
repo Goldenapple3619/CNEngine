@@ -36,6 +36,7 @@ int build_obj(size_t argc, char **argv, Object *asset_ctx)
 
     wctx->write_infos.endian = build_args.endian;
     wctx->write_infos.flags = build_args.padding;
+    wctx->write_infos.type = ENGINE_OBJ_OBJ;
 
     fp = fopen(build_args.output_file, "wb");
 

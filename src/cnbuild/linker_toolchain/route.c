@@ -28,7 +28,7 @@ static char *generate_section_content(struct engine_object_file_section_writer_c
 
     (void)memcpy(section_content, ((BLKAssetStorage *)self->_v)->_s.section_blk_ptr, size);
 
-    if (!((BLKAssetStorage *)self->_v)->asset_reg) {
+    if (!((BLKAssetStorage *)self->_v)->asset_reg || ((BLKAssetStorage *)self->_v)->_s.section_type == ENGINE_SEC_RAW) {
         return (section_content);
     }
 
@@ -101,7 +101,7 @@ uint8_t parse_cnasset(CNAssetReader *reader, const char *file_path, struct engin
 
     for (uint64_t i = 0; i < reader->section_header.section_count; ++i) {
         base_obj_name = object_file_reader_get_string(reader, reader->header.name);
-        
+
         if (!base_obj_name) {
             PROPAGATE_ERR();
             return (1);

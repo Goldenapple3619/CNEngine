@@ -9,6 +9,7 @@
         <file name="cnassets" link="true" overwrite="true">${LIBS}/libcnassets.${EXT}</file>
         <file>${LIBS}/libcnguiobj.${EXT}</file>
         <file>${LIBS}/libcnsceneobj.${EXT}</file>
+        <file>${LIBS}/libcnobjectobj.${EXT}</file>
     </libs>
     <need>
         <module>core</module>

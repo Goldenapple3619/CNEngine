@@ -25,6 +25,22 @@ uint8_t register_engine_asset_api(Object *ctx)
 
 uint8_t load_assets_handler(Object *ctx)
 {
+    #ifdef _WIN32
+    if (call_method(ctx, "register_fmt", PACK_ARG("./libcnguiobj.dll")).as.i == VALUE_ERR.as.i) {
+        PROPAGATE_ERR();
+        return (1);
+    }
+
+    if (call_method(ctx, "register_fmt", PACK_ARG("./libcnsceneobj.dll")).as.i == VALUE_ERR.as.i) {
+        PROPAGATE_ERR();
+        return (1);
+    }
+
+    if (call_method(ctx, "register_fmt", PACK_ARG("./libcnobjectobj.dll")).as.i == VALUE_ERR.as.i) {
+        PROPAGATE_ERR();
+        return (1);
+    }
+    #else
     if (call_method(ctx, "register_fmt", PACK_ARG("./libcnguiobj.so")).as.i == VALUE_ERR.as.i) {
         PROPAGATE_ERR();
         return (1);
@@ -34,6 +50,12 @@ uint8_t load_assets_handler(Object *ctx)
         PROPAGATE_ERR();
         return (1);
     }
+
+    if (call_method(ctx, "register_fmt", PACK_ARG("./libcnobjectobj.so")).as.i == VALUE_ERR.as.i) {
+        PROPAGATE_ERR();
+        return (1);
+    }
+    #endif
 
     return (0);
 }

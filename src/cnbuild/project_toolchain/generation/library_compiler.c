@@ -138,6 +138,7 @@ uint8_t library_compiler_build_objects(LibraryCompiler *compiler)
     }
 
     char *temp_path;
+    char *flat_name;
     char *obj_path;
     char **argv = malloc(sizeof(char *) * (8 + 1 + (compiler->preprocessor_definitions.size)));
     size_t i;
@@ -172,7 +173,18 @@ uint8_t library_compiler_build_objects(LibraryCompiler *compiler)
     for (size_t o = 0; o < compiler->srcs.size; ++o) {
         argv[3] = (char *)compiler->srcs.content[o];
 
-        temp_path = join_path(compiler->build_path, path_basename(compiler->srcs.content[o]));
+        flat_name = flatten_source_path(compiler->srcs.content[o]);
+
+        if (!flat_name) {
+            PROPAGATE_ERR();
+            for (i = 0; i < compiler->preprocessor_definitions.size; ++i)
+                (void)free(argv[8 + i]);
+            (void)free(argv);
+            return (1);
+        }
+
+        temp_path = join_path(compiler->build_path, flat_name);
+        (void)free(flat_name);
 
         if (!temp_path) {
             PROPAGATE_ERR();
@@ -204,8 +216,9 @@ uint8_t library_compiler_build_objects(LibraryCompiler *compiler)
 
         argv[5] = (char *)compiler->objs.content[o];
 
-        for (size_t v = 0; argv[v]; ++v)
-            printf(argv[v + 1] ? "%s " : "%s\n", argv[v]);
+        printf("building %s\n", argv[3]);
+        // for (size_t v = 0; argv[v]; ++v)
+        //     printf(argv[v + 1] ? "%s " : "%s\n", argv[v]);
 
         if (run_program(compiler->compiler_path, (const char * const*)argv)) {
             RAISE_FMT(ERR_OS, "compiler '%s' returned failure.", compiler->compiler_path);
@@ -259,8 +272,10 @@ uint8_t library_compiler_build_dynlib(LibraryCompiler *compiler)
 
     argv[6 + compiler->libs.size + i] = NULL;
 
-    for (size_t v = 0; argv[v]; ++v)
-        printf(argv[v + 1] ? "%s " : "%s\n", argv[v]);
+    printf("linking %s\n", compiler->output_path);
+
+    // for (size_t v = 0; argv[v]; ++v)
+    //     printf(argv[v + 1] ? "%s " : "%s\n", argv[v]);
 
     if (run_program(compiler->compiler_path, (const char * const*)argv)) {
         RAISE_FMT(ERR_OS, "compiler '%s' returned failure.", compiler->compiler_path);
@@ -342,7 +357,22 @@ uint8_t library_compiler_add_preprocessor_definition(LibraryCompiler *compiler, 
     return (0);
 }
 
-uint8_t compile_library(const CNProject *project, const CNBuild *build_info, const char *output_path, const char *build_path, const char *include_path, const char *lib_path)
+static char *get_compiler_for_build_from_config(const EngineConfig *config, const CNBuild *build_info)
+{
+    EngineRessourceSet *set;
+
+    for (size_t i = 0; i < config->ressources.size; ++i) {
+        set = config->ressources.content[i];
+
+        if (set->machine == build_info->machine && set->architecture == build_info->arch) {
+            return (set->toolchain);
+        }
+    }
+
+    return ("gcc");
+}
+
+uint8_t compile_library(const EngineConfig *config, const CNProject *project, const CNBuild *build_info, const char *output_path, const char *build_path, const char *include_path, const char *lib_path)
 {
     if (!project) {
         RAISE(ERR_INVALID_POINTER, "can't compile library for empty project.");
@@ -354,7 +384,7 @@ uint8_t compile_library(const CNProject *project, const CNBuild *build_info, con
     SubModule *temp_module;
     char *temp_preproc;
 
-    compiler = new_library_compiler(output_path, "gcc", build_path);
+    compiler = new_library_compiler(output_path, get_compiler_for_build_from_config(config, build_info), build_path);
 
     if (!compiler) {
         PROPAGATE_ERR();

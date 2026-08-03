@@ -15,6 +15,18 @@ CN_API struct generic_vector_s *new_generic_vector(void)
     return (vec);
 }
 
+CN_API void init_generic_vector(struct generic_vector_s *vec)
+{
+    if (!vec) {
+        RAISE(ERR_INVALID_POINTER, "can't init an invalid vector.");
+        return;
+    }
+
+    vec->size = 0;
+    vec->capacity = 0;
+    vec->content = NULL;
+}
+
 CN_API void delete_generic_vector(struct generic_vector_s *vec, void (*_delete_obj)(void *))
 {
     if (!vec) {
