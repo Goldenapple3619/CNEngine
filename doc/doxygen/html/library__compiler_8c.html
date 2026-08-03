@@ -131,12 +131,14 @@ Functions</h2></td></tr>
 <tr class="separator:ade51a26b37d41bf811c82a7365164b6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ddac25e5f25d4f37079eb3c1a3c9e44" id="r_a6ddac25e5f25d4f37079eb3c1a3c9e44"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="library__compiler_8c.html#a6ddac25e5f25d4f37079eb3c1a3c9e44">library_compiler_add_preprocessor_definition</a> (<a class="el" href="structLibraryCompiler.html">LibraryCompiler</a> *compiler, const char *definition_name, const char *definition_content)</td></tr>
 <tr class="separator:a6ddac25e5f25d4f37079eb3c1a3c9e44"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98d0ca465ec248a90f3e72bbf8c41ea6" id="r_a98d0ca465ec248a90f3e72bbf8c41ea6"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="library__compiler_8c.html#a98d0ca465ec248a90f3e72bbf8c41ea6">compile_library</a> (const <a class="el" href="structCNProject.html">CNProject</a> *project, const <a class="el" href="structCNBuild.html">CNBuild</a> *build_info, const char *output_path, const char *build_path, const char *include_path, const char *lib_path)</td></tr>
-<tr class="separator:a98d0ca465ec248a90f3e72bbf8c41ea6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9feb084eca680d16e0a5ab06dec3051" id="r_af9feb084eca680d16e0a5ab06dec3051"><td class="memItemLeft" align="right" valign="top">static char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="library__compiler_8c.html#af9feb084eca680d16e0a5ab06dec3051">get_compiler_for_build_from_config</a> (const <a class="el" href="structEngineConfig.html">EngineConfig</a> *config, const <a class="el" href="structCNBuild.html">CNBuild</a> *build_info)</td></tr>
+<tr class="separator:af9feb084eca680d16e0a5ab06dec3051"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfd9071fd7ca36c2ed1859def567c3fd" id="r_acfd9071fd7ca36c2ed1859def567c3fd"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="library__compiler_8c.html#acfd9071fd7ca36c2ed1859def567c3fd">compile_library</a> (const <a class="el" href="structEngineConfig.html">EngineConfig</a> *config, const <a class="el" href="structCNProject.html">CNProject</a> *project, const <a class="el" href="structCNBuild.html">CNBuild</a> *build_info, const char *output_path, const char *build_path, const char *include_path, const char *lib_path)</td></tr>
+<tr class="separator:acfd9071fd7ca36c2ed1859def567c3fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a98d0ca465ec248a90f3e72bbf8c41ea6" name="a98d0ca465ec248a90f3e72bbf8c41ea6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a98d0ca465ec248a90f3e72bbf8c41ea6">&#9670;&#160;</a></span>compile_library()</h2>
+<a id="acfd9071fd7ca36c2ed1859def567c3fd" name="acfd9071fd7ca36c2ed1859def567c3fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acfd9071fd7ca36c2ed1859def567c3fd">&#9670;&#160;</a></span>compile_library()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -144,6 +146,12 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">uint8_t compile_library </td>
           <td>(</td>
+          <td class="paramtype">const <a class="el" href="structEngineConfig.html">EngineConfig</a> *&#160;</td>
+          <td class="paramname"><em>config</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">const <a class="el" href="structCNProject.html">CNProject</a> *&#160;</td>
           <td class="paramname"><em>project</em>, </td>
         </tr>
@@ -201,6 +209,42 @@ Functions</h2></td></tr>
           <td></td>
         </tr>
       </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af9feb084eca680d16e0a5ab06dec3051" name="af9feb084eca680d16e0a5ab06dec3051"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9feb084eca680d16e0a5ab06dec3051">&#9670;&#160;</a></span>get_compiler_for_build_from_config()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static char * get_compiler_for_build_from_config </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structEngineConfig.html">EngineConfig</a> *&#160;</td>
+          <td class="paramname"><em>config</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structCNBuild.html">CNBuild</a> *&#160;</td>
+          <td class="paramname"><em>build_info</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>

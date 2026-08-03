@@ -42,6 +42,7 @@ var libcnassets_8h =
     ] ],
     [ "engine_section_type", "libcnassets_8h.html#a959be715a1657adac70a74c248795869", [
       [ "ENGINE_SEC_UKN", "libcnassets_8h.html#a959be715a1657adac70a74c248795869a77c7bcdb8d72538d0b10e5435c93cba6", null ],
+      [ "ENGINE_SEC_RAW", "libcnassets_8h.html#a959be715a1657adac70a74c248795869abe5c938fbb6728b86fd3b2408c3e095c", null ],
       [ "ENGINE_SEC_GUI_NODES", "libcnassets_8h.html#a959be715a1657adac70a74c248795869a0bea8b02b15cf276b9db591d5a7fdf5f", null ],
       [ "ENGINE_SEC_GUI_STYLE", "libcnassets_8h.html#a959be715a1657adac70a74c248795869ad1fd9a83161480581c578d882a501ace", null ],
       [ "ENGINE_SEC_GUI_CONN", "libcnassets_8h.html#a959be715a1657adac70a74c248795869ac2034ea9ebde71027843a1076979a266", null ],

@@ -23,22 +23,30 @@ void \mbox{\hyperlink{library__compiler_8c_ade51a26b37d41bf811c82a7365164b6a}{de
 \item 
 uint8\+\_\+t \mbox{\hyperlink{library__compiler_8c_a6ddac25e5f25d4f37079eb3c1a3c9e44}{library\+\_\+compiler\+\_\+add\+\_\+preprocessor\+\_\+definition}} (\mbox{\hyperlink{structLibraryCompiler}{Library\+Compiler}} \texorpdfstring{$\ast$}{*}compiler, const char \texorpdfstring{$\ast$}{*}definition\+\_\+name, const char \texorpdfstring{$\ast$}{*}definition\+\_\+content)
 \item 
-uint8\+\_\+t \mbox{\hyperlink{library__compiler_8c_a98d0ca465ec248a90f3e72bbf8c41ea6}{compile\+\_\+library}} (const \mbox{\hyperlink{structCNProject}{CNProject}} \texorpdfstring{$\ast$}{*}project, const \mbox{\hyperlink{structCNBuild}{CNBuild}} \texorpdfstring{$\ast$}{*}build\+\_\+info, const char \texorpdfstring{$\ast$}{*}output\+\_\+path, const char \texorpdfstring{$\ast$}{*}build\+\_\+path, const char \texorpdfstring{$\ast$}{*}include\+\_\+path, const char \texorpdfstring{$\ast$}{*}lib\+\_\+path)
+static char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{library__compiler_8c_af9feb084eca680d16e0a5ab06dec3051}{get\+\_\+compiler\+\_\+for\+\_\+build\+\_\+from\+\_\+config}} (const \mbox{\hyperlink{structEngineConfig}{Engine\+Config}} \texorpdfstring{$\ast$}{*}config, const \mbox{\hyperlink{structCNBuild}{CNBuild}} \texorpdfstring{$\ast$}{*}build\+\_\+info)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{library__compiler_8c_acfd9071fd7ca36c2ed1859def567c3fd}{compile\+\_\+library}} (const \mbox{\hyperlink{structEngineConfig}{Engine\+Config}} \texorpdfstring{$\ast$}{*}config, const \mbox{\hyperlink{structCNProject}{CNProject}} \texorpdfstring{$\ast$}{*}project, const \mbox{\hyperlink{structCNBuild}{CNBuild}} \texorpdfstring{$\ast$}{*}build\+\_\+info, const char \texorpdfstring{$\ast$}{*}output\+\_\+path, const char \texorpdfstring{$\ast$}{*}build\+\_\+path, const char \texorpdfstring{$\ast$}{*}include\+\_\+path, const char \texorpdfstring{$\ast$}{*}lib\+\_\+path)
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{library__compiler_8c_a98d0ca465ec248a90f3e72bbf8c41ea6}\label{library__compiler_8c_a98d0ca465ec248a90f3e72bbf8c41ea6} 
+\Hypertarget{library__compiler_8c_acfd9071fd7ca36c2ed1859def567c3fd}\label{library__compiler_8c_acfd9071fd7ca36c2ed1859def567c3fd} 
 \index{library\_compiler.c@{library\_compiler.c}!compile\_library@{compile\_library}}
 \index{compile\_library@{compile\_library}!library\_compiler.c@{library\_compiler.c}}
 \doxysubsubsection{\texorpdfstring{compile\_library()}{compile\_library()}}
-{\footnotesize\ttfamily uint8\+\_\+t compile\+\_\+library (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structCNProject}{CNProject}} \texorpdfstring{$\ast$}{*}}]{project,  }\item[{const \mbox{\hyperlink{structCNBuild}{CNBuild}} \texorpdfstring{$\ast$}{*}}]{build\+\_\+info,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{output\+\_\+path,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{build\+\_\+path,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{include\+\_\+path,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{lib\+\_\+path }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily uint8\+\_\+t compile\+\_\+library (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structEngineConfig}{Engine\+Config}} \texorpdfstring{$\ast$}{*}}]{config,  }\item[{const \mbox{\hyperlink{structCNProject}{CNProject}} \texorpdfstring{$\ast$}{*}}]{project,  }\item[{const \mbox{\hyperlink{structCNBuild}{CNBuild}} \texorpdfstring{$\ast$}{*}}]{build\+\_\+info,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{output\+\_\+path,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{build\+\_\+path,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{include\+\_\+path,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{lib\+\_\+path }\end{DoxyParamCaption})}
 
 \Hypertarget{library__compiler_8c_ade51a26b37d41bf811c82a7365164b6a}\label{library__compiler_8c_ade51a26b37d41bf811c82a7365164b6a} 
 \index{library\_compiler.c@{library\_compiler.c}!delete\_library\_compiler@{delete\_library\_compiler}}
 \index{delete\_library\_compiler@{delete\_library\_compiler}!library\_compiler.c@{library\_compiler.c}}
 \doxysubsubsection{\texorpdfstring{delete\_library\_compiler()}{delete\_library\_compiler()}}
 {\footnotesize\ttfamily void delete\+\_\+library\+\_\+compiler (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structLibraryCompiler}{Library\+Compiler}} \texorpdfstring{$\ast$}{*}}]{compiler }\end{DoxyParamCaption})}
+
+\Hypertarget{library__compiler_8c_af9feb084eca680d16e0a5ab06dec3051}\label{library__compiler_8c_af9feb084eca680d16e0a5ab06dec3051} 
+\index{library\_compiler.c@{library\_compiler.c}!get\_compiler\_for\_build\_from\_config@{get\_compiler\_for\_build\_from\_config}}
+\index{get\_compiler\_for\_build\_from\_config@{get\_compiler\_for\_build\_from\_config}!library\_compiler.c@{library\_compiler.c}}
+\doxysubsubsection{\texorpdfstring{get\_compiler\_for\_build\_from\_config()}{get\_compiler\_for\_build\_from\_config()}}
+{\footnotesize\ttfamily static char \texorpdfstring{$\ast$}{*} get\+\_\+compiler\+\_\+for\+\_\+build\+\_\+from\+\_\+config (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structEngineConfig}{Engine\+Config}} \texorpdfstring{$\ast$}{*}}]{config,  }\item[{const \mbox{\hyperlink{structCNBuild}{CNBuild}} \texorpdfstring{$\ast$}{*}}]{build\+\_\+info }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 \Hypertarget{library__compiler_8c_a6ee4d92e9018e3c2819b6506b46e944a}\label{library__compiler_8c_a6ee4d92e9018e3c2819b6506b46e944a} 
 \index{library\_compiler.c@{library\_compiler.c}!library\_compiler\_add\_lib@{library\_compiler\_add\_lib}}

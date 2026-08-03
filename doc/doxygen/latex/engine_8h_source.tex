@@ -54,29 +54,30 @@
 \DoxyCodeLine{00050\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{engine_8h_acf770efe1e0705384cea7c0361eaa9f0}{make\_dir}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *path);}
 \DoxyCodeLine{00051\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{engine_8h_a8af457e1c59e7f35f403ffd5d87fb3e2}{is\_file}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *path);}
 \DoxyCodeLine{00052\ \ \ \ \ uint64\_t\ \mbox{\hyperlink{engine_8h_a389b618b1d2f226e0c49d639d3258913}{get\_file\_size}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *path);}
-\DoxyCodeLine{00053\ }
-\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{engine_8h_ae1b6db075e69c7d50940c6e0a9d357f6}{argument\_route}}(\textcolor{keywordtype}{size\_t}\ argc,\ \textcolor{keywordtype}{char}\ **argv);}
-\DoxyCodeLine{00055\ }
-\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{engine_8h_a152b2bafff5976ca602c43ed93c181c1}{init}}(\textcolor{keywordtype}{size\_t}\ argc,\ \textcolor{keywordtype}{char}\ **argv);}
-\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{engine_8h_a652dfa3636c93a60db188937488e156a}{test}}(\textcolor{keywordtype}{size\_t}\ argc,\ \textcolor{keywordtype}{char}\ **argv);}
-\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{engine_8h_abfce15a97dc0d59066145deb6db71971}{help}}(\textcolor{keywordtype}{size\_t}\ argc,\ \textcolor{keywordtype}{char}\ **argv);}
-\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{engine_8h_acbae52c879a1243e0097c06aa9a3ad82}{build}}(\textcolor{keywordtype}{size\_t}\ argc,\ \textcolor{keywordtype}{char}\ **argv);}
-\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{engine_8h_ad177ef2a270af29fc0d1e6b834b2e945}{dump}}(\textcolor{keywordtype}{size\_t}\ argc,\ \textcolor{keywordtype}{char}\ **argv);}
-\DoxyCodeLine{00061\ }
-\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keyword}{typedef}\ int\ (*\mbox{\hyperlink{engine_8h_a3f7bf39bb2c4a4841a227fe878595dbc}{route\_callback}})(size\_t,\ \textcolor{keywordtype}{char}\ **);}
-\DoxyCodeLine{00063\ }
-\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keyword}{struct\ }\{}
-\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{engine_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}};}
-\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{engine_8h_a3f7bf39bb2c4a4841a227fe878595dbc}{route\_callback}}\ \mbox{\hyperlink{engine_8h_a825191a40d9de85e5b0dc7f60c1e3cd3}{callback}};}
-\DoxyCodeLine{00067\ \ \ \ \ \}\ \mbox{\hyperlink{engine_8h_a8caea1d671cd22260a6e9179a17a13b8}{routes}}[]\ =\ \{}
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}init"{}},\ \&\mbox{\hyperlink{engine_8h_a152b2bafff5976ca602c43ed93c181c1}{init}}\},}
-\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}help"{}},\ \&\mbox{\hyperlink{engine_8h_abfce15a97dc0d59066145deb6db71971}{help}}\},}
-\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}test"{}},\ \&\mbox{\hyperlink{engine_8h_a652dfa3636c93a60db188937488e156a}{test}}\},}
-\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}build"{}},\ \&\mbox{\hyperlink{engine_8h_acbae52c879a1243e0097c06aa9a3ad82}{build}}\},}
-\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}dump"{}},\ \&\mbox{\hyperlink{engine_8h_ad177ef2a270af29fc0d1e6b834b2e945}{dump}}\},}
-\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \{NULL,\ NULL\}}
-\DoxyCodeLine{00074\ \ \ \ \ \};}
-\DoxyCodeLine{00075\ }
-\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{engine_8h_a65be8cb87dc7e691f6f40908244505bc}{flatten\_source\_path}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *src);}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{engine_8h_ae1b6db075e69c7d50940c6e0a9d357f6}{argument\_route}}(\textcolor{keywordtype}{size\_t}\ argc,\ \textcolor{keywordtype}{char}\ **argv);}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{engine_8h_a152b2bafff5976ca602c43ed93c181c1}{init}}(\textcolor{keywordtype}{size\_t}\ argc,\ \textcolor{keywordtype}{char}\ **argv);}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{engine_8h_a652dfa3636c93a60db188937488e156a}{test}}(\textcolor{keywordtype}{size\_t}\ argc,\ \textcolor{keywordtype}{char}\ **argv);}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{engine_8h_abfce15a97dc0d59066145deb6db71971}{help}}(\textcolor{keywordtype}{size\_t}\ argc,\ \textcolor{keywordtype}{char}\ **argv);}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{engine_8h_acbae52c879a1243e0097c06aa9a3ad82}{build}}(\textcolor{keywordtype}{size\_t}\ argc,\ \textcolor{keywordtype}{char}\ **argv);}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{engine_8h_ad177ef2a270af29fc0d1e6b834b2e945}{dump}}(\textcolor{keywordtype}{size\_t}\ argc,\ \textcolor{keywordtype}{char}\ **argv);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keyword}{typedef}\ int\ (*\mbox{\hyperlink{engine_8h_a3f7bf39bb2c4a4841a227fe878595dbc}{route\_callback}})(size\_t,\ \textcolor{keywordtype}{char}\ **);}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{engine_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}};}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{engine_8h_a3f7bf39bb2c4a4841a227fe878595dbc}{route\_callback}}\ \mbox{\hyperlink{engine_8h_a825191a40d9de85e5b0dc7f60c1e3cd3}{callback}};}
+\DoxyCodeLine{00068\ \ \ \ \ \}\ \mbox{\hyperlink{engine_8h_a8caea1d671cd22260a6e9179a17a13b8}{routes}}[]\ =\ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}init"{}},\ \&\mbox{\hyperlink{engine_8h_a152b2bafff5976ca602c43ed93c181c1}{init}}\},}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}help"{}},\ \&\mbox{\hyperlink{engine_8h_abfce15a97dc0d59066145deb6db71971}{help}}\},}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}test"{}},\ \&\mbox{\hyperlink{engine_8h_a652dfa3636c93a60db188937488e156a}{test}}\},}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}build"{}},\ \&\mbox{\hyperlink{engine_8h_acbae52c879a1243e0097c06aa9a3ad82}{build}}\},}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}dump"{}},\ \&\mbox{\hyperlink{engine_8h_ad177ef2a270af29fc0d1e6b834b2e945}{dump}}\},}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \{NULL,\ NULL\}}
+\DoxyCodeLine{00075\ \ \ \ \ \};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

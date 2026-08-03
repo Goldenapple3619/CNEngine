@@ -1,7 +1,7 @@
 var searchData=
 [
   ['m_5fpi_0',['m_pi',['../projection3d_8c.html#ae71449b1cc6e6250b91f539153a7a0d3',1,'M_PI:&#160;projection3d.c'],['../2dboard_8c.html#ae71449b1cc6e6250b91f539153a7a0d3',1,'M_PI:&#160;2dboard.c']]],
-  ['machine_1',['machine',['../structEngineRessourceSet.html#a8e803e6753db2df448d9d08a2fca1964',1,'EngineRessourceSet::machine'],['../structLibraryCompiler.html#ac05108669c313cc3ea308d396f8f262f',1,'LibraryCompiler::machine'],['../structCNBuild.html#a8d279862c176f427a1478b99a1776d3c',1,'CNBuild::machine']]],
+  ['machine_1',['machine',['../structCNBuild.html#a8d279862c176f427a1478b99a1776d3c',1,'CNBuild::machine'],['../structLibraryCompiler.html#ac05108669c313cc3ea308d396f8f262f',1,'LibraryCompiler::machine'],['../structEngineRessourceSet.html#a8e803e6753db2df448d9d08a2fca1964',1,'EngineRessourceSet::machine']]],
   ['macos_2',['MacOS',['../md_README.html#autotoc_md9',1,'']]],
   ['magic_3',['magic',['../structengine__obj__header__s.html#a921ac7b72376b4238cf1af4264db9ac8',1,'engine_obj_header_s']]],
   ['main_4',['main',['../src_2main_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;main.c'],['../assets_2generator_2main_8c.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'main(int argc, char **argv):&#160;main.c']]],
@@ -19,7 +19,7 @@ var searchData=
   ['mesh_5fupload_5fgl_16',['mesh_upload_gl',['../libcngraphic_8h.html#a72fce26160c250bd11da7dcf05f8b8fe',1,'mesh_upload_gl(Mesh *m):&#160;mesh.c'],['../mesh_8c.html#a72fce26160c250bd11da7dcf05f8b8fe',1,'mesh_upload_gl(Mesh *m):&#160;mesh.c']]],
   ['message_17',['message',['../structErrorContext.html#afef893087f5117075d26e3e8fe378296',1,'ErrorContext']]],
   ['method_18',['method',['../structObjMethodPair.html#a816b82bfbb5f9b6fbfacbb8b9cb87490',1,'ObjMethodPair']]],
-  ['methods_19',['methods',['../structobject__s.html#abe619d8408e96a85e54d809ad9e10b94',1,'object_s']]],
+  ['methods_19',['methods',['../structobject__s.html#abe619d8408e96a85e54d809ad9e10b94',1,'object_s::methods'],['../structObjectGenerationData.html#aa273dba7c453099401fd0c5c78236419',1,'ObjectGenerationData::methods'],['../structobject__element__s.html#a62505718baaf3197c6ca3d1bb2c56b71',1,'object_element_s::methods']]],
   ['mkdir_20',['MKDIR',['../engine_8h.html#a33f0483b64221b258b080bba5882cf3c',1,'engine.h']]],
   ['msys_21',['Windows using MSYS',['../md_README.html#autotoc_md6',1,'']]],
   ['mv_5fpad_22',['mv_pad',['../engine__object__writer_8c.html#a0e906b056853be4f1616f09689bd772e',1,'engine_object_writer.c']]]

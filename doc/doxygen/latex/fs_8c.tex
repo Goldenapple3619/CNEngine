@@ -1,6 +1,7 @@
 \doxysection{src/fs.c File Reference}
 \hypertarget{fs_8c}{}\label{fs_8c}\index{src/fs.c@{src/fs.c}}
 {\ttfamily \#include "{}engine.\+h"{}}\newline
+{\ttfamily \#include $<$sys/stat.\+h$>$}\newline
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -27,6 +28,8 @@ uint8\+\_\+t \mbox{\hyperlink{fs_8c_a80c86544a27139d0f6fc3f945d2ef77a}{copy\+\_\
 uint8\+\_\+t \mbox{\hyperlink{fs_8c_aa236763c532df52309fcc7ab4ec847ec}{copytree}} (const char \texorpdfstring{$\ast$}{*}src, const char \texorpdfstring{$\ast$}{*}dst, \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} overwrite)
 \item 
 uint8\+\_\+t \mbox{\hyperlink{fs_8c_acf770efe1e0705384cea7c0361eaa9f0}{make\+\_\+dir}} (const char \texorpdfstring{$\ast$}{*}path)
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{fs_8c_a65be8cb87dc7e691f6f40908244505bc}{flatten\+\_\+source\+\_\+path}} (const char \texorpdfstring{$\ast$}{*}src)
 \end{DoxyCompactItemize}
 
 
@@ -42,6 +45,12 @@ uint8\+\_\+t \mbox{\hyperlink{fs_8c_acf770efe1e0705384cea7c0361eaa9f0}{make\+\_\
 \index{copytree@{copytree}!fs.c@{fs.c}}
 \doxysubsubsection{\texorpdfstring{copytree()}{copytree()}}
 {\footnotesize\ttfamily uint8\+\_\+t copytree (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{src,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{dst,  }\item[{\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}}]{overwrite }\end{DoxyParamCaption})}
+
+\Hypertarget{fs_8c_a65be8cb87dc7e691f6f40908244505bc}\label{fs_8c_a65be8cb87dc7e691f6f40908244505bc} 
+\index{fs.c@{fs.c}!flatten\_source\_path@{flatten\_source\_path}}
+\index{flatten\_source\_path@{flatten\_source\_path}!fs.c@{fs.c}}
+\doxysubsubsection{\texorpdfstring{flatten\_source\_path()}{flatten\_source\_path()}}
+{\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*} flatten\+\_\+source\+\_\+path (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{src }\end{DoxyParamCaption})}
 
 \Hypertarget{fs_8c_a927967a36c50f9121cb715f84b7ccadd}\label{fs_8c_a927967a36c50f9121cb715f84b7ccadd} 
 \index{fs.c@{fs.c}!get\_dirname@{get\_dirname}}

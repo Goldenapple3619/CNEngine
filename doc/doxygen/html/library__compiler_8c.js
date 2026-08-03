@@ -1,7 +1,8 @@
 var library__compiler_8c =
 [
-    [ "compile_library", "library__compiler_8c.html#a98d0ca465ec248a90f3e72bbf8c41ea6", null ],
+    [ "compile_library", "library__compiler_8c.html#acfd9071fd7ca36c2ed1859def567c3fd", null ],
     [ "delete_library_compiler", "library__compiler_8c.html#ade51a26b37d41bf811c82a7365164b6a", null ],
+    [ "get_compiler_for_build_from_config", "library__compiler_8c.html#af9feb084eca680d16e0a5ab06dec3051", null ],
     [ "library_compiler_add_lib", "library__compiler_8c.html#a6ee4d92e9018e3c2819b6506b46e944a", null ],
     [ "library_compiler_add_preprocessor_definition", "library__compiler_8c.html#a6ddac25e5f25d4f37079eb3c1a3c9e44", null ],
     [ "library_compiler_add_src", "library__compiler_8c.html#ae20179ac245d63ad403e48a77d867314", null ],

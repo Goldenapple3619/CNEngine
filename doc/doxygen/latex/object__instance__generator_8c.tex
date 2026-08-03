@@ -1,0 +1,153 @@
+\doxysection{src/cnbuild/project\+\_\+toolchain/generation/object\+\_\+instance\+\_\+generator.c File Reference}
+\hypertarget{object__instance__generator_8c}{}\label{object__instance__generator_8c}\index{src/cnbuild/project\_toolchain/generation/object\_instance\_generator.c@{src/cnbuild/project\_toolchain/generation/object\_instance\_generator.c}}
+{\ttfamily \#include "{}../project\+\_\+toolchain.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{object__instance__generator_8c_a087f3b4116e222d4f235dc714b78b769}{delete\+\_\+object\+\_\+generation\+\_\+data}} (\mbox{\hyperlink{structObjectGenerationData}{Object\+Generation\+Data}} \texorpdfstring{$\ast$}{*}obj\+\_\+data)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{object__instance__generator_8c_a49bc5b9fe1c6a70fc24a9f212723ca7f}{build\+\_\+object\+\_\+methods}} (xml\+Node \texorpdfstring{$\ast$}{*}node, \mbox{\hyperlink{structObjectGenerationData}{Object\+Generation\+Data}} \texorpdfstring{$\ast$}{*}obj\+\_\+data)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{object__instance__generator_8c_a86a4cdaf23ec5101228d4c75503c6452}{build\+\_\+object\+\_\+attributes}} (xml\+Node \texorpdfstring{$\ast$}{*}node, \mbox{\hyperlink{structObjectGenerationData}{Object\+Generation\+Data}} \texorpdfstring{$\ast$}{*}obj\+\_\+data)
+\item 
+\mbox{\hyperlink{structObjectGenerationData}{Object\+Generation\+Data}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{object__instance__generator_8c_a64d054a142692a7b2cf026a5ba82a8fe}{get\+\_\+object\+\_\+generation\+\_\+data}} (const char \texorpdfstring{$\ast$}{*}object\+\_\+path)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{object__instance__generator_8c_aec710ebcf0ae10074a9752bba8e601e8}{add\+\_\+base\+\_\+content\+\_\+to\+\_\+generation}} (\mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}generated, const char \texorpdfstring{$\ast$}{*}base\+\_\+content\+\_\+path)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{object__instance__generator_8c_a2cc8e25321515a85fab885994a2a985d}{add\+\_\+entry\+\_\+to\+\_\+generation}} (\mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}generated, \mbox{\hyperlink{structObjectGenerationData}{Object\+Generation\+Data}} \texorpdfstring{$\ast$}{*}obj\+\_\+data)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{object__instance__generator_8c_a047c34d96c5b1c4694dc8cd0deff380c}{add\+\_\+methods\+\_\+to\+\_\+generation}} (\mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}generated, \mbox{\hyperlink{structObjectGenerationData}{Object\+Generation\+Data}} \texorpdfstring{$\ast$}{*}obj\+\_\+data)
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{object__instance__generator_8c_a01f69c1ae034caab90fa7b3a0d607f4d}{type\+\_\+enum\+\_\+name\+\_\+from\+\_\+value}} (\mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25}{cn\+\_\+type}} type)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{object__instance__generator_8c_a7afa2143870a2a064a4b8dc2c09e2f4e}{add\+\_\+attrs\+\_\+to\+\_\+generation}} (\mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}generated, \mbox{\hyperlink{structObjectGenerationData}{Object\+Generation\+Data}} \texorpdfstring{$\ast$}{*}obj\+\_\+data)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{object__instance__generator_8c_ae4599340740ed447ba73a6529d0815eb}{generate\+\_\+object\+\_\+src}} (\mbox{\hyperlink{structCNProject}{CNProject}} \texorpdfstring{$\ast$}{*}project, const char \texorpdfstring{$\ast$}{*}output\+\_\+path, const char \texorpdfstring{$\ast$}{*}project\+\_\+root)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static const char \mbox{\hyperlink{object__instance__generator_8c_ac37ed55279e8851613ef7be72b048255}{GENERATED\+\_\+\+CONTENT\+\_\+\+START}} \mbox{[}$\,$\mbox{]}
+\item 
+static const char \mbox{\hyperlink{object__instance__generator_8c_a4711e19893d971294c587de6b0200ac1}{GENERATED\+\_\+\+CONTENT\+\_\+\+METHODS}} \mbox{[}$\,$\mbox{]} = "{}CREATE\+\_\+\+METHOD\+\_\+\+CLASS\+\_\+\+BUILD(obj, \textbackslash{}"{}\$\{SYMBOL\+\_\+\+NAME\}\textbackslash{}"{}, \&\$\{SYMBOL\+\_\+\+REF\});"{}
+\item 
+static const char \mbox{\hyperlink{object__instance__generator_8c_a3c6bb126b6ae7bb51c141bfbdcdd7bec}{GENERATED\+\_\+\+CONTENT\+\_\+\+ATTRS}} \mbox{[}$\,$\mbox{]} = "{}if (!\mbox{\hyperlink{libcncore_8h_a0d1200d7a9ee39c24a7cfde96306eec6}{set\+\_\+attr}}(obj, \textbackslash{}"{}\$\{ATTR\+\_\+\+NAME\}\textbackslash{}"{}, \$\{ATTR\+\_\+\+TYPE\}, \$\{ATTR\+\_\+\+REF\})) \{\mbox{\hyperlink{libcncore_8h_aacb48b8707ccf6f8f1688d1fe07fdb1f}{PROPAGATE\+\_\+\+ERR}}(); (void)\mbox{\hyperlink{libcncore_8h_a3c17e388301ab678d57d1e4c0f1d3214}{delete\+\_\+object}}(obj); return (NULL);\};"{}
+\item 
+static const char \mbox{\hyperlink{object__instance__generator_8c_aa356be2271e1c8d12f5eabc91676d2c9}{GENERATED\+\_\+\+CONTENT\+\_\+\+END}} \mbox{[}$\,$\mbox{]}
+\item 
+static const char \mbox{\hyperlink{object__instance__generator_8c_a2c4623fa76b47f8f05e104b7e718f467}{GENERATED\+\_\+\+PREFIX\+\_\+\+NAME}} \mbox{[}$\,$\mbox{]} = "{}\+\_\+\+\_\+generated\+\_\+"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{object__instance__generator_8c_a7afa2143870a2a064a4b8dc2c09e2f4e}\label{object__instance__generator_8c_a7afa2143870a2a064a4b8dc2c09e2f4e} 
+\index{object\_instance\_generator.c@{object\_instance\_generator.c}!add\_attrs\_to\_generation@{add\_attrs\_to\_generation}}
+\index{add\_attrs\_to\_generation@{add\_attrs\_to\_generation}!object\_instance\_generator.c@{object\_instance\_generator.c}}
+\doxysubsubsection{\texorpdfstring{add\_attrs\_to\_generation()}{add\_attrs\_to\_generation()}}
+{\footnotesize\ttfamily uint8\+\_\+t add\+\_\+attrs\+\_\+to\+\_\+generation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}}]{generated,  }\item[{\mbox{\hyperlink{structObjectGenerationData}{Object\+Generation\+Data}} \texorpdfstring{$\ast$}{*}}]{obj\+\_\+data }\end{DoxyParamCaption})}
+
+\Hypertarget{object__instance__generator_8c_aec710ebcf0ae10074a9752bba8e601e8}\label{object__instance__generator_8c_aec710ebcf0ae10074a9752bba8e601e8} 
+\index{object\_instance\_generator.c@{object\_instance\_generator.c}!add\_base\_content\_to\_generation@{add\_base\_content\_to\_generation}}
+\index{add\_base\_content\_to\_generation@{add\_base\_content\_to\_generation}!object\_instance\_generator.c@{object\_instance\_generator.c}}
+\doxysubsubsection{\texorpdfstring{add\_base\_content\_to\_generation()}{add\_base\_content\_to\_generation()}}
+{\footnotesize\ttfamily uint8\+\_\+t add\+\_\+base\+\_\+content\+\_\+to\+\_\+generation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}}]{generated,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{base\+\_\+content\+\_\+path }\end{DoxyParamCaption})}
+
+\Hypertarget{object__instance__generator_8c_a2cc8e25321515a85fab885994a2a985d}\label{object__instance__generator_8c_a2cc8e25321515a85fab885994a2a985d} 
+\index{object\_instance\_generator.c@{object\_instance\_generator.c}!add\_entry\_to\_generation@{add\_entry\_to\_generation}}
+\index{add\_entry\_to\_generation@{add\_entry\_to\_generation}!object\_instance\_generator.c@{object\_instance\_generator.c}}
+\doxysubsubsection{\texorpdfstring{add\_entry\_to\_generation()}{add\_entry\_to\_generation()}}
+{\footnotesize\ttfamily uint8\+\_\+t add\+\_\+entry\+\_\+to\+\_\+generation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}}]{generated,  }\item[{\mbox{\hyperlink{structObjectGenerationData}{Object\+Generation\+Data}} \texorpdfstring{$\ast$}{*}}]{obj\+\_\+data }\end{DoxyParamCaption})}
+
+\Hypertarget{object__instance__generator_8c_a047c34d96c5b1c4694dc8cd0deff380c}\label{object__instance__generator_8c_a047c34d96c5b1c4694dc8cd0deff380c} 
+\index{object\_instance\_generator.c@{object\_instance\_generator.c}!add\_methods\_to\_generation@{add\_methods\_to\_generation}}
+\index{add\_methods\_to\_generation@{add\_methods\_to\_generation}!object\_instance\_generator.c@{object\_instance\_generator.c}}
+\doxysubsubsection{\texorpdfstring{add\_methods\_to\_generation()}{add\_methods\_to\_generation()}}
+{\footnotesize\ttfamily uint8\+\_\+t add\+\_\+methods\+\_\+to\+\_\+generation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}}]{generated,  }\item[{\mbox{\hyperlink{structObjectGenerationData}{Object\+Generation\+Data}} \texorpdfstring{$\ast$}{*}}]{obj\+\_\+data }\end{DoxyParamCaption})}
+
+\Hypertarget{object__instance__generator_8c_a86a4cdaf23ec5101228d4c75503c6452}\label{object__instance__generator_8c_a86a4cdaf23ec5101228d4c75503c6452} 
+\index{object\_instance\_generator.c@{object\_instance\_generator.c}!build\_object\_attributes@{build\_object\_attributes}}
+\index{build\_object\_attributes@{build\_object\_attributes}!object\_instance\_generator.c@{object\_instance\_generator.c}}
+\doxysubsubsection{\texorpdfstring{build\_object\_attributes()}{build\_object\_attributes()}}
+{\footnotesize\ttfamily uint8\+\_\+t build\+\_\+object\+\_\+attributes (\begin{DoxyParamCaption}\item[{xml\+Node \texorpdfstring{$\ast$}{*}}]{node,  }\item[{\mbox{\hyperlink{structObjectGenerationData}{Object\+Generation\+Data}} \texorpdfstring{$\ast$}{*}}]{obj\+\_\+data }\end{DoxyParamCaption})}
+
+\Hypertarget{object__instance__generator_8c_a49bc5b9fe1c6a70fc24a9f212723ca7f}\label{object__instance__generator_8c_a49bc5b9fe1c6a70fc24a9f212723ca7f} 
+\index{object\_instance\_generator.c@{object\_instance\_generator.c}!build\_object\_methods@{build\_object\_methods}}
+\index{build\_object\_methods@{build\_object\_methods}!object\_instance\_generator.c@{object\_instance\_generator.c}}
+\doxysubsubsection{\texorpdfstring{build\_object\_methods()}{build\_object\_methods()}}
+{\footnotesize\ttfamily uint8\+\_\+t build\+\_\+object\+\_\+methods (\begin{DoxyParamCaption}\item[{xml\+Node \texorpdfstring{$\ast$}{*}}]{node,  }\item[{\mbox{\hyperlink{structObjectGenerationData}{Object\+Generation\+Data}} \texorpdfstring{$\ast$}{*}}]{obj\+\_\+data }\end{DoxyParamCaption})}
+
+\Hypertarget{object__instance__generator_8c_a087f3b4116e222d4f235dc714b78b769}\label{object__instance__generator_8c_a087f3b4116e222d4f235dc714b78b769} 
+\index{object\_instance\_generator.c@{object\_instance\_generator.c}!delete\_object\_generation\_data@{delete\_object\_generation\_data}}
+\index{delete\_object\_generation\_data@{delete\_object\_generation\_data}!object\_instance\_generator.c@{object\_instance\_generator.c}}
+\doxysubsubsection{\texorpdfstring{delete\_object\_generation\_data()}{delete\_object\_generation\_data()}}
+{\footnotesize\ttfamily void delete\+\_\+object\+\_\+generation\+\_\+data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structObjectGenerationData}{Object\+Generation\+Data}} \texorpdfstring{$\ast$}{*}}]{obj\+\_\+data }\end{DoxyParamCaption})}
+
+\Hypertarget{object__instance__generator_8c_ae4599340740ed447ba73a6529d0815eb}\label{object__instance__generator_8c_ae4599340740ed447ba73a6529d0815eb} 
+\index{object\_instance\_generator.c@{object\_instance\_generator.c}!generate\_object\_src@{generate\_object\_src}}
+\index{generate\_object\_src@{generate\_object\_src}!object\_instance\_generator.c@{object\_instance\_generator.c}}
+\doxysubsubsection{\texorpdfstring{generate\_object\_src()}{generate\_object\_src()}}
+{\footnotesize\ttfamily uint8\+\_\+t generate\+\_\+object\+\_\+src (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structCNProject}{CNProject}} \texorpdfstring{$\ast$}{*}}]{project,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{output\+\_\+path,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{project\+\_\+root }\end{DoxyParamCaption})}
+
+\Hypertarget{object__instance__generator_8c_a64d054a142692a7b2cf026a5ba82a8fe}\label{object__instance__generator_8c_a64d054a142692a7b2cf026a5ba82a8fe} 
+\index{object\_instance\_generator.c@{object\_instance\_generator.c}!get\_object\_generation\_data@{get\_object\_generation\_data}}
+\index{get\_object\_generation\_data@{get\_object\_generation\_data}!object\_instance\_generator.c@{object\_instance\_generator.c}}
+\doxysubsubsection{\texorpdfstring{get\_object\_generation\_data()}{get\_object\_generation\_data()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structObjectGenerationData}{Object\+Generation\+Data}} \texorpdfstring{$\ast$}{*} get\+\_\+object\+\_\+generation\+\_\+data (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{object\+\_\+path }\end{DoxyParamCaption})}
+
+\Hypertarget{object__instance__generator_8c_a01f69c1ae034caab90fa7b3a0d607f4d}\label{object__instance__generator_8c_a01f69c1ae034caab90fa7b3a0d607f4d} 
+\index{object\_instance\_generator.c@{object\_instance\_generator.c}!type\_enum\_name\_from\_value@{type\_enum\_name\_from\_value}}
+\index{type\_enum\_name\_from\_value@{type\_enum\_name\_from\_value}!object\_instance\_generator.c@{object\_instance\_generator.c}}
+\doxysubsubsection{\texorpdfstring{type\_enum\_name\_from\_value()}{type\_enum\_name\_from\_value()}}
+{\footnotesize\ttfamily const char \texorpdfstring{$\ast$}{*} type\+\_\+enum\+\_\+name\+\_\+from\+\_\+value (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_a0e8eaf1430f3893d155ad709d2d84f25}{cn\+\_\+type}}}]{type }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{object__instance__generator_8c_a3c6bb126b6ae7bb51c141bfbdcdd7bec}\label{object__instance__generator_8c_a3c6bb126b6ae7bb51c141bfbdcdd7bec} 
+\index{object\_instance\_generator.c@{object\_instance\_generator.c}!GENERATED\_CONTENT\_ATTRS@{GENERATED\_CONTENT\_ATTRS}}
+\index{GENERATED\_CONTENT\_ATTRS@{GENERATED\_CONTENT\_ATTRS}!object\_instance\_generator.c@{object\_instance\_generator.c}}
+\doxysubsubsection{\texorpdfstring{GENERATED\_CONTENT\_ATTRS}{GENERATED\_CONTENT\_ATTRS}}
+{\footnotesize\ttfamily const char GENERATED\+\_\+\+CONTENT\+\_\+\+ATTRS\mbox{[}$\,$\mbox{]} = "{}if (!\mbox{\hyperlink{libcncore_8h_a0d1200d7a9ee39c24a7cfde96306eec6}{set\+\_\+attr}}(obj, \textbackslash{}"{}\$\{ATTR\+\_\+\+NAME\}\textbackslash{}"{}, \$\{ATTR\+\_\+\+TYPE\}, \$\{ATTR\+\_\+\+REF\})) \{\mbox{\hyperlink{libcncore_8h_aacb48b8707ccf6f8f1688d1fe07fdb1f}{PROPAGATE\+\_\+\+ERR}}(); (void)\mbox{\hyperlink{libcncore_8h_a3c17e388301ab678d57d1e4c0f1d3214}{delete\+\_\+object}}(obj); return (NULL);\};"{}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{object__instance__generator_8c_aa356be2271e1c8d12f5eabc91676d2c9}\label{object__instance__generator_8c_aa356be2271e1c8d12f5eabc91676d2c9} 
+\index{object\_instance\_generator.c@{object\_instance\_generator.c}!GENERATED\_CONTENT\_END@{GENERATED\_CONTENT\_END}}
+\index{GENERATED\_CONTENT\_END@{GENERATED\_CONTENT\_END}!object\_instance\_generator.c@{object\_instance\_generator.c}}
+\doxysubsubsection{\texorpdfstring{GENERATED\_CONTENT\_END}{GENERATED\_CONTENT\_END}}
+{\footnotesize\ttfamily const char GENERATED\+\_\+\+CONTENT\+\_\+\+END\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \textcolor{stringliteral}{"{}return\ (obj);"{}}}
+\DoxyCodeLine{\textcolor{stringliteral}{"{}\}"{}}}
+
+\end{DoxyCode}
+\Hypertarget{object__instance__generator_8c_a4711e19893d971294c587de6b0200ac1}\label{object__instance__generator_8c_a4711e19893d971294c587de6b0200ac1} 
+\index{object\_instance\_generator.c@{object\_instance\_generator.c}!GENERATED\_CONTENT\_METHODS@{GENERATED\_CONTENT\_METHODS}}
+\index{GENERATED\_CONTENT\_METHODS@{GENERATED\_CONTENT\_METHODS}!object\_instance\_generator.c@{object\_instance\_generator.c}}
+\doxysubsubsection{\texorpdfstring{GENERATED\_CONTENT\_METHODS}{GENERATED\_CONTENT\_METHODS}}
+{\footnotesize\ttfamily const char GENERATED\+\_\+\+CONTENT\+\_\+\+METHODS\mbox{[}$\,$\mbox{]} = "{}CREATE\+\_\+\+METHOD\+\_\+\+CLASS\+\_\+\+BUILD(obj, \textbackslash{}"{}\$\{SYMBOL\+\_\+\+NAME\}\textbackslash{}"{}, \&\$\{SYMBOL\+\_\+\+REF\});"{}\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{object__instance__generator_8c_ac37ed55279e8851613ef7be72b048255}\label{object__instance__generator_8c_ac37ed55279e8851613ef7be72b048255} 
+\index{object\_instance\_generator.c@{object\_instance\_generator.c}!GENERATED\_CONTENT\_START@{GENERATED\_CONTENT\_START}}
+\index{GENERATED\_CONTENT\_START@{GENERATED\_CONTENT\_START}!object\_instance\_generator.c@{object\_instance\_generator.c}}
+\doxysubsubsection{\texorpdfstring{GENERATED\_CONTENT\_START}{GENERATED\_CONTENT\_START}}
+{\footnotesize\ttfamily const char GENERATED\+\_\+\+CONTENT\+\_\+\+START\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=\ \textcolor{stringliteral}{"{}\#include\ \(\backslash\)"{}libcncore.h\(\backslash\)"{}\(\backslash\)n"{}}}
+\DoxyCodeLine{\textcolor{stringliteral}{"{}Object\ *c\_new\_\$\{OBJ\_NAME\}(void\ **args)\ \{"{}}}
+\DoxyCodeLine{\textcolor{stringliteral}{"{}Object\ *obj\ =\ new\_object();"{}}}
+\DoxyCodeLine{\textcolor{stringliteral}{"{}if\ (!obj)\ \{"{}}}
+\DoxyCodeLine{\textcolor{stringliteral}{"{}PROPAGATE\_ERR();"{}}}
+\DoxyCodeLine{\textcolor{stringliteral}{"{}return\ (NULL);"{}}}
+\DoxyCodeLine{\textcolor{stringliteral}{"{}\}"{}}}
+\DoxyCodeLine{\textcolor{stringliteral}{"{}Object\ *\$\{PARENT\_OBJ\_CONSTRUCTOR\}(void\ **args);SET\_PARENT\_CLASS\_BUILD\_STATIC(obj,\ \$\{PARENT\_OBJ\_CONSTRUCTOR\}(NULL));"{}}}
+
+\end{DoxyCode}
+\Hypertarget{object__instance__generator_8c_a2c4623fa76b47f8f05e104b7e718f467}\label{object__instance__generator_8c_a2c4623fa76b47f8f05e104b7e718f467} 
+\index{object\_instance\_generator.c@{object\_instance\_generator.c}!GENERATED\_PREFIX\_NAME@{GENERATED\_PREFIX\_NAME}}
+\index{GENERATED\_PREFIX\_NAME@{GENERATED\_PREFIX\_NAME}!object\_instance\_generator.c@{object\_instance\_generator.c}}
+\doxysubsubsection{\texorpdfstring{GENERATED\_PREFIX\_NAME}{GENERATED\_PREFIX\_NAME}}
+{\footnotesize\ttfamily const char GENERATED\+\_\+\+PREFIX\+\_\+\+NAME\mbox{[}$\,$\mbox{]} = "{}\+\_\+\+\_\+generated\+\_\+"{}\hspace{0.3cm}{\ttfamily [static]}}
+

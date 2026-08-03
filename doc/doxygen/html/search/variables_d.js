@@ -6,5 +6,5 @@ var searchData=
   ['max_5fbank_5fsize_3',['max_bank_size',['../structGameAssetCompiler.html#a06d2f55e317797abfcaa53d9208bc1ac',1,'GameAssetCompiler']]],
   ['message_4',['message',['../structErrorContext.html#afef893087f5117075d26e3e8fe378296',1,'ErrorContext']]],
   ['method_5',['method',['../structObjMethodPair.html#a816b82bfbb5f9b6fbfacbb8b9cb87490',1,'ObjMethodPair']]],
-  ['methods_6',['methods',['../structobject__s.html#abe619d8408e96a85e54d809ad9e10b94',1,'object_s']]]
+  ['methods_6',['methods',['../structobject__s.html#abe619d8408e96a85e54d809ad9e10b94',1,'object_s::methods'],['../structobject__element__s.html#a62505718baaf3197c6ca3d1bb2c56b71',1,'object_element_s::methods'],['../structObjectGenerationData.html#aa273dba7c453099401fd0c5c78236419',1,'ObjectGenerationData::methods']]]
 ];

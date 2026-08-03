@@ -149,6 +149,7 @@ var libcncore_8h =
     [ "empty_generic_map", "libcncore_8h.html#a3bbf301ead18953b31f51ab8a5420539", null ],
     [ "empty_generic_vector", "libcncore_8h.html#acc3435f4207c03ef74bfc6915e5a7419", null ],
     [ "empty_kv_pair", "libcncore_8h.html#ad1471363bc94f72b841a60f4ef358f15", null ],
+    [ "empty_str", "libcncore_8h.html#ab3dfc7bd59264f03cfcb271954b1b3a7", null ],
     [ "end_core", "libcncore_8h.html#a0ca1b4902be942746aa3c76f41333d81", null ],
     [ "error_type_to_text", "libcncore_8h.html#a7ebe9347c3fcd8d84dc7259bd2da0b73", null ],
     [ "generic_map_resize", "libcncore_8h.html#a06035cfbfe854f2f97021a4d68b3ad24", null ],
@@ -162,6 +163,7 @@ var libcncore_8h =
     [ "has_generic_map", "libcncore_8h.html#a25a0f9d41c95002d9c3a6b306b8368b0", null ],
     [ "has_method", "libcncore_8h.html#a279b2ab4efcad21dbfcb8a8ee92a9944", null ],
     [ "init_ckv_pair", "libcncore_8h.html#a31e02b77af95f9047a415de12004fb73", null ],
+    [ "init_generic_vector", "libcncore_8h.html#a2572a608be0bd6e3738e7ae41b35cd38", null ],
     [ "init_kv_pair", "libcncore_8h.html#a4f8a289ef007dd4a4c9115be1434804f", null ],
     [ "insert_generic_vector", "libcncore_8h.html#ae008741fa324696513f7f009a0db7d79", null ],
     [ "insert_object_vector", "libcncore_8h.html#af6e6bf6d171447010da1d68b8f6ef35c", null ],
@@ -214,7 +216,9 @@ var libcncore_8h =
     [ "str_is_empty", "libcncore_8h.html#acdca66b249758c104f3e4f1cafc1222e", null ],
     [ "str_is_null", "libcncore_8h.html#a6b412ec840cbd7b25480af8644b0cfe5", null ],
     [ "str_override", "libcncore_8h.html#acf84274f83df450656404aac7ba4f8ae", null ],
+    [ "str_override_cp", "libcncore_8h.html#ae70c404b137ee96443cf93628471380e", null ],
     [ "str_rcadd_cp", "libcncore_8h.html#a639732e7c95d71daef692601b350b16e", null ],
     [ "str_rcadd_mv", "libcncore_8h.html#a5329b1771083af3811b79c2ddb54c86d", null ],
+    [ "str_replace", "libcncore_8h.html#a7f4de54cd9543a7a8c79222e178fd2b5", null ],
     [ "submodule_ctx", "libcncore_8h.html#a379caad25b78a71ea0e20e15ec2b7dd8", null ]
 ];

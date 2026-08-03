@@ -10,6 +10,7 @@ var engine_8h =
     [ "copy_file", "engine_8h.html#a80c86544a27139d0f6fc3f945d2ef77a", null ],
     [ "copytree", "engine_8h.html#aa236763c532df52309fcc7ab4ec847ec", null ],
     [ "dump", "engine_8h.html#ad177ef2a270af29fc0d1e6b834b2e945", null ],
+    [ "flatten_source_path", "engine_8h.html#a65be8cb87dc7e691f6f40908244505bc", null ],
     [ "get_dirname", "engine_8h.html#a927967a36c50f9121cb715f84b7ccadd", null ],
     [ "get_extension", "engine_8h.html#a5e9345b193ceba83b1594868b6cf24fd", null ],
     [ "get_file_size", "engine_8h.html#a389b618b1d2f226e0c49d639d3258913", null ],
