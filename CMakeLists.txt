@@ -248,6 +248,7 @@ if(CN_BUILD_ENGINE)
         src/cnbuild/asset_toolchain/route.c
     
         src/cnbuild/object_toolchain/route.c
+        src/cnbuild/object_toolchain/obj.c
     
         src/cnbuild/project_toolchain/route.c
         src/cnbuild/project_toolchain/utils.c

@@ -78,7 +78,7 @@ uint8_t build_element_attribs(xmlNode *node, struct scene_element_s *element)
         if (node_child->type != XML_ELEMENT_NODE)
             continue;
 
-        temp_s = xmlGetProp(node, (xmlChar *)"as");
+        temp_s = xmlGetProp(node_child, (xmlChar *)"as");
 
         type = typename_from_string((const char *)node_child->name);
         temp = create_object_attribute((const char *)temp_s, type, NULL);
@@ -90,7 +90,7 @@ uint8_t build_element_attribs(xmlNode *node, struct scene_element_s *element)
             return (1);
         }
 
-        text = string_from_node(node);
+        text = string_from_node(node_child);
 
         if (!text) {
             PROPAGATE_ERR();
@@ -170,6 +170,7 @@ uint8_t build_scene_element(xmlNode *node, struct generic_vector_s *parsed_data,
                 PROPAGATE_ERR();
                 return (1);
             }
+        } else if (!strcmp((const char *)node_child->name, "instanciation")) {
         } else if (!strcmp((const char *)node_child->name, "childs")) {
             for (xmlNode *subnode = node_child->children; subnode; subnode = subnode->next) {
                 if (subnode->type != XML_ELEMENT_NODE)
@@ -231,7 +232,17 @@ struct generic_vector_s *parse_xml_scene(const char *file_path, struct engine_ob
             continue;
 
         if (!strcmp((const char *)node->name, "content")) {
+            for (xmlNode *node_child = node->children; node_child; node_child = node_child->next) {
+                if (node_child->type != XML_ELEMENT_NODE)
+                    continue;
 
+                if (build_scene_element(node_child, parsed_data, NULL)) {
+                    PROPAGATE_ERR();
+                    delete_generic_vector(parsed_data, (expr_free)&delete_parsed_scene);
+                    (void)xmlFreeDoc(doc);
+                    return (NULL);
+                }
+            }
         } else if (!strcmp((const char *)node->name, "details")) {
 
         } else {

@@ -4,6 +4,7 @@ int build_obj(size_t argc, char **argv, Object *asset_ctx)
 {
     struct engine_object_file_writer_ctx_s *wctx;
     struct build_args_s build_args = {0};
+    struct object_element_s *left_overs;
     FILE *fp;
 
     (void)asset_ctx;
@@ -38,10 +39,20 @@ int build_obj(size_t argc, char **argv, Object *asset_ctx)
     wctx->write_infos.flags = build_args.padding;
     wctx->write_infos.type = ENGINE_OBJ_OBJ;
 
+    left_overs = parse_object(build_args.input_files.content[0], wctx, asset_ctx);
+
+    if (!left_overs) {
+        PROPAGATE_ERR();
+        (void)delete_writer_ctx(wctx);
+        (void)reset_args(&build_args);
+        return (1);
+    }
+
     fp = fopen(build_args.output_file, "wb");
 
     if (!fp) {
         RAISE_FMT(ERR_OS, "failed to open output file '%s'.", build_args.output_file);
+        (void)delete_object_element_data(left_overs);
         (void)delete_writer_ctx(wctx);
         (void)reset_args(&build_args);
         return (1);
@@ -49,6 +60,7 @@ int build_obj(size_t argc, char **argv, Object *asset_ctx)
     
     if (write_object_file(fp, wctx)) {
         PROPAGATE_ERR();
+        (void)delete_object_element_data(left_overs);
         (void)delete_writer_ctx(wctx);
         (void)reset_args(&build_args);
         (void)fclose(fp);
@@ -56,6 +68,7 @@ int build_obj(size_t argc, char **argv, Object *asset_ctx)
     }
 
     (void)fclose(fp);
+    (void)delete_object_element_data(left_overs);
     (void)delete_writer_ctx(wctx);
     (void)reset_args(&build_args);
 

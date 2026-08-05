@@ -2,6 +2,9 @@ project(cnobjectobj C)
 
 add_library(cnobjectobj SHARED
     src/interface.c
+    src/info_section.c
+    src/attributes_section.c
+    src/symbols_section.c
 )
 
 target_compile_options(cnobjectobj

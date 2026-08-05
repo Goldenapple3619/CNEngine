@@ -180,8 +180,8 @@ uint8_t asset_compiler_build_objects(GameAssetCompiler *compiler)
         }
 
         printf("building %s\n", argv[3]);
-        for (size_t v = 0; argv[v]; ++v)
-            printf(argv[v + 1] ? "%s " : "%s\n", argv[v]);
+        // for (size_t v = 0; argv[v]; ++v)
+        //     printf(argv[v + 1] ? "%s " : "%s\n", argv[v]);
 
         if (run_program(compiler->compiler_path, (const char * const*)argv)) {
             RAISE_FMT(ERR_OS, "compiler '%s' returned failure.", compiler->compiler_path);

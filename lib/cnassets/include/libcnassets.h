@@ -56,11 +56,16 @@
     typedef enum {
         ENGINE_SEC_UKN = 0x00, // reserved
         ENGINE_SEC_RAW,
+
         ENGINE_SEC_GUI_NODES,
         ENGINE_SEC_GUI_STYLE,
         ENGINE_SEC_GUI_CONN,
 
-        ENGINE_SEC_SCENE_TREE
+        ENGINE_SEC_SCENE_TREE,
+
+        ENGINE_SEC_OBJ_SYMBOLS,
+        ENGINE_SEC_OBJ_ATTRS,
+        ENGINE_SEC_OBJ_INFO
     } engine_section_type;
 
     typedef enum {

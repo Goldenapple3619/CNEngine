@@ -10,6 +10,8 @@
         <text align="left" justify="top" color="ffffffff" id="FPS_TEXT">
             fps: 00.00
         </text>
+
+        <gui>null</gui>
     </content>
 
     <connectors>
