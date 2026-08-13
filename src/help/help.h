@@ -1,5 +1,5 @@
-#ifndef _DUMP_H_
-    #define _DUMP_H_
+#ifndef _HELP_H_
+    #define _HELP_H_
 
     #include "../engine.h"
 

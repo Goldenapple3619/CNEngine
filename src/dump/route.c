@@ -3,7 +3,7 @@
 
 int dump(size_t argc, char **argv)
 {
-     if (argc < 3) {
+    if (argc < 3) {
         fprintf(stderr, "%s: file to dump missing.", argv[0]);
         return (1);
     }

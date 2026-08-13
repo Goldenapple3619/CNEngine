@@ -67,6 +67,13 @@ int main(int argc, char **argv)
             return (1);
         }
 
+        if (register_engine_asset_api(ctx)) {
+            PROPAGATE_ERR();
+            DELOC(ctx);
+            report_errors();
+            return (1);
+        }
+
         if (load_entry_scene(ctx)) {
             PROPAGATE_ERR();
             DELOC(ctx);

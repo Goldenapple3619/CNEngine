@@ -221,6 +221,7 @@
     CN_API uint8_t get_opacity_texture(const Texture *texture);
     CN_API void draw_rect(Texture *texture, const Rect *rect, cncolor color);
     // CN_API void draw_ellipse(Texture *texture, const Rect *rect, cncolor color); // to implement
+    CN_API Texture *new_texture_from_buffer(const void *buffer, size_t size);
     CN_API void delete_texture(Texture *texture);
 
     CN_API Window *new_window(const char *name, const Texture *icon, const Videomode *video_mode);

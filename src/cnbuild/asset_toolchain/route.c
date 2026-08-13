@@ -72,6 +72,9 @@ struct generic_vector_s *parse_asset(struct generic_vector_s *inputs, struct eng
 
     struct generic_vector_s *parsed_data;
     FILE *fp;
+    char *file;
+    char *key;
+    char *found;
 
     if (writer_ctx_set_object_name(wctx, "rwa")) {
         PROPAGATE_ERR();
@@ -86,15 +89,33 @@ struct generic_vector_s *parse_asset(struct generic_vector_s *inputs, struct eng
     }
 
     for (size_t i = 0; i < inputs->size; ++i) {
-        fp = fopen((const char *)inputs->content[i], "rb");
+        found = strstr((char *)inputs->content[i], ":");
+
+        if (found) {
+            found[0] = '\0';
+            file = inputs->content[i];
+            key = found + 1;
+        } else {
+            file = inputs->content[i];
+            key = file;
+        }
+
+        fp = fopen((const char *)file, "rb");
 
         if (!fp) {
-            RAISE_FMT(ERR_OS, "failed to open '%s'.", (const char *)inputs->content[i]);
+            RAISE_FMT(ERR_OS, "failed to open '%s'.", (const char *)file);
             (void)empty_generic_vector(parsed_data, (expr_free)&fclose_wrapper);
             return (NULL);
         }
 
-        if (create_new_section_asset(wctx, inputs->content[i], fp)) {
+        if (insert_generic_vector(parsed_data, fp)) {
+            PROPAGATE_ERR();
+            (void)fclose_wrapper(fp);
+            (void)empty_generic_vector(parsed_data, (expr_free)&fclose_wrapper);
+            return (NULL);
+        }
+
+        if (create_new_section_asset(wctx, key, fp)) {
             PROPAGATE_ERR();
             (void)empty_generic_vector(parsed_data, (expr_free)&fclose_wrapper);
             return (NULL);

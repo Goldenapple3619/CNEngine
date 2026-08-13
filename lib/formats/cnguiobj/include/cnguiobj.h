@@ -3,8 +3,6 @@
 
     #include "libcnassets.h"
 
-    static const char asset_name[] = "gui";
-
     struct gui_element_s {
         char *id;
         char *object_type;

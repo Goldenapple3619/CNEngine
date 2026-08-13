@@ -8,7 +8,7 @@ CN_API struct asset_registry *register_asset(void)
     if (!gui_asset)
         return (NULL);
 
-    gui_asset->name = asset_name;
+    gui_asset->name = "gui";
     gui_asset->asset_type = ENGINE_OBJ_GUI;
     gui_asset->registered_sections.capacity = 0;
     gui_asset->registered_sections.size = 0;
