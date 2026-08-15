@@ -20,6 +20,8 @@ CN_API Object *release_object(Object *object)
         RAISE(ERR_INVALID_POINTER, "can't release empty obj.");
         return (NULL);
     }
+    if (!object->ref_count)
+        return (object);
     object->ref_count--;
     return (object);
 }

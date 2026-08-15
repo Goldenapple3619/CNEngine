@@ -15,5 +15,10 @@ uint8_t add_main_interface(Object *ctx)
         return (1);
     }
 
+    if (call_method(ctx, "set_main_window", PACK_ARG(INLNE_PRIM_T_ARG(((Window *)get_attr(val.as.ptr, "window")->as.ptr)->id))).as.i == VALUE_ERR.as.i) {
+        PROPAGATE_ERR();
+        return (1);
+    }
+
     return (0);
 }

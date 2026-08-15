@@ -597,24 +597,33 @@ uint8_t construct_build(const EngineConfig *config, const CNProject *project, co
 
 CNProject *parse_project(const EngineConfig *config, const char *output_path, const char *file_path, Object *asset_ctx, const char *self_path)
 {
+    (void)asset_ctx;
+
     CNProject *project;
     CNBuild *temp_build;
     char *project_root = get_dirname(file_path);
     char *dist_path;
     char *build_path;
 
-    (void)asset_ctx;
-
     if (!project_root) {
         PROPAGATE_ERR();
         return (NULL);
     }
 
-    build_path = init_build_path(project_root);
+    project = parse_project_xml(config, file_path, project_root);
+
+    (void)free(project_root);
+
+    if (!project) {
+        PROPAGATE_ERR();
+        return (NULL);
+    }
+
+    build_path = init_build_path(project->root);
 
     if (!build_path) {
         PROPAGATE_ERR();
-        (void)free(project_root);
+        (void)delete_cnproject(project);
         return (NULL);
     }
 
@@ -622,18 +631,8 @@ CNProject *parse_project(const EngineConfig *config, const char *output_path, co
 
     if (!dist_path) {
         PROPAGATE_ERR();
-        (void)free(project_root);
+        (void)delete_cnproject(project);
         (void)free(build_path);
-        return (NULL);
-    }
-
-    project = parse_project_xml(config, file_path, project_root);
-
-    if (!project) {
-        PROPAGATE_ERR();
-        (void)free(dist_path);
-        (void)free(build_path);
-        (void)free(project_root);
         return (NULL);
     }
 
@@ -655,7 +654,6 @@ CNProject *parse_project(const EngineConfig *config, const char *output_path, co
             (void)delete_cnproject(project);
             (void)free(dist_path);
             (void)free(build_path);
-            (void)free(project_root);
             return (NULL);
         }
         if (construct_build(config, project, project->builds.content[i], build_path, dist_path, self_path)) {
@@ -663,14 +661,12 @@ CNProject *parse_project(const EngineConfig *config, const char *output_path, co
             (void)delete_cnproject(project);
             (void)free(dist_path);
             (void)free(build_path);
-            (void)free(project_root);
             return (NULL);
         }
     }
 
     (void)free(dist_path);
     (void)free(build_path);
-    (void)free(project_root);
 
     return (project);
 }

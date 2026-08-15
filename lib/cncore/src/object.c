@@ -312,7 +312,7 @@ CN_API Object *build_object(Object *obj, void **args)
     }
     if (val.as.i == VALUE_OK.as.i)
         return (obj);
-    RAISE(ERR_RUNTIME, "object constructor returned ERR, check previous stack trace for potential informations.");
+    PROPAGATE_ERR();
     (void)delete_object(obj);
     return (NULL);
 };

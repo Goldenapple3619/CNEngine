@@ -86,6 +86,17 @@ static cn_value _remove(Object *__this, void **args)
     return (VALUE_OK);
 }
 
+static cn_value _empty(Object *__this, void **args)
+{
+    (void)args;
+
+    struct generic_vector_s *vec = get_attr(__this, "_vec")->as.ptr;
+    void (*_delobj_cb)(void *) = get_attr(__this, "_delobj_cb")->as.ptr;
+
+    (void)empty_generic_vector(vec, _delobj_cb);
+    return (VALUE_OK);
+}
+
 static cn_value _del(Object *__this, void **args)
 {
     (void)args;
@@ -170,6 +181,7 @@ CN_API Object *new_list(void (*_delete_obj)(void *))
     CREATE_METHOD_CLASS_BUILD(obj, "len", &_len);
     CREATE_METHOD_CLASS_BUILD(obj, "remove", &_remove);
     CREATE_METHOD_CLASS_BUILD(obj, "at", &_at);
+    CREATE_METHOD_CLASS_BUILD(obj, "empty", &_empty);
     CREATE_METHOD_CLASS_BUILD(obj, "_del", &_del);
 
     return (obj);

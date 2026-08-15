@@ -41,7 +41,13 @@
     uint8_t load_submodules(Object *ctx); // generated
 
     #if defined(_HAS_ASSETS) && (_HAS_ASSETS == 1)
+        struct loaded_data_holder_s {
+            char *path;
+            struct section_blk *content;
+        };
+
         uint8_t register_engine_asset_api(Object *ctx);
+        void unregister_engine_asset_api(Object *ctx);
         uint8_t load_assets_handler(Object *ctx);
         uint8_t load_entry_scene(Object *ctx);
     #endif

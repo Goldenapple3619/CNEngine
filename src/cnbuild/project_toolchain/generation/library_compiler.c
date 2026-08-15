@@ -140,11 +140,11 @@ uint8_t library_compiler_build_objects(LibraryCompiler *compiler)
     char *temp_path;
     char *flat_name;
     char *obj_path;
-    char **argv = malloc(sizeof(char *) * (8 + 1 + (compiler->preprocessor_definitions.size)));
+    char **argv = malloc(sizeof(char *) * (12 + 1 + (compiler->preprocessor_definitions.size)));
     size_t i;
 
     if (!argv) {
-        RAISE_FMT(ERR_OUT_OF_MEMORY, "failed to allocate new argv of size %zu.", (8 + 1 + (compiler->preprocessor_definitions.size)));
+        RAISE_FMT(ERR_OUT_OF_MEMORY, "failed to allocate new argv of size %zu.", (12 + 1 + (compiler->preprocessor_definitions.size)));
         return (1);
     }
 
@@ -156,19 +156,23 @@ uint8_t library_compiler_build_objects(LibraryCompiler *compiler)
     argv[5] = NULL;
     argv[6] = "-I";
     argv[7] = compiler->includes_path ? compiler->includes_path : "./";
+    argv[8] = "-Wall";
+    argv[9] = "-Wextra";
+    argv[10] = "-Wshadow";
+    argv[11] = "-O2";
 
     for (i = 0; i < compiler->preprocessor_definitions.size; ++i) {
-        argv[8 + i] = malloc(sizeof(char) * strlen((char *)compiler->preprocessor_definitions.content[i]) + 3);
-        if (!argv[8 + i]) {
+        argv[12 + i] = malloc(sizeof(char) * strlen((char *)compiler->preprocessor_definitions.content[i]) + 3);
+        if (!argv[12 + i]) {
             RAISE(ERR_OUT_OF_MEMORY, "failed to allocate new str for preprocessor definition.");
             (void)free(argv);
             return (1);
         }
-        strcpy(argv[8 + i], "-D");
-        strcpy(argv[8 + i] + strlen("-D"), (char *)compiler->preprocessor_definitions.content[i]);
+        strcpy(argv[12 + i], "-D");
+        strcpy(argv[12 + i] + strlen("-D"), (char *)compiler->preprocessor_definitions.content[i]);
     }
 
-    argv[8 + i] = NULL;
+    argv[12 + i] = NULL;
 
     for (size_t o = 0; o < compiler->srcs.size; ++o) {
         argv[3] = (char *)compiler->srcs.content[o];
@@ -178,7 +182,7 @@ uint8_t library_compiler_build_objects(LibraryCompiler *compiler)
         if (!flat_name) {
             PROPAGATE_ERR();
             for (i = 0; i < compiler->preprocessor_definitions.size; ++i)
-                (void)free(argv[8 + i]);
+                (void)free(argv[12 + i]);
             (void)free(argv);
             return (1);
         }
@@ -189,7 +193,7 @@ uint8_t library_compiler_build_objects(LibraryCompiler *compiler)
         if (!temp_path) {
             PROPAGATE_ERR();
             for (i = 0; i < compiler->preprocessor_definitions.size; ++i)
-                (void)free(argv[8 + i]);
+                (void)free(argv[12 + i]);
             (void)free(argv);
             return (1);
         }
@@ -200,7 +204,7 @@ uint8_t library_compiler_build_objects(LibraryCompiler *compiler)
         if (!obj_path) {
             PROPAGATE_ERR();
             for (i = 0; i < compiler->preprocessor_definitions.size; ++i)
-                (void)free(argv[8 + i]);
+                (void)free(argv[12 + i]);
             (void)free(argv);
             return (1);
         }
@@ -209,7 +213,7 @@ uint8_t library_compiler_build_objects(LibraryCompiler *compiler)
             PROPAGATE_ERR();
             (void)free(obj_path);
             for (i = 0; i < compiler->preprocessor_definitions.size; ++i)
-                (void)free(argv[8 + i]);
+                (void)free(argv[12 + i]);
             (void)free(argv);
             return (1);
         }
@@ -223,13 +227,13 @@ uint8_t library_compiler_build_objects(LibraryCompiler *compiler)
         if (run_program(compiler->compiler_path, (const char * const*)argv)) {
             RAISE_FMT(ERR_OS, "compiler '%s' returned failure.", compiler->compiler_path);
             for (i = 0; i < compiler->preprocessor_definitions.size; ++i)
-                (void)free(argv[8 + i]);
+                (void)free(argv[12 + i]);
             (void)free(argv);
             return (1);
         }
     }
     for (i = 0; i < compiler->preprocessor_definitions.size; ++i)
-        (void)free(argv[8 + i]);
+        (void)free(argv[12 + i]);
     (void)free(argv);
     return (0);
 }
@@ -452,6 +456,14 @@ uint8_t compile_library(const EngineConfig *config, const CNProject *project, co
                 delete_library_compiler(compiler);
                 return (1);
             }
+        }
+    }
+
+    if (build_info->scene_entry_point) {
+        if (library_compiler_add_preprocessor_definition(compiler, "_ENTRY_SCENE", build_info->scene_entry_point)) {
+            PROPAGATE_ERR();
+            (void)delete_library_compiler(compiler);
+            return (1);
         }
     }
 

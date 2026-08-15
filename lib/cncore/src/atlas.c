@@ -25,7 +25,7 @@ static cn_value _init(Object *__this, void **args)
 static cn_value _push(Object *__this, void **args)
 {
     if (!args || !args[0] || !args[1]) {
-        RAISE(ERR_INVALID_POINTER, "can't push with no key, values args.")
+        RAISE(ERR_INVALID_POINTER, "can't push with no values, key args.")
         return (VALUE_ERR);
     }
 
@@ -133,6 +133,17 @@ static cn_value _remove(Object *__this, void **args)
     return (VALUE_OK);
 }
 
+static cn_value _empty(Object *__this, void **args)
+{
+    (void)args;
+
+    struct generic_map_s *gen_map = get_attr(__this, "_map")->as.ptr;
+    void (*_delobj_cb)(void *) = get_attr(__this, "_delobj_cb")->as.ptr;
+
+    (void)empty_generic_map(gen_map, _delobj_cb);
+    return (VALUE_OK);
+}
+
 static cn_value _del(Object *__this, void **args)
 {
     (void)args;
@@ -228,6 +239,7 @@ CN_API Object *new_atlas(void *(*_fetch_default)(const char *), void (*_delete_o
     CREATE_METHOD_CLASS_BUILD(obj, "has", &_has);
     CREATE_METHOD_CLASS_BUILD(obj, "at_value", &_at_value);
     CREATE_METHOD_CLASS_BUILD(obj, "at_key", &_at_key);
+    CREATE_METHOD_CLASS_BUILD(obj, "empty", &_empty);
     CREATE_METHOD_CLASS_BUILD(obj, "_del", &_del);
 
     return (obj);

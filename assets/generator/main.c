@@ -76,6 +76,9 @@ int main(int argc, char **argv)
 
         if (load_entry_scene(ctx)) {
             PROPAGATE_ERR();
+            #if defined(_HAS_ASSETS) && (_HAS_ASSETS == 1)
+                unregister_engine_asset_api(ctx);
+            #endif
             DELOC(ctx);
             report_errors();
             return (1);
@@ -85,6 +88,9 @@ int main(int argc, char **argv)
     #if defined(_HAS_GRAPHICS) && (_HAS_GRAPHICS == 1)
         if (add_main_interface(ctx)) {
             PROPAGATE_ERR();
+            #if defined(_HAS_ASSETS) && (_HAS_ASSETS == 1)
+                unregister_engine_asset_api(ctx);
+            #endif
             DELOC(ctx);
             report_errors();
             return (1);
@@ -93,6 +99,11 @@ int main(int argc, char **argv)
 
     call_method(ctx, "_run", NULL);
     call_method(ctx, "_stop", NULL);
+
+    #if defined(_HAS_ASSETS) && (_HAS_ASSETS == 1)
+        unregister_engine_asset_api(ctx);
+    #endif
+
     DELOC(ctx);
 
     report_errors();

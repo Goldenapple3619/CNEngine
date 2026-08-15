@@ -57,6 +57,8 @@
 
         struct generic_vector_s builds;
         struct generic_vector_s content;
+
+        char *root;
     } CNProject;
 
     typedef struct {

@@ -20,6 +20,8 @@ CNProject *new_cnproject(void)
     proj->content.size = 0;
     proj->content.content = NULL;
 
+    proj->root = NULL;
+
     return (proj);
 }
 
@@ -37,5 +39,7 @@ void delete_cnproject(CNProject *ptr)
         (void)free(ptr->name);
     if (ptr->version_name)
         (void)free(ptr->version_name);
+    if (ptr->root)
+        (void)free(ptr->root);
     (void)free(ptr);
 }

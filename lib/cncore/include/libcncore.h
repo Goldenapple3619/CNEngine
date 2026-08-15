@@ -156,6 +156,26 @@
             PROPAGATE_ERR(); \
             return (error_value); \
         }
+    #define SHR_INIT_OBJECT_SHR(__class, name, obj, error_value) \
+        if (!obj) { \
+            RAISE(ERR_INVALID_POINTER, "can't init share object with empty object."); \
+            return (error_value); \
+        } \
+        if (!set_attr(__class, name, CN_TYPE_OBJECT, (cnany)obj)) { \
+            PROPAGATE_ERR(); \
+            return (error_value); \
+        }
+    #define SHR_OBJECT_STATIC(__this, expr_alloc, args, name, error_value) \
+        __temp_alloc = (void *)build_object(expr_alloc, args); \
+        if (!__temp_alloc) { \
+            PROPAGATE_ERR(); \
+            return (error_value); \
+        } \
+        if (!set_attr(__this, name, CN_TYPE_OBJECT, (cnany)__temp_alloc)) { \
+            PROPAGATE_ERR(); \
+            (void)delete_object(__temp_alloc); \
+            return (error_value); \
+        }
 
     #define PACK_ARG(...) (cnany []){ __VA_ARGS__ }
     #define INLNE_PRIM_T_ARG(number) ((typeof((number)) [1]){(number)})
@@ -243,7 +263,7 @@
     typedef cn_value (*cn_method)(struct object_s *self, void **args);
     typedef void (*expr_free)(void *obj);
 
-    #define RET_OK(ret_expr) (ret_expr).as.i == VALUE_OK.as.i
+    #define RET_OK(ret_expr) ((ret_expr).as.i == VALUE_OK.as.i)
 
     struct object_attribute_s {
         #ifdef STRING_INDIVIDUAL_ALLOCATION
@@ -535,6 +555,8 @@
     CN_API uint8_t str_override_cp(String *str, const char *c_str);
     CN_API void empty_str(String *str);
     CN_API uint8_t str_replace(String *str, const char *to_replace, const char *with, size_t count);
+    CN_API uint8_t str_lcadd_cp(String *str, const char *c_str);
+    CN_API uint8_t str_lcadd_mv(String *str, char *c_str);
 
     #if defined(__MINGW32__) || defined(__MINGW64__)
         CN_API void raise_error_fmt(ErrorCode c, const char *file, const char *function, uint32_t line, const char *fmt, ...) __attribute__((format(gnu_printf, 5, 6)));
