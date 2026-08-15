@@ -253,7 +253,7 @@ uint8_t register_engine_asset_api(Object *ctx)
     SHR_INIT_METHOD(ctx, "search_symbol_container", &_search_symbol_container, 1);
     SHR_INIT_METHOD(ctx, "get_all_asset_pack", &_get_all_asset_pack, 1);
 
-    call_method(ctx, "load_symbol", PACK_ARG("raw.dirt.png"));
+    call_method(ctx, "load_symbol", PACK_ARG("raw.assets/dirt.png"));
 
     return (0);
 }
