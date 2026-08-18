@@ -44,7 +44,7 @@ static cn_value _has(Object *__this, void **args)
 {
     if (!args || !args[0]) {
         RAISE(ERR_INVALID_POINTER, "can't has with no key arg.")
-        return (null_value);
+        return (VALUE_NULL);
     }
     
     struct generic_map_s *gen_map = get_attr(__this, "_map")->as.ptr;
@@ -57,7 +57,7 @@ static cn_value _at(Object *__this, void **args)
 {
     if (!args || !args[0]) {
         RAISE(ERR_INVALID_POINTER, "can't get with no key arg.")
-        return (null_value);
+        return (VALUE_NULL);
     }
     
     struct generic_map_s *gen_map = get_attr(__this, "_map")->as.ptr;
@@ -70,7 +70,7 @@ static cn_value _at(Object *__this, void **args)
         return ((cn_value){.type=CN_TYPE_GENERIC_UNIQ_PTR, .as.ptr=(void *)item});
     else {
         PROPAGATE_ERR();
-        return (null_value);
+        return (VALUE_NULL);
     }
 }
 
@@ -78,7 +78,7 @@ static cn_value _at_value(Object *__this, void **args)
 {
     if (!args || !args[0]) {
         RAISE(ERR_INVALID_POINTER, "can't get with no index arg.")
-        return (null_value);
+        return (VALUE_NULL);
     }
     
     struct generic_map_s *gen_map = get_attr(__this, "_map")->as.ptr;
@@ -86,7 +86,7 @@ static cn_value _at_value(Object *__this, void **args)
 
     if (gen_map->size <= index) {
         RAISE_FMT(ERR_OUT_OF_BOUND, "get at invalid index (%zu >= %zu).", index, gen_map->size);
-        return (null_value);
+        return (VALUE_NULL);
     }
 
     return ((cn_value){.type=CN_TYPE_GENERIC_UNIQ_PTR, .as.ptr=gen_map->content[index]});
@@ -96,7 +96,7 @@ static cn_value _at_key(Object *__this, void **args)
 {
     if (!args || !args[0]) {
         RAISE(ERR_INVALID_POINTER, "can't get with no index arg.")
-        return (null_value);
+        return (VALUE_NULL);
     }
     
     struct generic_map_s *gen_map = get_attr(__this, "_map")->as.ptr;
@@ -104,7 +104,7 @@ static cn_value _at_key(Object *__this, void **args)
 
     if (gen_map->size <= index) {
         RAISE_FMT(ERR_OUT_OF_BOUND, "get at invalid index (%zu >= %zu).", index, gen_map->size);
-        return (null_value);
+        return (VALUE_NULL);
     }
 
     return ((cn_value){.type=CN_TYPE_INT, .as.i=gen_map->keys[index]});
@@ -156,7 +156,7 @@ static cn_value _del(Object *__this, void **args)
     if (__temp_alloc && __temp_alloc->as.ptr)
         delete_generic_map(__temp_alloc->as.ptr, _delobj_cb);
 
-    return (null_value);
+    return (VALUE_NULL);
 }
 
 CN_API struct list_iterator_s atlas_get_iterator(Object *__atlas, cnbool get_value_instead_of_key)
@@ -181,14 +181,14 @@ CN_API struct list_iterator_s atlas_get_iterator(Object *__atlas, cnbool get_val
 CN_API void atlas_iterator_next(struct list_iterator_s *iterator)
 {
     if (!iterator || !iterator->get_element) {
-        iterator->val = null_value;
+        iterator->val = VALUE_NULL;
         return;
     }
 
     ++iterator->pos;
 
     if (iterator->pos >= iterator->size) {
-        iterator->val = null_value;
+        iterator->val = VALUE_NULL;
         return;
     }
 

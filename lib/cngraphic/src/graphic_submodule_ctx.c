@@ -1,5 +1,7 @@
 #include "libcncore.h"
 #include "libcngraphic.h"
+#include <SDL2/SDL.h>
+#include <glad/gl.h>
 
 static cn_value _draw(Object *__this, void **args)
 {
@@ -13,7 +15,7 @@ static cn_value _draw(Object *__this, void **args)
     for (size_t i = 0; i < interfaces->size; ++i)
         (void)call_method(interfaces->objects[i], "_draw", NULL);
 
-    return (null_value);
+    return (VALUE_NULL);
 }
 
 static cn_value _update(Object *__this, void **args)
@@ -75,7 +77,7 @@ static cn_value _update(Object *__this, void **args)
         (void)call_method(interfaces->objects[i], "_update", PACK_ARG(&get_attr(__this, "dt")->as.f));
     }
 
-    return (null_value);
+    return (VALUE_NULL);
 }
 
 static cn_value _events(Object *__this, void **args)
@@ -91,7 +93,7 @@ static cn_value _events(Object *__this, void **args)
     for (size_t i = 0; i < interfaces->size; ++i)
         (void)call_method(interfaces->objects[i], "_events", NULL);
 
-    return (null_value);
+    return (VALUE_NULL);
 }
 
 static cn_value _set_main_window(Object *__this, void **args)
@@ -125,7 +127,7 @@ static cn_value _spawn_interface(Object *__this, void **args)
 {
     if (!args) {
         RAISE(ERR_INVALID_POINTER, "missing arguments required to create an interface.");
-        return (null_value);
+        return (VALUE_NULL);
     }
 
     Object *interface = build_object(new_interface(), (void *[]){args[0], args[1], args[2], NULL});
@@ -133,19 +135,19 @@ static cn_value _spawn_interface(Object *__this, void **args)
 
     if (!interface) {
         PROPAGATE_ERR();
-        return (null_value);
+        return (VALUE_NULL);
     }
 
     if (insert_object_vector(vec, interface)) {
         PROPAGATE_ERR();
         (void)delete_object(interface);
-        return (null_value);
+        return (VALUE_NULL);
     }
 
     if (add_window_in_universe(get_attr(__this, "all_window")->as.ptr, get_attr(interface, "window")->as.ptr)) {        
         PROPAGATE_ERR();
         (void)remove_object_vector(vec, vec->size - 1);
-        return (null_value);
+        return (VALUE_NULL);
     }
 
     return ((cn_value){.type=CN_TYPE_WEAK_OBJECT, .as.ptr=interface});

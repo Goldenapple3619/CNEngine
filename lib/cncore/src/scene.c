@@ -31,7 +31,7 @@ static cn_value _update(Object *__this, void **args)
             (void)call_method(temp, "_update", args);
     }
 
-    return (null_value);
+    return (VALUE_NULL);
 }
 
 static cn_value _add_element(Object *__this, void **args)
@@ -52,7 +52,7 @@ static cn_value _del(Object *__this, void **args)
     (void)__this;
     (void)args;
 
-    return (null_value);
+    return (VALUE_NULL);
 }
 
 CN_API Object *new_scene(void)

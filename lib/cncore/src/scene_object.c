@@ -44,7 +44,7 @@ static cn_value _del(Object *__this, void **args)
     (void)__this;
     (void)args;
 
-    return (null_value);
+    return (VALUE_NULL);
 }
 
 CN_API Object *new_scene_object(void)

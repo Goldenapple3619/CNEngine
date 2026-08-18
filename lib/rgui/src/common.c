@@ -1,4 +1,5 @@
 #include "librgui.h"
+#include <SDL_ttf.h>
 
 CN_API cnbool start_gui(void)
 {

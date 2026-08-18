@@ -2,13 +2,32 @@
     #define _LIBCNCORE_H_
 
     #include <stdio.h>
-    #include <SDL2/SDL.h>
+    #include <stdlib.h>
+    #include <stdint.h>
+    #include <string.h>
+    #include <stdarg.h>
+    #include <inttypes.h>
+
+    /** ////////////////////// **/
+    /**   true, false typing   **/
+    /** ////////////////////// **/
+
+    #define true ~(0 << 1)
+    #define false 0
+
+    /** ////////////////////// **/
+    /**   windows dll export   **/
+    /** ////////////////////// **/
 
     #ifdef _WIN32
         #define CN_API __declspec(dllexport)
     #else
         #define CN_API
     #endif
+
+    /** ////////////////////// **/
+    /**   some configuration   **/
+    /** ////////////////////// **/
 
     #define GC_MAX_SIZE 256
     #define ERR_MAX_FRAMES 32
@@ -17,10 +36,11 @@
 
     #define ERR_FULL_TRACE 1
 
-    #define true ~(0 << 1)
-    #define false 0
+    #define STRING_INDIVIDUAL_ALLOCATION 1 // are we duping every string ? or are they handled with an atlas, for now only individual string allocation is implemented
 
-    #define STRING_INDIVIDUAL_ALLOCATION 1 // are we duping every string ? or are they handled with an atlas
+    /** ////////////////////////// **/
+    /**   error reporting macros   **/
+    /** ////////////////////////// **/
 
     #if defined(ERR_FULL_TRACE) && ERR_FULL_TRACE == 1
         #define RAISE(c, msg) raise_error(c, msg, __FILE__, __func__, __LINE__);
@@ -36,8 +56,18 @@
         #define PROPAGATE_ERR() push_error("???", "???", "???");
     #endif
 
+    /** ////////////////////////////////// **/
+    /**   macro to prepare init variables  **/
+    /** ////////////////////////////////// **/
+
     #define PREP_INIT() void *__temp_alloc;
     #define PREP_CLASS_BUILD() PREP_INIT()
+    #define PREP_DEL() cn_value *__temp_alloc;
+
+    /** //////////////////////////////////// **/
+    /**   macros for _init initialisations   **/
+    /** //////////////////////////////////// **/
+
     #define INIT_CUSTOM_ALLOCATION(__this, expr_alloc, expr_free, name) \
         __temp_alloc = (void *)expr_alloc; \
         if (!__temp_alloc) { \
@@ -77,13 +107,6 @@
         if (!set_attr(__this, name, CN_TYPE_WEAK_OBJECT, (cnany)obj)) { \
             PROPAGATE_ERR(); \
             return (VALUE_ERR); \
-        }
-    #define PREP_DEL() cn_value *__temp_alloc;
-    #define DEL_CUSTOM_ALLOCAION(__this, expr_free, name) \
-        __temp_alloc = get_attr(__this, name); \
-        if (__temp_alloc && __temp_alloc->as.ptr) { \
-            expr_free(__temp_alloc->as.ptr); \
-            __temp_alloc->as.ptr = NULL; \
         }
     #define INIT_STRING(__this, string, name) \
         if (!set_attr(__this, name, CN_TYPE_STRING, (cnany)string)) { \
@@ -125,6 +148,22 @@
             PROPAGATE_ERR(); \
             return (VALUE_ERR); \
         }
+
+    /** //////////////////////// **/
+    /**   _del deletion macros   **/
+    /** //////////////////////// **/
+
+    #define DEL_CUSTOM_ALLOCAION(__this, expr_free, name) \
+        __temp_alloc = get_attr(__this, name); \
+        if (__temp_alloc && __temp_alloc->as.ptr) { \
+            expr_free(__temp_alloc->as.ptr); \
+            __temp_alloc->as.ptr = NULL; \
+        }
+
+    /** //////////////////////////////// **/
+    /**   new instance building macros   **/
+    /** //////////////////////////////// **/
+
     #define CREATE_METHOD_CLASS_BUILD(__class, name, callback) \
         if (!set_method(__class, name, callback)) { \
             PROPAGATE_ERR(); \
@@ -151,6 +190,11 @@
             (void)delete_object(__class); \
             return (NULL); \
         }
+
+    /** //////////////////////////////////////////////////////////////////////// **/
+    /**   new instance building macros but allowing custom error return values   **/
+    /** //////////////////////////////////////////////////////////////////////// **/
+
     #define SHR_INIT_METHOD(__class, name, callback, error_value) \
         if (!set_method(__class, name, callback)) { \
             PROPAGATE_ERR(); \
@@ -177,31 +221,65 @@
             return (error_value); \
         }
 
+    /** /////////////////////////// **/
+    /**   argument passing macros   **/
+    /** /////////////////////////// **/
+
     #define PACK_ARG(...) (cnany []){ __VA_ARGS__ }
     #define INLNE_PRIM_T_ARG(number) ((typeof((number)) [1]){(number)})
     #define INLN_STRCT_T_ARG(constructor) (&(constructor))
 
+    /** ////////////////// **/
+    /**   default values   **/
+    /** ////////////////// **/
+
+    #define VALUE_NULL (cn_value){CN_TYPE_NULL, .as.i = 0}
+    #define VALUE_ERR (cn_value){CN_TYPE_INT, .as.i = 1}
+    #define VALUE_OK (cn_value){CN_TYPE_INT, .as.i = 0}
+
+    /** ///////////////////////// **/
+    /**   default return checks   **/
+    /** ///////////////////////// **/
+
+    #define RET_OK(ret_expr) ((ret_expr).as.i == VALUE_OK.as.i)
+    #define RET_NULL(ret_expr) ((ret_expr).type == CN_TYPE_NULL)
+    #define VAL_EMPTY(ret_expr) ((((ret_expr).type == CN_TYPE_GENERIC_UNIQ_PTR) || ((ret_expr).type == CN_TYPE_OBJECT) || ((ret_expr).type == CN_TYPE_WEAK_OBJECT) || ((ret_expr).type == CN_TYPE_FUNCTION)) && (!(ret_expr).as.ptr))
+
+    /** /////////////////////////////// **/
+    /**   macro to insta clear object   **/
+    /** /////////////////////////////// **/
+
     #define DELOC(object) delete_object(object); run_gc();
+
+    /** ////////////////////////////// **/
+    /**   primitive types definition   **/
+    /** ////////////////////////////// **/
 
     typedef float cnnumber; // less memory, more performance but less accuracy and capacity
     // typedef double cnnumber;
-    
+
     typedef void * cnany;
+    typedef uint8_t cnbool;
     typedef uint64_t cntime; // timestamp
-    typedef unsigned char cnbool;
     typedef uint64_t cnflags; // 64bits falgs
 
-    struct vector2_s {
+    typedef void (*expr_free)(void *obj); // the standard function prototype expected to free something
+
+    /** ///////////////////////// **/
+    /**   math types definition   **/
+    /** ///////////////////////// **/
+
+    typedef struct vector2_s {
         cnnumber x;
         cnnumber y;
-    };
+    } Vector2;
 
-    struct vector3_s {
+    typedef struct vector3_s {
         cnnumber x;
         cnnumber y;
         cnnumber z;
-    };
-    
+    } Vector3;
+
     struct rect_s {
         cnnumber x;
         cnnumber y;
@@ -209,10 +287,16 @@
         cnnumber h;
     };
 
-    struct clock_s {
-        cntime old_time; // sdl_gettick64()
-        double last_dt;
-    };
+    #if !defined(__APPLE__)
+        typedef struct rect_s Rect;
+    #else
+        typedef struct rect_s CNRect;
+        #define Rect CNRect
+    #endif
+
+    /** ///////////////////////// **/
+    /**   type/value definition   **/
+    /** ///////////////////////// **/
 
     typedef enum {
         CN_TYPE_NULL,
@@ -230,22 +314,15 @@
         CN_TYPE_GENERIC_UNIQ_PTR // custom things that may be handled by user in the dtor
     } cn_type;
 
-    typedef enum {
-        CN_OBJ_NULL = 0x00,
-        CN_OBJ_DRAWABLE = (1 << 0),
-        CN_OBJ_REPLICATE = (1 << 1),
-        CN_OBJ_HOST = (1 << 2)
-    } scene_object_flags;
-
     typedef struct {
         cn_type type;
-        union {            
+        union {
             cnbool b;
 
             int64_t i;
             double f;
             cnnumber num;
-            
+
             char *str;
             void *ptr;
 
@@ -255,48 +332,42 @@
         } as;
     } cn_value;
 
-    struct object_s;
+    /** ///////////////////// **/
+    /**   objects definition   **/
+    /** ///////////////////// **/
 
-    #define null_value (cn_value){CN_TYPE_NULL, .as.i = 0}
-    #define VALUE_ERR (cn_value){CN_TYPE_INT, .as.i = 1}
-    #define VALUE_OK (cn_value){CN_TYPE_INT, .as.i = 0}
-    typedef cn_value (*cn_method)(struct object_s *self, void **args);
-    typedef void (*expr_free)(void *obj);
-
-    #define RET_OK(ret_expr) ((ret_expr).as.i == VALUE_OK.as.i)
-
-    struct object_attribute_s {
+    typedef struct object_attribute_s {
         #ifdef STRING_INDIVIDUAL_ALLOCATION
             char *name;
         #else
             const char *name;
         #endif
         cn_value value;
-    };
+    } OBJAttrib;
 
     struct attr_map_s {
         struct object_attribute_s **attrs;
         uint64_t *keys; // keys[i] -> attrs[i]
-    
+
         size_t size;
         size_t capacity;
     };
 
-    struct object_s {
+    typedef struct object_s {
         struct object_s *base;
 
         struct attr_map_s attrs;
         struct attr_map_s methods;
 
         size_t ref_count;
-    };
+    } Object;
 
-    struct object_vector_s {
+    typedef struct object_vector_s {
         struct object_s **objects;
 
         size_t size;
         size_t capacity;
-    };
+    } ObjectVector;
 
     struct cn_value_vector_s {
         cn_value **values;
@@ -305,12 +376,16 @@
         size_t capacity;
     };
 
-    struct scene_object_mode_s {
-        struct vector3_s coords;
-        struct vector3_s scale;
-        struct vector3_s rotation;
-        scene_object_flags flags;
-    };
+    typedef cn_value (*cn_method)(struct object_s *self, void **args);
+
+    /** ////////////////////////////// **/
+    /**   standard things definition   **/
+    /** ////////////////////////////// **/
+
+    typedef struct clock_s {
+        cntime old_time; // sdl_gettick64()
+        double last_dt;
+    } Clock;
 
     struct list_iterator_s {
         size_t pos;
@@ -345,6 +420,16 @@
         void (*_v_deletor)(void *);
         cnbool _k_alloc;
     };
+
+    typedef struct {
+        char *c_str;
+
+        size_t size;
+    } String;
+
+    /** ////////////////////// **/
+    /**   errors definitions   **/
+    /** ////////////////////// **/
 
     typedef enum {
         ERR_OK = 0,
@@ -382,24 +467,27 @@
         ErrorFrame frames[ERR_MAX_FRAMES];
     } ErrorContext;
 
-    typedef struct {
-        char *c_str;
+    /** /////////////////////// **/
+    /**   scene related stuff   **/
+    /** /////////////////////// **/
 
-        size_t size;
-    } String;
+    typedef enum {
+        CN_OBJ_NULL = 0x00,
+        CN_OBJ_DRAWABLE = (1 << 0),
+        CN_OBJ_REPLICATE = (1 << 1),
+        CN_OBJ_HOST = (1 << 2)
+    } scene_object_flags;
 
-    typedef struct vector2_s Vector2;
-    typedef struct vector3_s Vector3;
-    #if !defined(__APPLE__)
-        typedef struct rect_s Rect;
-    #else
-        typedef struct rect_s CNRect;
-        #define Rect CNRect
-    #endif
-    typedef struct clock_s Clock;
-    typedef struct object_s Object;
-    typedef struct object_attribute_s OBJAttrib;
-    typedef struct object_vector_s ObjectVector;
+    struct scene_object_mode_s {
+        struct vector3_s coords;
+        struct vector3_s scale;
+        struct vector3_s rotation;
+        scene_object_flags flags;
+    };
+
+    /** ////////////// **/
+    /**   prototypes   **/
+    /** ////////////// **/
 
     /******************************************************************************
      * create a new clock
@@ -439,11 +527,11 @@
 
     CN_API Vector3 *new_vector3(cnnumber x, cnnumber y, cnnumber z);
     CN_API void delete_vector3(Vector3 *v);
-    
+
     CN_API OBJAttrib *create_object_attribute(const char *name, cn_type type, cnany value);
     CN_API OBJAttrib *create_object_attribute_from_cnvalue(const char *name, const cn_value *value);
     CN_API void delete_object_attribute(OBJAttrib *attribute);
-    
+
     CN_API Object *new_object(void);
     CN_API Object *build_object(Object *obj, void **args);
     CN_API Object *share_object(Object *object);
@@ -467,7 +555,7 @@
     CN_API uint8_t resize_object_vector(ObjectVector *vec, size_t new_capacity);
     CN_API uint8_t insert_object_vector(ObjectVector *vec, Object *obj);
     CN_API void remove_object_ordered_vector(ObjectVector *vec, size_t i);
-    void remove_object_vector(ObjectVector *vec, size_t i);
+    CN_API void remove_object_vector(ObjectVector *vec, size_t i);
 
     CN_API struct generic_map_s *new_generic_map(void);
     CN_API uint8_t generic_map_resize(struct generic_map_s *gen_map, size_t new_capacity);
@@ -536,7 +624,7 @@
     CN_API void *cnopen_library(const char *path);
     CN_API void *cnget_symbol(void *handle, const char *name);
     CN_API void cnclose_library(void *handle);
-    
+
     CN_API void raise_error(ErrorCode c, const char *message, const char *file, const char *function, uint32_t line);
     CN_API void push_error(const char *file, const char *function, uint32_t line);
     CN_API const ErrorContext *get_error(void);

@@ -2,7 +2,8 @@
     #define _LIBCNAUDIO_H_
 
     #include "libcncore.h"
-    #include <SDL_mixer.h>
+
+    typedef struct Mix_Chunk Mix_Chunk;
 
     typedef enum {
         CNAUDIO_EVENT_NOOP = 0x00,

@@ -409,8 +409,10 @@ uint8_t copytree(const char *src, const char *dst, cnbool overwrite)
         char *dst_path;
 
         if (!is_dir(dst)) {
-            if (MKDIR(dst) != 0)
+            if (make_dir(dst) != 0) {
+                PROPAGATE_ERR();
                 return (1);
+            }
         }
 
         snprintf(pattern, sizeof(pattern), "%s\\*", src);
@@ -463,8 +465,10 @@ uint8_t copytree(const char *src, const char *dst, cnbool overwrite)
         char *dst_path;
 
         if (!is_dir(dst)) {
-            if (MKDIR(dst) != 0)
+            if (make_dir(dst) != 0) {
+                PROPAGATE_ERR();
                 return (1);
+            }
         }
 
         dir = opendir(src);

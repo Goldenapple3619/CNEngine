@@ -1,4 +1,5 @@
 #include "libcncore.h"
+#include <SDL2/SDL.h>
 
 CN_API cnbool start_core(void)
 {

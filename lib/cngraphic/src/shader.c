@@ -1,6 +1,7 @@
 #include "libcngraphic.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <glad/gl.h>
 
 static GLuint _compile_stage_gl(GLenum type, const char *src)
 {

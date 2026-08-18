@@ -1,4 +1,6 @@
 #include "libcngraphic.h"
+#include <SDL2/SDL.h>
+#include <SDL_image.h>
 
 CN_API cnbool start_graphics(void)
 {

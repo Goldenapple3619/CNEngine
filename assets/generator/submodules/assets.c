@@ -5,20 +5,22 @@ static cn_value _search_symbol_container(Object *__this, void **args)
 {
     if (!args || !args[0]) {
         RAISE(ERR_INVALID_POINTER, "can't search unspecified data object.");
-        return (null_value);
+        return (VALUE_NULL);
     }
 
     if (!args[1]) {
         RAISE(ERR_INVALID_POINTER, "can't search unspecified symbol.");
-        return (null_value);
+        return (VALUE_NULL);
     }
 
     cn_value *potential_readers = get_attr(__this, "active_assets_readers");
     CNAssetReader *reader;
+    const char *cmp;
+    struct section_blk *temp_blk;
 
     if (!potential_readers) {
         PROPAGATE_ERR();
-        return (null_value);
+        return (VALUE_NULL);
     }
 
     if (call_method(potential_readers->as.ptr, "has", PACK_ARG(args[0])).as.b) {
@@ -28,49 +30,66 @@ static cn_value _search_symbol_container(Object *__this, void **args)
 
         if (!reader) {
             PROPAGATE_ERR();
-            return (null_value);
+            return (VALUE_NULL);
         }
 
         if (init_object_file_reader(reader, args[0])) {
             PROPAGATE_ERR();
             delete_object_file_reader(reader);
-            return (null_value);
+            return (VALUE_NULL);
         }
 
         if (object_file_reader_read_header(reader)) {
             PROPAGATE_ERR();
             delete_object_file_reader(reader);
-            return (null_value);
+            return (VALUE_NULL);
         }
 
         if (object_file_reader_read_section_header(reader)) {
             PROPAGATE_ERR();
             delete_object_file_reader(reader);
-            return (null_value);
+            return (VALUE_NULL);
         }
 
         if (call_method(potential_readers->as.ptr, "push", PACK_ARG(reader, args[0])).as.i == VALUE_ERR.as.i) {
             PROPAGATE_ERR();
             delete_object_file_reader(reader);
-            return (null_value);
+            return (VALUE_NULL);
         }
     }
 
     printf("==== %s\n", object_file_reader_get_string(reader, reader->header.name));
 
     for (size_t i = 0; i < reader->section_header.section_count; ++i) {
-        printf("%s\n", object_file_reader_get_string(reader, reader->section_header.entries[i].section_name));
+        cmp = object_file_reader_get_string(reader, reader->section_header.entries[i].section_name);
+
+        if (!strcmp(args[1], cmp)) {
+            printf("found: %s\n", cmp);
+
+            temp_blk = malloc(sizeof(struct section_blk));
+
+            if (!temp_blk) {
+                RAISE(ERR_OUT_OF_MEMORY, "failed to allocate new section_blk.");
+                return (VALUE_NULL);
+            }
+
+            if (object_file_reader_get_section(reader, temp_blk, i)) {
+                PROPAGATE_ERR();
+                (void)free(temp_blk);
+                return (VALUE_NULL);
+            }
+            return ((cn_value){.type=CN_TYPE_GENERIC_UNIQ_PTR, .as.ptr=temp_blk});
+        }
     }
 
-    RAISE(ERR_OK, "uninplemented.");
-    return (null_value);
+    return (VALUE_NULL);
 }
 
 static cn_value _get_all_asset_pack(Object *__this, void **args)
 {
     if (!args || !args[0]) {
         RAISE(ERR_INVALID_POINTER, "can't get all asset pack in no path.");
-        return (null_value);
+        return (VALUE_NULL);
     }
 
     Object *list = build_object(new_list((expr_free)&free), NULL);
@@ -78,34 +97,34 @@ static cn_value _get_all_asset_pack(Object *__this, void **args)
 
     if (!list) {
         PROPAGATE_ERR();
-        return (null_value);
+        return (VALUE_NULL);
     }
 
     if (str_override_cp(&temp, args[0])) {
         PROPAGATE_ERR();
         collect_object(list);
-        return (null_value);
+        return (VALUE_NULL);
     }
 
     if (str_rcadd_cp(&temp, "/")) {
         PROPAGATE_ERR();
         empty_str(&temp);
         collect_object(list);
-        return (null_value);
+        return (VALUE_NULL);
     }
 
     if (str_rcadd_cp(&temp, "pack000.cpk")) {
         PROPAGATE_ERR();
         empty_str(&temp);
         collect_object(list);
-        return (null_value);
+        return (VALUE_NULL);
     }
 
     if (call_method(list, "push", PACK_ARG(strdup(temp.c_str), NULL)).as.i == VALUE_ERR.as.i) {
         PROPAGATE_ERR();
         empty_str(&temp);
         collect_object(list);
-        return (null_value);
+        return (VALUE_NULL);
     }
 
     empty_str(&temp);
@@ -116,10 +135,10 @@ static cn_value _get_all_maps(Object *__this, void **args)
 {
     if (!args || !args[0]) {
         RAISE(ERR_INVALID_POINTER, "can't get all maps in no path.");
-        return (null_value);
+        return (VALUE_NULL);
     }
 
-    return (null_value);
+    return (VALUE_NULL);
 }
 
 static cn_value _apply_scene(Object *__this, void **args)
@@ -136,20 +155,20 @@ static cn_value _load_ressource(Object *__this, void **args)
 {
     if (!args || !args[0]) {
         RAISE(ERR_INVALID_POINTER, "can't load unspecified ressource.");
-        return (null_value);
+        return (VALUE_NULL);
     }
 
     String str = {.c_str = NULL, .size = 0};
 
     if (str_override_cp(&str, args[0])) {
         PROPAGATE_ERR();
-        return (null_value);
+        return (VALUE_NULL);
     }
 
     if (str_lcadd_cp(&str, "raw.rwa.")) {
         empty_str(&str);
         PROPAGATE_ERR();
-        return (null_value);
+        return (VALUE_NULL);
     }
 
     cn_value val = call_method(__this, "get_all_asset_pack", PACK_ARG("../game"));
@@ -158,7 +177,7 @@ static cn_value _load_ressource(Object *__this, void **args)
     if (val.type == CN_TYPE_NULL) {
         empty_str(&str);
         PROPAGATE_ERR();
-        return (null_value);
+        return (VALUE_NULL);
     }
 
     for (struct list_iterator_s it = list_get_iterator(val.as.ptr); !list_iterator_isend(&it); list_iterator_next(&it)) {
@@ -167,8 +186,10 @@ static cn_value _load_ressource(Object *__this, void **args)
 
         container_val = call_method(__this, "search_symbol_container", PACK_ARG(it.val.as.str, str.c_str));
 
-        if (container_val.type == CN_TYPE_NULL)
+        if (container_val.type == CN_TYPE_NULL) {
+            PROPAGATE_ERR();
             continue;
+        }
 
         collect_object(val.as.ptr);
         empty_str(&str);
@@ -176,36 +197,37 @@ static cn_value _load_ressource(Object *__this, void **args)
         return (container_val);
     }
 
+    RAISE_FMT(ERR_OUT_OF_BOUND, "can't find '%s' in '%s'.", (const char *)args[0], "../game");
     collect_object(val.as.ptr);
     empty_str(&str);
-    return (null_value);
+    return (VALUE_NULL);
 }
 
 static cn_value _load_scene(Object *__this, void **args)
 {
     if (!args || !args[0]) {
         RAISE(ERR_INVALID_POINTER, "can't load unspecified scene.");
-        return (null_value);
+        return (VALUE_NULL);
     }
 
     
 
-    return (null_value);
+    return (VALUE_NULL);
 }
 
 static cn_value _load_symbol(Object *__this, void **args)
 {
     if (!args || !args[0]) {
         RAISE(ERR_INVALID_POINTER, "can't load unspecified symbol.");
-        return (null_value);
+        return (VALUE_NULL);
     }
 
     char *temp = strdup(args[0]);
-    cn_value temp_value = null_value;
+    cn_value temp_value = VALUE_NULL;
 
     if (!temp) {
         RAISE(ERR_OUT_OF_MEMORY, "failed to allocate new symbol name.");
-        return (null_value);
+        return (VALUE_NULL);
     }
 
     char *first_dot = strstr(temp, ".");
@@ -213,7 +235,7 @@ static cn_value _load_symbol(Object *__this, void **args)
     if (!first_dot) {
         RAISE(ERR_INVALID_TYPE, "can't parse symbol properly.");
         (void)free(temp);
-        return (null_value);
+        return (VALUE_NULL);
     }
 
     *first_dot = 0;
@@ -234,9 +256,11 @@ static cn_value _load_symbol(Object *__this, void **args)
         return (temp_value);
     }
 
-    if (temp_value.type == CN_TYPE_NULL) {
+    if (RET_NULL(temp_value) || VAL_EMPTY(temp_value)) {
         PROPAGATE_ERR();
+        return (VALUE_NULL);
     }
+
     (void)free(temp);
     return (temp_value);
 }
@@ -253,8 +277,14 @@ uint8_t register_engine_asset_api(Object *ctx)
     SHR_INIT_METHOD(ctx, "search_symbol_container", &_search_symbol_container, 1);
     SHR_INIT_METHOD(ctx, "get_all_asset_pack", &_get_all_asset_pack, 1);
 
-    call_method(ctx, "load_symbol", PACK_ARG("raw.assets/dirt.png"));
+    cn_value temp = call_method(ctx, "load_symbol", PACK_ARG("raw.assets/dirt.png"));
 
+    if (RET_NULL(temp)) {
+        PROPAGATE_ERR();
+        return (1);
+    }
+
+    (void)free(temp.as.ptr);
     return (0);
 }
 

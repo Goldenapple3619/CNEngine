@@ -1,4 +1,5 @@
 #include "test.h"
+#include <SDL2/SDL.h>
 
 Object *set_up_camera(Object *ctx, Object *board)
 {

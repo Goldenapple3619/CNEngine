@@ -458,48 +458,48 @@ add_custom_command(TARGET cn_dist POST_BUILD
         "${DIST_DIR}/include/"
 )
 
-foreach(pair
-    "sdl2_image_SOURCE_DIR/include"
-    "sdl2_mixer_SOURCE_DIR/include"
-)
-    string(REPLACE "/" ";" pair_list "${pair}")
-    list(GET pair_list 0 _var)
-    list(GET pair_list 1 _subdir)
+# foreach(pair
+#     "sdl2_image_SOURCE_DIR/include"
+#     "sdl2_mixer_SOURCE_DIR/include"
+# )
+#     string(REPLACE "/" ";" pair_list "${pair}")
+#     list(GET pair_list 0 _var)
+#     list(GET pair_list 1 _subdir)
 
-    set(_dir "${${_var}}/${_subdir}")
-    if(EXISTS "${_dir}")
-        add_custom_command(TARGET cn_dist POST_BUILD
-            COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/include"
-            COMMAND ${CMAKE_COMMAND} -E copy_directory
-                "${_dir}"
-                "${DIST_DIR}/include"
-        )
-    else()
-        message(WARNING "SDL include dir not found: ${_dir}")
-    endif()
-endforeach()
+#     set(_dir "${${_var}}/${_subdir}")
+#     if(EXISTS "${_dir}")
+#         add_custom_command(TARGET cn_dist POST_BUILD
+#             COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/include"
+#             COMMAND ${CMAKE_COMMAND} -E copy_directory
+#                 "${_dir}"
+#                 "${DIST_DIR}/include"
+#         )
+#     else()
+#         message(WARNING "SDL include dir not found: ${_dir}")
+#     endif()
+# endforeach()
 
-add_custom_command(TARGET cn_dist POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/include"
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        "${sdl2_ttf_SOURCE_DIR}/SDL_ttf.h"
-        "${DIST_DIR}/include"
-)
+# add_custom_command(TARGET cn_dist POST_BUILD
+#     COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/include"
+#     COMMAND ${CMAKE_COMMAND} -E copy_if_different
+#         "${sdl2_ttf_SOURCE_DIR}/SDL_ttf.h"
+#         "${DIST_DIR}/include"
+# )
 
-foreach(lib glad_gl)
-    get_target_property(_inc_dirs ${lib} INTERFACE_INCLUDE_DIRECTORIES)
-    if(_inc_dirs)
-        foreach(_dir ${_inc_dirs})
-            if(EXISTS "${_dir}")
-                add_custom_command(TARGET cn_dist POST_BUILD
-                    COMMAND ${CMAKE_COMMAND} -E copy_directory
-                        "${_dir}"
-                        "${DIST_DIR}/include/"
-                )
-            endif()
-        endforeach()
-    endif()
-endforeach()
+# foreach(lib glad_gl)
+#     get_target_property(_inc_dirs ${lib} INTERFACE_INCLUDE_DIRECTORIES)
+#     if(_inc_dirs)
+#         foreach(_dir ${_inc_dirs})
+#             if(EXISTS "${_dir}")
+#                 add_custom_command(TARGET cn_dist POST_BUILD
+#                     COMMAND ${CMAKE_COMMAND} -E copy_directory
+#                         "${_dir}"
+#                         "${DIST_DIR}/include/"
+#                 )
+#             endif()
+#         endforeach()
+#     endif()
+# endforeach()
 
 # modules libraries
 foreach(lib cncore cngraphic cnaudio cninput cnassets rgui r2d r3d cnguiobj cnsceneobj cnobjectobj)

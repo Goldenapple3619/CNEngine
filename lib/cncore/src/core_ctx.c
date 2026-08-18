@@ -7,7 +7,7 @@ static cn_value _update_scene(Object *__this, void **args)
     Object *scene = get_attr(__this, "scene")->as.ptr;
 
     (void)call_method(scene, "_update", PACK_ARG(&get_attr(__this, "dt")->as.f));
-    return (null_value);
+    return (VALUE_NULL);
 }
 
 static cn_value _init(Object *__this, void **args)
@@ -94,7 +94,7 @@ static cn_value _run(Object *__this, void **args)
         set_attr(__this, "dt", CN_TYPE_FLOAT, (cnany)&dt); // check not required since its set at init
     };
 
-    return (null_value);
+    return (VALUE_NULL);
 }
 
 static cn_value _register_draw(Object *__this, void **args)
@@ -159,7 +159,7 @@ static cn_value _del(Object *__this, void **args)
 
     end_core();
 
-    return (null_value);
+    return (VALUE_NULL);
 }
 
 static cn_value _stop(Object *__this, void **args)
@@ -168,9 +168,9 @@ static cn_value _stop(Object *__this, void **args)
 
     if (!set_attr(__this, "is_running", CN_TYPE_INT, (cnany)((int64_t [1]){0}))) {
         PROPAGATE_ERR();
-        return (null_value);
+        return (VALUE_NULL);
     }
-    return (null_value);
+    return (VALUE_NULL);
 }
 
 CN_API cnbool submodule_ctx(Object *ctx, Object *module)

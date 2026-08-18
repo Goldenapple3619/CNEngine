@@ -233,17 +233,17 @@ CN_API cn_value call_method(Object *object, const char *name, void **args)
 {
     if (!object) {
         RAISE(ERR_INVALID_POINTER, "can't get_method with empty object.");
-        return (null_value);
+        return (VALUE_NULL);
     }
 
     if (!name) {
         RAISE(ERR_INVALID_POINTER, "can't get_method with empty name.");
-        return (null_value);
+        return (VALUE_NULL);
     }
 
     if (!has_method(object, name)) {
         RAISE_FMT(ERR_OUT_OF_BOUND, "can't call non existent method '%s'.", name);
-        return  (null_value);
+        return  (VALUE_NULL);
     }
     return (get_method(object, name))(object, args);
 }
@@ -317,8 +317,8 @@ CN_API Object *build_object(Object *obj, void **args)
     return (NULL);
 };
 
-static cn_value _init(Object *__this, void **args) { (void)args; (void)__this; return (null_value); }
-static cn_value _del(Object *__this, void **args) { (void)args; (void)__this; return (null_value); }
+static cn_value _init(Object *__this, void **args) { (void)args; (void)__this; return (VALUE_NULL); }
+static cn_value _del(Object *__this, void **args) { (void)args; (void)__this; return (VALUE_NULL); }
 static cn_value _str(Object *this, void **args) {
     (void)args;
 
@@ -328,7 +328,7 @@ static cn_value _str(Object *this, void **args) {
 
     if (!this) {
         RAISE(ERR_OUT_OF_MEMORY, "I am not real.")
-        return (null_value);
+        return (VALUE_NULL);
     }
 
     cn_value *name_val = get_attr(this, "name");
@@ -342,7 +342,7 @@ static cn_value _str(Object *this, void **args) {
 
     if (!str) {
         RAISE(ERR_OUT_OF_MEMORY, "failed to allocate string.")
-        return (null_value);
+        return (VALUE_NULL);
     }
 
     snprintf(str, needed + 1, "<%s@%p>", name, (void *)this);

@@ -49,7 +49,7 @@ static cn_value _at(Object *__this, void **args)
 {
     if (!args || !args[0]) {
         RAISE(ERR_INVALID_POINTER, "can't get with no index.");
-        return (null_value);
+        return (VALUE_NULL);
     }
     
     struct generic_vector_s *vec = get_attr(__this, "_vec")->as.ptr;
@@ -57,7 +57,7 @@ static cn_value _at(Object *__this, void **args)
 
     if (vec->size <= index) {
         RAISE_FMT(ERR_OUT_OF_BOUND, "can't get at invalid index (%zu >= %zu).", index, vec->size);
-        return (null_value);
+        return (VALUE_NULL);
     }
 
     return ((cn_value){.type=CN_TYPE_GENERIC_UNIQ_PTR, .as.ptr=vec->content[index]});
@@ -111,7 +111,7 @@ static cn_value _del(Object *__this, void **args)
         __temp_alloc->as.ptr = NULL;
     }
 
-    return (null_value);
+    return (VALUE_NULL);
 }
 
 CN_API struct list_iterator_s list_get_iterator(Object *__list)
@@ -131,14 +131,14 @@ CN_API struct list_iterator_s list_get_iterator(Object *__list)
 CN_API void list_iterator_next(struct list_iterator_s *iterator)
 {
     if (!iterator || !iterator->get_element) {
-        iterator->val = null_value;
+        iterator->val = VALUE_NULL;
         return;
     }
 
     ++iterator->pos;
 
     if (iterator->pos >= iterator->size) {
-        iterator->val = null_value;
+        iterator->val = VALUE_NULL;
         return;
     }
 

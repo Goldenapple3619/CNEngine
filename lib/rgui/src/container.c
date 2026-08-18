@@ -45,7 +45,7 @@ static cn_value _del(Object *__this, void **args)
 
     DEL_CUSTOM_ALLOCAION(__this, delete_texture, "texture");
 
-    return (null_value);
+    return (VALUE_NULL);
 }
 
 CN_API Object *new_container(void)

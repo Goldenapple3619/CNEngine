@@ -89,12 +89,12 @@ static cn_value _update(Object *__this, void **args)
 {
     if (!args || !args[0]) {
         RAISE(ERR_INVALID_POINTER, "can't update camera with no set delta time.");
-        return (null_value);
+        return (VALUE_NULL);
     }
     double delta_time = *(double *)args[0];
     Vector3 *rotation = &get_attr(__this, "rotation")->as.vec3;
     rotation->y += 1.0f * delta_time;
-    return (null_value);
+    return (VALUE_NULL);
 }
 
 static cn_value _del(Object *__this, void **args)
@@ -109,7 +109,7 @@ static cn_value _del(Object *__this, void **args)
     DEL_CUSTOM_ALLOCAION(__this, delete_material, "material");
     DEL_CUSTOM_ALLOCAION(__this, delete_mesh, "mesh");
 
-    return (null_value);
+    return (VALUE_NULL);
 }
 
 CN_API Object *new_object3d(void)

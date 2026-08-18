@@ -1,4 +1,5 @@
 #include "librgui.h"
+#include <glad/gl.h>
 
 static cn_value _init(Object *__this, void **args)
 {
@@ -41,7 +42,7 @@ static cn_value _update(Object *__this, void **args)
             (void)call_method(temp, "_update", args);
     } 
 
-    return (null_value);
+    return (VALUE_NULL);
 }
 
 static cn_value _events(Object *__this, void **args)
@@ -50,7 +51,7 @@ static cn_value _events(Object *__this, void **args)
     Object *temp;
 
     if (!args || !args[0])
-        return (null_value);
+        return (VALUE_NULL);
 
     Window *window = args[0];
     
@@ -75,7 +76,7 @@ static cn_value _events(Object *__this, void **args)
             (void)call_method(temp, "_events", args);
     } 
 
-    return (null_value);
+    return (VALUE_NULL);
 }
 
 static void _cpu_rendering(const Texture *object_texture, Texture *dest_texture, const Vector2 *at)
@@ -145,7 +146,7 @@ static cn_value _render_object(Object *__this, void **args)
 {
     if (!args || !args[0]) {
         RAISE(ERR_INVALID_POINTER, "can't draw with no object.");
-        return (null_value);
+        return (VALUE_NULL);
     }
 
     gui_render_stack *render_stack = args[0]; 
@@ -199,14 +200,14 @@ static cn_value _render_object(Object *__this, void **args)
     render_stack->canva_size = base_canva_size;
 
     render_stack->obj = __this;
-    return (null_value);
+    return (VALUE_NULL);
 }
 
 static cn_value _draw(Object *__this, void **args)
 {
     if (!args || !args[0]) {
         RAISE(ERR_INVALID_POINTER, "can't draw with no window.");
-        return (null_value);
+        return (VALUE_NULL);
     }
 
     gui_render_stack render_stack;
@@ -251,7 +252,7 @@ static cn_value _draw(Object *__this, void **args)
     if (((render_stack.window->video_mode.flags & VDM_CPU) > 0))
         blit_ratio(render_stack.cpu_texture, render_stack.window->texture, NULL, &render_stack.canva_position, &render_stack.canva_ratio);
 
-    return (null_value);
+    return (VALUE_NULL);
 }
 
 static cn_value _add_element(Object *__this, void **args)
@@ -277,7 +278,7 @@ static cn_value _del(Object *__this, void **args)
     DEL_CUSTOM_ALLOCAION(__this, delete_texture, "texture");
     DEL_CUSTOM_ALLOCAION(__this, delete_quad, "gl_quad")
 
-    return (null_value);
+    return (VALUE_NULL);
 }
 
 CN_API Object *new_guiboard(void)

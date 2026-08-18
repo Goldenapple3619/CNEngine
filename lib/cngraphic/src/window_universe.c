@@ -1,4 +1,5 @@
 #include "libcngraphic.h"
+#include <SDL2/SDL_events.h>
 
 CN_API WindowUniverse *new_window_universe(void)
 {

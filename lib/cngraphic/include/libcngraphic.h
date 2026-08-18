@@ -1,10 +1,15 @@
-#ifndef _LIBCNGRAPGIC_H_
-    #define _LIBCNGRAPGIC_H_
+#ifndef _LIBCNGRAPHIC_H_
+    #define _LIBCNGRAPHIC_H_
 
-    #include <glad/gl.h>
-    #include <SDL2/SDL.h>
-    #include <SDL_image.h>
     #include "libcncore.h"
+
+    typedef struct SDL_Surface SDL_Surface;
+    typedef struct SDL_Renderer SDL_Renderer;
+    typedef struct SDL_Window SDL_Window;
+    typedef struct SDL_Texture SDL_Texture;
+    typedef void *SDL_GLContext;
+
+    #include <SDL2/SDL_video.h>
 
     #define INVALIDATE_GPU(t)                                                    \
     if ((t)) {                                                                   \

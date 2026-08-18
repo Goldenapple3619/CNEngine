@@ -4,13 +4,6 @@
     #include "libcncore.h"
     #include "libcngraphic.h"
 
-    #ifdef __APPLE__
-        #define GL_SILENCE_DEPRECATION
-        #include <OpenGL/gl.h>
-    #else
-        #include <GL/gl.h>
-    #endif
-
     struct threed_board_mode_s {
         Vector2 position;
         Vector2 resolution;

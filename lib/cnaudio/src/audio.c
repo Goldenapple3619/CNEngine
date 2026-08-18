@@ -1,4 +1,5 @@
 #include "libcnaudio.h"
+#include <SDL_mixer.h>
 
 CN_API Audio *new_audio(const Mix_Chunk *audio_chunk_ptr,
     cn_method on_audio_end, Object *on_end_obj)

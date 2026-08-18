@@ -1,4 +1,13 @@
 #include "libr2d.h"
+#include "math.h"
+
+// #ifdef __APPLE__
+//     #define GL_SILENCE_DEPRECATION
+//     #include <OpenGL/gl.h>
+// #else
+//     #include <GL/gl.h>
+// #endif
+#include <glad/gl.h>
 
 #ifndef M_PI
     #define M_PI 3.14159265358979323846
@@ -88,14 +97,14 @@ static cn_value _render_object(Object *__this, void **args)
 {
     if (!args || !args[0]) {
         RAISE(ERR_INVALID_POINTER, "can't draw with no object.");
-        return (null_value);
+        return (VALUE_NULL);
     }
 
     twod_render_stack *render_stack = args[0]; 
     int64_t flags = get_attr(render_stack->obj, "_flags")->as.i;
     
     if (!((flags & CN_OBJ_DRAWABLE) > 0))
-        return (null_value);
+        return (VALUE_NULL);
 
     Vector3 camera_position_center = {render_stack->camera_position.x - render_stack->canva_size.x / 2,
         render_stack->camera_position.y - render_stack->canva_size.y / 2,
@@ -146,14 +155,14 @@ static cn_value _render_object(Object *__this, void **args)
     if (has_method(render_stack->obj, "_draw"))
         (void)call_method(render_stack->obj, "_draw", PACK_ARG(__this, render_stack->window));
 
-    return (null_value);
+    return (VALUE_NULL);
 }
 
 static cn_value _draw(Object *__this, void **args)
 {   
     if (!args || !args[0]) {
         RAISE(ERR_INVALID_POINTER, "can't draw with no window.");
-        return (null_value);
+        return (VALUE_NULL);
     }
 
     twod_render_stack render_stack;
@@ -213,7 +222,7 @@ static cn_value _draw(Object *__this, void **args)
     if (((render_stack.window->video_mode.flags & VDM_CPU) > 0))
         blit_ratio(render_stack.cpu_texture, render_stack.window->texture, NULL, &render_stack.canva_position, &render_stack.canva_ratio);
 
-    return (null_value);
+    return (VALUE_NULL);
 }
 
 static cn_value _del(Object *__this, void **args)
@@ -225,7 +234,7 @@ static cn_value _del(Object *__this, void **args)
     DEL_CUSTOM_ALLOCAION(__this, delete_texture, "texture")
     DEL_CUSTOM_ALLOCAION(__this, delete_quad, "gl_quad")
 
-    return (null_value);
+    return (VALUE_NULL);
 }
 
 CN_API Object *new_2dboard(void)
