@@ -1,5 +1,6 @@
 #include "../engine_main.h"
 #include "libcnassets.h"
+#include "cnobjectobj.h"
 
 static cn_value _search_symbol_container(Object *__this, void **args)
 {
@@ -203,14 +204,22 @@ static cn_value _load_ressource(Object *__this, void **args)
     return (VALUE_NULL);
 }
 
-static cn_value _load_scene(Object *__this, void **args)
+static cn_value _load_object(Object *__this, void **args)
 {
     if (!args || !args[0]) {
         RAISE(ERR_INVALID_POINTER, "can't load unspecified scene.");
         return (VALUE_NULL);
     }
 
-    
+    return (VALUE_NULL);
+}
+
+static cn_value _load_scene(Object *__this, void **args)
+{
+    if (!args || !args[0]) {
+        RAISE(ERR_INVALID_POINTER, "can't load unspecified scene.");
+        return (VALUE_NULL);
+    }
 
     return (VALUE_NULL);
 }

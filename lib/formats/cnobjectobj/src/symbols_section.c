@@ -72,6 +72,58 @@ static char *convert_symbol_section_endian(char *rw_content, uint64_t content_si
     return (rw_content);
 }
 
+static engine_data_extract_status extract_symbols_data_chunk(void *dest, uint64_t *offset, const struct section_blk *section, const CNAssetReader *reader)
+{
+    if (!dest) {
+        dest = malloc(sizeof(struct object_element_s));
+        if (!dest)
+            return (ENGINE_DATA_EXTRACT_ERR);
+        (void)memset(dest, 0, sizeof(struct object_element_s));
+    }
+
+    const char *name;
+    const char *symbol;
+    OBJAttrib *attr = NULL;
+
+    while (*offset < section->blk_size) {
+        if ((*offset) + sizeof(uint32_t) >= section->blk_size)
+            return (ENGINE_DATA_EXTRACT_ERR);
+
+        symbol = strdup(object_file_reader_get_string(reader, reader->read_handler.u32((const void *)(section->section_blk_ptr + (*offset)))));
+        *offset += sizeof(uint32_t);
+
+        if (!symbol) {
+            return (ENGINE_DATA_EXTRACT_ERR);
+        }
+
+        if ((*offset) + sizeof(uint32_t) >= section->blk_size)
+            return (ENGINE_DATA_EXTRACT_ERR);
+
+        name = object_file_reader_get_string(reader, reader->read_handler.u32((const void *)(section->section_blk_ptr + (*offset))));
+        *offset += sizeof(uint32_t);
+
+        if (!name) {
+            return (ENGINE_DATA_EXTRACT_ERR);
+        }
+
+        attr = create_object_attribute(name, CN_TYPE_FUNCTION, strdup(symbol));
+
+        if (!attr || !attr->value.as.str) {
+            if (attr)
+                (void)free(attr);
+            return (ENGINE_DATA_EXTRACT_ERR);
+        }
+
+        if (insert_generic_vector(&((struct object_element_s *)dest)->methods, attr)) {
+            (void)free(attr->value.as.str);
+            (void)free(attr);
+            return (ENGINE_DATA_EXTRACT_ERR);
+        }
+    }
+
+    return (ENGINE_DATA_EXTRACT_COMPLETE);
+}
+
 void init_symbols_section_registry(struct section_registry *reg)
 {
     if (!reg)
@@ -85,4 +137,5 @@ void init_symbols_section_registry(struct section_registry *reg)
     reg->data_builder = &build_symbol_section;
     reg->size_compute = &build_symbol_section_size;
     reg->endian_converter = &convert_symbol_section_endian;
+    reg->extract_data_chunk = &extract_symbols_data_chunk;
 }

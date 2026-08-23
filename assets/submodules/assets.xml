@@ -4,6 +4,7 @@
         <file overwrite="true">${INCLUDES}/libcnassets.h</file>
         <file overwrite="true">${INCLUDES}/cnguiobj.h</file>
         <file overwrite="true">${INCLUDES}/cnsceneobj.h</file>
+        <file overwrite="true">${INCLUDES}/cnobjectobj.h</file>
     </includes>
     <libs>
         <file name="cnassets" link="true" overwrite="true">${LIBS}/libcnassets.${EXT}</file>

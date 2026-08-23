@@ -316,4 +316,5 @@ void init_attrs_section_registry(struct section_registry *reg)
     reg->data_builder = &build_attrs_section;
     reg->size_compute = &build_attrs_section_size;
     reg->endian_converter = NULL;
+    reg->extract_data_chunk = NULL;
 }
