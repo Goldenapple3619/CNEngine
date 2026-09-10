@@ -9,10 +9,18 @@ add_library(rgui SHARED
     src/container.c
 )
 
-target_compile_options(rgui
-    PRIVATE
-        -Wall -Wextra -Wshadow -Werror -O2
-)
+if(CN_BUILD_TESTS)
+    target_compile_options(rgui
+        PRIVATE
+            --coverage -O0 -g
+    )
+    target_link_options(rgui PRIVATE --coverage)
+else()
+    target_compile_options(rgui
+        PRIVATE
+            -Wall -Wextra -Wshadow -Werror -O2
+    )
+endif()
 
 target_include_directories(rgui
     PUBLIC

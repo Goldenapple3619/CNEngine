@@ -1,4 +1,5 @@
 #include "libcninput.h"
+#include <SDL2/SDL.h>
 
 CN_API cnbool start_input(void)
 {

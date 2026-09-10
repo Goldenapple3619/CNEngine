@@ -3,4 +3,9 @@
 
     #include "../engine.h"
 
+    typedef struct {
+        char *name;
+        
+    } ProjectDefinition;
+
 #endif

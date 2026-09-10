@@ -194,7 +194,7 @@ CN_API void empty_generic_map(struct generic_map_s *gen_map, void (*_delete_obj)
         gen_map->content = NULL;
     }
     gen_map->capacity = 0;
-    gen_map->keys = 0;
+    gen_map->size = 0;
 }
 
 CN_API void delete_generic_map(struct generic_map_s *gen_map, void (*_delete_obj)(void *))
@@ -219,6 +219,6 @@ CN_API void delete_generic_map(struct generic_map_s *gen_map, void (*_delete_obj
         gen_map->content = NULL;
     }
     gen_map->capacity = 0;
-    gen_map->keys = 0;
+    gen_map->size = 0;
     (void)free(gen_map);
 }

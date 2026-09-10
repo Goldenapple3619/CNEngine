@@ -1,4 +1,5 @@
 #include "librgui.h"
+#include <SDL_ttf.h>
 
 static cn_value _init(Object *__this, void **args)
 {
@@ -71,7 +72,7 @@ static cn_value _del(Object *__this, void **args)
     DEL_CUSTOM_ALLOCAION(__this, TTF_CloseFont, "font");
     DEL_CUSTOM_ALLOCAION(__this, delete_texture, "texture");
 
-    return (null_value);
+    return (VALUE_NULL);
 }
 
 CN_API Object *new_text(void)

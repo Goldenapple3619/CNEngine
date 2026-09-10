@@ -8,10 +8,18 @@ add_library(cnaudio SHARED
     src/audio_vector.c
 )
 
-target_compile_options(cnaudio
-    PRIVATE
-        -Wall -Wextra -Wshadow -Werror -O2
-)
+if(CN_BUILD_TESTS)
+    target_compile_options(cnaudio
+        PRIVATE
+            --coverage -O0 -g
+    )
+    target_link_options(cnaudio PRIVATE --coverage)
+else()
+    target_compile_options(cnaudio
+        PRIVATE
+            -Wall -Wextra -Wshadow -Werror -O2
+    )
+endif()
 
 target_include_directories(cnaudio
     PUBLIC

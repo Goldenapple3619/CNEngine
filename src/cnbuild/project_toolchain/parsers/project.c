@@ -2,7 +2,7 @@
 
 CNProject *parse_project_xml(const EngineConfig *config, const char *file_path, const char *project_root)
 {
-    CNProject *parsed_data; 
+    CNProject *parsed_data;
     xmlDoc *doc;
     xmlNode *root;
 
@@ -25,6 +25,15 @@ CNProject *parse_project_xml(const EngineConfig *config, const char *file_path, 
 
     if (!parsed_data) {
         PROPAGATE_ERR();
+        (void)xmlFreeDoc(doc);
+        return (NULL);
+    }
+
+    parsed_data->root = strdup(project_root);
+
+    if (!parsed_data->root) {
+        RAISE(ERR_OUT_OF_MEMORY, "failed to allocate new project root string.");
+        (void)delete_cnproject(parsed_data);
         (void)xmlFreeDoc(doc);
         return (NULL);
     }

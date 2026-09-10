@@ -32,6 +32,19 @@ target_compile_options(cncore
         -Wall -Wextra -Wshadow -Werror -O2
 )
 
+if(CN_BUILD_TESTS)
+    target_compile_options(cncore
+        PRIVATE
+            --coverage -O0 -g
+    )
+    target_link_options(cncore PRIVATE --coverage)
+else()
+    target_compile_options(cncore
+        PRIVATE
+            -Wall -Wextra -Wshadow -Werror -O2
+    )
+endif()
+
 target_include_directories(cncore
     PUBLIC
         include

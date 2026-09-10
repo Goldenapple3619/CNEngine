@@ -13,6 +13,11 @@ set(CMAKE_REQUIRED_LIBRARIES m CACHE BOOL "" FORCE)
 # ========= Options =========
 option(CN_BUILD_ENGINE "Build engine executable" ON)
 option(CN_SANITIZE     "Build with AddressSanitizer + UBSan" OFF)
+option(CN_BUILD_TESTS  "Build test executable" OFF)
+
+if(CN_BUILD_TESTS)
+    enable_testing()
+endif()
 
 if(NOT DEFINED DIST_DIR)
     get_filename_component(CWD_NAME ${CMAKE_SOURCE_DIR} NAME)
@@ -207,9 +212,11 @@ if(CN_SANITIZE)
     add_link_options(-fsanitize=address,undefined)
 endif()
 
-add_compile_options(
-    -ffile-prefix-map=${CMAKE_SOURCE_DIR}=.
-)
+if (NOT CN_BUILD_TESTS)
+    add_compile_options(
+        -ffile-prefix-map=${CMAKE_SOURCE_DIR}=.
+    )
+endif()
 
 # ========= Modules =========
 add_subdirectory(lib/cncore)
@@ -224,6 +231,12 @@ add_subdirectory(lib/r3d)
 add_subdirectory(lib/formats/cnguiobj)
 add_subdirectory(lib/formats/cnsceneobj)
 add_subdirectory(lib/formats/cnobjectobj)
+
+# ===== Tests =====
+if(CN_BUILD_TESTS)
+    add_subdirectory(tests/units/cncore)
+    add_subdirectory(tests/units/cnassets)
+endif()
 
 # dist deploy
 add_custom_target(cn_dist ALL)
@@ -248,6 +261,7 @@ if(CN_BUILD_ENGINE)
         src/cnbuild/asset_toolchain/route.c
     
         src/cnbuild/object_toolchain/route.c
+        src/cnbuild/object_toolchain/obj.c
     
         src/cnbuild/project_toolchain/route.c
         src/cnbuild/project_toolchain/utils.c
@@ -327,8 +341,6 @@ if(CN_BUILD_ENGINE)
             lib/rgui/include
             lib/r2d/include
             lib/r3d/include
-
-            lib/cnapi/include
 
             lib/formats/cnguiobj/include
             lib/formats/cnsceneobj/include
@@ -457,48 +469,48 @@ add_custom_command(TARGET cn_dist POST_BUILD
         "${DIST_DIR}/include/"
 )
 
-foreach(pair
-    "sdl2_image_SOURCE_DIR/include"
-    "sdl2_mixer_SOURCE_DIR/include"
-)
-    string(REPLACE "/" ";" pair_list "${pair}")
-    list(GET pair_list 0 _var)
-    list(GET pair_list 1 _subdir)
+# foreach(pair
+#     "sdl2_image_SOURCE_DIR/include"
+#     "sdl2_mixer_SOURCE_DIR/include"
+# )
+#     string(REPLACE "/" ";" pair_list "${pair}")
+#     list(GET pair_list 0 _var)
+#     list(GET pair_list 1 _subdir)
 
-    set(_dir "${${_var}}/${_subdir}")
-    if(EXISTS "${_dir}")
-        add_custom_command(TARGET cn_dist POST_BUILD
-            COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/include"
-            COMMAND ${CMAKE_COMMAND} -E copy_directory
-                "${_dir}"
-                "${DIST_DIR}/include"
-        )
-    else()
-        message(WARNING "SDL include dir not found: ${_dir}")
-    endif()
-endforeach()
+#     set(_dir "${${_var}}/${_subdir}")
+#     if(EXISTS "${_dir}")
+#         add_custom_command(TARGET cn_dist POST_BUILD
+#             COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/include"
+#             COMMAND ${CMAKE_COMMAND} -E copy_directory
+#                 "${_dir}"
+#                 "${DIST_DIR}/include"
+#         )
+#     else()
+#         message(WARNING "SDL include dir not found: ${_dir}")
+#     endif()
+# endforeach()
 
-add_custom_command(TARGET cn_dist POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/include"
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        "${sdl2_ttf_SOURCE_DIR}/SDL_ttf.h"
-        "${DIST_DIR}/include"
-)
+# add_custom_command(TARGET cn_dist POST_BUILD
+#     COMMAND ${CMAKE_COMMAND} -E make_directory "${DIST_DIR}/include"
+#     COMMAND ${CMAKE_COMMAND} -E copy_if_different
+#         "${sdl2_ttf_SOURCE_DIR}/SDL_ttf.h"
+#         "${DIST_DIR}/include"
+# )
 
-foreach(lib glad_gl)
-    get_target_property(_inc_dirs ${lib} INTERFACE_INCLUDE_DIRECTORIES)
-    if(_inc_dirs)
-        foreach(_dir ${_inc_dirs})
-            if(EXISTS "${_dir}")
-                add_custom_command(TARGET cn_dist POST_BUILD
-                    COMMAND ${CMAKE_COMMAND} -E copy_directory
-                        "${_dir}"
-                        "${DIST_DIR}/include/"
-                )
-            endif()
-        endforeach()
-    endif()
-endforeach()
+# foreach(lib glad_gl)
+#     get_target_property(_inc_dirs ${lib} INTERFACE_INCLUDE_DIRECTORIES)
+#     if(_inc_dirs)
+#         foreach(_dir ${_inc_dirs})
+#             if(EXISTS "${_dir}")
+#                 add_custom_command(TARGET cn_dist POST_BUILD
+#                     COMMAND ${CMAKE_COMMAND} -E copy_directory
+#                         "${_dir}"
+#                         "${DIST_DIR}/include/"
+#                 )
+#             endif()
+#         endforeach()
+#     endif()
+# endforeach()
 
 # modules libraries
 foreach(lib cncore cngraphic cnaudio cninput cnassets rgui r2d r3d cnguiobj cnsceneobj cnobjectobj)
@@ -547,8 +559,8 @@ if(UNIX AND NOT APPLE)
     endif()
 endif()
 
-add_custom_command(TARGET cn_dist POST_BUILD
-    COMMAND ${CMAKE_COMMAND}
-        -DINCLUDE_DIR=${DIST_DIR}/include
-        -P ${CMAKE_SOURCE_DIR}/toolchain/patch_sdl_includes.cmake
-)
+# add_custom_command(TARGET cn_dist POST_BUILD
+#     COMMAND ${CMAKE_COMMAND}
+#         -DINCLUDE_DIR=${DIST_DIR}/include
+#         -P ${CMAKE_SOURCE_DIR}/toolchain/patch_sdl_includes.cmake
+# )

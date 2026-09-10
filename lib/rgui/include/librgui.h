@@ -3,7 +3,6 @@
 
     #include "libcncore.h"
     #include "libcngraphic.h"
-    #include <SDL_ttf.h>
 
     typedef enum {
         FLAG_RGUI_NONE = 0x00,

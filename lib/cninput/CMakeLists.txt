@@ -7,10 +7,18 @@ add_library(cninput SHARED
     src/common.c
 )
 
-target_compile_options(cninput
-    PRIVATE
-        -Wall -Wextra -Wshadow -Werror -O2
-)
+if(CN_BUILD_TESTS)
+    target_compile_options(cninput
+        PRIVATE
+            --coverage -O0 -g
+    )
+    target_link_options(cninput PRIVATE --coverage)
+else()
+    target_compile_options(cninput
+        PRIVATE
+            -Wall -Wextra -Wshadow -Werror -O2
+    )
+endif()
 
 target_include_directories(cninput
     PUBLIC

@@ -1,4 +1,6 @@
 #include "libcnaudio.h"
+#include <SDL2/SDL.h>
+#include <SDL_mixer.h>
 
 CN_API cnbool start_audio(void)
 {

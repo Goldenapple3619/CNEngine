@@ -89,7 +89,7 @@ uint8_t add_src_to_asset_compiler(GameAssetCompiler *compiler, const char *locat
     return (0);
 }
 
-uint8_t asset_compiler_build_objects(GameAssetCompiler *compiler)
+uint8_t asset_compiler_build_objects(GameAssetCompiler *compiler, const char *asset_root)
 {
     CNAsset *temp;
     size_t len = (size_t)snprintf(NULL, 0, "--align=%" PRIu16, compiler->alignement) + 1;
@@ -118,7 +118,16 @@ uint8_t asset_compiler_build_objects(GameAssetCompiler *compiler)
 
     for (size_t i = 0; i < compiler->srcs.size; ++i) {
         temp = (CNAsset *)compiler->srcs.content[i];
-        argv[3] = temp->location;
+
+        if (temp->type == CNASSET_TP_RAW && strstr(temp->location, asset_root) == temp->location) {
+            argv[3] = temp->location + strlen(asset_root);
+
+            while ((*argv[3]) == '/' || (*argv[3]) == '\\') {
+                argv[3] = argv[3] + 1;
+            }
+        } else {
+            argv[3] = temp->location;
+        }
 
         switch (temp->type) {
             case CNASSET_TP_GUI:
@@ -179,9 +188,9 @@ uint8_t asset_compiler_build_objects(GameAssetCompiler *compiler)
             return (1);
         }
 
-        printf("building %s\n", argv[3]);
-        for (size_t v = 0; argv[v]; ++v)
-            printf(argv[v + 1] ? "%s " : "%s\n", argv[v]);
+        printf("building %s\n", temp->location);
+        // for (size_t v = 0; argv[v]; ++v)
+        //     printf(argv[v + 1] ? "%s " : "%s\n", argv[v]);
 
         if (run_program(compiler->compiler_path, (const char * const*)argv)) {
             RAISE_FMT(ERR_OS, "compiler '%s' returned failure.", compiler->compiler_path);
@@ -340,7 +349,7 @@ uint8_t compile_assets(const CNProject *project, const CNBuild *build_info, cons
         }
     }
 
-    if (asset_compiler_build_objects(compiler)) {
+    if (asset_compiler_build_objects(compiler, project->root)) {
         PROPAGATE_ERR();
         delete_asset_compiler(compiler);
         return (1);

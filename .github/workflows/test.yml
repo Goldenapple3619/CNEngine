@@ -1,0 +1,47 @@
+name: test
+
+on:
+  pull_request:
+    branches:
+      - dev
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  test-linux:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install NASM
+        run: sudo apt update && sudo apt install -y nasm
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get install -y libgl1-mesa-dev libglu1-mesa-dev libglx-dev libx11-dev libxext-dev
+          sudo apt-get install -y uuid-dev
+
+      - name: Install Criterion (Linux)
+        run: sudo apt-get install -y libcriterion-dev
+
+      - name: Coverage setup
+        run: |
+          pip install gcovr
+
+      - name: Build and test
+        run: |
+          sh ./scripts/build_linux-amd64-test.sh
+
+      - name: Generate coverage
+        run: |
+          gcovr -r . build/linux-amd64-test/lib --xml-pretty --xml -o coverage.xml
+
+      - name: Upload coverage
+        uses: codecov/codecov-action@v7
+        with:
+          files: ./coverage.xml
+          token: ${{ secrets.CODECOV_TOKEN }}

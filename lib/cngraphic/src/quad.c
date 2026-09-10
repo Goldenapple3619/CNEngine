@@ -1,4 +1,5 @@
 #include "libcngraphic.h"
+#include <glad/gl.h>
 
 CN_API Quad *new_quad(void)
 {

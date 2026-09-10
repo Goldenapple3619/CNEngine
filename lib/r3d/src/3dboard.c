@@ -1,6 +1,14 @@
 #include "libr3d.h"
 #include "math.h"
 
+// #ifdef __APPLE__
+//     #define GL_SILENCE_DEPRECATION
+//     #include <OpenGL/gl.h>
+// #else
+//     #include <GL/gl.h>
+// #endif
+#include <glad/gl.h>
+
 static cn_value _init(Object *__this, void **args)
 {
     if (!args || !args[0]) {
@@ -59,14 +67,14 @@ static cn_value _render_object(Object *__this, void **args)
 {
     if (!args || !args[0]) {
         RAISE(ERR_INVALID_POINTER, "can't draw with no object.");
-        return (null_value);
+        return (VALUE_NULL);
     }
 
     threed_render_stack *render_stack = args[0]; 
     int64_t flags = get_attr(render_stack->obj, "_flags")->as.i;
     
     if (!((flags & CN_OBJ_DRAWABLE) > 0))
-        return (null_value);
+        return (VALUE_NULL);
 
     Vector3 *object_position = &get_attr(render_stack->obj, "position")->as.vec3;
     Vector3 *object_scale = &get_attr(render_stack->obj, "scale")->as.vec3;
@@ -77,7 +85,7 @@ static cn_value _render_object(Object *__this, void **args)
         Material *object_mat = get_attr(render_stack->obj, "material")->as.ptr;
 
         if (!object_mesh || !object_mat)
-            return (null_value);
+            return (VALUE_NULL);
 
         if (((render_stack->window->video_mode.flags & VDM_CPU) > 0)) {
             _cpu_rendering();
@@ -98,14 +106,14 @@ static cn_value _render_object(Object *__this, void **args)
     if (has_method(render_stack->obj, "_draw"))
         (void)call_method(render_stack->obj, "_draw", PACK_ARG(__this, render_stack->window));
 
-    return (null_value);
+    return (VALUE_NULL);
 }
 
 static cn_value _draw(Object *__this, void **args)
 {
     if (!args || !args[0]) {
         RAISE(ERR_INVALID_POINTER, "can't draw with no window.");
-        return (null_value);
+        return (VALUE_NULL);
     }
 
     threed_render_stack render_stack;
@@ -148,7 +156,7 @@ static cn_value _draw(Object *__this, void **args)
         _render_object(__this, (cnany[]){&render_stack, NULL});
     }
 
-    return (null_value);
+    return (VALUE_NULL);
 }
 
 static cn_value _del(Object *__this, void **args)
@@ -156,7 +164,7 @@ static cn_value _del(Object *__this, void **args)
     (void)args;
     (void)__this;
 
-    return (null_value);
+    return (VALUE_NULL);
 }
 
 CN_API Object *new_3dboard(void)

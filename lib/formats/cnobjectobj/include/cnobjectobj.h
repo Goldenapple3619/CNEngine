@@ -14,4 +14,8 @@
     CN_API struct asset_registry *register_asset(void);
     CN_API void unregister_asset(struct asset_registry *registered_asset);
 
+    void init_symbols_section_registry(struct section_registry *reg);
+    void init_info_section_registry(struct section_registry *reg);
+    void init_attrs_section_registry(struct section_registry *reg);
+
 #endif

@@ -9,10 +9,18 @@ add_library(r3d SHARED
     src/projection3d.c
 )
 
-target_compile_options(r3d
-    PRIVATE
-        -Wall -Wextra -Wshadow -Werror -O2
-)
+if(CN_BUILD_TESTS)
+    target_compile_options(r3d
+        PRIVATE
+            --coverage -O0 -g
+    )
+    target_link_options(r3d PRIVATE --coverage)
+else()
+    target_compile_options(r3d
+        PRIVATE
+            -Wall -Wextra -Wshadow -Werror -O2
+    )
+endif()
 
 target_include_directories(r3d
     PUBLIC

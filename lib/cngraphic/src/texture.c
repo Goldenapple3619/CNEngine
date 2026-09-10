@@ -1,5 +1,7 @@
 #include "libcngraphic.h"
 #include <SDL_image.h>
+#include <SDL2/SDL.h>
+#include <glad/gl.h>
 
 CN_API Texture *new_texture(const Vector2 *size, cnbool alpha)
 {
@@ -216,6 +218,54 @@ CN_API Texture *copy_texture(Texture *texture)
     }
 
     return (temp);
+}
+
+CN_API Texture *new_texture_from_buffer(const void *buffer, size_t size)
+{
+    if (!buffer || size == 0) {
+        RAISE(ERR_INVALID_POINTER, "can't create a texture from buffer if it is empty.");
+        return (NULL);
+    }
+
+    Texture *texture = (Texture *)malloc(sizeof(Texture));
+
+    if (!texture) {
+        RAISE(ERR_OUT_OF_MEMORY, "failed to allocate texture.");
+        return (NULL);
+    }
+
+    SDL_RWops *rw = SDL_RWFromConstMem(buffer, (int)size);
+
+    if (!rw) {
+        RAISE(ERR_OS, "failed to create RWops from buffer.");
+        (void)free(texture);
+        return (NULL);
+    }
+
+    texture->surface = IMG_Load_RW(rw, 1);
+
+    if (!texture->surface) {
+        RAISE(ERR_OS, "failed to load texture from buffer, missing texture is being created instead.");
+        texture->surface = SDL_CreateRGBSurfaceWithFormat(SDL_SWSURFACE, 100, 100, 32, SDL_PIXELFORMAT_RGBA32);
+
+        if (!texture->surface) {
+            RAISE(ERR_OUT_OF_MEMORY, "failed to allocate missing texture.");
+            (void)free(texture);
+            return (NULL);
+        }
+        SDL_Rect rects[3] = {{0, 0, 100, 100}, {50, 0, 50, 50}, {0, 50, 50, 50}};
+
+        (void)SDL_FillRect(texture->surface, &rects[0], SDL_MapRGB(texture->surface->format, 0, 0, 0));
+        (void)SDL_FillRect(texture->surface, &rects[1], SDL_MapRGB(texture->surface->format, 106, 22, 171));
+        (void)SDL_FillRect(texture->surface, &rects[2], SDL_MapRGB(texture->surface->format, 106, 22, 171));
+    }
+
+    texture->size.x = texture->surface->w;
+    texture->size.y = texture->surface->h;
+    texture->api = R_API_NONE;
+    memset(&texture->gpu_handler, 0, sizeof(texture->gpu_handler));
+
+    return (texture);
 }
 
 CN_API Texture *new_texture_from_file(const char *path)

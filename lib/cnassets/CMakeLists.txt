@@ -9,10 +9,18 @@ add_library(cnassets SHARED
     src/engine_types.c
 )
 
-target_compile_options(cnassets
-    PRIVATE
-        -Wall -Wextra -Wshadow -Werror -O2
-)
+if(CN_BUILD_TESTS)
+    target_compile_options(cnassets
+        PRIVATE
+            --coverage -O0 -g
+    )
+    target_link_options(cnassets PRIVATE --coverage)
+else()
+    target_compile_options(cnassets
+        PRIVATE
+            -Wall -Wextra -Wshadow -Werror -O2
+    )
+endif()
 
 target_include_directories(cnassets
     PUBLIC

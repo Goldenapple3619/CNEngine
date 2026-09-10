@@ -1,9 +1,10 @@
 #include "test.h"
+#include <SDL2/SDL_timer.h>
 
 cn_value show_fps(Object *__this, void **args)
 {
     if (!args || !args[0])
-        return (null_value);
+        return (VALUE_NULL);
 
     static uint64_t freq = 0;
 
@@ -20,9 +21,9 @@ cn_value show_fps(Object *__this, void **args)
     char fps_text[23];
 
     if (new_time <= 0)
-        return (null_value);
+        return (VALUE_NULL);
 
     snprintf(fps_text, sizeof(fps_text), "%.2f fps", 1e9 / (new_time - old_time));
     call_method(__this, "set_text", PACK_ARG(fps_text));
-    return (null_value);
+    return (VALUE_NULL);
 }

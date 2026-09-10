@@ -153,6 +153,63 @@ CN_API uint8_t str_rcadd_cp(String *str, const char *c_str)
     return (0);
 }
 
+CN_API uint8_t str_lcadd_cp(String *str, const char *c_str)
+{
+    if (!str) {
+        RAISE(ERR_INVALID_POINTER, "can't add_copy empty str.");
+        return (1);
+    }
+
+    if (!c_str) {
+        RAISE(ERR_INVALID_POINTER, "can't add_copy empty c_str to str.");
+        return (1);
+    }
+
+    size_t add_len = strlen(c_str);
+    size_t len = str->size + add_len;
+    char *new_cstr = malloc(sizeof(char) * (len + 1));
+
+    if (!new_cstr) {
+        RAISE(ERR_OUT_OF_MEMORY, "failed to allocate new c_str.");
+        return (1);
+    }
+
+    (void)strcpy(new_cstr, c_str);
+    (void)strcpy(new_cstr + add_len, str->c_str ? str->c_str : "");
+
+    (void)str_override(str, new_cstr);
+    return (0);
+}
+
+CN_API uint8_t str_lcadd_mv(String *str, char *c_str)
+{
+    if (!str) {
+        RAISE(ERR_INVALID_POINTER, "can't add_copy empty str.");
+        return (1);
+    }
+
+    if (!c_str) {
+        RAISE(ERR_INVALID_POINTER, "can't add_copy empty c_str to str.");
+        return (1);
+    }
+
+    size_t add_len = strlen(c_str);
+    size_t len = str->size + add_len;
+    char *new_cstr = malloc(sizeof(char) * (len + 1));
+
+    if (!new_cstr) {
+        RAISE(ERR_OUT_OF_MEMORY, "failed to allocate new c_str.");
+        return (1);
+    }
+
+    (void)strcpy(new_cstr, c_str);
+    (void)strcpy(new_cstr + add_len, str->c_str ? str->c_str : "");
+    (void)free(c_str);
+
+    (void)str_override(str, new_cstr);
+    return (0);
+}
+
 CN_API void empty_str(String *str)
 {
     if (!str) {

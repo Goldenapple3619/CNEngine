@@ -1,7 +1,5 @@
 #include "libcnaudio.h"
 
-#include "libcncore.h"
-
 CN_API struct audio_vector_s *new_audio_vector(void)
 {
     struct audio_vector_s *vec = (struct audio_vector_s *)malloc(sizeof(struct audio_vector_s));

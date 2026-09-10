@@ -29,7 +29,6 @@ int main(int argc, char **argv)
     (void)argv;
 
     Object *ctx = new_ctx();
-    cn_value temp_val;
 
     if (!ctx) {
         PROPAGATE_ERR();
@@ -40,11 +39,37 @@ int main(int argc, char **argv)
 
     global_ctx = ctx;
 
+    #ifdef _WIN32
+        void *game_library = cnopen_library("./game.dll");
+    #elif defined(__APPLE__)
+        void *game_library = cnopen_library("./game.dylib");
+    #else
+        void *game_library = cnopen_library("./game.so");
+    #endif
+
+    cn_value temp_val;
+
+    if (!game_library) {
+        PROPAGATE_ERR();
+        DELOC(ctx);
+        report_errors();
+        return (1);
+    }
+
+    if (!set_attr(ctx, "game_library", CN_TYPE_GENERIC_UNIQ_PTR, game_library)) {
+        PROPAGATE_ERR();
+        cnclose_library(game_library);
+        DELOC(ctx);
+        report_errors();
+        return (1);
+    }
+
     signal(SIGINT, &sigint_handler);
     signal(SIGTERM, &sigint_handler);
 
     if (load_submodules(ctx)) {
         PROPAGATE_ERR();
+        cnclose_library(game_library);
         DELOC(ctx);
         report_errors();
         return (1);
@@ -54,6 +79,7 @@ int main(int argc, char **argv)
 
     if (temp_val.type == CN_TYPE_NULL || temp_val.as.i == VALUE_ERR.as.i) {
         PROPAGATE_ERR();
+        cnclose_library(game_library);
         DELOC(ctx);
         report_errors();
         return (1);
@@ -62,6 +88,15 @@ int main(int argc, char **argv)
     #if defined(_HAS_ASSETS) && (_HAS_ASSETS == 1)
         if (load_assets_handler(ctx)) {
             PROPAGATE_ERR();
+            cnclose_library(game_library);
+            DELOC(ctx);
+            report_errors();
+            return (1);
+        }
+
+        if (register_engine_asset_api(ctx)) {
+            PROPAGATE_ERR();
+            cnclose_library(game_library);
             DELOC(ctx);
             report_errors();
             return (1);
@@ -69,6 +104,10 @@ int main(int argc, char **argv)
 
         if (load_entry_scene(ctx)) {
             PROPAGATE_ERR();
+            #if defined(_HAS_ASSETS) && (_HAS_ASSETS == 1)
+                unregister_engine_asset_api(ctx);
+            #endif
+            cnclose_library(game_library);
             DELOC(ctx);
             report_errors();
             return (1);
@@ -78,6 +117,10 @@ int main(int argc, char **argv)
     #if defined(_HAS_GRAPHICS) && (_HAS_GRAPHICS == 1)
         if (add_main_interface(ctx)) {
             PROPAGATE_ERR();
+            #if defined(_HAS_ASSETS) && (_HAS_ASSETS == 1)
+                unregister_engine_asset_api(ctx);
+            #endif
+            cnclose_library(game_library);
             DELOC(ctx);
             report_errors();
             return (1);
@@ -86,6 +129,12 @@ int main(int argc, char **argv)
 
     call_method(ctx, "_run", NULL);
     call_method(ctx, "_stop", NULL);
+
+    #if defined(_HAS_ASSETS) && (_HAS_ASSETS == 1)
+        unregister_engine_asset_api(ctx);
+    #endif
+
+    cnclose_library(game_library);
     DELOC(ctx);
 
     report_errors();

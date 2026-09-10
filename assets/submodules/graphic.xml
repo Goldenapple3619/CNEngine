@@ -2,10 +2,7 @@
     <name>graphics</name>
     <includes>
         <file overwrite="true">${INCLUDES}/libcngraphic.h</file>
-        <file>${INCLUDES}/SDL_image.h</file>
-        <dir>${INCLUDES}/glad</dir>
-        <dir>${INCLUDES}/KHR</dir>
-        
+        <dir>${INCLUDES}/SDL2</dir>
     </includes>
     <libs>
         <file name="cngraphic" link="true" overwrite="true">${LIBS}/libcngraphic.${EXT}</file>

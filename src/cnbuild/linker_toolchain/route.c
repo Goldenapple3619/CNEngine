@@ -197,6 +197,13 @@ int build_asset_pack(size_t argc, char **argv, Object *asset_ctx)
     wctx->write_infos.flags = build_args.padding;
     wctx->write_infos.type = ENGINE_OBJ_ASSET_PACK;
 
+    if (writer_ctx_set_object_name(wctx, (build_args.output_file ? path_basename(build_args.output_file) : "asset_bnk"))) {
+        PROPAGATE_ERR();
+        (void)reset_args(&build_args);
+        (void)delete_writer_ctx(wctx);
+        return (1);
+    }
+
     for (size_t i = 0; i < build_args.input_files.size; ++i) {
         reader = new_object_file_reader();
 

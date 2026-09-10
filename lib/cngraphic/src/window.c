@@ -1,11 +1,13 @@
 #include "libcngraphic.h"
 
-#ifdef __APPLE__
-    #define GL_SILENCE_DEPRECATION
-    #include <OpenGL/gl.h>
-#else
-    #include <GL/gl.h>
-#endif
+#include <SDL2/SDL.h>
+// #ifdef __APPLE__
+//     #define GL_SILENCE_DEPRECATION
+//     #include <OpenGL/gl.h>
+// #else
+//     #include <GL/gl.h>
+// #endif
+#include <glad/gl.h>
 #include <string.h>
 
 CN_API Window *new_window(const char *name, const Texture *icon, const Videomode *video_mode)

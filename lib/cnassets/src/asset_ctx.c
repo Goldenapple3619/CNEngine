@@ -47,12 +47,12 @@ static cn_value _find_asset_type(Object *__this, void **args)
 {
     if (!args || !args[0]) {
         RAISE(ERR_INVALID_POINTER, "can't find asset type with no name.");
-        return (null_value);
+        return (VALUE_NULL);
     }
 
     if (!has_attr(__this, "assets_fmts")) {
         RAISE(ERR_NOT_COMPATIBLE, "base is not inited properly, assets_fmts not found.");
-        return (null_value);
+        return (VALUE_NULL);
     }
 
     Object *assets_fmts = get_attr(__this, "assets_fmts")->as.ptr;
@@ -60,7 +60,7 @@ static cn_value _find_asset_type(Object *__this, void **args)
 
     if (!assets_fmts) {
         RAISE(ERR_INVALID_POINTER, "base is not inited properly, assets_fmts is empty.");
-        return (null_value);
+        return (VALUE_NULL);
     }
     
     for (struct list_iterator_s it = list_get_iterator(assets_fmts); !list_iterator_isend(&it); list_iterator_next(&it)) {
@@ -73,19 +73,19 @@ static cn_value _find_asset_type(Object *__this, void **args)
             return ((cn_value){.type = CN_TYPE_GENERIC_UNIQ_PTR, .as.ptr = loader->registry});
     }
 
-    return (null_value);
+    return (VALUE_NULL);
 }
 
 static cn_value _find_asset_name(Object *__this, void **args)
 {
     if (!args || !args[0]) {
         RAISE(ERR_INVALID_POINTER, "can't find asset name with no name.");
-        return (null_value);
+        return (VALUE_NULL);
     }
 
     if (!has_attr(__this, "assets_fmts")) {
         RAISE(ERR_NOT_COMPATIBLE, "base is not inited properly, assets_fmts not found.");
-        return (null_value);
+        return (VALUE_NULL);
     }
 
     Object *assets_fmts = get_attr(__this, "assets_fmts")->as.ptr;
@@ -93,7 +93,7 @@ static cn_value _find_asset_name(Object *__this, void **args)
 
     if (!assets_fmts) {
         RAISE(ERR_INVALID_POINTER, "base is not inited properly, assets_fmts is empty.");
-        return (null_value);
+        return (VALUE_NULL);
     }
     
     for (struct list_iterator_s it = list_get_iterator(assets_fmts); !list_iterator_isend(&it); list_iterator_next(&it)) {
@@ -106,19 +106,19 @@ static cn_value _find_asset_name(Object *__this, void **args)
             return ((cn_value){.type = CN_TYPE_GENERIC_UNIQ_PTR, .as.ptr = loader->registry});
     }
 
-    return (null_value);
+    return (VALUE_NULL);
 }
 
 static cn_value _find_section_type(Object *__this, void **args)
 {
     if (!args || !args[0]) {
         RAISE(ERR_INVALID_POINTER, "can't find section type with no type.");
-        return (null_value);
+        return (VALUE_NULL);
     }
 
     if (!has_attr(__this, "assets_fmts")) {
         RAISE(ERR_NOT_COMPATIBLE, "base is not inited properly, assets_fmts not found.");
-        return (null_value);
+        return (VALUE_NULL);
     }
 
     Object *assets_fmts = get_attr(__this, "assets_fmts")->as.ptr;
@@ -126,7 +126,7 @@ static cn_value _find_section_type(Object *__this, void **args)
 
     if (!assets_fmts) {
         RAISE(ERR_INVALID_POINTER, "base is not inited properly, assets_fmts is empty.");
-        return (null_value);
+        return (VALUE_NULL);
     }
     
     for (struct list_iterator_s it = list_get_iterator(assets_fmts); !list_iterator_isend(&it); list_iterator_next(&it)) {
@@ -144,19 +144,19 @@ static cn_value _find_section_type(Object *__this, void **args)
         }
     }
 
-    return (null_value);
+    return (VALUE_NULL);
 }
 
 static cn_value _find_section_name(Object *__this, void **args)
 {
     if (!args || !args[0]) {
         RAISE(ERR_INVALID_POINTER, "can't find section name with no name.");
-        return (null_value);
+        return (VALUE_NULL);
     }
 
     if (!has_attr(__this, "assets_fmts")) {
         RAISE(ERR_NOT_COMPATIBLE, "base is not inited properly, assets_fmts not found.");
-        return (null_value);
+        return (VALUE_NULL);
     }
 
     Object *assets_fmts = get_attr(__this, "assets_fmts")->as.ptr;
@@ -164,7 +164,7 @@ static cn_value _find_section_name(Object *__this, void **args)
 
     if (!assets_fmts) {
         RAISE(ERR_INVALID_POINTER, "base is not inited properly, assets_fmts is empty.");
-        return (null_value);
+        return (VALUE_NULL);
     }
     
     for (struct list_iterator_s it = list_get_iterator(assets_fmts); !list_iterator_isend(&it); list_iterator_next(&it)) {
@@ -182,7 +182,7 @@ static cn_value _find_section_name(Object *__this, void **args)
         }
     }
 
-    return (null_value);
+    return (VALUE_NULL);
 }
 
 static cn_value _init(Object *__this, void **args)

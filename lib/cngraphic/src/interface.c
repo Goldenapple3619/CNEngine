@@ -57,13 +57,13 @@ static cn_value _events(Object *__this, void **args)
         if (has_method(elements->objects[i], "_events"))
             (void)call_method(elements->objects[i], "_events", PACK_ARG((cnany)w));
 
-    return (null_value);
+    return (VALUE_NULL);
 }
 
 static cn_value _update(Object *__this, void **args)
 {
     if (!args || !args[0])
-        return (null_value);
+        return (VALUE_NULL);
 
     ObjectVector *elements = get_attr(__this, "elements")->as.ptr;
 
@@ -71,7 +71,7 @@ static cn_value _update(Object *__this, void **args)
         if (has_method(elements->objects[i], "_update"))
             (void)call_method(elements->objects[i], "_update", args);
 
-    return (null_value);
+    return (VALUE_NULL);
 }
 
 static cn_value _draw(Object *__this, void **args)
@@ -89,7 +89,7 @@ static cn_value _draw(Object *__this, void **args)
 
     (void)draw_window(w);
 
-    return (null_value);
+    return (VALUE_NULL);
 }
 
 static cn_value _del(Object *__this, void **args)
@@ -101,7 +101,7 @@ static cn_value _del(Object *__this, void **args)
     DEL_CUSTOM_ALLOCAION(__this, delete_object_vector, "elements");
     DEL_CUSTOM_ALLOCAION(__this, delete_window, "window");
 
-    return (null_value);
+    return (VALUE_NULL);
 }
 
 CN_API Object *new_interface(void)

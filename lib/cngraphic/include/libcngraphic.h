@@ -1,10 +1,15 @@
-#ifndef _LIBCNGRAPGIC_H_
-    #define _LIBCNGRAPGIC_H_
+#ifndef _LIBCNGRAPHIC_H_
+    #define _LIBCNGRAPHIC_H_
 
-    #include <glad/gl.h>
-    #include <SDL2/SDL.h>
-    #include <SDL_image.h>
     #include "libcncore.h"
+
+    typedef struct SDL_Surface SDL_Surface;
+    typedef struct SDL_Renderer SDL_Renderer;
+    typedef struct SDL_Window SDL_Window;
+    typedef struct SDL_Texture SDL_Texture;
+    typedef void *SDL_GLContext;
+
+    #include <SDL2/SDL_video.h>
 
     #define INVALIDATE_GPU(t)                                                    \
     if ((t)) {                                                                   \
@@ -221,6 +226,7 @@
     CN_API uint8_t get_opacity_texture(const Texture *texture);
     CN_API void draw_rect(Texture *texture, const Rect *rect, cncolor color);
     // CN_API void draw_ellipse(Texture *texture, const Rect *rect, cncolor color); // to implement
+    CN_API Texture *new_texture_from_buffer(const void *buffer, size_t size);
     CN_API void delete_texture(Texture *texture);
 
     CN_API Window *new_window(const char *name, const Texture *icon, const Videomode *video_mode);

@@ -1,4 +1,5 @@
 #include "libcnaudio.h"
+#include <SDL_mixer.h>
 
 static cn_value _get_free_channels(Object *__this, void **args)
 {
@@ -9,7 +10,7 @@ static cn_value _get_free_channels(Object *__this, void **args)
     struct free_channels_arr_s *free_channels = (struct free_channels_arr_s *)malloc(sizeof(struct free_channels_arr_s));
 
     if (!free_channels)
-        return (null_value);
+        return (VALUE_NULL);
 
     free_channels->free_channels_arr = (int32_t *)malloc(sizeof(int32_t) * max_channels);
     free_channels->size = 0;
@@ -17,7 +18,7 @@ static cn_value _get_free_channels(Object *__this, void **args)
     if (!free_channels->free_channels_arr) {
         RAISE_FMT(ERR_OUT_OF_MEMORY, "failed to allocate array of audio channels of size %" PRIi32 ".", max_channels);
         (void)free(free_channels);
-        return (null_value);
+        return (VALUE_NULL);
     }
 
     for (int32_t channel = 0; channel < max_channels; ++channel) {
@@ -35,7 +36,7 @@ static cn_value _update(Object *__this, void **args)
     (void)__this;
     (void)args;
 
-    return (null_value);
+    return (VALUE_NULL);
 }
 
 static cn_value _init(Object *__this, void **args)
@@ -75,7 +76,7 @@ static cn_value _del(Object *__this, void **args)
     (void)__this;
 
     if (!args || !(args[0]))
-        return (null_value);
+        return (VALUE_NULL);
 
     Object *ctx = (Object *)(args[0]);
 
@@ -83,7 +84,7 @@ static cn_value _del(Object *__this, void **args)
 
     end_audio();
 
-    return (null_value);
+    return (VALUE_NULL);
 }
 
 CN_API Object *new_audio_ctx(cnbool skip_init_error)

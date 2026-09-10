@@ -1,4 +1,5 @@
 #include "libcncore.h"
+#include <SDL2/SDL_timer.h>
 
 CN_API double clock_tick(Clock *c, int32_t tps)
 {

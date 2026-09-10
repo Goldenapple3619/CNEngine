@@ -25,7 +25,9 @@
         <src>${ENGINE_ROOT}/assets/generator/main.c</src>
         <src>${ENGINE_ROOT}/assets/generator/submodules.c</src>
 
-        <src forsubmodule="assets">${ENGINE_ROOT}/assets/generator/submodules/assets.c</src>
+        <src forsubmodule="assets">${ENGINE_ROOT}/assets/generator/submodules/assets/api.c</src>
+        <src forsubmodule="assets">${ENGINE_ROOT}/assets/generator/submodules/assets/raw_ressources.c</src>
+
         <src forsubmodule="graphics">${ENGINE_ROOT}/assets/generator/submodules/graphics.c</src>
     </generator>
 </engine>

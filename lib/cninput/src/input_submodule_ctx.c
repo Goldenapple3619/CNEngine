@@ -1,5 +1,4 @@
 #include "libcninput.h"
-
 #include "libcncore.h"
 #include "libcngraphic.h"
 
@@ -11,7 +10,7 @@ static cn_value _events(Object *__this, void **args)
     int64_t main_window = get_attr(__this, "_main_window_id")->as.i;
 
     if (is_window_closed(wu, main_window))
-        return (null_value);
+        return (VALUE_NULL);
 
     Window *temp = get_window_in_universe(wu, main_window);
     Object *atlas = get_attr(__this, "inputs")->as.ptr;
@@ -19,7 +18,7 @@ static cn_value _events(Object *__this, void **args)
     const InputEntry *entry;
 
     if (!temp)
-        return (null_value);
+        return (VALUE_NULL);
 
     cn_event allowed_events[] = {
         EV_KEYDOWN,
@@ -44,7 +43,7 @@ static cn_value _events(Object *__this, void **args)
         }
     }
 
-    return (null_value);
+    return (VALUE_NULL);
 }
 
 static cn_value _register_input_callback(Object *__this, void **args)
@@ -123,7 +122,7 @@ static cn_value _unregister_input_callback(Object *__this, void **args)
 {
     if (!args || !args[0] || !args[1]) {
         RAISE(ERR_INVALID_POINTER, "can't unregister input callback without input entry key/ObjMethodPair.")
-        return (null_value);
+        return (VALUE_NULL);
     }
 
     Object *atlas = get_attr(__this, "inputs")->as.ptr;
@@ -132,7 +131,7 @@ static cn_value _unregister_input_callback(Object *__this, void **args)
 
     if (temp.type == CN_TYPE_NULL) {
         PROPAGATE_ERR();
-        return (null_value);
+        return (VALUE_NULL);
     } else {
         ie = temp.as.ptr;
     }
@@ -142,7 +141,7 @@ static cn_value _unregister_input_callback(Object *__this, void **args)
             input_entry_remove_callback(ie, i);
     }
 
-    return (null_value);
+    return (VALUE_NULL);
 }
 
 static cn_value _init(Object *__this, void **args)

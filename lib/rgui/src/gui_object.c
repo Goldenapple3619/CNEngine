@@ -32,7 +32,7 @@ static cn_value _del(Object *__this, void **args)
     (void)args;
     (void)__this;
 
-    return (null_value);
+    return (VALUE_NULL);
 }
 
 CN_API Object *new_guiobject(void)
