@@ -13,6 +13,11 @@ set(CMAKE_REQUIRED_LIBRARIES m CACHE BOOL "" FORCE)
 # ========= Options =========
 option(CN_BUILD_ENGINE "Build engine executable" ON)
 option(CN_SANITIZE     "Build with AddressSanitizer + UBSan" OFF)
+option(CN_BUILD_TESTS  "Build test executable" OFF)
+
+if(CN_BUILD_TESTS)
+    enable_testing()
+endif()
 
 if(NOT DEFINED DIST_DIR)
     get_filename_component(CWD_NAME ${CMAKE_SOURCE_DIR} NAME)
@@ -207,9 +212,11 @@ if(CN_SANITIZE)
     add_link_options(-fsanitize=address,undefined)
 endif()
 
-add_compile_options(
-    -ffile-prefix-map=${CMAKE_SOURCE_DIR}=.
-)
+if (NOT CN_BUILD_TESTS)
+    add_compile_options(
+        -ffile-prefix-map=${CMAKE_SOURCE_DIR}=.
+    )
+endif()
 
 # ========= Modules =========
 add_subdirectory(lib/cncore)
@@ -224,6 +231,11 @@ add_subdirectory(lib/r3d)
 add_subdirectory(lib/formats/cnguiobj)
 add_subdirectory(lib/formats/cnsceneobj)
 add_subdirectory(lib/formats/cnobjectobj)
+
+# ===== Tests =====
+if(CN_BUILD_TESTS)
+    add_subdirectory(tests/units)
+endif()
 
 # dist deploy
 add_custom_target(cn_dist ALL)
@@ -328,8 +340,6 @@ if(CN_BUILD_ENGINE)
             lib/rgui/include
             lib/r2d/include
             lib/r3d/include
-
-            lib/cnapi/include
 
             lib/formats/cnguiobj/include
             lib/formats/cnsceneobj/include
@@ -548,8 +558,8 @@ if(UNIX AND NOT APPLE)
     endif()
 endif()
 
-add_custom_command(TARGET cn_dist POST_BUILD
-    COMMAND ${CMAKE_COMMAND}
-        -DINCLUDE_DIR=${DIST_DIR}/include
-        -P ${CMAKE_SOURCE_DIR}/toolchain/patch_sdl_includes.cmake
-)
+# add_custom_command(TARGET cn_dist POST_BUILD
+#     COMMAND ${CMAKE_COMMAND}
+#         -DINCLUDE_DIR=${DIST_DIR}/include
+#         -P ${CMAKE_SOURCE_DIR}/toolchain/patch_sdl_includes.cmake
+# )

@@ -1,0 +1,54 @@
+name: test
+
+on:
+  pull_request:
+    branches:
+      - dev
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  test-linux:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Criterion (Linux)
+        run: udo apt-get update && sudo apt-get install -y libcriterion-dev
+
+      - name: Coverage setup
+        run: |
+          pip install gcovr
+
+      - name: Build and test
+        run: |
+          sh ./scripts/build_linux-amd64-test.sh
+
+      - name: Generate coverage
+        run: |
+          gcovr -r . build/linux-amd64-test/lib --xml -o coverage.xml
+
+      - name: Upload coverage
+        uses: codecov/codecov-action@v4
+        with:
+          files: ./coverage.xml
+
+  # test-windows:
+  #   runs-on: windows-latest
+  #   if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - name: Coverage setup
+  #       run: |
+  #         pip install gcovr
+  #     - name: Build and test
+  #       run: |
+  #         sh ./scripts/build_windows-amd64-test.sh
+  #     - uses: codecov/codecov-action@v4
+  #       with:
+  #         files: ./build/windows-amd64-test/coverage.xml

@@ -17,10 +17,18 @@ add_library(cngraphic SHARED
     src/quad.c
 )
 
-target_compile_options(cngraphic
-    PRIVATE
-        -Wall -Wextra -Wshadow -Werror -O2
-)
+if(CN_BUILD_TESTS)
+    target_compile_options(cngraphic
+        PRIVATE
+            --coverage -O0 -g
+    )
+    target_link_options(cngraphic PRIVATE --coverage)
+else()
+    target_compile_options(cngraphic
+        PRIVATE
+            -Wall -Wextra -Wshadow -Werror -O2
+    )
+endif()
 
 target_include_directories(cngraphic
     PUBLIC
