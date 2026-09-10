@@ -335,14 +335,10 @@ Test(build_object, fails_and_frees_object_when_init_returns_error)
 
     Object *result = build_object(obj, NULL);
     cr_assert_null(result);
-    /* obj is already freed here by build_object — don't touch it */
 }
 
 Test(build_object, default_object_init_is_rejected)
 {
-    /* create_default_object's stock _init returns VALUE_NULL, and
-     * build_object treats a NULL-typed return as invalid. Worth
-     * confirming this is actually the intended contract. */
     Object *obj = create_default_object();
 
     Object *result = build_object(obj, NULL);
