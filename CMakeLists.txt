@@ -234,7 +234,8 @@ add_subdirectory(lib/formats/cnobjectobj)
 
 # ===== Tests =====
 if(CN_BUILD_TESTS)
-    add_subdirectory(tests/units)
+    add_subdirectory(tests/units/cncore)
+    add_subdirectory(tests/units/cnassets)
 endif()
 
 # dist deploy
