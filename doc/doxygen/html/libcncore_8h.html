@@ -113,7 +113,11 @@ $(document).ready(function(){initNavTree('libcncore_8h.html',''); initResizable(
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
-<code>#include &lt;SDL2/SDL.h&gt;</code><br />
+<code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;stdarg.h&gt;</code><br />
+<code>#include &lt;inttypes.h&gt;</code><br />
 </div>
 <p><a href="libcncore_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -124,8 +128,6 @@ Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structvector3__s.html">vector3_s</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structrect__s.html">rect_s</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclock__s.html">clock_s</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcn__value.html">cn_value</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -139,7 +141,7 @@ Data Structures</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcn__value__vector__s.html">cn_value_vector_s</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscene__object__mode__s.html">scene_object_mode_s</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclock__s.html">clock_s</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlist__iterator__s.html">list_iterator_s</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -149,17 +151,23 @@ Data Structures</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structgeneric__kv__pair__s.html">generic_kv_pair_s</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structString.html">String</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structObjMethodPair.html">ObjMethodPair</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structErrorFrame.html">ErrorFrame</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structErrorContext.html">ErrorContext</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structString.html">String</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscene__object__mode__s.html">scene_object_mode_s</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
+<tr class="memitem:a41f9c5fb8b08eb5dc3edce4dcb37fee7" id="r_a41f9c5fb8b08eb5dc3edce4dcb37fee7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a41f9c5fb8b08eb5dc3edce4dcb37fee7">true</a>&#160;&#160;&#160;~(0 &lt;&lt; 1)</td></tr>
+<tr class="separator:a41f9c5fb8b08eb5dc3edce4dcb37fee7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65e9886d74aaee76545e83dd09011727" id="r_a65e9886d74aaee76545e83dd09011727"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a65e9886d74aaee76545e83dd09011727">false</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a65e9886d74aaee76545e83dd09011727"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac236fa37d6f1907a12cdd07d9b11b1f7" id="r_ac236fa37d6f1907a12cdd07d9b11b1f7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#ac236fa37d6f1907a12cdd07d9b11b1f7">CN_API</a></td></tr>
 <tr class="separator:ac236fa37d6f1907a12cdd07d9b11b1f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58d32765d53c109fc2f386946d977219" id="r_a58d32765d53c109fc2f386946d977219"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a58d32765d53c109fc2f386946d977219">GC_MAX_SIZE</a>&#160;&#160;&#160;256</td></tr>
@@ -172,10 +180,6 @@ Macros</h2></td></tr>
 <tr class="separator:aa640c9e7e7664f6d8238f045811d1640"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeb2857fb5bcf9b3ce19c794bb8d8cc45" id="r_aeb2857fb5bcf9b3ce19c794bb8d8cc45"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#aeb2857fb5bcf9b3ce19c794bb8d8cc45">ERR_FULL_TRACE</a>&#160;&#160;&#160;1</td></tr>
 <tr class="separator:aeb2857fb5bcf9b3ce19c794bb8d8cc45"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a41f9c5fb8b08eb5dc3edce4dcb37fee7" id="r_a41f9c5fb8b08eb5dc3edce4dcb37fee7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a41f9c5fb8b08eb5dc3edce4dcb37fee7">true</a>&#160;&#160;&#160;~(0 &lt;&lt; 1)</td></tr>
-<tr class="separator:a41f9c5fb8b08eb5dc3edce4dcb37fee7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a65e9886d74aaee76545e83dd09011727" id="r_a65e9886d74aaee76545e83dd09011727"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a65e9886d74aaee76545e83dd09011727">false</a>&#160;&#160;&#160;0</td></tr>
-<tr class="separator:a65e9886d74aaee76545e83dd09011727"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae2252f92419c9d33a95b6420394c138c" id="r_ae2252f92419c9d33a95b6420394c138c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#ae2252f92419c9d33a95b6420394c138c">STRING_INDIVIDUAL_ALLOCATION</a>&#160;&#160;&#160;1</td></tr>
 <tr class="separator:ae2252f92419c9d33a95b6420394c138c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a05cdd8afe24b6621f8d797b0d90e52e0" id="r_a05cdd8afe24b6621f8d797b0d90e52e0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a05cdd8afe24b6621f8d797b0d90e52e0">RAISE</a>(c,  msg)&#160;&#160;&#160;<a class="el" href="libcncore_8h.html#ae7ec79b1a1af9d72038404621a3d382c">raise_error</a>(c, msg, __FILE__, __func__, __LINE__);</td></tr>
@@ -188,6 +192,8 @@ Macros</h2></td></tr>
 <tr class="separator:a6f9e7c0ce0f85faf1d86c47c6c8970b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac4cc27a6e3a42081a5357a2fa4c9b31e" id="r_ac4cc27a6e3a42081a5357a2fa4c9b31e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#ac4cc27a6e3a42081a5357a2fa4c9b31e">PREP_CLASS_BUILD</a>()&#160;&#160;&#160;<a class="el" href="libcncore_8h.html#a6f9e7c0ce0f85faf1d86c47c6c8970b1">PREP_INIT</a>()</td></tr>
 <tr class="separator:ac4cc27a6e3a42081a5357a2fa4c9b31e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade7746924c46a4a3371f0ab2f0ca38bd" id="r_ade7746924c46a4a3371f0ab2f0ca38bd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#ade7746924c46a4a3371f0ab2f0ca38bd">PREP_DEL</a>()&#160;&#160;&#160;<a class="el" href="structcn__value.html">cn_value</a> *__temp_alloc;</td></tr>
+<tr class="separator:ade7746924c46a4a3371f0ab2f0ca38bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6e1cba91492021ca2a9ac1a1714de854" id="r_a6e1cba91492021ca2a9ac1a1714de854"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a6e1cba91492021ca2a9ac1a1714de854">INIT_CUSTOM_ALLOCATION</a>(__this,  expr_alloc,  <a class="el" href="libcncore_8h.html#aea43bea4736df25649243404d5905567">expr_free</a>,  <a class="el" href="build_8h.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>)</td></tr>
 <tr class="separator:a6e1cba91492021ca2a9ac1a1714de854"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa4e88729d3c7d2cc9317906d022f09db" id="r_aa4e88729d3c7d2cc9317906d022f09db"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#aa4e88729d3c7d2cc9317906d022f09db">INIT_OBJECT_STATIC</a>(__this,  expr_alloc,  args,  <a class="el" href="build_8h.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>)</td></tr>
@@ -196,10 +202,6 @@ Macros</h2></td></tr>
 <tr class="separator:aa40060ed5b079000135bad4c3ba3e8e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3aaf6e3a28a2098f90506dd9a6676e41" id="r_a3aaf6e3a28a2098f90506dd9a6676e41"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a3aaf6e3a28a2098f90506dd9a6676e41">INIT_OBJECT_SHR_WEAK</a>(__this,  obj,  <a class="el" href="build_8h.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>)</td></tr>
 <tr class="separator:a3aaf6e3a28a2098f90506dd9a6676e41"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ade7746924c46a4a3371f0ab2f0ca38bd" id="r_ade7746924c46a4a3371f0ab2f0ca38bd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#ade7746924c46a4a3371f0ab2f0ca38bd">PREP_DEL</a>()&#160;&#160;&#160;<a class="el" href="structcn__value.html">cn_value</a> *__temp_alloc;</td></tr>
-<tr class="separator:ade7746924c46a4a3371f0ab2f0ca38bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acd460b2632ceae92211e96ad795b35ff" id="r_acd460b2632ceae92211e96ad795b35ff"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#acd460b2632ceae92211e96ad795b35ff">DEL_CUSTOM_ALLOCAION</a>(__this,  <a class="el" href="libcncore_8h.html#aea43bea4736df25649243404d5905567">expr_free</a>,  <a class="el" href="build_8h.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>)</td></tr>
-<tr class="separator:acd460b2632ceae92211e96ad795b35ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab86609dae54c0d984f951bf311d9ec14" id="r_ab86609dae54c0d984f951bf311d9ec14"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#ab86609dae54c0d984f951bf311d9ec14">INIT_STRING</a>(__this,  string,  <a class="el" href="build_8h.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>)</td></tr>
 <tr class="separator:ab86609dae54c0d984f951bf311d9ec14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9efd130e574e9b2e2c4957cae634ff39" id="r_a9efd130e574e9b2e2c4957cae634ff39"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a9efd130e574e9b2e2c4957cae634ff39">INIT_INT</a>(__this,  number,  <a class="el" href="build_8h.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>)</td></tr>
@@ -216,6 +218,8 @@ Macros</h2></td></tr>
 <tr class="separator:a90d2f940e6954e7587a83d7ae29ab73c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ad5c20a38ef876c91a859e929fb8ed8" id="r_a6ad5c20a38ef876c91a859e929fb8ed8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a6ad5c20a38ef876c91a859e929fb8ed8">INIT_METHOD</a>(__this,  <a class="el" href="build_8h.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>,  <a class="el" href="build_8h.html#a5ab5a233bdc6ad82f01015b39111c614">callback</a>)</td></tr>
 <tr class="separator:a6ad5c20a38ef876c91a859e929fb8ed8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd460b2632ceae92211e96ad795b35ff" id="r_acd460b2632ceae92211e96ad795b35ff"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#acd460b2632ceae92211e96ad795b35ff">DEL_CUSTOM_ALLOCAION</a>(__this,  <a class="el" href="libcncore_8h.html#aea43bea4736df25649243404d5905567">expr_free</a>,  <a class="el" href="build_8h.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>)</td></tr>
+<tr class="separator:acd460b2632ceae92211e96ad795b35ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a51f550014e5e0380ac151979be125e50" id="r_a51f550014e5e0380ac151979be125e50"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a51f550014e5e0380ac151979be125e50">CREATE_METHOD_CLASS_BUILD</a>(__class,  <a class="el" href="build_8h.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>,  <a class="el" href="build_8h.html#a5ab5a233bdc6ad82f01015b39111c614">callback</a>)</td></tr>
 <tr class="separator:a51f550014e5e0380ac151979be125e50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a998ce36655dc98ae88b1c5790dabc3fa" id="r_a998ce36655dc98ae88b1c5790dabc3fa"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a998ce36655dc98ae88b1c5790dabc3fa">SET_PARENT_CLASS_BUILD_STATIC</a>(__class,  __parent)</td></tr>
@@ -224,22 +228,30 @@ Macros</h2></td></tr>
 <tr class="separator:a973268c391d1288baa8e4f649964b55b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a7e2f1991ed0413c9ca688e9b19c17f" id="r_a2a7e2f1991ed0413c9ca688e9b19c17f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a2a7e2f1991ed0413c9ca688e9b19c17f">SHR_INIT_METHOD</a>(__class,  <a class="el" href="build_8h.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>,  <a class="el" href="build_8h.html#a5ab5a233bdc6ad82f01015b39111c614">callback</a>,  error_value)</td></tr>
 <tr class="separator:a2a7e2f1991ed0413c9ca688e9b19c17f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28feb39061bb1884d84291dd4d19512b" id="r_a28feb39061bb1884d84291dd4d19512b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a28feb39061bb1884d84291dd4d19512b">SHR_INIT_OBJECT_SHR</a>(__class,  <a class="el" href="build_8h.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>,  obj,  error_value)</td></tr>
+<tr class="separator:a28feb39061bb1884d84291dd4d19512b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95080e9e2e491f711df131111cc35af9" id="r_a95080e9e2e491f711df131111cc35af9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a95080e9e2e491f711df131111cc35af9">SHR_OBJECT_STATIC</a>(__this,  expr_alloc,  args,  <a class="el" href="build_8h.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>,  error_value)</td></tr>
+<tr class="separator:a95080e9e2e491f711df131111cc35af9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abb451236bc755338894ffe8721d76b72" id="r_abb451236bc755338894ffe8721d76b72"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#abb451236bc755338894ffe8721d76b72">PACK_ARG</a>(...)&#160;&#160;&#160;(<a class="el" href="libcncore_8h.html#aa0b4eca710d6fee505d18a41355e1edb">cnany</a> []){ __VA_ARGS__ }</td></tr>
 <tr class="separator:abb451236bc755338894ffe8721d76b72"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c9cf50c56f74e7b2ebf391c2c0c9147" id="r_a4c9cf50c56f74e7b2ebf391c2c0c9147"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a4c9cf50c56f74e7b2ebf391c2c0c9147">INLNE_PRIM_T_ARG</a>(number)&#160;&#160;&#160;((typeof((number)) [1]){(number)})</td></tr>
 <tr class="separator:a4c9cf50c56f74e7b2ebf391c2c0c9147"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:addbaf4b676f8edfffd8352455df1adec" id="r_addbaf4b676f8edfffd8352455df1adec"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#addbaf4b676f8edfffd8352455df1adec">INLN_STRCT_T_ARG</a>(constructor)&#160;&#160;&#160;(&amp;(constructor))</td></tr>
 <tr class="separator:addbaf4b676f8edfffd8352455df1adec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a049a6c5ea3fea13c6f1038130760b6af" id="r_a049a6c5ea3fea13c6f1038130760b6af"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a049a6c5ea3fea13c6f1038130760b6af">DELOC</a>(object)&#160;&#160;&#160;<a class="el" href="libcncore_8h.html#a3c17e388301ab678d57d1e4c0f1d3214">delete_object</a>(object); <a class="el" href="libcncore_8h.html#a9c22fad07837480ca5c03cf06b489cea">run_gc</a>();</td></tr>
-<tr class="separator:a049a6c5ea3fea13c6f1038130760b6af"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2fde6447877a7fb46a9f7b2d73c3c72a" id="r_a2fde6447877a7fb46a9f7b2d73c3c72a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a2fde6447877a7fb46a9f7b2d73c3c72a">null_value</a>&#160;&#160;&#160;(<a class="el" href="structcn__value.html">cn_value</a>){<a class="el" href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a348012976d3b30d7cb389beab11d7630">CN_TYPE_NULL</a>, .as.i = 0}</td></tr>
-<tr class="separator:a2fde6447877a7fb46a9f7b2d73c3c72a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42621f0d028c9002db42c013445bdde0" id="r_a42621f0d028c9002db42c013445bdde0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a42621f0d028c9002db42c013445bdde0">VALUE_NULL</a>&#160;&#160;&#160;(<a class="el" href="structcn__value.html">cn_value</a>){<a class="el" href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a348012976d3b30d7cb389beab11d7630">CN_TYPE_NULL</a>, .as.i = 0}</td></tr>
+<tr class="separator:a42621f0d028c9002db42c013445bdde0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a203549510b067f93099b5ec716053c2d" id="r_a203549510b067f93099b5ec716053c2d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a203549510b067f93099b5ec716053c2d">VALUE_ERR</a>&#160;&#160;&#160;(<a class="el" href="structcn__value.html">cn_value</a>){<a class="el" href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a28029ab23dc72127e9c580863863b730">CN_TYPE_INT</a>, .as.i = 1}</td></tr>
 <tr class="separator:a203549510b067f93099b5ec716053c2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af27a79191e25a09b20fa2852ee6d63cb" id="r_af27a79191e25a09b20fa2852ee6d63cb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#af27a79191e25a09b20fa2852ee6d63cb">VALUE_OK</a>&#160;&#160;&#160;(<a class="el" href="structcn__value.html">cn_value</a>){<a class="el" href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a28029ab23dc72127e9c580863863b730">CN_TYPE_INT</a>, .as.i = 0}</td></tr>
 <tr class="separator:af27a79191e25a09b20fa2852ee6d63cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add6fd6697551913462314d20badb3741" id="r_add6fd6697551913462314d20badb3741"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#add6fd6697551913462314d20badb3741">RET_OK</a>(ret_expr)&#160;&#160;&#160;(ret_expr).as.i == VALUE_OK.as.i</td></tr>
+<tr class="memitem:add6fd6697551913462314d20badb3741" id="r_add6fd6697551913462314d20badb3741"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#add6fd6697551913462314d20badb3741">RET_OK</a>(ret_expr)&#160;&#160;&#160;((ret_expr).as.i == VALUE_OK.as.i)</td></tr>
 <tr class="separator:add6fd6697551913462314d20badb3741"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5858e19cac4073104305b077d5552759" id="r_a5858e19cac4073104305b077d5552759"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a5858e19cac4073104305b077d5552759">RET_NULL</a>(ret_expr)&#160;&#160;&#160;((ret_expr).type == <a class="el" href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a348012976d3b30d7cb389beab11d7630">CN_TYPE_NULL</a>)</td></tr>
+<tr class="separator:a5858e19cac4073104305b077d5552759"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75c5f65751fc038b96a8714a4d3a8cdc" id="r_a75c5f65751fc038b96a8714a4d3a8cdc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a75c5f65751fc038b96a8714a4d3a8cdc">VAL_EMPTY</a>(ret_expr)&#160;&#160;&#160;((((ret_expr).type == <a class="el" href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a1e435bbdb30939823b6e4682ec24da6b">CN_TYPE_GENERIC_UNIQ_PTR</a>) || ((ret_expr).type == <a class="el" href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25ab1815f2281072060aeee9fa21c33c879">CN_TYPE_OBJECT</a>) || ((ret_expr).type == <a class="el" href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a5ba5ed92d4eaf106cce6fb0818f2d971">CN_TYPE_WEAK_OBJECT</a>) || ((ret_expr).type == <a class="el" href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a6c2fa05d1159dc3a4ab3e011ab48d442">CN_TYPE_FUNCTION</a>)) &amp;&amp; (!(ret_expr).as.ptr))</td></tr>
+<tr class="separator:a75c5f65751fc038b96a8714a4d3a8cdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a049a6c5ea3fea13c6f1038130760b6af" id="r_a049a6c5ea3fea13c6f1038130760b6af"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a049a6c5ea3fea13c6f1038130760b6af">DELOC</a>(object)&#160;&#160;&#160;<a class="el" href="libcncore_8h.html#a3c17e388301ab678d57d1e4c0f1d3214">delete_object</a>(object); <a class="el" href="libcncore_8h.html#a9c22fad07837480ca5c03cf06b489cea">run_gc</a>();</td></tr>
+<tr class="separator:a049a6c5ea3fea13c6f1038130760b6af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -247,14 +259,12 @@ Typedefs</h2></td></tr>
 <tr class="separator:a7b05d657b3da4196f19727ba490b7401"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa0b4eca710d6fee505d18a41355e1edb" id="r_aa0b4eca710d6fee505d18a41355e1edb"><td class="memItemLeft" align="right" valign="top">typedef void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#aa0b4eca710d6fee505d18a41355e1edb">cnany</a></td></tr>
 <tr class="separator:aa0b4eca710d6fee505d18a41355e1edb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf8b6b5806339a37891ff6af0e1179b5" id="r_abf8b6b5806339a37891ff6af0e1179b5"><td class="memItemLeft" align="right" valign="top">typedef uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a></td></tr>
+<tr class="separator:abf8b6b5806339a37891ff6af0e1179b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad8ed72626025da9fbaff30ec74a71d40" id="r_ad8ed72626025da9fbaff30ec74a71d40"><td class="memItemLeft" align="right" valign="top">typedef uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#ad8ed72626025da9fbaff30ec74a71d40">cntime</a></td></tr>
 <tr class="separator:ad8ed72626025da9fbaff30ec74a71d40"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ae17cbe3aeebfefbce33d5789ae3aeb" id="r_a4ae17cbe3aeebfefbce33d5789ae3aeb"><td class="memItemLeft" align="right" valign="top">typedef unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a></td></tr>
-<tr class="separator:a4ae17cbe3aeebfefbce33d5789ae3aeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af4bb5bf51962a35dae758006fa2d2ef1" id="r_af4bb5bf51962a35dae758006fa2d2ef1"><td class="memItemLeft" align="right" valign="top">typedef uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#af4bb5bf51962a35dae758006fa2d2ef1">cnflags</a></td></tr>
 <tr class="separator:af4bb5bf51962a35dae758006fa2d2ef1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a45176b455e70053cf81874c72e0aa5fe" id="r_a45176b455e70053cf81874c72e0aa5fe"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="structcn__value.html">cn_value</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a45176b455e70053cf81874c72e0aa5fe">cn_method</a>) (struct <a class="el" href="structobject__s.html">object_s</a> *self, void **args)</td></tr>
-<tr class="separator:a45176b455e70053cf81874c72e0aa5fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aea43bea4736df25649243404d5905567" id="r_aea43bea4736df25649243404d5905567"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#aea43bea4736df25649243404d5905567">expr_free</a>) (void *obj)</td></tr>
 <tr class="separator:aea43bea4736df25649243404d5905567"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a32d1aa7f7437f61d4fc270a1557d5d" id="r_a1a32d1aa7f7437f61d4fc270a1557d5d"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structvector2__s.html">vector2_s</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a></td></tr>
@@ -263,14 +273,16 @@ Typedefs</h2></td></tr>
 <tr class="separator:a3dd97d4c265b35e13059fcd0a8d6128f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a44e2d24ab2a21b90d03880cab9cc6d16" id="r_a44e2d24ab2a21b90d03880cab9cc6d16"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structrect__s.html">rect_s</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a44e2d24ab2a21b90d03880cab9cc6d16">Rect</a></td></tr>
 <tr class="separator:a44e2d24ab2a21b90d03880cab9cc6d16"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3afb309b9a0d51af55191cbbbfb17c4f" id="r_a3afb309b9a0d51af55191cbbbfb17c4f"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structclock__s.html">clock_s</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a3afb309b9a0d51af55191cbbbfb17c4f">Clock</a></td></tr>
-<tr class="separator:a3afb309b9a0d51af55191cbbbfb17c4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af654a8c48142adaf8e366798d6908b0f" id="r_af654a8c48142adaf8e366798d6908b0f"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structobject__s.html">object_s</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a></td></tr>
-<tr class="separator:af654a8c48142adaf8e366798d6908b0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad722eab6934bb74865a45785b0004439" id="r_ad722eab6934bb74865a45785b0004439"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structobject__attribute__s.html">object_attribute_s</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#ad722eab6934bb74865a45785b0004439">OBJAttrib</a></td></tr>
 <tr class="separator:ad722eab6934bb74865a45785b0004439"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af654a8c48142adaf8e366798d6908b0f" id="r_af654a8c48142adaf8e366798d6908b0f"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structobject__s.html">object_s</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a></td></tr>
+<tr class="separator:af654a8c48142adaf8e366798d6908b0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9f0588bc582b7aa235a1d909d054e833" id="r_a9f0588bc582b7aa235a1d909d054e833"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structobject__vector__s.html">object_vector_s</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a9f0588bc582b7aa235a1d909d054e833">ObjectVector</a></td></tr>
 <tr class="separator:a9f0588bc582b7aa235a1d909d054e833"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45176b455e70053cf81874c72e0aa5fe" id="r_a45176b455e70053cf81874c72e0aa5fe"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="structcn__value.html">cn_value</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a45176b455e70053cf81874c72e0aa5fe">cn_method</a>) (struct <a class="el" href="structobject__s.html">object_s</a> *self, void **args)</td></tr>
+<tr class="separator:a45176b455e70053cf81874c72e0aa5fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3afb309b9a0d51af55191cbbbfb17c4f" id="r_a3afb309b9a0d51af55191cbbbfb17c4f"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structclock__s.html">clock_s</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a3afb309b9a0d51af55191cbbbfb17c4f">Clock</a></td></tr>
+<tr class="separator:a3afb309b9a0d51af55191cbbbfb17c4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -294,12 +306,6 @@ Enumerations</h2></td></tr>
 <br />
  }</td></tr>
 <tr class="separator:a0e8eaf1430f3893d155ad709d2d84f25"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a117c2852f064791ed3526c3f97f908a9" id="r_a117c2852f064791ed3526c3f97f908a9"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a117c2852f064791ed3526c3f97f908a9">scene_object_flags</a> { <a class="el" href="libcncore_8h.html#a117c2852f064791ed3526c3f97f908a9a5b51e0f3dee93e0a501c5287b92e9685">CN_OBJ_NULL</a> = 0x00
-, <a class="el" href="libcncore_8h.html#a117c2852f064791ed3526c3f97f908a9afa810ccca97440068e1c8a3031a957ee">CN_OBJ_DRAWABLE</a> = (1 &lt;&lt; 0)
-, <a class="el" href="libcncore_8h.html#a117c2852f064791ed3526c3f97f908a9a87ae069167b6054f24b11dfc5a1fe57b">CN_OBJ_REPLICATE</a> = (1 &lt;&lt; 1)
-, <a class="el" href="libcncore_8h.html#a117c2852f064791ed3526c3f97f908a9a2d38bd3cff76ac3d1f36fafc51ffa475">CN_OBJ_HOST</a> = (1 &lt;&lt; 2)
- }</td></tr>
-<tr class="separator:a117c2852f064791ed3526c3f97f908a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a59e56af19e754a6aa26a612ebf91d05f" id="r_a59e56af19e754a6aa26a612ebf91d05f"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a59e56af19e754a6aa26a612ebf91d05f">ErrorCode</a> { <br />
 &#160;&#160;<a class="el" href="libcncore_8h.html#a59e56af19e754a6aa26a612ebf91d05faa26c163b80b1f6786ca81dadc14b00fb">ERR_OK</a> = 0
 , <a class="el" href="libcncore_8h.html#a59e56af19e754a6aa26a612ebf91d05fa077f6961ef44934823d048c00b535cad">ERR_OUT_OF_MEMORY</a>
@@ -316,6 +322,12 @@ Enumerations</h2></td></tr>
 <br />
  }</td></tr>
 <tr class="separator:a59e56af19e754a6aa26a612ebf91d05f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a117c2852f064791ed3526c3f97f908a9" id="r_a117c2852f064791ed3526c3f97f908a9"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a117c2852f064791ed3526c3f97f908a9">scene_object_flags</a> { <a class="el" href="libcncore_8h.html#a117c2852f064791ed3526c3f97f908a9a5b51e0f3dee93e0a501c5287b92e9685">CN_OBJ_NULL</a> = 0x00
+, <a class="el" href="libcncore_8h.html#a117c2852f064791ed3526c3f97f908a9afa810ccca97440068e1c8a3031a957ee">CN_OBJ_DRAWABLE</a> = (1 &lt;&lt; 0)
+, <a class="el" href="libcncore_8h.html#a117c2852f064791ed3526c3f97f908a9a87ae069167b6054f24b11dfc5a1fe57b">CN_OBJ_REPLICATE</a> = (1 &lt;&lt; 1)
+, <a class="el" href="libcncore_8h.html#a117c2852f064791ed3526c3f97f908a9a2d38bd3cff76ac3d1f36fafc51ffa475">CN_OBJ_HOST</a> = (1 &lt;&lt; 2)
+ }</td></tr>
+<tr class="separator:a117c2852f064791ed3526c3f97f908a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -355,13 +367,13 @@ Functions</h2></td></tr>
 <tr class="separator:a10a06d8ee21916088494a5ce0188e397"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c22fad07837480ca5c03cf06b489cea" id="r_a9c22fad07837480ca5c03cf06b489cea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a9c22fad07837480ca5c03cf06b489cea">run_gc</a> (void)</td></tr>
 <tr class="separator:a9c22fad07837480ca5c03cf06b489cea"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d1200d7a9ee39c24a7cfde96306eec6" id="r_a0d1200d7a9ee39c24a7cfde96306eec6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a0d1200d7a9ee39c24a7cfde96306eec6">set_attr</a> (<a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *object, const char *<a class="el" href="build_8h.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>, <a class="el" href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25">cn_type</a> type, <a class="el" href="libcncore_8h.html#aa0b4eca710d6fee505d18a41355e1edb">cnany</a> value)</td></tr>
+<tr class="memitem:a0d1200d7a9ee39c24a7cfde96306eec6" id="r_a0d1200d7a9ee39c24a7cfde96306eec6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a0d1200d7a9ee39c24a7cfde96306eec6">set_attr</a> (<a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *object, const char *<a class="el" href="build_8h.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>, <a class="el" href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25">cn_type</a> type, <a class="el" href="libcncore_8h.html#aa0b4eca710d6fee505d18a41355e1edb">cnany</a> value)</td></tr>
 <tr class="separator:a0d1200d7a9ee39c24a7cfde96306eec6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84f46592467e4fd19376a17178476562" id="r_a84f46592467e4fd19376a17178476562"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structcn__value.html">cn_value</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a84f46592467e4fd19376a17178476562">get_attr</a> (const <a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *object, const char *<a class="el" href="build_8h.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>)</td></tr>
 <tr class="separator:a84f46592467e4fd19376a17178476562"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a48a248e7350d8316019df9d177df446a" id="r_a48a248e7350d8316019df9d177df446a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a48a248e7350d8316019df9d177df446a">has_attr</a> (const <a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *object, const char *<a class="el" href="build_8h.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>)</td></tr>
+<tr class="memitem:a48a248e7350d8316019df9d177df446a" id="r_a48a248e7350d8316019df9d177df446a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a48a248e7350d8316019df9d177df446a">has_attr</a> (const <a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *object, const char *<a class="el" href="build_8h.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>)</td></tr>
 <tr class="separator:a48a248e7350d8316019df9d177df446a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9a1bd983fe1fdfd618aa5cadf5bb92d1" id="r_a9a1bd983fe1fdfd618aa5cadf5bb92d1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a9a1bd983fe1fdfd618aa5cadf5bb92d1">set_method</a> (<a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *object, const char *<a class="el" href="build_8h.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>, <a class="el" href="libcncore_8h.html#a45176b455e70053cf81874c72e0aa5fe">cn_method</a> func)</td></tr>
+<tr class="memitem:a9a1bd983fe1fdfd618aa5cadf5bb92d1" id="r_a9a1bd983fe1fdfd618aa5cadf5bb92d1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a9a1bd983fe1fdfd618aa5cadf5bb92d1">set_method</a> (<a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *object, const char *<a class="el" href="build_8h.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>, <a class="el" href="libcncore_8h.html#a45176b455e70053cf81874c72e0aa5fe">cn_method</a> func)</td></tr>
 <tr class="separator:a9a1bd983fe1fdfd618aa5cadf5bb92d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00ce8e7d1aef17fe9165e345f9af77ef" id="r_a00ce8e7d1aef17fe9165e345f9af77ef"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#a45176b455e70053cf81874c72e0aa5fe">cn_method</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a00ce8e7d1aef17fe9165e345f9af77ef">get_method</a> (const <a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *object, const char *<a class="el" href="build_8h.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>)</td></tr>
 <tr class="separator:a00ce8e7d1aef17fe9165e345f9af77ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -373,7 +385,7 @@ Functions</h2></td></tr>
 <tr class="separator:af37f3d6b332840c4b7f60353de54657e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab6cdf8e13a027f8512ccec402a3bbdc6" id="r_ab6cdf8e13a027f8512ccec402a3bbdc6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#ab6cdf8e13a027f8512ccec402a3bbdc6">create_default_object</a> (void)</td></tr>
 <tr class="separator:ab6cdf8e13a027f8512ccec402a3bbdc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a279b2ab4efcad21dbfcb8a8ee92a9944" id="r_a279b2ab4efcad21dbfcb8a8ee92a9944"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a279b2ab4efcad21dbfcb8a8ee92a9944">has_method</a> (const <a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *object, const char *<a class="el" href="build_8h.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>)</td></tr>
+<tr class="memitem:a279b2ab4efcad21dbfcb8a8ee92a9944" id="r_a279b2ab4efcad21dbfcb8a8ee92a9944"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a279b2ab4efcad21dbfcb8a8ee92a9944">has_method</a> (const <a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *object, const char *<a class="el" href="build_8h.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>)</td></tr>
 <tr class="separator:a279b2ab4efcad21dbfcb8a8ee92a9944"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac611a10be70eebc6d8f696c409dce697" id="r_ac611a10be70eebc6d8f696c409dce697"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#ac611a10be70eebc6d8f696c409dce697">release_object</a> (<a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *object)</td></tr>
 <tr class="separator:ac611a10be70eebc6d8f696c409dce697"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -405,7 +417,7 @@ Functions</h2></td></tr>
 <tr class="separator:a16a14943a65e0aa9f06d38b3f5a13ee5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3bbf301ead18953b31f51ab8a5420539" id="r_a3bbf301ead18953b31f51ab8a5420539"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a3bbf301ead18953b31f51ab8a5420539">empty_generic_map</a> (struct <a class="el" href="structgeneric__map__s.html">generic_map_s</a> *gen_map, void(*_delete_obj)(void *))</td></tr>
 <tr class="separator:a3bbf301ead18953b31f51ab8a5420539"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a25a0f9d41c95002d9c3a6b306b8368b0" id="r_a25a0f9d41c95002d9c3a6b306b8368b0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a25a0f9d41c95002d9c3a6b306b8368b0">has_generic_map</a> (struct <a class="el" href="structgeneric__map__s.html">generic_map_s</a> *gen_map, const char *key)</td></tr>
+<tr class="memitem:a25a0f9d41c95002d9c3a6b306b8368b0" id="r_a25a0f9d41c95002d9c3a6b306b8368b0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a25a0f9d41c95002d9c3a6b306b8368b0">has_generic_map</a> (struct <a class="el" href="structgeneric__map__s.html">generic_map_s</a> *gen_map, const char *key)</td></tr>
 <tr class="separator:a25a0f9d41c95002d9c3a6b306b8368b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2572a608be0bd6e3738e7ae41b35cd38" id="r_a2572a608be0bd6e3738e7ae41b35cd38"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a2572a608be0bd6e3738e7ae41b35cd38">init_generic_vector</a> (struct <a class="el" href="structgeneric__vector__s.html">generic_vector_s</a> *vec)</td></tr>
 <tr class="separator:a2572a608be0bd6e3738e7ae41b35cd38"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -425,7 +437,7 @@ Functions</h2></td></tr>
 <tr class="separator:acc3435f4207c03ef74bfc6915e5a7419"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e3462937b9d18e8a8a9ed88e732131c" id="r_a3e3462937b9d18e8a8a9ed88e732131c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a3e3462937b9d18e8a8a9ed88e732131c">new_ctx</a> (void)</td></tr>
 <tr class="separator:a3e3462937b9d18e8a8a9ed88e732131c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a379caad25b78a71ea0e20e15ec2b7dd8" id="r_a379caad25b78a71ea0e20e15ec2b7dd8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a379caad25b78a71ea0e20e15ec2b7dd8">submodule_ctx</a> (<a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *ctx, <a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *module)</td></tr>
+<tr class="memitem:a379caad25b78a71ea0e20e15ec2b7dd8" id="r_a379caad25b78a71ea0e20e15ec2b7dd8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a379caad25b78a71ea0e20e15ec2b7dd8">submodule_ctx</a> (<a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *ctx, <a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *module)</td></tr>
 <tr class="separator:a379caad25b78a71ea0e20e15ec2b7dd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3fa620bfd458954333fe5cefa7de7353" id="r_a3fa620bfd458954333fe5cefa7de7353"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a3fa620bfd458954333fe5cefa7de7353">_init_attribute_value</a> (<a class="el" href="structcn__value.html">cn_value</a> *dest, <a class="el" href="libcncore_8h.html#aa0b4eca710d6fee505d18a41355e1edb">cnany</a> value)</td></tr>
 <tr class="separator:a3fa620bfd458954333fe5cefa7de7353"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -463,17 +475,17 @@ Functions</h2></td></tr>
 <tr class="separator:aea80fcc93f7e297bbfa53fc81749747c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c7610112a3a4b02b642d392eba87b0b" id="r_a4c7610112a3a4b02b642d392eba87b0b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a4c7610112a3a4b02b642d392eba87b0b">list_iterator_next</a> (struct <a class="el" href="structlist__iterator__s.html">list_iterator_s</a> *iterator)</td></tr>
 <tr class="separator:a4c7610112a3a4b02b642d392eba87b0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a01f85eb0f466d9be2244cbc2a3c3fe7c" id="r_a01f85eb0f466d9be2244cbc2a3c3fe7c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a01f85eb0f466d9be2244cbc2a3c3fe7c">list_iterator_isend</a> (const struct <a class="el" href="structlist__iterator__s.html">list_iterator_s</a> *iterator)</td></tr>
+<tr class="memitem:a01f85eb0f466d9be2244cbc2a3c3fe7c" id="r_a01f85eb0f466d9be2244cbc2a3c3fe7c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a01f85eb0f466d9be2244cbc2a3c3fe7c">list_iterator_isend</a> (const struct <a class="el" href="structlist__iterator__s.html">list_iterator_s</a> *iterator)</td></tr>
 <tr class="separator:a01f85eb0f466d9be2244cbc2a3c3fe7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8fed0630b348b6325ff41d30653737b1" id="r_a8fed0630b348b6325ff41d30653737b1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a8fed0630b348b6325ff41d30653737b1">list_iterator_value_isnull</a> (const struct <a class="el" href="structlist__iterator__s.html">list_iterator_s</a> *iterator)</td></tr>
+<tr class="memitem:a8fed0630b348b6325ff41d30653737b1" id="r_a8fed0630b348b6325ff41d30653737b1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a8fed0630b348b6325ff41d30653737b1">list_iterator_value_isnull</a> (const struct <a class="el" href="structlist__iterator__s.html">list_iterator_s</a> *iterator)</td></tr>
 <tr class="separator:a8fed0630b348b6325ff41d30653737b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a42cdc48a09072327a298258e87620e40" id="r_a42cdc48a09072327a298258e87620e40"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structlist__iterator__s.html">list_iterator_s</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a42cdc48a09072327a298258e87620e40">atlas_get_iterator</a> (<a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *__atlas, <a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> get_value_instead_of_key)</td></tr>
+<tr class="memitem:a42cdc48a09072327a298258e87620e40" id="r_a42cdc48a09072327a298258e87620e40"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structlist__iterator__s.html">list_iterator_s</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a42cdc48a09072327a298258e87620e40">atlas_get_iterator</a> (<a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *__atlas, <a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a> get_value_instead_of_key)</td></tr>
 <tr class="separator:a42cdc48a09072327a298258e87620e40"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a71801ca0019fa1b41a7dc1d51c5ac04e" id="r_a71801ca0019fa1b41a7dc1d51c5ac04e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a71801ca0019fa1b41a7dc1d51c5ac04e">atlas_iterator_next</a> (struct <a class="el" href="structlist__iterator__s.html">list_iterator_s</a> *iterator)</td></tr>
 <tr class="separator:a71801ca0019fa1b41a7dc1d51c5ac04e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a04053dab892d6feaee8725fd92e26fcf" id="r_a04053dab892d6feaee8725fd92e26fcf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a04053dab892d6feaee8725fd92e26fcf">atlas_iterator_value_isnull</a> (const struct <a class="el" href="structlist__iterator__s.html">list_iterator_s</a> *iterator)</td></tr>
+<tr class="memitem:a04053dab892d6feaee8725fd92e26fcf" id="r_a04053dab892d6feaee8725fd92e26fcf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a04053dab892d6feaee8725fd92e26fcf">atlas_iterator_value_isnull</a> (const struct <a class="el" href="structlist__iterator__s.html">list_iterator_s</a> *iterator)</td></tr>
 <tr class="separator:a04053dab892d6feaee8725fd92e26fcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a486e7e4c7641d6b36b8b86814a707064" id="r_a486e7e4c7641d6b36b8b86814a707064"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a486e7e4c7641d6b36b8b86814a707064">atlas_iterator_isend</a> (const struct <a class="el" href="structlist__iterator__s.html">list_iterator_s</a> *iterator)</td></tr>
+<tr class="memitem:a486e7e4c7641d6b36b8b86814a707064" id="r_a486e7e4c7641d6b36b8b86814a707064"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a486e7e4c7641d6b36b8b86814a707064">atlas_iterator_isend</a> (const struct <a class="el" href="structlist__iterator__s.html">list_iterator_s</a> *iterator)</td></tr>
 <tr class="separator:a486e7e4c7641d6b36b8b86814a707064"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a440de9c766f6aaaa0d318b0d366ec89d" id="r_a440de9c766f6aaaa0d318b0d366ec89d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structObjMethodPair.html">ObjMethodPair</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a440de9c766f6aaaa0d318b0d366ec89d">new_object_method_pair</a> (<a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *obj, <a class="el" href="libcncore_8h.html#a45176b455e70053cf81874c72e0aa5fe">cn_method</a> method)</td></tr>
 <tr class="separator:a440de9c766f6aaaa0d318b0d366ec89d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -491,7 +503,7 @@ Functions</h2></td></tr>
 <tr class="separator:ad2f96aa2b8efb3db2d643beac3fdda2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2fe3a47d0696447e3784c67bfa9e693e" id="r_a2fe3a47d0696447e3784c67bfa9e693e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a2fe3a47d0696447e3784c67bfa9e693e">new_atlas</a> (void *(*_fetch_default)(const char *), void(*_delete_obj)(void *))</td></tr>
 <tr class="separator:a2fe3a47d0696447e3784c67bfa9e693e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae4ddb43a51bf1209346af1e0b98bccbd" id="r_ae4ddb43a51bf1209346af1e0b98bccbd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#ae4ddb43a51bf1209346af1e0b98bccbd">start_core</a> (void)</td></tr>
+<tr class="memitem:ae4ddb43a51bf1209346af1e0b98bccbd" id="r_ae4ddb43a51bf1209346af1e0b98bccbd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#ae4ddb43a51bf1209346af1e0b98bccbd">start_core</a> (void)</td></tr>
 <tr class="separator:ae4ddb43a51bf1209346af1e0b98bccbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ca1b4902be942746aa3c76f41333d81" id="r_a0ca1b4902be942746aa3c76f41333d81"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a0ca1b4902be942746aa3c76f41333d81">end_core</a> (void)</td></tr>
 <tr class="separator:a0ca1b4902be942746aa3c76f41333d81"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -507,7 +519,7 @@ Functions</h2></td></tr>
 <tr class="separator:a9413c6d75fb1fd424e89c688f91168e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae531c6707ac8602f24e2e385f26faf00" id="r_ae531c6707ac8602f24e2e385f26faf00"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structErrorContext.html">ErrorContext</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#ae531c6707ac8602f24e2e385f26faf00">get_error</a> (void)</td></tr>
 <tr class="separator:ae531c6707ac8602f24e2e385f26faf00"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8c72946e68c22ff628ec256b6e916778" id="r_a8c72946e68c22ff628ec256b6e916778"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a8c72946e68c22ff628ec256b6e916778">has_error</a> (void)</td></tr>
+<tr class="memitem:a8c72946e68c22ff628ec256b6e916778" id="r_a8c72946e68c22ff628ec256b6e916778"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a8c72946e68c22ff628ec256b6e916778">has_error</a> (void)</td></tr>
 <tr class="separator:a8c72946e68c22ff628ec256b6e916778"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a36094f0d4f4772933f6f982cee8ee737" id="r_a36094f0d4f4772933f6f982cee8ee737"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a36094f0d4f4772933f6f982cee8ee737">print_error</a> (const <a class="el" href="structErrorContext.html">ErrorContext</a> *err, FILE *output)</td></tr>
 <tr class="separator:a36094f0d4f4772933f6f982cee8ee737"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -517,9 +529,9 @@ Functions</h2></td></tr>
 <tr class="separator:a803cdc38853737b120ae8bc090de11de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abab5c4e59c24b551c4eec243deb711e2" id="r_abab5c4e59c24b551c4eec243deb711e2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structString.html">String</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#abab5c4e59c24b551c4eec243deb711e2">new_str</a> (char *c_str)</td></tr>
 <tr class="separator:abab5c4e59c24b551c4eec243deb711e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acdca66b249758c104f3e4f1cafc1222e" id="r_acdca66b249758c104f3e4f1cafc1222e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#acdca66b249758c104f3e4f1cafc1222e">str_is_empty</a> (const <a class="el" href="structString.html">String</a> *str)</td></tr>
+<tr class="memitem:acdca66b249758c104f3e4f1cafc1222e" id="r_acdca66b249758c104f3e4f1cafc1222e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#acdca66b249758c104f3e4f1cafc1222e">str_is_empty</a> (const <a class="el" href="structString.html">String</a> *str)</td></tr>
 <tr class="separator:acdca66b249758c104f3e4f1cafc1222e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b412ec840cbd7b25480af8644b0cfe5" id="r_a6b412ec840cbd7b25480af8644b0cfe5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a6b412ec840cbd7b25480af8644b0cfe5">str_is_null</a> (const <a class="el" href="structString.html">String</a> *str)</td></tr>
+<tr class="memitem:a6b412ec840cbd7b25480af8644b0cfe5" id="r_a6b412ec840cbd7b25480af8644b0cfe5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a6b412ec840cbd7b25480af8644b0cfe5">str_is_null</a> (const <a class="el" href="structString.html">String</a> *str)</td></tr>
 <tr class="separator:a6b412ec840cbd7b25480af8644b0cfe5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf84274f83df450656404aac7ba4f8ae" id="r_acf84274f83df450656404aac7ba4f8ae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#acf84274f83df450656404aac7ba4f8ae">str_override</a> (<a class="el" href="structString.html">String</a> *str, char *c_str)</td></tr>
 <tr class="separator:acf84274f83df450656404aac7ba4f8ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -535,6 +547,10 @@ Functions</h2></td></tr>
 <tr class="separator:ab3dfc7bd59264f03cfcb271954b1b3a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7f4de54cd9543a7a8c79222e178fd2b5" id="r_a7f4de54cd9543a7a8c79222e178fd2b5"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a7f4de54cd9543a7a8c79222e178fd2b5">str_replace</a> (<a class="el" href="structString.html">String</a> *str, const char *to_replace, const char *with, size_t count)</td></tr>
 <tr class="separator:a7f4de54cd9543a7a8c79222e178fd2b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96d9e45e94ca7c0568d5b4b9d093d2f4" id="r_a96d9e45e94ca7c0568d5b4b9d093d2f4"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a96d9e45e94ca7c0568d5b4b9d093d2f4">str_lcadd_cp</a> (<a class="el" href="structString.html">String</a> *str, const char *c_str)</td></tr>
+<tr class="separator:a96d9e45e94ca7c0568d5b4b9d093d2f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad44c88c601e636c70c1b5ddb1ac7c003" id="r_ad44c88c601e636c70c1b5ddb1ac7c003"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#ad44c88c601e636c70c1b5ddb1ac7c003">str_lcadd_mv</a> (<a class="el" href="structString.html">String</a> *str, char *c_str)</td></tr>
+<tr class="separator:ad44c88c601e636c70c1b5ddb1ac7c003"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a30691fc149592cae6cafb76a8653750a" id="r_a30691fc149592cae6cafb76a8653750a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#a30691fc149592cae6cafb76a8653750a">raise_error_fmt</a> (<a class="el" href="libcncore_8h.html#a59e56af19e754a6aa26a612ebf91d05f">ErrorCode</a> c, const char *file, const char *function, uint32_t line, const char *fmt,...)</td></tr>
 <tr class="separator:a30691fc149592cae6cafb76a8653750a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf66147976bea370ef4ee967dbd3b703" id="r_acf66147976bea370ef4ee967dbd3b703"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structgeneric__kv__pair__s.html">generic_kv_pair_s</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcncore_8h.html#acf66147976bea370ef4ee967dbd3b703">new_kv_pair</a> (const char *k, void *v, void(*v_deletor)(void *))</td></tr>
@@ -562,6 +578,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>////////////////////// windows dll export <br  />
+ ////////////////////// </p>
 
 </div>
 </div>
@@ -616,10 +634,10 @@ Functions</h2></td></tr>
 <div class="line">        }</div>
 <div class="ttc" id="abuild_8h_html_a8f8f80d37794cde9472343e4487ba3eb"><div class="ttname"><a href="build_8h.html#a8f8f80d37794cde9472343e4487ba3eb">name</a></div><div class="ttdeci">const char * name</div><div class="ttdef"><b>Definition</b> build.h:35</div></div>
 <div class="ttc" id="alibcncore_8h_html_a0d1200d7a9ee39c24a7cfde96306eec6"><div class="ttname"><a href="libcncore_8h.html#a0d1200d7a9ee39c24a7cfde96306eec6">set_attr</a></div><div class="ttdeci">cnbool set_attr(Object *object, const char *name, cn_type type, cnany value)</div><div class="ttdef"><b>Definition</b> object.c:41</div></div>
-<div class="ttc" id="alibcncore_8h_html_a0e8eaf1430f3893d155ad709d2d84f25a1e435bbdb30939823b6e4682ec24da6b"><div class="ttname"><a href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a1e435bbdb30939823b6e4682ec24da6b">CN_TYPE_GENERIC_UNIQ_PTR</a></div><div class="ttdeci">@ CN_TYPE_GENERIC_UNIQ_PTR</div><div class="ttdef"><b>Definition</b> libcncore.h:210</div></div>
+<div class="ttc" id="alibcncore_8h_html_a0e8eaf1430f3893d155ad709d2d84f25a1e435bbdb30939823b6e4682ec24da6b"><div class="ttname"><a href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a1e435bbdb30939823b6e4682ec24da6b">CN_TYPE_GENERIC_UNIQ_PTR</a></div><div class="ttdeci">@ CN_TYPE_GENERIC_UNIQ_PTR</div><div class="ttdef"><b>Definition</b> libcncore.h:314</div></div>
 <div class="ttc" id="alibcncore_8h_html_a3c17e388301ab678d57d1e4c0f1d3214"><div class="ttname"><a href="libcncore_8h.html#a3c17e388301ab678d57d1e4c0f1d3214">delete_object</a></div><div class="ttdeci">void delete_object(Object *object)</div><div class="ttdef"><b>Definition</b> object.c:24</div></div>
-<div class="ttc" id="alibcncore_8h_html_aa0b4eca710d6fee505d18a41355e1edb"><div class="ttname"><a href="libcncore_8h.html#aa0b4eca710d6fee505d18a41355e1edb">cnany</a></div><div class="ttdeci">void * cnany</div><div class="ttdef"><b>Definition</b> libcncore.h:169</div></div>
-<div class="ttc" id="alibcncore_8h_html_aea43bea4736df25649243404d5905567"><div class="ttname"><a href="libcncore_8h.html#aea43bea4736df25649243404d5905567">expr_free</a></div><div class="ttdeci">void(* expr_free)(void *obj)</div><div class="ttdef"><b>Definition</b> libcncore.h:244</div></div>
+<div class="ttc" id="alibcncore_8h_html_aa0b4eca710d6fee505d18a41355e1edb"><div class="ttname"><a href="libcncore_8h.html#aa0b4eca710d6fee505d18a41355e1edb">cnany</a></div><div class="ttdeci">void * cnany</div><div class="ttdef"><b>Definition</b> libcncore.h:261</div></div>
+<div class="ttc" id="alibcncore_8h_html_aea43bea4736df25649243404d5905567"><div class="ttname"><a href="libcncore_8h.html#aea43bea4736df25649243404d5905567">expr_free</a></div><div class="ttdeci">void(* expr_free)(void *obj)</div><div class="ttdef"><b>Definition</b> libcncore.h:266</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -661,7 +679,9 @@ Functions</h2></td></tr>
 <div class="line">        }</div>
 <div class="ttc" id="abuild_8h_html_a5ab5a233bdc6ad82f01015b39111c614"><div class="ttname"><a href="build_8h.html#a5ab5a233bdc6ad82f01015b39111c614">callback</a></div><div class="ttdeci">route_callback_toolchain callback</div><div class="ttdef"><b>Definition</b> build.h:36</div></div>
 <div class="ttc" id="alibcncore_8h_html_a9a1bd983fe1fdfd618aa5cadf5bb92d1"><div class="ttname"><a href="libcncore_8h.html#a9a1bd983fe1fdfd618aa5cadf5bb92d1">set_method</a></div><div class="ttdeci">cnbool set_method(Object *object, const char *name, cn_method func)</div><div class="ttdef"><b>Definition</b> object.c:134</div></div>
-</div><!-- fragment -->
+</div><!-- fragment --><p>//////////////////////////////// new instance building macros <br  />
+ //////////////////////////////// </p>
+
 </div>
 </div>
 <a id="acd460b2632ceae92211e96ad795b35ff" name="acd460b2632ceae92211e96ad795b35ff"></a>
@@ -701,7 +721,9 @@ Functions</h2></td></tr>
 <div class="line">            __temp_alloc-&gt;as.ptr = NULL; \</div>
 <div class="line">        }</div>
 <div class="ttc" id="alibcncore_8h_html_a84f46592467e4fd19376a17178476562"><div class="ttname"><a href="libcncore_8h.html#a84f46592467e4fd19376a17178476562">get_attr</a></div><div class="ttdeci">cn_value * get_attr(const Object *object, const char *name)</div><div class="ttdef"><b>Definition</b> object.c:81</div></div>
-</div><!-- fragment -->
+</div><!-- fragment --><p>//////////////////////// _del deletion macros <br  />
+ //////////////////////// </p>
+
 </div>
 </div>
 <a id="a049a6c5ea3fea13c6f1038130760b6af" name="a049a6c5ea3fea13c6f1038130760b6af"></a>
@@ -719,6 +741,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>/////////////////////////////// macro to insta clear object <br  />
+ /////////////////////////////// </p>
 
 </div>
 </div>
@@ -803,6 +827,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>////////////////////// some configuration <br  />
+ ////////////////////// </p>
 
 </div>
 </div>
@@ -853,8 +879,10 @@ Functions</h2></td></tr>
 <div class="line">            (void)<a class="code hl_typedef" href="libcncore_8h.html#aea43bea4736df25649243404d5905567">expr_free</a>(__temp_alloc); \</div>
 <div class="line">            return (<a class="code hl_define" href="libcncore_8h.html#a203549510b067f93099b5ec716053c2d">VALUE_ERR</a>); \</div>
 <div class="line">        }</div>
-<div class="ttc" id="alibcncore_8h_html_a203549510b067f93099b5ec716053c2d"><div class="ttname"><a href="libcncore_8h.html#a203549510b067f93099b5ec716053c2d">VALUE_ERR</a></div><div class="ttdeci">#define VALUE_ERR</div><div class="ttdef"><b>Definition</b> libcncore.h:241</div></div>
-</div><!-- fragment -->
+<div class="ttc" id="alibcncore_8h_html_a203549510b067f93099b5ec716053c2d"><div class="ttname"><a href="libcncore_8h.html#a203549510b067f93099b5ec716053c2d">VALUE_ERR</a></div><div class="ttdeci">#define VALUE_ERR</div><div class="ttdef"><b>Definition</b> libcncore.h:237</div></div>
+</div><!-- fragment --><p>//////////////////////////////////// macros for _init initialisations <br  />
+ //////////////////////////////////// </p>
+
 </div>
 </div>
 <a id="a90d2f940e6954e7587a83d7ae29ab73c" name="a90d2f940e6954e7587a83d7ae29ab73c"></a>
@@ -892,7 +920,7 @@ Functions</h2></td></tr>
 <div class="line">            PROPAGATE_ERR(); \</div>
 <div class="line">            return (<a class="code hl_define" href="libcncore_8h.html#a203549510b067f93099b5ec716053c2d">VALUE_ERR</a>); \</div>
 <div class="line">        }</div>
-<div class="ttc" id="alibcncore_8h_html_a0e8eaf1430f3893d155ad709d2d84f25a6f7d564090f644eb968f592e01cb9253"><div class="ttname"><a href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a6f7d564090f644eb968f592e01cb9253">CN_TYPE_FLOAT</a></div><div class="ttdeci">@ CN_TYPE_FLOAT</div><div class="ttdef"><b>Definition</b> libcncore.h:200</div></div>
+<div class="ttc" id="alibcncore_8h_html_a0e8eaf1430f3893d155ad709d2d84f25a6f7d564090f644eb968f592e01cb9253"><div class="ttname"><a href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a6f7d564090f644eb968f592e01cb9253">CN_TYPE_FLOAT</a></div><div class="ttdeci">@ CN_TYPE_FLOAT</div><div class="ttdef"><b>Definition</b> libcncore.h:304</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -931,7 +959,7 @@ Functions</h2></td></tr>
 <div class="line">            PROPAGATE_ERR(); \</div>
 <div class="line">            return (<a class="code hl_define" href="libcncore_8h.html#a203549510b067f93099b5ec716053c2d">VALUE_ERR</a>); \</div>
 <div class="line">        }</div>
-<div class="ttc" id="alibcncore_8h_html_a0e8eaf1430f3893d155ad709d2d84f25a28029ab23dc72127e9c580863863b730"><div class="ttname"><a href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a28029ab23dc72127e9c580863863b730">CN_TYPE_INT</a></div><div class="ttdeci">@ CN_TYPE_INT</div><div class="ttdef"><b>Definition</b> libcncore.h:199</div></div>
+<div class="ttc" id="alibcncore_8h_html_a0e8eaf1430f3893d155ad709d2d84f25a28029ab23dc72127e9c580863863b730"><div class="ttname"><a href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a28029ab23dc72127e9c580863863b730">CN_TYPE_INT</a></div><div class="ttdeci">@ CN_TYPE_INT</div><div class="ttdef"><b>Definition</b> libcncore.h:303</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1008,8 +1036,8 @@ Functions</h2></td></tr>
 <div class="line">            PROPAGATE_ERR(); \</div>
 <div class="line">            return (<a class="code hl_define" href="libcncore_8h.html#a203549510b067f93099b5ec716053c2d">VALUE_ERR</a>); \</div>
 <div class="line">        }</div>
-<div class="ttc" id="alibcncore_8h_html_a0e8eaf1430f3893d155ad709d2d84f25ae53787cc0f9de9334d6d0cef0d76092c"><div class="ttname"><a href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25ae53787cc0f9de9334d6d0cef0d76092c">CN_TYPE_NUMBER</a></div><div class="ttdeci">@ CN_TYPE_NUMBER</div><div class="ttdef"><b>Definition</b> libcncore.h:201</div></div>
-<div class="ttc" id="alibcncore_8h_html_a7b05d657b3da4196f19727ba490b7401"><div class="ttname"><a href="libcncore_8h.html#a7b05d657b3da4196f19727ba490b7401">cnnumber</a></div><div class="ttdeci">float cnnumber</div><div class="ttdef"><b>Definition</b> libcncore.h:166</div></div>
+<div class="ttc" id="alibcncore_8h_html_a0e8eaf1430f3893d155ad709d2d84f25ae53787cc0f9de9334d6d0cef0d76092c"><div class="ttname"><a href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25ae53787cc0f9de9334d6d0cef0d76092c">CN_TYPE_NUMBER</a></div><div class="ttdeci">@ CN_TYPE_NUMBER</div><div class="ttdef"><b>Definition</b> libcncore.h:305</div></div>
+<div class="ttc" id="alibcncore_8h_html_a7b05d657b3da4196f19727ba490b7401"><div class="ttname"><a href="libcncore_8h.html#a7b05d657b3da4196f19727ba490b7401">cnnumber</a></div><div class="ttdeci">float cnnumber</div><div class="ttdef"><b>Definition</b> libcncore.h:258</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1052,8 +1080,8 @@ Functions</h2></td></tr>
 <div class="line">            PROPAGATE_ERR(); \</div>
 <div class="line">            return (<a class="code hl_define" href="libcncore_8h.html#a203549510b067f93099b5ec716053c2d">VALUE_ERR</a>); \</div>
 <div class="line">        }</div>
-<div class="ttc" id="alibcncore_8h_html_a0e8eaf1430f3893d155ad709d2d84f25ab1815f2281072060aeee9fa21c33c879"><div class="ttname"><a href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25ab1815f2281072060aeee9fa21c33c879">CN_TYPE_OBJECT</a></div><div class="ttdeci">@ CN_TYPE_OBJECT</div><div class="ttdef"><b>Definition</b> libcncore.h:207</div></div>
-<div class="ttc" id="alibcncore_8h_html_a59e56af19e754a6aa26a612ebf91d05fa17e7e6cc9748cdc813324f5d1c73512a"><div class="ttname"><a href="libcncore_8h.html#a59e56af19e754a6aa26a612ebf91d05fa17e7e6cc9748cdc813324f5d1c73512a">ERR_INVALID_POINTER</a></div><div class="ttdeci">@ ERR_INVALID_POINTER</div><div class="ttdef"><b>Definition</b> libcncore.h:333</div></div>
+<div class="ttc" id="alibcncore_8h_html_a0e8eaf1430f3893d155ad709d2d84f25ab1815f2281072060aeee9fa21c33c879"><div class="ttname"><a href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25ab1815f2281072060aeee9fa21c33c879">CN_TYPE_OBJECT</a></div><div class="ttdeci">@ CN_TYPE_OBJECT</div><div class="ttdef"><b>Definition</b> libcncore.h:311</div></div>
+<div class="ttc" id="alibcncore_8h_html_a59e56af19e754a6aa26a612ebf91d05fa17e7e6cc9748cdc813324f5d1c73512a"><div class="ttname"><a href="libcncore_8h.html#a59e56af19e754a6aa26a612ebf91d05fa17e7e6cc9748cdc813324f5d1c73512a">ERR_INVALID_POINTER</a></div><div class="ttdeci">@ ERR_INVALID_POINTER</div><div class="ttdef"><b>Definition</b> libcncore.h:438</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1096,7 +1124,7 @@ Functions</h2></td></tr>
 <div class="line">            PROPAGATE_ERR(); \</div>
 <div class="line">            return (<a class="code hl_define" href="libcncore_8h.html#a203549510b067f93099b5ec716053c2d">VALUE_ERR</a>); \</div>
 <div class="line">        }</div>
-<div class="ttc" id="alibcncore_8h_html_a0e8eaf1430f3893d155ad709d2d84f25a5ba5ed92d4eaf106cce6fb0818f2d971"><div class="ttname"><a href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a5ba5ed92d4eaf106cce6fb0818f2d971">CN_TYPE_WEAK_OBJECT</a></div><div class="ttdeci">@ CN_TYPE_WEAK_OBJECT</div><div class="ttdef"><b>Definition</b> libcncore.h:208</div></div>
+<div class="ttc" id="alibcncore_8h_html_a0e8eaf1430f3893d155ad709d2d84f25a5ba5ed92d4eaf106cce6fb0818f2d971"><div class="ttname"><a href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a5ba5ed92d4eaf106cce6fb0818f2d971">CN_TYPE_WEAK_OBJECT</a></div><div class="ttdeci">@ CN_TYPE_WEAK_OBJECT</div><div class="ttdef"><b>Definition</b> libcncore.h:312</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1186,7 +1214,7 @@ Functions</h2></td></tr>
 <div class="line">            PROPAGATE_ERR(); \</div>
 <div class="line">            return (<a class="code hl_define" href="libcncore_8h.html#a203549510b067f93099b5ec716053c2d">VALUE_ERR</a>); \</div>
 <div class="line">        }</div>
-<div class="ttc" id="alibcncore_8h_html_a0e8eaf1430f3893d155ad709d2d84f25a52ec225b27d289b0d05128e3d7ef5992"><div class="ttname"><a href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a52ec225b27d289b0d05128e3d7ef5992">CN_TYPE_RECT</a></div><div class="ttdeci">@ CN_TYPE_RECT</div><div class="ttdef"><b>Definition</b> libcncore.h:204</div></div>
+<div class="ttc" id="alibcncore_8h_html_a0e8eaf1430f3893d155ad709d2d84f25a52ec225b27d289b0d05128e3d7ef5992"><div class="ttname"><a href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a52ec225b27d289b0d05128e3d7ef5992">CN_TYPE_RECT</a></div><div class="ttdeci">@ CN_TYPE_RECT</div><div class="ttdef"><b>Definition</b> libcncore.h:308</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1225,7 +1253,7 @@ Functions</h2></td></tr>
 <div class="line">            PROPAGATE_ERR(); \</div>
 <div class="line">            return (<a class="code hl_define" href="libcncore_8h.html#a203549510b067f93099b5ec716053c2d">VALUE_ERR</a>); \</div>
 <div class="line">        }</div>
-<div class="ttc" id="alibcncore_8h_html_a0e8eaf1430f3893d155ad709d2d84f25a384355a765126d78f4e9bbef9173c7a0"><div class="ttname"><a href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a384355a765126d78f4e9bbef9173c7a0">CN_TYPE_STRING</a></div><div class="ttdeci">@ CN_TYPE_STRING</div><div class="ttdef"><b>Definition</b> libcncore.h:206</div></div>
+<div class="ttc" id="alibcncore_8h_html_a0e8eaf1430f3893d155ad709d2d84f25a384355a765126d78f4e9bbef9173c7a0"><div class="ttname"><a href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a384355a765126d78f4e9bbef9173c7a0">CN_TYPE_STRING</a></div><div class="ttdeci">@ CN_TYPE_STRING</div><div class="ttdef"><b>Definition</b> libcncore.h:310</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1264,7 +1292,7 @@ Functions</h2></td></tr>
 <div class="line">            PROPAGATE_ERR(); \</div>
 <div class="line">            return (<a class="code hl_define" href="libcncore_8h.html#a203549510b067f93099b5ec716053c2d">VALUE_ERR</a>); \</div>
 <div class="line">        }</div>
-<div class="ttc" id="alibcncore_8h_html_a0e8eaf1430f3893d155ad709d2d84f25a7dd8ff986f28d6df8a92f8d5ce441045"><div class="ttname"><a href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a7dd8ff986f28d6df8a92f8d5ce441045">CN_TYPE_VEC2</a></div><div class="ttdeci">@ CN_TYPE_VEC2</div><div class="ttdef"><b>Definition</b> libcncore.h:202</div></div>
+<div class="ttc" id="alibcncore_8h_html_a0e8eaf1430f3893d155ad709d2d84f25a7dd8ff986f28d6df8a92f8d5ce441045"><div class="ttname"><a href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a7dd8ff986f28d6df8a92f8d5ce441045">CN_TYPE_VEC2</a></div><div class="ttdeci">@ CN_TYPE_VEC2</div><div class="ttdef"><b>Definition</b> libcncore.h:306</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1303,7 +1331,7 @@ Functions</h2></td></tr>
 <div class="line">            PROPAGATE_ERR(); \</div>
 <div class="line">            return (<a class="code hl_define" href="libcncore_8h.html#a203549510b067f93099b5ec716053c2d">VALUE_ERR</a>); \</div>
 <div class="line">        }</div>
-<div class="ttc" id="alibcncore_8h_html_a0e8eaf1430f3893d155ad709d2d84f25a4407833afbec27023b6c38ade807deee"><div class="ttname"><a href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a4407833afbec27023b6c38ade807deee">CN_TYPE_VEC3</a></div><div class="ttdeci">@ CN_TYPE_VEC3</div><div class="ttdef"><b>Definition</b> libcncore.h:203</div></div>
+<div class="ttc" id="alibcncore_8h_html_a0e8eaf1430f3893d155ad709d2d84f25a4407833afbec27023b6c38ade807deee"><div class="ttname"><a href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a4407833afbec27023b6c38ade807deee">CN_TYPE_VEC3</a></div><div class="ttdeci">@ CN_TYPE_VEC3</div><div class="ttdef"><b>Definition</b> libcncore.h:307</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1343,20 +1371,6 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a2fde6447877a7fb46a9f7b2d73c3c72a" name="a2fde6447877a7fb46a9f7b2d73c3c72a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2fde6447877a7fb46a9f7b2d73c3c72a">&#9670;&#160;</a></span>null_value</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define null_value&#160;&#160;&#160;(<a class="el" href="structcn__value.html">cn_value</a>){<a class="el" href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a348012976d3b30d7cb389beab11d7630">CN_TYPE_NULL</a>, .as.i = 0}</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="abb451236bc755338894ffe8721d76b72" name="abb451236bc755338894ffe8721d76b72"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abb451236bc755338894ffe8721d76b72">&#9670;&#160;</a></span>PACK_ARG</h2>
 
@@ -1372,6 +1386,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>/////////////////////////// argument passing macros <br  />
+ /////////////////////////// </p>
 
 </div>
 </div>
@@ -1423,6 +1439,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>////////////////////////////////// macro to prepare init variables <br  />
+ ////////////////////////////////// </p>
 
 </div>
 </div>
@@ -1468,6 +1486,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>////////////////////////// error reporting macros <br  />
+ ////////////////////////// </p>
 
 </div>
 </div>
@@ -1499,6 +1519,24 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a5858e19cac4073104305b077d5552759" name="a5858e19cac4073104305b077d5552759"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5858e19cac4073104305b077d5552759">&#9670;&#160;</a></span>RET_NULL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define RET_NULL</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">ret_expr</td><td>)</td>
+          <td>&#160;&#160;&#160;((ret_expr).type == <a class="el" href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a348012976d3b30d7cb389beab11d7630">CN_TYPE_NULL</a>)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="add6fd6697551913462314d20badb3741" name="add6fd6697551913462314d20badb3741"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#add6fd6697551913462314d20badb3741">&#9670;&#160;</a></span>RET_OK</h2>
 
@@ -1510,10 +1548,12 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">ret_expr</td><td>)</td>
-          <td>&#160;&#160;&#160;(ret_expr).as.i == VALUE_OK.as.i</td>
+          <td>&#160;&#160;&#160;((ret_expr).as.i == VALUE_OK.as.i)</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>///////////////////////// default return checks <br  />
+ ///////////////////////// </p>
 
 </div>
 </div>
@@ -1592,6 +1632,112 @@ Functions</h2></td></tr>
 <div class="line">            PROPAGATE_ERR(); \</div>
 <div class="line">            return (error_value); \</div>
 <div class="line">        }</div>
+</div><!-- fragment --><p>//////////////////////////////////////////////////////////////////////// new instance building macros but allowing custom error return values <br  />
+ //////////////////////////////////////////////////////////////////////// </p>
+
+</div>
+</div>
+<a id="a28feb39061bb1884d84291dd4d19512b" name="a28feb39061bb1884d84291dd4d19512b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28feb39061bb1884d84291dd4d19512b">&#9670;&#160;</a></span>SHR_INIT_OBJECT_SHR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SHR_INIT_OBJECT_SHR</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__class, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><a class="el" href="build_8h.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">obj, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">error_value&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">        <span class="keywordflow">if</span> (!obj) { \</div>
+<div class="line">            RAISE(<a class="code hl_enumvalue" href="libcncore_8h.html#a59e56af19e754a6aa26a612ebf91d05fa17e7e6cc9748cdc813324f5d1c73512a">ERR_INVALID_POINTER</a>, <span class="stringliteral">&quot;can&#39;t init share object with empty object.&quot;</span>); \</div>
+<div class="line">            return (error_value); \</div>
+<div class="line">        } \</div>
+<div class="line">        if (!<a class="code hl_function" href="libcncore_8h.html#a0d1200d7a9ee39c24a7cfde96306eec6">set_attr</a>(__class, <a class="code hl_variable" href="build_8h.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>, <a class="code hl_enumvalue" href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25ab1815f2281072060aeee9fa21c33c879">CN_TYPE_OBJECT</a>, (<a class="code hl_typedef" href="libcncore_8h.html#aa0b4eca710d6fee505d18a41355e1edb">cnany</a>)obj)) { \</div>
+<div class="line">            PROPAGATE_ERR(); \</div>
+<div class="line">            return (error_value); \</div>
+<div class="line">        }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a95080e9e2e491f711df131111cc35af9" name="a95080e9e2e491f711df131111cc35af9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95080e9e2e491f711df131111cc35af9">&#9670;&#160;</a></span>SHR_OBJECT_STATIC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SHR_OBJECT_STATIC</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">__this, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">expr_alloc, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">args, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><a class="el" href="build_8h.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">error_value&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">        __temp_alloc = (<span class="keywordtype">void</span> *)<a class="code hl_function" href="libcncore_8h.html#aa8a195b1765489f8e4a9a7f184d5b27b">build_object</a>(expr_alloc, args); \</div>
+<div class="line">        if (!__temp_alloc) { \</div>
+<div class="line">            PROPAGATE_ERR(); \</div>
+<div class="line">            return (error_value); \</div>
+<div class="line">        } \</div>
+<div class="line">        if (!<a class="code hl_function" href="libcncore_8h.html#a0d1200d7a9ee39c24a7cfde96306eec6">set_attr</a>(__this, <a class="code hl_variable" href="build_8h.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>, <a class="code hl_enumvalue" href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25ab1815f2281072060aeee9fa21c33c879">CN_TYPE_OBJECT</a>, (<a class="code hl_typedef" href="libcncore_8h.html#aa0b4eca710d6fee505d18a41355e1edb">cnany</a>)__temp_alloc)) { \</div>
+<div class="line">            PROPAGATE_ERR(); \</div>
+<div class="line">            (void)<a class="code hl_function" href="libcncore_8h.html#a3c17e388301ab678d57d1e4c0f1d3214">delete_object</a>(__temp_alloc); \</div>
+<div class="line">            return (error_value); \</div>
+<div class="line">        }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1620,6 +1766,26 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>////////////////////// true, false typing <br  />
+ ////////////////////// </p>
+
+</div>
+</div>
+<a id="a75c5f65751fc038b96a8714a4d3a8cdc" name="a75c5f65751fc038b96a8714a4d3a8cdc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75c5f65751fc038b96a8714a4d3a8cdc">&#9670;&#160;</a></span>VAL_EMPTY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VAL_EMPTY</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">ret_expr</td><td>)</td>
+          <td>&#160;&#160;&#160;((((ret_expr).type == <a class="el" href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a1e435bbdb30939823b6e4682ec24da6b">CN_TYPE_GENERIC_UNIQ_PTR</a>) || ((ret_expr).type == <a class="el" href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25ab1815f2281072060aeee9fa21c33c879">CN_TYPE_OBJECT</a>) || ((ret_expr).type == <a class="el" href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a5ba5ed92d4eaf106cce6fb0818f2d971">CN_TYPE_WEAK_OBJECT</a>) || ((ret_expr).type == <a class="el" href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a6c2fa05d1159dc3a4ab3e011ab48d442">CN_TYPE_FUNCTION</a>)) &amp;&amp; (!(ret_expr).as.ptr))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -1634,6 +1800,22 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a42621f0d028c9002db42c013445bdde0" name="a42621f0d028c9002db42c013445bdde0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42621f0d028c9002db42c013445bdde0">&#9670;&#160;</a></span>VALUE_NULL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define VALUE_NULL&#160;&#160;&#160;(<a class="el" href="structcn__value.html">cn_value</a>){<a class="el" href="libcncore_8h.html#a0e8eaf1430f3893d155ad709d2d84f25a348012976d3b30d7cb389beab11d7630">CN_TYPE_NULL</a>, .as.i = 0}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>////////////////// default values <br  />
+ ////////////////// </p>
 
 </div>
 </div>
@@ -1663,6 +1845,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>////////////////////////////// standard things definition <br  />
+ ////////////////////////////// </p>
 
 </div>
 </div>
@@ -1694,14 +1878,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a4ae17cbe3aeebfefbce33d5789ae3aeb" name="a4ae17cbe3aeebfefbce33d5789ae3aeb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4ae17cbe3aeebfefbce33d5789ae3aeb">&#9670;&#160;</a></span>cnbool</h2>
+<a id="abf8b6b5806339a37891ff6af0e1179b5" name="abf8b6b5806339a37891ff6af0e1179b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf8b6b5806339a37891ff6af0e1179b5">&#9670;&#160;</a></span>cnbool</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef unsigned char <a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a></td>
+          <td class="memname">typedef uint8_t <a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1733,6 +1917,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>////////////////////////////// primitive types definition <br  />
+ ////////////////////////////// </p>
 
 </div>
 </div>
@@ -1775,6 +1961,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>///////////////////// objects definition <br  />
+ ///////////////////// </p>
 
 </div>
 </div>
@@ -1831,6 +2019,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>///////////////////////// math types definition <br  />
+ ///////////////////////// </p>
 
 </div>
 </div>
@@ -1860,6 +2050,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>///////////////////////// type/value definition <br  />
+ ///////////////////////// </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a0e8eaf1430f3893d155ad709d2d84f25a348012976d3b30d7cb389beab11d7630" name="a0e8eaf1430f3893d155ad709d2d84f25a348012976d3b30d7cb389beab11d7630"></a>CN_TYPE_NULL&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a0e8eaf1430f3893d155ad709d2d84f25a28029ab23dc72127e9c580863863b730" name="a0e8eaf1430f3893d155ad709d2d84f25a28029ab23dc72127e9c580863863b730"></a>CN_TYPE_INT&#160;</td><td class="fielddoc"></td></tr>
@@ -1889,6 +2081,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>////////////////////// errors definitions <br  />
+ ////////////////////// </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a59e56af19e754a6aa26a612ebf91d05faa26c163b80b1f6786ca81dadc14b00fb" name="a59e56af19e754a6aa26a612ebf91d05faa26c163b80b1f6786ca81dadc14b00fb"></a>ERR_OK&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a59e56af19e754a6aa26a612ebf91d05fa077f6961ef44934823d048c00b535cad" name="a59e56af19e754a6aa26a612ebf91d05fa077f6961ef44934823d048c00b535cad"></a>ERR_OUT_OF_MEMORY&#160;</td><td class="fielddoc"></td></tr>
@@ -1915,6 +2109,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>/////////////////////// scene related stuff <br  />
+ /////////////////////// </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a117c2852f064791ed3526c3f97f908a9a5b51e0f3dee93e0a501c5287b92e9685" name="a117c2852f064791ed3526c3f97f908a9a5b51e0f3dee93e0a501c5287b92e9685"></a>CN_OBJ_NULL&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a117c2852f064791ed3526c3f97f908a9afa810ccca97440068e1c8a3031a957ee" name="a117c2852f064791ed3526c3f97f908a9afa810ccca97440068e1c8a3031a957ee"></a>CN_OBJ_DRAWABLE&#160;</td><td class="fielddoc"></td></tr>
@@ -2244,7 +2440,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a>&#160;</td>
           <td class="paramname"><em>get_value_instead_of_key</em>&#160;</td>
         </tr>
         <tr>
@@ -2264,7 +2460,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> atlas_iterator_isend </td>
+          <td class="memname"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a> atlas_iterator_isend </td>
           <td>(</td>
           <td class="paramtype">const struct <a class="el" href="structlist__iterator__s.html">list_iterator_s</a> *&#160;</td>
           <td class="paramname"><em>iterator</em></td><td>)</td>
@@ -2300,7 +2496,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> atlas_iterator_value_isnull </td>
+          <td class="memname"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a> atlas_iterator_value_isnull </td>
           <td>(</td>
           <td class="paramtype">const struct <a class="el" href="structlist__iterator__s.html">list_iterator_s</a> *&#160;</td>
           <td class="paramname"><em>iterator</em></td><td>)</td>
@@ -3159,7 +3355,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> has_attr </td>
+          <td class="memname"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a> has_attr </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *&#160;</td>
           <td class="paramname"><em>object</em>, </td>
@@ -3187,7 +3383,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> has_error </td>
+          <td class="memname"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a> has_error </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -3205,7 +3401,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> has_generic_map </td>
+          <td class="memname"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a> has_generic_map </td>
           <td>(</td>
           <td class="paramtype">struct <a class="el" href="structgeneric__map__s.html">generic_map_s</a> *&#160;</td>
           <td class="paramname"><em>gen_map</em>, </td>
@@ -3233,7 +3429,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> has_method </td>
+          <td class="memname"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a> has_method </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *&#160;</td>
           <td class="paramname"><em>object</em>, </td>
@@ -3461,7 +3657,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> list_iterator_isend </td>
+          <td class="memname"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a> list_iterator_isend </td>
           <td>(</td>
           <td class="paramtype">const struct <a class="el" href="structlist__iterator__s.html">list_iterator_s</a> *&#160;</td>
           <td class="paramname"><em>iterator</em></td><td>)</td>
@@ -3497,7 +3693,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> list_iterator_value_isnull </td>
+          <td class="memname"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a> list_iterator_value_isnull </td>
           <td>(</td>
           <td class="paramtype">const struct <a class="el" href="structlist__iterator__s.html">list_iterator_s</a> *&#160;</td>
           <td class="paramname"><em>iterator</em></td><td>)</td>
@@ -3585,7 +3781,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>create a new clock</p>
+<p>////////////// prototypes <br  />
+ ////////////// create a new clock</p>
 <p>this function is used to allocate a new clock</p>
 <dl class="section return"><dt>Returns</dt><dd>a pointer to a new clock that you must free yourself </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="libcncore_8h.html#a7013e8a9e6c633e52ba2bda677656805">delete_clock</a> </dd></dl>
@@ -4501,7 +4698,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> set_attr </td>
+          <td class="memname"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a> set_attr </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *&#160;</td>
           <td class="paramname"><em>object</em>, </td>
@@ -4541,7 +4738,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> set_method </td>
+          <td class="memname"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a> set_method </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *&#160;</td>
           <td class="paramname"><em>object</em>, </td>
@@ -4593,7 +4790,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> start_core </td>
+          <td class="memname"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a> start_core </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -4611,7 +4808,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> str_is_empty </td>
+          <td class="memname"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a> str_is_empty </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structString.html">String</a> *&#160;</td>
           <td class="paramname"><em>str</em></td><td>)</td>
@@ -4629,11 +4826,67 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> str_is_null </td>
+          <td class="memname"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a> str_is_null </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structString.html">String</a> *&#160;</td>
           <td class="paramname"><em>str</em></td><td>)</td>
           <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a96d9e45e94ca7c0568d5b4b9d093d2f4" name="a96d9e45e94ca7c0568d5b4b9d093d2f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96d9e45e94ca7c0568d5b4b9d093d2f4">&#9670;&#160;</a></span>str_lcadd_cp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t str_lcadd_cp </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structString.html">String</a> *&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>c_str</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad44c88c601e636c70c1b5ddb1ac7c003" name="ad44c88c601e636c70c1b5ddb1ac7c003"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad44c88c601e636c70c1b5ddb1ac7c003">&#9670;&#160;</a></span>str_lcadd_mv()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t str_lcadd_mv </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structString.html">String</a> *&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>c_str</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -4799,7 +5052,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> submodule_ctx </td>
+          <td class="memname"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a> submodule_ctx </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *&#160;</td>
           <td class="paramname"><em>ctx</em>, </td>

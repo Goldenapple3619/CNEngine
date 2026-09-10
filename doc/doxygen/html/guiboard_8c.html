@@ -109,6 +109,7 @@ $(document).ready(function(){initNavTree('guiboard_8c.html',''); initResizable()
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="librgui_8h_source.html">librgui.h</a>&quot;</code><br />
+<code>#include &lt;glad/gl.h&gt;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -120,7 +121,7 @@ Functions</h2></td></tr>
 <tr class="separator:a54784ff19994e720de4144344546ac8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a616a08a89aae0c418ae0635cb9e4e1ae" id="r_a616a08a89aae0c418ae0635cb9e4e1ae"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="guiboard_8c.html#a616a08a89aae0c418ae0635cb9e4e1ae">_cpu_rendering</a> (const <a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> *object_texture, <a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> *dest_texture, const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *at)</td></tr>
 <tr class="separator:a616a08a89aae0c418ae0635cb9e4e1ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b67117addd3ad7fa0879717dba8dcbb" id="r_a2b67117addd3ad7fa0879717dba8dcbb"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="guiboard_8c.html#a2b67117addd3ad7fa0879717dba8dcbb">_gpu_rendering</a> (<a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> *object_texture, SDL_Renderer *renderer, const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *at, const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *canva_ratio, const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *canva_position)</td></tr>
+<tr class="memitem:a2b67117addd3ad7fa0879717dba8dcbb" id="r_a2b67117addd3ad7fa0879717dba8dcbb"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="guiboard_8c.html#a2b67117addd3ad7fa0879717dba8dcbb">_gpu_rendering</a> (<a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> *object_texture, <a class="el" href="libcngraphic_8h.html#aaf0bf7d020754fc614fe06552ea4d5d4">SDL_Renderer</a> *renderer, const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *at, const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *canva_ratio, const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *canva_position)</td></tr>
 <tr class="separator:a2b67117addd3ad7fa0879717dba8dcbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f552014b4e9d723673e3d1a3e45b8d4" id="r_a1f552014b4e9d723673e3d1a3e45b8d4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="guiboard_8c.html#a1f552014b4e9d723673e3d1a3e45b8d4">_opengl_rendering</a> (<a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> *object_texture, <a class="el" href="structQuad.html">Quad</a> *gl_quad, const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *at, const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *canva_ratio, const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *canva_scale)</td></tr>
 <tr class="separator:a1f552014b4e9d723673e3d1a3e45b8d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -368,7 +369,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramtype"><a class="el" href="libcngraphic_8h.html#aaf0bf7d020754fc614fe06552ea4d5d4">SDL_Renderer</a> *&#160;</td>
           <td class="paramname"><em>renderer</em>, </td>
         </tr>
         <tr>

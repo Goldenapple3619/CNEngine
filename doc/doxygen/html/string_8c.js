@@ -6,6 +6,8 @@ var string_8c =
     [ "new_str_from_const", "string_8c.html#a803cdc38853737b120ae8bc090de11de", null ],
     [ "str_is_empty", "string_8c.html#acdca66b249758c104f3e4f1cafc1222e", null ],
     [ "str_is_null", "string_8c.html#a6b412ec840cbd7b25480af8644b0cfe5", null ],
+    [ "str_lcadd_cp", "string_8c.html#a96d9e45e94ca7c0568d5b4b9d093d2f4", null ],
+    [ "str_lcadd_mv", "string_8c.html#ad44c88c601e636c70c1b5ddb1ac7c003", null ],
     [ "str_override", "string_8c.html#acf84274f83df450656404aac7ba4f8ae", null ],
     [ "str_override_cp", "string_8c.html#ae70c404b137ee96443cf93628471380e", null ],
     [ "str_rcadd_cp", "string_8c.html#a639732e7c95d71daef692601b350b16e", null ],

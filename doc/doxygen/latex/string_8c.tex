@@ -8,9 +8,9 @@
 \item 
 \mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{string_8c_abab5c4e59c24b551c4eec243deb711e2}{new\+\_\+str}} (char \texorpdfstring{$\ast$}{*}c\+\_\+str)
 \item 
-\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} \mbox{\hyperlink{string_8c_acdca66b249758c104f3e4f1cafc1222e}{str\+\_\+is\+\_\+empty}} (const \mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}str)
+\mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}} \mbox{\hyperlink{string_8c_acdca66b249758c104f3e4f1cafc1222e}{str\+\_\+is\+\_\+empty}} (const \mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}str)
 \item 
-\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} \mbox{\hyperlink{string_8c_a6b412ec840cbd7b25480af8644b0cfe5}{str\+\_\+is\+\_\+null}} (const \mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}str)
+\mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}} \mbox{\hyperlink{string_8c_a6b412ec840cbd7b25480af8644b0cfe5}{str\+\_\+is\+\_\+null}} (const \mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}str)
 \item 
 void \mbox{\hyperlink{string_8c_acf84274f83df450656404aac7ba4f8ae}{str\+\_\+override}} (\mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}str, char \texorpdfstring{$\ast$}{*}c\+\_\+str)
 \item 
@@ -19,6 +19,10 @@ uint8\+\_\+t \mbox{\hyperlink{string_8c_ae70c404b137ee96443cf93628471380e}{str\+
 uint8\+\_\+t \mbox{\hyperlink{string_8c_a5329b1771083af3811b79c2ddb54c86d}{str\+\_\+rcadd\+\_\+mv}} (\mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}str, char \texorpdfstring{$\ast$}{*}c\+\_\+str)
 \item 
 uint8\+\_\+t \mbox{\hyperlink{string_8c_a639732e7c95d71daef692601b350b16e}{str\+\_\+rcadd\+\_\+cp}} (\mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}str, const char \texorpdfstring{$\ast$}{*}c\+\_\+str)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{string_8c_a96d9e45e94ca7c0568d5b4b9d093d2f4}{str\+\_\+lcadd\+\_\+cp}} (\mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}str, const char \texorpdfstring{$\ast$}{*}c\+\_\+str)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{string_8c_ad44c88c601e636c70c1b5ddb1ac7c003}{str\+\_\+lcadd\+\_\+mv}} (\mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}str, char \texorpdfstring{$\ast$}{*}c\+\_\+str)
 \item 
 void \mbox{\hyperlink{string_8c_ab3dfc7bd59264f03cfcb271954b1b3a7}{empty\+\_\+str}} (\mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}str)
 \item 
@@ -57,13 +61,25 @@ void \mbox{\hyperlink{string_8c_ad431b97f1c7ba2481216e10000af1ce5}{delete\+\_\+s
 \index{string.c@{string.c}!str\_is\_empty@{str\_is\_empty}}
 \index{str\_is\_empty@{str\_is\_empty}!string.c@{string.c}}
 \doxysubsubsection{\texorpdfstring{str\_is\_empty()}{str\_is\_empty()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} str\+\_\+is\+\_\+empty (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}}]{str }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}} str\+\_\+is\+\_\+empty (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}}]{str }\end{DoxyParamCaption})}
 
 \Hypertarget{string_8c_a6b412ec840cbd7b25480af8644b0cfe5}\label{string_8c_a6b412ec840cbd7b25480af8644b0cfe5} 
 \index{string.c@{string.c}!str\_is\_null@{str\_is\_null}}
 \index{str\_is\_null@{str\_is\_null}!string.c@{string.c}}
 \doxysubsubsection{\texorpdfstring{str\_is\_null()}{str\_is\_null()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} str\+\_\+is\+\_\+null (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}}]{str }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}} str\+\_\+is\+\_\+null (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}}]{str }\end{DoxyParamCaption})}
+
+\Hypertarget{string_8c_a96d9e45e94ca7c0568d5b4b9d093d2f4}\label{string_8c_a96d9e45e94ca7c0568d5b4b9d093d2f4} 
+\index{string.c@{string.c}!str\_lcadd\_cp@{str\_lcadd\_cp}}
+\index{str\_lcadd\_cp@{str\_lcadd\_cp}!string.c@{string.c}}
+\doxysubsubsection{\texorpdfstring{str\_lcadd\_cp()}{str\_lcadd\_cp()}}
+{\footnotesize\ttfamily uint8\+\_\+t str\+\_\+lcadd\+\_\+cp (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}}]{str,  }\item[{const char \texorpdfstring{$\ast$}{*}}]{c\+\_\+str }\end{DoxyParamCaption})}
+
+\Hypertarget{string_8c_ad44c88c601e636c70c1b5ddb1ac7c003}\label{string_8c_ad44c88c601e636c70c1b5ddb1ac7c003} 
+\index{string.c@{string.c}!str\_lcadd\_mv@{str\_lcadd\_mv}}
+\index{str\_lcadd\_mv@{str\_lcadd\_mv}!string.c@{string.c}}
+\doxysubsubsection{\texorpdfstring{str\_lcadd\_mv()}{str\_lcadd\_mv()}}
+{\footnotesize\ttfamily uint8\+\_\+t str\+\_\+lcadd\+\_\+mv (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structString}{String}} \texorpdfstring{$\ast$}{*}}]{str,  }\item[{char \texorpdfstring{$\ast$}{*}}]{c\+\_\+str }\end{DoxyParamCaption})}
 
 \Hypertarget{string_8c_acf84274f83df450656404aac7ba4f8ae}\label{string_8c_acf84274f83df450656404aac7ba4f8ae} 
 \index{string.c@{string.c}!str\_override@{str\_override}}

@@ -20,7 +20,8 @@ var searchData=
   ['message_17',['message',['../structErrorContext.html#afef893087f5117075d26e3e8fe378296',1,'ErrorContext']]],
   ['method_18',['method',['../structObjMethodPair.html#a816b82bfbb5f9b6fbfacbb8b9cb87490',1,'ObjMethodPair']]],
   ['methods_19',['methods',['../structobject__s.html#abe619d8408e96a85e54d809ad9e10b94',1,'object_s::methods'],['../structObjectGenerationData.html#aa273dba7c453099401fd0c5c78236419',1,'ObjectGenerationData::methods'],['../structobject__element__s.html#a62505718baaf3197c6ca3d1bb2c56b71',1,'object_element_s::methods']]],
-  ['mkdir_20',['MKDIR',['../engine_8h.html#a33f0483b64221b258b080bba5882cf3c',1,'engine.h']]],
-  ['msys_21',['Windows using MSYS',['../md_README.html#autotoc_md6',1,'']]],
-  ['mv_5fpad_22',['mv_pad',['../engine__object__writer_8c.html#a0e906b056853be4f1616f09689bd772e',1,'engine_object_writer.c']]]
+  ['mix_5fchunk_20',['Mix_Chunk',['../libcnaudio_8h.html#a0ec5298fec4179ed9c265e68f007755e',1,'libcnaudio.h']]],
+  ['mkdir_21',['MKDIR',['../engine_8h.html#a33f0483b64221b258b080bba5882cf3c',1,'engine.h']]],
+  ['msys_22',['Windows using MSYS',['../md_README.html#autotoc_md6',1,'']]],
+  ['mv_5fpad_23',['mv_pad',['../engine__object__writer_8c.html#a0e906b056853be4f1616f09689bd772e',1,'engine_object_writer.c']]]
 ];

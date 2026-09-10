@@ -4,5 +4,6 @@ var searchData=
   ['texture_5fupload_5fgl_1',['texture_upload_gl',['../libcngraphic_8h.html#a1b2d02e333f84ea64de019adfc91e3fe',1,'texture_upload_gl(Texture *texture):&#160;texture.c'],['../texture_8c.html#a1b2d02e333f84ea64de019adfc91e3fe',1,'texture_upload_gl(Texture *texture):&#160;texture.c']]],
   ['tp_5ffrom_5fstring_2',['tp_from_string',['../project__toolchain_8h.html#a1a9c13f08838fe8e31d8d40b4901ae17',1,'tp_from_string(const char *str):&#160;ressources.c'],['../ressources_8c.html#a1a9c13f08838fe8e31d8d40b4901ae17',1,'tp_from_string(const char *str):&#160;ressources.c']]],
   ['type_5fenum_5fname_5ffrom_5fvalue_3',['type_enum_name_from_value',['../object__instance__generator_8c.html#a01f69c1ae034caab90fa7b3a0d607f4d',1,'object_instance_generator.c']]],
-  ['typename_5ffrom_5fstring_4',['typename_from_string',['../libcnassets_8h.html#a30acbd8f92b6488ce01e2183bde0e262',1,'typename_from_string(const char *str):&#160;engine_types.c'],['../engine__types_8c.html#a30acbd8f92b6488ce01e2183bde0e262',1,'typename_from_string(const char *str):&#160;engine_types.c']]]
+  ['type_5fname_5ffrom_5fvalue_4',['type_name_from_value',['../attributes__section_8c.html#a97340e18b06c96d9cc1296bc319d13a7',1,'attributes_section.c']]],
+  ['typename_5ffrom_5fstring_5',['typename_from_string',['../libcnassets_8h.html#a30acbd8f92b6488ce01e2183bde0e262',1,'typename_from_string(const char *str):&#160;engine_types.c'],['../engine__types_8c.html#a30acbd8f92b6488ce01e2183bde0e262',1,'typename_from_string(const char *str):&#160;engine_types.c']]]
 ];

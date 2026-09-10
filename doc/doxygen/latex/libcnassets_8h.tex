@@ -112,9 +112,19 @@ enum \mbox{\hyperlink{libcnassets_8h_a959be715a1657adac70a74c248795869}{engine\+
 , \newline
 \mbox{\hyperlink{libcnassets_8h_a959be715a1657adac70a74c248795869ac2034ea9ebde71027843a1076979a266}{ENGINE\+\_\+\+SEC\+\_\+\+GUI\+\_\+\+CONN}}
 , \mbox{\hyperlink{libcnassets_8h_a959be715a1657adac70a74c248795869a9eefc02bc33f9e4423780f6f88d31287}{ENGINE\+\_\+\+SEC\+\_\+\+SCENE\+\_\+\+TREE}}
+, \mbox{\hyperlink{libcnassets_8h_a959be715a1657adac70a74c248795869afe2d3bcf3d11a64e776918e8ee652c73}{ENGINE\+\_\+\+SEC\+\_\+\+OBJ\+\_\+\+SYMBOLS}}
+, \mbox{\hyperlink{libcnassets_8h_a959be715a1657adac70a74c248795869a5dae9580aa16b7ad3f557e1037f4c339}{ENGINE\+\_\+\+SEC\+\_\+\+OBJ\+\_\+\+ATTRS}}
+, \newline
+\mbox{\hyperlink{libcnassets_8h_a959be715a1657adac70a74c248795869a1549fc9f7e8d4a51d2ff156b6d9e71d3}{ENGINE\+\_\+\+SEC\+\_\+\+OBJ\+\_\+\+INFO}}
  \}
 \item 
 enum \mbox{\hyperlink{libcnassets_8h_a476d44b2fd664f18b92f351d4f06aaaa}{engine\+\_\+section\+\_\+wrt\+\_\+flags}} \{ \mbox{\hyperlink{libcnassets_8h_a476d44b2fd664f18b92f351d4f06aaaaaba005e807a79d4a40b76ce98e3c718bc}{ENGINE\+\_\+\+SEC\+\_\+\+NULL\+\_\+\+FLAG}} = 0x00
+ \}
+\item 
+enum \mbox{\hyperlink{libcnassets_8h_a29315e87a605a68b10fbed27d63ffec5}{engine\+\_\+data\+\_\+extract\+\_\+status}} \{ \mbox{\hyperlink{libcnassets_8h_a29315e87a605a68b10fbed27d63ffec5a46933500da43da5e7a178bb612b6cb25}{ENGINE\+\_\+\+DATA\+\_\+\+EXTRACT\+\_\+\+COMPLETE}} = 0x00
+, \mbox{\hyperlink{libcnassets_8h_a29315e87a605a68b10fbed27d63ffec5af03d6c8de0d7add7cf0f912962523ae7}{ENGINE\+\_\+\+DATA\+\_\+\+EXTRACT\+\_\+\+ERR}}
+, \mbox{\hyperlink{libcnassets_8h_a29315e87a605a68b10fbed27d63ffec5a1d3006d05ad7231b197190d214c6de5c}{ENGINE\+\_\+\+DATA\+\_\+\+EXTRACT\+\_\+\+PARTIAL}}
+, \mbox{\hyperlink{libcnassets_8h_a29315e87a605a68b10fbed27d63ffec5abe522c75e298752cbb0177ec17d947bf}{ENGINE\+\_\+\+DATA\+\_\+\+EXTRACT\+\_\+\+ONE\+\_\+\+OF\+\_\+\+MANY}}
  \}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
@@ -341,6 +351,30 @@ uint8\+\_\+t \mbox{\hyperlink{libcnassets_8h_a813bba1678704346b15fc0e1f0cb54c0}{
 
 
 \doxysubsection{Enumeration Type Documentation}
+\Hypertarget{libcnassets_8h_a29315e87a605a68b10fbed27d63ffec5}\label{libcnassets_8h_a29315e87a605a68b10fbed27d63ffec5} 
+\index{libcnassets.h@{libcnassets.h}!engine\_data\_extract\_status@{engine\_data\_extract\_status}}
+\index{engine\_data\_extract\_status@{engine\_data\_extract\_status}!libcnassets.h@{libcnassets.h}}
+\doxysubsubsection{\texorpdfstring{engine\_data\_extract\_status}{engine\_data\_extract\_status}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{libcnassets_8h_a29315e87a605a68b10fbed27d63ffec5}{engine\+\_\+data\+\_\+extract\+\_\+status}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ENGINE\_DATA\_EXTRACT\_COMPLETE@{ENGINE\_DATA\_EXTRACT\_COMPLETE}!libcnassets.h@{libcnassets.h}}\index{libcnassets.h@{libcnassets.h}!ENGINE\_DATA\_EXTRACT\_COMPLETE@{ENGINE\_DATA\_EXTRACT\_COMPLETE}}}\Hypertarget{libcnassets_8h_a29315e87a605a68b10fbed27d63ffec5a46933500da43da5e7a178bb612b6cb25}\label{libcnassets_8h_a29315e87a605a68b10fbed27d63ffec5a46933500da43da5e7a178bb612b6cb25} 
+ENGINE\+\_\+\+DATA\+\_\+\+EXTRACT\+\_\+\+COMPLETE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ENGINE\_DATA\_EXTRACT\_ERR@{ENGINE\_DATA\_EXTRACT\_ERR}!libcnassets.h@{libcnassets.h}}\index{libcnassets.h@{libcnassets.h}!ENGINE\_DATA\_EXTRACT\_ERR@{ENGINE\_DATA\_EXTRACT\_ERR}}}\Hypertarget{libcnassets_8h_a29315e87a605a68b10fbed27d63ffec5af03d6c8de0d7add7cf0f912962523ae7}\label{libcnassets_8h_a29315e87a605a68b10fbed27d63ffec5af03d6c8de0d7add7cf0f912962523ae7} 
+ENGINE\+\_\+\+DATA\+\_\+\+EXTRACT\+\_\+\+ERR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ENGINE\_DATA\_EXTRACT\_PARTIAL@{ENGINE\_DATA\_EXTRACT\_PARTIAL}!libcnassets.h@{libcnassets.h}}\index{libcnassets.h@{libcnassets.h}!ENGINE\_DATA\_EXTRACT\_PARTIAL@{ENGINE\_DATA\_EXTRACT\_PARTIAL}}}\Hypertarget{libcnassets_8h_a29315e87a605a68b10fbed27d63ffec5a1d3006d05ad7231b197190d214c6de5c}\label{libcnassets_8h_a29315e87a605a68b10fbed27d63ffec5a1d3006d05ad7231b197190d214c6de5c} 
+ENGINE\+\_\+\+DATA\+\_\+\+EXTRACT\+\_\+\+PARTIAL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ENGINE\_DATA\_EXTRACT\_ONE\_OF\_MANY@{ENGINE\_DATA\_EXTRACT\_ONE\_OF\_MANY}!libcnassets.h@{libcnassets.h}}\index{libcnassets.h@{libcnassets.h}!ENGINE\_DATA\_EXTRACT\_ONE\_OF\_MANY@{ENGINE\_DATA\_EXTRACT\_ONE\_OF\_MANY}}}\Hypertarget{libcnassets_8h_a29315e87a605a68b10fbed27d63ffec5abe522c75e298752cbb0177ec17d947bf}\label{libcnassets_8h_a29315e87a605a68b10fbed27d63ffec5abe522c75e298752cbb0177ec17d947bf} 
+ENGINE\+\_\+\+DATA\+\_\+\+EXTRACT\+\_\+\+ONE\+\_\+\+OF\+\_\+\+MANY&\\
+\hline
+
+\end{DoxyEnumFields}
 \Hypertarget{libcnassets_8h_ab6f57059a2b8b8eb3fb281cbea5aab34}\label{libcnassets_8h_ab6f57059a2b8b8eb3fb281cbea5aab34} 
 \index{libcnassets.h@{libcnassets.h}!engine\_obj\_type@{engine\_obj\_type}}
 \index{engine\_obj\_type@{engine\_obj\_type}!libcnassets.h@{libcnassets.h}}
@@ -402,6 +436,18 @@ ENGINE\+\_\+\+SEC\+\_\+\+GUI\+\_\+\+CONN&\\
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{ENGINE\_SEC\_SCENE\_TREE@{ENGINE\_SEC\_SCENE\_TREE}!libcnassets.h@{libcnassets.h}}\index{libcnassets.h@{libcnassets.h}!ENGINE\_SEC\_SCENE\_TREE@{ENGINE\_SEC\_SCENE\_TREE}}}\Hypertarget{libcnassets_8h_a959be715a1657adac70a74c248795869a9eefc02bc33f9e4423780f6f88d31287}\label{libcnassets_8h_a959be715a1657adac70a74c248795869a9eefc02bc33f9e4423780f6f88d31287} 
 ENGINE\+\_\+\+SEC\+\_\+\+SCENE\+\_\+\+TREE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ENGINE\_SEC\_OBJ\_SYMBOLS@{ENGINE\_SEC\_OBJ\_SYMBOLS}!libcnassets.h@{libcnassets.h}}\index{libcnassets.h@{libcnassets.h}!ENGINE\_SEC\_OBJ\_SYMBOLS@{ENGINE\_SEC\_OBJ\_SYMBOLS}}}\Hypertarget{libcnassets_8h_a959be715a1657adac70a74c248795869afe2d3bcf3d11a64e776918e8ee652c73}\label{libcnassets_8h_a959be715a1657adac70a74c248795869afe2d3bcf3d11a64e776918e8ee652c73} 
+ENGINE\+\_\+\+SEC\+\_\+\+OBJ\+\_\+\+SYMBOLS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ENGINE\_SEC\_OBJ\_ATTRS@{ENGINE\_SEC\_OBJ\_ATTRS}!libcnassets.h@{libcnassets.h}}\index{libcnassets.h@{libcnassets.h}!ENGINE\_SEC\_OBJ\_ATTRS@{ENGINE\_SEC\_OBJ\_ATTRS}}}\Hypertarget{libcnassets_8h_a959be715a1657adac70a74c248795869a5dae9580aa16b7ad3f557e1037f4c339}\label{libcnassets_8h_a959be715a1657adac70a74c248795869a5dae9580aa16b7ad3f557e1037f4c339} 
+ENGINE\+\_\+\+SEC\+\_\+\+OBJ\+\_\+\+ATTRS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ENGINE\_SEC\_OBJ\_INFO@{ENGINE\_SEC\_OBJ\_INFO}!libcnassets.h@{libcnassets.h}}\index{libcnassets.h@{libcnassets.h}!ENGINE\_SEC\_OBJ\_INFO@{ENGINE\_SEC\_OBJ\_INFO}}}\Hypertarget{libcnassets_8h_a959be715a1657adac70a74c248795869a1549fc9f7e8d4a51d2ff156b6d9e71d3}\label{libcnassets_8h_a959be715a1657adac70a74c248795869a1549fc9f7e8d4a51d2ff156b6d9e71d3} 
+ENGINE\+\_\+\+SEC\+\_\+\+OBJ\+\_\+\+INFO&\\
 \hline
 
 \end{DoxyEnumFields}

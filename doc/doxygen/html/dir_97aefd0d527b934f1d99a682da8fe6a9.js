@@ -1,6 +1,5 @@
 var dir_97aefd0d527b934f1d99a682da8fe6a9 =
 [
-    [ "cnapi", "dir_95c3903329d389207184c611c22df8fe.html", "dir_95c3903329d389207184c611c22df8fe" ],
     [ "cnassets", "dir_56535cee5ca81206c7dde63e328731c0.html", "dir_56535cee5ca81206c7dde63e328731c0" ],
     [ "cnaudio", "dir_93eb5ed85d71468450abaeb6a1055216.html", "dir_93eb5ed85d71468450abaeb6a1055216" ],
     [ "cncore", "dir_1a867567511aa087d7ef509eebb655d0.html", "dir_1a867567511aa087d7ef509eebb655d0" ],

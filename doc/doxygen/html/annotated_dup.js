@@ -53,6 +53,7 @@ var annotated_dup =
     [ "object_vector_s", "structobject__vector__s.html", "structobject__vector__s" ],
     [ "ObjectGenerationData", "structObjectGenerationData.html", "structObjectGenerationData" ],
     [ "ObjMethodPair", "structObjMethodPair.html", "structObjMethodPair" ],
+    [ "ProjectDefinition", "structProjectDefinition.html", "structProjectDefinition" ],
     [ "Quad", "structQuad.html", "structQuad" ],
     [ "rect_s", "structrect__s.html", "structrect__s" ],
     [ "scene_element_s", "structscene__element__s.html", "structscene__element__s" ],

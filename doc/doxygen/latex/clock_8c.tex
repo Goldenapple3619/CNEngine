@@ -1,6 +1,7 @@
 \doxysection{lib/cncore/src/clock.c File Reference}
 \hypertarget{clock_8c}{}\label{clock_8c}\index{lib/cncore/src/clock.c@{lib/cncore/src/clock.c}}
 {\ttfamily \#include "{}libcncore.\+h"{}}\newline
+{\ttfamily \#include $<$SDL2/\+SDL\+\_\+timer.\+h$>$}\newline
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -57,7 +58,8 @@ this function is used to free an allocated clock created using new\+\_\+clock
 \doxysubsubsection{\texorpdfstring{new\_clock()}{new\_clock()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a3afb309b9a0d51af55191cbbbfb17c4f}{Clock}} \texorpdfstring{$\ast$}{*} new\+\_\+clock (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
-create a new clock
+////////////// prototypes ~\newline
+ ////////////// create a new clock
 
 this function is used to allocate a new clock
 

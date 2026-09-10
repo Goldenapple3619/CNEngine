@@ -45,14 +45,23 @@
 \DoxyCodeLine{00041\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{engine__main_8h_a6f7b23397e810a78b010dacff5c3b877}{load\_submodules}}(\mbox{\hyperlink{structobject__s}{Object}}\ *ctx);\ \textcolor{comment}{//\ generated}}
 \DoxyCodeLine{00042\ }
 \DoxyCodeLine{00043\ \textcolor{preprocessor}{\ \ \ \ \#if\ defined(\_HAS\_ASSETS)\ \&\&\ (\_HAS\_ASSETS\ ==\ 1)}}
-\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ uint8\_t\ \mbox{\hyperlink{assets_8c_a648e9280d4c4f707fb22f691afe0af3b}{register\_engine\_asset\_api}}(\mbox{\hyperlink{structobject__s}{Object}}\ *ctx);}
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ uint8\_t\ \mbox{\hyperlink{assets_8c_a59221d57a86f4eca416c790fea7ccaed}{load\_assets\_handler}}(\mbox{\hyperlink{structobject__s}{Object}}\ *ctx);}
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ uint8\_t\ \mbox{\hyperlink{assets_8c_a192f2c190cce299b6b6ae7474647599f}{load\_entry\_scene}}(\mbox{\hyperlink{structobject__s}{Object}}\ *ctx);}
-\DoxyCodeLine{00047\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }loaded\_data\_holder\_s\ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *path;}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structsection__blk}{section\_blk}}\ *content;}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \};}
 \DoxyCodeLine{00048\ }
-\DoxyCodeLine{00049\ \textcolor{preprocessor}{\ \ \ \ \#if\ defined(\_HAS\_GRAPHICS)\ \&\&\ (\_HAS\_GRAPHICS\ ==\ 1)}}
-\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ uint8\_t\ \mbox{\hyperlink{graphics_8c_a219330e51a60888af6dbf158617dfc3e}{add\_main\_interface}}(\mbox{\hyperlink{structobject__s}{Object}}\ *ctx);}
-\DoxyCodeLine{00051\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
-\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structcn__value}{cn\_value}}\ \mbox{\hyperlink{raw__ressources_8c_a4a29c8298d892e26aecd0d9a99fc33e8}{\_load\_ressource}}(\mbox{\hyperlink{structobject__s}{Object}}\ *\_\_this,\ \textcolor{keywordtype}{void}\ **args);}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structcn__value}{cn\_value}}\ \mbox{\hyperlink{objects_8c_a043e691e619e9476a1aad20764f34c8d}{\_load\_object}}(\mbox{\hyperlink{structobject__s}{Object}}\ *\_\_this,\ \textcolor{keywordtype}{void}\ **args);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ uint8\_t\ \mbox{\hyperlink{api_8c_a648e9280d4c4f707fb22f691afe0af3b}{register\_engine\_asset\_api}}(\mbox{\hyperlink{structobject__s}{Object}}\ *ctx);}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{api_8c_a529a7411c2c361c8e298c35a5a83daa3}{unregister\_engine\_asset\_api}}(\mbox{\hyperlink{structobject__s}{Object}}\ *ctx);}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ uint8\_t\ \mbox{\hyperlink{api_8c_a59221d57a86f4eca416c790fea7ccaed}{load\_assets\_handler}}(\mbox{\hyperlink{structobject__s}{Object}}\ *ctx);}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ uint8\_t\ \mbox{\hyperlink{api_8c_a192f2c190cce299b6b6ae7474647599f}{load\_entry\_scene}}(\mbox{\hyperlink{structobject__s}{Object}}\ *ctx);}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\ \ \ \ \#if\ defined(\_HAS\_GRAPHICS)\ \&\&\ (\_HAS\_GRAPHICS\ ==\ 1)}}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ uint8\_t\ \mbox{\hyperlink{graphics_8c_a219330e51a60888af6dbf158617dfc3e}{add\_main\_interface}}(\mbox{\hyperlink{structobject__s}{Object}}\ *ctx);}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\ \ \ \ \#endif}}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

@@ -112,10 +112,8 @@ $(document).ready(function(){initNavTree('libcngraphic_8h.html',''); initResizab
   <div class="headertitle"><div class="title">libcngraphic.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;glad/gl.h&gt;</code><br />
-<code>#include &lt;SDL2/SDL.h&gt;</code><br />
-<code>#include &lt;SDL_image.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="libcncore_8h_source.html">libcncore.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="libcncore_8h_source.html">libcncore.h</a>&quot;</code><br />
+<code>#include &lt;SDL2/SDL_video.h&gt;</code><br />
 </div>
 <p><a href="libcngraphic_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -151,6 +149,16 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
+<tr class="memitem:ad894d177fae95d7a1c0d23597b69e569" id="r_ad894d177fae95d7a1c0d23597b69e569"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="libcngraphic_8h.html#ad894d177fae95d7a1c0d23597b69e569">SDL_Surface</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#ad894d177fae95d7a1c0d23597b69e569">SDL_Surface</a></td></tr>
+<tr class="separator:ad894d177fae95d7a1c0d23597b69e569"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf0bf7d020754fc614fe06552ea4d5d4" id="r_aaf0bf7d020754fc614fe06552ea4d5d4"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="libcngraphic_8h.html#aaf0bf7d020754fc614fe06552ea4d5d4">SDL_Renderer</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#aaf0bf7d020754fc614fe06552ea4d5d4">SDL_Renderer</a></td></tr>
+<tr class="separator:aaf0bf7d020754fc614fe06552ea4d5d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55a196c7d3b8497538632c79ae1e6392" id="r_a55a196c7d3b8497538632c79ae1e6392"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="libcngraphic_8h.html#a55a196c7d3b8497538632c79ae1e6392">SDL_Window</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a55a196c7d3b8497538632c79ae1e6392">SDL_Window</a></td></tr>
+<tr class="separator:a55a196c7d3b8497538632c79ae1e6392"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17850d7f1f5de457727cb3cf66b3a7f5" id="r_a17850d7f1f5de457727cb3cf66b3a7f5"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="libcngraphic_8h.html#a17850d7f1f5de457727cb3cf66b3a7f5">SDL_Texture</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a17850d7f1f5de457727cb3cf66b3a7f5">SDL_Texture</a></td></tr>
+<tr class="separator:a17850d7f1f5de457727cb3cf66b3a7f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d64dcf67c9685d09cbe051448e1b3f3" id="r_a0d64dcf67c9685d09cbe051448e1b3f3"><td class="memItemLeft" align="right" valign="top">typedef void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a0d64dcf67c9685d09cbe051448e1b3f3">SDL_GLContext</a></td></tr>
+<tr class="separator:a0d64dcf67c9685d09cbe051448e1b3f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0b2773fdce5fa81de32a2e7a552ff37d" id="r_a0b2773fdce5fa81de32a2e7a552ff37d"><td class="memItemLeft" align="right" valign="top">typedef uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a0b2773fdce5fa81de32a2e7a552ff37d">cncolor</a></td></tr>
 <tr class="separator:a0b2773fdce5fa81de32a2e7a552ff37d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a19da3cd71374013c1d81d51ae71cba99" id="r_a19da3cd71374013c1d81d51ae71cba99"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structtexture__s.html">texture_s</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a></td></tr>
@@ -242,13 +250,13 @@ Functions</h2></td></tr>
 <tr class="separator:af3db1a5ab35de7f088e3dc35bb424f63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6568a6d06f3f71f65a3457306c0959e5" id="r_a6568a6d06f3f71f65a3457306c0959e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a6568a6d06f3f71f65a3457306c0959e5">blit_ratio</a> (const <a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> *__src, <a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> *__dst, const <a class="el" href="libcncore_8h.html#a44e2d24ab2a21b90d03880cab9cc6d16">Rect</a> *__src_rect, const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *__dest_at, const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *__ratios)</td></tr>
 <tr class="separator:a6568a6d06f3f71f65a3457306c0959e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2da153b5b29828b70e502633bf450375" id="r_a2da153b5b29828b70e502633bf450375"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a2da153b5b29828b70e502633bf450375">draw_texture</a> (<a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> *__src_texture, SDL_Renderer *__dest_renderer, const <a class="el" href="libcncore_8h.html#a44e2d24ab2a21b90d03880cab9cc6d16">Rect</a> *__src_rect, const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *__dest_at, const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *__ratios, double __angle)</td></tr>
+<tr class="memitem:a2da153b5b29828b70e502633bf450375" id="r_a2da153b5b29828b70e502633bf450375"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a2da153b5b29828b70e502633bf450375">draw_texture</a> (<a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> *__src_texture, <a class="el" href="libcngraphic_8h.html#aaf0bf7d020754fc614fe06552ea4d5d4">SDL_Renderer</a> *__dest_renderer, const <a class="el" href="libcncore_8h.html#a44e2d24ab2a21b90d03880cab9cc6d16">Rect</a> *__src_rect, const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *__dest_at, const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *__ratios, double __angle)</td></tr>
 <tr class="separator:a2da153b5b29828b70e502633bf450375"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a231487f473359a884727f26d496f11e4" id="r_a231487f473359a884727f26d496f11e4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a231487f473359a884727f26d496f11e4">draw_texture_gl</a> (<a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> *__src_texture, <a class="el" href="structQuad.html">Quad</a> *__dst_quad, const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *__at, const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *__size, <a class="el" href="libcngraphic_8h.html#a0b2773fdce5fa81de32a2e7a552ff37d">cncolor</a> __tint, const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *__view_port)</td></tr>
 <tr class="separator:a231487f473359a884727f26d496f11e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6afa86ecf7185b47b663f8717177ce70" id="r_a6afa86ecf7185b47b663f8717177ce70"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a6afa86ecf7185b47b663f8717177ce70">new_texture</a> (const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *size, <a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> alpha)</td></tr>
+<tr class="memitem:a6afa86ecf7185b47b663f8717177ce70" id="r_a6afa86ecf7185b47b663f8717177ce70"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a6afa86ecf7185b47b663f8717177ce70">new_texture</a> (const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *size, <a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a> alpha)</td></tr>
 <tr class="separator:a6afa86ecf7185b47b663f8717177ce70"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b2d02e333f84ea64de019adfc91e3fe" id="r_a1b2d02e333f84ea64de019adfc91e3fe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a1b2d02e333f84ea64de019adfc91e3fe">texture_upload_gl</a> (<a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> *texture)</td></tr>
+<tr class="memitem:a1b2d02e333f84ea64de019adfc91e3fe" id="r_a1b2d02e333f84ea64de019adfc91e3fe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a1b2d02e333f84ea64de019adfc91e3fe">texture_upload_gl</a> (<a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> *texture)</td></tr>
 <tr class="separator:a1b2d02e333f84ea64de019adfc91e3fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac8f66e67da6d5dabf0e20c8404a9e359" id="r_ac8f66e67da6d5dabf0e20c8404a9e359"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#ac8f66e67da6d5dabf0e20c8404a9e359">resize_texture</a> (<a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> *texture, const <a class="el" href="libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d">Vector2</a> *new_size)</td></tr>
 <tr class="separator:ac8f66e67da6d5dabf0e20c8404a9e359"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -256,7 +264,7 @@ Functions</h2></td></tr>
 <tr class="separator:a1367e6cdfbb28d89f995ed1c1c304474"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a79c99d0204a1a105d607a732727df67c" id="r_a79c99d0204a1a105d607a732727df67c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a79c99d0204a1a105d607a732727df67c">new_texture_from_file</a> (const char *path)</td></tr>
 <tr class="separator:a79c99d0204a1a105d607a732727df67c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4f44c1daf5ef4da04877e134951c2b30" id="r_a4f44c1daf5ef4da04877e134951c2b30"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a4f44c1daf5ef4da04877e134951c2b30">new_texture_from_surface</a> (SDL_Surface *surface)</td></tr>
+<tr class="memitem:a4f44c1daf5ef4da04877e134951c2b30" id="r_a4f44c1daf5ef4da04877e134951c2b30"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a4f44c1daf5ef4da04877e134951c2b30">new_texture_from_surface</a> (<a class="el" href="libcngraphic_8h.html#ad894d177fae95d7a1c0d23597b69e569">SDL_Surface</a> *surface)</td></tr>
 <tr class="separator:a4f44c1daf5ef4da04877e134951c2b30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee52185f0055404ad1d7116de1f2d516" id="r_aee52185f0055404ad1d7116de1f2d516"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#aee52185f0055404ad1d7116de1f2d516">clear_texture</a> (<a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> *texture, <a class="el" href="libcngraphic_8h.html#a0b2773fdce5fa81de32a2e7a552ff37d">cncolor</a> color)</td></tr>
 <tr class="separator:aee52185f0055404ad1d7116de1f2d516"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -266,31 +274,33 @@ Functions</h2></td></tr>
 <tr class="separator:a4e84f8e66e3368fded26a67b371ce9b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a53831b3ef6b9fc27160b293cacc35b8b" id="r_a53831b3ef6b9fc27160b293cacc35b8b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a53831b3ef6b9fc27160b293cacc35b8b">draw_rect</a> (<a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> *texture, const <a class="el" href="libcncore_8h.html#a44e2d24ab2a21b90d03880cab9cc6d16">Rect</a> *rect, <a class="el" href="libcngraphic_8h.html#a0b2773fdce5fa81de32a2e7a552ff37d">cncolor</a> color)</td></tr>
 <tr class="separator:a53831b3ef6b9fc27160b293cacc35b8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad91cb965c5731a6b9e29ef9f68272e7c" id="r_ad91cb965c5731a6b9e29ef9f68272e7c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#ad91cb965c5731a6b9e29ef9f68272e7c">new_texture_from_buffer</a> (const void *buffer, size_t size)</td></tr>
+<tr class="separator:ad91cb965c5731a6b9e29ef9f68272e7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a03d48464911484eff9ffa228302a51ec" id="r_a03d48464911484eff9ffa228302a51ec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a03d48464911484eff9ffa228302a51ec">delete_texture</a> (<a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> *texture)</td></tr>
 <tr class="separator:a03d48464911484eff9ffa228302a51ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15e6e6d395b8e1cb8b169a0a1d2c27cc" id="r_a15e6e6d395b8e1cb8b169a0a1d2c27cc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcngraphic_8h.html#a5fc44cc59f6ddab0d0b7a09326031a29">Window</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a15e6e6d395b8e1cb8b169a0a1d2c27cc">new_window</a> (const char *<a class="el" href="build_8h.html#a8f8f80d37794cde9472343e4487ba3eb">name</a>, const <a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> *icon, const <a class="el" href="libcngraphic_8h.html#a11fee8bdf914a878a155af5fea79040b">Videomode</a> *video_mode)</td></tr>
 <tr class="separator:a15e6e6d395b8e1cb8b169a0a1d2c27cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a7c3d26c77a6091d5ab15ac0ac59d1c" id="r_a8a7c3d26c77a6091d5ab15ac0ac59d1c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a8a7c3d26c77a6091d5ab15ac0ac59d1c">set_vsync_window</a> (<a class="el" href="libcngraphic_8h.html#a5fc44cc59f6ddab0d0b7a09326031a29">Window</a> *window, <a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> value)</td></tr>
+<tr class="memitem:a8a7c3d26c77a6091d5ab15ac0ac59d1c" id="r_a8a7c3d26c77a6091d5ab15ac0ac59d1c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a8a7c3d26c77a6091d5ab15ac0ac59d1c">set_vsync_window</a> (<a class="el" href="libcngraphic_8h.html#a5fc44cc59f6ddab0d0b7a09326031a29">Window</a> *window, <a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a> value)</td></tr>
 <tr class="separator:a8a7c3d26c77a6091d5ab15ac0ac59d1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3a698eff2866de9c9bb2c2e756b09c45" id="r_a3a698eff2866de9c9bb2c2e756b09c45"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a3a698eff2866de9c9bb2c2e756b09c45">get_vsync_window</a> (const <a class="el" href="libcngraphic_8h.html#a5fc44cc59f6ddab0d0b7a09326031a29">Window</a> *window)</td></tr>
+<tr class="memitem:a3a698eff2866de9c9bb2c2e756b09c45" id="r_a3a698eff2866de9c9bb2c2e756b09c45"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a3a698eff2866de9c9bb2c2e756b09c45">get_vsync_window</a> (const <a class="el" href="libcngraphic_8h.html#a5fc44cc59f6ddab0d0b7a09326031a29">Window</a> *window)</td></tr>
 <tr class="separator:a3a698eff2866de9c9bb2c2e756b09c45"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af446d8e75bc41851934c504641a718f0" id="r_af446d8e75bc41851934c504641a718f0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#af446d8e75bc41851934c504641a718f0">set_closable_window</a> (<a class="el" href="libcngraphic_8h.html#a5fc44cc59f6ddab0d0b7a09326031a29">Window</a> *window, <a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> value)</td></tr>
+<tr class="memitem:af446d8e75bc41851934c504641a718f0" id="r_af446d8e75bc41851934c504641a718f0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#af446d8e75bc41851934c504641a718f0">set_closable_window</a> (<a class="el" href="libcngraphic_8h.html#a5fc44cc59f6ddab0d0b7a09326031a29">Window</a> *window, <a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a> value)</td></tr>
 <tr class="separator:af446d8e75bc41851934c504641a718f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aecbe7910db312f9643e34e685fce8773" id="r_aecbe7910db312f9643e34e685fce8773"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#aecbe7910db312f9643e34e685fce8773">get_closable_window</a> (const <a class="el" href="libcngraphic_8h.html#a5fc44cc59f6ddab0d0b7a09326031a29">Window</a> *window)</td></tr>
+<tr class="memitem:aecbe7910db312f9643e34e685fce8773" id="r_aecbe7910db312f9643e34e685fce8773"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#aecbe7910db312f9643e34e685fce8773">get_closable_window</a> (const <a class="el" href="libcngraphic_8h.html#a5fc44cc59f6ddab0d0b7a09326031a29">Window</a> *window)</td></tr>
 <tr class="separator:aecbe7910db312f9643e34e685fce8773"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ab0b7f54ad6a967feacf99b191bbffa" id="r_a8ab0b7f54ad6a967feacf99b191bbffa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a8ab0b7f54ad6a967feacf99b191bbffa">set_hidden_window</a> (<a class="el" href="libcngraphic_8h.html#a5fc44cc59f6ddab0d0b7a09326031a29">Window</a> *window, <a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> value)</td></tr>
+<tr class="memitem:a8ab0b7f54ad6a967feacf99b191bbffa" id="r_a8ab0b7f54ad6a967feacf99b191bbffa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a8ab0b7f54ad6a967feacf99b191bbffa">set_hidden_window</a> (<a class="el" href="libcngraphic_8h.html#a5fc44cc59f6ddab0d0b7a09326031a29">Window</a> *window, <a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a> value)</td></tr>
 <tr class="separator:a8ab0b7f54ad6a967feacf99b191bbffa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3dbee739da56559fb218e865c97365e7" id="r_a3dbee739da56559fb218e865c97365e7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a3dbee739da56559fb218e865c97365e7">get_hidden_window</a> (const <a class="el" href="libcngraphic_8h.html#a5fc44cc59f6ddab0d0b7a09326031a29">Window</a> *window)</td></tr>
+<tr class="memitem:a3dbee739da56559fb218e865c97365e7" id="r_a3dbee739da56559fb218e865c97365e7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a3dbee739da56559fb218e865c97365e7">get_hidden_window</a> (const <a class="el" href="libcngraphic_8h.html#a5fc44cc59f6ddab0d0b7a09326031a29">Window</a> *window)</td></tr>
 <tr class="separator:a3dbee739da56559fb218e865c97365e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe14738351997bcb8e80b97791c66f5d" id="r_afe14738351997bcb8e80b97791c66f5d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#afe14738351997bcb8e80b97791c66f5d">set_inactive_window</a> (<a class="el" href="libcngraphic_8h.html#a5fc44cc59f6ddab0d0b7a09326031a29">Window</a> *window, <a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> value)</td></tr>
+<tr class="memitem:afe14738351997bcb8e80b97791c66f5d" id="r_afe14738351997bcb8e80b97791c66f5d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#afe14738351997bcb8e80b97791c66f5d">set_inactive_window</a> (<a class="el" href="libcngraphic_8h.html#a5fc44cc59f6ddab0d0b7a09326031a29">Window</a> *window, <a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a> value)</td></tr>
 <tr class="separator:afe14738351997bcb8e80b97791c66f5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab29e829e15c9cdfba5e8152315732868" id="r_ab29e829e15c9cdfba5e8152315732868"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#ab29e829e15c9cdfba5e8152315732868">get_inactive_window</a> (const <a class="el" href="libcngraphic_8h.html#a5fc44cc59f6ddab0d0b7a09326031a29">Window</a> *window)</td></tr>
+<tr class="memitem:ab29e829e15c9cdfba5e8152315732868" id="r_ab29e829e15c9cdfba5e8152315732868"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#ab29e829e15c9cdfba5e8152315732868">get_inactive_window</a> (const <a class="el" href="libcngraphic_8h.html#a5fc44cc59f6ddab0d0b7a09326031a29">Window</a> *window)</td></tr>
 <tr class="separator:ab29e829e15c9cdfba5e8152315732868"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa2335ad8474674a041e606a759b122c" id="r_afa2335ad8474674a041e606a759b122c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#afa2335ad8474674a041e606a759b122c">update_window</a> (<a class="el" href="libcngraphic_8h.html#a5fc44cc59f6ddab0d0b7a09326031a29">Window</a> *window)</td></tr>
 <tr class="separator:afa2335ad8474674a041e606a759b122c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d34be1667f34d2473a832b4f8a9eca0" id="r_a2d34be1667f34d2473a832b4f8a9eca0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a2d34be1667f34d2473a832b4f8a9eca0">draw_window</a> (<a class="el" href="libcngraphic_8h.html#a5fc44cc59f6ddab0d0b7a09326031a29">Window</a> *window)</td></tr>
 <tr class="separator:a2d34be1667f34d2473a832b4f8a9eca0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac4133c5aaed3d5ed6d84003d009062f2" id="r_ac4133c5aaed3d5ed6d84003d009062f2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#ac4133c5aaed3d5ed6d84003d009062f2">has_event_window</a> (const <a class="el" href="libcngraphic_8h.html#a5fc44cc59f6ddab0d0b7a09326031a29">Window</a> *window, <a class="el" href="libcngraphic_8h.html#ad45875ce61fd859f5134e43571880a0b">cn_event</a> type)</td></tr>
+<tr class="memitem:ac4133c5aaed3d5ed6d84003d009062f2" id="r_ac4133c5aaed3d5ed6d84003d009062f2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#ac4133c5aaed3d5ed6d84003d009062f2">has_event_window</a> (const <a class="el" href="libcngraphic_8h.html#a5fc44cc59f6ddab0d0b7a09326031a29">Window</a> *window, <a class="el" href="libcngraphic_8h.html#ad45875ce61fd859f5134e43571880a0b">cn_event</a> type)</td></tr>
 <tr class="separator:ac4133c5aaed3d5ed6d84003d009062f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afaccdfdd39ad5fa2ad8ecd9615cc1700" id="r_afaccdfdd39ad5fa2ad8ecd9615cc1700"><td class="memItemLeft" align="right" valign="top">const struct <a class="el" href="structevent__map__entry__s.html">event_map_entry_s</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#afaccdfdd39ad5fa2ad8ecd9615cc1700">get_event_window</a> (const <a class="el" href="libcngraphic_8h.html#a5fc44cc59f6ddab0d0b7a09326031a29">Window</a> *window, <a class="el" href="libcngraphic_8h.html#ad45875ce61fd859f5134e43571880a0b">cn_event</a> type)</td></tr>
 <tr class="separator:afaccdfdd39ad5fa2ad8ecd9615cc1700"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -304,11 +314,11 @@ Functions</h2></td></tr>
 <tr class="separator:a85b9dfd4cc9b7d77d5f5f79070fb87b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a171fcb0038e83f54f37606e60876ea9c" id="r_a171fcb0038e83f54f37606e60876ea9c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcngraphic_8h.html#ac168ed2f37bffc15af0623a2b45c207f">WindowUniverse</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a171fcb0038e83f54f37606e60876ea9c">new_window_universe</a> (void)</td></tr>
 <tr class="separator:a171fcb0038e83f54f37606e60876ea9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a67df556120ccab945a2754bc36315c03" id="r_a67df556120ccab945a2754bc36315c03"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a67df556120ccab945a2754bc36315c03">are_all_window_closed</a> (const <a class="el" href="libcngraphic_8h.html#ac168ed2f37bffc15af0623a2b45c207f">WindowUniverse</a> *universe)</td></tr>
+<tr class="memitem:a67df556120ccab945a2754bc36315c03" id="r_a67df556120ccab945a2754bc36315c03"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a67df556120ccab945a2754bc36315c03">are_all_window_closed</a> (const <a class="el" href="libcngraphic_8h.html#ac168ed2f37bffc15af0623a2b45c207f">WindowUniverse</a> *universe)</td></tr>
 <tr class="separator:a67df556120ccab945a2754bc36315c03"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3ad73b86968872fb9168b4f117d4b2a9" id="r_a3ad73b86968872fb9168b4f117d4b2a9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a3ad73b86968872fb9168b4f117d4b2a9">is_window_closed</a> (const <a class="el" href="libcngraphic_8h.html#ac168ed2f37bffc15af0623a2b45c207f">WindowUniverse</a> *universe, uint32_t window_id)</td></tr>
+<tr class="memitem:a3ad73b86968872fb9168b4f117d4b2a9" id="r_a3ad73b86968872fb9168b4f117d4b2a9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a3ad73b86968872fb9168b4f117d4b2a9">is_window_closed</a> (const <a class="el" href="libcngraphic_8h.html#ac168ed2f37bffc15af0623a2b45c207f">WindowUniverse</a> *universe, uint32_t window_id)</td></tr>
 <tr class="separator:a3ad73b86968872fb9168b4f117d4b2a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9eb1863a4e5ae2747e9d334a62cce175" id="r_a9eb1863a4e5ae2747e9d334a62cce175"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a9eb1863a4e5ae2747e9d334a62cce175">is_window_closed_addr</a> (const <a class="el" href="libcngraphic_8h.html#ac168ed2f37bffc15af0623a2b45c207f">WindowUniverse</a> *universe, void *p)</td></tr>
+<tr class="memitem:a9eb1863a4e5ae2747e9d334a62cce175" id="r_a9eb1863a4e5ae2747e9d334a62cce175"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a9eb1863a4e5ae2747e9d334a62cce175">is_window_closed_addr</a> (const <a class="el" href="libcngraphic_8h.html#ac168ed2f37bffc15af0623a2b45c207f">WindowUniverse</a> *universe, void *p)</td></tr>
 <tr class="separator:a9eb1863a4e5ae2747e9d334a62cce175"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa2ac8d6c033498608d615384e1565f9b" id="r_aa2ac8d6c033498608d615384e1565f9b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcngraphic_8h.html#a5fc44cc59f6ddab0d0b7a09326031a29">Window</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#aa2ac8d6c033498608d615384e1565f9b">get_window_in_universe</a> (const <a class="el" href="libcngraphic_8h.html#ac168ed2f37bffc15af0623a2b45c207f">WindowUniverse</a> *universe, uint32_t window_id)</td></tr>
 <tr class="separator:aa2ac8d6c033498608d615384e1565f9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -342,7 +352,7 @@ Functions</h2></td></tr>
 <tr class="separator:a13bbf947bd40f40ec24c1c64396a8ff2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeeeb8dfc34f66700cda8f0a19c988077" id="r_aeeeb8dfc34f66700cda8f0a19c988077"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#aeeeb8dfc34f66700cda8f0a19c988077">delete_event_map</a> (struct <a class="el" href="structevent__map__entry__s.html">event_map_entry_s</a> *event_map)</td></tr>
 <tr class="separator:aeeeb8dfc34f66700cda8f0a19c988077"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a76500eae9be8678c5e2191b7e8c492e7" id="r_a76500eae9be8678c5e2191b7e8c492e7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a76500eae9be8678c5e2191b7e8c492e7">start_graphics</a> (void)</td></tr>
+<tr class="memitem:a76500eae9be8678c5e2191b7e8c492e7" id="r_a76500eae9be8678c5e2191b7e8c492e7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a76500eae9be8678c5e2191b7e8c492e7">start_graphics</a> (void)</td></tr>
 <tr class="separator:a76500eae9be8678c5e2191b7e8c492e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6007f27bf9e3331e5916bd61b865e727" id="r_a6007f27bf9e3331e5916bd61b865e727"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a6007f27bf9e3331e5916bd61b865e727">end_graphics</a> (void)</td></tr>
 <tr class="separator:a6007f27bf9e3331e5916bd61b865e727"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -354,7 +364,7 @@ Functions</h2></td></tr>
 <tr class="separator:a802b355a0d22d93a04106c3e3f835433"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a14fc4a68514386c582b383f73dd8357c" id="r_a14fc4a68514386c582b383f73dd8357c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a14fc4a68514386c582b383f73dd8357c">mesh_draw_gl</a> (<a class="el" href="structMesh.html">Mesh</a> *m)</td></tr>
 <tr class="separator:a14fc4a68514386c582b383f73dd8357c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a72fce26160c250bd11da7dcf05f8b8fe" id="r_a72fce26160c250bd11da7dcf05f8b8fe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a72fce26160c250bd11da7dcf05f8b8fe">mesh_upload_gl</a> (<a class="el" href="structMesh.html">Mesh</a> *m)</td></tr>
+<tr class="memitem:a72fce26160c250bd11da7dcf05f8b8fe" id="r_a72fce26160c250bd11da7dcf05f8b8fe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#a72fce26160c250bd11da7dcf05f8b8fe">mesh_upload_gl</a> (<a class="el" href="structMesh.html">Mesh</a> *m)</td></tr>
 <tr class="separator:a72fce26160c250bd11da7dcf05f8b8fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae4e77fb2db668a230d818fb1d1ce9dd" id="r_aae4e77fb2db668a230d818fb1d1ce9dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcngraphic_8h.html#aae4e77fb2db668a230d818fb1d1ce9dd">delete_mesh</a> (<a class="el" href="structMesh.html">Mesh</a> *mesh)</td></tr>
 <tr class="separator:aae4e77fb2db668a230d818fb1d1ce9dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -415,8 +425,8 @@ Functions</h2></td></tr>
 <div class="line">                <span class="keywordflow">break</span>;                                                           \</div>
 <div class="line">        }                                                                        \</div>
 <div class="line">    }</div>
-<div class="ttc" id="alibcngraphic_8h_html_a68f9fcaba986f3dcdf56316330102559a903f3798fd8ab4ee1f84117589009a23"><div class="ttname"><a href="libcngraphic_8h.html#a68f9fcaba986f3dcdf56316330102559a903f3798fd8ab4ee1f84117589009a23">R_API_GL</a></div><div class="ttdeci">@ R_API_GL</div><div class="ttdef"><b>Definition</b> libcngraphic.h:79</div></div>
-<div class="ttc" id="alibcngraphic_8h_html_a68f9fcaba986f3dcdf56316330102559a9fd5fd6e7280133b8d973ebee204e89c"><div class="ttname"><a href="libcngraphic_8h.html#a68f9fcaba986f3dcdf56316330102559a9fd5fd6e7280133b8d973ebee204e89c">R_API_SDL</a></div><div class="ttdeci">@ R_API_SDL</div><div class="ttdef"><b>Definition</b> libcngraphic.h:78</div></div>
+<div class="ttc" id="alibcngraphic_8h_html_a68f9fcaba986f3dcdf56316330102559a903f3798fd8ab4ee1f84117589009a23"><div class="ttname"><a href="libcngraphic_8h.html#a68f9fcaba986f3dcdf56316330102559a903f3798fd8ab4ee1f84117589009a23">R_API_GL</a></div><div class="ttdeci">@ R_API_GL</div><div class="ttdef"><b>Definition</b> libcngraphic.h:84</div></div>
+<div class="ttc" id="alibcngraphic_8h_html_a68f9fcaba986f3dcdf56316330102559a9fd5fd6e7280133b8d973ebee204e89c"><div class="ttname"><a href="libcngraphic_8h.html#a68f9fcaba986f3dcdf56316330102559a9fd5fd6e7280133b8d973ebee204e89c">R_API_SDL</a></div><div class="ttdeci">@ R_API_SDL</div><div class="ttdef"><b>Definition</b> libcngraphic.h:83</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -443,6 +453,76 @@ Functions</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">typedef struct <a class="el" href="structevent__s.html">event_s</a> <a class="el" href="libcngraphic_8h.html#a60921eba80b4569fa79c67165460331e">Event</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0d64dcf67c9685d09cbe051448e1b3f3" name="a0d64dcf67c9685d09cbe051448e1b3f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d64dcf67c9685d09cbe051448e1b3f3">&#9670;&#160;</a></span>SDL_GLContext</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void* <a class="el" href="libcngraphic_8h.html#a0d64dcf67c9685d09cbe051448e1b3f3">SDL_GLContext</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aaf0bf7d020754fc614fe06552ea4d5d4" name="aaf0bf7d020754fc614fe06552ea4d5d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf0bf7d020754fc614fe06552ea4d5d4">&#9670;&#160;</a></span>SDL_Renderer</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="libcngraphic_8h.html#aaf0bf7d020754fc614fe06552ea4d5d4">SDL_Renderer</a> <a class="el" href="libcngraphic_8h.html#aaf0bf7d020754fc614fe06552ea4d5d4">SDL_Renderer</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad894d177fae95d7a1c0d23597b69e569" name="ad894d177fae95d7a1c0d23597b69e569"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad894d177fae95d7a1c0d23597b69e569">&#9670;&#160;</a></span>SDL_Surface</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="libcngraphic_8h.html#ad894d177fae95d7a1c0d23597b69e569">SDL_Surface</a> <a class="el" href="libcngraphic_8h.html#ad894d177fae95d7a1c0d23597b69e569">SDL_Surface</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a17850d7f1f5de457727cb3cf66b3a7f5" name="a17850d7f1f5de457727cb3cf66b3a7f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17850d7f1f5de457727cb3cf66b3a7f5">&#9670;&#160;</a></span>SDL_Texture</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="libcngraphic_8h.html#a17850d7f1f5de457727cb3cf66b3a7f5">SDL_Texture</a> <a class="el" href="libcngraphic_8h.html#a17850d7f1f5de457727cb3cf66b3a7f5">SDL_Texture</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a55a196c7d3b8497538632c79ae1e6392" name="a55a196c7d3b8497538632c79ae1e6392"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a55a196c7d3b8497538632c79ae1e6392">&#9670;&#160;</a></span>SDL_Window</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="libcngraphic_8h.html#a55a196c7d3b8497538632c79ae1e6392">SDL_Window</a> <a class="el" href="libcngraphic_8h.html#a55a196c7d3b8497538632c79ae1e6392">SDL_Window</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -678,7 +758,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> are_all_window_closed </td>
+          <td class="memname"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a> are_all_window_closed </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="libcngraphic_8h.html#ac168ed2f37bffc15af0623a2b45c207f">WindowUniverse</a> *&#160;</td>
           <td class="paramname"><em>universe</em></td><td>)</td>
@@ -1132,7 +1212,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramtype"><a class="el" href="libcngraphic_8h.html#aaf0bf7d020754fc614fe06552ea4d5d4">SDL_Renderer</a> *&#160;</td>
           <td class="paramname"><em>__dest_renderer</em>, </td>
         </tr>
         <tr>
@@ -1282,7 +1362,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> get_closable_window </td>
+          <td class="memname"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a> get_closable_window </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="libcngraphic_8h.html#a5fc44cc59f6ddab0d0b7a09326031a29">Window</a> *&#160;</td>
           <td class="paramname"><em>window</em></td><td>)</td>
@@ -1328,7 +1408,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> get_hidden_window </td>
+          <td class="memname"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a> get_hidden_window </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="libcngraphic_8h.html#a5fc44cc59f6ddab0d0b7a09326031a29">Window</a> *&#160;</td>
           <td class="paramname"><em>window</em></td><td>)</td>
@@ -1346,7 +1426,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> get_inactive_window </td>
+          <td class="memname"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a> get_inactive_window </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="libcngraphic_8h.html#a5fc44cc59f6ddab0d0b7a09326031a29">Window</a> *&#160;</td>
           <td class="paramname"><em>window</em></td><td>)</td>
@@ -1382,7 +1462,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> get_vsync_window </td>
+          <td class="memname"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a> get_vsync_window </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="libcngraphic_8h.html#a5fc44cc59f6ddab0d0b7a09326031a29">Window</a> *&#160;</td>
           <td class="paramname"><em>window</em></td><td>)</td>
@@ -1496,7 +1576,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> has_event_window </td>
+          <td class="memname"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a> has_event_window </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="libcngraphic_8h.html#a5fc44cc59f6ddab0d0b7a09326031a29">Window</a> *&#160;</td>
           <td class="paramname"><em>window</em>, </td>
@@ -1524,7 +1604,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> is_window_closed </td>
+          <td class="memname"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a> is_window_closed </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="libcngraphic_8h.html#ac168ed2f37bffc15af0623a2b45c207f">WindowUniverse</a> *&#160;</td>
           <td class="paramname"><em>universe</em>, </td>
@@ -1552,7 +1632,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> is_window_closed_addr </td>
+          <td class="memname"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a> is_window_closed_addr </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="libcngraphic_8h.html#ac168ed2f37bffc15af0623a2b45c207f">WindowUniverse</a> *&#160;</td>
           <td class="paramname"><em>universe</em>, </td>
@@ -1638,7 +1718,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> mesh_upload_gl </td>
+          <td class="memname"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a> mesh_upload_gl </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structMesh.html">Mesh</a> *&#160;</td>
           <td class="paramname"><em>m</em></td><td>)</td>
@@ -1848,8 +1928,36 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a>&#160;</td>
           <td class="paramname"><em>alpha</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad91cb965c5731a6b9e29ef9f68272e7c" name="ad91cb965c5731a6b9e29ef9f68272e7c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad91cb965c5731a6b9e29ef9f68272e7c">&#9670;&#160;</a></span>new_texture_from_buffer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> * new_texture_from_buffer </td>
+          <td>(</td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1888,7 +1996,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> * new_texture_from_surface </td>
           <td>(</td>
-          <td class="paramtype">SDL_Surface *&#160;</td>
+          <td class="paramtype"><a class="el" href="libcngraphic_8h.html#ad894d177fae95d7a1c0d23597b69e569">SDL_Surface</a> *&#160;</td>
           <td class="paramname"><em>surface</em></td><td>)</td>
           <td></td>
         </tr>
@@ -2162,7 +2270,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a>&#160;</td>
           <td class="paramname"><em>value</em>&#160;</td>
         </tr>
         <tr>
@@ -2190,7 +2298,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a>&#160;</td>
           <td class="paramname"><em>value</em>&#160;</td>
         </tr>
         <tr>
@@ -2218,7 +2326,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a>&#160;</td>
           <td class="paramname"><em>value</em>&#160;</td>
         </tr>
         <tr>
@@ -2274,7 +2382,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a>&#160;</td>
           <td class="paramname"><em>value</em>&#160;</td>
         </tr>
         <tr>
@@ -2294,7 +2402,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> start_graphics </td>
+          <td class="memname"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a> start_graphics </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -2312,7 +2420,7 @@ Functions</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="libcncore_8h.html#a4ae17cbe3aeebfefbce33d5789ae3aeb">cnbool</a> texture_upload_gl </td>
+          <td class="memname"><a class="el" href="libcncore_8h.html#abf8b6b5806339a37891ff6af0e1179b5">cnbool</a> texture_upload_gl </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="libcngraphic_8h.html#a19da3cd71374013c1d81d51ae71cba99">Texture</a> *&#160;</td>
           <td class="paramname"><em>texture</em></td><td>)</td>

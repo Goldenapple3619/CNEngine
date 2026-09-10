@@ -6,89 +6,90 @@
 \DoxyCodeLine{00002\ \textcolor{preprocessor}{\ \ \ \ \#define\ \_LIBCNAUDIO\_H\_}}
 \DoxyCodeLine{00003\ }
 \DoxyCodeLine{00004\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}\mbox{\hyperlink{libcncore_8h}{libcncore.h}}"{}}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\ \ \ \ \#include\ <SDL\_mixer.h>}}
-\DoxyCodeLine{00006\ }
-\DoxyCodeLine{00007\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
-\DoxyCodeLine{00008\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549a957a911fad07463a3ec739599bedf1b2}{CNAUDIO\_EVENT\_NOOP}}\ =\ 0x00,}
-\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549a68bd9c65e16a47e95e469878895b57b8}{CNAUDIO\_EVENT\_PLAY}}\ =\ 0x01,}
-\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549a4fa165380375e572a59fb06f53854e0a}{CNAUDIO\_EVENT\_PAUSE}}\ =\ 0x02,}
-\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549a85130b71bd5f733bb677c532e414bb96}{ECNAUDIO\_VENT\_RESTART}}\ =\ 0x03,}
-\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549a9989ab0524cd415d4a47fff75deb00da}{CNAUDIO\_EVENT\_VOLUME}}\ =\ 0x04,\ \textcolor{comment}{//\ value=(volume:\ int)}}
-\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549abef2f5d27f011fd897483f57bbb4455b}{CNAUDIO\_EVENT\_SEQ\_END}}\ =\ 0x05,\ \textcolor{comment}{//\ value=(force:\ bool)}}
-\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549a37c7fee83dfef9e4edd61c17957727fe}{CNAUDIO\_EVENT\_PANNING}}\ =\ 0x06\ \ \textcolor{comment}{//\ value=((left:\ int,right:\ int))}}
-\DoxyCodeLine{00015\ \ \ \ \ \}\ \mbox{\hyperlink{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549}{audio\_event}};}
-\DoxyCodeLine{00016\ }
-\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaudio__event__s}{audio\_event\_s}}\ \{}
-\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549}{audio\_event}}\ \mbox{\hyperlink{structaudio__event__s_a1ad96f4840dc2719bd0eb0c3759ec81b}{type}};}
-\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structcn__value}{cn\_value}}\ \mbox{\hyperlink{structaudio__event__s_a3bdad2be34f55ac507ce4a88d9518cbb}{value}};}
-\DoxyCodeLine{00020\ }
-\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ad8ed72626025da9fbaff30ec74a71d40}{cntime}}\ \mbox{\hyperlink{structaudio__event__s_a42e876813614367eff8bd9ade02dab67}{start\_in}};\ \textcolor{comment}{//\ ms}}
-\DoxyCodeLine{00022\ \ \ \ \ \};}
-\DoxyCodeLine{00023\ }
-\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaudio__sequence__s}{audio\_sequence\_s}}\ \{}
-\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549}{audio\_event}}\ *\mbox{\hyperlink{structaudio__sequence__s_aa9d6cbaa660a9b48bc7227ee3d658680}{event\_list}};}
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structaudio__sequence__s_abbcc7c4829a5c9f81ddff75df57fec46}{size}};}
-\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structaudio__sequence__s_a5a163ad4241aa61eda9301cf02a49e75}{capacity}};}
-\DoxyCodeLine{00028\ }
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ad8ed72626025da9fbaff30ec74a71d40}{cntime}}\ \mbox{\hyperlink{structaudio__sequence__s_aad5f6a90c2540cddcb4dac778e5dc8c1}{sequence\_timer}};}
-\DoxyCodeLine{00030\ \ \ \ \ \};}
-\DoxyCodeLine{00031\ }
-\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaudio__s}{audio\_s}}\ \{}
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ Mix\_Chunk\ *\mbox{\hyperlink{structaudio__s_a467931bb9119b0dab85ff6d4748bcf6b}{audio\_ptr}};}
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaudio__sequence__s}{audio\_sequence\_s}}\ \mbox{\hyperlink{structaudio__s_ab35898d87b61b5d1e9c96079f98d9a8d}{sequence}};}
-\DoxyCodeLine{00035\ }
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ int32\_t\ \mbox{\hyperlink{structaudio__s_a5c4e7f5052a0a02cc8be4520b0e7ae64}{playing\_on}};}
-\DoxyCodeLine{00037\ }
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{structaudio__s_acb99d3fc179186ba4ddb2640f28debb8}{is\_playing}};}
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{structaudio__s_ae587f58130fc9fed43cb46d0dfa11b7c}{is\_ended}};}
-\DoxyCodeLine{00040\ }
-\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a45176b455e70053cf81874c72e0aa5fe}{cn\_method}}\ \mbox{\hyperlink{structaudio__s_a361d481856aca855362dbe27b1c6740a}{on\_end}};}
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structobject__s}{Object}}\ *\mbox{\hyperlink{structaudio__s_ad985560c3cae0ce5d247032be2875eb9}{on\_end\_obj}};}
-\DoxyCodeLine{00043\ \ \ \ \ \};}
-\DoxyCodeLine{00044\ }
-\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaudio__vector__s}{audio\_vector\_s}}\ \{}
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaudio__s}{audio\_s}}\ **\mbox{\hyperlink{structaudio__vector__s_a73f0c9299a505c60a86a305f77d995c9}{audios}};}
-\DoxyCodeLine{00047\ }
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structaudio__vector__s_a0f385d59e52b957af16e3d75f7186582}{size}};}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structaudio__vector__s_a6126fefe01e60456ee86e266afc33c96}{capacity}};}
-\DoxyCodeLine{00050\ \ \ \ \ \};}
-\DoxyCodeLine{00051\ }
-\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structfree__channels__arr__s}{free\_channels\_arr\_s}}\ \{}
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ int32\_t\ *\mbox{\hyperlink{structfree__channels__arr__s_a5914b5f335c25bae49b6b0b226659b8d}{free\_channels\_arr}};}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structfree__channels__arr__s_a8a2098b0e270fb391d4df5385c95b613}{size}};}
-\DoxyCodeLine{00055\ \ \ \ \ \};}
-\DoxyCodeLine{00056\ }
-\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaudio__event__s}{audio\_event\_s}}\ \mbox{\hyperlink{structaudio__event__s}{AudioEvent}};}
-\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaudio__sequence__s}{audio\_sequence\_s}}\ \mbox{\hyperlink{structaudio__sequence__s}{AudioSequence}};}
-\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaudio__s}{audio\_s}}\ \mbox{\hyperlink{structaudio__s}{Audio}};}
-\DoxyCodeLine{00060\ }
-\DoxyCodeLine{00061\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{libcnaudio_8h_ab9d4189a71cbbcb47bfb74c0c6ce9e41}{start\_audio}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00062\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcnaudio_8h_a4c7ebe7634d17e2040e376d8a0249e94}{end\_audio}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00063\ }
-\DoxyCodeLine{00064\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structaudio__s}{Audio}}\ *\mbox{\hyperlink{libcnaudio_8h_a3b2864ca0048da63a6d9e7b283d35aec}{new\_audio}}(\textcolor{keyword}{const}\ Mix\_Chunk\ *audio\_chunk\_ptr,\ \mbox{\hyperlink{libcncore_8h_a45176b455e70053cf81874c72e0aa5fe}{cn\_method}}\ on\_audio\_end,\ \mbox{\hyperlink{structobject__s}{Object}}\ *\mbox{\hyperlink{structaudio__s_ad985560c3cae0ce5d247032be2875eb9}{on\_end\_obj}});}
-\DoxyCodeLine{00065\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcnaudio_8h_a2a360d5ddb2751b2ff79b765d01920c6}{audio\_run\_sequence}}(\mbox{\hyperlink{structaudio__s}{Audio}}\ *audio,\ int32\_t\ delta\_time,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structfree__channels__arr__s}{free\_channels\_arr\_s}}\ *free\_channels);}
-\DoxyCodeLine{00066\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcnaudio_8h_a59f93501670dbb80b5890fba6b594f85}{play\_audio}}(\mbox{\hyperlink{structaudio__s}{Audio}}\ *audio,\ int32\_t\ channel);}
-\DoxyCodeLine{00067\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcnaudio_8h_aa1b1c553ab130ffad8539301bdff2f12}{set\_volume\_audio}}(\mbox{\hyperlink{structaudio__s}{Audio}}\ *audio,\ int32\_t\ volume);}
-\DoxyCodeLine{00068\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcnaudio_8h_a7649ea5f5a91dce7d2090140851f32b1}{set\_panning\_audio}}(\mbox{\hyperlink{structaudio__s}{Audio}}\ *audio,\ uint8\_t\ left,\ uint8\_t\ right);}
-\DoxyCodeLine{00069\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcnaudio_8h_a245b0a63e0bc546fcab1e6a78edb1f8c}{stop\_audio}}(\mbox{\hyperlink{structaudio__s}{Audio}}\ *audio);}
-\DoxyCodeLine{00070\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcnaudio_8h_aa7623c8a59ca473a5d47993b28d8cee9}{delete\_audio}}(\mbox{\hyperlink{structaudio__s}{Audio}}\ *audio);}
-\DoxyCodeLine{00071\ }
-\DoxyCodeLine{00072\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaudio__vector__s}{audio\_vector\_s}}\ *\mbox{\hyperlink{libcnaudio_8h_af9057de3e2ca5f3486bf6d480a7d598b}{new\_audio\_vector}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00073\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcnaudio_8h_adc5fa4df37ed000a5eccd0c49add5160}{delete\_audio\_vector}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structaudio__vector__s}{audio\_vector\_s}}\ *vec);}
-\DoxyCodeLine{00074\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ uint8\_t\ \mbox{\hyperlink{libcnaudio_8h_ae24a67eb35d088b851638cbdba4d9347}{resize\_audio\_vector}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structaudio__vector__s}{audio\_vector\_s}}\ *vec,\ \textcolor{keywordtype}{size\_t}\ new\_capacity);}
-\DoxyCodeLine{00075\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ uint8\_t\ \mbox{\hyperlink{libcnaudio_8h_a90125cf364f0cc8446e13a0e89add620}{insert\_audio\_vector}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structaudio__vector__s}{audio\_vector\_s}}\ *vec,\ \mbox{\hyperlink{structaudio__s}{Audio}}\ *value);}
-\DoxyCodeLine{00076\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcnaudio_8h_a0160bf0ef2dc6b141f67c423a00f7806}{remove\_audio\_vector}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structaudio__vector__s}{audio\_vector\_s}}\ *vec,\ \textcolor{keywordtype}{size\_t}\ i);}
-\DoxyCodeLine{00077\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcnaudio_8h_a9370a2639fc3b5d88e677a9af9a43793}{remove\_audio\_ordered\_vector}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structaudio__vector__s}{audio\_vector\_s}}\ *vec,\ \textcolor{keywordtype}{size\_t}\ i);}
-\DoxyCodeLine{00078\ }
-\DoxyCodeLine{00079\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcnaudio_8h_a1848667d6af9d44f22453472c4b4c285}{init\_audio\_sequence\_content}}(\mbox{\hyperlink{structaudio__sequence__s}{AudioSequence}}\ *seq);}
-\DoxyCodeLine{00080\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{libcnaudio_8h_a04e87e4e6b62c59a0142f220a79e8613}{audio\_sequence\_is\_empty}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaudio__sequence__s}{AudioSequence}}\ *seq);}
-\DoxyCodeLine{00081\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ \mbox{\hyperlink{libcnaudio_8h_a855e0520d8f1d3dd585bf6088998e3a2}{audio\_sequence\_pull\_event}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaudio__sequence__s}{AudioSequence}}\ *seq,\ \mbox{\hyperlink{structaudio__event__s}{AudioEvent}}\ *ev);}
-\DoxyCodeLine{00082\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcnaudio_8h_a4e4a0042cefa07f7c07c4bd6da2c71c2}{audio\_sequence\_push\_event}}(\mbox{\hyperlink{structaudio__sequence__s}{AudioSequence}}\ *seq,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaudio__event__s}{AudioEvent}}\ *ev);}
-\DoxyCodeLine{00083\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcnaudio_8h_a4b9ea8cbf17b15209069ce826e65fa76}{audio\_sequence\_increment}}(\mbox{\hyperlink{structaudio__sequence__s}{AudioSequence}}\ *seq,\ \textcolor{keywordtype}{double}\ delta\_time);}
-\DoxyCodeLine{00084\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcnaudio_8h_aa772a5a36486a671f5deaf865e7f4d5d}{delete\_audio\_sequence\_content}}(\mbox{\hyperlink{structaudio__sequence__s}{AudioSequence}}\ *seq);}
-\DoxyCodeLine{00085\ }
-\DoxyCodeLine{00086\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\mbox{\hyperlink{libcnaudio_8h_a398b3cb49c901d43739de1a63c9d202b}{new\_audio\_ctx}}(\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}\ skip\_init\_error);}
-\DoxyCodeLine{00087\ }
-\DoxyCodeLine{00088\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{libcnaudio_8h_a0ec5298fec4179ed9c265e68f007755e}{Mix\_Chunk}}\ \mbox{\hyperlink{libcnaudio_8h_a0ec5298fec4179ed9c265e68f007755e}{Mix\_Chunk}};}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549a957a911fad07463a3ec739599bedf1b2}{CNAUDIO\_EVENT\_NOOP}}\ =\ 0x00,}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549a68bd9c65e16a47e95e469878895b57b8}{CNAUDIO\_EVENT\_PLAY}}\ =\ 0x01,}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549a4fa165380375e572a59fb06f53854e0a}{CNAUDIO\_EVENT\_PAUSE}}\ =\ 0x02,}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549a85130b71bd5f733bb677c532e414bb96}{ECNAUDIO\_VENT\_RESTART}}\ =\ 0x03,}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549a9989ab0524cd415d4a47fff75deb00da}{CNAUDIO\_EVENT\_VOLUME}}\ =\ 0x04,\ \textcolor{comment}{//\ value=(volume:\ int)}}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549abef2f5d27f011fd897483f57bbb4455b}{CNAUDIO\_EVENT\_SEQ\_END}}\ =\ 0x05,\ \textcolor{comment}{//\ value=(force:\ bool)}}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549a37c7fee83dfef9e4edd61c17957727fe}{CNAUDIO\_EVENT\_PANNING}}\ =\ 0x06\ \ \textcolor{comment}{//\ value=((left:\ int,right:\ int))}}
+\DoxyCodeLine{00016\ \ \ \ \ \}\ \mbox{\hyperlink{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549}{audio\_event}};}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaudio__event__s}{audio\_event\_s}}\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549}{audio\_event}}\ \mbox{\hyperlink{structaudio__event__s_a1ad96f4840dc2719bd0eb0c3759ec81b}{type}};}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structcn__value}{cn\_value}}\ \mbox{\hyperlink{structaudio__event__s_a3bdad2be34f55ac507ce4a88d9518cbb}{value}};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ad8ed72626025da9fbaff30ec74a71d40}{cntime}}\ \mbox{\hyperlink{structaudio__event__s_a42e876813614367eff8bd9ade02dab67}{start\_in}};\ \textcolor{comment}{//\ ms}}
+\DoxyCodeLine{00023\ \ \ \ \ \};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaudio__sequence__s}{audio\_sequence\_s}}\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549}{audio\_event}}\ *\mbox{\hyperlink{structaudio__sequence__s_aa9d6cbaa660a9b48bc7227ee3d658680}{event\_list}};}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structaudio__sequence__s_abbcc7c4829a5c9f81ddff75df57fec46}{size}};}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structaudio__sequence__s_a5a163ad4241aa61eda9301cf02a49e75}{capacity}};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ad8ed72626025da9fbaff30ec74a71d40}{cntime}}\ \mbox{\hyperlink{structaudio__sequence__s_aad5f6a90c2540cddcb4dac778e5dc8c1}{sequence\_timer}};}
+\DoxyCodeLine{00031\ \ \ \ \ \};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaudio__s}{audio\_s}}\ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{libcnaudio_8h_a0ec5298fec4179ed9c265e68f007755e}{Mix\_Chunk}}\ *\mbox{\hyperlink{structaudio__s_a467931bb9119b0dab85ff6d4748bcf6b}{audio\_ptr}};}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaudio__sequence__s}{audio\_sequence\_s}}\ \mbox{\hyperlink{structaudio__s_ab35898d87b61b5d1e9c96079f98d9a8d}{sequence}};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ int32\_t\ \mbox{\hyperlink{structaudio__s_a5c4e7f5052a0a02cc8be4520b0e7ae64}{playing\_on}};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}}\ \mbox{\hyperlink{structaudio__s_acb99d3fc179186ba4ddb2640f28debb8}{is\_playing}};}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}}\ \mbox{\hyperlink{structaudio__s_ae587f58130fc9fed43cb46d0dfa11b7c}{is\_ended}};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{libcncore_8h_a45176b455e70053cf81874c72e0aa5fe}{cn\_method}}\ \mbox{\hyperlink{structaudio__s_a361d481856aca855362dbe27b1c6740a}{on\_end}};}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structobject__s}{Object}}\ *\mbox{\hyperlink{structaudio__s_ad985560c3cae0ce5d247032be2875eb9}{on\_end\_obj}};}
+\DoxyCodeLine{00044\ \ \ \ \ \};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaudio__vector__s}{audio\_vector\_s}}\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaudio__s}{audio\_s}}\ **\mbox{\hyperlink{structaudio__vector__s_a73f0c9299a505c60a86a305f77d995c9}{audios}};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structaudio__vector__s_a0f385d59e52b957af16e3d75f7186582}{size}};}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structaudio__vector__s_a6126fefe01e60456ee86e266afc33c96}{capacity}};}
+\DoxyCodeLine{00051\ \ \ \ \ \};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structfree__channels__arr__s}{free\_channels\_arr\_s}}\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ int32\_t\ *\mbox{\hyperlink{structfree__channels__arr__s_a5914b5f335c25bae49b6b0b226659b8d}{free\_channels\_arr}};}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{structfree__channels__arr__s_a8a2098b0e270fb391d4df5385c95b613}{size}};}
+\DoxyCodeLine{00056\ \ \ \ \ \};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaudio__event__s}{audio\_event\_s}}\ \mbox{\hyperlink{structaudio__event__s}{AudioEvent}};}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaudio__sequence__s}{audio\_sequence\_s}}\ \mbox{\hyperlink{structaudio__sequence__s}{AudioSequence}};}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaudio__s}{audio\_s}}\ \mbox{\hyperlink{structaudio__s}{Audio}};}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}}\ \mbox{\hyperlink{libcnaudio_8h_ab9d4189a71cbbcb47bfb74c0c6ce9e41}{start\_audio}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00063\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcnaudio_8h_a4c7ebe7634d17e2040e376d8a0249e94}{end\_audio}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structaudio__s}{Audio}}\ *\mbox{\hyperlink{libcnaudio_8h_a3b2864ca0048da63a6d9e7b283d35aec}{new\_audio}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{libcnaudio_8h_a0ec5298fec4179ed9c265e68f007755e}{Mix\_Chunk}}\ *audio\_chunk\_ptr,\ \mbox{\hyperlink{libcncore_8h_a45176b455e70053cf81874c72e0aa5fe}{cn\_method}}\ on\_audio\_end,\ \mbox{\hyperlink{structobject__s}{Object}}\ *\mbox{\hyperlink{structaudio__s_ad985560c3cae0ce5d247032be2875eb9}{on\_end\_obj}});}
+\DoxyCodeLine{00066\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcnaudio_8h_a2a360d5ddb2751b2ff79b765d01920c6}{audio\_run\_sequence}}(\mbox{\hyperlink{structaudio__s}{Audio}}\ *audio,\ int32\_t\ delta\_time,\ \textcolor{keyword}{struct}\ \mbox{\hyperlink{structfree__channels__arr__s}{free\_channels\_arr\_s}}\ *free\_channels);}
+\DoxyCodeLine{00067\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcnaudio_8h_a59f93501670dbb80b5890fba6b594f85}{play\_audio}}(\mbox{\hyperlink{structaudio__s}{Audio}}\ *audio,\ int32\_t\ channel);}
+\DoxyCodeLine{00068\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcnaudio_8h_aa1b1c553ab130ffad8539301bdff2f12}{set\_volume\_audio}}(\mbox{\hyperlink{structaudio__s}{Audio}}\ *audio,\ int32\_t\ volume);}
+\DoxyCodeLine{00069\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcnaudio_8h_a7649ea5f5a91dce7d2090140851f32b1}{set\_panning\_audio}}(\mbox{\hyperlink{structaudio__s}{Audio}}\ *audio,\ uint8\_t\ left,\ uint8\_t\ right);}
+\DoxyCodeLine{00070\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcnaudio_8h_a245b0a63e0bc546fcab1e6a78edb1f8c}{stop\_audio}}(\mbox{\hyperlink{structaudio__s}{Audio}}\ *audio);}
+\DoxyCodeLine{00071\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcnaudio_8h_aa7623c8a59ca473a5d47993b28d8cee9}{delete\_audio}}(\mbox{\hyperlink{structaudio__s}{Audio}}\ *audio);}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structaudio__vector__s}{audio\_vector\_s}}\ *\mbox{\hyperlink{libcnaudio_8h_af9057de3e2ca5f3486bf6d480a7d598b}{new\_audio\_vector}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00074\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcnaudio_8h_adc5fa4df37ed000a5eccd0c49add5160}{delete\_audio\_vector}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structaudio__vector__s}{audio\_vector\_s}}\ *vec);}
+\DoxyCodeLine{00075\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ uint8\_t\ \mbox{\hyperlink{libcnaudio_8h_ae24a67eb35d088b851638cbdba4d9347}{resize\_audio\_vector}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structaudio__vector__s}{audio\_vector\_s}}\ *vec,\ \textcolor{keywordtype}{size\_t}\ new\_capacity);}
+\DoxyCodeLine{00076\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ uint8\_t\ \mbox{\hyperlink{libcnaudio_8h_a90125cf364f0cc8446e13a0e89add620}{insert\_audio\_vector}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structaudio__vector__s}{audio\_vector\_s}}\ *vec,\ \mbox{\hyperlink{structaudio__s}{Audio}}\ *value);}
+\DoxyCodeLine{00077\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcnaudio_8h_a0160bf0ef2dc6b141f67c423a00f7806}{remove\_audio\_vector}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structaudio__vector__s}{audio\_vector\_s}}\ *vec,\ \textcolor{keywordtype}{size\_t}\ i);}
+\DoxyCodeLine{00078\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcnaudio_8h_a9370a2639fc3b5d88e677a9af9a43793}{remove\_audio\_ordered\_vector}}(\textcolor{keyword}{struct}\ \mbox{\hyperlink{structaudio__vector__s}{audio\_vector\_s}}\ *vec,\ \textcolor{keywordtype}{size\_t}\ i);}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcnaudio_8h_a1848667d6af9d44f22453472c4b4c285}{init\_audio\_sequence\_content}}(\mbox{\hyperlink{structaudio__sequence__s}{AudioSequence}}\ *seq);}
+\DoxyCodeLine{00081\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}}\ \mbox{\hyperlink{libcnaudio_8h_a04e87e4e6b62c59a0142f220a79e8613}{audio\_sequence\_is\_empty}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaudio__sequence__s}{AudioSequence}}\ *seq);}
+\DoxyCodeLine{00082\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}}\ \mbox{\hyperlink{libcnaudio_8h_a855e0520d8f1d3dd585bf6088998e3a2}{audio\_sequence\_pull\_event}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{structaudio__sequence__s}{AudioSequence}}\ *seq,\ \mbox{\hyperlink{structaudio__event__s}{AudioEvent}}\ *ev);}
+\DoxyCodeLine{00083\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcnaudio_8h_a4e4a0042cefa07f7c07c4bd6da2c71c2}{audio\_sequence\_push\_event}}(\mbox{\hyperlink{structaudio__sequence__s}{AudioSequence}}\ *seq,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structaudio__event__s}{AudioEvent}}\ *ev);}
+\DoxyCodeLine{00084\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcnaudio_8h_a4b9ea8cbf17b15209069ce826e65fa76}{audio\_sequence\_increment}}(\mbox{\hyperlink{structaudio__sequence__s}{AudioSequence}}\ *seq,\ \textcolor{keywordtype}{double}\ delta\_time);}
+\DoxyCodeLine{00085\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{libcnaudio_8h_aa772a5a36486a671f5deaf865e7f4d5d}{delete\_audio\_sequence\_content}}(\mbox{\hyperlink{structaudio__sequence__s}{AudioSequence}}\ *seq);}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ \mbox{\hyperlink{libcncore_8h_ac236fa37d6f1907a12cdd07d9b11b1f7}{CN\_API}}\ \mbox{\hyperlink{structobject__s}{Object}}\ *\mbox{\hyperlink{libcnaudio_8h_a398b3cb49c901d43739de1a63c9d202b}{new\_audio\_ctx}}(\mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}}\ skip\_init\_error);}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

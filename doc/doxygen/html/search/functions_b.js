@@ -11,7 +11,7 @@ var searchData=
   ['list_5fiterator_5fisend_8',['list_iterator_isend',['../libcncore_8h.html#a01f85eb0f466d9be2244cbc2a3c3fe7c',1,'list_iterator_isend(const struct list_iterator_s *iterator):&#160;list.c'],['../list_8c.html#a01f85eb0f466d9be2244cbc2a3c3fe7c',1,'list_iterator_isend(const struct list_iterator_s *iterator):&#160;list.c']]],
   ['list_5fiterator_5fnext_9',['list_iterator_next',['../libcncore_8h.html#a4c7610112a3a4b02b642d392eba87b0b',1,'list_iterator_next(struct list_iterator_s *iterator):&#160;list.c'],['../list_8c.html#a4c7610112a3a4b02b642d392eba87b0b',1,'list_iterator_next(struct list_iterator_s *iterator):&#160;list.c']]],
   ['list_5fiterator_5fvalue_5fisnull_10',['list_iterator_value_isnull',['../libcncore_8h.html#a8fed0630b348b6325ff41d30653737b1',1,'list_iterator_value_isnull(const struct list_iterator_s *iterator):&#160;list.c'],['../list_8c.html#a8fed0630b348b6325ff41d30653737b1',1,'list_iterator_value_isnull(const struct list_iterator_s *iterator):&#160;list.c']]],
-  ['load_5fassets_5fhandler_11',['load_assets_handler',['../assets_8c.html#a59221d57a86f4eca416c790fea7ccaed',1,'assets.c']]],
-  ['load_5fentry_5fscene_12',['load_entry_scene',['../assets_8c.html#a192f2c190cce299b6b6ae7474647599f',1,'assets.c']]],
+  ['load_5fassets_5fhandler_11',['load_assets_handler',['../api_8c.html#a59221d57a86f4eca416c790fea7ccaed',1,'api.c']]],
+  ['load_5fentry_5fscene_12',['load_entry_scene',['../api_8c.html#a192f2c190cce299b6b6ae7474647599f',1,'api.c']]],
   ['load_5fsubmodules_13',['load_submodules',['../engine__main_8h.html#a6f7b23397e810a78b010dacff5c3b877',1,'load_submodules(Object *ctx):&#160;submodules.c'],['../assets_2generator_2submodules_8c.html#a6f7b23397e810a78b010dacff5c3b877',1,'load_submodules(Object *ctx):&#160;submodules.c']]]
 ];

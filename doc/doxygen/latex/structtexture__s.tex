@@ -9,18 +9,18 @@
 \item 
 \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \mbox{\hyperlink{structtexture__s_a2cfac756a0a2644944c4e383ab860a7f}{size}}
 \item 
-SDL\+\_\+\+Surface \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structtexture__s_aae18cd81b667d434c2c308e54159d5e4}{surface}}
+\mbox{\hyperlink{libcngraphic_8h_ad894d177fae95d7a1c0d23597b69e569}{SDL\+\_\+\+Surface}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structtexture__s_aae18cd81b667d434c2c308e54159d5e4}{surface}}
 \item 
 \begin{tabbing}
 xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
 union \{\\
 \>struct \{\\
-\>\>SDL\_Texture \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structtexture__s_a8d70837beb0224a5c88bf8e7ca28d211}{gpu\_texture}}\\
-\>\>const SDL\_Renderer \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structtexture__s_a286f960e0b81d4a286b5ddb80b0ea582}{renderer}}\\
+\>\>\mbox{\hyperlink{libcngraphic_8h_a17850d7f1f5de457727cb3cf66b3a7f5}{SDL\_Texture}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structtexture__s_a8d70837beb0224a5c88bf8e7ca28d211}{gpu\_texture}}\\
+\>\>const \mbox{\hyperlink{libcngraphic_8h_aaf0bf7d020754fc614fe06552ea4d5d4}{SDL\_Renderer}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structtexture__s_a286f960e0b81d4a286b5ddb80b0ea582}{renderer}}\\
 \>\} \mbox{\hyperlink{structtexture__s_acc692902d6534a39bf018d5ae28d5d3d}{sdl\_texture}}\\
 \>struct \{\\
 \>\>uint32\_t \mbox{\hyperlink{structtexture__s_aecf1d41b8440a4f9c0cea1e5496f0082}{gl\_id}}\\
-\>\>SDL\_GLContext \mbox{\hyperlink{structtexture__s_a735b6fe82db2af4e34f78d02dd1ab830}{gl\_ctx}}\\
+\>\>\mbox{\hyperlink{libcngraphic_8h_a0d64dcf67c9685d09cbe051448e1b3f3}{SDL\_GLContext}} \mbox{\hyperlink{structtexture__s_a735b6fe82db2af4e34f78d02dd1ab830}{gl\_ctx}}\\
 \>\} \mbox{\hyperlink{structtexture__s_abf9020397c02532e268f48adee2b5f43}{gl\_texture}}\\
 \} \mbox{\hyperlink{structtexture__s_aa71009fcc59098f110fd5722255777f5}{gpu\_handler}}\\
 
@@ -40,7 +40,7 @@ union \{\\
 \index{texture\_s@{texture\_s}!gl\_ctx@{gl\_ctx}}
 \index{gl\_ctx@{gl\_ctx}!texture\_s@{texture\_s}}
 \doxysubsubsection{\texorpdfstring{gl\_ctx}{gl\_ctx}}
-{\footnotesize\ttfamily SDL\+\_\+\+GLContext texture\+\_\+s\+::gl\+\_\+ctx}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcngraphic_8h_a0d64dcf67c9685d09cbe051448e1b3f3}{SDL\+\_\+\+GLContext}} texture\+\_\+s\+::gl\+\_\+ctx}
 
 \Hypertarget{structtexture__s_aecf1d41b8440a4f9c0cea1e5496f0082}\label{structtexture__s_aecf1d41b8440a4f9c0cea1e5496f0082} 
 \index{texture\_s@{texture\_s}!gl\_id@{gl\_id}}
@@ -64,13 +64,13 @@ union \{\\
 \index{texture\_s@{texture\_s}!gpu\_texture@{gpu\_texture}}
 \index{gpu\_texture@{gpu\_texture}!texture\_s@{texture\_s}}
 \doxysubsubsection{\texorpdfstring{gpu\_texture}{gpu\_texture}}
-{\footnotesize\ttfamily SDL\+\_\+\+Texture\texorpdfstring{$\ast$}{*} texture\+\_\+s\+::gpu\+\_\+texture}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcngraphic_8h_a17850d7f1f5de457727cb3cf66b3a7f5}{SDL\+\_\+\+Texture}}\texorpdfstring{$\ast$}{*} texture\+\_\+s\+::gpu\+\_\+texture}
 
 \Hypertarget{structtexture__s_a286f960e0b81d4a286b5ddb80b0ea582}\label{structtexture__s_a286f960e0b81d4a286b5ddb80b0ea582} 
 \index{texture\_s@{texture\_s}!renderer@{renderer}}
 \index{renderer@{renderer}!texture\_s@{texture\_s}}
 \doxysubsubsection{\texorpdfstring{renderer}{renderer}}
-{\footnotesize\ttfamily const SDL\+\_\+\+Renderer\texorpdfstring{$\ast$}{*} texture\+\_\+s\+::renderer}
+{\footnotesize\ttfamily const \mbox{\hyperlink{libcngraphic_8h_aaf0bf7d020754fc614fe06552ea4d5d4}{SDL\+\_\+\+Renderer}}\texorpdfstring{$\ast$}{*} texture\+\_\+s\+::renderer}
 
 \Hypertarget{structtexture__s_acc692902d6534a39bf018d5ae28d5d3d}\label{structtexture__s_acc692902d6534a39bf018d5ae28d5d3d} 
 \index{texture\_s@{texture\_s}!sdl\_texture@{sdl\_texture}}
@@ -88,7 +88,7 @@ union \{\\
 \index{texture\_s@{texture\_s}!surface@{surface}}
 \index{surface@{surface}!texture\_s@{texture\_s}}
 \doxysubsubsection{\texorpdfstring{surface}{surface}}
-{\footnotesize\ttfamily SDL\+\_\+\+Surface\texorpdfstring{$\ast$}{*} texture\+\_\+s\+::surface}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcngraphic_8h_ad894d177fae95d7a1c0d23597b69e569}{SDL\+\_\+\+Surface}}\texorpdfstring{$\ast$}{*} texture\+\_\+s\+::surface}
 
 
 

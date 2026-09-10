@@ -18,6 +18,8 @@ uint64\+\_\+t(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structsection__registr
 char \texorpdfstring{$\ast$}{*}(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structsection__registry_ab0773ba25213c33ac978db803cd03a91}{strndx\+\_\+reconstructor}} )(char \texorpdfstring{$\ast$}{*}rw\+\_\+content, uint64\+\_\+t content\+\_\+size, const \mbox{\hyperlink{structCNAssetReader}{CNAsset\+Reader}} \texorpdfstring{$\ast$}{*}reader, struct \mbox{\hyperlink{structgeneric__map__s}{generic\+\_\+map\+\_\+s}} \texorpdfstring{$\ast$}{*}new\+\_\+strndx)
 \item 
 char \texorpdfstring{$\ast$}{*}(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structsection__registry_a2e129059aa88f23867244c8427b2245c}{endian\+\_\+converter}} )(char \texorpdfstring{$\ast$}{*}rw\+\_\+content, uint64\+\_\+t content\+\_\+size, const \mbox{\hyperlink{structCNAssetReader}{CNAsset\+Reader}} \texorpdfstring{$\ast$}{*}reader, \mbox{\hyperlink{libcnassets_8h_ab1164f59055b40a6fea404d875315464}{engine\+\_\+wrt\+\_\+endian}} endian)
+\item 
+\mbox{\hyperlink{libcnassets_8h_a29315e87a605a68b10fbed27d63ffec5}{engine\+\_\+data\+\_\+extract\+\_\+status}}(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structsection__registry_a08285bb14e1670ebe7f09ff03d66effe}{extract\+\_\+data\+\_\+chunk}} )(void \texorpdfstring{$\ast$}{*}dest, uint64\+\_\+t \texorpdfstring{$\ast$}{*}offset, const struct \mbox{\hyperlink{structsection__blk}{section\+\_\+blk}} \texorpdfstring{$\ast$}{*}section, const \mbox{\hyperlink{structCNAssetReader}{CNAsset\+Reader}} \texorpdfstring{$\ast$}{*}reader)
 \end{DoxyCompactItemize}
 
 
@@ -33,6 +35,12 @@ char \texorpdfstring{$\ast$}{*}(\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{stru
 \index{endian\_converter@{endian\_converter}!section\_registry@{section\_registry}}
 \doxysubsubsection{\texorpdfstring{endian\_converter}{endian\_converter}}
 {\footnotesize\ttfamily char \texorpdfstring{$\ast$}{*}(\texorpdfstring{$\ast$}{*} section\+\_\+registry\+::endian\+\_\+converter) (char \texorpdfstring{$\ast$}{*}rw\+\_\+content, uint64\+\_\+t content\+\_\+size, const \mbox{\hyperlink{structCNAssetReader}{CNAsset\+Reader}} \texorpdfstring{$\ast$}{*}reader, \mbox{\hyperlink{libcnassets_8h_ab1164f59055b40a6fea404d875315464}{engine\+\_\+wrt\+\_\+endian}} endian)}
+
+\Hypertarget{structsection__registry_a08285bb14e1670ebe7f09ff03d66effe}\label{structsection__registry_a08285bb14e1670ebe7f09ff03d66effe} 
+\index{section\_registry@{section\_registry}!extract\_data\_chunk@{extract\_data\_chunk}}
+\index{extract\_data\_chunk@{extract\_data\_chunk}!section\_registry@{section\_registry}}
+\doxysubsubsection{\texorpdfstring{extract\_data\_chunk}{extract\_data\_chunk}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcnassets_8h_a29315e87a605a68b10fbed27d63ffec5}{engine\+\_\+data\+\_\+extract\+\_\+status}}(\texorpdfstring{$\ast$}{*} section\+\_\+registry\+::extract\+\_\+data\+\_\+chunk) (void \texorpdfstring{$\ast$}{*}dest, uint64\+\_\+t \texorpdfstring{$\ast$}{*}offset, const struct \mbox{\hyperlink{structsection__blk}{section\+\_\+blk}} \texorpdfstring{$\ast$}{*}section, const \mbox{\hyperlink{structCNAssetReader}{CNAsset\+Reader}} \texorpdfstring{$\ast$}{*}reader)}
 
 \Hypertarget{structsection__registry_ae3b2a5095c33e9b2c68ec46660fbc21c}\label{structsection__registry_ae3b2a5095c33e9b2c68ec46660fbc21c} 
 \index{section\_registry@{section\_registry}!name@{name}}

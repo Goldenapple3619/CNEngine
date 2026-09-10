@@ -1,9 +1,7 @@
 \doxysection{lib/cngraphic/include/libcngraphic.h File Reference}
 \hypertarget{libcngraphic_8h}{}\label{libcngraphic_8h}\index{lib/cngraphic/include/libcngraphic.h@{lib/cngraphic/include/libcngraphic.h}}
-{\ttfamily \#include $<$glad/gl.\+h$>$}\newline
-{\ttfamily \#include $<$SDL2/\+SDL.\+h$>$}\newline
-{\ttfamily \#include $<$SDL\+\_\+image.\+h$>$}\newline
 {\ttfamily \#include "{}libcncore.\+h"{}}\newline
+{\ttfamily \#include $<$SDL2/\+SDL\+\_\+video.\+h$>$}\newline
 \doxysubsubsection*{Data Structures}
 \begin{DoxyCompactItemize}
 \item 
@@ -36,6 +34,16 @@ struct \mbox{\hyperlink{structwindow__universe__s}{window\+\_\+universe\+\_\+s}}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{libcngraphic_8h_ad894d177fae95d7a1c0d23597b69e569}{SDL\+\_\+\+Surface}} \mbox{\hyperlink{libcngraphic_8h_ad894d177fae95d7a1c0d23597b69e569}{SDL\+\_\+\+Surface}}
+\item 
+typedef struct \mbox{\hyperlink{libcngraphic_8h_aaf0bf7d020754fc614fe06552ea4d5d4}{SDL\+\_\+\+Renderer}} \mbox{\hyperlink{libcngraphic_8h_aaf0bf7d020754fc614fe06552ea4d5d4}{SDL\+\_\+\+Renderer}}
+\item 
+typedef struct \mbox{\hyperlink{libcngraphic_8h_a55a196c7d3b8497538632c79ae1e6392}{SDL\+\_\+\+Window}} \mbox{\hyperlink{libcngraphic_8h_a55a196c7d3b8497538632c79ae1e6392}{SDL\+\_\+\+Window}}
+\item 
+typedef struct \mbox{\hyperlink{libcngraphic_8h_a17850d7f1f5de457727cb3cf66b3a7f5}{SDL\+\_\+\+Texture}} \mbox{\hyperlink{libcngraphic_8h_a17850d7f1f5de457727cb3cf66b3a7f5}{SDL\+\_\+\+Texture}}
+\item 
+typedef void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcngraphic_8h_a0d64dcf67c9685d09cbe051448e1b3f3}{SDL\+\_\+\+GLContext}}
 \item 
 typedef uint32\+\_\+t \mbox{\hyperlink{libcngraphic_8h_a0b2773fdce5fa81de32a2e7a552ff37d}{cncolor}}
 \item 
@@ -124,13 +132,13 @@ void \mbox{\hyperlink{libcngraphic_8h_af3db1a5ab35de7f088e3dc35bb424f63}{blit}} 
 \item 
 void \mbox{\hyperlink{libcngraphic_8h_a6568a6d06f3f71f65a3457306c0959e5}{blit\+\_\+ratio}} (const \mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+src, \mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+dst, const \mbox{\hyperlink{libcncore_8h_a44e2d24ab2a21b90d03880cab9cc6d16}{Rect}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+src\+\_\+rect, const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+dest\+\_\+at, const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+ratios)
 \item 
-void \mbox{\hyperlink{libcngraphic_8h_a2da153b5b29828b70e502633bf450375}{draw\+\_\+texture}} (\mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+src\+\_\+texture, SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+dest\+\_\+renderer, const \mbox{\hyperlink{libcncore_8h_a44e2d24ab2a21b90d03880cab9cc6d16}{Rect}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+src\+\_\+rect, const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+dest\+\_\+at, const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+ratios, double \+\_\+\+\_\+angle)
+void \mbox{\hyperlink{libcngraphic_8h_a2da153b5b29828b70e502633bf450375}{draw\+\_\+texture}} (\mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+src\+\_\+texture, \mbox{\hyperlink{libcngraphic_8h_aaf0bf7d020754fc614fe06552ea4d5d4}{SDL\+\_\+\+Renderer}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+dest\+\_\+renderer, const \mbox{\hyperlink{libcncore_8h_a44e2d24ab2a21b90d03880cab9cc6d16}{Rect}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+src\+\_\+rect, const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+dest\+\_\+at, const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+ratios, double \+\_\+\+\_\+angle)
 \item 
 void \mbox{\hyperlink{libcngraphic_8h_a231487f473359a884727f26d496f11e4}{draw\+\_\+texture\+\_\+gl}} (\mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+src\+\_\+texture, \mbox{\hyperlink{structQuad}{Quad}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+dst\+\_\+quad, const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+at, const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+size, \mbox{\hyperlink{libcngraphic_8h_a0b2773fdce5fa81de32a2e7a552ff37d}{cncolor}} \+\_\+\+\_\+tint, const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+view\+\_\+port)
 \item 
-\mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcngraphic_8h_a6afa86ecf7185b47b663f8717177ce70}{new\+\_\+texture}} (const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}size, \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} alpha)
+\mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcngraphic_8h_a6afa86ecf7185b47b663f8717177ce70}{new\+\_\+texture}} (const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}size, \mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}} alpha)
 \item 
-\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} \mbox{\hyperlink{libcngraphic_8h_a1b2d02e333f84ea64de019adfc91e3fe}{texture\+\_\+upload\+\_\+gl}} (\mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}texture)
+\mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}} \mbox{\hyperlink{libcngraphic_8h_a1b2d02e333f84ea64de019adfc91e3fe}{texture\+\_\+upload\+\_\+gl}} (\mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}texture)
 \item 
 uint8\+\_\+t \mbox{\hyperlink{libcngraphic_8h_ac8f66e67da6d5dabf0e20c8404a9e359}{resize\+\_\+texture}} (\mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}texture, const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}new\+\_\+size)
 \item 
@@ -138,7 +146,7 @@ uint8\+\_\+t \mbox{\hyperlink{libcngraphic_8h_ac8f66e67da6d5dabf0e20c8404a9e359}
 \item 
 \mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcngraphic_8h_a79c99d0204a1a105d607a732727df67c}{new\+\_\+texture\+\_\+from\+\_\+file}} (const char \texorpdfstring{$\ast$}{*}path)
 \item 
-\mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcngraphic_8h_a4f44c1daf5ef4da04877e134951c2b30}{new\+\_\+texture\+\_\+from\+\_\+surface}} (SDL\+\_\+\+Surface \texorpdfstring{$\ast$}{*}surface)
+\mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcngraphic_8h_a4f44c1daf5ef4da04877e134951c2b30}{new\+\_\+texture\+\_\+from\+\_\+surface}} (\mbox{\hyperlink{libcngraphic_8h_ad894d177fae95d7a1c0d23597b69e569}{SDL\+\_\+\+Surface}} \texorpdfstring{$\ast$}{*}surface)
 \item 
 void \mbox{\hyperlink{libcngraphic_8h_aee52185f0055404ad1d7116de1f2d516}{clear\+\_\+texture}} (\mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}texture, \mbox{\hyperlink{libcngraphic_8h_a0b2773fdce5fa81de32a2e7a552ff37d}{cncolor}} color)
 \item 
@@ -148,31 +156,33 @@ uint8\+\_\+t \mbox{\hyperlink{libcngraphic_8h_a4e84f8e66e3368fded26a67b371ce9b9}
 \item 
 void \mbox{\hyperlink{libcngraphic_8h_a53831b3ef6b9fc27160b293cacc35b8b}{draw\+\_\+rect}} (\mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}texture, const \mbox{\hyperlink{libcncore_8h_a44e2d24ab2a21b90d03880cab9cc6d16}{Rect}} \texorpdfstring{$\ast$}{*}rect, \mbox{\hyperlink{libcngraphic_8h_a0b2773fdce5fa81de32a2e7a552ff37d}{cncolor}} color)
 \item 
+\mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcngraphic_8h_ad91cb965c5731a6b9e29ef9f68272e7c}{new\+\_\+texture\+\_\+from\+\_\+buffer}} (const void \texorpdfstring{$\ast$}{*}buffer, size\+\_\+t size)
+\item 
 void \mbox{\hyperlink{libcngraphic_8h_a03d48464911484eff9ffa228302a51ec}{delete\+\_\+texture}} (\mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}texture)
 \item 
 \mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcngraphic_8h_a15e6e6d395b8e1cb8b169a0a1d2c27cc}{new\+\_\+window}} (const char \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{build_8h_a8f8f80d37794cde9472343e4487ba3eb}{name}}, const \mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}icon, const \mbox{\hyperlink{libcngraphic_8h_a11fee8bdf914a878a155af5fea79040b}{Videomode}} \texorpdfstring{$\ast$}{*}video\+\_\+mode)
 \item 
-void \mbox{\hyperlink{libcngraphic_8h_a8a7c3d26c77a6091d5ab15ac0ac59d1c}{set\+\_\+vsync\+\_\+window}} (\mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*}window, \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} value)
+void \mbox{\hyperlink{libcngraphic_8h_a8a7c3d26c77a6091d5ab15ac0ac59d1c}{set\+\_\+vsync\+\_\+window}} (\mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*}window, \mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}} value)
 \item 
-\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} \mbox{\hyperlink{libcngraphic_8h_a3a698eff2866de9c9bb2c2e756b09c45}{get\+\_\+vsync\+\_\+window}} (const \mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*}window)
+\mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}} \mbox{\hyperlink{libcngraphic_8h_a3a698eff2866de9c9bb2c2e756b09c45}{get\+\_\+vsync\+\_\+window}} (const \mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*}window)
 \item 
-void \mbox{\hyperlink{libcngraphic_8h_af446d8e75bc41851934c504641a718f0}{set\+\_\+closable\+\_\+window}} (\mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*}window, \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} value)
+void \mbox{\hyperlink{libcngraphic_8h_af446d8e75bc41851934c504641a718f0}{set\+\_\+closable\+\_\+window}} (\mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*}window, \mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}} value)
 \item 
-\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} \mbox{\hyperlink{libcngraphic_8h_aecbe7910db312f9643e34e685fce8773}{get\+\_\+closable\+\_\+window}} (const \mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*}window)
+\mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}} \mbox{\hyperlink{libcngraphic_8h_aecbe7910db312f9643e34e685fce8773}{get\+\_\+closable\+\_\+window}} (const \mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*}window)
 \item 
-void \mbox{\hyperlink{libcngraphic_8h_a8ab0b7f54ad6a967feacf99b191bbffa}{set\+\_\+hidden\+\_\+window}} (\mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*}window, \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} value)
+void \mbox{\hyperlink{libcngraphic_8h_a8ab0b7f54ad6a967feacf99b191bbffa}{set\+\_\+hidden\+\_\+window}} (\mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*}window, \mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}} value)
 \item 
-\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} \mbox{\hyperlink{libcngraphic_8h_a3dbee739da56559fb218e865c97365e7}{get\+\_\+hidden\+\_\+window}} (const \mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*}window)
+\mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}} \mbox{\hyperlink{libcngraphic_8h_a3dbee739da56559fb218e865c97365e7}{get\+\_\+hidden\+\_\+window}} (const \mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*}window)
 \item 
-void \mbox{\hyperlink{libcngraphic_8h_afe14738351997bcb8e80b97791c66f5d}{set\+\_\+inactive\+\_\+window}} (\mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*}window, \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} value)
+void \mbox{\hyperlink{libcngraphic_8h_afe14738351997bcb8e80b97791c66f5d}{set\+\_\+inactive\+\_\+window}} (\mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*}window, \mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}} value)
 \item 
-\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} \mbox{\hyperlink{libcngraphic_8h_ab29e829e15c9cdfba5e8152315732868}{get\+\_\+inactive\+\_\+window}} (const \mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*}window)
+\mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}} \mbox{\hyperlink{libcngraphic_8h_ab29e829e15c9cdfba5e8152315732868}{get\+\_\+inactive\+\_\+window}} (const \mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*}window)
 \item 
 void \mbox{\hyperlink{libcngraphic_8h_afa2335ad8474674a041e606a759b122c}{update\+\_\+window}} (\mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*}window)
 \item 
 void \mbox{\hyperlink{libcngraphic_8h_a2d34be1667f34d2473a832b4f8a9eca0}{draw\+\_\+window}} (\mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*}window)
 \item 
-\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} \mbox{\hyperlink{libcngraphic_8h_ac4133c5aaed3d5ed6d84003d009062f2}{has\+\_\+event\+\_\+window}} (const \mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*}window, \mbox{\hyperlink{libcngraphic_8h_ad45875ce61fd859f5134e43571880a0b}{cn\+\_\+event}} type)
+\mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}} \mbox{\hyperlink{libcngraphic_8h_ac4133c5aaed3d5ed6d84003d009062f2}{has\+\_\+event\+\_\+window}} (const \mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*}window, \mbox{\hyperlink{libcngraphic_8h_ad45875ce61fd859f5134e43571880a0b}{cn\+\_\+event}} type)
 \item 
 const struct \mbox{\hyperlink{structevent__map__entry__s}{event\+\_\+map\+\_\+entry\+\_\+s}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcngraphic_8h_afaccdfdd39ad5fa2ad8ecd9615cc1700}{get\+\_\+event\+\_\+window}} (const \mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*}window, \mbox{\hyperlink{libcngraphic_8h_ad45875ce61fd859f5134e43571880a0b}{cn\+\_\+event}} type)
 \item 
@@ -186,11 +196,11 @@ void \mbox{\hyperlink{libcngraphic_8h_a85b9dfd4cc9b7d77d5f5f79070fb87b0}{delete\
 \item 
 \mbox{\hyperlink{libcngraphic_8h_ac168ed2f37bffc15af0623a2b45c207f}{Window\+Universe}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcngraphic_8h_a171fcb0038e83f54f37606e60876ea9c}{new\+\_\+window\+\_\+universe}} (void)
 \item 
-\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} \mbox{\hyperlink{libcngraphic_8h_a67df556120ccab945a2754bc36315c03}{are\+\_\+all\+\_\+window\+\_\+closed}} (const \mbox{\hyperlink{libcngraphic_8h_ac168ed2f37bffc15af0623a2b45c207f}{Window\+Universe}} \texorpdfstring{$\ast$}{*}universe)
+\mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}} \mbox{\hyperlink{libcngraphic_8h_a67df556120ccab945a2754bc36315c03}{are\+\_\+all\+\_\+window\+\_\+closed}} (const \mbox{\hyperlink{libcngraphic_8h_ac168ed2f37bffc15af0623a2b45c207f}{Window\+Universe}} \texorpdfstring{$\ast$}{*}universe)
 \item 
-\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} \mbox{\hyperlink{libcngraphic_8h_a3ad73b86968872fb9168b4f117d4b2a9}{is\+\_\+window\+\_\+closed}} (const \mbox{\hyperlink{libcngraphic_8h_ac168ed2f37bffc15af0623a2b45c207f}{Window\+Universe}} \texorpdfstring{$\ast$}{*}universe, uint32\+\_\+t window\+\_\+id)
+\mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}} \mbox{\hyperlink{libcngraphic_8h_a3ad73b86968872fb9168b4f117d4b2a9}{is\+\_\+window\+\_\+closed}} (const \mbox{\hyperlink{libcngraphic_8h_ac168ed2f37bffc15af0623a2b45c207f}{Window\+Universe}} \texorpdfstring{$\ast$}{*}universe, uint32\+\_\+t window\+\_\+id)
 \item 
-\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} \mbox{\hyperlink{libcngraphic_8h_a9eb1863a4e5ae2747e9d334a62cce175}{is\+\_\+window\+\_\+closed\+\_\+addr}} (const \mbox{\hyperlink{libcngraphic_8h_ac168ed2f37bffc15af0623a2b45c207f}{Window\+Universe}} \texorpdfstring{$\ast$}{*}universe, void \texorpdfstring{$\ast$}{*}p)
+\mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}} \mbox{\hyperlink{libcngraphic_8h_a9eb1863a4e5ae2747e9d334a62cce175}{is\+\_\+window\+\_\+closed\+\_\+addr}} (const \mbox{\hyperlink{libcngraphic_8h_ac168ed2f37bffc15af0623a2b45c207f}{Window\+Universe}} \texorpdfstring{$\ast$}{*}universe, void \texorpdfstring{$\ast$}{*}p)
 \item 
 \mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcngraphic_8h_aa2ac8d6c033498608d615384e1565f9b}{get\+\_\+window\+\_\+in\+\_\+universe}} (const \mbox{\hyperlink{libcngraphic_8h_ac168ed2f37bffc15af0623a2b45c207f}{Window\+Universe}} \texorpdfstring{$\ast$}{*}universe, uint32\+\_\+t window\+\_\+id)
 \item 
@@ -224,7 +234,7 @@ uint8\+\_\+t \mbox{\hyperlink{libcngraphic_8h_a13bbf947bd40f40ec24c1c64396a8ff2}
 \item 
 void \mbox{\hyperlink{libcngraphic_8h_aeeeb8dfc34f66700cda8f0a19c988077}{delete\+\_\+event\+\_\+map}} (struct \mbox{\hyperlink{structevent__map__entry__s}{event\+\_\+map\+\_\+entry\+\_\+s}} \texorpdfstring{$\ast$}{*}event\+\_\+map)
 \item 
-\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} \mbox{\hyperlink{libcngraphic_8h_a76500eae9be8678c5e2191b7e8c492e7}{start\+\_\+graphics}} (void)
+\mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}} \mbox{\hyperlink{libcngraphic_8h_a76500eae9be8678c5e2191b7e8c492e7}{start\+\_\+graphics}} (void)
 \item 
 void \mbox{\hyperlink{libcngraphic_8h_a6007f27bf9e3331e5916bd61b865e727}{end\+\_\+graphics}} (void)
 \item 
@@ -236,7 +246,7 @@ void \mbox{\hyperlink{libcngraphic_8h_a6007f27bf9e3331e5916bd61b865e727}{end\+\_
 \item 
 void \mbox{\hyperlink{libcngraphic_8h_a14fc4a68514386c582b383f73dd8357c}{mesh\+\_\+draw\+\_\+gl}} (\mbox{\hyperlink{structMesh}{Mesh}} \texorpdfstring{$\ast$}{*}m)
 \item 
-\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} \mbox{\hyperlink{libcngraphic_8h_a72fce26160c250bd11da7dcf05f8b8fe}{mesh\+\_\+upload\+\_\+gl}} (\mbox{\hyperlink{structMesh}{Mesh}} \texorpdfstring{$\ast$}{*}m)
+\mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}} \mbox{\hyperlink{libcngraphic_8h_a72fce26160c250bd11da7dcf05f8b8fe}{mesh\+\_\+upload\+\_\+gl}} (\mbox{\hyperlink{structMesh}{Mesh}} \texorpdfstring{$\ast$}{*}m)
 \item 
 void \mbox{\hyperlink{libcngraphic_8h_aae4e77fb2db668a230d818fb1d1ce9dd}{delete\+\_\+mesh}} (\mbox{\hyperlink{structMesh}{Mesh}} \texorpdfstring{$\ast$}{*}mesh)
 \item 
@@ -307,6 +317,36 @@ void \mbox{\hyperlink{libcngraphic_8h_a7af5ec3998e6efc3e8069eecd6a54352}{delete\
 \index{Event@{Event}!libcngraphic.h@{libcngraphic.h}}
 \doxysubsubsection{\texorpdfstring{Event}{Event}}
 {\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structevent__s}{event\+\_\+s}} \mbox{\hyperlink{libcngraphic_8h_a60921eba80b4569fa79c67165460331e}{Event}}}
+
+\Hypertarget{libcngraphic_8h_a0d64dcf67c9685d09cbe051448e1b3f3}\label{libcngraphic_8h_a0d64dcf67c9685d09cbe051448e1b3f3} 
+\index{libcngraphic.h@{libcngraphic.h}!SDL\_GLContext@{SDL\_GLContext}}
+\index{SDL\_GLContext@{SDL\_GLContext}!libcngraphic.h@{libcngraphic.h}}
+\doxysubsubsection{\texorpdfstring{SDL\_GLContext}{SDL\_GLContext}}
+{\footnotesize\ttfamily typedef void\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcngraphic_8h_a0d64dcf67c9685d09cbe051448e1b3f3}{SDL\+\_\+\+GLContext}}}
+
+\Hypertarget{libcngraphic_8h_aaf0bf7d020754fc614fe06552ea4d5d4}\label{libcngraphic_8h_aaf0bf7d020754fc614fe06552ea4d5d4} 
+\index{libcngraphic.h@{libcngraphic.h}!SDL\_Renderer@{SDL\_Renderer}}
+\index{SDL\_Renderer@{SDL\_Renderer}!libcngraphic.h@{libcngraphic.h}}
+\doxysubsubsection{\texorpdfstring{SDL\_Renderer}{SDL\_Renderer}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{libcngraphic_8h_aaf0bf7d020754fc614fe06552ea4d5d4}{SDL\+\_\+\+Renderer}} \mbox{\hyperlink{libcngraphic_8h_aaf0bf7d020754fc614fe06552ea4d5d4}{SDL\+\_\+\+Renderer}}}
+
+\Hypertarget{libcngraphic_8h_ad894d177fae95d7a1c0d23597b69e569}\label{libcngraphic_8h_ad894d177fae95d7a1c0d23597b69e569} 
+\index{libcngraphic.h@{libcngraphic.h}!SDL\_Surface@{SDL\_Surface}}
+\index{SDL\_Surface@{SDL\_Surface}!libcngraphic.h@{libcngraphic.h}}
+\doxysubsubsection{\texorpdfstring{SDL\_Surface}{SDL\_Surface}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{libcngraphic_8h_ad894d177fae95d7a1c0d23597b69e569}{SDL\+\_\+\+Surface}} \mbox{\hyperlink{libcngraphic_8h_ad894d177fae95d7a1c0d23597b69e569}{SDL\+\_\+\+Surface}}}
+
+\Hypertarget{libcngraphic_8h_a17850d7f1f5de457727cb3cf66b3a7f5}\label{libcngraphic_8h_a17850d7f1f5de457727cb3cf66b3a7f5} 
+\index{libcngraphic.h@{libcngraphic.h}!SDL\_Texture@{SDL\_Texture}}
+\index{SDL\_Texture@{SDL\_Texture}!libcngraphic.h@{libcngraphic.h}}
+\doxysubsubsection{\texorpdfstring{SDL\_Texture}{SDL\_Texture}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{libcngraphic_8h_a17850d7f1f5de457727cb3cf66b3a7f5}{SDL\+\_\+\+Texture}} \mbox{\hyperlink{libcngraphic_8h_a17850d7f1f5de457727cb3cf66b3a7f5}{SDL\+\_\+\+Texture}}}
+
+\Hypertarget{libcngraphic_8h_a55a196c7d3b8497538632c79ae1e6392}\label{libcngraphic_8h_a55a196c7d3b8497538632c79ae1e6392} 
+\index{libcngraphic.h@{libcngraphic.h}!SDL\_Window@{SDL\_Window}}
+\index{SDL\_Window@{SDL\_Window}!libcngraphic.h@{libcngraphic.h}}
+\doxysubsubsection{\texorpdfstring{SDL\_Window}{SDL\_Window}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{libcngraphic_8h_a55a196c7d3b8497538632c79ae1e6392}{SDL\+\_\+\+Window}} \mbox{\hyperlink{libcngraphic_8h_a55a196c7d3b8497538632c79ae1e6392}{SDL\+\_\+\+Window}}}
 
 \Hypertarget{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}\label{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99} 
 \index{libcngraphic.h@{libcngraphic.h}!Texture@{Texture}}
@@ -562,7 +602,7 @@ VDM\+\_\+\+N\+\_\+\+METAL&\\
 \index{libcngraphic.h@{libcngraphic.h}!are\_all\_window\_closed@{are\_all\_window\_closed}}
 \index{are\_all\_window\_closed@{are\_all\_window\_closed}!libcngraphic.h@{libcngraphic.h}}
 \doxysubsubsection{\texorpdfstring{are\_all\_window\_closed()}{are\_all\_window\_closed()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} are\+\_\+all\+\_\+window\+\_\+closed (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{libcngraphic_8h_ac168ed2f37bffc15af0623a2b45c207f}{Window\+Universe}} \texorpdfstring{$\ast$}{*}}]{universe }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}} are\+\_\+all\+\_\+window\+\_\+closed (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{libcngraphic_8h_ac168ed2f37bffc15af0623a2b45c207f}{Window\+Universe}} \texorpdfstring{$\ast$}{*}}]{universe }\end{DoxyParamCaption})}
 
 \Hypertarget{libcngraphic_8h_af3db1a5ab35de7f088e3dc35bb424f63}\label{libcngraphic_8h_af3db1a5ab35de7f088e3dc35bb424f63} 
 \index{libcngraphic.h@{libcngraphic.h}!blit@{blit}}
@@ -682,7 +722,7 @@ VDM\+\_\+\+N\+\_\+\+METAL&\\
 \index{libcngraphic.h@{libcngraphic.h}!draw\_texture@{draw\_texture}}
 \index{draw\_texture@{draw\_texture}!libcngraphic.h@{libcngraphic.h}}
 \doxysubsubsection{\texorpdfstring{draw\_texture()}{draw\_texture()}}
-{\footnotesize\ttfamily void draw\+\_\+texture (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+src\+\_\+texture,  }\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+dest\+\_\+renderer,  }\item[{const \mbox{\hyperlink{libcncore_8h_a44e2d24ab2a21b90d03880cab9cc6d16}{Rect}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+src\+\_\+rect,  }\item[{const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+dest\+\_\+at,  }\item[{const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+ratios,  }\item[{double}]{\+\_\+\+\_\+angle }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void draw\+\_\+texture (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+src\+\_\+texture,  }\item[{\mbox{\hyperlink{libcngraphic_8h_aaf0bf7d020754fc614fe06552ea4d5d4}{SDL\+\_\+\+Renderer}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+dest\+\_\+renderer,  }\item[{const \mbox{\hyperlink{libcncore_8h_a44e2d24ab2a21b90d03880cab9cc6d16}{Rect}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+src\+\_\+rect,  }\item[{const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+dest\+\_\+at,  }\item[{const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+ratios,  }\item[{double}]{\+\_\+\+\_\+angle }\end{DoxyParamCaption})}
 
 \Hypertarget{libcngraphic_8h_a231487f473359a884727f26d496f11e4}\label{libcngraphic_8h_a231487f473359a884727f26d496f11e4} 
 \index{libcngraphic.h@{libcngraphic.h}!draw\_texture\_gl@{draw\_texture\_gl}}
@@ -712,7 +752,7 @@ VDM\+\_\+\+N\+\_\+\+METAL&\\
 \index{libcngraphic.h@{libcngraphic.h}!get\_closable\_window@{get\_closable\_window}}
 \index{get\_closable\_window@{get\_closable\_window}!libcngraphic.h@{libcngraphic.h}}
 \doxysubsubsection{\texorpdfstring{get\_closable\_window()}{get\_closable\_window()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} get\+\_\+closable\+\_\+window (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*}}]{window }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}} get\+\_\+closable\+\_\+window (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*}}]{window }\end{DoxyParamCaption})}
 
 \Hypertarget{libcngraphic_8h_afaccdfdd39ad5fa2ad8ecd9615cc1700}\label{libcngraphic_8h_afaccdfdd39ad5fa2ad8ecd9615cc1700} 
 \index{libcngraphic.h@{libcngraphic.h}!get\_event\_window@{get\_event\_window}}
@@ -724,13 +764,13 @@ VDM\+\_\+\+N\+\_\+\+METAL&\\
 \index{libcngraphic.h@{libcngraphic.h}!get\_hidden\_window@{get\_hidden\_window}}
 \index{get\_hidden\_window@{get\_hidden\_window}!libcngraphic.h@{libcngraphic.h}}
 \doxysubsubsection{\texorpdfstring{get\_hidden\_window()}{get\_hidden\_window()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} get\+\_\+hidden\+\_\+window (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*}}]{window }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}} get\+\_\+hidden\+\_\+window (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*}}]{window }\end{DoxyParamCaption})}
 
 \Hypertarget{libcngraphic_8h_ab29e829e15c9cdfba5e8152315732868}\label{libcngraphic_8h_ab29e829e15c9cdfba5e8152315732868} 
 \index{libcngraphic.h@{libcngraphic.h}!get\_inactive\_window@{get\_inactive\_window}}
 \index{get\_inactive\_window@{get\_inactive\_window}!libcngraphic.h@{libcngraphic.h}}
 \doxysubsubsection{\texorpdfstring{get\_inactive\_window()}{get\_inactive\_window()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} get\+\_\+inactive\+\_\+window (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*}}]{window }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}} get\+\_\+inactive\+\_\+window (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*}}]{window }\end{DoxyParamCaption})}
 
 \Hypertarget{libcngraphic_8h_a4e84f8e66e3368fded26a67b371ce9b9}\label{libcngraphic_8h_a4e84f8e66e3368fded26a67b371ce9b9} 
 \index{libcngraphic.h@{libcngraphic.h}!get\_opacity\_texture@{get\_opacity\_texture}}
@@ -742,7 +782,7 @@ VDM\+\_\+\+N\+\_\+\+METAL&\\
 \index{libcngraphic.h@{libcngraphic.h}!get\_vsync\_window@{get\_vsync\_window}}
 \index{get\_vsync\_window@{get\_vsync\_window}!libcngraphic.h@{libcngraphic.h}}
 \doxysubsubsection{\texorpdfstring{get\_vsync\_window()}{get\_vsync\_window()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} get\+\_\+vsync\+\_\+window (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*}}]{window }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}} get\+\_\+vsync\+\_\+window (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*}}]{window }\end{DoxyParamCaption})}
 
 \Hypertarget{libcngraphic_8h_aa2ac8d6c033498608d615384e1565f9b}\label{libcngraphic_8h_aa2ac8d6c033498608d615384e1565f9b} 
 \index{libcngraphic.h@{libcngraphic.h}!get\_window\_in\_universe@{get\_window\_in\_universe}}
@@ -766,19 +806,19 @@ VDM\+\_\+\+N\+\_\+\+METAL&\\
 \index{libcngraphic.h@{libcngraphic.h}!has\_event\_window@{has\_event\_window}}
 \index{has\_event\_window@{has\_event\_window}!libcngraphic.h@{libcngraphic.h}}
 \doxysubsubsection{\texorpdfstring{has\_event\_window()}{has\_event\_window()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} has\+\_\+event\+\_\+window (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*}}]{window,  }\item[{\mbox{\hyperlink{libcngraphic_8h_ad45875ce61fd859f5134e43571880a0b}{cn\+\_\+event}}}]{type }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}} has\+\_\+event\+\_\+window (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*}}]{window,  }\item[{\mbox{\hyperlink{libcngraphic_8h_ad45875ce61fd859f5134e43571880a0b}{cn\+\_\+event}}}]{type }\end{DoxyParamCaption})}
 
 \Hypertarget{libcngraphic_8h_a3ad73b86968872fb9168b4f117d4b2a9}\label{libcngraphic_8h_a3ad73b86968872fb9168b4f117d4b2a9} 
 \index{libcngraphic.h@{libcngraphic.h}!is\_window\_closed@{is\_window\_closed}}
 \index{is\_window\_closed@{is\_window\_closed}!libcngraphic.h@{libcngraphic.h}}
 \doxysubsubsection{\texorpdfstring{is\_window\_closed()}{is\_window\_closed()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} is\+\_\+window\+\_\+closed (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{libcngraphic_8h_ac168ed2f37bffc15af0623a2b45c207f}{Window\+Universe}} \texorpdfstring{$\ast$}{*}}]{universe,  }\item[{uint32\+\_\+t}]{window\+\_\+id }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}} is\+\_\+window\+\_\+closed (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{libcngraphic_8h_ac168ed2f37bffc15af0623a2b45c207f}{Window\+Universe}} \texorpdfstring{$\ast$}{*}}]{universe,  }\item[{uint32\+\_\+t}]{window\+\_\+id }\end{DoxyParamCaption})}
 
 \Hypertarget{libcngraphic_8h_a9eb1863a4e5ae2747e9d334a62cce175}\label{libcngraphic_8h_a9eb1863a4e5ae2747e9d334a62cce175} 
 \index{libcngraphic.h@{libcngraphic.h}!is\_window\_closed\_addr@{is\_window\_closed\_addr}}
 \index{is\_window\_closed\_addr@{is\_window\_closed\_addr}!libcngraphic.h@{libcngraphic.h}}
 \doxysubsubsection{\texorpdfstring{is\_window\_closed\_addr()}{is\_window\_closed\_addr()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} is\+\_\+window\+\_\+closed\+\_\+addr (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{libcngraphic_8h_ac168ed2f37bffc15af0623a2b45c207f}{Window\+Universe}} \texorpdfstring{$\ast$}{*}}]{universe,  }\item[{void \texorpdfstring{$\ast$}{*}}]{p }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}} is\+\_\+window\+\_\+closed\+\_\+addr (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{libcngraphic_8h_ac168ed2f37bffc15af0623a2b45c207f}{Window\+Universe}} \texorpdfstring{$\ast$}{*}}]{universe,  }\item[{void \texorpdfstring{$\ast$}{*}}]{p }\end{DoxyParamCaption})}
 
 \Hypertarget{libcngraphic_8h_a6cce96e755402d79b79c58c117f4b910}\label{libcngraphic_8h_a6cce96e755402d79b79c58c117f4b910} 
 \index{libcngraphic.h@{libcngraphic.h}!material\_use\_gl@{material\_use\_gl}}
@@ -796,7 +836,7 @@ VDM\+\_\+\+N\+\_\+\+METAL&\\
 \index{libcngraphic.h@{libcngraphic.h}!mesh\_upload\_gl@{mesh\_upload\_gl}}
 \index{mesh\_upload\_gl@{mesh\_upload\_gl}!libcngraphic.h@{libcngraphic.h}}
 \doxysubsubsection{\texorpdfstring{mesh\_upload\_gl()}{mesh\_upload\_gl()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} mesh\+\_\+upload\+\_\+gl (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structMesh}{Mesh}} \texorpdfstring{$\ast$}{*}}]{m }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}} mesh\+\_\+upload\+\_\+gl (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structMesh}{Mesh}} \texorpdfstring{$\ast$}{*}}]{m }\end{DoxyParamCaption})}
 
 \Hypertarget{libcngraphic_8h_afbdf6fdfba2f9f70f534ef8c9a8406eb}\label{libcngraphic_8h_afbdf6fdfba2f9f70f534ef8c9a8406eb} 
 \index{libcngraphic.h@{libcngraphic.h}!new\_event@{new\_event}}
@@ -856,7 +896,13 @@ VDM\+\_\+\+N\+\_\+\+METAL&\\
 \index{libcngraphic.h@{libcngraphic.h}!new\_texture@{new\_texture}}
 \index{new\_texture@{new\_texture}!libcngraphic.h@{libcngraphic.h}}
 \doxysubsubsection{\texorpdfstring{new\_texture()}{new\_texture()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*} new\+\_\+texture (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}}]{size,  }\item[{\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}}]{alpha }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*} new\+\_\+texture (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}}]{size,  }\item[{\mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}}}]{alpha }\end{DoxyParamCaption})}
+
+\Hypertarget{libcngraphic_8h_ad91cb965c5731a6b9e29ef9f68272e7c}\label{libcngraphic_8h_ad91cb965c5731a6b9e29ef9f68272e7c} 
+\index{libcngraphic.h@{libcngraphic.h}!new\_texture\_from\_buffer@{new\_texture\_from\_buffer}}
+\index{new\_texture\_from\_buffer@{new\_texture\_from\_buffer}!libcngraphic.h@{libcngraphic.h}}
+\doxysubsubsection{\texorpdfstring{new\_texture\_from\_buffer()}{new\_texture\_from\_buffer()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*} new\+\_\+texture\+\_\+from\+\_\+buffer (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{buffer,  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})}
 
 \Hypertarget{libcngraphic_8h_a79c99d0204a1a105d607a732727df67c}\label{libcngraphic_8h_a79c99d0204a1a105d607a732727df67c} 
 \index{libcngraphic.h@{libcngraphic.h}!new\_texture\_from\_file@{new\_texture\_from\_file}}
@@ -868,7 +914,7 @@ VDM\+\_\+\+N\+\_\+\+METAL&\\
 \index{libcngraphic.h@{libcngraphic.h}!new\_texture\_from\_surface@{new\_texture\_from\_surface}}
 \index{new\_texture\_from\_surface@{new\_texture\_from\_surface}!libcngraphic.h@{libcngraphic.h}}
 \doxysubsubsection{\texorpdfstring{new\_texture\_from\_surface()}{new\_texture\_from\_surface()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*} new\+\_\+texture\+\_\+from\+\_\+surface (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Surface \texorpdfstring{$\ast$}{*}}]{surface }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*} new\+\_\+texture\+\_\+from\+\_\+surface (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcngraphic_8h_ad894d177fae95d7a1c0d23597b69e569}{SDL\+\_\+\+Surface}} \texorpdfstring{$\ast$}{*}}]{surface }\end{DoxyParamCaption})}
 
 \Hypertarget{libcngraphic_8h_a15e6e6d395b8e1cb8b169a0a1d2c27cc}\label{libcngraphic_8h_a15e6e6d395b8e1cb8b169a0a1d2c27cc} 
 \index{libcngraphic.h@{libcngraphic.h}!new\_window@{new\_window}}
@@ -922,19 +968,19 @@ VDM\+\_\+\+N\+\_\+\+METAL&\\
 \index{libcngraphic.h@{libcngraphic.h}!set\_closable\_window@{set\_closable\_window}}
 \index{set\_closable\_window@{set\_closable\_window}!libcngraphic.h@{libcngraphic.h}}
 \doxysubsubsection{\texorpdfstring{set\_closable\_window()}{set\_closable\_window()}}
-{\footnotesize\ttfamily void set\+\_\+closable\+\_\+window (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*}}]{window,  }\item[{\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}}]{value }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void set\+\_\+closable\+\_\+window (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*}}]{window,  }\item[{\mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}}}]{value }\end{DoxyParamCaption})}
 
 \Hypertarget{libcngraphic_8h_a8ab0b7f54ad6a967feacf99b191bbffa}\label{libcngraphic_8h_a8ab0b7f54ad6a967feacf99b191bbffa} 
 \index{libcngraphic.h@{libcngraphic.h}!set\_hidden\_window@{set\_hidden\_window}}
 \index{set\_hidden\_window@{set\_hidden\_window}!libcngraphic.h@{libcngraphic.h}}
 \doxysubsubsection{\texorpdfstring{set\_hidden\_window()}{set\_hidden\_window()}}
-{\footnotesize\ttfamily void set\+\_\+hidden\+\_\+window (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*}}]{window,  }\item[{\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}}]{value }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void set\+\_\+hidden\+\_\+window (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*}}]{window,  }\item[{\mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}}}]{value }\end{DoxyParamCaption})}
 
 \Hypertarget{libcngraphic_8h_afe14738351997bcb8e80b97791c66f5d}\label{libcngraphic_8h_afe14738351997bcb8e80b97791c66f5d} 
 \index{libcngraphic.h@{libcngraphic.h}!set\_inactive\_window@{set\_inactive\_window}}
 \index{set\_inactive\_window@{set\_inactive\_window}!libcngraphic.h@{libcngraphic.h}}
 \doxysubsubsection{\texorpdfstring{set\_inactive\_window()}{set\_inactive\_window()}}
-{\footnotesize\ttfamily void set\+\_\+inactive\+\_\+window (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*}}]{window,  }\item[{\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}}]{value }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void set\+\_\+inactive\+\_\+window (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*}}]{window,  }\item[{\mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}}}]{value }\end{DoxyParamCaption})}
 
 \Hypertarget{libcngraphic_8h_a9f6ff2003b1a697490e1195bac48bd8c}\label{libcngraphic_8h_a9f6ff2003b1a697490e1195bac48bd8c} 
 \index{libcngraphic.h@{libcngraphic.h}!set\_opacity\_texture@{set\_opacity\_texture}}
@@ -946,19 +992,19 @@ VDM\+\_\+\+N\+\_\+\+METAL&\\
 \index{libcngraphic.h@{libcngraphic.h}!set\_vsync\_window@{set\_vsync\_window}}
 \index{set\_vsync\_window@{set\_vsync\_window}!libcngraphic.h@{libcngraphic.h}}
 \doxysubsubsection{\texorpdfstring{set\_vsync\_window()}{set\_vsync\_window()}}
-{\footnotesize\ttfamily void set\+\_\+vsync\+\_\+window (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*}}]{window,  }\item[{\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}}]{value }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void set\+\_\+vsync\+\_\+window (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcngraphic_8h_a5fc44cc59f6ddab0d0b7a09326031a29}{Window}} \texorpdfstring{$\ast$}{*}}]{window,  }\item[{\mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}}}]{value }\end{DoxyParamCaption})}
 
 \Hypertarget{libcngraphic_8h_a76500eae9be8678c5e2191b7e8c492e7}\label{libcngraphic_8h_a76500eae9be8678c5e2191b7e8c492e7} 
 \index{libcngraphic.h@{libcngraphic.h}!start\_graphics@{start\_graphics}}
 \index{start\_graphics@{start\_graphics}!libcngraphic.h@{libcngraphic.h}}
 \doxysubsubsection{\texorpdfstring{start\_graphics()}{start\_graphics()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} start\+\_\+graphics (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}} start\+\_\+graphics (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
 \Hypertarget{libcngraphic_8h_a1b2d02e333f84ea64de019adfc91e3fe}\label{libcngraphic_8h_a1b2d02e333f84ea64de019adfc91e3fe} 
 \index{libcngraphic.h@{libcngraphic.h}!texture\_upload\_gl@{texture\_upload\_gl}}
 \index{texture\_upload\_gl@{texture\_upload\_gl}!libcngraphic.h@{libcngraphic.h}}
 \doxysubsubsection{\texorpdfstring{texture\_upload\_gl()}{texture\_upload\_gl()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} texture\+\_\+upload\+\_\+gl (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}}]{texture }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}} texture\+\_\+upload\+\_\+gl (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}}]{texture }\end{DoxyParamCaption})}
 
 \Hypertarget{libcngraphic_8h_ae69fa8b6f6568d08c13a619a13950fbc}\label{libcngraphic_8h_ae69fa8b6f6568d08c13a619a13950fbc} 
 \index{libcngraphic.h@{libcngraphic.h}!update\_all\_window@{update\_all\_window}}

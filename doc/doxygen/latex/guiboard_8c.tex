@@ -1,6 +1,7 @@
 \doxysection{lib/rgui/src/guiboard.c File Reference}
 \hypertarget{guiboard_8c}{}\label{guiboard_8c}\index{lib/rgui/src/guiboard.c@{lib/rgui/src/guiboard.c}}
 {\ttfamily \#include "{}librgui.\+h"{}}\newline
+{\ttfamily \#include $<$glad/gl.\+h$>$}\newline
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -12,7 +13,7 @@ static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{guiboa
 \item 
 static void \mbox{\hyperlink{guiboard_8c_a616a08a89aae0c418ae0635cb9e4e1ae}{\+\_\+cpu\+\_\+rendering}} (const \mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}object\+\_\+texture, \mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}dest\+\_\+texture, const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}at)
 \item 
-static void \mbox{\hyperlink{guiboard_8c_a2b67117addd3ad7fa0879717dba8dcbb}{\+\_\+gpu\+\_\+rendering}} (\mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}object\+\_\+texture, SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}renderer, const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}at, const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}canva\+\_\+ratio, const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}canva\+\_\+position)
+static void \mbox{\hyperlink{guiboard_8c_a2b67117addd3ad7fa0879717dba8dcbb}{\+\_\+gpu\+\_\+rendering}} (\mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}object\+\_\+texture, \mbox{\hyperlink{libcngraphic_8h_aaf0bf7d020754fc614fe06552ea4d5d4}{SDL\+\_\+\+Renderer}} \texorpdfstring{$\ast$}{*}renderer, const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}at, const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}canva\+\_\+ratio, const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}canva\+\_\+position)
 \item 
 static void \mbox{\hyperlink{guiboard_8c_a1f552014b4e9d723673e3d1a3e45b8d4}{\+\_\+opengl\+\_\+rendering}} (\mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}object\+\_\+texture, \mbox{\hyperlink{structQuad}{Quad}} \texorpdfstring{$\ast$}{*}gl\+\_\+quad, const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}at, const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}canva\+\_\+ratio, const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}canva\+\_\+scale)
 \item 
@@ -71,7 +72,7 @@ static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{guiboa
 \index{guiboard.c@{guiboard.c}!\_gpu\_rendering@{\_gpu\_rendering}}
 \index{\_gpu\_rendering@{\_gpu\_rendering}!guiboard.c@{guiboard.c}}
 \doxysubsubsection{\texorpdfstring{\_gpu\_rendering()}{\_gpu\_rendering()}}
-{\footnotesize\ttfamily static void \+\_\+gpu\+\_\+rendering (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}}]{object\+\_\+texture,  }\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{renderer,  }\item[{const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}}]{at,  }\item[{const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}}]{canva\+\_\+ratio,  }\item[{const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}}]{canva\+\_\+position }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily static void \+\_\+gpu\+\_\+rendering (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcngraphic_8h_a19da3cd71374013c1d81d51ae71cba99}{Texture}} \texorpdfstring{$\ast$}{*}}]{object\+\_\+texture,  }\item[{\mbox{\hyperlink{libcngraphic_8h_aaf0bf7d020754fc614fe06552ea4d5d4}{SDL\+\_\+\+Renderer}} \texorpdfstring{$\ast$}{*}}]{renderer,  }\item[{const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}}]{at,  }\item[{const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}}]{canva\+\_\+ratio,  }\item[{const \mbox{\hyperlink{libcncore_8h_a1a32d1aa7f7437f61d4fc270a1557d5d}{Vector2}} \texorpdfstring{$\ast$}{*}}]{canva\+\_\+position }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 \Hypertarget{guiboard_8c_a1a63a6f58510226876eb4212dbe5da70}\label{guiboard_8c_a1a63a6f58510226876eb4212dbe5da70} 
 \index{guiboard.c@{guiboard.c}!\_init@{\_init}}

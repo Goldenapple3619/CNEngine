@@ -7,5 +7,6 @@ var searchData=
   ['entries_4',['entries',['../structengine__obj__section__header__s.html#a08d6c5a8cc9474939ee34b4f82b2b6ea',1,'engine_obj_section_header_s']]],
   ['event_5flist_5',['event_list',['../structaudio__sequence__s.html#aa9d6cbaa660a9b48bc7227ee3d658680',1,'audio_sequence_s']]],
   ['event_5fmap_6',['event_map',['../structwindow__s.html#a27c99122e1f2ae70d8733dd435a081f2',1,'window_s']]],
-  ['events_7',['events',['../structevent__map__entry__s.html#a8fa21b5d6a53de51ba7db4d81839734f',1,'event_map_entry_s']]]
+  ['events_7',['events',['../structevent__map__entry__s.html#a8fa21b5d6a53de51ba7db4d81839734f',1,'event_map_entry_s']]],
+  ['extract_5fdata_5fchunk_8',['extract_data_chunk',['../structsection__registry.html#a08285bb14e1670ebe7f09ff03d66effe',1,'section_registry']]]
 ];

@@ -10,5 +10,9 @@ var searchData=
   ['header_7',['header',['../structCNAssetReader.html#a06ece9f09f86e8d4b58f709530738fe4',1,'CNAssetReader']]],
   ['help_8',['help',['../engine_8h.html#abfce15a97dc0d59066145deb6db71971',1,'help(size_t argc, char **argv):&#160;route.c'],['../help_2route_8c.html#abfce15a97dc0d59066145deb6db71971',1,'help(size_t argc, char **argv):&#160;route.c']]],
   ['help_2eh_9',['help.h',['../help_8h.html',1,'']]],
-  ['how_20to_20build_10',['How to build',['../md_README.html#autotoc_md5',1,'']]]
+  ['help_5fbuild_10',['help_build',['../help_2route_8c.html#ad8a2ae7928195e31caf67923596684d6',1,'route.c']]],
+  ['help_5fdump_11',['help_dump',['../help_2route_8c.html#a29fd09526237923009d46e89d107ffc6',1,'route.c']]],
+  ['help_5fhelp_12',['help_help',['../help_2route_8c.html#ab97c24a4a9a0b07d23b318c19948a444',1,'route.c']]],
+  ['help_5finit_13',['help_init',['../help_2route_8c.html#a4c5a9a11d5ac9ac0577655681b074808',1,'route.c']]],
+  ['how_20to_20build_14',['How to build',['../md_README.html#autotoc_md5',1,'']]]
 ];

@@ -8,6 +8,7 @@ var libcnaudio_8h =
     [ "Audio", "libcnaudio_8h.html#a47d4b2ae444f11e00a3a595fc7b20fd6", null ],
     [ "AudioEvent", "libcnaudio_8h.html#a347ec905c7fad000f823987f44363621", null ],
     [ "AudioSequence", "libcnaudio_8h.html#a1c69ee57b2d9f89ab4ee80867221b2ab", null ],
+    [ "Mix_Chunk", "libcnaudio_8h.html#a0ec5298fec4179ed9c265e68f007755e", null ],
     [ "audio_event", "libcnaudio_8h.html#a965ab79ae726810cf1a354a3b6d69549", [
       [ "CNAUDIO_EVENT_NOOP", "libcnaudio_8h.html#a965ab79ae726810cf1a354a3b6d69549a957a911fad07463a3ec739599bedf1b2", null ],
       [ "CNAUDIO_EVENT_PLAY", "libcnaudio_8h.html#a965ab79ae726810cf1a354a3b6d69549a68bd9c65e16a47e95e469878895b57b8", null ],

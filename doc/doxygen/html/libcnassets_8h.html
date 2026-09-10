@@ -228,12 +228,22 @@ Enumerations</h2></td></tr>
 , <br />
 &#160;&#160;<a class="el" href="libcnassets_8h.html#a959be715a1657adac70a74c248795869ac2034ea9ebde71027843a1076979a266">ENGINE_SEC_GUI_CONN</a>
 , <a class="el" href="libcnassets_8h.html#a959be715a1657adac70a74c248795869a9eefc02bc33f9e4423780f6f88d31287">ENGINE_SEC_SCENE_TREE</a>
+, <a class="el" href="libcnassets_8h.html#a959be715a1657adac70a74c248795869afe2d3bcf3d11a64e776918e8ee652c73">ENGINE_SEC_OBJ_SYMBOLS</a>
+, <a class="el" href="libcnassets_8h.html#a959be715a1657adac70a74c248795869a5dae9580aa16b7ad3f557e1037f4c339">ENGINE_SEC_OBJ_ATTRS</a>
+, <br />
+&#160;&#160;<a class="el" href="libcnassets_8h.html#a959be715a1657adac70a74c248795869a1549fc9f7e8d4a51d2ff156b6d9e71d3">ENGINE_SEC_OBJ_INFO</a>
 <br />
  }</td></tr>
 <tr class="separator:a959be715a1657adac70a74c248795869"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a476d44b2fd664f18b92f351d4f06aaaa" id="r_a476d44b2fd664f18b92f351d4f06aaaa"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcnassets_8h.html#a476d44b2fd664f18b92f351d4f06aaaa">engine_section_wrt_flags</a> { <a class="el" href="libcnassets_8h.html#a476d44b2fd664f18b92f351d4f06aaaaaba005e807a79d4a40b76ce98e3c718bc">ENGINE_SEC_NULL_FLAG</a> = 0x00
  }</td></tr>
 <tr class="separator:a476d44b2fd664f18b92f351d4f06aaaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29315e87a605a68b10fbed27d63ffec5" id="r_a29315e87a605a68b10fbed27d63ffec5"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libcnassets_8h.html#a29315e87a605a68b10fbed27d63ffec5">engine_data_extract_status</a> { <a class="el" href="libcnassets_8h.html#a29315e87a605a68b10fbed27d63ffec5a46933500da43da5e7a178bb612b6cb25">ENGINE_DATA_EXTRACT_COMPLETE</a> = 0x00
+, <a class="el" href="libcnassets_8h.html#a29315e87a605a68b10fbed27d63ffec5af03d6c8de0d7add7cf0f912962523ae7">ENGINE_DATA_EXTRACT_ERR</a>
+, <a class="el" href="libcnassets_8h.html#a29315e87a605a68b10fbed27d63ffec5a1d3006d05ad7231b197190d214c6de5c">ENGINE_DATA_EXTRACT_PARTIAL</a>
+, <a class="el" href="libcnassets_8h.html#a29315e87a605a68b10fbed27d63ffec5abe522c75e298752cbb0177ec17d947bf">ENGINE_DATA_EXTRACT_ONE_OF_MANY</a>
+ }</td></tr>
+<tr class="separator:a29315e87a605a68b10fbed27d63ffec5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
@@ -629,6 +639,26 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
+<a id="a29315e87a605a68b10fbed27d63ffec5" name="a29315e87a605a68b10fbed27d63ffec5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29315e87a605a68b10fbed27d63ffec5">&#9670;&#160;</a></span>engine_data_extract_status</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="libcnassets_8h.html#a29315e87a605a68b10fbed27d63ffec5">engine_data_extract_status</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a29315e87a605a68b10fbed27d63ffec5a46933500da43da5e7a178bb612b6cb25" name="a29315e87a605a68b10fbed27d63ffec5a46933500da43da5e7a178bb612b6cb25"></a>ENGINE_DATA_EXTRACT_COMPLETE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a29315e87a605a68b10fbed27d63ffec5af03d6c8de0d7add7cf0f912962523ae7" name="a29315e87a605a68b10fbed27d63ffec5af03d6c8de0d7add7cf0f912962523ae7"></a>ENGINE_DATA_EXTRACT_ERR&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a29315e87a605a68b10fbed27d63ffec5a1d3006d05ad7231b197190d214c6de5c" name="a29315e87a605a68b10fbed27d63ffec5a1d3006d05ad7231b197190d214c6de5c"></a>ENGINE_DATA_EXTRACT_PARTIAL&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a29315e87a605a68b10fbed27d63ffec5abe522c75e298752cbb0177ec17d947bf" name="a29315e87a605a68b10fbed27d63ffec5abe522c75e298752cbb0177ec17d947bf"></a>ENGINE_DATA_EXTRACT_ONE_OF_MANY&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
 <a id="ab6f57059a2b8b8eb3fb281cbea5aab34" name="ab6f57059a2b8b8eb3fb281cbea5aab34"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab6f57059a2b8b8eb3fb281cbea5aab34">&#9670;&#160;</a></span>engine_obj_type</h2>
 
@@ -669,6 +699,9 @@ Functions</h2></td></tr>
 <tr><td class="fieldname"><a id="a959be715a1657adac70a74c248795869ad1fd9a83161480581c578d882a501ace" name="a959be715a1657adac70a74c248795869ad1fd9a83161480581c578d882a501ace"></a>ENGINE_SEC_GUI_STYLE&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a959be715a1657adac70a74c248795869ac2034ea9ebde71027843a1076979a266" name="a959be715a1657adac70a74c248795869ac2034ea9ebde71027843a1076979a266"></a>ENGINE_SEC_GUI_CONN&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a959be715a1657adac70a74c248795869a9eefc02bc33f9e4423780f6f88d31287" name="a959be715a1657adac70a74c248795869a9eefc02bc33f9e4423780f6f88d31287"></a>ENGINE_SEC_SCENE_TREE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a959be715a1657adac70a74c248795869afe2d3bcf3d11a64e776918e8ee652c73" name="a959be715a1657adac70a74c248795869afe2d3bcf3d11a64e776918e8ee652c73"></a>ENGINE_SEC_OBJ_SYMBOLS&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a959be715a1657adac70a74c248795869a5dae9580aa16b7ad3f557e1037f4c339" name="a959be715a1657adac70a74c248795869a5dae9580aa16b7ad3f557e1037f4c339"></a>ENGINE_SEC_OBJ_ATTRS&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a959be715a1657adac70a74c248795869a1549fc9f7e8d4a51d2ff156b6d9e71d3" name="a959be715a1657adac70a74c248795869a1549fc9f7e8d4a51d2ff156b6d9e71d3"></a>ENGINE_SEC_OBJ_INFO&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
 </div>

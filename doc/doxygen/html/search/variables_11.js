@@ -11,6 +11,7 @@ var searchData=
   ['renderer_8',['renderer',['../structwindow__s.html#a9e2653e6ea972601d9f18263990e6e0f',1,'window_s::renderer'],['../structgpu__rendering__data.html#a9de4a517dffcff2f8d3896014eed75a7',1,'gpu_rendering_data::renderer'],['../structtexture__s.html#a286f960e0b81d4a286b5ddb80b0ea582',1,'texture_s::renderer']]],
   ['resolution_9',['resolution',['../structtwod__board__mode__s.html#a9a3731b8963138f7fc9d83d2733ac1ab',1,'twod_board_mode_s::resolution'],['../structthreed__board__mode__s.html#aa9bb3de0b5ae3685ed0f65ebe3eb661b',1,'threed_board_mode_s::resolution'],['../structgui__board__mode__s.html#a0f33295f5711bab42765bbbd06245271',1,'gui_board_mode_s::resolution']]],
   ['ressources_10',['ressources',['../structEngineConfig.html#a32b594899a92e3c959b96e0725be92f6',1,'EngineConfig']]],
-  ['rotation_11',['rotation',['../structscene__object__mode__s.html#acab8988a6a697184fc10ce46c88c1e3a',1,'scene_object_mode_s::rotation'],['../structgui__object__mode__s.html#abebd7735c104db3cb3eb8853b6217d14',1,'gui_object_mode_s::rotation']]],
-  ['routes_12',['routes',['../engine_8h.html#a8caea1d671cd22260a6e9179a17a13b8',1,'engine.h']]]
+  ['root_11',['root',['../structCNProject.html#a4719ddd77e932d1ec53ed342c06733d1',1,'CNProject']]],
+  ['rotation_12',['rotation',['../structscene__object__mode__s.html#acab8988a6a697184fc10ce46c88c1e3a',1,'scene_object_mode_s::rotation'],['../structgui__object__mode__s.html#abebd7735c104db3cb3eb8853b6217d14',1,'gui_object_mode_s::rotation']]],
+  ['routes_13',['routes',['../engine_8h.html#a8caea1d671cd22260a6e9179a17a13b8',1,'engine.h']]]
 ];

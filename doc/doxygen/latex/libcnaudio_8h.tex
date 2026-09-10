@@ -1,7 +1,6 @@
 \doxysection{lib/cnaudio/include/libcnaudio.h File Reference}
 \hypertarget{libcnaudio_8h}{}\label{libcnaudio_8h}\index{lib/cnaudio/include/libcnaudio.h@{lib/cnaudio/include/libcnaudio.h}}
 {\ttfamily \#include "{}libcncore.\+h"{}}\newline
-{\ttfamily \#include $<$SDL\+\_\+mixer.\+h$>$}\newline
 \doxysubsubsection*{Data Structures}
 \begin{DoxyCompactItemize}
 \item 
@@ -17,6 +16,8 @@ struct \mbox{\hyperlink{structfree__channels__arr__s}{free\+\_\+channels\+\_\+ar
 \end{DoxyCompactItemize}
 \doxysubsubsection*{Typedefs}
 \begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{libcnaudio_8h_a0ec5298fec4179ed9c265e68f007755e}{Mix\+\_\+\+Chunk}} \mbox{\hyperlink{libcnaudio_8h_a0ec5298fec4179ed9c265e68f007755e}{Mix\+\_\+\+Chunk}}
 \item 
 typedef struct \mbox{\hyperlink{structaudio__event__s}{audio\+\_\+event\+\_\+s}} \mbox{\hyperlink{libcnaudio_8h_a347ec905c7fad000f823987f44363621}{Audio\+Event}}
 \item 
@@ -41,11 +42,11 @@ enum \mbox{\hyperlink{libcnaudio_8h_a965ab79ae726810cf1a354a3b6d69549}{audio\+\_
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} \mbox{\hyperlink{libcnaudio_8h_ab9d4189a71cbbcb47bfb74c0c6ce9e41}{start\+\_\+audio}} (void)
+\mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}} \mbox{\hyperlink{libcnaudio_8h_ab9d4189a71cbbcb47bfb74c0c6ce9e41}{start\+\_\+audio}} (void)
 \item 
 void \mbox{\hyperlink{libcnaudio_8h_a4c7ebe7634d17e2040e376d8a0249e94}{end\+\_\+audio}} (void)
 \item 
-\mbox{\hyperlink{libcnaudio_8h_a47d4b2ae444f11e00a3a595fc7b20fd6}{Audio}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcnaudio_8h_a3b2864ca0048da63a6d9e7b283d35aec}{new\+\_\+audio}} (const Mix\+\_\+\+Chunk \texorpdfstring{$\ast$}{*}audio\+\_\+chunk\+\_\+ptr, \mbox{\hyperlink{libcncore_8h_a45176b455e70053cf81874c72e0aa5fe}{cn\+\_\+method}} on\+\_\+audio\+\_\+end, \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}on\+\_\+end\+\_\+obj)
+\mbox{\hyperlink{libcnaudio_8h_a47d4b2ae444f11e00a3a595fc7b20fd6}{Audio}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcnaudio_8h_a3b2864ca0048da63a6d9e7b283d35aec}{new\+\_\+audio}} (const \mbox{\hyperlink{libcnaudio_8h_a0ec5298fec4179ed9c265e68f007755e}{Mix\+\_\+\+Chunk}} \texorpdfstring{$\ast$}{*}audio\+\_\+chunk\+\_\+ptr, \mbox{\hyperlink{libcncore_8h_a45176b455e70053cf81874c72e0aa5fe}{cn\+\_\+method}} on\+\_\+audio\+\_\+end, \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}on\+\_\+end\+\_\+obj)
 \item 
 void \mbox{\hyperlink{libcnaudio_8h_a2a360d5ddb2751b2ff79b765d01920c6}{audio\+\_\+run\+\_\+sequence}} (\mbox{\hyperlink{libcnaudio_8h_a47d4b2ae444f11e00a3a595fc7b20fd6}{Audio}} \texorpdfstring{$\ast$}{*}audio, int32\+\_\+t delta\+\_\+time, struct \mbox{\hyperlink{structfree__channels__arr__s}{free\+\_\+channels\+\_\+arr\+\_\+s}} \texorpdfstring{$\ast$}{*}free\+\_\+channels)
 \item 
@@ -73,9 +74,9 @@ void \mbox{\hyperlink{libcnaudio_8h_a9370a2639fc3b5d88e677a9af9a43793}{remove\+\
 \item 
 void \mbox{\hyperlink{libcnaudio_8h_a1848667d6af9d44f22453472c4b4c285}{init\+\_\+audio\+\_\+sequence\+\_\+content}} (\mbox{\hyperlink{libcnaudio_8h_a1c69ee57b2d9f89ab4ee80867221b2ab}{Audio\+Sequence}} \texorpdfstring{$\ast$}{*}seq)
 \item 
-\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} \mbox{\hyperlink{libcnaudio_8h_a04e87e4e6b62c59a0142f220a79e8613}{audio\+\_\+sequence\+\_\+is\+\_\+empty}} (const \mbox{\hyperlink{libcnaudio_8h_a1c69ee57b2d9f89ab4ee80867221b2ab}{Audio\+Sequence}} \texorpdfstring{$\ast$}{*}seq)
+\mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}} \mbox{\hyperlink{libcnaudio_8h_a04e87e4e6b62c59a0142f220a79e8613}{audio\+\_\+sequence\+\_\+is\+\_\+empty}} (const \mbox{\hyperlink{libcnaudio_8h_a1c69ee57b2d9f89ab4ee80867221b2ab}{Audio\+Sequence}} \texorpdfstring{$\ast$}{*}seq)
 \item 
-\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} \mbox{\hyperlink{libcnaudio_8h_a855e0520d8f1d3dd585bf6088998e3a2}{audio\+\_\+sequence\+\_\+pull\+\_\+event}} (const \mbox{\hyperlink{libcnaudio_8h_a1c69ee57b2d9f89ab4ee80867221b2ab}{Audio\+Sequence}} \texorpdfstring{$\ast$}{*}seq, \mbox{\hyperlink{libcnaudio_8h_a347ec905c7fad000f823987f44363621}{Audio\+Event}} \texorpdfstring{$\ast$}{*}ev)
+\mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}} \mbox{\hyperlink{libcnaudio_8h_a855e0520d8f1d3dd585bf6088998e3a2}{audio\+\_\+sequence\+\_\+pull\+\_\+event}} (const \mbox{\hyperlink{libcnaudio_8h_a1c69ee57b2d9f89ab4ee80867221b2ab}{Audio\+Sequence}} \texorpdfstring{$\ast$}{*}seq, \mbox{\hyperlink{libcnaudio_8h_a347ec905c7fad000f823987f44363621}{Audio\+Event}} \texorpdfstring{$\ast$}{*}ev)
 \item 
 void \mbox{\hyperlink{libcnaudio_8h_a4e4a0042cefa07f7c07c4bd6da2c71c2}{audio\+\_\+sequence\+\_\+push\+\_\+event}} (\mbox{\hyperlink{libcnaudio_8h_a1c69ee57b2d9f89ab4ee80867221b2ab}{Audio\+Sequence}} \texorpdfstring{$\ast$}{*}seq, const \mbox{\hyperlink{libcnaudio_8h_a347ec905c7fad000f823987f44363621}{Audio\+Event}} \texorpdfstring{$\ast$}{*}ev)
 \item 
@@ -83,7 +84,7 @@ void \mbox{\hyperlink{libcnaudio_8h_a4b9ea8cbf17b15209069ce826e65fa76}{audio\+\_
 \item 
 void \mbox{\hyperlink{libcnaudio_8h_aa772a5a36486a671f5deaf865e7f4d5d}{delete\+\_\+audio\+\_\+sequence\+\_\+content}} (\mbox{\hyperlink{libcnaudio_8h_a1c69ee57b2d9f89ab4ee80867221b2ab}{Audio\+Sequence}} \texorpdfstring{$\ast$}{*}seq)
 \item 
-\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcnaudio_8h_a398b3cb49c901d43739de1a63c9d202b}{new\+\_\+audio\+\_\+ctx}} (\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} skip\+\_\+init\+\_\+error)
+\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{libcnaudio_8h_a398b3cb49c901d43739de1a63c9d202b}{new\+\_\+audio\+\_\+ctx}} (\mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}} skip\+\_\+init\+\_\+error)
 \end{DoxyCompactItemize}
 
 
@@ -105,6 +106,12 @@ void \mbox{\hyperlink{libcnaudio_8h_aa772a5a36486a671f5deaf865e7f4d5d}{delete\+\
 \index{AudioSequence@{AudioSequence}!libcnaudio.h@{libcnaudio.h}}
 \doxysubsubsection{\texorpdfstring{AudioSequence}{AudioSequence}}
 {\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structaudio__sequence__s}{audio\+\_\+sequence\+\_\+s}} \mbox{\hyperlink{libcnaudio_8h_a1c69ee57b2d9f89ab4ee80867221b2ab}{Audio\+Sequence}}}
+
+\Hypertarget{libcnaudio_8h_a0ec5298fec4179ed9c265e68f007755e}\label{libcnaudio_8h_a0ec5298fec4179ed9c265e68f007755e} 
+\index{libcnaudio.h@{libcnaudio.h}!Mix\_Chunk@{Mix\_Chunk}}
+\index{Mix\_Chunk@{Mix\_Chunk}!libcnaudio.h@{libcnaudio.h}}
+\doxysubsubsection{\texorpdfstring{Mix\_Chunk}{Mix\_Chunk}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{libcnaudio_8h_a0ec5298fec4179ed9c265e68f007755e}{Mix\+\_\+\+Chunk}} \mbox{\hyperlink{libcnaudio_8h_a0ec5298fec4179ed9c265e68f007755e}{Mix\+\_\+\+Chunk}}}
 
 
 
@@ -164,13 +171,13 @@ CNAUDIO\+\_\+\+EVENT\+\_\+\+PANNING&\\
 \index{libcnaudio.h@{libcnaudio.h}!audio\_sequence\_is\_empty@{audio\_sequence\_is\_empty}}
 \index{audio\_sequence\_is\_empty@{audio\_sequence\_is\_empty}!libcnaudio.h@{libcnaudio.h}}
 \doxysubsubsection{\texorpdfstring{audio\_sequence\_is\_empty()}{audio\_sequence\_is\_empty()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} audio\+\_\+sequence\+\_\+is\+\_\+empty (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{libcnaudio_8h_a1c69ee57b2d9f89ab4ee80867221b2ab}{Audio\+Sequence}} \texorpdfstring{$\ast$}{*}}]{seq }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}} audio\+\_\+sequence\+\_\+is\+\_\+empty (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{libcnaudio_8h_a1c69ee57b2d9f89ab4ee80867221b2ab}{Audio\+Sequence}} \texorpdfstring{$\ast$}{*}}]{seq }\end{DoxyParamCaption})}
 
 \Hypertarget{libcnaudio_8h_a855e0520d8f1d3dd585bf6088998e3a2}\label{libcnaudio_8h_a855e0520d8f1d3dd585bf6088998e3a2} 
 \index{libcnaudio.h@{libcnaudio.h}!audio\_sequence\_pull\_event@{audio\_sequence\_pull\_event}}
 \index{audio\_sequence\_pull\_event@{audio\_sequence\_pull\_event}!libcnaudio.h@{libcnaudio.h}}
 \doxysubsubsection{\texorpdfstring{audio\_sequence\_pull\_event()}{audio\_sequence\_pull\_event()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} audio\+\_\+sequence\+\_\+pull\+\_\+event (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{libcnaudio_8h_a1c69ee57b2d9f89ab4ee80867221b2ab}{Audio\+Sequence}} \texorpdfstring{$\ast$}{*}}]{seq,  }\item[{\mbox{\hyperlink{libcnaudio_8h_a347ec905c7fad000f823987f44363621}{Audio\+Event}} \texorpdfstring{$\ast$}{*}}]{ev }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}} audio\+\_\+sequence\+\_\+pull\+\_\+event (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{libcnaudio_8h_a1c69ee57b2d9f89ab4ee80867221b2ab}{Audio\+Sequence}} \texorpdfstring{$\ast$}{*}}]{seq,  }\item[{\mbox{\hyperlink{libcnaudio_8h_a347ec905c7fad000f823987f44363621}{Audio\+Event}} \texorpdfstring{$\ast$}{*}}]{ev }\end{DoxyParamCaption})}
 
 \Hypertarget{libcnaudio_8h_a4e4a0042cefa07f7c07c4bd6da2c71c2}\label{libcnaudio_8h_a4e4a0042cefa07f7c07c4bd6da2c71c2} 
 \index{libcnaudio.h@{libcnaudio.h}!audio\_sequence\_push\_event@{audio\_sequence\_push\_event}}
@@ -218,13 +225,13 @@ CNAUDIO\+\_\+\+EVENT\+\_\+\+PANNING&\\
 \index{libcnaudio.h@{libcnaudio.h}!new\_audio@{new\_audio}}
 \index{new\_audio@{new\_audio}!libcnaudio.h@{libcnaudio.h}}
 \doxysubsubsection{\texorpdfstring{new\_audio()}{new\_audio()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{libcnaudio_8h_a47d4b2ae444f11e00a3a595fc7b20fd6}{Audio}} \texorpdfstring{$\ast$}{*} new\+\_\+audio (\begin{DoxyParamCaption}\item[{const Mix\+\_\+\+Chunk \texorpdfstring{$\ast$}{*}}]{audio\+\_\+chunk\+\_\+ptr,  }\item[{\mbox{\hyperlink{libcncore_8h_a45176b455e70053cf81874c72e0aa5fe}{cn\+\_\+method}}}]{on\+\_\+audio\+\_\+end,  }\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{on\+\_\+end\+\_\+obj }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcnaudio_8h_a47d4b2ae444f11e00a3a595fc7b20fd6}{Audio}} \texorpdfstring{$\ast$}{*} new\+\_\+audio (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{libcnaudio_8h_a0ec5298fec4179ed9c265e68f007755e}{Mix\+\_\+\+Chunk}} \texorpdfstring{$\ast$}{*}}]{audio\+\_\+chunk\+\_\+ptr,  }\item[{\mbox{\hyperlink{libcncore_8h_a45176b455e70053cf81874c72e0aa5fe}{cn\+\_\+method}}}]{on\+\_\+audio\+\_\+end,  }\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{on\+\_\+end\+\_\+obj }\end{DoxyParamCaption})}
 
 \Hypertarget{libcnaudio_8h_a398b3cb49c901d43739de1a63c9d202b}\label{libcnaudio_8h_a398b3cb49c901d43739de1a63c9d202b} 
 \index{libcnaudio.h@{libcnaudio.h}!new\_audio\_ctx@{new\_audio\_ctx}}
 \index{new\_audio\_ctx@{new\_audio\_ctx}!libcnaudio.h@{libcnaudio.h}}
 \doxysubsubsection{\texorpdfstring{new\_audio\_ctx()}{new\_audio\_ctx()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*} new\+\_\+audio\+\_\+ctx (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}}}]{skip\+\_\+init\+\_\+error }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*} new\+\_\+audio\+\_\+ctx (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}}}]{skip\+\_\+init\+\_\+error }\end{DoxyParamCaption})}
 
 \Hypertarget{libcnaudio_8h_af9057de3e2ca5f3486bf6d480a7d598b}\label{libcnaudio_8h_af9057de3e2ca5f3486bf6d480a7d598b} 
 \index{libcnaudio.h@{libcnaudio.h}!new\_audio\_vector@{new\_audio\_vector}}
@@ -272,7 +279,7 @@ CNAUDIO\+\_\+\+EVENT\+\_\+\+PANNING&\\
 \index{libcnaudio.h@{libcnaudio.h}!start\_audio@{start\_audio}}
 \index{start\_audio@{start\_audio}!libcnaudio.h@{libcnaudio.h}}
 \doxysubsubsection{\texorpdfstring{start\_audio()}{start\_audio()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_a4ae17cbe3aeebfefbce33d5789ae3aeb}{cnbool}} start\+\_\+audio (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{libcncore_8h_abf8b6b5806339a37891ff6af0e1179b5}{cnbool}} start\+\_\+audio (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
 
 \Hypertarget{libcnaudio_8h_a245b0a63e0bc546fcab1e6a78edb1f8c}\label{libcnaudio_8h_a245b0a63e0bc546fcab1e6a78edb1f8c} 
 \index{libcnaudio.h@{libcnaudio.h}!stop\_audio@{stop\_audio}}

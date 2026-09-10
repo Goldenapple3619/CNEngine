@@ -118,8 +118,8 @@ Functions</h2></td></tr>
 <tr class="separator:a9540122281aa3fb5c277e4af8e314b37"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a737dd4ef1edeb280ba3c7e9d47ffb807" id="r_a737dd4ef1edeb280ba3c7e9d47ffb807"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game__assets__compiler_8c.html#a737dd4ef1edeb280ba3c7e9d47ffb807">add_src_to_asset_compiler</a> (<a class="el" href="structGameAssetCompiler.html">GameAssetCompiler</a> *compiler, const char *location, <a class="el" href="project__toolchain_8h.html#a3924bc2aede93e122d59991d0db8dd2f">cnasset_type</a> type)</td></tr>
 <tr class="separator:a737dd4ef1edeb280ba3c7e9d47ffb807"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1d7c7c4ee4845e4d4a5f44061e56a1e0" id="r_a1d7c7c4ee4845e4d4a5f44061e56a1e0"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game__assets__compiler_8c.html#a1d7c7c4ee4845e4d4a5f44061e56a1e0">asset_compiler_build_objects</a> (<a class="el" href="structGameAssetCompiler.html">GameAssetCompiler</a> *compiler)</td></tr>
-<tr class="separator:a1d7c7c4ee4845e4d4a5f44061e56a1e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb8bd84775d98fabca21278448fa81c9" id="r_acb8bd84775d98fabca21278448fa81c9"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game__assets__compiler_8c.html#acb8bd84775d98fabca21278448fa81c9">asset_compiler_build_objects</a> (<a class="el" href="structGameAssetCompiler.html">GameAssetCompiler</a> *compiler, const char *asset_root)</td></tr>
+<tr class="separator:acb8bd84775d98fabca21278448fa81c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa3281fa1335d741eeacff24a53921026" id="r_aa3281fa1335d741eeacff24a53921026"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game__assets__compiler_8c.html#aa3281fa1335d741eeacff24a53921026">asset_compiler_build_banks</a> (<a class="el" href="structGameAssetCompiler.html">GameAssetCompiler</a> *compiler)</td></tr>
 <tr class="separator:aa3281fa1335d741eeacff24a53921026"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f7ac9edc8b9a808b6089ecd4b3fcd80" id="r_a8f7ac9edc8b9a808b6089ecd4b3fcd80"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game__assets__compiler_8c.html#a8f7ac9edc8b9a808b6089ecd4b3fcd80">compile_assets</a> (const <a class="el" href="structCNProject.html">CNProject</a> *project, const <a class="el" href="structCNBuild.html">CNBuild</a> *build_info, const char *dist_path, const char *build_path, const char *toolchain_path)</td></tr>
@@ -178,8 +178,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a1d7c7c4ee4845e4d4a5f44061e56a1e0" name="a1d7c7c4ee4845e4d4a5f44061e56a1e0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1d7c7c4ee4845e4d4a5f44061e56a1e0">&#9670;&#160;</a></span>asset_compiler_build_objects()</h2>
+<a id="acb8bd84775d98fabca21278448fa81c9" name="acb8bd84775d98fabca21278448fa81c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb8bd84775d98fabca21278448fa81c9">&#9670;&#160;</a></span>asset_compiler_build_objects()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -188,8 +188,18 @@ Functions</h2></td></tr>
           <td class="memname">uint8_t asset_compiler_build_objects </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structGameAssetCompiler.html">GameAssetCompiler</a> *&#160;</td>
-          <td class="paramname"><em>compiler</em></td><td>)</td>
+          <td class="paramname"><em>compiler</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>asset_root</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">

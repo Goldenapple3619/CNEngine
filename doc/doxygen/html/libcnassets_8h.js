@@ -32,6 +32,12 @@ var libcnassets_8h =
     [ "wr32_fn", "libcnassets_8h.html#a232d6219574587019490228dedff1933", null ],
     [ "wr64_fn", "libcnassets_8h.html#ae282cff5b65567d2b8f4291136f82519", null ],
     [ "wr8_fn", "libcnassets_8h.html#a99e925cd028331cf810aab147f5fb245", null ],
+    [ "engine_data_extract_status", "libcnassets_8h.html#a29315e87a605a68b10fbed27d63ffec5", [
+      [ "ENGINE_DATA_EXTRACT_COMPLETE", "libcnassets_8h.html#a29315e87a605a68b10fbed27d63ffec5a46933500da43da5e7a178bb612b6cb25", null ],
+      [ "ENGINE_DATA_EXTRACT_ERR", "libcnassets_8h.html#a29315e87a605a68b10fbed27d63ffec5af03d6c8de0d7add7cf0f912962523ae7", null ],
+      [ "ENGINE_DATA_EXTRACT_PARTIAL", "libcnassets_8h.html#a29315e87a605a68b10fbed27d63ffec5a1d3006d05ad7231b197190d214c6de5c", null ],
+      [ "ENGINE_DATA_EXTRACT_ONE_OF_MANY", "libcnassets_8h.html#a29315e87a605a68b10fbed27d63ffec5abe522c75e298752cbb0177ec17d947bf", null ]
+    ] ],
     [ "engine_obj_type", "libcnassets_8h.html#ab6f57059a2b8b8eb3fb281cbea5aab34", [
       [ "ENGINE_OBJ_UKN", "libcnassets_8h.html#ab6f57059a2b8b8eb3fb281cbea5aab34ac5eb0006acdeb543b210dd74eb00e505", null ],
       [ "ENGINE_OBJ_RAW_RESSOURCES", "libcnassets_8h.html#ab6f57059a2b8b8eb3fb281cbea5aab34acb2e20573acdc42de5e24c23af7e27e7", null ],
@@ -46,7 +52,10 @@ var libcnassets_8h =
       [ "ENGINE_SEC_GUI_NODES", "libcnassets_8h.html#a959be715a1657adac70a74c248795869a0bea8b02b15cf276b9db591d5a7fdf5f", null ],
       [ "ENGINE_SEC_GUI_STYLE", "libcnassets_8h.html#a959be715a1657adac70a74c248795869ad1fd9a83161480581c578d882a501ace", null ],
       [ "ENGINE_SEC_GUI_CONN", "libcnassets_8h.html#a959be715a1657adac70a74c248795869ac2034ea9ebde71027843a1076979a266", null ],
-      [ "ENGINE_SEC_SCENE_TREE", "libcnassets_8h.html#a959be715a1657adac70a74c248795869a9eefc02bc33f9e4423780f6f88d31287", null ]
+      [ "ENGINE_SEC_SCENE_TREE", "libcnassets_8h.html#a959be715a1657adac70a74c248795869a9eefc02bc33f9e4423780f6f88d31287", null ],
+      [ "ENGINE_SEC_OBJ_SYMBOLS", "libcnassets_8h.html#a959be715a1657adac70a74c248795869afe2d3bcf3d11a64e776918e8ee652c73", null ],
+      [ "ENGINE_SEC_OBJ_ATTRS", "libcnassets_8h.html#a959be715a1657adac70a74c248795869a5dae9580aa16b7ad3f557e1037f4c339", null ],
+      [ "ENGINE_SEC_OBJ_INFO", "libcnassets_8h.html#a959be715a1657adac70a74c248795869a1549fc9f7e8d4a51d2ff156b6d9e71d3", null ]
     ] ],
     [ "engine_section_wrt_flags", "libcnassets_8h.html#a476d44b2fd664f18b92f351d4f06aaaa", [
       [ "ENGINE_SEC_NULL_FLAG", "libcnassets_8h.html#a476d44b2fd664f18b92f351d4f06aaaaaba005e807a79d4a40b76ce98e3c718bc", null ]

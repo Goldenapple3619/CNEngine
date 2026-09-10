@@ -1,0 +1,91 @@
+\doxysection{assets/generator/submodules/assets/api.c File Reference}
+\hypertarget{api_8c}{}\label{api_8c}\index{assets/generator/submodules/assets/api.c@{assets/generator/submodules/assets/api.c}}
+{\ttfamily \#include "{}../../engine\+\_\+main.\+h"{}}\newline
+{\ttfamily \#include "{}libcnassets.\+h"{}}\newline
+{\ttfamily \#include "{}cnobjectobj.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{api_8c_a50b8693f4125b5351df06b9049056570}{\+\_\+search\+\_\+symbol\+\_\+container}} (\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+this, void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}args)
+\item 
+static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{api_8c_a074eed33d4d62f4db9031d038db25803}{\+\_\+get\+\_\+all\+\_\+asset\+\_\+pack}} (\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+this, void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}args)
+\item 
+static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{api_8c_aac89cf5266c2cec2bec1f5bcb734ddba}{\+\_\+get\+\_\+all\+\_\+maps}} (\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+this, void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}args)
+\item 
+static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{api_8c_ad7f3fd74f1815cd4456ae1c37c85526b}{\+\_\+apply\+\_\+scene}} (\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+this, void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}args)
+\item 
+static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{api_8c_a23c5750ff1e20ffb97398fcf86ef793a}{\+\_\+load\+\_\+scene}} (\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+this, void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}args)
+\item 
+static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \mbox{\hyperlink{api_8c_a1a73e90a8460b997b96daba1b37999ce}{\+\_\+load\+\_\+symbol}} (\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}\+\_\+\+\_\+this, void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}args)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{api_8c_a648e9280d4c4f707fb22f691afe0af3b}{register\+\_\+engine\+\_\+asset\+\_\+api}} (\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}ctx)
+\item 
+void \mbox{\hyperlink{api_8c_a529a7411c2c361c8e298c35a5a83daa3}{unregister\+\_\+engine\+\_\+asset\+\_\+api}} (\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}ctx)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{api_8c_a59221d57a86f4eca416c790fea7ccaed}{load\+\_\+assets\+\_\+handler}} (\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}ctx)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{api_8c_a192f2c190cce299b6b6ae7474647599f}{load\+\_\+entry\+\_\+scene}} (\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}ctx)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{api_8c_ad7f3fd74f1815cd4456ae1c37c85526b}\label{api_8c_ad7f3fd74f1815cd4456ae1c37c85526b} 
+\index{api.c@{api.c}!\_apply\_scene@{\_apply\_scene}}
+\index{\_apply\_scene@{\_apply\_scene}!api.c@{api.c}}
+\doxysubsubsection{\texorpdfstring{\_apply\_scene()}{\_apply\_scene()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \+\_\+apply\+\_\+scene (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+this,  }\item[{void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{api_8c_a074eed33d4d62f4db9031d038db25803}\label{api_8c_a074eed33d4d62f4db9031d038db25803} 
+\index{api.c@{api.c}!\_get\_all\_asset\_pack@{\_get\_all\_asset\_pack}}
+\index{\_get\_all\_asset\_pack@{\_get\_all\_asset\_pack}!api.c@{api.c}}
+\doxysubsubsection{\texorpdfstring{\_get\_all\_asset\_pack()}{\_get\_all\_asset\_pack()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \+\_\+get\+\_\+all\+\_\+asset\+\_\+pack (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+this,  }\item[{void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{api_8c_aac89cf5266c2cec2bec1f5bcb734ddba}\label{api_8c_aac89cf5266c2cec2bec1f5bcb734ddba} 
+\index{api.c@{api.c}!\_get\_all\_maps@{\_get\_all\_maps}}
+\index{\_get\_all\_maps@{\_get\_all\_maps}!api.c@{api.c}}
+\doxysubsubsection{\texorpdfstring{\_get\_all\_maps()}{\_get\_all\_maps()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \+\_\+get\+\_\+all\+\_\+maps (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+this,  }\item[{void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{api_8c_a23c5750ff1e20ffb97398fcf86ef793a}\label{api_8c_a23c5750ff1e20ffb97398fcf86ef793a} 
+\index{api.c@{api.c}!\_load\_scene@{\_load\_scene}}
+\index{\_load\_scene@{\_load\_scene}!api.c@{api.c}}
+\doxysubsubsection{\texorpdfstring{\_load\_scene()}{\_load\_scene()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \+\_\+load\+\_\+scene (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+this,  }\item[{void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{api_8c_a1a73e90a8460b997b96daba1b37999ce}\label{api_8c_a1a73e90a8460b997b96daba1b37999ce} 
+\index{api.c@{api.c}!\_load\_symbol@{\_load\_symbol}}
+\index{\_load\_symbol@{\_load\_symbol}!api.c@{api.c}}
+\doxysubsubsection{\texorpdfstring{\_load\_symbol()}{\_load\_symbol()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \+\_\+load\+\_\+symbol (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+this,  }\item[{void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{api_8c_a50b8693f4125b5351df06b9049056570}\label{api_8c_a50b8693f4125b5351df06b9049056570} 
+\index{api.c@{api.c}!\_search\_symbol\_container@{\_search\_symbol\_container}}
+\index{\_search\_symbol\_container@{\_search\_symbol\_container}!api.c@{api.c}}
+\doxysubsubsection{\texorpdfstring{\_search\_symbol\_container()}{\_search\_symbol\_container()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{structcn__value}{cn\+\_\+value}} \+\_\+search\+\_\+symbol\+\_\+container (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{\+\_\+\+\_\+this,  }\item[{void \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\Hypertarget{api_8c_a59221d57a86f4eca416c790fea7ccaed}\label{api_8c_a59221d57a86f4eca416c790fea7ccaed} 
+\index{api.c@{api.c}!load\_assets\_handler@{load\_assets\_handler}}
+\index{load\_assets\_handler@{load\_assets\_handler}!api.c@{api.c}}
+\doxysubsubsection{\texorpdfstring{load\_assets\_handler()}{load\_assets\_handler()}}
+{\footnotesize\ttfamily uint8\+\_\+t load\+\_\+assets\+\_\+handler (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{ctx }\end{DoxyParamCaption})}
+
+\Hypertarget{api_8c_a192f2c190cce299b6b6ae7474647599f}\label{api_8c_a192f2c190cce299b6b6ae7474647599f} 
+\index{api.c@{api.c}!load\_entry\_scene@{load\_entry\_scene}}
+\index{load\_entry\_scene@{load\_entry\_scene}!api.c@{api.c}}
+\doxysubsubsection{\texorpdfstring{load\_entry\_scene()}{load\_entry\_scene()}}
+{\footnotesize\ttfamily uint8\+\_\+t load\+\_\+entry\+\_\+scene (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{ctx }\end{DoxyParamCaption})}
+
+\Hypertarget{api_8c_a648e9280d4c4f707fb22f691afe0af3b}\label{api_8c_a648e9280d4c4f707fb22f691afe0af3b} 
+\index{api.c@{api.c}!register\_engine\_asset\_api@{register\_engine\_asset\_api}}
+\index{register\_engine\_asset\_api@{register\_engine\_asset\_api}!api.c@{api.c}}
+\doxysubsubsection{\texorpdfstring{register\_engine\_asset\_api()}{register\_engine\_asset\_api()}}
+{\footnotesize\ttfamily uint8\+\_\+t register\+\_\+engine\+\_\+asset\+\_\+api (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{ctx }\end{DoxyParamCaption})}
+
+\Hypertarget{api_8c_a529a7411c2c361c8e298c35a5a83daa3}\label{api_8c_a529a7411c2c361c8e298c35a5a83daa3} 
+\index{api.c@{api.c}!unregister\_engine\_asset\_api@{unregister\_engine\_asset\_api}}
+\index{unregister\_engine\_asset\_api@{unregister\_engine\_asset\_api}!api.c@{api.c}}
+\doxysubsubsection{\texorpdfstring{unregister\_engine\_asset\_api()}{unregister\_engine\_asset\_api()}}
+{\footnotesize\ttfamily void unregister\+\_\+engine\+\_\+asset\+\_\+api (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{ctx }\end{DoxyParamCaption})}
+

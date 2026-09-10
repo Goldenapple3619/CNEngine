@@ -1,0 +1,49 @@
+\doxysection{src/cnbuild/object\+\_\+toolchain/obj.c File Reference}
+\hypertarget{obj_8c}{}\label{obj_8c}\index{src/cnbuild/object\_toolchain/obj.c@{src/cnbuild/object\_toolchain/obj.c}}
+{\ttfamily \#include "{}object\+\_\+toolchain.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{obj_8c_a0e03300d581121acad0e903c556cb464}{delete\+\_\+object\+\_\+element\+\_\+data}} (struct \mbox{\hyperlink{structobject__element__s}{object\+\_\+element\+\_\+s}} \texorpdfstring{$\ast$}{*}obj\+\_\+data)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{obj_8c_ac1d003de9e7113475734782da7d67d71}{parse\+\_\+object\+\_\+element\+\_\+methods\+\_\+xml}} (xml\+Node \texorpdfstring{$\ast$}{*}node, struct \mbox{\hyperlink{structobject__element__s}{object\+\_\+element\+\_\+s}} \texorpdfstring{$\ast$}{*}obj\+\_\+data)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{obj_8c_abeabcd6daffbdbd0814fc12088915eea}{parse\+\_\+object\+\_\+element\+\_\+attributes\+\_\+xml}} (xml\+Node \texorpdfstring{$\ast$}{*}node, struct \mbox{\hyperlink{structobject__element__s}{object\+\_\+element\+\_\+s}} \texorpdfstring{$\ast$}{*}obj\+\_\+data)
+\item 
+struct \mbox{\hyperlink{structobject__element__s}{object\+\_\+element\+\_\+s}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{obj_8c_a8ba02962455b34f144c14e2a98ba3562}{parse\+\_\+object\+\_\+element\+\_\+data\+\_\+xml}} (const char \texorpdfstring{$\ast$}{*}object\+\_\+path)
+\item 
+struct \mbox{\hyperlink{structobject__element__s}{object\+\_\+element\+\_\+s}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{obj_8c_a6ff3d05029135c66b253a22525bc8177}{parse\+\_\+object}} (const char \texorpdfstring{$\ast$}{*}object\+\_\+path, struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}wctx, \mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}asset\+\_\+ctx)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{obj_8c_a0e03300d581121acad0e903c556cb464}\label{obj_8c_a0e03300d581121acad0e903c556cb464} 
+\index{obj.c@{obj.c}!delete\_object\_element\_data@{delete\_object\_element\_data}}
+\index{delete\_object\_element\_data@{delete\_object\_element\_data}!obj.c@{obj.c}}
+\doxysubsubsection{\texorpdfstring{delete\_object\_element\_data()}{delete\_object\_element\_data()}}
+{\footnotesize\ttfamily void delete\+\_\+object\+\_\+element\+\_\+data (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structobject__element__s}{object\+\_\+element\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{obj\+\_\+data }\end{DoxyParamCaption})}
+
+\Hypertarget{obj_8c_a6ff3d05029135c66b253a22525bc8177}\label{obj_8c_a6ff3d05029135c66b253a22525bc8177} 
+\index{obj.c@{obj.c}!parse\_object@{parse\_object}}
+\index{parse\_object@{parse\_object}!obj.c@{obj.c}}
+\doxysubsubsection{\texorpdfstring{parse\_object()}{parse\_object()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structobject__element__s}{object\+\_\+element\+\_\+s}} \texorpdfstring{$\ast$}{*} parse\+\_\+object (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{object\+\_\+path,  }\item[{struct \mbox{\hyperlink{structengine__object__file__writer__ctx__s}{engine\+\_\+object\+\_\+file\+\_\+writer\+\_\+ctx\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{wctx,  }\item[{\mbox{\hyperlink{libcncore_8h_af654a8c48142adaf8e366798d6908b0f}{Object}} \texorpdfstring{$\ast$}{*}}]{asset\+\_\+ctx }\end{DoxyParamCaption})}
+
+\Hypertarget{obj_8c_abeabcd6daffbdbd0814fc12088915eea}\label{obj_8c_abeabcd6daffbdbd0814fc12088915eea} 
+\index{obj.c@{obj.c}!parse\_object\_element\_attributes\_xml@{parse\_object\_element\_attributes\_xml}}
+\index{parse\_object\_element\_attributes\_xml@{parse\_object\_element\_attributes\_xml}!obj.c@{obj.c}}
+\doxysubsubsection{\texorpdfstring{parse\_object\_element\_attributes\_xml()}{parse\_object\_element\_attributes\_xml()}}
+{\footnotesize\ttfamily uint8\+\_\+t parse\+\_\+object\+\_\+element\+\_\+attributes\+\_\+xml (\begin{DoxyParamCaption}\item[{xml\+Node \texorpdfstring{$\ast$}{*}}]{node,  }\item[{struct \mbox{\hyperlink{structobject__element__s}{object\+\_\+element\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{obj\+\_\+data }\end{DoxyParamCaption})}
+
+\Hypertarget{obj_8c_a8ba02962455b34f144c14e2a98ba3562}\label{obj_8c_a8ba02962455b34f144c14e2a98ba3562} 
+\index{obj.c@{obj.c}!parse\_object\_element\_data\_xml@{parse\_object\_element\_data\_xml}}
+\index{parse\_object\_element\_data\_xml@{parse\_object\_element\_data\_xml}!obj.c@{obj.c}}
+\doxysubsubsection{\texorpdfstring{parse\_object\_element\_data\_xml()}{parse\_object\_element\_data\_xml()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structobject__element__s}{object\+\_\+element\+\_\+s}} \texorpdfstring{$\ast$}{*} parse\+\_\+object\+\_\+element\+\_\+data\+\_\+xml (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{object\+\_\+path }\end{DoxyParamCaption})}
+
+\Hypertarget{obj_8c_ac1d003de9e7113475734782da7d67d71}\label{obj_8c_ac1d003de9e7113475734782da7d67d71} 
+\index{obj.c@{obj.c}!parse\_object\_element\_methods\_xml@{parse\_object\_element\_methods\_xml}}
+\index{parse\_object\_element\_methods\_xml@{parse\_object\_element\_methods\_xml}!obj.c@{obj.c}}
+\doxysubsubsection{\texorpdfstring{parse\_object\_element\_methods\_xml()}{parse\_object\_element\_methods\_xml()}}
+{\footnotesize\ttfamily uint8\+\_\+t parse\+\_\+object\+\_\+element\+\_\+methods\+\_\+xml (\begin{DoxyParamCaption}\item[{xml\+Node \texorpdfstring{$\ast$}{*}}]{node,  }\item[{struct \mbox{\hyperlink{structobject__element__s}{object\+\_\+element\+\_\+s}} \texorpdfstring{$\ast$}{*}}]{obj\+\_\+data }\end{DoxyParamCaption})}
+

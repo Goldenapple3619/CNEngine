@@ -109,10 +109,11 @@ $(document).ready(function(){initNavTree('audio_8c.html',''); initResizable(); }
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="libcnaudio_8h_source.html">libcnaudio.h</a>&quot;</code><br />
+<code>#include &lt;SDL_mixer.h&gt;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a3b2864ca0048da63a6d9e7b283d35aec" id="r_a3b2864ca0048da63a6d9e7b283d35aec"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcnaudio_8h.html#a47d4b2ae444f11e00a3a595fc7b20fd6">Audio</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8c.html#a3b2864ca0048da63a6d9e7b283d35aec">new_audio</a> (const Mix_Chunk *audio_chunk_ptr, <a class="el" href="libcncore_8h.html#a45176b455e70053cf81874c72e0aa5fe">cn_method</a> on_audio_end, <a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *on_end_obj)</td></tr>
+<tr class="memitem:a3b2864ca0048da63a6d9e7b283d35aec" id="r_a3b2864ca0048da63a6d9e7b283d35aec"><td class="memItemLeft" align="right" valign="top"><a class="el" href="libcnaudio_8h.html#a47d4b2ae444f11e00a3a595fc7b20fd6">Audio</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8c.html#a3b2864ca0048da63a6d9e7b283d35aec">new_audio</a> (const <a class="el" href="libcnaudio_8h.html#a0ec5298fec4179ed9c265e68f007755e">Mix_Chunk</a> *audio_chunk_ptr, <a class="el" href="libcncore_8h.html#a45176b455e70053cf81874c72e0aa5fe">cn_method</a> on_audio_end, <a class="el" href="libcncore_8h.html#af654a8c48142adaf8e366798d6908b0f">Object</a> *on_end_obj)</td></tr>
 <tr class="separator:a3b2864ca0048da63a6d9e7b283d35aec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a360d5ddb2751b2ff79b765d01920c6" id="r_a2a360d5ddb2751b2ff79b765d01920c6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="audio_8c.html#a2a360d5ddb2751b2ff79b765d01920c6">audio_run_sequence</a> (<a class="el" href="libcnaudio_8h.html#a47d4b2ae444f11e00a3a595fc7b20fd6">Audio</a> *audio, int32_t delta_time, struct <a class="el" href="structfree__channels__arr__s.html">free_channels_arr_s</a> *free_channels)</td></tr>
 <tr class="separator:a2a360d5ddb2751b2ff79b765d01920c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -189,7 +190,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="libcnaudio_8h.html#a47d4b2ae444f11e00a3a595fc7b20fd6">Audio</a> * new_audio </td>
           <td>(</td>
-          <td class="paramtype">const Mix_Chunk *&#160;</td>
+          <td class="paramtype">const <a class="el" href="libcnaudio_8h.html#a0ec5298fec4179ed9c265e68f007755e">Mix_Chunk</a> *&#160;</td>
           <td class="paramname"><em>audio_chunk_ptr</em>, </td>
         </tr>
         <tr>

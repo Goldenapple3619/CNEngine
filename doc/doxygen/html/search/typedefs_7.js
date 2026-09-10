@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['vector2_0',['Vector2',['../libcncore_8h.html#a1a32d1aa7f7437f61d4fc270a1557d5d',1,'libcncore.h']]],
-  ['vector3_1',['Vector3',['../libcncore_8h.html#a3dd97d4c265b35e13059fcd0a8d6128f',1,'libcncore.h']]],
-  ['videomode_2',['Videomode',['../libcngraphic_8h.html#a11fee8bdf914a878a155af5fea79040b',1,'libcngraphic.h']]]
+  ['sdl_5fglcontext_0',['SDL_GLContext',['../libcngraphic_8h.html#a0d64dcf67c9685d09cbe051448e1b3f3',1,'libcngraphic.h']]],
+  ['sdl_5frenderer_1',['SDL_Renderer',['../libcngraphic_8h.html#aaf0bf7d020754fc614fe06552ea4d5d4',1,'libcngraphic.h']]],
+  ['sdl_5fsurface_2',['SDL_Surface',['../libcngraphic_8h.html#ad894d177fae95d7a1c0d23597b69e569',1,'libcngraphic.h']]],
+  ['sdl_5ftexture_3',['SDL_Texture',['../libcngraphic_8h.html#a17850d7f1f5de457727cb3cf66b3a7f5',1,'libcngraphic.h']]],
+  ['sdl_5fwindow_4',['SDL_Window',['../libcngraphic_8h.html#a55a196c7d3b8497538632c79ae1e6392',1,'libcngraphic.h']]]
 ];

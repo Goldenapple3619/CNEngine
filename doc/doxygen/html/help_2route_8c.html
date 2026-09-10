@@ -105,7 +105,8 @@ $(document).ready(function(){initNavTree('help_2route_8c.html',''); initResizabl
 <div class="header">
   <div class="summary">
 <a href="#define-members">Macros</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">route.c File Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -120,6 +121,17 @@ Macros</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:abfce15a97dc0d59066145deb6db71971" id="r_abfce15a97dc0d59066145deb6db71971"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="help_2route_8c.html#abfce15a97dc0d59066145deb6db71971">help</a> (size_t argc, char **argv)</td></tr>
 <tr class="separator:abfce15a97dc0d59066145deb6db71971"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ab97c24a4a9a0b07d23b318c19948a444" id="r_ab97c24a4a9a0b07d23b318c19948a444"><td class="memItemLeft" align="right" valign="top">static const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="help_2route_8c.html#ab97c24a4a9a0b07d23b318c19948a444">help_help</a> []</td></tr>
+<tr class="separator:ab97c24a4a9a0b07d23b318c19948a444"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c5a9a11d5ac9ac0577655681b074808" id="r_a4c5a9a11d5ac9ac0577655681b074808"><td class="memItemLeft" align="right" valign="top">static const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="help_2route_8c.html#a4c5a9a11d5ac9ac0577655681b074808">help_init</a> []</td></tr>
+<tr class="separator:a4c5a9a11d5ac9ac0577655681b074808"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29fd09526237923009d46e89d107ffc6" id="r_a29fd09526237923009d46e89d107ffc6"><td class="memItemLeft" align="right" valign="top">static const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="help_2route_8c.html#a29fd09526237923009d46e89d107ffc6">help_dump</a> []</td></tr>
+<tr class="separator:a29fd09526237923009d46e89d107ffc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8a2ae7928195e31caf67923596684d6" id="r_ad8a2ae7928195e31caf67923596684d6"><td class="memItemLeft" align="right" valign="top">static const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="help_2route_8c.html#ad8a2ae7928195e31caf67923596684d6">help_build</a> []</td></tr>
+<tr class="separator:ad8a2ae7928195e31caf67923596684d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a76c0767a1d1beeb40285bd6ad6d237b8" name="a76c0767a1d1beeb40285bd6ad6d237b8"></a>
@@ -163,6 +175,119 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="ad8a2ae7928195e31caf67923596684d6" name="ad8a2ae7928195e31caf67923596684d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8a2ae7928195e31caf67923596684d6">&#9670;&#160;</a></span>help_build</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char help_build[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= <span class="stringliteral">&quot;&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="stringliteral">&quot;%s build &lt;toolchain&gt; &lt;project file&gt; ...&quot;</span>                <span class="stringliteral">&quot;\n&quot;</span> </div>
+<div class="line">                                                         <span class="stringliteral">&quot;\n&quot;</span> </div>
+<div class="line"><span class="stringliteral">&quot;Toolchains:&quot;</span>                                            <span class="stringliteral">&quot;\n&quot;</span> </div>
+<div class="line"><span class="stringliteral">&quot;    gui, obj, scn, proj, asset, lnk&quot;</span>                    <span class="stringliteral">&quot;\n&quot;</span> </div>
+<div class="line">                                                         <span class="stringliteral">&quot;\n&quot;</span> </div>
+<div class="line"><span class="stringliteral">&quot;Arguments:&quot;</span>                                             <span class="stringliteral">&quot;\n&quot;</span> </div>
+<div class="line">                                                         <span class="stringliteral">&quot;\n&quot;</span> </div>
+<div class="line"><span class="stringliteral">&quot;    --align=n             set file alignement&quot;</span>          <span class="stringliteral">&quot;\n&quot;</span> </div>
+<div class="line"><span class="stringliteral">&quot;    --endian=(big/little) set file endianness&quot;</span>          <span class="stringliteral">&quot;\n&quot;</span> </div>
+<div class="line"><span class="stringliteral">&quot;    -o &lt;name&gt;             set output name&quot;</span>              <span class="stringliteral">&quot;\n&quot;</span></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a29fd09526237923009d46e89d107ffc6" name="a29fd09526237923009d46e89d107ffc6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29fd09526237923009d46e89d107ffc6">&#9670;&#160;</a></span>help_dump</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char help_dump[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= <span class="stringliteral">&quot;&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="stringliteral">&quot;%s dump &lt;object file&gt;&quot;</span>                                  <span class="stringliteral">&quot;\n&quot;</span></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ab97c24a4a9a0b07d23b318c19948a444" name="ab97c24a4a9a0b07d23b318c19948a444"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab97c24a4a9a0b07d23b318c19948a444">&#9670;&#160;</a></span>help_help</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char help_help[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= <span class="stringliteral">&quot;&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="stringliteral">&quot;%s help &lt;command&gt;&quot;</span>                                      <span class="stringliteral">&quot;\n&quot;</span></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a4c5a9a11d5ac9ac0577655681b074808" name="a4c5a9a11d5ac9ac0577655681b074808"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c5a9a11d5ac9ac0577655681b074808">&#9670;&#160;</a></span>help_init</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char help_init[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= <span class="stringliteral">&quot;&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="stringliteral">&quot;%s init&quot;</span>                                                <span class="stringliteral">&quot;\n&quot;</span> </div>
+<div class="line">                                                         <span class="stringliteral">&quot;\n&quot;</span> </div>
+<div class="line"><span class="stringliteral">&quot;Arguments:&quot;</span>                                             <span class="stringliteral">&quot;\n&quot;</span> </div>
+<div class="line"><span class="stringliteral">&quot;   -D &lt;path&gt;              set init directory&quot;</span>           <span class="stringliteral">&quot;\n&quot;</span></div>
+</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->
