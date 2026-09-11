@@ -10,10 +10,14 @@ on:
       - completed
 
 jobs:
-  release:
+  versioning:
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
-
+    outputs:
+      tag: ${{ steps.info.outputs.tag }}
+      name: ${{ steps.info.outputs.name }}
+      prerelease: ${{ steps.info.outputs.prerelease }}
+      version: ${{ steps.info.outputs.version }}
     steps:
       - name: Set release info
         id: info
@@ -32,7 +36,7 @@ jobs:
             LATEST="v1.0.0"
           fi
 
-          BASE=$(echo "$LATEST" | sed 's/-(dev|stable)$//' | sed -E 's/-(dev|stable)$//')
+          BASE=$(echo "$LATEST" | sed -E 's/-(dev|stable)$//')
           MAJOR=$(echo "$BASE" | cut -d. -f1 | tr -d 'v')
           MINOR=$(echo "$BASE" | cut -d. -f2)
           PATCH=$(echo "$BASE" | cut -d. -f3)
@@ -53,15 +57,180 @@ jobs:
           echo "tag=$TAG" >> $GITHUB_OUTPUT
           echo "name=$NAME" >> $GITHUB_OUTPUT
           echo "prerelease=$PRERELEASE" >> $GITHUB_OUTPUT
+          echo "version=${MAJOR}.${MINOR}.${PATCH}" >> $GITHUB_OUTPUT
 
-      - name: Download all artifacts
+  package-windows:
+    needs: versioning
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        arch: [amd64, i386]
+    steps:
+      - name: Download raw build artifact
         uses: actions/download-artifact@v4
         with:
-          path: dist
+          name: dist-windows-${{ matrix.arch }}
+          path: payload
           run-id: ${{ github.event.workflow_run.id }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Zip artifacts
+      - name: Generate WiX product definition
+        shell: bash
+        env:
+          VERSION: ${{ needs.versioning.outputs.version }}
+          ARCH: ${{ matrix.arch }}
+        run: |
+          WIX_ARCH="x86"
+          [ "$ARCH" = "amd64" ] && WIX_ARCH="x64"
+
+          cat > product.wxs << EOF
+          <?xml version="1.0" encoding="UTF-8"?>
+          <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+            <Product Id="*"
+                     Name="CNEngine"
+                     Language="1033"
+                     Version="$VERSION"
+                     Manufacturer="CNStudio"
+                     UpgradeCode="4481d804-cc15-4350-bc94-c57e201614cf">
+              <Package InstallerVersion="500" Compressed="yes" InstallScope="perMachine" Platform="$WIX_ARCH" />
+              <MajorUpgrade DowngradeErrorMessage="A newer version of CNEngine is already installed." />
+              <MediaTemplate EmbedCab="yes" />
+
+              <Directory Id="TARGETDIR" Name="SourceDir">
+                <Directory Id="ProgramFilesFolder">
+                  <Directory Id="INSTALLFOLDER" Name="CNEngine" />
+                </Directory>
+              </Directory>
+
+              <Feature Id="MainFeature" Title="CNEngine" Level="1">
+                <ComponentGroupRef Id="AppFiles" />
+              </Feature>
+            </Product>
+          </Wix>
+          EOF
+
+      - name: Harvest payload files
+        shell: cmd
+        run: |
+          "%WIX%bin\heat.exe" dir payload -out files.wxs -gg -sfrag -srd -ke -cg AppFiles -dr INSTALLFOLDER -var var.PayloadDir
+
+      - name: Compile and link MSI
+        shell: cmd
+        run: |
+          "%WIX%bin\candle.exe" -dPayloadDir=payload product.wxs files.wxs -o obj\
+          "%WIX%bin\light.exe" obj\product.wixobj obj\files.wixobj -o CNEngine-windows-${{ matrix.arch }}.msi -ext WixUtilExtension
+
+      - name: Upload MSI
+        uses: actions/upload-artifact@v4
+        with:
+          name: installer-windows-${{ matrix.arch }}
+          path: CNEngine-windows-${{ matrix.arch }}.msi
+
+  package-linux:
+    needs: versioning
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        arch: [amd64, i386]
+    steps:
+      - name: Download raw build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dist-linux-${{ matrix.arch }}
+          path: payload
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install fpm
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ruby ruby-dev build-essential rpm
+          sudo gem install --no-document fpm
+
+      - name: Map architecture names
+        id: arch
+        run: |
+          if [ "${{ matrix.arch }}" = "amd64" ]; then
+            echo "deb_arch=amd64" >> $GITHUB_OUTPUT
+            echo "rpm_arch=x86_64" >> $GITHUB_OUTPUT
+          else
+            echo "deb_arch=i386" >> $GITHUB_OUTPUT
+            echo "rpm_arch=i686" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Build .deb and .rpm
+        env:
+          VERSION: ${{ needs.versioning.outputs.version }}
+        run: |
+          fpm -s dir -t deb \
+            -n cnengine -v "$VERSION" -a ${{ steps.arch.outputs.deb_arch }} \
+            --prefix /opt/cnengine \
+            --maintainer "dev@cnstudio.dev" \
+            --description "CNEngine" \
+            -C payload .
+
+          fpm -s dir -t rpm \
+            -n cnengine -v "$VERSION" -a ${{ steps.arch.outputs.rpm_arch }} \
+            --prefix /opt/cnengine \
+            --maintainer "dev@cnstudio.dev" \
+            --description "CNEngine" \
+            -C payload .
+
+      - name: Upload installers
+        uses: actions/upload-artifact@v4
+        with:
+          name: installer-linux-${{ matrix.arch }}
+          path: |
+            *.deb
+            *.rpm
+
+  package-macos:
+    needs: versioning
+    runs-on: macos-latest
+    steps:
+      - name: Download raw build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dist-macos-arm64
+          path: payload
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build .pkg
+        env:
+          VERSION: ${{ needs.versioning.outputs.version }}
+        run: |
+          pkgbuild --root payload \
+            --identifier com.cnstudio.cnengine \
+            --version "$VERSION" \
+            --install-location /Applications/CNEngine \
+            CNEngine-macos-arm64.pkg
+
+      - name: Upload installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: installer-macos-arm64
+          path: CNEngine-macos-arm64.pkg
+
+  release:
+    needs: [versioning, package-windows, package-linux, package-macos]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download raw build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: dist
+          pattern: dist-*
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download installer artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: installers
+          pattern: installer-*
+
+      - name: Zip raw dist folders
         run: |
           cd dist
           for dir in */; do
@@ -71,7 +240,9 @@ jobs:
       - name: Create release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ steps.info.outputs.tag }}
-          name: ${{ steps.info.outputs.name }}
-          prerelease: ${{ steps.info.outputs.prerelease }}
-          files: dist/*.zip
+          tag_name: ${{ needs.versioning.outputs.tag }}
+          name: ${{ needs.versioning.outputs.name }}
+          prerelease: ${{ needs.versioning.outputs.prerelease }}
+          files: |
+            dist/*.zip
+            installers/*/*
