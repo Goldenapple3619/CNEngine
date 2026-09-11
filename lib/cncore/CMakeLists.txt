@@ -27,11 +27,6 @@ add_library(cncore SHARED
     src/generic_kv_pair.c
 )
 
-target_compile_options(cncore
-    PRIVATE
-        -Wall -Wextra -Wshadow -Werror -O2
-)
-
 if(CN_BUILD_TESTS)
     target_compile_options(cncore
         PRIVATE
