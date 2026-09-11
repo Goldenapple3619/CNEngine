@@ -141,6 +141,34 @@ jobs:
           </engine>
           EOF
 
+      - name: Generate placeholder license
+        shell: bash
+        run: |
+          cat > license.rtf << 'EOF'
+          {\rtf1\ansi
+          Copyright (c) 2026 Goldenapple3619\par
+          \par
+          THIS LICENSE IS A LEGAL CONTRACT BETWEEN YOU (“LICENSEE”) AND THE COPYRIGHT OWNER (“LICENSOR”).\par
+          \par
+          1. Grant of Rights\par
+          Licensor grants Licensee the limited right to view and study the source code for personal, non-commercial purposes **only**.\par
+          No other rights (including, but not limited to, modification, distribution, or commercial exploitation) are granted.\par
+          \par
+          2. Prohibited Uses\par
+          Licensee may not:\par
+            a) use the code in any commercial product or service;\par
+            b) reproduce, copy, publish, redistribute, sublicense, sell, lease, rent or otherwise distribute the code;\par
+            c) modify, translate, adapt the code;\par
+            d) use the code for benchmarking, training, or machine learning purposes.\par
+          \par
+          3. Reservation of Rights\par
+          All rights not expressly granted to Licensee are hereby reserved by Licensor.\par
+          \par
+          4. Termination\par
+          Any unauthorized use immediately terminates this license without notice.\par
+          }
+          EOF
+
       - name: Generate WiX product definition
         shell: bash
         env:
@@ -167,11 +195,50 @@ jobs:
                 <Directory Id="ProgramFilesFolder">
                   <Directory Id="INSTALLFOLDER" Name="CNEngine" />
                 </Directory>
+                <Directory Id="ProgramMenuFolder">
+                  <Directory Id="ApplicationProgramsFolder" Name="CNEngine" />
+                </Directory>
+                <Directory Id="DesktopFolder" Name="Desktop" />
               </Directory>
 
-              <Feature Id="MainFeature" Title="CNEngine" Level="1">
+              <DirectoryRef Id="ApplicationProgramsFolder">
+                <Component Id="StartMenuShortcutComponent" Guid="*">
+                  <Shortcut Id="StartMenuShortcut"
+                            Name="CNEngine"
+                            Description="Launch CNEngine"
+                            Target="[INSTALLFOLDER]cn_engine.exe"
+                            WorkingDirectory="INSTALLFOLDER" />
+                  <RemoveFolder Id="RemoveApplicationProgramsFolder" On="uninstall" />
+                  <RegistryValue Root="HKCU" Key="Software\CNStudio\CNEngine" Name="startmenu_shortcut" Type="integer" Value="1" KeyPath="yes" />
+                </Component>
+              </DirectoryRef>
+
+              <DirectoryRef Id="DesktopFolder">
+                <Component Id="DesktopShortcutComponent" Guid="*">
+                  <Shortcut Id="DesktopShortcut"
+                            Name="CNEngine"
+                            Description="Launch CNEngine"
+                            Target="[INSTALLFOLDER]cn_engine.exe"
+                            WorkingDirectory="INSTALLFOLDER" />
+                  <RegistryValue Root="HKCU" Key="Software\CNStudio\CNEngine" Name="desktop_shortcut" Type="integer" Value="1" KeyPath="yes" />
+                </Component>
+              </DirectoryRef>
+
+              <Feature Id="MainFeature" Title="CNEngine" Level="1" Absent="disallow">
                 <ComponentGroupRef Id="AppFiles" />
               </Feature>
+
+              <Feature Id="StartMenuShortcutFeature" Title="Start Menu Shortcut" Description="Add a shortcut to the Start Menu" Level="1">
+                <ComponentRef Id="StartMenuShortcutComponent" />
+              </Feature>
+
+              <Feature Id="DesktopShortcutFeature" Title="Desktop Shortcut" Description="Add a shortcut to the Desktop" Level="1">
+                <ComponentRef Id="DesktopShortcutComponent" />
+              </Feature>
+
+              <UIRef Id="WixUI_FeatureTree" />
+              <UIRef Id="WixUI_ErrorProgressText" />
+              <WixVariable Id="WixUILicenseRtf" Value="license.rtf" />
             </Product>
           </Wix>
           EOF
@@ -185,7 +252,7 @@ jobs:
         shell: cmd
         run: |
           "%WIX%bin\candle.exe" -dPayloadDir=stage product.wxs files.wxs -o obj\
-          "%WIX%bin\light.exe" obj\product.wixobj obj\files.wixobj -o CNEngine-windows-${{ matrix.arch }}.msi -ext WixUtilExtension
+          "%WIX%bin\light.exe" obj\product.wixobj obj\files.wixobj -o CNEngine-windows-${{ matrix.arch }}.msi -ext WixUtilExtension -ext WixUIExtension
 
       - name: Upload MSI
         uses: actions/upload-artifact@v4

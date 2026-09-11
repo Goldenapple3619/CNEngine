@@ -257,6 +257,21 @@ uint8_t load_assets_handler(Object *ctx)
         PROPAGATE_ERR();
         return (1);
     }
+    #elif defined(__APPLE__)
+    if (call_method(ctx, "register_fmt", PACK_ARG("./libcnguiobj.dylib")).as.i == VALUE_ERR.as.i) {
+        PROPAGATE_ERR();
+        return (1);
+    }
+
+    if (call_method(ctx, "register_fmt", PACK_ARG("./libcnsceneobj.dylib")).as.i == VALUE_ERR.as.i) {
+        PROPAGATE_ERR();
+        return (1);
+    }
+
+    if (call_method(ctx, "register_fmt", PACK_ARG("./libcnobjectobj.dylib")).as.i == VALUE_ERR.as.i) {
+        PROPAGATE_ERR();
+        return (1);
+    }
     #else
     if (call_method(ctx, "register_fmt", PACK_ARG("./libcnguiobj.so")).as.i == VALUE_ERR.as.i) {
         PROPAGATE_ERR();

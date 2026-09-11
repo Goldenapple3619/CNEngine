@@ -14,6 +14,7 @@ set(CMAKE_REQUIRED_LIBRARIES m CACHE BOOL "" FORCE)
 option(CN_BUILD_ENGINE "Build engine executable" ON)
 option(CN_SANITIZE     "Build with AddressSanitizer + UBSan" OFF)
 option(CN_BUILD_TESTS  "Build test executable" OFF)
+option(CN_DEV_BUILD    "Build with dev settings" OFF)
 
 if(CN_BUILD_TESTS)
     enable_testing()
@@ -295,6 +296,10 @@ if(CN_BUILD_ENGINE)
         src/test/render.c
         src/test/route.c
     )
+
+    if(CN_DEV_BUILD)
+        target_compile_definitions(cn_engine PRIVATE INDEV)
+    endif()
 
     target_compile_options(cn_engine
         PRIVATE

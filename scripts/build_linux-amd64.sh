@@ -1,6 +1,25 @@
 #!/bin/bash
 set -e
 
+CN_DEV_BUILD=OFF
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        --dev)
+            CN_DEV_BUILD=ON
+            shift
+            ;;
+        --no-dev)
+            CN_DEV_BUILD=OFF
+            shift
+            ;;
+        *)
+            echo "Unknown argument: $1"
+            exit 1
+            ;;
+    esac
+done
+
 mkdir -p build/linux-amd64
 cd build/linux-amd64
 
@@ -14,6 +33,7 @@ cmake ../.. \
     -DTARGET_ARCH="amd64" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
-    -DCN_SANITIZE=OFF
+    -DCN_SANITIZE=OFF \
+    -DCN_DEV_BUILD=${CN_DEV_BUILD}
 
 cmake --build . -- -j$(nproc)

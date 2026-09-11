@@ -100,9 +100,10 @@ void reset_args(struct build_args_s *args)
     args->input_files.size = 0;
 }
 
-Object *init_asset_ctx(void)
+Object *init_asset_ctx(const char *root)
 {
     Object *asset_ctx = new_asset_submodule();
+    String temp = {.c_str = NULL, .size = 0};
 
     if (!asset_ctx) {
         PROPAGATE_ERR();
@@ -119,51 +120,150 @@ Object *init_asset_ctx(void)
     }
 
     #ifdef _WIN32
-        if (call_method(asset_ctx, "register_fmt", PACK_ARG("./dist/windows-amd64/lib/libcnguiobj.dll")).as.i == VALUE_ERR.as.i) {
+        (void)str_override(&temp, join_path(root, "libcnguiobj.dll"));
+
+        if (call_method(asset_ctx, "register_fmt", PACK_ARG(temp.c_str())).as.i == VALUE_ERR.as.i) {
             PROPAGATE_ERR();
             DELOC(asset_ctx);
             return (NULL);
         }
 
-        if (call_method(asset_ctx, "register_fmt", PACK_ARG("./dist/windows-amd64/lib/libcnsceneobj.dll")).as.i == VALUE_ERR.as.i) {
+        (void)str_override(&temp, join_path(root, "libcnsceneobj.dll"));
+
+        if (call_method(asset_ctx, "register_fmt", PACK_ARG(temp.c_str)).as.i == VALUE_ERR.as.i) {
             PROPAGATE_ERR();
             DELOC(asset_ctx);
             return (NULL);
         }
 
-        if (call_method(asset_ctx, "register_fmt", PACK_ARG("./dist/windows-amd64/lib/libcnobjectobj.dll")).as.i == VALUE_ERR.as.i) {
+        (void)str_override(&temp, join_path(root, "libcnobjectobj.dll"));
+
+        if (call_method(asset_ctx, "register_fmt", PACK_ARG(temp.c_str)).as.i == VALUE_ERR.as.i) {
             PROPAGATE_ERR();
             DELOC(asset_ctx);
             return (NULL);
         }
+    #elif defined(__APPLE__)
+        #ifndef INDEV
+            (void)str_override(&temp, join_path(root, "lib/libcnguiobj.dylib"));
+
+            if (call_method(asset_ctx, "register_fmt", PACK_ARG(temp.c_str)).as.i == VALUE_ERR.as.i) {
+                PROPAGATE_ERR();
+                DELOC(asset_ctx);
+                return (NULL);
+            }
+
+            (void)str_override(&temp, join_path(root, "lib/libcnsceneobj.dylib"));
+
+            if (call_method(asset_ctx, "register_fmt", PACK_ARG(temp.c_str)).as.i == VALUE_ERR.as.i) {
+                PROPAGATE_ERR();
+                DELOC(asset_ctx);
+                return (NULL);
+            }
+
+            (void)str_override(&temp, join_path(root, "lib/libcnobjectobj.dylib"));
+
+            if (call_method(asset_ctx, "register_fmt", PACK_ARG(temp.c_str)).as.i == VALUE_ERR.as.i) {
+                PROPAGATE_ERR();
+                DELOC(asset_ctx);
+                return (NULL);
+            }
+        #else
+            (void)str_override(&temp, join_path(root, "../lib/libcnguiobj.dylib"));
+
+            if (call_method(asset_ctx, "register_fmt", PACK_ARG(temp.c_str)).as.i == VALUE_ERR.as.i) {
+                PROPAGATE_ERR();
+                DELOC(asset_ctx);
+                return (NULL);
+            }
+
+            (void)str_override(&temp, join_path(root, "../lib/libcnsceneobj.dylib"));
+
+            if (call_method(asset_ctx, "register_fmt", PACK_ARG(temp.c_str)).as.i == VALUE_ERR.as.i) {
+                PROPAGATE_ERR();
+                DELOC(asset_ctx);
+                return (NULL);
+            }
+
+            (void)str_override(&temp, join_path(root, "../lib/libcnobjectobj.dylib"));
+
+            if (call_method(asset_ctx, "register_fmt", PACK_ARG(temp.c_str)).as.i == VALUE_ERR.as.i) {
+                PROPAGATE_ERR();
+                DELOC(asset_ctx);
+                return (NULL);
+            }
+        #endif
     #else
-        if (call_method(asset_ctx, "register_fmt", PACK_ARG("./dist/linux-amd64/lib/libcnguiobj.so")).as.i == VALUE_ERR.as.i) {
-            PROPAGATE_ERR();
-            DELOC(asset_ctx);
-            return (NULL);
-        }
+        #ifndef INDEV
+            (void)str_override(&temp, join_path(root, "lib/libcnguiobj.so"));
 
-        if (call_method(asset_ctx, "register_fmt", PACK_ARG("./dist/linux-amd64/lib/libcnsceneobj.so")).as.i == VALUE_ERR.as.i) {
-            PROPAGATE_ERR();
-            DELOC(asset_ctx);
-            return (NULL);
-        }
+            if (call_method(asset_ctx, "register_fmt", PACK_ARG(temp.c_str)).as.i == VALUE_ERR.as.i) {
+                PROPAGATE_ERR();
+                DELOC(asset_ctx);
+                return (NULL);
+            }
 
-        if (call_method(asset_ctx, "register_fmt", PACK_ARG("./dist/linux-amd64/lib/libcnobjectobj.so")).as.i == VALUE_ERR.as.i) {
-            PROPAGATE_ERR();
-            DELOC(asset_ctx);
-            return (NULL);
-        }
+            (void)str_override(&temp, join_path(root, "lib/libcnsceneobj.so"));
+
+            if (call_method(asset_ctx, "register_fmt", PACK_ARG(temp.c_str)).as.i == VALUE_ERR.as.i) {
+                PROPAGATE_ERR();
+                DELOC(asset_ctx);
+                return (NULL);
+            }
+
+            (void)str_override(&temp, join_path(root, "lib/libcnobjectobj.so"));
+
+            if (call_method(asset_ctx, "register_fmt", PACK_ARG(temp.c_str)).as.i == VALUE_ERR.as.i) {
+                PROPAGATE_ERR();
+                DELOC(asset_ctx);
+                return (NULL);
+            }
+        #else
+            (void)str_override(&temp, join_path(root, "../lib/libcnguiobj.so"));
+
+            if (call_method(asset_ctx, "register_fmt", PACK_ARG(temp.c_str)).as.i == VALUE_ERR.as.i) {
+                PROPAGATE_ERR();
+                DELOC(asset_ctx);
+                return (NULL);
+            }
+
+            (void)str_override(&temp, join_path(root, "../lib/libcnsceneobj.so"));
+
+            if (call_method(asset_ctx, "register_fmt", PACK_ARG(temp.c_str)).as.i == VALUE_ERR.as.i) {
+                PROPAGATE_ERR();
+                DELOC(asset_ctx);
+                return (NULL);
+            }
+
+            (void)str_override(&temp, join_path(root, "../lib/libcnobjectobj.so"));
+
+            if (call_method(asset_ctx, "register_fmt", PACK_ARG(temp.c_str)).as.i == VALUE_ERR.as.i) {
+                PROPAGATE_ERR();
+                DELOC(asset_ctx);
+                return (NULL);
+            }
+        #endif
     #endif
+
+    (void)empty_str(&temp);
 
     return (asset_ctx);
 }
 
 int build(size_t argc, char **argv)
 {
-    Object *asset_ctx = init_asset_ctx();
+    char *temp_root = get_dirname(argv[0]);
     size_t i = 0;
     int ret;
+
+    if (!temp_root) {
+        PROPAGATE_ERR();
+        return (1);
+    }
+
+    Object *asset_ctx = init_asset_ctx(temp_root);
+
+    (void)free(temp_root);
 
     if (!asset_ctx) {
         PROPAGATE_ERR();

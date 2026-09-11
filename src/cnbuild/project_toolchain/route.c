@@ -676,29 +676,43 @@ int build_project(size_t argc, char **argv, Object *asset_ctx)
     struct build_args_s build_args = {0};
     CNProject *left_overs;
     EngineConfig *config;
+    char *engine_root = get_dirname(argv[0]);
+
+    if (!engine_root) {
+        PROPAGATE_ERR();
+        return (1);
+    }
 
     if (build_get_args(argc - 3, argv + 3, "project", &build_args)) {
         PROPAGATE_ERR();
+        (void)free(engine_root);
         return (1);
     }
 
     if (build_args.input_files.size == 0) {
         fprintf(stderr, "missing input file.\n");
         (void)reset_args(&build_args);
+        (void)free(engine_root);
         return (1);
     }
 
     if (build_args.input_files.size > 1) {
         fprintf(stderr, "too much input files.\n");
         (void)reset_args(&build_args);
+        (void)free(engine_root);
         return (1);
     }
 
-    config = parse_config_xml("./assets/config.xml", "./");
+    #ifndef INDEV
+        config = parse_config_xml("./assets/config.xml", engine_root);
+    #else
+        config = parse_config_xml("./assets/config.xml", "./");
+    #endif
 
     if (!config) {
         PROPAGATE_ERR();
         (void)reset_args(&build_args);
+        (void)free(engine_root);
         return (1);
     }
 
@@ -709,11 +723,13 @@ int build_project(size_t argc, char **argv, Object *asset_ctx)
     if (!left_overs) {
         PROPAGATE_ERR();
         (void)reset_args(&build_args);
+        (void)free(engine_root);
         return (1);
     }
 
     (void)delete_cnproject(left_overs);
     (void)reset_args(&build_args);
+    (void)free(engine_root);
 
     return (0);
 }
