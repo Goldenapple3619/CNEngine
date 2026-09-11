@@ -104,7 +104,7 @@ jobs:
           VERSION: ${{ needs.versioning.outputs.version }}
           ARCH: ${{ matrix.arch }}
         run: |
-          cat > stage/assets/config.xml << EOF
+          cat > stage/assets/config.xml << 'EOF'
           <?xml version="1.0" encoding="UTF-8"?>
           <engine>
               <submodules>${ENGINE_ROOT}/assets/submodules</submodules>
@@ -200,6 +200,19 @@ jobs:
                 </Directory>
                 <Directory Id="DesktopFolder" Name="Desktop" />
               </Directory>
+
+              <DirectoryRef Id="INSTALLFOLDER">
+                <Component Id="PathEnvironmentComponent" Guid="*">
+                  <Environment Id="AddInstallFolderToPath"
+                               Name="PATH"
+                               Value="[INSTALLFOLDER]"
+                               Permanent="no"
+                               Part="last"
+                               Action="set"
+                               System="yes" />
+                  <RegistryValue Root="HKLM" Key="Software\CNStudio\CNEngine" Name="path_added" Type="integer" Value="1" KeyPath="yes" />
+                </Component>
+              </DirectoryRef>
 
               <DirectoryRef Id="ApplicationProgramsFolder">
                 <Component Id="StartMenuShortcutComponent" Guid="*">

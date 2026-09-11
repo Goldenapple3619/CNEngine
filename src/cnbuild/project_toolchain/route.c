@@ -704,7 +704,10 @@ int build_project(size_t argc, char **argv, Object *asset_ctx)
     }
 
     #ifndef INDEV
-        config = parse_config_xml("./assets/config.xml", engine_root);
+        char *temp_config = join_path(engine_root, "assets/config.xml");
+        config = parse_config_xml(temp_config, engine_root);
+
+        (void)free(temp_config);
     #else
         config = parse_config_xml("./assets/config.xml", "./");
     #endif
