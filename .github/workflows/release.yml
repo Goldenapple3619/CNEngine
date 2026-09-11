@@ -66,6 +66,8 @@ jobs:
       matrix:
         arch: [amd64, i386]
     steps:
+      - uses: actions/checkout@v2
+
       - name: Download raw build artifact
         uses: actions/download-artifact@v4
         with:
@@ -73,6 +75,71 @@ jobs:
           path: payload
           run-id: ${{ github.event.workflow_run.id }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Stage install layout
+        shell: bash
+        env:
+          ARCH: ${{ matrix.arch }}
+        run: |
+          set -e
+          PLATFORM_DIR="windows-${ARCH}"
+
+          mkdir -p stage
+          mkdir -p "stage/platform/${PLATFORM_DIR}/include"
+          mkdir -p "stage/platform/${PLATFORM_DIR}/lib"
+          mkdir -p stage/assets
+
+          cp payload/bin/cn_engine.exe stage/
+
+          cp -r payload/lib/. stage/
+
+          cp -r payload/include/. "stage/platform/${PLATFORM_DIR}/include/"
+          cp -r payload/lib/. "stage/platform/${PLATFORM_DIR}/lib/"
+
+          cp -r assets/. stage/assets/
+
+      - name: Generate config.xml
+        shell: bash
+        env:
+          VERSION: ${{ needs.versioning.outputs.version }}
+          ARCH: ${{ matrix.arch }}
+        run: |
+          cat > stage/assets/config.xml << EOF
+          <?xml version="1.0" encoding="UTF-8"?>
+          <engine>
+              <submodules>${ENGINE_ROOT}/assets/submodules</submodules>
+              <ressources>
+                  <set machine="linux" architecture="amd64">
+                      <includes>${ENGINE_ROOT}/platform/linux-amd64/include</includes>
+                      <libs>${ENGINE_ROOT}/platform/linux-amd64/lib</libs>
+                      <toolchain>gcc</toolchain>
+                  </set>
+
+                  <set machine="macos" architecture="amd64">
+                      <includes>${ENGINE_ROOT}/platform/macos-arm64/include</includes>
+                      <libs>${ENGINE_ROOT}/platform/macos-arm64/lib</libs>
+                      <toolchain>gcc</toolchain>
+                  </set>
+
+                  <set machine="win" architecture="amd64">
+                      <includes>${ENGINE_ROOT}/platform/windows-amd64/include</includes>
+                      <libs>${ENGINE_ROOT}/platform/windows-amd64/lib</libs>
+                      <toolchain>x86_64-w64-mingw32-gcc</toolchain>
+                  </set>
+              </ressources>
+              <generator>
+                  <include>${ENGINE_ROOT}/assets/generator/engine_main.h</include>
+
+                  <src>${ENGINE_ROOT}/assets/generator/main.c</src>
+                  <src>${ENGINE_ROOT}/assets/generator/submodules.c</src>
+
+                  <src forsubmodule="assets">${ENGINE_ROOT}/assets/generator/submodules/assets/api.c</src>
+                  <src forsubmodule="assets">${ENGINE_ROOT}/assets/generator/submodules/assets/raw_ressources.c</src>
+
+                  <src forsubmodule="graphics">${ENGINE_ROOT}/assets/generator/submodules/graphics.c</src>
+              </generator>
+          </engine>
+          EOF
 
       - name: Generate WiX product definition
         shell: bash
@@ -109,15 +176,15 @@ jobs:
           </Wix>
           EOF
 
-      - name: Harvest payload files
+      - name: Harvest staged files
         shell: cmd
         run: |
-          "%WIX%bin\heat.exe" dir payload -out files.wxs -gg -sfrag -srd -ke -cg AppFiles -dr INSTALLFOLDER -var var.PayloadDir
+          "%WIX%bin\heat.exe" dir stage -out files.wxs -gg -sfrag -srd -ke -cg AppFiles -dr INSTALLFOLDER -var var.PayloadDir
 
       - name: Compile and link MSI
         shell: cmd
         run: |
-          "%WIX%bin\candle.exe" -dPayloadDir=payload product.wxs files.wxs -o obj\
+          "%WIX%bin\candle.exe" -dPayloadDir=stage product.wxs files.wxs -o obj\
           "%WIX%bin\light.exe" obj\product.wixobj obj\files.wixobj -o CNEngine-windows-${{ matrix.arch }}.msi -ext WixUtilExtension
 
       - name: Upload MSI
