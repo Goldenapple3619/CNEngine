@@ -249,6 +249,10 @@ jobs:
                 <ComponentRef Id="DesktopShortcutComponent" />
               </Feature>
 
+              <Feature Id="PathFeature" Title="Add to PATH" Description="Add the installation folder to the PATH environment variable" Level="1">
+                <ComponentRef Id="PathEnvironmentComponent" />
+              </Feature>
+
               <UIRef Id="WixUI_FeatureTree" />
               <UIRef Id="WixUI_ErrorProgressText" />
               <WixVariable Id="WixUILicenseRtf" Value="license.rtf" />
