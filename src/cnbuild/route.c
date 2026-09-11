@@ -122,7 +122,7 @@ Object *init_asset_ctx(const char *root)
     #ifdef _WIN32
         (void)str_override(&temp, join_path(root, "libcnguiobj.dll"));
 
-        if (call_method(asset_ctx, "register_fmt", PACK_ARG(temp.c_str())).as.i == VALUE_ERR.as.i) {
+        if (call_method(asset_ctx, "register_fmt", PACK_ARG(temp.c_str)).as.i == VALUE_ERR.as.i) {
             PROPAGATE_ERR();
             DELOC(asset_ctx);
             return (NULL);
