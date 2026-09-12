@@ -199,7 +199,7 @@
         uint64_t (*size_compute)(struct engine_object_file_section_writer_ctx_s *self);
         char *(*strndx_reconstructor)(char *rw_content, uint64_t content_size, const CNAssetReader *reader, struct generic_map_s *new_strndx);
         char *(*endian_converter)(char *rw_content, uint64_t content_size, const CNAssetReader *reader, engine_wrt_endian endian);
-        engine_data_extract_status (*extract_data_chunk)(void *dest, uint64_t *offset, const struct section_blk *section, const CNAssetReader *reader);
+        engine_data_extract_status (*extract_data_chunk)(void **dest, uint64_t *offset, const struct section_blk *section, const CNAssetReader *reader);
     };
 
     struct asset_registry {
