@@ -160,6 +160,14 @@ if(WIN32)
     )
 endif()
 
+if(WIN32)
+    foreach(_lib ogg opus opusfile)
+        if(TARGET ${_lib})
+            set_target_properties(${_lib} PROPERTIES SUFFIX ".dll")
+        endif()
+    endforeach()
+endif()
+
 FetchContent_Declare(
     glad
     GIT_REPOSITORY https://github.com/Dav1dde/glad.git
