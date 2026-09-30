@@ -35,6 +35,11 @@ if(NOT DEFINED TARGET_ARCH)
     endif()
 endif()
 
+if(WIN32)
+    set(CMAKE_DLL_NAME_WITH_SOVERSION OFF CACHE BOOL "" FORCE)
+endif()
+
+# ========= Fetch SDL2 =========
 set(SDL2_TEST OFF CACHE BOOL "" FORCE)
 set(SDL_TEST OFF CACHE BOOL "" FORCE)
 set(SDL_TESTS OFF CACHE BOOL "" FORCE)
@@ -46,13 +51,11 @@ set(SDL2MIXER_SAMPLES OFF CACHE BOOL "" FORCE)
 set(SDL2MIXER_TESTS OFF CACHE BOOL "" FORCE)
 set(BUILD_TESTING OFF CACHE BOOL "" FORCE)
 set(BUILD_DOCS OFF CACHE BOOL "" FORCE)
-
-# ========= Fetch SDL2 =========
-include(FetchContent)
-
 set(SDL2_DISABLE_SDL2MAIN ON CACHE BOOL "" FORCE)
 set(SDL_SHARED ON CACHE BOOL "" FORCE)
 set(SDL_STATIC OFF CACHE BOOL "" FORCE)
+
+include(FetchContent)
 
 FetchContent_Declare(
     SDL2
@@ -163,7 +166,21 @@ endif()
 if(WIN32)
     foreach(_lib ogg opus opusfile)
         if(TARGET ${_lib})
-            set_target_properties(${_lib} PROPERTIES SUFFIX ".dll")
+            get_target_property(_aliased ${_lib} ALIASED_TARGET)
+            if(_aliased)
+                set(_real ${_aliased})
+            else()
+                set(_real ${_lib})
+            endif()
+            set_target_properties(${_real} PROPERTIES
+                DLL_NAME_WITH_SOVERSION OFF
+                PREFIX "lib"
+                OUTPUT_NAME "${_lib}"
+                SUFFIX ".dll"
+            )
+            message(STATUS "Renamed ${_real} -> lib${_lib}.dll")
+        else()
+            message(STATUS "Target '${_lib}' not found")
         endif()
     endforeach()
 endif()
