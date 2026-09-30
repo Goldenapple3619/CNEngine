@@ -118,7 +118,7 @@ var searchData=
   ['expr_5ffree_115',['expr_free',['../libcncore_8h.html#aea43bea4736df25649243404d5905567',1,'libcncore.h']]],
   ['extension_5fexecutable_5ffrom_5fsystem_116',['extension_executable_from_system',['../cnbuild_2project__toolchain_2route_8c.html#a3e0d7c64e7ad6e5c5a42c03a18920370',1,'route.c']]],
   ['extension_5ffrom_5fsystem_117',['extension_from_system',['../cnbuild_2project__toolchain_2route_8c.html#ac7e247882423e8475133628502cd9cca',1,'route.c']]],
-  ['extract_5fdata_5fchunk_118',['extract_data_chunk',['../structsection__registry.html#a08285bb14e1670ebe7f09ff03d66effe',1,'section_registry']]],
-  ['extract_5finfo_5fdata_5fchunk_119',['extract_info_data_chunk',['../info__section_8c.html#aa004e5245404620e043f7cbffd5c4a68',1,'info_section.c']]],
-  ['extract_5fsymbols_5fdata_5fchunk_120',['extract_symbols_data_chunk',['../symbols__section_8c.html#a3324afe2631a2a91e588a5b2cd0bed3a',1,'symbols_section.c']]]
+  ['extract_5fdata_5fchunk_118',['extract_data_chunk',['../structsection__registry.html#a42d586ee8f3bd1583dcd657b5efd88d3',1,'section_registry']]],
+  ['extract_5finfo_5fdata_5fchunk_119',['extract_info_data_chunk',['../info__section_8c.html#a9596ebe226ddcbf28406a9ab8c547522',1,'info_section.c']]],
+  ['extract_5fsymbols_5fdata_5fchunk_120',['extract_symbols_data_chunk',['../symbols__section_8c.html#a8a81c71d5f0fe44db5321bae57417b8d',1,'symbols_section.c']]]
 ];

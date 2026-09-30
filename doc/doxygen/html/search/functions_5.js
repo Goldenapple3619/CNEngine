@@ -15,6 +15,6 @@ var searchData=
   ['executable_5fcompiler_5fbuild_5fobjects_12',['executable_compiler_build_objects',['../executable__compiler_8c.html#a7927f6ee73c40c15c89c552876f02135',1,'executable_compiler.c']]],
   ['extension_5fexecutable_5ffrom_5fsystem_13',['extension_executable_from_system',['../cnbuild_2project__toolchain_2route_8c.html#a3e0d7c64e7ad6e5c5a42c03a18920370',1,'route.c']]],
   ['extension_5ffrom_5fsystem_14',['extension_from_system',['../cnbuild_2project__toolchain_2route_8c.html#ac7e247882423e8475133628502cd9cca',1,'route.c']]],
-  ['extract_5finfo_5fdata_5fchunk_15',['extract_info_data_chunk',['../info__section_8c.html#aa004e5245404620e043f7cbffd5c4a68',1,'info_section.c']]],
-  ['extract_5fsymbols_5fdata_5fchunk_16',['extract_symbols_data_chunk',['../symbols__section_8c.html#a3324afe2631a2a91e588a5b2cd0bed3a',1,'symbols_section.c']]]
+  ['extract_5finfo_5fdata_5fchunk_15',['extract_info_data_chunk',['../info__section_8c.html#a9596ebe226ddcbf28406a9ab8c547522',1,'info_section.c']]],
+  ['extract_5fsymbols_5fdata_5fchunk_16',['extract_symbols_data_chunk',['../symbols__section_8c.html#a8a81c71d5f0fe44db5321bae57417b8d',1,'symbols_section.c']]]
 ];

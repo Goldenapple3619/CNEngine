@@ -1,5 +1,7 @@
 var NAVTREEINDEX7 =
 {
+"structaudio__vector__s.html":[0,0,6],
+"structaudio__vector__s.html#a0f385d59e52b957af16e3d75f7186582":[0,0,6,2],
 "structaudio__vector__s.html#a6126fefe01e60456ee86e266afc33c96":[0,0,6,1],
 "structaudio__vector__s.html#a73f0c9299a505c60a86a305f77d995c9":[0,0,6,0],
 "structbuild__args__s.html":[0,0,8],
@@ -191,10 +193,10 @@ var NAVTREEINDEX7 =
 "structsection__blk.html#a543520b6225e2c29c0612c5f063e9004":[0,0,58,1],
 "structsection__blk.html#ad0293c95619c214267977106fe20b8cb":[0,0,58,3],
 "structsection__registry.html":[0,0,59],
-"structsection__registry.html#a08285bb14e1670ebe7f09ff03d66effe":[0,0,59,2],
 "structsection__registry.html#a223d54dbcf251cfbe4af622e495c5636":[0,0,59,0],
 "structsection__registry.html#a28d7ab695bef7f5e65dbdfa77b95c106":[0,0,59,5],
 "structsection__registry.html#a2e129059aa88f23867244c8427b2245c":[0,0,59,1],
+"structsection__registry.html#a42d586ee8f3bd1583dcd657b5efd88d3":[0,0,59,2],
 "structsection__registry.html#a76ec80b38501f32baeee56a82b1d96e8":[0,0,59,4],
 "structsection__registry.html#ab0773ba25213c33ac978db803cd03a91":[0,0,59,6],
 "structsection__registry.html#ae3b2a5095c33e9b2c68ec46660fbc21c":[0,0,59,3],
@@ -247,7 +249,5 @@ var NAVTREEINDEX7 =
 "structtwod__render__stack.html#ab01958236fabafee340d645d93532a96":[0,0,71,0],
 "structtwod__render__stack.html#ab37b6d6dfc8cd81213236769863ee95c":[0,0,71,10],
 "structtwod__render__stack.html#aef65392400f05bb167f364854932c992":[0,0,71,4],
-"structtwod__render__stack.html#af1cf85a9cd0366803817acadd6af8503":[0,0,71,2],
-"structtwod__render__stack.html#af758d119c9787133c93e6675bc477618":[0,0,71,8],
-"structvector2__s.html":[0,0,72]
+"structtwod__render__stack.html#af1cf85a9cd0366803817acadd6af8503":[0,0,71,2]
 };
