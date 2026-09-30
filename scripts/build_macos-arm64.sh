@@ -9,10 +9,10 @@ cmake ../.. \
     -DSDL2_IMAGE=ON \
     -DSDL2_MIXER=ON \
     -DSDL2_TTF=ON \
-    -DCMAKE_C_FLAGS="-m64" \
-    -DCMAKE_CXX_FLAGS="-m64" \
+    -DTARGET_ARCH="arm64" \
+    -DCMAKE_OSX_ARCHITECTURES=arm64 \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
     -DCN_SANITIZE=OFF
 
-cmake --build . -- -j8
+cmake --build . -- -j$(sysctl -n hw.ncpu)

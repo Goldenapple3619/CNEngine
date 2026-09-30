@@ -9,59 +9,76 @@ on:
     types:
       - completed
 
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
 jobs:
   versioning:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+    if: >-
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'push'
+
     outputs:
       tag: ${{ steps.info.outputs.tag }}
       name: ${{ steps.info.outputs.name }}
       prerelease: ${{ steps.info.outputs.prerelease }}
       version: ${{ steps.info.outputs.version }}
+
     steps:
       - name: Set release info
         id: info
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          BRANCH: ${{ github.event.workflow_run.head_branch }}
+
         run: |
-          BRANCH="${{ github.event.workflow_run.head_branch }}"
+          set -euo pipefail
 
-          LATEST=$(gh release list \
-            --repo ${{ github.repository }} \
+          LATEST="$(gh release list \
+            --repo "$REPO" \
+            --limit 200 \
             --json tagName \
-            --jq '[.[] | select(.tagName | test("^v[0-9]+\\.[0-9]+\\.[0-9]+-(dev|stable)$"))] | sort_by(.tagName) | last | .tagName' \
-            2>/dev/null)
+            --jq '[.[].tagName | select(test("^v[0-9]+\\.[0-9]+\\.[0-9]+-(dev|stable)$"))]
+                  | sort_by(sub("^v"; "") | sub("-(dev|stable)$"; "") | split(".") | map(tonumber))
+                  | last // empty')"
+          LATEST="${LATEST:-v1.0.0}"
 
-          if [ -z "$LATEST" ] || [ "$LATEST" = "null" ]; then
-            LATEST="v1.0.0"
-          fi
-
-          BASE=$(echo "$LATEST" | sed -E 's/-(dev|stable)$//')
-          MAJOR=$(echo "$BASE" | cut -d. -f1 | tr -d 'v')
-          MINOR=$(echo "$BASE" | cut -d. -f2)
-          PATCH=$(echo "$BASE" | cut -d. -f3)
+          VERSION="${LATEST#v}"
+          VERSION="${VERSION%-*}"
+          IFS=. read -r MAJOR MINOR PATCH <<< "$VERSION"
 
           if [ "$BRANCH" = "main" ]; then
             MINOR=$((MINOR + 1))
             PATCH=0
             TAG="v${MAJOR}.${MINOR}.${PATCH}-stable"
-            NAME="Stable Release $TAG"
+            NAME="Stable Release ${TAG}"
             PRERELEASE="false"
           else
             PATCH=$((PATCH + 1))
             TAG="v${MAJOR}.${MINOR}.${PATCH}-dev"
-            NAME="Dev Release $TAG"
+            NAME="Dev Release ${TAG}"
             PRERELEASE="true"
           fi
 
-          echo "tag=$TAG" >> $GITHUB_OUTPUT
-          echo "name=$NAME" >> $GITHUB_OUTPUT
-          echo "prerelease=$PRERELEASE" >> $GITHUB_OUTPUT
-          echo "version=${MAJOR}.${MINOR}.${PATCH}" >> $GITHUB_OUTPUT
+          echo "Latest tag: ${LATEST} -> new tag: ${TAG}"
+          {
+            echo "tag=${TAG}"
+            echo "name=${NAME}"
+            echo "prerelease=${PRERELEASE}"
+          } >> "$GITHUB_OUTPUT"
+
 
   package-windows:
     needs: versioning
-    runs-on: windows-latest
+    runs-on: windows-2022
     strategy:
       matrix:
         arch: [amd64, i386]
@@ -366,6 +383,11 @@ jobs:
   release:
     needs: [versioning, package-windows, package-linux, package-macos]
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      actions: read
+
     steps:
       - name: Download raw build artifacts
         uses: actions/download-artifact@v4
@@ -381,6 +403,9 @@ jobs:
           path: installers
           pattern: installer-*
 
+      - name: Restore executable permissions
+        run: chmod +x dist/linux-*/bin/* dist/macos-*/bin/*
+
       - name: Zip raw dist folders
         run: |
           cd dist
@@ -393,7 +418,10 @@ jobs:
         with:
           tag_name: ${{ needs.versioning.outputs.tag }}
           name: ${{ needs.versioning.outputs.name }}
-          prerelease: ${{ needs.versioning.outputs.prerelease }}
+          prerelease: ${{ needs.versioning.outputs.prerelease == 'true' }}
+          target_commitish: ${{ github.event.workflow_run.head_sha }}
+          generate_release_notes: false
+          fail_on_unmatched_files: true
           files: |
             dist/*.zip
             installers/*/*

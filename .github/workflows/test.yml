@@ -9,6 +9,10 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: test
+  cancel-in-progress: false
+
 jobs:
   test-linux:
     runs-on: ubuntu-latest
@@ -17,11 +21,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install NASM
-        run: sudo apt update && sudo apt install -y nasm
-
       - name: Install build dependencies
         run: |
+          sudo apt update && sudo apt install -y nasm
           sudo apt-get install -y libgl1-mesa-dev libglu1-mesa-dev libglx-dev libx11-dev libxext-dev
           sudo apt-get install -y uuid-dev
 
