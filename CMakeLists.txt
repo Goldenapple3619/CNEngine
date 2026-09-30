@@ -526,7 +526,7 @@ elseif(APPLE)
             COMMAND ${CMAKE_COMMAND}
                 -DLIB_DIR=${DIST_DIR}/lib
                 -DBIN_DIR=${DIST_DIR}/bin
-                -P ${CMAKE_SOURCE_DIR}/../../toolchain/strip_dylibversion.cmake
+                -P ${CMAKE_SOURCE_DIR}/toolchain/strip_dylibversion.cmake
         )
     else()
         message(WARNING

@@ -217,19 +217,18 @@ jobs:
             "$dist/lib/libcncore.dll",
             "$dist/lib/libcngraphic.dll",
             "$dist/lib/libcninput.dll",
-            "$dist/lib/libogg.dll",
-            "$dist/lib/libopusfile.dll",
-            "$dist/lib/libopus.dll",
+            "$dist/lib/libogg-0.dll",
+            "$dist/lib/libopusfile-0.dll",
+            "$dist/lib/libopus-0.dll",
             "$dist/lib/libr2d.dll",
             "$dist/lib/libr3d.dll",
             "$dist/lib/librgui.dll",
-            "$dist/lib/libuuid.dll",
             "$dist/lib/libxml2.dll",
             "$dist/lib/libSDL2_ttf-2.0.dll",
             "$dist/lib/libSDL2_mixer-2.0.dll",
             "$dist/lib/libSDL2_image-2.0.dll",
             "$dist/lib/libSDL2-2.0.dll",
-            "$dist/bin/cn_engine"
+            "$dist/bin/cn_engine.exe"
           )
           $failed = $false
 
@@ -309,19 +308,18 @@ jobs:
             "$dist/lib/libcncore.dll",
             "$dist/lib/libcngraphic.dll",
             "$dist/lib/libcninput.dll",
-            "$dist/lib/libogg.dll",
-            "$dist/lib/libopusfile.dll",
-            "$dist/lib/libopus.dll",
+            "$dist/lib/libogg-0.dll",
+            "$dist/lib/libopusfile-0.dll",
+            "$dist/lib/libopus-0.dll",
             "$dist/lib/libr2d.dll",
             "$dist/lib/libr3d.dll",
             "$dist/lib/librgui.dll",
-            "$dist/lib/libuuid.dll",
             "$dist/lib/libxml2.dll",
             "$dist/lib/libSDL2_ttf-2.0.dll",
             "$dist/lib/libSDL2_mixer-2.0.dll",
             "$dist/lib/libSDL2_image-2.0.dll",
             "$dist/lib/libSDL2-2.0.dll",
-            "$dist/bin/cn_engine"
+            "$dist/bin/cn_engine.exe"
           )
           $failed = $false
 
@@ -392,7 +390,6 @@ jobs:
             "$DIST/lib/libr2d.dylib" \
             "$DIST/lib/libr3d.dylib" \
             "$DIST/lib/librgui.dylib" \
-            "$DIST/lib/libuuid.dylib" \
             "$DIST/lib/libxml2.dylib" \
             "$DIST/lib/libSDL2_ttf-2.0.dylib" \
             "$DIST/lib/libSDL2_mixer-2.0.dylib" \
