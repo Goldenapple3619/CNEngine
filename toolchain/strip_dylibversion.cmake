@@ -6,15 +6,23 @@ file(GLOB _libs
     "${LIB_DIR}/*.dylib"
 )
 
+set(_ver "\\.[0-9]+(\\.[0-9]+(\\.[0-9]+)?)?")
+
 foreach(_lib ${_libs})
     get_filename_component(_name "${_lib}" NAME)
 
-    string(REGEX REPLACE
-        "\\.[0-9]+(\\.[0-9]+)*\\.dylib$"
-        ".dylib"
-        _base
-        "${_name}"
-    )
+    if(_name MATCHES "^(.*-[0-9]+\\.[0-9]+)${_ver}\\.dylib$")
+        set(_base "${CMAKE_MATCH_1}.dylib")
+    elseif(_name MATCHES "^.*-[0-9]+\\.[0-9]+\\.dylib$")
+        set(_base "${_name}")
+    else()
+        string(REGEX REPLACE
+            "${_ver}\\.dylib$"
+            ".dylib"
+            _base
+            "${_name}"
+        )
+    endif()
 
     if(NOT _base STREQUAL _name)
         get_filename_component(_dir "${_lib}" DIRECTORY)
