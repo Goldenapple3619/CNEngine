@@ -522,7 +522,7 @@ elseif(APPLE)
     find_program(INSTALL_NAME_TOOL_EXECUTABLE install_name_tool)
 
     if(INSTALL_NAME_TOOL_EXECUTABLE)
-        add_custom_command(TARGET dist POST_BUILD
+        add_custom_command(TARGET cn_dist POST_BUILD
             COMMAND ${CMAKE_COMMAND}
                 -DLIB_DIR=${DIST_DIR}/lib
                 -DBIN_DIR=${DIST_DIR}/bin

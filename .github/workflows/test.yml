@@ -38,7 +38,11 @@ jobs:
       - name: Cache ccache
         uses: actions/cache@v4
         with:
-          path: ~/.cache/ccache
+          path: |
+            build/linux-amd64-test
+            ~/.cmake
+            ~/.cache/fetchcontent
+            ~/.cache/ccache
           key: ccache-${{ runner.os }}-${{ hashFiles('**/CMakeLists.txt') }}-${{ github.sha }}
           restore-keys: |
             ccache-${{ runner.os }}-${{ hashFiles('**/CMakeLists.txt') }}-
