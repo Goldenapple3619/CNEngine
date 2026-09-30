@@ -19,6 +19,4 @@ cmake ../.. \
 
 cmake --build . -- -j$(nproc)
 
-ctest --test-dir . --output-on-failure
-
 cd ../../

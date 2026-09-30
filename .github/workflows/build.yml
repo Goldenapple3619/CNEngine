@@ -6,15 +6,23 @@ on:
       - dev
       - main
 
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   build-linux-i386:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Cache CMake build
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: |
             build/linux-i386
@@ -24,13 +32,11 @@ jobs:
           restore-keys: |
             cmake-build-${{ runner.os }}-linux-i386-
 
-      - name: Install NASM
-        run: sudo apt update && sudo apt install -y nasm
-
       - name: Install 32-bit build dependencies
         run: |
           sudo dpkg --add-architecture i386
           sudo apt update
+          sudo apt install -y nasm
           sudo apt install -y gcc-multilib g++-multilib libc6-dev-i386 lib32z1 lib32ncurses6 lib32gcc-s1 libc6:i386 libc6-dev:i386
           sudo apt-get install -y libgl1-mesa-dev:i386 libglu1-mesa-dev:i386 libglx-dev:i386 libx11-dev:i386 libxext-dev:i386
           sudo apt-get install -y uuid-dev:i386
@@ -39,20 +45,60 @@ jobs:
         run: |
           scripts/build_linux-i386.sh
 
+      - name: Verify build outputs
+        run: |
+          DIST="dist/linux-i386"
+          STATUS=0
+
+          for f in \
+            "$DIST/lib/libcnassets.so" \
+            "$DIST/lib/libcnaudio.so" \
+            "$DIST/lib/libcncore.so" \
+            "$DIST/lib/libcngraphic.so" \
+            "$DIST/lib/libcninput.so" \
+            "$DIST/lib/libogg.so" \
+            "$DIST/lib/libopusfile.so" \
+            "$DIST/lib/libopus.so" \
+            "$DIST/lib/libr2d.so" \
+            "$DIST/lib/libr3d.so" \
+            "$DIST/lib/librgui.so" \
+            "$DIST/lib/libuuid.so" \
+            "$DIST/lib/libxml2.so" \
+            "$DIST/lib/libSDL2_ttf-2.0.so" \
+            "$DIST/lib/libSDL2_mixer-2.0.so" \
+            "$DIST/lib/libSDL2_image-2.0.so" \
+            "$DIST/lib/libSDL2-2.0.so" \
+            "$DIST/bin/cn_engine"; do
+            if [ ! -f "$f" ]; then
+              echo "::error::Missing build output: $f"
+              STATUS=1
+            fi
+          done
+
+          if [ -z "$(ls -A "$DIST/include" 2>/dev/null)" ]; then
+            echo "::error::Missing or empty headers directory: $DIST/include"
+            STATUS=1
+          fi
+
+          exit "$STATUS"
+
       - name: Upload build artifacts
+        if: github.event_name == 'push'
         uses: actions/upload-artifact@v4
         with:
           name: dist-linux-i386
           path: dist/linux-i386
+          if-no-files-found: error
 
   build-linux-amd64:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Cache CMake build
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: |
             build/linux-amd64
@@ -62,11 +108,10 @@ jobs:
           restore-keys: |
             cmake-build-${{ runner.os }}-linux-amd64-
 
-      - name: Install NASM
-        run: sudo apt update && sudo apt install -y nasm
-
       - name: Install build dependencies
         run: |
+          sudo apt-get update
+          sudo apt-get install -y nasm
           sudo apt-get install -y libgl1-mesa-dev libglu1-mesa-dev libglx-dev libx11-dev libxext-dev
           sudo apt-get install -y uuid-dev
 
@@ -74,20 +119,59 @@ jobs:
         run: |
           scripts/build_linux-amd64.sh
 
+      - name: Verify build outputs
+        run: |
+          DIST="dist/linux-amd64"
+          STATUS=0
+
+          for f in \
+            "$DIST/lib/libcnassets.so" \
+            "$DIST/lib/libcnaudio.so" \
+            "$DIST/lib/libcncore.so" \
+            "$DIST/lib/libcngraphic.so" \
+            "$DIST/lib/libcninput.so" \
+            "$DIST/lib/libogg.so" \
+            "$DIST/lib/libopusfile.so" \
+            "$DIST/lib/libopus.so" \
+            "$DIST/lib/libr2d.so" \
+            "$DIST/lib/libr3d.so" \
+            "$DIST/lib/librgui.so" \
+            "$DIST/lib/libuuid.so" \
+            "$DIST/lib/libxml2.so" \
+            "$DIST/lib/libSDL2_ttf-2.0.so" \
+            "$DIST/lib/libSDL2_mixer-2.0.so" \
+            "$DIST/lib/libSDL2_image-2.0.so" \
+            "$DIST/lib/libSDL2-2.0.so" \
+            "$DIST/bin/cn_engine"; do
+            if [ ! -f "$f" ]; then
+              echo "::error::Missing build output: $f"
+              STATUS=1
+            fi
+          done
+
+          if [ -z "$(ls -A "$DIST/include" 2>/dev/null)" ]; then
+            echo "::error::Missing or empty headers directory: $DIST/include"
+            STATUS=1
+          fi
+
+          exit "$STATUS"
+
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: dist-linux-amd64
           path: dist/linux-amd64
+          if-no-files-found: error
 
   build-windows-i386:
-    runs-on: windows-latest
+    runs-on: windows-2022
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Cache CMake build
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: |
             build/windows-i386
@@ -97,6 +181,11 @@ jobs:
           restore-keys: |
             cmake-build-${{ runner.os }}-windows-i386-
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
       - name: Install mingw
         shell: powershell
         env:
@@ -104,22 +193,11 @@ jobs:
         run: |
           C:\msys64\usr\bin\bash.exe -lc "pacman -Syu --noconfirm" | Out-Null
           C:\msys64\usr\bin\bash.exe -lc "pacman -Syu --noconfirm && pacman -S --noconfirm mingw-w64-i686-toolchain base-devel"
+          C:\msys64\usr\bin\bash.exe -lc "pacman -S --noconfirm mingw-w64-i686-python-jinja"
           Copy-Item C:\msys64\mingw32\bin\windres.exe C:\msys64\mingw32\bin\i686-w64-mingw32-windres.exe
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.x'
 
       - name: Install jinja2 for glad
         run: python -m pip install jinja2
-
-      - name: Install jinja2 into MSYS2 mingw32 Python
-        shell: powershell
-        env:
-          MSYSTEM: MINGW32
-        run: |
-          C:\msys64\usr\bin\bash.exe -lc "pacman -S --noconfirm mingw-w64-i686-python-jinja"
 
       - name: Build windows-i386
         env:
@@ -129,20 +207,63 @@ jobs:
           cmd.exe /c scripts\build_windows-i386.bat
         shell: powershell
 
+      - name: Verify build outputs
+        shell: powershell
+        run: |
+          $dist = "dist/windows-i386"
+          $expected = @(
+            "$dist/lib/libcnassets.dll",
+            "$dist/lib/libcnaudio.dll",
+            "$dist/lib/libcncore.dll",
+            "$dist/lib/libcngraphic.dll",
+            "$dist/lib/libcninput.dll",
+            "$dist/lib/libogg.dll",
+            "$dist/lib/libopusfile.dll",
+            "$dist/lib/libopus.dll",
+            "$dist/lib/libr2d.dll",
+            "$dist/lib/libr3d.dll",
+            "$dist/lib/librgui.dll",
+            "$dist/lib/libuuid.dll",
+            "$dist/lib/libxml2.dll",
+            "$dist/lib/libSDL2_ttf-2.0.dll",
+            "$dist/lib/libSDL2_mixer-2.0.dll",
+            "$dist/lib/libSDL2_image-2.0.dll",
+            "$dist/lib/libSDL2-2.0.dll",
+            "$dist/bin/cn_engine"
+          )
+          $failed = $false
+
+          foreach ($f in $expected) {
+            if (-not (Test-Path -LiteralPath $f -PathType Leaf)) {
+              Write-Host "::error::Missing build output: $f"
+              $failed = $true
+            }
+          }
+
+          if (-not (Test-Path -LiteralPath "$dist/include") -or
+              -not (Get-ChildItem -LiteralPath "$dist/include" -Recurse -File)) {
+            Write-Host "::error::Missing or empty headers directory: $dist/include"
+            $failed = $true
+          }
+
+          if ($failed) { exit 1 }
+
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: dist-windows-i386
           path: dist/windows-i386
+          if-no-files-found: error
 
   build-windows-amd64:
-    runs-on: windows-latest
+    runs-on: windows-2022
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Cache CMake build
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: |
             build/windows-amd64
@@ -152,6 +273,11 @@ jobs:
           restore-keys: |
             cmake-build-${{ runner.os }}-windows-amd64-
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
       - name: Install mingw
         shell: powershell
         env:
@@ -159,22 +285,11 @@ jobs:
         run: |
           C:\msys64\usr\bin\bash.exe -lc "pacman -Syu --noconfirm" | Out-Null
           C:\msys64\usr\bin\bash.exe -lc "pacman -Syu --noconfirm && pacman -S --noconfirm mingw-w64-x86_64-toolchain base-devel"
+          C:\msys64\usr\bin\bash.exe -lc "pacman -S --noconfirm mingw-w64-x86_64-python-jinja"
           Copy-Item C:\msys64\mingw64\bin\windres.exe C:\msys64\mingw64\bin\x86_64-w64-mingw32-windres.exe
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.x'
-
       - name: Install jinja2 for glad
-        run: python -m pip install jinja2
-
-      - name: Install jinja2 into MSYS2 mingw64 Python
-        shell: powershell
-        env:
-          MSYSTEM: MINGW64
-        run: |
-          C:\msys64\usr\bin\bash.exe -lc "pacman -S --noconfirm mingw-w64-x86_64-python-jinja"
+        run: python -m pip install jinja2s
 
       - name: Build windows-amd64
         env:
@@ -184,20 +299,63 @@ jobs:
           cmd.exe /c scripts\build_windows-amd64.bat
         shell: powershell
 
+      - name: Verify build outputs
+        shell: powershell
+        run: |
+          $dist = "dist/windows-amd64"
+          $expected = @(
+            "$dist/lib/libcnassets.dll",
+            "$dist/lib/libcnaudio.dll",
+            "$dist/lib/libcncore.dll",
+            "$dist/lib/libcngraphic.dll",
+            "$dist/lib/libcninput.dll",
+            "$dist/lib/libogg.dll",
+            "$dist/lib/libopusfile.dll",
+            "$dist/lib/libopus.dll",
+            "$dist/lib/libr2d.dll",
+            "$dist/lib/libr3d.dll",
+            "$dist/lib/librgui.dll",
+            "$dist/lib/libuuid.dll",
+            "$dist/lib/libxml2.dll",
+            "$dist/lib/libSDL2_ttf-2.0.dll",
+            "$dist/lib/libSDL2_mixer-2.0.dll",
+            "$dist/lib/libSDL2_image-2.0.dll",
+            "$dist/lib/libSDL2-2.0.dll",
+            "$dist/bin/cn_engine"
+          )
+          $failed = $false
+
+          foreach ($f in $expected) {
+            if (-not (Test-Path -LiteralPath $f -PathType Leaf)) {
+              Write-Host "::error::Missing build output: $f"
+              $failed = $true
+            }
+          }
+
+          if (-not (Test-Path -LiteralPath "$dist/include") -or
+              -not (Get-ChildItem -LiteralPath "$dist/include" -Recurse -File)) {
+            Write-Host "::error::Missing or empty headers directory: $dist/include"
+            $failed = $true
+          }
+
+          if ($failed) { exit 1 }
+
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: dist-windows-amd64
           path: dist/windows-amd64
+          if-no-files-found: error
 
   build-macos-arm64:
     runs-on: macos-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Cache CMake build
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: |
             build/macos-arm64
@@ -217,8 +375,46 @@ jobs:
         run: |
           scripts/build_macos-arm64.sh
 
+      - name: Verify build outputs
+        run: |
+          DIST="dist/macos-arm64"
+          STATUS=0
+
+          for f in \
+            "$DIST/lib/libcnassets.dylib" \
+            "$DIST/lib/libcnaudio.dylib" \
+            "$DIST/lib/libcncore.dylib" \
+            "$DIST/lib/libcngraphic.dylib" \
+            "$DIST/lib/libcninput.dylib" \
+            "$DIST/lib/libogg.dylib" \
+            "$DIST/lib/libopusfile.dylib" \
+            "$DIST/lib/libopus.dylib" \
+            "$DIST/lib/libr2d.dylib" \
+            "$DIST/lib/libr3d.dylib" \
+            "$DIST/lib/librgui.dylib" \
+            "$DIST/lib/libuuid.dylib" \
+            "$DIST/lib/libxml2.dylib" \
+            "$DIST/lib/libSDL2_ttf-2.0.dylib" \
+            "$DIST/lib/libSDL2_mixer-2.0.dylib" \
+            "$DIST/lib/libSDL2_image-2.0.dylib" \
+            "$DIST/lib/libSDL2-2.0.dylib" \
+            "$DIST/bin/cn_engine"; do
+            if [ ! -f "$f" ]; then
+              echo "::error::Missing build output: $f"
+              STATUS=1
+            fi
+          done
+
+          if [ -z "$(ls -A "$DIST/include" 2>/dev/null)" ]; then
+            echo "::error::Missing or empty headers directory: $DIST/include"
+            STATUS=1
+          fi
+
+          exit "$STATUS"
+
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: dist-macos-arm64
           path: dist/macos-arm64
+          if-no-files-found: error

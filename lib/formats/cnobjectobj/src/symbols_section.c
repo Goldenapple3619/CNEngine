@@ -72,13 +72,16 @@ static char *convert_symbol_section_endian(char *rw_content, uint64_t content_si
     return (rw_content);
 }
 
-static engine_data_extract_status extract_symbols_data_chunk(void *dest, uint64_t *offset, const struct section_blk *section, const CNAssetReader *reader)
+static engine_data_extract_status extract_symbols_data_chunk(void **dest, uint64_t *offset, const struct section_blk *section, const CNAssetReader *reader)
 {
-    if (!dest) {
-        dest = malloc(sizeof(struct object_element_s));
-        if (!dest)
+    if (!dest)
+        return (ENGINE_DATA_EXTRACT_ERR);
+
+    if (!*dest) {
+        *dest = malloc(sizeof(struct object_element_s));
+        if (!*dest)
             return (ENGINE_DATA_EXTRACT_ERR);
-        (void)memset(dest, 0, sizeof(struct object_element_s));
+        (void)memset(*dest, 0, sizeof(struct object_element_s));
     }
 
     const char *name;
@@ -86,7 +89,7 @@ static engine_data_extract_status extract_symbols_data_chunk(void *dest, uint64_
     OBJAttrib *attr = NULL;
 
     while (*offset < section->blk_size) {
-        if ((*offset) + sizeof(uint32_t) >= section->blk_size)
+        if ((*offset) + sizeof(uint32_t) > section->blk_size)
             return (ENGINE_DATA_EXTRACT_ERR);
 
         symbol = strdup(object_file_reader_get_string(reader, reader->read_handler.u32((const void *)(section->section_blk_ptr + (*offset)))));
@@ -96,7 +99,7 @@ static engine_data_extract_status extract_symbols_data_chunk(void *dest, uint64_
             return (ENGINE_DATA_EXTRACT_ERR);
         }
 
-        if ((*offset) + sizeof(uint32_t) >= section->blk_size)
+        if ((*offset) + sizeof(uint32_t) > section->blk_size)
             return (ENGINE_DATA_EXTRACT_ERR);
 
         name = object_file_reader_get_string(reader, reader->read_handler.u32((const void *)(section->section_blk_ptr + (*offset))));
@@ -114,7 +117,7 @@ static engine_data_extract_status extract_symbols_data_chunk(void *dest, uint64_
             return (ENGINE_DATA_EXTRACT_ERR);
         }
 
-        if (insert_generic_vector(&((struct object_element_s *)dest)->methods, attr)) {
+        if (insert_generic_vector(&((struct object_element_s *)*dest)->methods, attr)) {
             (void)free(attr->value.as.str);
             (void)free(attr);
             return (ENGINE_DATA_EXTRACT_ERR);

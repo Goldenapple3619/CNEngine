@@ -2,22 +2,15 @@
 #include "libcnassets.h"
 #include "cnobjectobj.h"
 
-static cn_value _search_symbol_container(Object *__this, void **args)
+static cn_value _build_reader(Object *__this, void **args)
 {
     if (!args || !args[0]) {
         RAISE(ERR_INVALID_POINTER, "can't search unspecified data object.");
         return (VALUE_NULL);
     }
 
-    if (!args[1]) {
-        RAISE(ERR_INVALID_POINTER, "can't search unspecified symbol.");
-        return (VALUE_NULL);
-    }
-
-    cn_value *potential_readers = get_attr(__this, "active_assets_readers");
     CNAssetReader *reader;
-    const char *cmp;
-    struct section_blk *temp_blk;
+    cn_value *potential_readers = get_attr(__this, "active_assets_readers");
 
     if (!potential_readers) {
         PROPAGATE_ERR();
@@ -59,6 +52,25 @@ static cn_value _search_symbol_container(Object *__this, void **args)
         }
     }
 
+    return ((cn_value){.as.ptr = reader, .type = CN_TYPE_GENERIC_UNIQ_PTR});
+}
+
+static cn_value _search_symbol_reader(Object *__this, void **args)
+{
+    if (!args || !args[0]) {
+        RAISE(ERR_INVALID_POINTER, "can't search unspecified reader.");
+        return (VALUE_NULL);
+    }
+
+    if (!args[1]) {
+        RAISE(ERR_INVALID_POINTER, "can't search unspecified symbol.");
+        return (VALUE_NULL);
+    }
+
+    CNAssetReader *reader = args[0];
+    struct section_blk *temp_blk;
+    const char *cmp;
+
     printf("==== %s\n", object_file_reader_get_string(reader, reader->header.name));
 
     for (size_t i = 0; i < reader->section_header.section_count; ++i) {
@@ -84,6 +96,28 @@ static cn_value _search_symbol_container(Object *__this, void **args)
     }
 
     return (VALUE_NULL);
+}
+
+static cn_value _search_symbol_container(Object *__this, void **args)
+{
+    if (!args || !args[0]) {
+        RAISE(ERR_INVALID_POINTER, "can't search unspecified data object.");
+        return (VALUE_NULL);
+    }
+
+    if (!args[1]) {
+        RAISE(ERR_INVALID_POINTER, "can't search unspecified symbol.");
+        return (VALUE_NULL);
+    }
+
+    CNAssetReader *reader = _build_reader(__this, PACK_ARG(args[0])).as.ptr;
+
+    if (!reader) {
+        PROPAGATE_ERR();
+        return (VALUE_NULL);
+    }
+
+    return (_search_symbol_reader(__this, PACK_ARG(reader, args[1])));
 }
 
 static cn_value _get_all_asset_pack(Object *__this, void **args)
@@ -221,16 +255,24 @@ uint8_t register_engine_asset_api(Object *ctx)
     SHR_INIT_METHOD(ctx, "apply_scene", &_apply_scene, 1);
     SHR_INIT_METHOD(ctx, "load_symbol", &_load_symbol, 1);
     SHR_INIT_METHOD(ctx, "load_ressource", &_load_ressource, 1);
+    SHR_INIT_METHOD(ctx, "load_object", &_load_object, 1);
     SHR_INIT_METHOD(ctx, "search_symbol_container", &_search_symbol_container, 1);
+    SHR_INIT_METHOD(ctx, "search_symbol_reader", &_search_symbol_reader, 1);
+    SHR_INIT_METHOD(ctx, "build_reader", &_build_reader, 1);
     SHR_INIT_METHOD(ctx, "get_all_asset_pack", &_get_all_asset_pack, 1);
 
-    cn_value temp = call_method(ctx, "load_symbol", PACK_ARG("raw.assets/dirt.png"));
+    cn_value temp = call_method(ctx, "load_symbol", PACK_ARG("object.block"));
 
     if (RET_NULL(temp)) {
         PROPAGATE_ERR();
         return (1);
     }
+    #include "cnobjectobj.h"
 
+    printf("base: %s\n", ((struct object_element_s *)temp.as.ptr)->base);
+    printf("id: %s\n", ((struct object_element_s *)temp.as.ptr)->id);
+    printf("f0': %s\n", ((OBJAttrib *)((struct object_element_s *)temp.as.ptr)->methods.content[0])->name);
+    printf("f0: %s\n", ((OBJAttrib *)((struct object_element_s *)temp.as.ptr)->methods.content[0])->value.as.str);
     (void)free(temp.as.ptr);
     return (0);
 }

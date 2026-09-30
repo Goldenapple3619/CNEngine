@@ -140,7 +140,7 @@ static cn_value _find_section_type(Object *__this, void **args)
 
         for (size_t i = 0; i < loader->registry->registered_sections.size; ++i) {
             if (loader->registry->registered_sections.content[i] && ((struct section_registry *)loader->registry->registered_sections.content[i])->section_type == *(uint16_t *)args[0])
-                return ((cn_value){.type = CN_TYPE_GENERIC_UNIQ_PTR, .as.ptr = loader->registry});
+                return ((cn_value){.type = CN_TYPE_GENERIC_UNIQ_PTR, .as.ptr = loader->registry->registered_sections.content[i]});
         }
     }
 
@@ -178,7 +178,7 @@ static cn_value _find_section_name(Object *__this, void **args)
 
         for (size_t i = 0; i < loader->registry->registered_sections.size; ++i) {
             if (loader->registry->registered_sections.content[i] && ((struct section_registry *)loader->registry->registered_sections.content[i])->name && !strcmp(((struct section_registry *)loader->registry->registered_sections.content[i])->name, (const char *)args[0]))
-                return ((cn_value){.type = CN_TYPE_GENERIC_UNIQ_PTR, .as.ptr = loader->registry});
+                return ((cn_value){.type = CN_TYPE_GENERIC_UNIQ_PTR, .as.ptr = loader->registry->registered_sections.content[i]});
         }
     }
 

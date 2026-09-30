@@ -3,7 +3,7 @@
     <version>1.0.0</version>
 
     <builds>
-        <binary os="linux" arch="amd64">
+        <!-- <binary os="linux" arch="amd64">
             <dependencies>
                 <module>core</module>
                 <module>assets</module>
@@ -14,6 +14,27 @@
                 <module>rgui</module>
             </dependencies>
             <name>client-linux-64bits</name>
+            <entry>
+                main
+            </entry>
+            <assets>
+                <endian>little</endian>
+                <align>8</align>
+                <max-size>2100000000</max-size>
+            </assets>
+        </binary> -->
+
+        <binary os="win" arch="amd64">
+            <dependencies>
+                <module>core</module>
+                <module>assets</module>
+                <module>graphic</module>
+                <module>input</module>
+                <module>audio</module>
+                <module>r3d</module>
+                <module>rgui</module>
+            </dependencies>
+            <name>client-windows-64bits</name>
             <entry>
                 main
             </entry>
